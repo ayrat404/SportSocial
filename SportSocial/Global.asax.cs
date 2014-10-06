@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
-using WebInterface.App_Start;
 
 namespace SportSocial
 {
@@ -14,10 +9,11 @@ namespace SportSocial
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            BundleConfig.RegisterBundles(System.Web.Optimization.BundleTable.Bundles);
         }
-        protected override void RegisterApplicationBundles(BundleCollection bundles)
-        {
-            BundleConfig.RegisterBundles(bundles);
-        }
+        //protected override RegisterApplicationBundles(BundleCollection bundles)
+        //{
+        //    BundleConfig.RegisterBundles(bundles);
+        //}
     }
 }

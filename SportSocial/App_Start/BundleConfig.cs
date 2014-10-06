@@ -1,8 +1,7 @@
 ﻿using System.Web.Optimization;
 using BundleTransformer.Core.Orderers;
-using BundleTransformer.Core.Transformers;
 
-namespace WebInterface.App_Start
+namespace SportSocial
 {
     public class BundleConfig
     {
