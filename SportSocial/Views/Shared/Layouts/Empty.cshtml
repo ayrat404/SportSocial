@@ -19,11 +19,8 @@
     <title>@(ViewBag.Title ?? "Fortress")</title>
     <meta name="keywords" content="@(ViewBag.Keywords ?? "Fortress")" />
     <meta name="description" content="@(ViewBag.Description ?? "Fortress")" />
-
-    @Styles.Render("~/content/bundles/main.css")
     @Styles.Render("~/content/bundles/main.less")
     @RenderSection("Styles", false)
-
     <link rel="shortcut icon" href="/favicon.ico?v=2" type="image/x-icon">
 </head>
 <body>
