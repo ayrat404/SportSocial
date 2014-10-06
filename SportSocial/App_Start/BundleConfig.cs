@@ -1,5 +1,6 @@
 ﻿using System.Web.Optimization;
 using BundleTransformer.Core.Orderers;
+using BundleTransformer.Core.Transformers;
 
 namespace SportSocial
 {
@@ -9,26 +10,14 @@ namespace SportSocial
         {
             //стили
             //=======================================================
-            //var cssTransformer = new CssTransformer();
-            //var cssMinify = new CssMinify();
-            //var lessBundle = new Bundle("~/content/bundles/main.less").Include(
-            //    "~/Content/styles/style.less"
-            //    );
-            //lessBundle.Transforms.Add(cssTransformer);
-            //lessBundle.Transforms.Add(cssMinify);
-            //bundles.Add(lessBundle);
-
-            //var loginLessBundle = new Bundle("~/content/login.less").Include(
-            //    "~/Content/styles/view/login.less"
-            //    );
-            //loginLessBundle.Transforms.Add(cssTransformer);
-            //loginLessBundle.Transforms.Add(cssMinify);
-            //bundles.Add(loginLessBundle);
-
-            //var cssBundle = new Bundle("~/content/css").Include(
-            //    "~/scripts/libs/bootstrap/bootstrap.min.css");
-
-            //bundles.Add(cssBundle);
+            var cssTransformer = new CssTransformer();
+            var cssMinify = new CssMinify();
+            var lessBundle = new Bundle("~/content/bundles/main.less").Include(
+                "~/Content/styles/style.less"
+                );
+            lessBundle.Transforms.Add(cssTransformer);
+            lessBundle.Transforms.Add(cssMinify);
+            bundles.Add(lessBundle);
 
             // бандл скриптов
             bundles.Add(new ScriptBundle("~/bundles/blog/scripts")

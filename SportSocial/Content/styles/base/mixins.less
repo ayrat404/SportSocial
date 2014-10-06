@@ -1,0 +1,205 @@
+/*
+ * Примеси
+ */
+
+//        Border Radius Tools
+// ==============================================
+
+// Border radius
+.border-radius (@topleft: 0, @topright: 0,@bottomright: 0, @bottomleft: 0) {
+	-webkit-border-top-right-radius: @topright;
+	-webkit-border-bottom-right-radius: @bottomright;
+	-webkit-border-bottom-left-radius: @bottomleft;
+	-webkit-border-top-left-radius: @topleft;
+	border-top-right-radius: @topright;
+	border-bottom-right-radius: @bottomright;
+	border-bottom-left-radius: @bottomleft;
+	border-top-left-radius: @topleft;
+}
+
+
+//        Shadow Tools
+// =======================================
+
+// Basic box shadow
+.box-shadow(@shadow) {
+    -webkit-box-shadow: @shadow;
+	box-shadow: @shadow;
+
+}
+
+// Outer shadow
+.outer-shadow(@x: 0, @y: 1px, @blur: 2px, @alpha: 0.1) {
+    -webkit-box-shadow: @x @y @blur rgba(0, 0, 0, @alpha);
+    box-shadow: @x @y @blur rgba(0, 0, 0, @alpha);
+}
+
+// Inner shadow
+.inner-shadow(@x: 0, @y: 1px, @blur: 2px, @alpha: 0.4) {
+    -webkit-box-shadow: inset @x @y @blur rgba(0, 0, 0, @alpha);
+    box-shadow: inset @x @y @blur rgba(0, 0, 0, @alpha);
+}
+
+
+//      Gradient Tools
+// ====================================
+
+#gradient {
+	// Vertical gradient 2 colors
+	.vertical_2(@startColor: #aaa, @stopColor: #000, @endProcent: 100%) {
+		background: mix(@startColor, @stopColor, 50%);
+		background: -webkit-linear-gradient(top,  @startColor 0%,@stopColor @endProcent);
+		background: linear-gradient(to bottom, @startColor 0%, @stopColor @endProcent);
+	}
+
+	// Vertical gradient 3 colors
+	.vertical_3(@startColor: #aaa, @toColor: #aaa, @stopColor: #000, @middleProcent: 50%) {
+		background: mix(@startColor, @stopColor, 50%);
+		background: -webkit-linear-gradient(top,  @startColor 0%, @toColor @middleProcent, @stopColor 100%);
+		background: linear-gradient(to bottom, @startColor 0%,@toColor @middleProcent, @stopColor 100%);
+	}
+
+	// Horizontal gradient
+	.horizontal(@startColor: #aaa, @stopColor: #000) {
+		background: mix(@startColor, @stopColor, 50%);
+		background: -webkit-linear-gradient(left,  @startColor 0%,@stopColor 100%);
+		background: linear-gradient(to right, @startColor 0%, @stopColor 100%);
+	}
+
+	// Directional gradient
+	.directional(@startColor: #aaa, @stopColor: #000, @deg: 45deg) {
+		background-image: -webkit-linear-gradient(@deg, @startColor, @stopColor);
+		background-image: -o-linear-gradient(@deg, @startColor, @stopColor);
+		background-image: -moz-linear-gradient(@deg, @startColor, @stopColor);
+		background-image: linear-gradient(@deg, @startColor, @stopColor);
+		background-color: mix(@startColor, @stopColor, 60%);
+		background-repeat: repeat-x;
+	}
+  
+	// Radial gradient
+	.radial(@innerColor: #aaa, @outerColor: #000) {
+		background-image: -webkit-radial-gradient(circle, @innerColor, @outerColor);
+		background-image: -o-radial-gradient(circle, @innerColor, @outerColor);
+		background-image: -moz-radial-gradient(circle, @innerColor, @outerColor);
+		background-image: radial-gradient(circle, @innerColor, @outerColor);
+		background-color: mix(@innerColor, @outerColor, 60%);
+		background-repeat: no-repeat;
+	}
+}
+
+
+//      Transition Tools
+// ====================================
+
+// Transition
+.transition(@transition) {
+    -webkit-transition: @transition;
+    transition: @transition;
+}
+
+// Transition all
+.transition-all(@duration: 0.2s, @delay: ease) {
+    -webkit-transition: all @duration @delay;
+    transition: all @duration @delay;
+}
+
+// Transition duration
+.transition-duration(@transition-duration) {
+    -webkit-transition-duration: @transition-duration;
+    transition-duration: @transition-duration;
+}
+// Transition delay
+.transition-delay(@transition-delay) {
+    -webkit-transition-delay: @transition-delay;
+    transition-delay: @transition-delay;
+}
+
+
+//          Transform Tools
+// ==============================================
+
+// Basic transform
+.transform(@transform) {
+    -webkit-transform: @transform;
+    transform: @transform;
+}
+
+// Rotate
+.rotate(@deg) {
+	.transform(rotate(@deg));
+}
+
+// Scale
+.scale(@ratio) {
+	.transform(scale(@ratio));
+}
+
+// Translate
+.translate(@x, @y) {
+	.transform(translate(@x, @y));
+}
+
+
+//        More Tools
+// ====================================
+
+// Background clip
+.background-clip(@argument: padding-box) {
+	-webkit-background-clip: @argument;
+    background-clip: @argument;
+}
+
+// Box sizing
+.box-sizing (@sizing: border-box) {
+	-webkit-box-sizing: @sizing;
+	box-sizing: @sizing;
+}
+
+// User select
+.user-select(@select: none) {
+  -webkit-user-select: @select;
+  -moz-user-select: @select;
+  -ms-user-select: @select;
+   user-select: @select;
+}
+
+
+//      Develop and Testing Tools
+// ============================================
+
+// Fixed block
+.fill (fixed, @margin: 0px) {
+	position: fixed;
+	top: @margin;
+	right: @margin;
+	bottom: @margin;
+	left: @margin;
+}
+
+// Font size and line-height
+.font-size(@size, @line){
+	font-size: @size;
+	line-height: @line;
+}
+
+// Size
+.size (@width, @height) {
+	height: @height;
+	width: @width;
+}
+// Square size
+.size (@size) {
+	height: @size;
+	width: @size;
+}
+
+// Sprite 
+.sprite (@step, @x, @y) {
+	background-position: -@x * @step -@y * @step;
+}
+
+.animation (@animation) {    
+    animation: @animation;
+    -webkit-animation: @animation;
+    -o-animation: @animation;
+}
