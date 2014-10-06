@@ -25,7 +25,6 @@
 .box-shadow(@shadow) {
     -webkit-box-shadow: @shadow;
 	box-shadow: @shadow;
-
 }
 
 // Outer shadow
@@ -202,4 +201,18 @@
     animation: @animation;
     -webkit-animation: @animation;
     -o-animation: @animation;
+}
+
+.inline-block(@align: middle){
+    display: inline-block;
+    vertical-align: @align;
+}
+
+.no-float {
+    &:after {
+        display: block;
+        line-height: 0;
+        content: '';
+        clear: both;
+    }
 }

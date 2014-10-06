@@ -1,0 +1,23 @@
+﻿/* Menu
+---------------------------------------------------------------------------------- */
+.menu {
+  background: url('../../images/pattern/black.png') repeat;
+}
+.menu-section {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.2);
+}
+.menu-section__title {
+  border-bottom: 1px solid #888888;
+}
+.menu-section__title__inner {
+  padding: 9px 6px 5px 6px;
+}
+.menu-section__item {
+  color: #fff;
+  display: block;
+  margin: 0 6px;
+}
+/* /Menu
+---------------------------------------------------------------------------------- */
+/*# sourceMappingURL=menu.css.map */
