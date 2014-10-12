@@ -11,9 +11,5 @@ namespace SportSocial
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(System.Web.Optimization.BundleTable.Bundles);
         }
-        //protected override RegisterApplicationBundles(BundleCollection bundles)
-        //{
-        //    BundleConfig.RegisterBundles(bundles);
-        //}
     }
 }

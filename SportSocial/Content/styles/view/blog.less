@@ -1,0 +1,55 @@
+/* Blog
+---------------------------------------------------------------------------------- */
+
+/* Blog list
+-------------------------------------------------- */
+.blog-l {
+    &__item {
+        background: @color-gray;
+        .no-float;
+        .box-shadow(0 0 10px rgba(0,0,0,.6));
+        padding: 8px;
+        &__preview {
+            float: left;
+            width: 30%;
+        }
+        &__info {
+            border-left: 1px solid @color-gray2;
+            &__top {
+                padding: 0 12px 10px 12px;
+            }
+            &__bottom {
+                padding: 10px 12px 0 12px;
+                border-top: 1px solid @color-gray2;
+            }
+            float: left;
+            width: 70%;
+        }
+        &__comments {
+            float: left;
+        }
+        &__likes {
+            float: right;
+        }
+        &__text {
+            font-size: 1em;
+        }
+
+        .date {
+            margin-bottom: 10px;
+        }
+    }
+}
+/* /Blog list */
+
+.title {
+    font-size: 1.857em;
+}
+
+.date {
+    font-size: 0.857em;
+    color: @color-gray3;
+}
+
+/* /Blog
+---------------------------------------------------------------------------------- */
