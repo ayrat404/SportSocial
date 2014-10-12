@@ -3,6 +3,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
+using Ninject;
+using Ninject.Activation;
 
 namespace DAL
 {
@@ -12,12 +14,11 @@ namespace DAL
         {
         }
 
-        public static AppUserManager Create(IdentityFactoryOptions<AppUserManager> options, IOwinContext context)
-        {
-            var db = context.Get<EntityDbContext>();
-            var userManager = new AppUserManager(new UserStore<AppUser>(db));
-
-            return userManager;
-        }
+        //public static AppUserManager Create(IContext context)
+        //{
+        //    var db = context.Kernel.Get<EntityDbContext>();
+        //    var userManager = new AppUserManager(new UserStore<AppUser>(db));
+        //    return userManager;
+        //}
     }
 }

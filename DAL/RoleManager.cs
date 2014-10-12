@@ -2,8 +2,6 @@
 using DAL.DomainModel;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin;
 
 namespace DAL
 {
@@ -13,12 +11,19 @@ namespace DAL
         {
         }
 
-        public static AppRoleManager Create(IdentityFactoryOptions<AppRoleManager> options, IOwinContext context)
-        {
-            var db = context.Get<EntityDbContext>();
-            var roleManeger = new AppRoleManager(new RoleStore<AppRole>(db));
+        //public static AppRoleManager Create(IdentityFactoryOptions<AppRoleManager> options, IOwinContext context)
+        //{
+        //    var db = context.Get<EntityDbContext>();
+        //    var roleManeger = new AppRoleManager(new RoleStore<AppRole>(db));
 
-            return roleManeger;
-        }
+        //    return roleManeger;
+        //}
+
+        //public static AppRoleManager Create(IContext context)
+        //{
+        //    var db = context.Kernel.Get<EntityDbContext>();
+        //    var roleManeger = new AppRoleManager(new RoleStore<AppRole>(db));
+        //    return roleManeger;
+        //}
     }
 }

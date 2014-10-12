@@ -1,4 +1,5 @@
-﻿using DAL;
+﻿using System.Web.Mvc;
+using DAL;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
@@ -10,9 +11,9 @@ namespace SportSocial
     {
         private void ConfigureAuth(IAppBuilder app)
         {
-            app.CreatePerOwinContext<EntityDbContext>(EntityDbContext.Create);
-            app.CreatePerOwinContext<AppUserManager>(AppUserManager.Create);
-            app.CreatePerOwinContext<AppRoleManager>(AppRoleManager.Create);
+            //app.CreatePerOwinContext<EntityDbContext>(EntityDbContext.Create);
+            app.CreatePerOwinContext(() => DependencyResolver.Current.GetService<AppUserManager>());
+            app.CreatePerOwinContext(() => DependencyResolver.Current.GetService<AppRoleManager>());
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions()
             {
