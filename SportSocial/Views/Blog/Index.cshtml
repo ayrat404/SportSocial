@@ -3,74 +3,120 @@
     Layout = "../Blog/Shared/Layouts/BlogLayout.cshtml";
 }
 
-<div class="header">
-    <div class="container">
-        <div class="row header-wrap">
-            <div class="col-xs-3">
-                <div class="header__logo">
-                    logo
-                </div>
-            </div>
-            <div class="col-xs-7">
-                <div class="header__search">
-                    search
-                </div>
-            </div>
-            <div class="col-xs-2">
-                <div class="header__actions">
-                    <a href="#" class="header__actions__item">1</a>
-                    <a href="#" class="header__actions__item">2</a>
-                    <a href="#" class="header__actions__item">3</a>
-                    <a href="#" class="header__actions__item">4</a>
-                    <a href="#" class="header__actions__item">5</a>
+<div class="container">
+    <div class="row">
+        <div class="center-block col-xs-6">
+            <div ng-controller="RegistrationCtrl">
+                <form ng-submit="requestCode(reg);">
+                    <div class="form-group">
+                        <label for="regName">Имя</label>
+                        <input ng-model="reg.name"
+                               ng-disabled="disableInp" 
+                               type="text" class="form-control" id="regName">
+                    </div>
+                    <div class="form-group">
+                        <label for="regPass1">Пароль</label>
+                        <input ng-model="reg.password"
+                               ng-disabled="disableInp" 
+                               type="password" class="form-control" id="regPass1">
+                    </div>
+                    <div class="form-group">
+                        <label for="regPass2">Повторите пароль</label>
+                        <input ng-model="reg.passwordRepeat"
+                               ng-disabled="disableInp" 
+                               type="password" class="form-control" id="regPass2">
+                    </div>
+                    <div class="form-group">
+                        <label for="regPhone">Номер телефона</label>
+                        <input ng-model="reg.phone"
+                               ng-disabled="disableInp" 
+                               type="text" class="form-control" id="regPhone">
+                    </div>
+                    <button type="submit" class="btn btn-default">Далее</button>
+                </form>
+                <div class="form-group"
+                     ng-cloak
+                     ng-show="smsBlockShow">
+                    <label for="regCode">Код подтверждения</label>
+                    <input ng-model="reg.code"
+                           ng-disabled="disableCode" 
+                           type="text" id="regCode">
+                    <button type="button" class="btn btn-default" ng-click="register(reg.code)">Создать профиль</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-xs-3 menu">
-            <div class="menu-section">
-                <div class="menu-section__title">
-                    <div class="menu-section__title__inner">
-                        Рубрики:
+@*<div class="header">
+        <div class="container">
+            <div class="row header-wrap">
+                <div class="col-xs-3">
+                    <div class="header__logo">
+                        logo
                     </div>
                 </div>
-                <a href="#" class="menu-section__item">Здоровье</a>
-                <a href="#" class="menu-section__item">Мотивация</a>
-                <a href="#" class="menu-section__item">Новичку</a>
-                <a href="#" class="menu-section__item">Общее</a>
-                <a href="#" class="menu-section__item">Питание</a>
-                <a href="#" class="menu-section__item">С чего начать</a>
-                <a href="#" class="menu-section__item">Упражнения</a>
-            </div>
-        </div>
-        <div class="col-xs-9">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="banner">
-                        banner
-                    </div>  
+                <div class="col-xs-7">
+                    <div class="header__search">
+                        search
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="header__actions">
+                        <a href="#" class="header__actions__item">1</a>
+                        <a href="#" class="header__actions__item">2</a>
+                        <a href="#" class="header__actions__item">3</a>
+                        <a href="#" class="header__actions__item">4</a>
+                        <a href="#" class="header__actions__item">5</a>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="blog-l">
-                        <div class="blog-l__item">
-                            <div class="blog-l__item__preview">
-                                img
-                            </div>
-                            <div class="blog-l__item__info">
-                                <div class="blog-l__item__info__top">
-                                    <h4 class="title">Оптимальное время тренировки</h4>
-                                    <div class="date">Опубликовано: Апрель, 16, 2014 автором <a href="#">gleb</a></div>
-                                    <div class="blog-l__item__text">Принято считать, что оптимальным временем для тренировки с целью набора мышечной массы является отрезок от 40 минут до полутора часов. В данной статье я попробую максимально наглядно объяснить, чем эти рамки обусловлены. Гормоны. Выработка гормонов являются одним из важнейших факторов вашего прогресса. Во время силовых тренировок выделяется несколько так называемых «анаболических» (ответственных за рост, прогресс мышечных объёмов) гормонов. К ним относятся: соматотропин (гормон роста), тестостерон и инсулин. Мы не будем отдельно останавливаться на каждом из них и подробно расписывать их функции, но лишь в краткой </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-3 menu">
+                <div class="menu-section">
+                    <div class="menu-section__title">
+                        <div class="menu-section__title__inner">
+                            Рубрики:
+                        </div>
+                    </div>
+                    <a href="#" class="menu-section__item">Здоровье</a>
+                    <a href="#" class="menu-section__item">Мотивация</a>
+                    <a href="#" class="menu-section__item">Новичку</a>
+                    <a href="#" class="menu-section__item">Общее</a>
+                    <a href="#" class="menu-section__item">Питание</a>
+                    <a href="#" class="menu-section__item">С чего начать</a>
+                    <a href="#" class="menu-section__item">Упражнения</a>
+                </div>
+            </div>
+            <div class="col-xs-9">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="banner">
+                            banner
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="blog-l">
+                            <div class="blog-l__item">
+                                <div class="blog-l__item__preview">
+                                    img
                                 </div>
-                                <div class="blog-l__item__info__bottom">
-                                    <div class="blog-l__item__comments">Комментариев 4</div>
-                                    <div class="blog-l__item__likes">Нравится 7 <span class="icon-fortress"></span></div>
+                                <div class="blog-l__item__info">
+                                    <div class="blog-l__item__info__top">
+                                        <h4 class="title">Оптимальное время тренировки</h4>
+                                        <div class="date">Опубликовано: Апрель, 16, 2014 автором <a href="#">gleb</a></div>
+                                        <div class="blog-l__item__text">Принято считать, что оптимальным временем для тренировки с целью набора мышечной массы является отрезок от 40 минут до полутора часов. В данной статье я попробую максимально наглядно объяснить, чем эти рамки обусловлены. Гормоны. Выработка гормонов являются одним из важнейших факторов вашего прогресса. Во время силовых тренировок выделяется несколько так называемых «анаболических» (ответственных за рост, прогресс мышечных объёмов) гормонов. К ним относятся: соматотропин (гормон роста), тестостерон и инсулин. Мы не будем отдельно останавливаться на каждом из них и подробно расписывать их функции, но лишь в краткой </div>
+                                    </div>
+                                    <div class="blog-l__item__info__bottom">
+                                        <div class="blog-l__item__comments">Комментариев 4</div>
+                                        <div class="blog-l__item__likes">Нравится 7 <span class="icon-fortress"></span></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -78,5 +124,4 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </div>*@

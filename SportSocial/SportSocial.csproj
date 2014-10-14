@@ -165,7 +165,7 @@
     <Content Include="App_Data\SportStore_log.ldf">
       <DependentUpon>SportStore.mdf</DependentUpon>
     </Content>
-    <Content Include="Content\images\pattern\black.png" />
+	<Content Include="Content\images\pattern\black.png" />
     <Content Include="Content\styles\base\colors.css">
       <DependentUpon>colors.less</DependentUpon>
     </Content>
@@ -223,15 +223,20 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\app\blog\app.js" />
     <Content Include="Scripts\app\blog\modules\main\main.ctrl.js" />
+    <Content Include="Scripts\app\blog\modules\registration\registration.srvc.js" />
     <Content Include="Scripts\app\blog\modules\registration\registration.ctrl.js" />
     <Content Include="Scripts\app\blog\shared\directives\scrollToPos.drct.js" />
     <Content Include="Scripts\libs\angular\angular-animate.js" />
     <Content Include="Scripts\libs\angular\angular-animate.min.js" />
+    <Content Include="Scripts\libs\angular\angular-aria.js" />
+    <Content Include="Scripts\libs\angular\angular-aria.min.js" />
     <Content Include="Scripts\libs\angular\angular-cookies.js" />
     <Content Include="Scripts\libs\angular\angular-cookies.min.js" />
     <Content Include="Scripts\libs\angular\angular-csp.css" />
     <Content Include="Scripts\libs\angular\angular-loader.js" />
     <Content Include="Scripts\libs\angular\angular-loader.min.js" />
+    <Content Include="Scripts\libs\angular\angular-messages.js" />
+    <Content Include="Scripts\libs\angular\angular-messages.min.js" />
     <Content Include="Scripts\libs\angular\angular-mocks.js" />
     <Content Include="Scripts\libs\angular\angular-resource.js" />
     <Content Include="Scripts\libs\angular\angular-resource.min.js" />
@@ -652,6 +657,8 @@
     <Content Include="Content\styles\view\registration.css.map">
       <DependentUpon>registration.css</DependentUpon>
     </Content>
+    <Content Include="Scripts\libs\angular\angular-aria.min.js.map" />
+    <Content Include="Scripts\libs\angular\angular-messages.min.js.map" />
     <None Include="Scripts\libs\jquery\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.min.js" />
@@ -779,6 +786,16 @@
     <Folder Include="Scripts\app\blog\modules\articleList\" />
     <Folder Include="Scripts\app\blog\modules\articleNew\" />
     <Folder Include="Scripts\app\blog\modules\authorization\" />
+    <Folder Include="Scripts\spa\apps\blog\edit\" />
+    <Folder Include="Scripts\spa\apps\blog\list\" />
+    <Folder Include="Scripts\spa\apps\blog\new\" />
+    <Folder Include="Scripts\spa\apps\blog\show\" />
+    <Folder Include="Scripts\spa\apps\social\" />
+    <Folder Include="Scripts\spa\common\modules\auth\" />
+    <Folder Include="Scripts\spa\common\modules\vent\" />
+    <Folder Include="Scripts\spa\common\templates\" />
+    <Folder Include="Scripts\spa\common\utils\" />
+    <Folder Include="Scripts\spa\entities\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">
