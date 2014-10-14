@@ -7,42 +7,47 @@
     <div class="row">
         <div class="center-block col-xs-6">
             <div ng-controller="RegistrationCtrl">
-                <form ng-submit="requestCode(reg);">
+                <form ng-submit="requestCode(user);">
                     <div class="form-group">
                         <label for="regName">Имя</label>
-                        <input ng-model="reg.name"
+                        <input ng-model="user.name"
                                ng-disabled="disableInp" 
                                type="text" class="form-control" id="regName">
                     </div>
                     <div class="form-group">
-                        <label for="regPass1">Пароль</label>
-                        <input ng-model="reg.password"
-                               ng-disabled="disableInp" 
-                               type="password" class="form-control" id="regPass1">
-                    </div>
-                    <div class="form-group">
-                        <label for="regPass2">Повторите пароль</label>
-                        <input ng-model="reg.passwordRepeat"
-                               ng-disabled="disableInp" 
-                               type="password" class="form-control" id="regPass2">
-                    </div>
-                    <div class="form-group">
                         <label for="regPhone">Номер телефона</label>
-                        <input ng-model="reg.phone"
+                        <input ng-model="user.phone"
                                ng-disabled="disableInp" 
                                type="text" class="form-control" id="regPhone">
                     </div>
                     <button type="submit" class="btn btn-default">Далее</button>
                 </form>
-                <div class="form-group"
-                     ng-cloak
-                     ng-show="smsBlockShow">
-                    <label for="regCode">Код подтверждения</label>
-                    <input ng-model="reg.code"
-                           ng-disabled="disableCode" 
-                           type="text" id="regCode">
-                    <button type="button" class="btn btn-default" ng-click="register(reg.code)">Создать профиль</button>
-                </div>
+                <form ng-cloak
+                      ng-submit="registration(verify)"
+                      ng-show="smsBlockShow">
+                    <div class="form-group">
+                        <label for="regPass1">Пароль</label>
+                        <input ng-model="verify.password"
+                               ng-disabled="disableInp"
+                               type="password" class="form-control" id="regPass1">
+                    </div>
+                    <div class="form-group">
+                        <label for="regPass2">Повторите пароль</label>
+                        <input ng-model="verify.passwordRepeat"
+                               ng-disabled="disableInp"
+                               type="password" class="form-control" id="regPass2">
+                    </div>
+                    <div class="form-group">
+                        <label for="regCode">Код подтверждения</label>
+                        <input ng-model="verify.code"
+                               ng-disabled="disableCode"
+                               ng-autofocus="{{smsBlockShow}}"
+                               type="text" id="regCode">
+                        <span ng-if="timerForSms > 0">Выслать код повторно через {{timerForSms}} секунд</span>
+                        <span ng-if="timerForSms == 0" class="link" ng-click="requestCode(user.phone);">Выслать повторно</span>
+                    </div>
+                    <button type="submit" class="btn btn-default">Создать профиль</button>
+                </form>
             </div>
         </div>
     </div>
