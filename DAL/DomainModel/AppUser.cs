@@ -4,6 +4,6 @@ namespace DAL.DomainModel
 {
     public class AppUser: IdentityUser
     {
-         
+        public string Name { get; set; }
     }
 }
