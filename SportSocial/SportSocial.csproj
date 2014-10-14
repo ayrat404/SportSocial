@@ -143,14 +143,65 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\images\pattern\black.png" />
+    <Content Include="Content\styles\base\colors.css">
+      <DependentUpon>colors.less</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\base\colors.min.css">
+      <DependentUpon>colors.css</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\base\mixins.css">
+      <DependentUpon>mixins.less</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\base\mixins.min.css">
+      <DependentUpon>mixins.css</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\bootstrap\bootstrap.css">
+      <DependentUpon>bootstrap.less</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\bootstrap\bootstrap.min.css">
+      <DependentUpon>bootstrap.css</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\bootstrap\variables.css">
+      <DependentUpon>variables.less</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\bootstrap\variables.min.css">
+      <DependentUpon>variables.css</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\components\menu.css">
+      <DependentUpon>menu.less</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\components\menu.min.css">
+      <DependentUpon>menu.css</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\components\header.css">
+      <DependentUpon>header.less</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\components\header.min.css">
+      <DependentUpon>header.css</DependentUpon>
+    </Content>
     <Content Include="Content\styles\style.css">
       <DependentUpon>style.less</DependentUpon>
     </Content>
     <Content Include="Content\styles\style.min.css">
       <DependentUpon>style.css</DependentUpon>
     </Content>
+    <Content Include="Content\styles\view\registration.css">
+      <DependentUpon>registration.less</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\view\registration.min.css">
+      <DependentUpon>registration.css</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\view\blog.css">
+      <DependentUpon>blog.less</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\view\blog.min.css">
+      <DependentUpon>blog.css</DependentUpon>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Scripts\app\blog\app.js" />
+    <Content Include="Scripts\app\blog\modules\main\main.ctrl.js" />
+    <Content Include="Scripts\app\blog\modules\registration\registration.ctrl.js" />
     <Content Include="Scripts\app\blog\shared\directives\scrollToPos.drct.js" />
     <Content Include="Scripts\libs\angular\angular-animate.js" />
     <Content Include="Scripts\libs\angular\angular-animate.min.js" />
@@ -491,7 +542,6 @@
     <Content Include="Content\styles\bootstrap\breadcrumbs.less" />
     <Content Include="Content\styles\bootstrap\button-groups.less" />
     <Content Include="Content\styles\bootstrap\buttons.less" />
-    <Content Include="Content\styles\bootstrap\carousel.less" />
     <Content Include="Content\styles\bootstrap\close.less" />
     <Content Include="Content\styles\bootstrap\code.less" />
     <Content Include="Content\styles\bootstrap\component-animations.less" />
@@ -555,6 +605,31 @@
     <Content Include="Content\styles\bootstrap\utilities.less" />
     <Content Include="Content\styles\bootstrap\variables.less" />
     <Content Include="Content\styles\bootstrap\wells.less" />
+    <Content Include="Content\styles\bootstrap\bootstrap.css.map">
+      <DependentUpon>bootstrap.css</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\components\header.less" />
+    <Content Include="Content\styles\components\header.css.map">
+      <DependentUpon>header.css</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\view\blog.css.map">
+      <DependentUpon>blog.css</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\base\mixins.css.map">
+      <DependentUpon>mixins.css</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\components\menu.less" />
+    <Content Include="Content\styles\components\menu.css.map">
+      <DependentUpon>menu.css</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\base\colors.less" />
+    <Content Include="Content\styles\base\colors.css.map">
+      <DependentUpon>colors.css</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\view\registration.less" />
+    <Content Include="Content\styles\view\registration.css.map">
+      <DependentUpon>registration.css</DependentUpon>
+    </Content>
     <None Include="Scripts\libs\jquery\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.min.js" />
@@ -621,6 +696,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\ConfigureAuth.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
@@ -659,6 +735,9 @@
     <Content Include="Scripts\libs\select2\select2_locale_en.js.template" />
     <Content Include="Views\Shared\Layouts\StaticPageLayout.cshtml" />
     <Content Include="Views\Shared\Layouts\DynamicPageLayout.cshtml" />
+    <Content Include="Views\Blog\Shared\Layouts\BlogLayout.cshtml" />
+    <Content Include="Views\Registration\Index.cshtml" />
+    <Content Include="Views\Registration\Shared\Layouts\RegistrationLayout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -669,9 +748,12 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\fonts\" />
-    <Folder Include="Content\images\" />
-    <Folder Include="Content\styles\components\" />
     <Folder Include="Models\" />
+    <Folder Include="Scripts\app\blog\modules\articleEdit\" />
+    <Folder Include="Scripts\app\blog\modules\articleItem\" />
+    <Folder Include="Scripts\app\blog\modules\articleList\" />
+    <Folder Include="Scripts\app\blog\modules\articleNew\" />
+    <Folder Include="Scripts\app\blog\modules\authorization\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">
