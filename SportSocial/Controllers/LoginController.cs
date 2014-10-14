@@ -47,20 +47,20 @@ namespace SportSocial.Controllers
                 AppUser user = await _appUserManager.FindAsync(model.Phone, model.Password);
                 if (user == null)
                 {
-                    return Json(new {Success = false, ErrorMessage = "Не верный логин или пароль"}, jsonContentType);
+                    return Json(new {success = false, ErrorMessage = "Не верный логин или пароль"}, jsonContentType);
                 }
                 ClaimsIdentity ident =
                     await _appUserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
                 _authManager.SignOut();
                 _authManager.SignIn(new AuthenticationProperties { IsPersistent =  true }, ident);
-                return Json(new {Success = true, ReturnUrl = ""}, "application/json");
+                return Json(new {success = true, ReturnUrl = ""}, "application/json");
             }
             else
-                return Json(new {Success = false, ErrorMessage = "Не введены немер телефона или пароль"}, jsonContentType);
+                return Json(new {success = false, ErrorMessage = "Не введены немер телефона или пароль"}, jsonContentType);
         }
 
         [HttpPost]
-        public async Task<ActionResult> Register(RegistratioinModel model, string url)
+        public ActionResult Register(RegistratioinModel model, string url = "")
         {
             if (ModelState.IsValid)
             {
@@ -71,26 +71,25 @@ namespace SportSocial.Controllers
                     UserName = model.Phone,
                     PhoneNumberConfirmed = false,
                 };
-                var result = await _appUserManager.CreateAsync(user, model.Password);
+                var result = _appUserManager.Create(user, model.Password);
                 if (result.Succeeded)
                 {
                     ClaimsIdentity ident =
-                        await _appUserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
+                        _appUserManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
                     _authManager.SignOut();
                     _authManager.SignIn(new AuthenticationProperties { IsPersistent =  true }, ident);
-                    return Json(new {Success = true, returnUrl = url});
+                    return Json(new { success = true, returnUrl = url, canResendSms = 40});
                 }
                 else
-                    return Json(new {Success = false, errorMessage = "Ошибка при регистрации"});
+                    return Json(new {success = false, errorMessage = "Ошибка при регистрации"});
             }   
             else
             {
-                return Json(new {Success = false, ErrorMessage = "Не введены немер телефона или пароль"}, jsonContentType);
+                return Json(new {success = false, ErrorMessage = "Не введены немер телефона или пароль"}, jsonContentType);
             }
         }
 
         [HttpGet]
-        [ActionName("Register")]
         public async Task<ActionResult> ConfirmCode(int code)
         {
             if (code == 1111)
@@ -99,18 +98,16 @@ namespace SportSocial.Controllers
                 if (user != null)
                 {
                     user.PhoneNumberConfirmed = true;
-                    return Json(new {Success = true});
+                    return Json(new {success = true});
                 }
                 else
-                    return Json(new {Success = true, ErrorMessage = "Не найден пользователь"});
+                    return Json(new {success = true, ErrorMessage = "Не найден пользователь"});
             }
             else
-                return Json(new {Success = true, ErrorMessage = "Не верный код"});
-            
+                return Json(new {success = true, ErrorMessage = "Не верный код"});
         }
 
         [HttpPost]
-        [ActionName("Register")]
         public async Task<ActionResult> FinalRegistration(string code)
         {
             throw new NotImplementedException();

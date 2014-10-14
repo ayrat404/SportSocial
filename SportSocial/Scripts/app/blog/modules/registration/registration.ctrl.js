@@ -21,15 +21,16 @@ function ($scope, $interval, registrationRqst, tokenRqst) {
         $scope.disableInp = true;
         data = angular.extend(data, tokenRqst.obj);
         registrationRqst.requestCode(data)
-            .then(function(res) {
-                if (res.success) {
+            .then(function (res) {
+            debugger;
+                if (res.data.success) {
                     $scope.smsBlockShow = true;
-                    $scope.timerForSms = res.canResendSms;
+                    $scope.timerForSms = res.data.canResendSms;
                     countdownTimer();
                     toggleForm(false);
                 } else {
                     $scope.disableInp = false;
-                    handleError(res.error);
+                    handleError(res.data.error);
                     toggleForm(false);
                 }
             }, function() {
@@ -46,10 +47,10 @@ function ($scope, $interval, registrationRqst, tokenRqst) {
         data = angular.extend(data, tokenRqst.obj);
         registrationRqst.registration(data)
             .then(function (res) {
-                if (res.success) {
-                    $window.location.href = res.redirect;
+                if (res.data.success) {
+                    $window.location.href = res.data.redirect;
                 } else {
-                    handleError(res.error);
+                    handleError(res.data.error);
                 }
                 $scope.disabledCode = false;
                 toggleForm(false);
