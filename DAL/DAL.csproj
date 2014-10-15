@@ -81,11 +81,17 @@
     <Compile Include="DomainModel\Base\IAuditable.cs" />
     <Compile Include="DomainModel\Base\Auditable.cs" />
     <Compile Include="DomainModel\Base\Entity.cs" />
+    <Compile Include="DomainModel\Base\IDeletable.cs" />
     <Compile Include="DomainModel\Base\IEntity.cs" />
+    <Compile Include="DomainModel\SmsCode.cs" />
     <Compile Include="EntityDbContext.cs" />
     <Compile Include="Migrations\201410111050567_Init.cs" />
     <Compile Include="Migrations\201410111050567_Init.Designer.cs">
       <DependentUpon>201410111050567_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201410141759531_AppUserFieldName.cs" />
+    <Compile Include="Migrations\201410141759531_AppUserFieldName.Designer.cs">
+      <DependentUpon>201410141759531_AppUserFieldName.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -100,6 +106,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201410111050567_Init.resx">
       <DependentUpon>201410111050567_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410141759531_AppUserFieldName.resx">
+      <DependentUpon>201410141759531_AppUserFieldName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

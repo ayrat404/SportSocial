@@ -7,7 +7,5 @@ namespace DAL.DomainModel
         DateTime Created { get; set; }
 
         DateTime Modified { get; set; }
-        
-        bool Deleted { get; set; }
     }
 }
