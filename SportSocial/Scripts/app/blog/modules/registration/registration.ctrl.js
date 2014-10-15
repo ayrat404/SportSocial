@@ -33,7 +33,7 @@ function ($scope, $interval, registrationRqst, tokenRqst) {
                 }
             }, function() {
             showError({ text: 'Что то пошло не так, попробуйте позже' });
-        }).finally(function () {
+        }).always(function () {
                 toggleForm(false);
         });
     }
@@ -53,7 +53,7 @@ function ($scope, $interval, registrationRqst, tokenRqst) {
                 }
             }, function () {
                 showError({ text: 'Что то пошло не так, повторите позже' });
-            }).finally(function () {
+            }).always(function () {
                 toggleForm(false);
         });
     }
