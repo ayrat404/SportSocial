@@ -15,11 +15,8 @@ namespace BLL
             kernel.Bind(x => x
                 .FromThisAssembly()
                 .Select(t => t.Name.EndsWith("Service"))
-                .BindDefaultInterface());
+                .BindDefaultInterfaces());
             kernel.Bind<EntityDbContext>().ToSelf();
-            kernel.Bind<IUserStore<AppUser>>().ToMethod(ctx => new UserStore<AppUser>(ctx.Kernel.Get<EntityDbContext>()));
-            kernel.Bind<AppUserManager>().ToSelf();
-            kernel.Bind<AppRoleManager>().ToSelf();
         }
     }
 }

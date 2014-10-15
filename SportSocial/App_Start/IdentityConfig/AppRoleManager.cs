@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using DAL.DomainModel;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace DAL
+namespace SportSocial.IdentityConfig
 {
     public class AppRoleManager: RoleManager<AppRole>, IDisposable
     {

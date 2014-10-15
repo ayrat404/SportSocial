@@ -16,6 +16,7 @@ namespace DAL
         {
         }
     #endif
+        public DbSet<SmsCode> SmsCodes { get; set; }
 
         static EntityDbContext()
         {
@@ -29,7 +30,7 @@ namespace DAL
 
     }
 
-    public class DbInit:DropCreateDatabaseIfModelChanges<EntityDbContext>
+    public class DbInit :CreateDatabaseIfNotExists<EntityDbContext>
     {
         protected override void Seed(EntityDbContext context)
         {
