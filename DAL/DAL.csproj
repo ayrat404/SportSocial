@@ -93,11 +93,13 @@
     <Compile Include="Migrations\201410141759531_AppUserFieldName.Designer.cs">
       <DependentUpon>201410141759531_AppUserFieldName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201410151702237_SmsCodeAddTable.cs" />
+    <Compile Include="Migrations\201410151702237_SmsCodeAddTable.Designer.cs">
+      <DependentUpon>201410151702237_SmsCodeAddTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Interfaces\IRepository.cs" />
-    <Compile Include="RoleManager.cs" />
-    <Compile Include="UserManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -109,6 +111,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201410141759531_AppUserFieldName.resx">
       <DependentUpon>201410141759531_AppUserFieldName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410151702237_SmsCodeAddTable.resx">
+      <DependentUpon>201410151702237_SmsCodeAddTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

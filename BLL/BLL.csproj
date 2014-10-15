@@ -65,13 +65,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LoginService\ILoginService.cs" />
-    <Compile Include="LoginService\LoginService.cs" />
+    <Compile Include="Common\Objects\ServiceResult.cs" />
+    <Compile Include="Login\ILoginService.cs" />
+    <Compile Include="Login\LoginService.cs" />
     <Compile Include="NinjectServiceRegistrator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sms\Impls\EmptySmsService.cs" />
+    <Compile Include="Sms\ISmsService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="LoginService\Models\" />
+    <Folder Include="Login\Models\" />
+    <Folder Include="Sms\Objects\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

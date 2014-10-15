@@ -8,7 +8,7 @@ namespace DAL.DomainModel
 
         public string Code { get; set; }
 
-        public DateTime RetryDate { get; set; }
+        public DateTime RetryTime { get; set; }
 
         public DateTime Expired { get; set; }
 
