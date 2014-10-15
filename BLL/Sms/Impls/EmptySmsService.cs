@@ -40,7 +40,7 @@ namespace BLL.Sms
         {
             var result = new ServiceResult {Success = false};
             var sms = _db.SmsCodes.Where(s => s.UserId == userId).OrderByDescending(s => s.Created).FirstOrDefault();
-            if (sms != null && sms.Expired < DateTime.Now)
+            if (sms != null && sms.Expired > DateTime.Now)
             {
                 if ((DateTime.Now - sms.RetryTime).Seconds <= 0)
                 {
