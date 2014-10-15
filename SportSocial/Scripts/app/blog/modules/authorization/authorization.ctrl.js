@@ -28,7 +28,7 @@ function ($scope, $interval, authorizationRqst, tokenRqst) {
                 }
             }, function () {
             showError({text: 'Что то пошло не так, повторите позже'});
-            }).finally(function () {
+            }).always(function () {
                 $scope.loading = true;
                 $scope.formDisabled = true;
         });
