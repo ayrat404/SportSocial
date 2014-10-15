@@ -29,13 +29,13 @@ function ($scope, $interval, registrationRqst, tokenRqst) {
                     $scope.timerForSms = res.data.canResendSms;
                     countdownTimer();
                 } else {
-                    showError(res.data.error);
+                    showError(res.data.errorMessage);
                 }
-            }, function() {
-            showError({ text: 'Что то пошло не так, попробуйте позже' });
-        }).always(function () {
                 toggleForm(false);
-        });
+            }, function() {
+                showError({ text: 'Что то пошло не так, попробуйте позже' });
+                toggleForm(false);
+            });
     }
 
     // Отправка кода подтверждения, окончательная регистрация
@@ -49,25 +49,25 @@ function ($scope, $interval, registrationRqst, tokenRqst) {
                 if (res.data.success) {
                     $window.location.href = res.data.redirect;
                 } else {
-                    showError(res.data.error);
+                    showError(res.data.errorMessage);
                 }
+                toggleForm(false);
             }, function () {
                 showError({ text: 'Что то пошло не так, повторите позже' });
-            }).always(function () {
                 toggleForm(false);
-        });
+            });
     }
 
     // Показать/скрыть лоадер, убрать ошибки
     // ---------------------
     function toggleForm(isSend) {
         if (isSend) {
-            $scope.disabledInp = true;
+            $scope.disableInp = true;
             $scope.disabledCode = true;
             $scope.loader = true;
             $scope.serverError.isShow = false;
         } else {
-            $scope.disabledInp = false;
+            $scope.disableInp = false;
             $scope.disabledCode = false;
             $scope.loader = false;
         }
@@ -87,9 +87,9 @@ function ($scope, $interval, registrationRqst, tokenRqst) {
 
     // Валидация с сервера
     // ---------------------
-    function showError(error) {
+    function showError(message) {
         $scope.serverError.isShow = true;
-        $scope.serverError.message = error.text;
+        $scope.serverError.message = message;
     }
 
 }]);

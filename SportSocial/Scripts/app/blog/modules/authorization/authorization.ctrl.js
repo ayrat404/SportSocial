@@ -26,12 +26,13 @@ function ($scope, $interval, authorizationRqst, tokenRqst) {
                 } else {
                     showError(res.data.error);
                 }
-            }, function () {
-            showError({text: 'Что то пошло не так, повторите позже'});
-            }).always(function () {
                 $scope.loading = true;
                 $scope.formDisabled = true;
-        });
+            }, function () {
+                showError({ text: 'Что то пошло не так, повторите позже' });
+                $scope.loading = true;
+                $scope.formDisabled = true;
+            });
     }
 
     // Валидация с сервера

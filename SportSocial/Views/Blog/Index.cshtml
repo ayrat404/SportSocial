@@ -59,6 +59,7 @@
                     </button>
                 </form>
                 <div ng-show="loading">Подождите, идет загрузка</div>
+                <div ng-show="serverError.isShow">{{serverError.message}}</div>
             </div>
         </div>
         <div class="col-xs-6">
