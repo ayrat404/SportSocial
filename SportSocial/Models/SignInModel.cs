@@ -8,6 +8,6 @@ namespace SportSocial.Models
         public string Phone { get; set; }
 
         [Required]
-        public string Password { get; set; }
+        public string Pass { get; set; }
     }
 }

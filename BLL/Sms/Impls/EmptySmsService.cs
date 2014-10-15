@@ -64,8 +64,8 @@ namespace BLL.Sms
                     Code = code,
                     Created = DateTime.Now,
                     Modified = DateTime.Now,
-                    Expired = DateTime.Now.AddMinutes(120),
-                    RetryTime = DateTime.Now.AddSeconds(40),
+                    Expired = DateTime.Now.AddMinutes(20),
+                    RetryTime = DateTime.Now.AddSeconds(30),
                     UserId = userId,
                     Deleted = false,
                 };
