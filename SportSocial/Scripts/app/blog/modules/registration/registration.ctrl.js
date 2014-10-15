@@ -8,10 +8,13 @@ angular.module('app').controller('RegistrationCtrl',
 function ($scope, $interval, registrationRqst, tokenRqst) {
     $scope.smsBlockShow =   false;  // показать/скрыть смс блок
     $scope.loading      =   false;  // показать/скрыть лоадер
-    $scope.serverError  =   false;  // ошибка с сервера
     $scope.disableInp   =   false;  // отключить поля ввода
     $scope.disabledCode =   false;  // отключить поле ввода смс
     $scope.timerForSms  =   0;      // таймер для смс
+    $scope.serverError = {          // ошибка с сервера
+        isShow  :   false,
+        message :   ''
+    }
 
 
     // Отправка данных, запрос кода подтверждения
@@ -25,13 +28,13 @@ function ($scope, $interval, registrationRqst, tokenRqst) {
                     $scope.smsBlockShow = true;
                     $scope.timerForSms = res.data.canResendSms;
                     countdownTimer();
-                    toggleForm(false);
                 } else {
-                    handleError(res.data.error);
-                    toggleForm(false);
+                    showError(res.data.error);
                 }
             }, function() {
-                $scope.serverError = true;
+            showError({ text: 'Что то пошло не так, попробуйте позже' });
+        }).finally(function () {
+                toggleForm(false);
         });
     }
 
@@ -40,18 +43,19 @@ function ($scope, $interval, registrationRqst, tokenRqst) {
     $scope.registration = function (data) {
         toggleForm(true);
         data = angular.extend(data, tokenRqst.obj);
+        data.phone = $scope.user.phone;
         registrationRqst.registration(data)
             .then(function (res) {
                 if (res.data.success) {
                     $window.location.href = res.data.redirect;
                 } else {
-                    handleError(res.data.error);
+                    showError(res.data.error);
                 }
-                toggleForm(false);
             }, function () {
-                $scope.serverError = true;
+                showError({ text: 'Что то пошло не так, повторите позже' });
+            }).finally(function () {
                 toggleForm(false);
-            });
+        });
     }
 
     // Показать/скрыть лоадер, убрать ошибки
@@ -61,7 +65,7 @@ function ($scope, $interval, registrationRqst, tokenRqst) {
             $scope.disabledInp = true;
             $scope.disabledCode = true;
             $scope.loader = true;
-            $scope.serverError = false;
+            $scope.serverError.isShow = false;
         } else {
             $scope.disabledInp = false;
             $scope.disabledCode = false;
@@ -83,8 +87,9 @@ function ($scope, $interval, registrationRqst, tokenRqst) {
 
     // Валидация с сервера
     // ---------------------
-    function handleError(error) {
-        
+    function showError(error) {
+        $scope.serverError.isShow = true;
+        $scope.serverError.message = error.text;
     }
 
 }]);
