@@ -18,7 +18,7 @@ angular.module('app').factory('registrationRqst', ['$http', 'serializeObj', func
         // Ткончательная регистрация
         // --------------
         registration: function(obj) {
-            return send('Register', obj);
+            return send('ConfirmPhone', obj);
         }
     };
 }]);
