@@ -88,7 +88,7 @@ namespace SportSocial.Controllers
                         return Json(new { success = false, errorMessage = "Ошибка при регистрации" });
                     }
                 }
-                var smsResult = _smsService.GenerateAndSendCode(user.Id);
+                var smsResult = _smsService.GenerateAndSendCode(user.Id, model.Phone);
                 if (smsResult.Success)
                     return Json(new { success = true, retunUrl = url});
                 else
