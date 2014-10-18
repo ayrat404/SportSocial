@@ -9,11 +9,11 @@ using Microsoft.AspNet.Identity;
 
 namespace BLL.Sms
 {
-    public class EmptySmsService: ISmsService
+    public class SmsServiceBase: ISmsService
     {
         private EntityDbContext _db;
 
-        public EmptySmsService(EntityDbContext db)
+        public SmsServiceBase(EntityDbContext db)
         {
             _db = db;
         }
@@ -36,7 +36,7 @@ namespace BLL.Sms
             throw new System.NotImplementedException();
         }
 
-        public ServiceResult GenerateAndSendCode(string userId)
+        public ServiceResult GenerateAndSendCode(string userId, string phoneNumber)
         {
             var result = new ServiceResult {Success = false};
             var sms = _db.SmsCodes.Where(s => s.UserId == userId).OrderByDescending(s => s.Created).FirstOrDefault();
@@ -48,7 +48,7 @@ namespace BLL.Sms
                     return result;
                 }
                 var msg = GenerateMessage(sms.Code);
-                SendMessage(msg);
+                SendMessage(msg, phoneNumber);
                 sms.Modified = DateTime.Now;
                 _db.SaveChanges();
                 result.Success = true;
@@ -58,7 +58,7 @@ namespace BLL.Sms
             {
                 string code = GenerateCode();
                 var msg = GenerateMessage(code);
-                SendMessage(msg);
+                SendMessage(msg, phoneNumber);
                 var smsCode = new SmsCode()
                 {
                     Code = code,
@@ -99,7 +99,7 @@ namespace BLL.Sms
             return result;
         }
 
-        public void SendMessage(string msg)
+        public virtual void SendMessage(string msg, string phoneNumber)
         {
             
         }
@@ -114,7 +114,7 @@ namespace BLL.Sms
         {
             if (string.IsNullOrEmpty(code))
                 code = new Random().Next(1000, 9999).ToString();
-            var msg = string.Format("Код подтверждения: {0}", code);
+            var msg = string.Format("Код проверки телефона: {0}", code);
             return msg;
         }
     }

@@ -11,7 +11,7 @@ namespace BLL.Sms
 
         bool CanResendCode(string userId);
 
-        ServiceResult GenerateAndSendCode(string userId);
+        ServiceResult GenerateAndSendCode(string userId, string phoneNumber);
 
         ServiceResult VerifyCode(string userId, string code);
     }

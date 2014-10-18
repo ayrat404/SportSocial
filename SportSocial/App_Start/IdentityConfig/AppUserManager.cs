@@ -16,7 +16,7 @@ namespace SportSocial.IdentityConfig
         public static AppUserManager Create(IContext context)
         {
             var userManager = new AppUserManager(context.Kernel.Get<IUserStore<AppUser>>());
-            userManager.SmsService = context.Kernel.Get<ISmsService>();
+            //userManager.SmsService = context.Kernel.Get<ISmsService>();
             return userManager;
         }
     }
