@@ -49,7 +49,7 @@ namespace SportSocial.Controllers
         {
             if (ModelState.IsValid)
             {
-                AppUser user = await _appUserManager.FindAsync(model.Phone, model.Password);
+                AppUser user = await _appUserManager.FindAsync(model.Phone, model.Pass);
                 if (user == null)
                 {
                     return Json(new {success = false, ErrorMessage = "Не верный логин или пароль"}, jsonContentType);
@@ -110,6 +110,7 @@ namespace SportSocial.Controllers
                 if (result.Success)
                 {
                     user.PhoneNumberConfirmed = true;
+                    _appUserManager.AddPassword(user.Id, confirm.Password);
                     await _appUserManager.UpdateAsync(user);
                     return Json(new { success = true });
                 }
