@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Knoema.Localization.EFProvider</id>
+    <version>0.1.66</version>
+    <authors>Knoema</authors>
+    <owners>Knoema</owners>
+    <licenseUrl>http://github.com/Knoema/Localization</licenseUrl>
+    <projectUrl>http://github.com/Knoema/Localization</projectUrl>
+    <iconUrl>http://knoema.com/favicon.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Entity Framework provider for Knoema.Localization</description>
+    <copyright>© 2012 Knoema</copyright>
+    <tags>web asp.net mvc localization globalization ef entityframework</tags>
+    <dependencies>
+      <dependency id="Knoema.Localization.Core" version="0.1.0.0" />
+    </dependencies>
+  </metadata>
+</package>

@@ -1,13 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
-namespace DAL.Repository
+namespace DAL.Repository.Interfaces
 {
-    public interface IRepository<T>
+    public interface IRepository<TEntity>
     {
-        IEnumerable<T> GetAll();
-        T Single(int id);
-        void Add(T entity);
-        void Edit(T entity);
-        void Delete(T entity);
+        IEnumerable<TEntity> GetAll();
+        TEntity Find(object id);
+        void Add(TEntity entity);
+        void Update(TEntity entity);
+        void Delete(TEntity entity);
+        void Delete(object id);
+        IQueryable<TEntity> Queryable();
     }
 }

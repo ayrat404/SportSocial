@@ -27,10 +27,9 @@ namespace DAL
         {
             return new EntityDbContext();
         }
-
     }
 
-    public class DbInit :CreateDatabaseIfNotExists<EntityDbContext>
+    public class DbInit: CreateDatabaseIfNotExists<EntityDbContext>
     {
         protected override void Seed(EntityDbContext context)
         {

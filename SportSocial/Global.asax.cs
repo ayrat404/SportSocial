@@ -10,6 +10,8 @@ namespace SportSocial
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(System.Web.Optimization.BundleTable.Bundles);
+
+            LocalizationConfig.RegisterBinding();
         }
     }
 }

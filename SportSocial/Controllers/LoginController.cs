@@ -4,16 +4,16 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using BLL.LoginService;
 using BLL.Sms;
-using DAL;
 using DAL.DomainModel;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using SportSocial.Controllers.Base;
 using SportSocial.IdentityConfig;
 using SportSocial.Models;
 
 namespace SportSocial.Controllers
 {
-    public class LoginController : Controller
+    public class LoginController : SportSocialControllerBase
     {
         private const string jsonContentType = "application/json";
 

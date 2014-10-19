@@ -63,6 +63,16 @@
     <Reference Include="JavaScriptEngineSwitcher.Msie">
       <HintPath>..\packages\JavaScriptEngineSwitcher.Msie.1.1.11\lib\net40\JavaScriptEngineSwitcher.Msie.dll</HintPath>
     </Reference>
+    <Reference Include="Knoema.Localization.Core">
+      <HintPath>..\packages\Knoema.Localization.Core.0.1.66\lib\net40\Knoema.Localization.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Knoema.Localization.EFProvider">
+      <HintPath>..\packages\Knoema.Localization.EFProvider.0.1.66\lib\net40\Knoema.Localization.EFProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="Knoema.Localization.Mvc">
+      <HintPath>..\packages\Knoema.Localization.Mvc.0.1.66\lib\net40\Knoema.Localization.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -735,8 +745,10 @@
     <Compile Include="App_Start\ConfigureAuth.cs" />
     <Compile Include="App_Start\IdentityConfig\AppRoleManager.cs" />
     <Compile Include="App_Start\IdentityConfig\AppUserManager.cs" />
+    <Compile Include="App_Start\LocalizationConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Base\SportSocialControllerBase.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\LoginController.cs" />

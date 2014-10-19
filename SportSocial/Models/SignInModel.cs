@@ -4,10 +4,10 @@ namespace SportSocial.Models
 {
     public class SignInModel
     {
-        [Required]
+        [Required(ErrorMessage = "Не введен номер телефона")]
         public string Phone { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Не введен пароль")]
         public string Pass { get; set; }
     }
 }

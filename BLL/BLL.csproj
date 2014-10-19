@@ -70,7 +70,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Enums\LangType.cs" />
+    <Compile Include="Common\Helpers\CookieHelper.cs" />
     <Compile Include="Common\Helpers\HttpHelper.cs" />
+    <Compile Include="Common\Helpers\LocalizationHelper.cs" />
     <Compile Include="Common\Objects\HttpMethod.cs" />
     <Compile Include="Common\Objects\ServiceResult.cs" />
     <Compile Include="Login\ILoginService.cs" />
