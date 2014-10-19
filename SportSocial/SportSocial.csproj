@@ -179,6 +179,7 @@
       <DependentUpon>SportStore.mdf</DependentUpon>
     </Content>
     <Content Include="Content\images\pattern\black.png" />
+    <Content Include="Content\images\promo-bg.jpg" />
     <Content Include="Content\styles\base\colors.css">
       <DependentUpon>colors.less</DependentUpon>
     </Content>
@@ -203,17 +204,17 @@
     <Content Include="Content\styles\bootstrap\variables.min.css">
       <DependentUpon>variables.css</DependentUpon>
     </Content>
-    <Content Include="Content\styles\components\menu.css">
-      <DependentUpon>menu.less</DependentUpon>
+    <Content Include="Content\styles\components\header - Copy - Copy.css">
+      <DependentUpon>promo.less</DependentUpon>
     </Content>
-    <Content Include="Content\styles\components\menu.min.css">
-      <DependentUpon>menu.css</DependentUpon>
+    <Content Include="Content\styles\components\header - Copy.css">
+      <DependentUpon>nav.less</DependentUpon>
     </Content>
-    <Content Include="Content\styles\components\header.css">
-      <DependentUpon>header.less</DependentUpon>
+    <Content Include="Content\styles\components\header - Copy.min - Copy.css">
+      <DependentUpon>header - Copy - Copy.css</DependentUpon>
     </Content>
-    <Content Include="Content\styles\components\header.min.css">
-      <DependentUpon>header.css</DependentUpon>
+    <Content Include="Content\styles\components\header - Copy.min.css">
+      <DependentUpon>header - Copy.css</DependentUpon>
     </Content>
     <Content Include="Content\styles\style.css">
       <DependentUpon>style.less</DependentUpon>
@@ -652,19 +653,11 @@
     <Content Include="Content\styles\bootstrap\bootstrap.css.map">
       <DependentUpon>bootstrap.css</DependentUpon>
     </Content>
-    <Content Include="Content\styles\components\header.less" />
-    <Content Include="Content\styles\components\header.css.map">
-      <DependentUpon>header.css</DependentUpon>
-    </Content>
     <Content Include="Content\styles\view\blog.css.map">
       <DependentUpon>blog.css</DependentUpon>
     </Content>
     <Content Include="Content\styles\base\mixins.css.map">
       <DependentUpon>mixins.css</DependentUpon>
-    </Content>
-    <Content Include="Content\styles\components\menu.less" />
-    <Content Include="Content\styles\components\menu.css.map">
-      <DependentUpon>menu.css</DependentUpon>
     </Content>
     <Content Include="Content\styles\base\colors.less" />
     <Content Include="Content\styles\base\colors.css.map">
@@ -676,6 +669,14 @@
     </Content>
     <Content Include="Scripts\libs\angular\angular-aria.min.js.map" />
     <Content Include="Scripts\libs\angular\angular-messages.min.js.map" />
+    <Content Include="Content\styles\components\nav.less" />
+    <Content Include="Content\styles\components\header - Copy.css.map">
+      <DependentUpon>header - Copy.css</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\components\promo.less" />
+    <Content Include="Content\styles\components\header - Copy.css - Copy.map">
+      <DependentUpon>header - Copy - Copy.css</DependentUpon>
+    </Content>
     <None Include="Scripts\libs\jquery\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.min.js" />
