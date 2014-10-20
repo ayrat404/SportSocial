@@ -51,10 +51,12 @@
     <Reference Include="BundleTransformer.Less">
       <HintPath>..\packages\BundleTransformer.Less.1.9.20\lib\net40\BundleTransformer.Less.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework">
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="JavaScriptEngineSwitcher.Core">
@@ -63,20 +65,19 @@
     <Reference Include="JavaScriptEngineSwitcher.Msie">
       <HintPath>..\packages\JavaScriptEngineSwitcher.Msie.1.1.11\lib\net40\JavaScriptEngineSwitcher.Msie.dll</HintPath>
     </Reference>
-    <Reference Include="Knoema.Localization.Core">
+    <Reference Include="Knoema.Localization.Core, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Knoema.Localization.Core.0.1.66\lib\net40\Knoema.Localization.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Knoema.Localization.EFProvider">
-      <HintPath>..\packages\Knoema.Localization.EFProvider.0.1.66\lib\net40\Knoema.Localization.EFProvider.dll</HintPath>
-    </Reference>
-    <Reference Include="Knoema.Localization.Mvc">
+    <Reference Include="Knoema.Localization.Mvc, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Knoema.Localization.Mvc.0.1.66\lib\net40\Knoema.Localization.Mvc.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.1.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Owin">
@@ -746,7 +747,9 @@
     <Compile Include="App_Start\ConfigureAuth.cs" />
     <Compile Include="App_Start\IdentityConfig\AppRoleManager.cs" />
     <Compile Include="App_Start\IdentityConfig\AppUserManager.cs" />
-    <Compile Include="App_Start\LocalizationConfig.cs" />
+    <Compile Include="App_Start\Knoema\LocalizationConfig.cs" />
+    <Compile Include="App_Start\Knoema\LocalizationRepository.cs" />
+    <Compile Include="App_Start\Knoema\LocalizedObject.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Base\SportSocialControllerBase.cs" />

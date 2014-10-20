@@ -1,7 +1,9 @@
 using System.ComponentModel.DataAnnotations;
+using Knoema.Localization;
 
 namespace SportSocial.Models
 {
+    [Localized]
     public class SignInModel
     {
         [Required(ErrorMessage = "Не введен номер телефона")]

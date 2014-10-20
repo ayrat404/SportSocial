@@ -10,7 +10,7 @@ namespace SportSocial.Controllers.Base
     {
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            var currentUserCulture = new CultureInfo(LocalizationHelper.GetCurrentCulture());
+            var currentUserCulture = new CultureInfo(LanguageHelper.GetCurrentCulture());
             LocalizationManager.Instance.SetCulture(currentUserCulture);
             Thread.CurrentThread.CurrentCulture = currentUserCulture;
             Thread.CurrentThread.CurrentUICulture = currentUserCulture;

@@ -1,61 +1,59 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using DAL.DomainModel;
 using DAL.Repository.Interfaces;
 
 namespace DAL.Repository
 {
-    class Repository<TEntity> : IRepository<TEntity> where TEntity: class
+    public class Repository: IRepository
     {
-
-        private DbSet<TEntity> _dbSet;
-        private DbContext _context;
+        private readonly DbContext _context;
 
         public Repository(DbContext context)
         {
             _context = context;
-            _dbSet = _context.Set<TEntity>();
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public IEnumerable<TEntity> GetAll<TEntity>() where TEntity: class
         {
-            return _dbSet.ToList();
+            return _context.Set<TEntity>().ToList();
         }
 
-        public TEntity Find(object id)
+        public TEntity Find<TEntity>(object id) where TEntity: class
         {
-            return _dbSet.Find(id);
+            return _context.Set<TEntity>().Find(id);
         }
 
-        public void Add(TEntity entity)
+        public void Add<TEntity>(TEntity entity) where TEntity: class
         {
-            _dbSet.Add(entity);
+            _context.Set<TEntity>().Add(entity);
         }
 
-        public void Update(TEntity entity)
+        public void Update<TEntity>(TEntity entity) where TEntity : class
         {
-            _dbSet.Attach(entity);
+            _context.Set<TEntity>().Attach(entity);
             _context.Entry(entity).State = EntityState.Modified;
         }
 
-        public void Delete(TEntity entity)
+        public void Delete<TEntity>(TEntity entity) where TEntity: class
         {
             if (_context.Entry(entity).State == EntityState.Detached)
             {
-                _dbSet.Attach(entity);
+                _context.Set<TEntity>().Attach(entity);
             }
-            _dbSet.Remove(entity);
+            _context.Set<TEntity>().Remove(entity);
         }
 
-        public void Delete(object id)
+        public void Delete<TEntity>(object id) where TEntity: class
         {
-            var entity = _dbSet.Find(id);
-            _dbSet.Remove(entity);
+            var entity = _context.Set<TEntity>().Find(id);
+            _context.Set<TEntity>().Remove(entity);
         }
 
-        public IQueryable<TEntity> Queryable()
+        public IQueryable<TEntity> Queryable<TEntity>() where TEntity : class
         {
-            return _dbSet;
+            return _context.Set<TEntity>();
         }
     }
 }

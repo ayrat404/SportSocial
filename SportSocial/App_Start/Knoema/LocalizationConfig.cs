@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using Knoema.Localization;
-using Knoema.Localization.EFProvider;
 using Knoema.Localization.Mvc;
+using SportSocial.Knoema;
 
 namespace SportSocial
 {
