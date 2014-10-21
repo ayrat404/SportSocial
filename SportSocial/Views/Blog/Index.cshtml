@@ -190,24 +190,25 @@
                                        ng-class="{'input--invalid': registrationTwo.password.$error.required && validstart.password}"
                                        ng-blur="validstart.password=true"
                                        name="password"
+                                       required
                                        class="input" type="password" placeholder="Пароль" />
                                 <input ng-model="verify.passwordRepeat"
                                        ng-disabled="disableInp"
                                        ng-class="{'input--invalid': registrationTwo.passwordRepeat.$error.required && validstart.passwordRepeat}"
                                        ng-blur="validstart.passwordRepeat=true"
                                        name="passwordRepeat"
-                                       class="input" type="text" placeholder="Повторите пароль" />
+                                       required
+                                       class="input" type="password" placeholder="Повторите пароль" />
                                 <input ng-model="verify.code"
                                        ng-disabled="disableCode"
                                        ng-autofocus="{{smsBlockShow}}"
-                                       ng-class="{'input--invalid': registrationTwo.code.$error.required && validstart.code}"
+                                       ng-class="{'input--invalid': verify.code.length!=4 && validstart.code}"
                                        ng-blur="validstart.code=true"
-                                       name="code"
-                                       type="text">
+                                       maxlength="4" class="input" required placeholder="Код подтверждения" name="code" type="text"/>
                                 <span ng-if="timerForSms > 0">Выслать код повторно через {{timerForSms}} секунд</span>
                                 <span ng-if="timerForSms == 0" class="link" ng-click="requestCode(user.phone);">Выслать повторно</span>
                                 <button ng-show="!loading"
-                                        ng-disabled="registrationTwo.$invalid"
+                                        ng-disabled="registrationTwo.$invalid || verify.code.length != 4"
                                         type="submit" class="btn btn--main">
                                     Зарегистрироваться
                                 </button>
@@ -216,11 +217,33 @@
                         </div>
                     </div>
                 </div>
-                <div conf-date="300"></div>
-                @*<div class="conf-date">
+                @*<div conf-date="300"></div>*@
+                <div class="conf-date">
                     <div class="conf-date__title">Видео конференция начнется через</div>
-                    <div class="conf-date__counter"></div>
-                </div>*@
+                    <div class="conf-date__counter">
+                        <div class="conf-date__col">
+                            <div>
+                                <div class="conf-date__item">0</div>
+                                <div class="conf-date__item">5</div>
+                            </div>
+                            <p>Дней</p>
+                        </div>
+                        <div class="conf-date__col">
+                            <div>
+                                <div class="conf-date__item">1</div>
+                                <div class="conf-date__item">4</div>
+                            </div>
+                            <p>Часов</p>
+                        </div>
+                        <div class="conf-date__col">
+                            <div>
+                                <div class="conf-date__item">2</div>
+                                <div class="conf-date__item">7</div>
+                            </div>
+                            <p>Минут</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

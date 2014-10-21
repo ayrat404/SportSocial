@@ -281,10 +281,11 @@
     <Content Include="Scripts\app\blog\app.js" />
     <Content Include="Scripts\app\blog\modules\authorization\authorization.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\authorization\authorization.srvc.js" />
+    <Content Include="Scripts\app\blog\modules\conference\conference.srvc.js" />
     <Content Include="Scripts\app\blog\modules\main\main.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\registration\registration.srvc.js" />
     <Content Include="Scripts\app\blog\modules\registration\registration.ctrl.js" />
-    <Content Include="Scripts\app\blog\shared\directives\confDate.drct.js" />
+    <Content Include="Scripts\app\blog\modules\conference\confDate.drct.js" />
     <Content Include="Scripts\app\blog\shared\directives\scrollToPos.drct.js" />
     <Content Include="Scripts\app\blog\shared\services\serializeObj.srvc.js" />
     <Content Include="Scripts\app\blog\shared\services\token.srvc.js" />
@@ -826,6 +827,7 @@
     <Content Include="Scripts\libs\signalR\hub.js" />
     <Content Include="Scripts\libs\signalR\jquery.signalR-2.0.3.js" />
     <Content Include="Scripts\libs\signalR\jquery.signalR-2.0.3.min.js" />
+    <Content Include="Scripts\templates\blog\conference-counter.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

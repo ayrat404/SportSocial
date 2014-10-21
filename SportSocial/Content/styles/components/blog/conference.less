@@ -5,11 +5,34 @@
 -------------------------------------------------- */
 
 .conf-date {
+    padding: 30px 20px;
+    background-color: @color-blue;
     &__title {
-
+        color: #fff;
+        font-size: 1.286em;
     }
     &__counter {
-
+        .no-float;
+    }
+    &__col {
+        float: left;
+        margin-right: 10px;
+        .no-float;
+        p {
+            text-align: center;
+            color: #fff;
+            font-size: 1.286em;
+        }
+    }
+    &__item {
+        float: left;
+        font-weight: bold;
+        font-size: 4.286em;
+        color: @color-blue;
+        background: #fff;
+        &:first-child {
+            margin-right: 5px;
+        }
     }
 }
 
