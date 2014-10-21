@@ -46,21 +46,21 @@
 #gradient {
 	// Vertical gradient 2 colors
 	.vertical_2(@startColor: #aaa, @stopColor: #000, @endProcent: 100%) {
-		background: mix(@startColor, @stopColor, 50%);
 		background: -webkit-linear-gradient(top,  @startColor 0%,@stopColor @endProcent);
 		background: linear-gradient(to bottom, @startColor 0%, @stopColor @endProcent);
+		background-color: mix(@startColor, @stopColor, 50%);
 	}
 
 	// Vertical gradient 3 colors
 	.vertical_3(@startColor: #aaa, @toColor: #aaa, @stopColor: #000, @middleProcent: 50%) {
-		background: mix(@startColor, @stopColor, 50%);
 		background: -webkit-linear-gradient(top,  @startColor 0%, @toColor @middleProcent, @stopColor 100%);
 		background: linear-gradient(to bottom, @startColor 0%,@toColor @middleProcent, @stopColor 100%);
+		background-color: mix(@startColor, @stopColor, 50%);
 	}
 
 	// Horizontal gradient
 	.horizontal(@startColor: #aaa, @stopColor: #000) {
-		background: mix(@startColor, @stopColor, 50%);
+		background-color: mix(@startColor, @stopColor, 50%);
 		background: -webkit-linear-gradient(left,  @startColor 0%,@stopColor 100%);
 		background: linear-gradient(to right, @startColor 0%, @stopColor 100%);
 	}

@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row">
             <a href="#" class="nav__logo">
-                <img src="#" alt="Fortress"/>
+                <img src="#" alt="Fortress" />
             </a>
             <ul class="nav__list">
                 <li>
@@ -33,12 +33,205 @@
     </div>
 </div>
 
+<div class="nav nav--middle">
+    <div class="container">
+        <div class="row">
+            <ul class="nav__list">
+                <li class="active">
+                    <a href="#" class="nav__list__link">Все новости</a>
+                    <div class="nav__list__line"></div>
+                </li>
+                <li>
+                    <a href="#" class="nav__list__link">Лучшие новости</a>
+                    <div class="nav__list__line"></div>
+                </li>
+                <li>
+                    <a href="#" class="nav__list__link">Видео</a>
+                    <div class="nav__list__line"></div>
+                </li>
+                <li>
+                    <a href="#" class="nav__list__link">Фотогалерея</a>
+                    <div class="nav__list__line"></div>
+                </li>
+            </ul>
+            <div class="nav__search">
+                <input class="nav__search__input" type="text" placeholder="Поиск" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="blog__content">
+    <div class="container">
+        <div class="row blog__content__top">
+            <div class="col-xs-8">
+                <div class="mod">
+                    <div class="mod__header">
+                        <div class="mod__header__title">Последние новости</div>
+                        <div class="mod__header__nav">
+
+                        </div>
+                    </div>
+                    <div class="mod__content">
+                        <div class="articles-list">
+                            <div class="al__item">
+                                <div class="al__item__img">
+                                    <img src="~/Content/images/temp/example.jpg" alt="тренировка" />
+                                </div>
+                                <div class="al__item__info">
+                                    <div class="al__item__title">Оптимальное время тренировок</div>
+                                    <div class="al__item__desc">Принято считать, что оптимальным временем для тренировки с целью набора мышечной массы является отрезок от 40 минут до полутора часов. В данной статье я попробую максимально наглядно объяснить, чем эти рамки обусловлены.</div>
+                                    <div class="al__item__bottom">
+                                        <div class="pull-left">
+                                            <span><i></i>gleb</span>
+                                            <span><i></i>10.10.14</span>
+                                            <span><i></i>2</span>
+                                        </div>
+                                        <div class="pull-right">
+                                            <span><i></i>2</span>
+                                            <span><i></i>4</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="al__item">
+                                <div class="al__item__img">
+                                    <img src="~/Content/images/temp/example.jpg" alt="тренировка" />
+                                </div>
+                                <div class="al__item__info">
+                                    <div class="al__item__title">Оптимальное время тренировок</div>
+                                    <div class="al__item__desc">Принято считать, что оптимальным временем для тренировки с целью набора мышечной массы является отрезок от 40 минут до полутора часов. В данной статье я попробую максимально наглядно объяснить, чем эти рамки обусловлены.</div>
+                                    <div class="al__item__bottom">
+                                        <div class="pull-left">
+                                            <span><i></i>gleb</span>
+                                            <span><i></i>10.10.14</span>
+                                            <span><i></i>2</span>
+                                        </div>
+                                        <div class="pull-right">
+                                            <span><i></i>2</span>
+                                            <span><i></i>4</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div ng-init="authTab=1"
+                     ng-cloak
+                     class="auth">
+                    <div class="auth__header">
+                        <div ng-click="authTab = 1"
+                             ng-class="{'active': authTab==1}"
+                             class="auth__header__item">Регистрация</div>
+                        <div ng-click="authTab = 2"
+                             ng-class="{'active': authTab==2}"
+                             class=" auth__header__item">Вход</div>
+                    </div>
+                    <div class="auth__content">
+                        <div ng-controller="AuthorizationCtrl"
+                             ng-show="authTab==2">
+                            <form ng-submit="authorization(auth)"
+                                  name="authorization">
+                                <input ng-model="auth.phone"
+                                       ng-disabled="formDisabled"
+                                       ng-class="{'input--invalid': authorization.phone.$error.required && validstart.phone}"
+                                       ng-blur="validstart.phone=true"
+                                       name="phone"
+                                       required
+                                       class="input" type="text" placeholder="Телефон" />
+                                <input ng-model="auth.pass"
+                                       ng-disabled="formDisabled"
+                                       ng-class="{'input--invalid': authorization.password.$error.required && validstart.password}"
+                                       ng-blur="validstart.password=true"
+                                       name="password"
+                                       required
+                                       class="input" type="text" placeholder="Пароль" />
+                                <button ng-show="!loading"
+                                        ng-disabled="authorization.$invalid"
+                                        type="submit" class="btn btn--main">
+                                    Войти
+                                </button>
+                            </form>
+                            <div ng-show="loading">Подождите, идет загрузка</div>
+                        </div>
+                        <div ng-controller="RegistrationCtrl"
+                             ng-show="authTab==1">
+                            <form name="registrationOne"
+                                  ng-submit="requestCode(user);"
+                                  ng-show="!smsBlockShow">
+                                <input ng-model="user.name"
+                                       ng-disabled="disableInp"
+                                       ng-class="{'input--invalid': registrationOne.name.$error.required && validstart.name}"
+                                       ng-blur="validstart.name=true"
+                                       name="name"
+                                       required
+                                       class="input" type="text" placeholder="Имя" />
+                                <input ng-model="user.phone"
+                                       ng-disabled="disableInp"
+                                       ng-class="{'input--invalid': registrationOne.phone.$error.required && validstart.phone}"
+                                       ng-blur="validstart.phone=true"
+                                       name="phone"
+                                       required
+                                       class="input" type="text" placeholder="Номер телефона" />
+                                <button ng-show="!loading"
+                                        ng-disabled="registrationOne.$invalid"
+                                        type="submit" class="btn btn--main">
+                                    Далее
+                                </button>
+                            </form>
+                            <form ng-submit="registration(verify)"
+                                  ng-show="smsBlockShow" 
+                                  name="registrationTwo">
+                                <input ng-model="verify.password"
+                                       ng-disabled="disableInp"
+                                       ng-class="{'input--invalid': registrationTwo.password.$error.required && validstart.password}"
+                                       ng-blur="validstart.password=true"
+                                       name="password"
+                                       class="input" type="password" placeholder="Пароль" />
+                                <input ng-model="verify.passwordRepeat"
+                                       ng-disabled="disableInp"
+                                       ng-class="{'input--invalid': registrationTwo.passwordRepeat.$error.required && validstart.passwordRepeat}"
+                                       ng-blur="validstart.passwordRepeat=true"
+                                       name="passwordRepeat"
+                                       class="input" type="text" placeholder="Повторите пароль" />
+                                <input ng-model="verify.code"
+                                       ng-disabled="disableCode"
+                                       ng-autofocus="{{smsBlockShow}}"
+                                       ng-class="{'input--invalid': registrationTwo.code.$error.required && validstart.code}"
+                                       ng-blur="validstart.code=true"
+                                       name="code"
+                                       type="text">
+                                <span ng-if="timerForSms > 0">Выслать код повторно через {{timerForSms}} секунд</span>
+                                <span ng-if="timerForSms == 0" class="link" ng-click="requestCode(user.phone);">Выслать повторно</span>
+                                <button ng-show="!loading"
+                                        ng-disabled="registrationTwo.$invalid"
+                                        type="submit" class="btn btn--main">
+                                    Зарегистрироваться
+                                </button>
+                            </form>
+                            <div ng-show="loading">Подождите, идет загрузка</div>
+                        </div>
+                    </div>
+                </div>
+                <div conf-date="300"></div>
+                @*<div class="conf-date">
+                    <div class="conf-date__title">Видео конференция начнется через</div>
+                    <div class="conf-date__counter"></div>
+                </div>*@
+            </div>
+        </div>
+    </div>
+</div>
 
 
-<div class="container" style="margin-top: 50px;">
+
+@*<div class="container" style="margin-top: 50px;">
     <div class="row">
         <div class="center-block col-xs-6">
-            @*Регистрация*@
+            
             <h2>Форма регистрации</h2>
             <div ng-controller="RegistrationCtrl">
                 <form ng-cloak
@@ -95,7 +288,7 @@
             </div>
         </div>
         <div class="col-xs-6">
-            @*Авторизация*@
+            
             <h2>Форма авториззации</h2>
             <div ng-controller="AuthorizationCtrl">
                 <form ng-submit="authorization(auth)">
@@ -119,7 +312,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
 
 @*<div class="header">
         <div class="container">
