@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -99,24 +100,29 @@ namespace SportSocial.Controllers
         [HttpPost]
         public async Task<ActionResult> ConfirmPhone(ConfirmSmsCode confirm)
         {
-            var user = await _appUserManager.FindByNameAsync(confirm.Phone);
-            if (user != null && !user.PhoneNumberConfirmed)
+            if (ModelState.IsValid)
             {
-                var result = _smsService.VerifyCode(user.Id, confirm.Code);
-                if (result.Success)
+                var user = await _appUserManager.FindByNameAsync(confirm.Phone);
+                if (user != null && !user.PhoneNumberConfirmed)
                 {
-                    user.PhoneNumberConfirmed = true;
-                    _appUserManager.AddPassword(user.Id, confirm.Password);
-                    await _appUserManager.UpdateAsync(user);
-                    return Json(new { success = true });
+                    var result = _smsService.VerifyCode(user.Id, confirm.Code);
+                    if (result.Success)
+                    {
+                        user.PhoneNumberConfirmed = true;
+                        _appUserManager.AddPassword(user.Id, confirm.Password);
+                        await _appUserManager.UpdateAsync(user);
+                        return Json(new { success = true });
+                    }
+                    else
+                    {
+                        return Json(new { success = false, errorMessage = result.ErrorMessage });
+                    }
                 }
                 else
-                {
-                    return Json(new { success = false, errorMessage = result.ErrorMessage });
-                }
+                    return Json(new { success = true, ErrorMessage = "Не найден пользователь".Resource(this) });
             }
             else
-                return Json(new { success = true, ErrorMessage = "Не найден пользователь".Resource(this) });
+                return Json(new { success = true, ErrorMessage = "Не валидные значения полей" });
         }
 
         //[HttpPost]
