@@ -11,7 +11,7 @@ namespace SportSocial.Models
         public string Code { get; set; }
 
         [Required(ErrorMessage = "Необходимо ввести пароль")]
-        [StringLength(6, ErrorMessage = "Пароль должен быть не менее 6 символов")]
+        [StringLength(30, MinimumLength = 6, ErrorMessage = "Пароль должен быть не менее 6 символов")]
         public string Password { get; set; }
 
         [Required(ErrorMessage = "Необходимо ввести подтверждение пароля")]

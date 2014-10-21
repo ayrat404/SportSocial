@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ using Microsoft.Owin.Security;
 using SportSocial.Controllers.Base;
 using SportSocial.IdentityConfig;
 using SportSocial.Models;
+using WebGrease.Css.Extensions;
 
 namespace SportSocial.Controllers
 {
@@ -87,7 +89,7 @@ namespace SportSocial.Controllers
                 }
                 var smsResult = _smsService.GenerateAndSendCode(user.Id, model.Phone);
                 if (smsResult.Success)
-                    return Json(new { success = true, retunUrl = url});
+                    return Json(new { success = true, returnUrl = url});
                 else
                     return Json(new { success = false, errorMessage = smsResult.ErrorMessage});
             }   
@@ -119,10 +121,10 @@ namespace SportSocial.Controllers
                     }
                 }
                 else
-                    return Json(new { success = true, ErrorMessage = "Не найден пользователь".Resource(this) });
+                    return Json(new { success = true, errorMessage = "Не найден пользователь".Resource(this) });
             }
             else
-                return Json(new { success = true, ErrorMessage = "Не валидные значения полей" });
+                return Json(new { success = true, errorMessage = "Не валидные значения полей" });
         }
 
         //[HttpPost]
@@ -136,9 +138,19 @@ namespace SportSocial.Controllers
         //{
         //    throw new NotImplementedException();
         //}
-        private string GetErrors()
+        private Dictionary<string, List<string>> GetErrors()
         {
-            return string.Join(", ", ModelState.Values);
+            var errors = new Dictionary<string, List<string>>();
+            foreach (var key in ModelState.Keys)
+            {
+                if (ModelState[key].Errors.Any())
+                {
+                    errors[key] = new List<string>();
+                    ModelState[key].Errors.ForEach(f => errors[key].Add(f.ErrorMessage));
+                }
+                    
+            }
+            return null;
         }
     }
 }

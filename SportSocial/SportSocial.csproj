@@ -841,6 +841,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Base\SportSocialControllerBase.cs" />
+    <Compile Include="Controllers\ConferenceController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -908,6 +909,7 @@
     <Folder Include="Scripts\spa\common\templates\" />
     <Folder Include="Scripts\spa\common\utils\" />
     <Folder Include="Scripts\spa\entities\" />
+    <Folder Include="Views\Conference\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">
