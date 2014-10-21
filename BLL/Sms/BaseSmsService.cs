@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Threading.Tasks;
 using BLL.Common.Objects;
 using DAL;
@@ -106,6 +105,7 @@ namespace BLL.Sms
 
         private string GenerateCode()
         {
+            return "1111";
             int code = new Random().Next(1000, 9999);
             return code.ToString();
         }
@@ -113,7 +113,7 @@ namespace BLL.Sms
         private string GenerateMessage(string code = null)
         {
             if (string.IsNullOrEmpty(code))
-                code = new Random().Next(1000, 9999).ToString();
+                code = GenerateCode();
             var msg = string.Format("Код проверки телефона: {0}", code);
             return msg;
         }

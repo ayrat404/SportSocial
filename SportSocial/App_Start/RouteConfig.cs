@@ -12,6 +12,7 @@ namespace SportSocial
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.IgnoreRoute("_localization/{*route}");
 
             routes.MapRoute(
                 name: "Default",

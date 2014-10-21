@@ -2,33 +2,29 @@
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using BLL.LoginService;
 using BLL.Sms;
-using DAL;
 using DAL.DomainModel;
+using Knoema.Localization;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using SportSocial.Controllers.Base;
 using SportSocial.IdentityConfig;
 using SportSocial.Models;
 
 namespace SportSocial.Controllers
 {
-    public class LoginController : Controller
+    public class LoginController : SportSocialControllerBase
     {
         private const string jsonContentType = "application/json";
 
         private AppUserManager _appUserManager;
-        private AppRoleManager _appRoleManager;
         private IAuthenticationManager _authManager;
-        private ILoginService _loginService;
         private ISmsService _smsService;
 
-        public LoginController(AppUserManager appUserManager, AppRoleManager appRoleManager, IAuthenticationManager authManager, ILoginService loginService, ISmsService smsService)
+        public LoginController(AppUserManager appUserManager, IAuthenticationManager authManager, ISmsService smsService)
         {
             _appUserManager = appUserManager;
-            _appRoleManager = appRoleManager;
             _authManager = authManager;
-            _loginService = loginService;
             _smsService = smsService;
         }
 
@@ -52,7 +48,7 @@ namespace SportSocial.Controllers
                 AppUser user = await _appUserManager.FindAsync(model.Phone, model.Pass);
                 if (user == null)
                 {
-                    return Json(new {success = false, ErrorMessage = "Не верный логин или пароль"}, jsonContentType);
+                    return Json(new {success = false, ErrorMessage = "Не верный логин или пароль".Resource(this)}, jsonContentType);
                 }
                 ClaimsIdentity ident =
                     await _appUserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
@@ -61,7 +57,7 @@ namespace SportSocial.Controllers
                 return Json(new {success = true, ReturnUrl = ""}, "application/json");
             }
             else
-                return Json(new {success = false, ErrorMessage = "Не введены немер телефона или пароль"}, jsonContentType);
+                return Json(new {success = false, ErrorMessage = GetErrors()}, jsonContentType);
         }
 
         [HttpPost]
@@ -71,7 +67,7 @@ namespace SportSocial.Controllers
             {
                 var user = await _appUserManager.FindByNameAsync(model.Phone);
                 if (user != null && user.PhoneNumberConfirmed)
-                    return Json(new { success = false, errorMessage = "Пользователь с указанным номером телефона уже зарегистрирован"});
+                    return Json(new { success = false, errorMessage = "Пользователь с указанным номером телефона уже зарегистрирован".Resource(this)});
 
                 if (user == null)
                 {
@@ -85,7 +81,7 @@ namespace SportSocial.Controllers
                     var result = _appUserManager.Create(user);
                     if (!result.Succeeded)
                     {
-                        return Json(new { success = false, errorMessage = "Ошибка при регистрации" });
+                        return Json(new { success = false, errorMessage = "Ошибка при регистрации".Resource(this) });
                     }
                 }
                 var smsResult = _smsService.GenerateAndSendCode(user.Id, model.Phone);
@@ -96,7 +92,7 @@ namespace SportSocial.Controllers
             }   
             else
             {
-                return Json(new {success = false, ErrorMessage = "Не введены немер телефона или пароль"}, jsonContentType);
+                return Json(new {success = false, ErrorMessage = GetErrors()}, jsonContentType);
             }
         }
 
@@ -120,19 +116,23 @@ namespace SportSocial.Controllers
                 }
             }
             else
-                return Json(new { success = true, ErrorMessage = "Не найден пользователь" });
+                return Json(new { success = true, ErrorMessage = "Не найден пользователь".Resource(this) });
         }
 
-        [HttpPost]
-        public async Task<ActionResult> ResendCode()
-        {
-            throw new Exception();
-        }
+        //[HttpPost]
+        //public async Task<ActionResult> ResendCode()
+        //{
+        //    throw new Exception();
+        //}
 
-        [HttpPost]
-        public async Task<ActionResult> FinalRegistration(string code)
+        //[HttpPost]
+        //public async Task<ActionResult> FinalRegistration(string code)
+        //{
+        //    throw new NotImplementedException();
+        //}
+        private string GetErrors()
         {
-            throw new NotImplementedException();
+            return string.Join(", ", ModelState.Values);
         }
     }
 }

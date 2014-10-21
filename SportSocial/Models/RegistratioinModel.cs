@@ -1,13 +1,15 @@
 using System.ComponentModel.DataAnnotations;
+using Knoema.Localization;
 
 namespace SportSocial.Models
 {
+    [Localized]
     public class RegistratioinModel
     {
-        [Required]
+        [Required(ErrorMessage = "Не введен номер телефона")]
         public string Phone { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Не введено имя")]
         public string Name { get; set; }
     }
 }

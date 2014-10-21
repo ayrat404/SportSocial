@@ -63,6 +63,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -70,7 +71,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Enums\LangType.cs" />
+    <Compile Include="Common\Helpers\CookieHelper.cs" />
     <Compile Include="Common\Helpers\HttpHelper.cs" />
+    <Compile Include="Common\Helpers\LocalizationHelper.cs" />
+    <Compile Include="Common\Helpers\ModelStateHelper.cs" />
     <Compile Include="Common\Objects\HttpMethod.cs" />
     <Compile Include="Common\Objects\ServiceResult.cs" />
     <Compile Include="Login\ILoginService.cs" />
