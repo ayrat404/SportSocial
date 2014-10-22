@@ -24,6 +24,7 @@
     &__search {
         float: right;
         line-height: 70px;
+
         &__input {
             line-height: 28px;
             border: 1px solid @color-gray3;
@@ -58,6 +59,7 @@
     &--middle {
         background: #fff;
         margin-bottom: 40px;
+
         .nav__list {
             &__line {
                 height: 4px;
@@ -65,20 +67,44 @@
                 width: 0;
                 .transition(width .2s ease);
             }
+
             &__link {
                 padding: 27px 15px;
                 line-height: 70px;
                 color: @color-gray2;
             }
+
             li {
+                float: left;
                 &:hover,
                 &.active {
                     .nav__list__link {
                         color: @color-dark;
                         text-decoration: none;
                     }
+
                     .nav__list__line {
                         width: 100%;
+                    }
+                }
+            }
+
+            &:hover {
+                li {
+                    .nav__list__line {
+                        width: 0;
+                    }
+
+                    &:hover,
+                    .active {
+                        .nav__list__link {
+                            color: @color-dark;
+                            text-decoration: none;
+                        }
+
+                        .nav__list__line {
+                            width: 100%;
+                        }
                     }
                 }
             }

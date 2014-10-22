@@ -9,11 +9,19 @@ angular.module('app').factory('conferenceRqst', ['$http', 'serializeObj', functi
             headers :   { 'Content-Type': 'application/x-www-form-urlencoded' }
         });
     };
+    var get = function(url, obj) {
+        return $http({
+            method: 'GET',
+            url: '/Conference/' + url,
+            data: serializeObj(obj),
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        });
+    }
     return {
         // Запрос времени до начала конференции
         // --------------
         requestTime: function(obj) {
-            return send('Time', obj);
+            return get('Time', obj);
         }
     };
 }]);

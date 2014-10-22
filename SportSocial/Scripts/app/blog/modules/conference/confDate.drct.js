@@ -13,31 +13,44 @@ function ($interval, conferenceRqst) {
             confDate: '@'
         },
         link: function ($scope, element, attrs) {
-            var duration = $scope.confDate,
-                interval = 1000;
-            
+            var diff = moment.duration(+$scope.confDate),
+                interval = 1000 * 60;
+            count();
+            var conferenceTime = $interval(count, interval);
+
             // запуск таймера
-            // ---------------------
-            function conferenceCountDown() {
-                var conferenceTime = $interval(function () {
-                    if (duration == 0) {
-                        $interval.cancel(conferenceTime);
-                        conferenceRqst.requestTime()
-                            .then(function (res) {
-                                if (res.url != undefined) {
-                                    $scope.url = res.url;
-                                } else {
-                                    duration = $scope.stamp;
-                                    conferenceCountDown();
-                                }
-                            });
-                    } else {
-                        duration = duration - interval;
-                        $scope.days = duration.days();
-                        $scope.hours = duration.hours();
-                        $scope.minutes = duration.minutes();
-                    }
-                }, 1000);
+            // ---------------
+            function count() {
+                diff = moment.duration(diff - interval);
+                if (diff.milliseconds() <= 0) {
+                    $interval.cancel(conferenceTime);
+                    conferenceRqst.requestTime()
+                        .then(function (res) {
+                            if (res.data.url != undefined) {
+                                $scope.url = res.data.url;
+                            } else {
+                                diff = res.data.stamp;
+                                count();
+                            }
+                        });
+                } else {
+                    $scope.dh = getVal(0, diff.days());
+                    $scope.dm = getVal(1, diff.days());
+                    $scope.hh = getVal(0, diff.hours());
+                    $scope.hm = getVal(1, diff.hours());
+                    $scope.mh = getVal(0, diff.minutes());
+                    $scope.mm = getVal(1, diff.minutes());
+                }
+            }
+
+            // выделяем нужные разряды
+            // ---------------
+            function getVal(i, v) {
+                v = v.toString();
+                if (v.length == 1) {
+                    v = '0' + v;
+                }
+                return v[i];
             }
         }
     }

@@ -5,33 +5,51 @@
 -------------------------------------------------- */
 
 .conf-date {
-    padding: 30px 20px;
-    background-color: @color-blue;
+    text-align: center;
+    padding: 25px 20px;
+    background: url('../../../images/conference/conference-date.png') @color-blue 10px -10px no-repeat;
+
     &__title {
         color: #fff;
         font-size: 1.286em;
+        max-width: 200px;
+        margin: 0 auto 30px auto;
     }
+
     &__counter {
         .no-float;
     }
+
     &__col {
         float: left;
         margin-right: 10px;
         .no-float;
+
         p {
-            text-align: center;
             color: #fff;
             font-size: 1.286em;
+            margin: 5px 0 0 0;
         }
     }
+
     &__item {
+        width: 50px;
         float: left;
         font-weight: bold;
         font-size: 4.286em;
         color: @color-blue;
         background: #fff;
+
         &:first-child {
             margin-right: 5px;
+        }
+    }
+
+    &__link {
+        color: #fff;
+        font-size: 1.286em;
+        &:hover {
+            color: #fff;
         }
     }
 }

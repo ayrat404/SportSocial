@@ -184,6 +184,7 @@
     <Content Include="Content\fonts\ProximaNova\proximanova-xboldpn.svg" />
     <Content Include="Content\fonts\ProximaNova\proximanovaexcn-sboldpn.svg" />
     <Content Include="Content\fonts\ProximaNova\proximanovaexcn-thinpn.svg" />
+    <Content Include="Content\images\conference\conference-date.png" />
     <Content Include="Content\images\pattern\black.png" />
     <Content Include="Content\images\promo-bg.jpg" />
     <Content Include="Content\images\temp\example.jpg" />
@@ -223,6 +224,12 @@
     <Content Include="Content\styles\components\blog\header - Copy - Copy %282%29.css">
       <DependentUpon>module.less</DependentUpon>
     </Content>
+    <Content Include="Content\styles\components\blog\header - Copy - Copy %283%29 - Copy.css">
+      <DependentUpon>blg-menu.less</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\components\blog\header - Copy - Copy %283%29.css">
+      <DependentUpon>footer.less</DependentUpon>
+    </Content>
     <Content Include="Content\styles\components\blog\header - Copy - Copy.css">
       <DependentUpon>promo.less</DependentUpon>
     </Content>
@@ -240,6 +247,12 @@
     </Content>
     <Content Include="Content\styles\components\blog\header - Copy.min - Copy %282%29.css">
       <DependentUpon>header - Copy - Copy %282%29.css</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\components\blog\header - Copy.min - Copy %283%29 - Copy.css">
+      <DependentUpon>header - Copy - Copy %283%29 - Copy.css</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\components\blog\header - Copy.min - Copy %283%29.css">
+      <DependentUpon>header - Copy - Copy %283%29.css</DependentUpon>
     </Content>
     <Content Include="Content\styles\components\blog\header - Copy.min - Copy.css">
       <DependentUpon>header - Copy - Copy.css</DependentUpon>
@@ -766,6 +779,14 @@
     <Content Include="Content\styles\components\blog\conference.less" />
     <Content Include="Content\styles\components\blog\header - Copy.css - Copy %282%29 - Copy - Copy %282%29.map">
       <DependentUpon>header - Copy - Copy %282%29 - Copy - Copy %282%29.css</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\components\blog\footer.less" />
+    <Content Include="Content\styles\components\blog\header - Copy.css - Copy %283%29.map">
+      <DependentUpon>header - Copy - Copy %283%29.css</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\components\blog\blg-menu.less" />
+    <Content Include="Content\styles\components\blog\header - Copy.css - Copy %283%29 - Copy.map">
+      <DependentUpon>header - Copy - Copy %283%29 - Copy.css</DependentUpon>
     </Content>
     <None Include="Scripts\libs\jquery\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.js" />
