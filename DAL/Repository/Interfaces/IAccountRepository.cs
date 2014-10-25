@@ -2,6 +2,6 @@
 {
     public interface IAccountRepository
     {
-        string GetUserLanguage(string userId);
+        string GetUserLanguage(object userId);
     }
 }

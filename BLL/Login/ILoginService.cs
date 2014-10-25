@@ -1,9 +1,16 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using BLL.Common.Objects;
+using BLL.Login.ViewModels;
 
-namespace BLL.LoginService
+namespace BLL.Login
 {
     public interface ILoginService
     {
+        LoginServiceResult SignIn(SignInModel signInModel);
 
+        LoginServiceResult PreRegister(RegistratioinModel regModel, string url);
+
+        ServiceResult ConfirmSmsCode(ConfirmSmsCode regModel);
+
+        ServiceResult ResendSmsCode();
     }
 }

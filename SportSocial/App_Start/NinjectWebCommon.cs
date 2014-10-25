@@ -1,10 +1,11 @@
 using BLL;
+using BLL.Infrastrcture;
+using BLL.Infrastrcture.IdentityConfig;
 using DAL;
 using DAL.DomainModel;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
-using SportSocial.IdentityConfig;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(SportSocial.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(SportSocial.App_Start.NinjectWebCommon), "Stop")]
@@ -70,9 +71,6 @@ namespace SportSocial.App_Start
         {
             NinjectServiceRegistrator.Register(kernel);
             kernel.Bind<IAuthenticationManager>().ToMethod(ctx => HttpContext.Current.GetOwinContext().Authentication);
-            kernel.Bind<IUserStore<AppUser>>().ToMethod(ctx => new UserStore<AppUser>(ctx.Kernel.Get<EntityDbContext>()));
-            kernel.Bind<AppUserManager>().ToMethod(AppUserManager.Create);
-            kernel.Bind<AppRoleManager>().ToSelf();
         }        
     }
 }

@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using Knoema.Localization;
 
-namespace SportSocial.Models
+namespace BLL.Login.ViewModels
 {
     [Localized]
     public class ConfirmSmsCode

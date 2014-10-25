@@ -3,7 +3,7 @@ using DAL.DomainModel;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace SportSocial.IdentityConfig
+namespace BLL.Infrastrcture.IdentityConfig
 {
     public class AppRoleManager: RoleManager<AppRole>, IDisposable
     {
