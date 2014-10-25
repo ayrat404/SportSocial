@@ -61,7 +61,7 @@
     </div>
 </div>
 
-<div class="blog__content">
+<div class="blog__content block">
     <div class="container">
         <div class="row blog__content__top">
             <div class="col-xs-8">
@@ -114,6 +114,86 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="al__item">
+                                <div class="al__item__img">
+                                    <img src="~/Content/images/temp/example.jpg" alt="тренировка" />
+                                </div>
+                                <div class="al__item__info">
+                                    <div class="al__item__title">Оптимальное время тренировок</div>
+                                    <div class="al__item__desc">Принято считать, что оптимальным временем для тренировки с целью набора мышечной массы является отрезок от 40 минут до полутора часов. В данной статье я попробую максимально наглядно объяснить, чем эти рамки обусловлены.</div>
+                                    <div class="al__item__bottom">
+                                        <div class="pull-left">
+                                            <span><i></i>gleb</span>
+                                            <span><i></i>10.10.14</span>
+                                            <span><i></i>2</span>
+                                        </div>
+                                        <div class="pull-right">
+                                            <span><i></i>2</span>
+                                            <span><i></i>4</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="al__item">
+                                <div class="al__item__img">
+                                    <img src="~/Content/images/temp/example.jpg" alt="тренировка" />
+                                </div>
+                                <div class="al__item__info">
+                                    <div class="al__item__title">Оптимальное время тренировок</div>
+                                    <div class="al__item__desc">Принято считать, что оптимальным временем для тренировки с целью набора мышечной массы является отрезок от 40 минут до полутора часов. В данной статье я попробую максимально наглядно объяснить, чем эти рамки обусловлены.</div>
+                                    <div class="al__item__bottom">
+                                        <div class="pull-left">
+                                            <span><i></i>gleb</span>
+                                            <span><i></i>10.10.14</span>
+                                            <span><i></i>2</span>
+                                        </div>
+                                        <div class="pull-right">
+                                            <span><i></i>2</span>
+                                            <span><i></i>4</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="al__item">
+                                <div class="al__item__img">
+                                    <img src="~/Content/images/temp/example.jpg" alt="тренировка" />
+                                </div>
+                                <div class="al__item__info">
+                                    <div class="al__item__title">Оптимальное время тренировок</div>
+                                    <div class="al__item__desc">Принято считать, что оптимальным временем для тренировки с целью набора мышечной массы является отрезок от 40 минут до полутора часов. В данной статье я попробую максимально наглядно объяснить, чем эти рамки обусловлены.</div>
+                                    <div class="al__item__bottom">
+                                        <div class="pull-left">
+                                            <span><i></i>gleb</span>
+                                            <span><i></i>10.10.14</span>
+                                            <span><i></i>2</span>
+                                        </div>
+                                        <div class="pull-right">
+                                            <span><i></i>2</span>
+                                            <span><i></i>4</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="al__item">
+                                <div class="al__item__img">
+                                    <img src="~/Content/images/temp/example.jpg" alt="тренировка" />
+                                </div>
+                                <div class="al__item__info">
+                                    <div class="al__item__title">Оптимальное время тренировок</div>
+                                    <div class="al__item__desc">Принято считать, что оптимальным временем для тренировки с целью набора мышечной массы является отрезок от 40 минут до полутора часов. В данной статье я попробую максимально наглядно объяснить, чем эти рамки обусловлены.</div>
+                                    <div class="al__item__bottom">
+                                        <div class="pull-left">
+                                            <span><i></i>gleb</span>
+                                            <span><i></i>10.10.14</span>
+                                            <span><i></i>2</span>
+                                        </div>
+                                        <div class="pull-right">
+                                            <span><i></i>2</span>
+                                            <span><i></i>4</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -121,7 +201,7 @@
             <div class="col-xs-4">
                 <div ng-init="authTab=1"
                      ng-cloak
-                     class="auth">
+                     class="auth block">
                     <div class="auth__header">
                         <div ng-click="authTab = 1"
                              ng-class="{'active': authTab==1}"
@@ -156,6 +236,9 @@
                                 </button>
                             </form>
                             <div ng-show="loading">Подождите, идет загрузка</div>
+                            <div class="auth__help">
+                                <span ng-click="$parent.authTab=1" class="link">Eще не зарегистрированы?</span>
+                            </div>
                         </div>
                         <div ng-controller="RegistrationCtrl"
                              ng-show="authTab==1">
@@ -190,24 +273,25 @@
                                        ng-class="{'input--invalid': registrationTwo.password.$error.required && validstart.password}"
                                        ng-blur="validstart.password=true"
                                        name="password"
+                                       required
                                        class="input" type="password" placeholder="Пароль" />
                                 <input ng-model="verify.passwordRepeat"
                                        ng-disabled="disableInp"
                                        ng-class="{'input--invalid': registrationTwo.passwordRepeat.$error.required && validstart.passwordRepeat}"
                                        ng-blur="validstart.passwordRepeat=true"
                                        name="passwordRepeat"
-                                       class="input" type="text" placeholder="Повторите пароль" />
+                                       required
+                                       class="input" type="password" placeholder="Повторите пароль" />
                                 <input ng-model="verify.code"
                                        ng-disabled="disableCode"
                                        ng-autofocus="{{smsBlockShow}}"
-                                       ng-class="{'input--invalid': registrationTwo.code.$error.required && validstart.code}"
+                                       ng-class="{'input--invalid': verify.code.length!=4 && validstart.code}"
                                        ng-blur="validstart.code=true"
-                                       name="code"
-                                       type="text">
+                                       maxlength="4" class="input" required placeholder="Код подтверждения" name="code" type="text"/>
                                 <span ng-if="timerForSms > 0">Выслать код повторно через {{timerForSms}} секунд</span>
                                 <span ng-if="timerForSms == 0" class="link" ng-click="requestCode(user.phone);">Выслать повторно</span>
                                 <button ng-show="!loading"
-                                        ng-disabled="registrationTwo.$invalid"
+                                        ng-disabled="registrationTwo.$invalid || verify.code.length != 4"
                                         type="submit" class="btn btn--main">
                                     Зарегистрироваться
                                 </button>
@@ -216,178 +300,55 @@
                         </div>
                     </div>
                 </div>
-                <div conf-date="300"></div>
-                @*<div class="conf-date">
-                    <div class="conf-date__title">Видео конференция начнется через</div>
-                    <div class="conf-date__counter"></div>
-                </div>*@
+                <div class="block">
+                    <div conf-date="12312"></div>
+                </div>
+                <div class="mod block">
+                    <div class="mod__header">
+                        <div class="mod__header__title">Рубрики</div>
+                    </div>
+                    <div class="mod__content">
+                        <div class="blg-menu">
+                            <a href="#" class="blg-menu__link">Здоровье</a>
+                            <a href="#" class="blg-menu__link">Мотивация</a>
+                            <a href="#" class="blg-menu__link">Новичку</a>
+                            <a href="#" class="blg-menu__link">Общее</a>
+                            <a href="#" class="blg-menu__link">Питание</a>
+                            <a href="#" class="blg-menu__link">С чего начать</a>
+                            <a href="#" class="blg-menu__link">Упражнения</a>
+                            <a href="#" class="blg-menu__link">Элементы</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-
-
-@*<div class="container" style="margin-top: 50px;">
-    <div class="row">
-        <div class="center-block col-xs-6">
-            
-            <h2>Форма регистрации</h2>
-            <div ng-controller="RegistrationCtrl">
-                <form ng-cloak
-                      ng-submit="requestCode(user);"
-                      ng-show="!smsBlockShow">
-                    <div class="form-group">
-                        <label for="regName">Имя</label>
-                        <input ng-model="user.name"
-                               ng-disabled="disableInp"
-                               type="text" class="form-control" id="regName">
-                    </div>
-                    <div class="form-group">
-                        <label for="regPhone">Номер телефона</label>
-                        <input ng-model="user.phone"
-                               ng-disabled="disableInp"
-                               type="text" class="form-control" id="regPhone">
-                    </div>
-                    <button ng-disabled="loading"
-                            type="submit" class="btn btn-default">
-                        Далее
-                    </button>
-                </form>
-                <form ng-cloak
-                      ng-submit="registration(verify)"
-                      ng-show="smsBlockShow">
-                    <div class="form-group">
-                        <label for="regPass1">Пароль</label>
-                        <input ng-model="verify.password"
-                               ng-disabled="disableInp"
-                               type="password" class="form-control" id="regPass1">
-                    </div>
-                    <div class="form-group">
-                        <label for="regPass2">Повторите пароль</label>
-                        <input ng-model="verify.passwordRepeat"
-                               ng-disabled="disableInp"
-                               type="password" class="form-control" id="regPass2">
-                    </div>
-                    <div class="form-group">
-                        <label for="regCode">Код подтверждения</label>
-                        <input ng-model="verify.code"
-                               ng-disabled="disableCode"
-                               ng-autofocus="{{smsBlockShow}}"
-                               type="text" id="regCode">
-                        <span ng-if="timerForSms > 0">Выслать код повторно через {{timerForSms}} секунд</span>
-                        <span ng-if="timerForSms == 0" class="link" ng-click="requestCode(user.phone);">Выслать повторно</span>
-                    </div>
-                    <button ng-disabled="loading"
-                            type="submit" class="btn btn-default">
-                        Создать профиль
-                    </button>
-                </form>
-                <div ng-show="loading">Подождите, идет загрузка</div>
-                <div ng-show="serverError.isShow">{{serverError.message}}</div>
-            </div>
-        </div>
-        <div class="col-xs-6">
-            
-            <h2>Форма авториззации</h2>
-            <div ng-controller="AuthorizationCtrl">
-                <form ng-submit="authorization(auth)">
-                    <div class="form-group">
-                        <label for="authPhone">Телефон</label>
-                        <input ng-model="auth.phone"
-                               ng-disabled="formDisabled"
-                               type="text" class="form-control" id="authPhone">
-                    </div>
-                    <div class="form-group">
-                        <label for="authPass">Пароль</label>
-                        <input ng-model="auth.pass"
-                               ng-disabled="formDisabled"
-                               type="password" class="form-control" id="authPass">
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-default">Войти</button>
-                    </div>
-                </form>
-                <div ng-show="loading">Подождите, идет загрузка</div>
-            </div>
-        </div>
-    </div>
-</div>*@
-
-@*<div class="header">
-        <div class="container">
-            <div class="row header-wrap">
-                <div class="col-xs-3">
-                    <div class="header__logo">
-                        logo
-                    </div>
-                </div>
-                <div class="col-xs-7">
-                    <div class="header__search">
-                        search
-                    </div>
-                </div>
-                <div class="col-xs-2">
-                    <div class="header__actions">
-                        <a href="#" class="header__actions__item">1</a>
-                        <a href="#" class="header__actions__item">2</a>
-                        <a href="#" class="header__actions__item">3</a>
-                        <a href="#" class="header__actions__item">4</a>
-                        <a href="#" class="header__actions__item">5</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
+<footer class="footer">
     <div class="container">
         <div class="row">
-            <div class="col-xs-3 menu">
-                <div class="menu-section">
-                    <div class="menu-section__title">
-                        <div class="menu-section__title__inner">
-                            Рубрики:
-                        </div>
-                    </div>
-                    <a href="#" class="menu-section__item">Здоровье</a>
-                    <a href="#" class="menu-section__item">Мотивация</a>
-                    <a href="#" class="menu-section__item">Новичку</a>
-                    <a href="#" class="menu-section__item">Общее</a>
-                    <a href="#" class="menu-section__item">Питание</a>
-                    <a href="#" class="menu-section__item">С чего начать</a>
-                    <a href="#" class="menu-section__item">Упражнения</a>
+            <div class="col-xs-6">
+                <div class="footer__copyright">
+                    &#169; FORTRESS, 2014
                 </div>
             </div>
-            <div class="col-xs-9">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="banner">
-                            banner
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="blog-l">
-                            <div class="blog-l__item">
-                                <div class="blog-l__item__preview">
-                                    img
-                                </div>
-                                <div class="blog-l__item__info">
-                                    <div class="blog-l__item__info__top">
-                                        <h4 class="title">Оптимальное время тренировки</h4>
-                                        <div class="date">Опубликовано: Апрель, 16, 2014 автором <a href="#">gleb</a></div>
-                                        <div class="blog-l__item__text">Принято считать, что оптимальным временем для тренировки с целью набора мышечной массы является отрезок от 40 минут до полутора часов. В данной статье я попробую максимально наглядно объяснить, чем эти рамки обусловлены. Гормоны. Выработка гормонов являются одним из важнейших факторов вашего прогресса. Во время силовых тренировок выделяется несколько так называемых «анаболических» (ответственных за рост, прогресс мышечных объёмов) гормонов. К ним относятся: соматотропин (гормон роста), тестостерон и инсулин. Мы не будем отдельно останавливаться на каждом из них и подробно расписывать их функции, но лишь в краткой </div>
-                                    </div>
-                                    <div class="blog-l__item__info__bottom">
-                                        <div class="blog-l__item__comments">Комментариев 4</div>
-                                        <div class="blog-l__item__likes">Нравится 7 <span class="icon-fortress"></span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-xs-6">
+                <ul class="footer__nav">
+                    <li>
+                        <a href="#">О сайте</a>
+                    </li>
+                    <li>
+                        <a href="#">Техподдержка</a>
+                    </li>
+                    <li>
+                        <a href="#">Правила</a>
+                    </li>
+                    <li>
+                        <a href="#">Наша продукция</a>
+                    </li>
+                </ul>
             </div>
         </div>
-    </div>*@
+    </div>
+</footer>

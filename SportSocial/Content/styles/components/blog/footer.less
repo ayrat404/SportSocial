@@ -1,0 +1,31 @@
+/* Footer
+---------------------------------------------------------------------------------- */
+
+.footer {
+    background: @color-dark2;
+    &__copyright {
+        color: @color-gray1;
+        line-height: 70px;
+    }
+    &__nav {
+        line-height: 70px;
+        .no-float;
+        float: right;
+        text-transform: uppercase;
+        li {
+            float: left;
+            display: inline-block;
+            margin-left: 40px;
+            a {
+                color: @color-gray1;
+                &:hover {
+                    text-decoration: none;
+                    color: #fff;
+                }
+            }
+        }
+    }
+}
+
+/* /Footer
+---------------------------------------------------------------------------------- */
