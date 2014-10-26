@@ -4,8 +4,15 @@
 }
 
 <h2>Index</h2>
-@using (Html.BeginForm("paypal", "Pay", FormMethod.Post))
+@*@using (Html.BeginForm("paypal", "Pay", FormMethod.Post))
 {
     <input type="text" name="Amount"/>
     <input type="submit" name="submit" value="Оплатить"/>
-}
+}*@
+<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+    <input type="hidden" name="cmd" value="_s-xclick">
+    <input type="hidden" name="hosted_button_id" value="QU82ADGPW9HPL">
+    <input type="image" src="https://www.sandbox.paypal.com/ru_RU/i/btn/btn_paynow_LG.gif" border="0" name="submit" alt="PayPal — более безопасный и легкий способ оплаты через Интернет!">
+    <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+

@@ -83,7 +83,7 @@
     <Compile Include="DomainModel\Base\Entity.cs" />
     <Compile Include="DomainModel\Base\IDeletable.cs" />
     <Compile Include="DomainModel\Base\IEntity.cs" />
-    <Compile Include="DomainModel\Base\Interface1.cs" />
+    <Compile Include="DomainModel\Base\ICutrureSpecific.cs" />
     <Compile Include="DomainModel\EnumProperties\PaySatus.cs" />
     <Compile Include="DomainModel\EnumProperties\PayType.cs" />
     <Compile Include="DomainModel\Pay.cs" />
@@ -115,6 +115,7 @@
     </Compile>
     <Compile Include="Repository\Interfaces\IPaymentRepository.cs" />
     <Compile Include="Repository\Interfaces\IRepository.cs" />
+    <Compile Include="Repository\PaymentRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
   </ItemGroup>
   <ItemGroup>

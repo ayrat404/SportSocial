@@ -1,5 +1,4 @@
 using BLL.Payment.ViewModels;
-using PayPal.SOAP;
 
 namespace BLL.Payment.Impls
 {

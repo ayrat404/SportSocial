@@ -4,6 +4,6 @@ namespace BLL.Payment
 {
     public interface IPayService
     {
-        void InitPay(decimal amount, PayType payType);
+        void InitPay(int productId, PayType payType, int count = 1);
     }
 }

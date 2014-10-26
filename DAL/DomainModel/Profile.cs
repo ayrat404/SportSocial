@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using DAL.DomainModel.Base;
 
 namespace DAL.DomainModel
 {

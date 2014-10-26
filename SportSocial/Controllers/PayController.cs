@@ -10,10 +10,10 @@ namespace SportSocial.Controllers
 
         private readonly IPayPalService _payPalService;
 
-        public PayController(IPayPalService payPalService)
-        {
-            _payPalService = payPalService;
-        }
+        //public PayController(IPayPalService payPalService)
+        //{
+        //    _payPalService = payPalService;
+        //}
 
         public ActionResult Index()
         {
