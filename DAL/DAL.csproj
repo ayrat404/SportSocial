@@ -84,6 +84,10 @@
     <Compile Include="DomainModel\Base\IDeletable.cs" />
     <Compile Include="DomainModel\Base\IEntity.cs" />
     <Compile Include="DomainModel\Base\Interface1.cs" />
+    <Compile Include="DomainModel\EnumProperties\PaySatus.cs" />
+    <Compile Include="DomainModel\EnumProperties\PayType.cs" />
+    <Compile Include="DomainModel\Pay.cs" />
+    <Compile Include="DomainModel\Products.cs" />
     <Compile Include="DomainModel\Profile.cs" />
     <Compile Include="DomainModel\SmsCode.cs" />
     <Compile Include="EntityDbContext.cs" />
@@ -109,6 +113,7 @@
     <Compile Include="Repository\Interfaces\IAccountRepository.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Repository\Interfaces\IPaymentRepository.cs" />
     <Compile Include="Repository\Interfaces\IRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
   </ItemGroup>

@@ -870,8 +870,6 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\ConfigureAuth.cs" />
-    <Compile Include="App_Start\IdentityConfig\AppRoleManager.cs" />
-    <Compile Include="App_Start\IdentityConfig\AppUserManager.cs" />
     <Compile Include="App_Start\Knoema\LocalizationConfig.cs" />
     <Compile Include="App_Start\Knoema\LocalizationRepository.cs" />
     <Compile Include="App_Start\Knoema\LocalizedObject.cs" />
@@ -879,12 +877,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Base\SportSocialControllerBase.cs" />
     <Compile Include="Controllers\ConferenceController.cs" />
+    <Compile Include="Controllers\PayController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Models\ConfirmSmsCode.cs" />
-    <Compile Include="Models\RegistratioinModel.cs" />
-    <Compile Include="Models\SignInModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -924,6 +920,7 @@
     <Content Include="Views\Blog\Shared\Layouts\BlogLayout.cshtml" />
     <Content Include="Views\Registration\Index.cshtml" />
     <Content Include="Views\Registration\Shared\Layouts\RegistrationLayout.cshtml" />
+	<Content Include="Views\Pay\Index.cshtml" />
     <Content Include="Views\Blog\New.cshtml" />
     <Content Include="Views\Blog\Shared\Partials\Header.cshtml" />
     <Content Include="Views\Blog\Shared\Partials\Footer.cshtml" />
@@ -940,6 +937,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Models\" />
     <Folder Include="Scripts\spa\apps\blog\edit\" />
     <Folder Include="Scripts\spa\apps\blog\list\" />
     <Folder Include="Scripts\spa\apps\blog\new\" />

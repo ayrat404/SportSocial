@@ -1,10 +1,14 @@
-﻿using BLL.Sms;
+﻿using BLL.Infrastrcture.IdentityConfig;
+using BLL.Sms;
 using DAL;
+using DAL.DomainModel;
 using DAL.Repository.Interfaces;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Ninject;
 using Ninject.Extensions.Conventions;
 
-namespace BLL
+namespace BLL.Infrastrcture
 {
     public class NinjectServiceRegistrator
     {
@@ -12,7 +16,7 @@ namespace BLL
         {
             kernel.Bind(x => x
                 .FromThisAssembly()
-                .Select(t => t.Name.EndsWith("Service") && !t.Name.StartsWith("Sms"))
+                .Select(t => t.Name.EndsWith("Service"))// && !t.Name.StartsWith("Sms"))
                 .BindDefaultInterfaces());
 
             kernel.Bind(x => x
@@ -23,6 +27,9 @@ namespace BLL
             kernel.Bind<ISmsService>().To<SmsServiceBase>();
 
             kernel.Bind<EntityDbContext>().ToSelf();
+            kernel.Bind<IUserStore<AppUser>>().ToMethod(ctx => new UserStore<AppUser>(ctx.Kernel.Get<EntityDbContext>()));
+            kernel.Bind<AppUserManager>().ToMethod(AppUserManager.Create);
+            kernel.Bind<AppRoleManager>().ToSelf();
         }
     }
 }

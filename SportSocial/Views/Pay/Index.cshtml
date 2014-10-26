@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@using (Html.BeginForm("paypal", "Pay", FormMethod.Post))
+{
+    <input type="text" name="Amount"/>
+    <input type="submit" name="submit" value="Оплатить"/>
+}

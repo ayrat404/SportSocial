@@ -5,7 +5,7 @@ namespace DAL.Repository
 {
     public class AccountRepository: IAccountRepository
     {
-        private IRepository _repository;
+        private readonly IRepository _repository;
 
         public AccountRepository(IRepository repository)
         {
@@ -16,7 +16,7 @@ namespace DAL.Repository
 
         #endregion
 
-        public string GetUserLanguage(string userId)
+        public string GetUserLanguage(object userId)
         {
             var profile = _repository.Find<AppUser>(userId).Profile;
             return profile.Lang;

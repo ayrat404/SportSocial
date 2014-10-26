@@ -1,11 +1,9 @@
-using BLL.Sms;
-using DAL;
 using DAL.DomainModel;
 using Microsoft.AspNet.Identity;
 using Ninject;
 using Ninject.Activation;
 
-namespace SportSocial.IdentityConfig
+namespace BLL.Infrastrcture.IdentityConfig
 {
     public class AppUserManager: UserManager<AppUser>
     {

@@ -1,10 +1,10 @@
 ﻿using System.Web.Mvc;
+using BLL.Infrastrcture.IdentityConfig;
 using DAL;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
-using SportSocial.IdentityConfig;
 
 namespace SportSocial
 {
