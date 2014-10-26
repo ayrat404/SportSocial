@@ -188,6 +188,7 @@
     <Content Include="Content\images\pattern\black.png" />
     <Content Include="Content\images\promo-bg.jpg" />
     <Content Include="Content\images\temp\example.jpg" />
+    <Content Include="Content\images\temp\user.jpg" />
     <Content Include="Content\styles\base\colors.css">
       <DependentUpon>colors.less</DependentUpon>
     </Content>
@@ -216,7 +217,7 @@
       <DependentUpon>conference.less</DependentUpon>
     </Content>
     <Content Include="Content\styles\components\blog\header - Copy - Copy %282%29 - Copy - Copy.css">
-      <DependentUpon>articles-list.less</DependentUpon>
+      <DependentUpon>articles.less</DependentUpon>
     </Content>
     <Content Include="Content\styles\components\blog\header - Copy - Copy %282%29 - Copy.css">
       <DependentUpon>common.less</DependentUpon>
@@ -224,8 +225,11 @@
     <Content Include="Content\styles\components\blog\header - Copy - Copy %282%29.css">
       <DependentUpon>module.less</DependentUpon>
     </Content>
+    <Content Include="Content\styles\components\blog\header - Copy - Copy %283%29 - Copy %282%29.css">
+      <DependentUpon>user.less</DependentUpon>
+    </Content>
     <Content Include="Content\styles\components\blog\header - Copy - Copy %283%29 - Copy.css">
-      <DependentUpon>blg-menu.less</DependentUpon>
+      <DependentUpon>blog-menu.less</DependentUpon>
     </Content>
     <Content Include="Content\styles\components\blog\header - Copy - Copy %283%29.css">
       <DependentUpon>footer.less</DependentUpon>
@@ -247,6 +251,9 @@
     </Content>
     <Content Include="Content\styles\components\blog\header - Copy.min - Copy %282%29.css">
       <DependentUpon>header - Copy - Copy %282%29.css</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\components\blog\header - Copy.min - Copy %283%29 - Copy %282%29.css">
+      <DependentUpon>header - Copy - Copy %283%29 - Copy %282%29.css</DependentUpon>
     </Content>
     <Content Include="Content\styles\components\blog\header - Copy.min - Copy %283%29 - Copy.css">
       <DependentUpon>header - Copy - Copy %283%29 - Copy.css</DependentUpon>
@@ -292,6 +299,8 @@
     </Content>
     <Content Include="Global.asax" />
     <Content Include="Scripts\app\blog\app.js" />
+    <Content Include="Scripts\app\blog\modules\article\articleCreate.ctrl.js" />
+    <Content Include="Scripts\app\blog\modules\article\article.srvc.js" />
     <Content Include="Scripts\app\blog\modules\authorization\authorization.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\authorization\authorization.srvc.js" />
     <Content Include="Scripts\app\blog\modules\conference\conference.srvc.js" />
@@ -615,6 +624,7 @@
     <Content Include="Scripts\libs\fileApi\FileAPI.min.js" />
     <Content Include="Scripts\libs\fileApi\jquery.fileapi.min.js" />
     <Content Include="Scripts\libs\fileApi\jquery.fileapi.min2.js" />
+    <Content Include="Scripts\libs\flow\ng-flow-standalone.min.js" />
     <Content Include="Scripts\libs\imperaviRedactor\blockquote.js" />
     <Content Include="Scripts\libs\imperaviRedactor\redactor.css" />
     <Content Include="Scripts\libs\imperaviRedactor\redactor.js" />
@@ -764,7 +774,7 @@
     <Content Include="Content\fonts\ProximaNova\proximanovaexcn-thinpn.woff" />
     <Content Include="Content\fonts\ProximaNova\proximanovaexcn-thinpn.woff2" />
     <Content Include="Content\styles\base\fonts.less" />
-    <Content Include="Content\styles\components\blog\articles-list.less" />
+    <Content Include="Content\styles\components\blog\articles.less" />
     <Content Include="Content\styles\components\blog\header - Copy.css - Copy %282%29 - Copy - Copy.map">
       <DependentUpon>header - Copy - Copy %282%29 - Copy - Copy.css</DependentUpon>
     </Content>
@@ -784,9 +794,13 @@
     <Content Include="Content\styles\components\blog\header - Copy.css - Copy %283%29.map">
       <DependentUpon>header - Copy - Copy %283%29.css</DependentUpon>
     </Content>
-    <Content Include="Content\styles\components\blog\blg-menu.less" />
+    <Content Include="Content\styles\components\blog\blog-menu.less" />
     <Content Include="Content\styles\components\blog\header - Copy.css - Copy %283%29 - Copy.map">
       <DependentUpon>header - Copy - Copy %283%29 - Copy.css</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\components\blog\user.less" />
+    <Content Include="Content\styles\components\blog\header - Copy.css - Copy %283%29 - Copy %282%29.map">
+      <DependentUpon>header - Copy - Copy %283%29 - Copy %282%29.css</DependentUpon>
     </Content>
     <None Include="Scripts\libs\jquery\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.js" />
@@ -910,6 +924,14 @@
     <Content Include="Views\Blog\Shared\Layouts\BlogLayout.cshtml" />
     <Content Include="Views\Registration\Index.cshtml" />
     <Content Include="Views\Registration\Shared\Layouts\RegistrationLayout.cshtml" />
+    <Content Include="Views\Blog\New.cshtml" />
+    <Content Include="Views\Blog\Shared\Partials\Header.cshtml" />
+    <Content Include="Views\Blog\Shared\Partials\Footer.cshtml" />
+    <Content Include="Views\Blog\Shared\Partials\Promo.cshtml" />
+    <Content Include="Views\Blog\Shared\Partials\AuthRegBlock.cshtml" />
+    <Content Include="Views\Blog\Shared\Partials\Menu.cshtml" />
+    <Content Include="Views\Blog\Shared\Partials\ArticlesList.cshtml" />
+    <Content Include="Views\Blog\Shared\Partials\ContentNavigation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -918,10 +940,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Scripts\app\blog\modules\articleEdit\" />
-    <Folder Include="Scripts\app\blog\modules\articleItem\" />
-    <Folder Include="Scripts\app\blog\modules\articleList\" />
-    <Folder Include="Scripts\app\blog\modules\articleNew\" />
     <Folder Include="Scripts\spa\apps\blog\edit\" />
     <Folder Include="Scripts\spa\apps\blog\list\" />
     <Folder Include="Scripts\spa\apps\blog\new\" />

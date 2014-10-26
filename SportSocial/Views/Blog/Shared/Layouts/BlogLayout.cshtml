@@ -4,5 +4,14 @@
 
 <div class="blog-wrap" ng-controller="MainBlogCtrl">
     @Html.AntiForgeryToken()
-    @RenderBody()
+
+    @*Шапка в блоге*@
+    @Html.Partial("Shared/Partials/Header")
+    
+    <div class="blog__inner">
+        @RenderBody()
+    </div>
+
+    @*Футер в блоге*@
+    @Html.Partial("Shared/Partials/Footer")
 </div>

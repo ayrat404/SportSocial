@@ -24,25 +24,28 @@ namespace SportSocial
                    .Include(
                         "~/Scripts/libs/jquery/jquery-2.0.3.js",
 
-                         "~/Scripts/libs/jquery-fileapi/config.js",
-                        "~/Scripts/libs/jquery-fileapi/FileAPI.min.js",
-                        "~/Scripts/libs/jquery-fileapi/FileAPI.exif.js",
-                        "~/Scripts/libs/jquery-fileapi/jquery.fileapi.min.js",
+                        //"~/Scripts/libs/jquery-fileapi/config.js",
+                        //"~/Scripts/libs/jquery-fileapi/FileAPI.min.js",
+                        //"~/Scripts/libs/jquery-fileapi/FileAPI.exif.js",
+                        //"~/Scripts/libs/jquery-fileapi/jquery.fileapi.min.js",
                         
                         //"~/Scripts/libs/signalR/jquery.signalR-2.0.3.min.js",
                         //"~/Scripts/libs/signalR/hub.js",
                         
+
+
                         "~/Scripts/libs/imperaviRedactor/redactor.min.js",
                         "~/Scripts/libs/imperaviRedactor/blockquote.js",
                         "~/Scripts/libs/moment/moment.min.js",
                         "~/Scripts/libs/moment/ru.js",
                         "~/Scripts/libs/datepicker/jquery.datetimepicker.js",
-                        "~/Scripts/libs/select2/select2.min.js",
-                        "~/Scripts/libs/select2/select2_locale_ru.js",
+                        //"~/Scripts/libs/select2/select2.min.js",
+                        //"~/Scripts/libs/select2/select2_locale_ru.js",
                        "~/Scripts/libs/maskedinput/jquery.mask.min.js"
                     )
                     .Include(
                         "~/Scripts/libs/angular/angular.min.js",
+                        "~/Scripts/libs/flow/ng-flow-standalone.min.js",
                         "~/Scripts/app/blog/app.js"
                     )
                     .IncludeDirectory(
