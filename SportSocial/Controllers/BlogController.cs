@@ -9,5 +9,9 @@ namespace SportSocial.Controllers
         {
             return View();
         }
+        public ActionResult New()
+        {
+            return View();
+        }
 	}
 }

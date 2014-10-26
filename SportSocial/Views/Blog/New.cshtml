@@ -1,0 +1,115 @@
+﻿@{
+    ViewBag.Title = "Fortress - Создание статьи";
+    Layout = "../Blog/Shared/Layouts/BlogLayout.cshtml";
+}
+
+<div class="article-new">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-8">
+                <div ng-controller="ArticleCreateCtrl"
+                     flow-init="{target: '/upload', singleFile: true}"
+                     flow-files-submitted="$flow.upload();"
+                     flow-file-added="!!{png:1,gif:0,jpg:1,jpeg:1}[$file.getExtension()]"
+                     flow-files-added="test($files, $message)"
+                     flow-file-success="fileLoaded($message);"
+                     class="article-new__form">
+                    <h2>Создание статьи</h2>
+                    <form ng-submit="createArticle()"
+                          class="blog-form">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <div class="blog-form__desc">Заголовок статьи</div>
+                            </div>
+                            <div class="col-xs-8">
+                                <input type="text" class="input" placeholder="Заголовок статьи" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <div class="blog-form__desc">Рубрика</div>
+                            </div>
+                            <div class="col-xs-8">
+                                <select class="input">
+                                    <option>Здоровье</option>
+                                    <option>Мотивация</option>
+                                    <option>Новичку</option>
+                                    <option>Общее</option>
+                                    <option>Питание</option>
+                                    <option>С чего начать</option>
+                                    <option>Упражнения</option>
+                                    <option>Элементы</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <div class="blog-form__desc">Фото</div>
+                            </div>
+                            <div class="col-xs-8">
+                                <div>
+                                    <div class="article-new__img-wrap">
+                                        <img class="article-new__img__preview" flow-img="$flow.files[0]" />
+                                    </div>
+                                    <span class="btn" ng-show="!$flow.files.length" flow-btn>Добавить изображение</span>
+                                    @*<table>
+                                <tr ng-repeat="file in $flow.files">
+                                    <td>{{$index+1}}</td>
+                                    <td>{{file.name}}</td>
+                                    <td>{{file.msg}}</td>
+                                    <td>
+                                        <img flow-img="file" />
+                                    </td>
+                                </tr>
+                            </table>*@
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="blog-form__desc">Текст статьи</div>
+                                <textarea class="input"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <button type="submit" class="btn btn--main pull-right">Отправить на модерацию</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                
+                @*Информация пользователя который залогинен*@
+                <div class="block">
+                    <div class="blog-user">
+                        <div class="blog-user__info">
+                            <div class="blog-user__photo">
+                                <img src="~/Content/images/temp/user.jpg" alt="Петров Константин" />
+                            </div>
+                            <div class="blog-user__name">
+                                Петров<br />
+                                Константин
+                            </div>
+                        </div>
+                        <div class="blog-user__actions">
+                            <a href="#" class="blog-user__action"></a>
+                            <a href="#" class="blog-user__action"></a>
+                            <a href="#" class="blog-user__action"></a>
+                            <a href="#" class="blog-user__action"></a>
+                            <a href="#" class="blog-user__action"></a>
+                        </div>
+                    </div>
+                </div>
+
+                @*Таймер конференции*@
+                <div class="block">
+                    <div conf-date="12312"></div>
+                </div>
+                
+                @Html.Partial("Shared/Partials/Menu")
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,101 @@
+﻿<div ng-init="authTab=1"
+     ng-cloak
+     class="auth block">
+    <div class="auth__header">
+        <div ng-click="authTab = 1"
+             ng-class="{'active': authTab==1}"
+             class="auth__header__item">Регистрация</div>
+        <div ng-click="authTab = 2"
+             ng-class="{'active': authTab==2}"
+             class=" auth__header__item">Вход</div>
+    </div>
+    <div class="auth__content">
+        <div ng-controller="AuthorizationCtrl"
+             ng-show="authTab==2">
+            <form ng-submit="authorization(auth)"
+                  name="authorization">
+                <input ng-model="auth.phone"
+                       ng-disabled="formDisabled"
+                       ng-class="{'input--invalid': authorization.phone.$error.required && validstart.phone}"
+                       ng-blur="validstart.phone=true"
+                       name="phone"
+                       required
+                       class="input" type="text" placeholder="Телефон" />
+                <input ng-model="auth.pass"
+                       ng-disabled="formDisabled"
+                       ng-class="{'input--invalid': authorization.password.$error.required && validstart.password}"
+                       ng-blur="validstart.password=true"
+                       name="password"
+                       required
+                       class="input" type="text" placeholder="Пароль" />
+                <button ng-show="!loading"
+                        ng-disabled="authorization.$invalid"
+                        type="submit" class="btn btn--main">
+                    Войти
+                </button>
+            </form>
+            <div ng-show="loading">Подождите, идет загрузка</div>
+            <div class="auth__help">
+                <span ng-click="$parent.authTab=1" class="link">Eще не зарегистрированы?</span>
+            </div>
+        </div>
+        <div ng-controller="RegistrationCtrl"
+             ng-show="authTab==1">
+            <form name="registrationOne"
+                  ng-submit="requestCode(user);"
+                  ng-show="!smsBlockShow">
+                <input ng-model="user.name"
+                       ng-disabled="disableInp"
+                       ng-class="{'input--invalid': registrationOne.name.$error.required && validstart.name}"
+                       ng-blur="validstart.name=true"
+                       name="name"
+                       required
+                       class="input" type="text" placeholder="Имя" />
+                <input ng-model="user.phone"
+                       ng-disabled="disableInp"
+                       ng-class="{'input--invalid': registrationOne.phone.$error.required && validstart.phone}"
+                       ng-blur="validstart.phone=true"
+                       name="phone"
+                       required
+                       class="input" type="text" placeholder="Номер телефона" />
+                <button ng-show="!loading"
+                        ng-disabled="registrationOne.$invalid"
+                        type="submit" class="btn btn--main">
+                    Далее
+                </button>
+            </form>
+            <form ng-submit="registration(verify)"
+                  ng-show="smsBlockShow"
+                  name="registrationTwo">
+                <input ng-model="verify.password"
+                       ng-disabled="disableInp"
+                       ng-class="{'input--invalid': registrationTwo.password.$error.required && validstart.password}"
+                       ng-blur="validstart.password=true"
+                       name="password"
+                       required
+                       class="input" type="password" placeholder="Пароль" />
+                <input ng-model="verify.passwordRepeat"
+                       ng-disabled="disableInp"
+                       ng-class="{'input--invalid': registrationTwo.passwordRepeat.$error.required && validstart.passwordRepeat}"
+                       ng-blur="validstart.passwordRepeat=true"
+                       name="passwordRepeat"
+                       required
+                       class="input" type="password" placeholder="Повторите пароль" />
+                <input ng-model="verify.code"
+                       ng-disabled="disableCode"
+                       ng-autofocus="{{smsBlockShow}}"
+                       ng-class="{'input--invalid': verify.code.length!=4 && validstart.code}"
+                       ng-blur="validstart.code=true"
+                       maxlength="4" class="input" required placeholder="Код подтверждения" name="code" type="text" />
+                <span ng-if="timerForSms > 0">Выслать код повторно через {{timerForSms}} секунд</span>
+                <span ng-if="timerForSms == 0" class="link" ng-click="requestCode(user.phone);">Выслать повторно</span>
+                <button ng-show="!loading"
+                        ng-disabled="registrationTwo.$invalid || verify.code.length != 4"
+                        type="submit" class="btn btn--main">
+                    Зарегистрироваться
+                </button>
+            </form>
+            <div ng-show="loading">Подождите, идет загрузка</div>
+        </div>
+    </div>
+</div>
