@@ -46,6 +46,7 @@ namespace SportSocial
                     .Include(
                         "~/Scripts/libs/angular/angular.min.js",
                         "~/Scripts/libs/flow/ng-flow-standalone.min.js",
+                        "~/Scripts/libs/angular-file-upload/angular-file-upload.js",
                         "~/Scripts/app/blog/app.js"
                     )
                     .IncludeDirectory(

@@ -308,9 +308,12 @@
     <Content Include="Scripts\app\blog\modules\registration\registration.srvc.js" />
     <Content Include="Scripts\app\blog\modules\registration\registration.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\conference\confDate.drct.js" />
+    <Content Include="Scripts\app\blog\shared\directives\thumb.drct.js" />
     <Content Include="Scripts\app\blog\shared\directives\scrollToPos.drct.js" />
     <Content Include="Scripts\app\blog\shared\services\serializeObj.srvc.js" />
     <Content Include="Scripts\app\blog\shared\services\token.srvc.js" />
+    <Content Include="Scripts\libs\angular-file-upload\angular-file-upload.js" />
+    <Content Include="Scripts\libs\angular-file-upload\angular-file-upload.min.js" />
     <Content Include="Scripts\libs\angular\angular-animate.js" />
     <Content Include="Scripts\libs\angular\angular-animate.min.js" />
     <Content Include="Scripts\libs\angular\angular-aria.js" />
@@ -920,7 +923,7 @@
     <Content Include="Views\Blog\Shared\Layouts\BlogLayout.cshtml" />
     <Content Include="Views\Registration\Index.cshtml" />
     <Content Include="Views\Registration\Shared\Layouts\RegistrationLayout.cshtml" />
-	<Content Include="Views\Pay\Index.cshtml" />
+    <Content Include="Views\Pay\Index.cshtml" />
     <Content Include="Views\Blog\New.cshtml" />
     <Content Include="Views\Blog\Shared\Partials\Header.cshtml" />
     <Content Include="Views\Blog\Shared\Partials\Footer.cshtml" />
