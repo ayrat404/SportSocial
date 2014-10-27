@@ -8,9 +8,9 @@ namespace DAL.Repository
 {
     public class Repository: IRepository
     {
-        private readonly DbContext _context;
+        private readonly EntityDbContext _context;
 
-        public Repository(DbContext context)
+        public Repository(EntityDbContext context)
         {
             _context = context;
         }

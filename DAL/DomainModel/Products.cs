@@ -2,7 +2,7 @@
 
 namespace DAL.DomainModel
 {
-    public class Product: IEntity, ICutrureSpecific
+    public class Product: IEntity, ICultrureSpecific
     {
         public int Id { get; set; }
 

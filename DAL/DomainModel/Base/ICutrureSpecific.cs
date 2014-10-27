@@ -1,6 +1,6 @@
 ﻿namespace DAL.DomainModel.Base
 {
-    public interface ICutrureSpecific
+    public interface ICultrureSpecific
     {
         string Lang { get; set; }
     }

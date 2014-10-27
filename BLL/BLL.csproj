@@ -103,6 +103,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Blog\Impls\BlogService.cs" />
+    <Compile Include="Blog\IBlogService.cs" />
+    <Compile Include="Blog\ViewModels\PostModel.cs" />
     <Compile Include="Common\Enums\LangType.cs" />
     <Compile Include="Common\Helpers\CookieHelper.cs" />
     <Compile Include="Common\Helpers\HttpHelper.cs" />

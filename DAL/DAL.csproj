@@ -87,8 +87,10 @@
     <Compile Include="DomainModel\EnumProperties\PaySatus.cs" />
     <Compile Include="DomainModel\EnumProperties\PayType.cs" />
     <Compile Include="DomainModel\Pay.cs" />
+    <Compile Include="DomainModel\Post.cs" />
     <Compile Include="DomainModel\Products.cs" />
     <Compile Include="DomainModel\Profile.cs" />
+    <Compile Include="DomainModel\Rubric.cs" />
     <Compile Include="DomainModel\SmsCode.cs" />
     <Compile Include="EntityDbContext.cs" />
     <Compile Include="Migrations\201410111050567_Init.cs" />
@@ -106,6 +108,10 @@
     <Compile Include="Migrations\201410201658294_ProfileAddTanble.cs" />
     <Compile Include="Migrations\201410201658294_ProfileAddTanble.Designer.cs">
       <DependentUpon>201410201658294_ProfileAddTanble.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201410271840483_PostRubricPayTables.cs" />
+    <Compile Include="Migrations\201410271840483_PostRubricPayTables.Designer.cs">
+      <DependentUpon>201410271840483_PostRubricPayTables.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -134,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201410201658294_ProfileAddTanble.resx">
       <DependentUpon>201410201658294_ProfileAddTanble.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410271840483_PostRubricPayTables.resx">
+      <DependentUpon>201410271840483_PostRubricPayTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

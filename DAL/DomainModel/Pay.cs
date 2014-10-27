@@ -9,7 +9,6 @@ namespace DAL.DomainModel
     {
         public int Id { get; set; }
 
-        [ForeignKey("AppUser")]
         public string UserId { get; set; }
 
         [Required]

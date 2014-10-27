@@ -1,10 +1,4 @@
-using BLL;
 using BLL.Infrastrcture;
-using BLL.Infrastrcture.IdentityConfig;
-using DAL;
-using DAL.DomainModel;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(SportSocial.App_Start.NinjectWebCommon), "Start")]

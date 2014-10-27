@@ -14,6 +14,7 @@ namespace BLL.Infrastrcture
     {
         public static void Register(IKernel kernel)
         {
+            kernel.Bind<EntityDbContext>().ToMethod(EntityDbContext.Create);
             kernel.Bind(x => x
                 .FromThisAssembly()
                 .Select(t => t.Name.EndsWith("Service"))// && !t.Name.StartsWith("Sms"))
@@ -26,7 +27,6 @@ namespace BLL.Infrastrcture
 
             kernel.Bind<ISmsService>().To<SmsServiceBase>();
 
-            kernel.Bind<EntityDbContext>().ToSelf();
             kernel.Bind<IUserStore<AppUser>>().ToMethod(ctx => new UserStore<AppUser>(ctx.Kernel.Get<EntityDbContext>()));
             kernel.Bind<AppUserManager>().ToMethod(AppUserManager.Create);
             kernel.Bind<AppRoleManager>().ToSelf();
