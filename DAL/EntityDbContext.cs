@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 using DAL.DomainModel;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Ninject.Activation;
 
 namespace DAL
 {
@@ -17,13 +18,17 @@ namespace DAL
         }
     #endif
         public DbSet<SmsCode> SmsCodes { get; set; }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<Rubric> Rubrics { get; set; }
+        public DbSet<Pay> Pays { get; set; }
+        public DbSet<Profile> Profiles { get; set; }
 
         static EntityDbContext()
         {
             Database.SetInitializer(new DbInit());
         }
 
-        public static EntityDbContext Create()
+        public static EntityDbContext Create(IContext context)
         {
             return new EntityDbContext();
         }

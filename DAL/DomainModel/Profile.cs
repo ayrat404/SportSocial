@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using DAL.DomainModel.Base;
 
 namespace DAL.DomainModel
 {
-    public class Profile: ICutrureSpecific
+    public class Profile: ICultrureSpecific
     {
         [ForeignKey("AppUser")]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

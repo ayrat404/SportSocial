@@ -1,3 +1,5 @@
+using DAL.DomainModel;
+
 namespace DAL.Migrations
 {
     using System;
@@ -14,6 +16,16 @@ namespace DAL.Migrations
 
         protected override void Seed(DAL.EntityDbContext context)
         {
+            context.Rubrics.AddOrUpdate(
+                new Rubric() { Name = "Здоровье" },
+                new Rubric() { Name = "Мотивация" },
+                new Rubric() { Name = "Новичку" },
+                new Rubric() { Name = "Общее" },
+                new Rubric() { Name = "Питание" },
+                new Rubric() { Name = "С чего начать" },
+                new Rubric() { Name = "Упражнения" },
+                new Rubric() { Name = "Элементы" }
+            );
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

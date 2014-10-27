@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using DAL.DomainModel.EnumProperties;
 
@@ -8,9 +9,9 @@ namespace DAL.DomainModel
     {
         public int Id { get; set; }
 
-        [ForeignKey("AppUser")]
         public string UserId { get; set; }
 
+        [Required]
         public int ProductId { get; set; }
 
         public PayType PayType { get; set; }
@@ -20,6 +21,8 @@ namespace DAL.DomainModel
         public int ProductCount { get; set; }
 
         public PaySatus PaySatus { get; set; }
+
+        public string Comment { get; set; }
 
         public DateTime Created { get; set; }
         public DateTime Modified { get; set; }

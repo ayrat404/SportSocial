@@ -2,10 +2,8 @@
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using BLL.Infrastrcture.IdentityConfig;
 using BLL.Login;
 using BLL.Login.ViewModels;
-using Microsoft.Owin.Security;
 using SportSocial.Controllers.Base;
 using WebGrease.Css.Extensions;
 
@@ -15,14 +13,10 @@ namespace SportSocial.Controllers
     {
         private const string jsonContentType = "application/json";
 
-        private AppUserManager _appUserManager;
-        private IAuthenticationManager _authManager;
         private ILoginService _loginService;
 
-        public LoginController(AppUserManager appUserManager, IAuthenticationManager authManager, ILoginService loginService)
+        public LoginController(ILoginService loginService)
         {
-            _appUserManager = appUserManager;
-            _authManager = authManager;
             _loginService = loginService;
         }
 
