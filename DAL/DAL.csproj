@@ -114,6 +114,10 @@
     <Compile Include="Migrations\201410271840483_PostRubricPayTables.Designer.cs">
       <DependentUpon>201410271840483_PostRubricPayTables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201410281810125_BlogImagestable.cs" />
+    <Compile Include="Migrations\201410281810125_BlogImagestable.Designer.cs">
+      <DependentUpon>201410281810125_BlogImagestable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AccountRepository.cs" />
@@ -144,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201410271840483_PostRubricPayTables.resx">
       <DependentUpon>201410271840483_PostRubricPayTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410281810125_BlogImagestable.resx">
+      <DependentUpon>201410281810125_BlogImagestable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

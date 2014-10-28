@@ -1,9 +1,0 @@
-{
-  "version": 3,
-  "file": "mixins.css",
-  "sources": [
-    "mixins.less"
-  ],
-  "names": [],
-  "mappings": ";;;AAmNI,SAAC;EACG,cAAA;EACA,cAAA;EACA,SAAS,EAAT;EACA,WAAA"
-}
