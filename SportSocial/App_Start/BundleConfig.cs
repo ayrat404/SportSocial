@@ -24,10 +24,10 @@ namespace SportSocial
                    .Include(
                         "~/Scripts/libs/jquery/jquery-2.0.3.js",
 
-                        //"~/Scripts/libs/jquery-fileapi/config.js",
-                        //"~/Scripts/libs/jquery-fileapi/FileAPI.min.js",
-                        //"~/Scripts/libs/jquery-fileapi/FileAPI.exif.js",
-                        //"~/Scripts/libs/jquery-fileapi/jquery.fileapi.min.js",
+                        "~/Scripts/libs/jquery-fileapi/config.js",
+                        "~/Scripts/libs/jquery-fileapi/FileAPI.min.js",
+                        "~/Scripts/libs/jquery-fileapi/FileAPI.exif.js",
+                        "~/Scripts/libs/jquery-fileapi/jquery.fileapi.min.js",
                         
                         //"~/Scripts/libs/signalR/jquery.signalR-2.0.3.min.js",
                         //"~/Scripts/libs/signalR/hub.js",
@@ -45,8 +45,8 @@ namespace SportSocial
                     )
                     .Include(
                         "~/Scripts/libs/angular/angular.min.js",
-                        "~/Scripts/libs/flow/ng-flow-standalone.min.js",
-                        "~/Scripts/libs/angular-file-upload/angular-file-upload.js",
+                        //"~/Scripts/libs/flow/ng-flow-standalone.min.js",
+                        //"~/Scripts/libs/angular-file-upload/angular-file-upload.js",
                         "~/Scripts/app/blog/app.js"
                     )
                     .IncludeDirectory(

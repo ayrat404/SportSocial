@@ -4,8 +4,8 @@ angular.module('app').controller('RegistrationCtrl',
     ['$scope',
      '$interval',
      'registrationRqst',
-     'tokenRqst',
-function ($scope, $interval, registrationRqst, tokenRqst) {
+     'utilsSrvc',
+function ($scope, $interval, registrationRqst, utilsSrvc) {
     $scope.smsBlockShow =   false;  // показать/скрыть смс блок
     $scope.loading      =   false;  // показать/скрыть лоадер
     $scope.disableInp   =   false;  // отключить поля ввода
@@ -21,7 +21,7 @@ function ($scope, $interval, registrationRqst, tokenRqst) {
     // ---------------------
     $scope.requestCode = function (data) {
         toggleForm(true);
-        data = angular.extend(data, tokenRqst.obj);
+        data = angular.extend(data, utilsSrvc.token.get().obj);
         registrationRqst.requestCode(data)
             .then(function (res) {
                 if (res.data.success) {
@@ -42,7 +42,7 @@ function ($scope, $interval, registrationRqst, tokenRqst) {
     // ---------------------
     $scope.registration = function (data) {
         toggleForm(true);
-        data = angular.extend(data, tokenRqst.obj);
+        data = angular.extend(data, utilsSrvc.token.get().obj);
         data.phone = $scope.user.phone;
         registrationRqst.registration(data)
             .then(function (res) {

@@ -4,8 +4,8 @@ angular.module('app').controller('AuthorizationCtrl',
     ['$scope',
      '$interval',
      'authorizationRqst',
-     'tokenRqst',
-function ($scope, $interval, authorizationRqst, tokenRqst) {
+     'utilsSrvc',
+function ($scope, $interval, authorizationRqst, utilsSrvc) {
     $scope.loading      =   false;  // показать/скрыть лоадер
     $scope.serverError = {          // ошибка с сервера
         isShow  :   false,
@@ -18,7 +18,7 @@ function ($scope, $interval, authorizationRqst, tokenRqst) {
         $scope.serverError.isShow = false;
         $scope.loading = true;
         $scope.formDisabled = true;
-        data = angular.extend(data, tokenRqst.obj);
+        data = angular.extend(data, utilsSrvc.token.get().obj);
         authorizationRqst.signIn(data)
             .then(function (res) {
                 if (res.data.success) {

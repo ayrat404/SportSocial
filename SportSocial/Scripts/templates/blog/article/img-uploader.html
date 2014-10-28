@@ -1,0 +1,18 @@
+﻿<div>
+    <div>
+        <button ng-click="addImage();" type="button" class="btn btn-default btn-sm">Загрузить фото</button>
+    </div>
+    <input type="file" name="UploaderHelper" class="hide js-img-input">
+    
+    <div ng-repeat="img in images">
+        <img ng-src="{{img.url}}"/>
+        <span ng-click="removeImage(img.id)">Удалить</span>
+    </div>
+    <div ng-show="errors.client" class="alert alert-danger">
+        Минимальный размер изображения 400x300.<br>
+        Максимальный размер файла 10 мб.<br>
+    </div>
+    <div ng-show="errors.server" class="alert alert-danger">
+        Произошла ошибка на сервере, попробуйте ещё раз.
+    </div>
+</div>

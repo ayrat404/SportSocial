@@ -11,14 +11,14 @@
                 <div ng-controller="ArticleCreateCtrl"
                      class="article-new__form">
                     <h2>Создание статьи</h2>
-                    <form ng-submit="createArticle()"
+                    <form ng-submit="createArticle(ar)"
                           class="blog-form">
                         <div class="row">
                             <div class="col-xs-4">
                                 <div class="blog-form__desc">Заголовок статьи</div>
                             </div>
                             <div class="col-xs-8">
-                                <input type="text" class="input" placeholder="Заголовок статьи" />
+                                <input ng-model="ar.title" type="text" class="input" placeholder="Заголовок статьи" />
                             </div>
                         </div>
                         <div class="row">
@@ -43,22 +43,13 @@
                                 <div class="blog-form__desc">Фото</div>
                             </div>
                             <div class="col-xs-8">
-                                <div flow-init="{target: '/files/images', singleFile: true, testChunks: false}"
-                                     flow-files-submitted="$flow.upload();"
-                                     flow-file-added="!!{png:1,gif:0,jpg:1,jpeg:1}[$file.getExtension()]"
-                                     flow-files-success="test($files, $message)">
-                                    <div ng-show="$flow.files.length" class="article-new__img-wrap">
-                                        <img class="article-new__img__preview" flow-img="$flow.files[0]" />
-                                        <div ng-click="$flow.cancel()">Отмена</div>
-                                    </div>
-                                    <span class="btn" ng-show="!$flow.files.length" flow-btn>Добавить изображение</span>
-                                </div>
+                                <article-img-uploader images="ar.images"></article-img-uploader>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="blog-form__desc">Текст статьи</div>
-                                <textarea class="input"></textarea>
+                                <textarea ng-model="ar.text" class="input"></textarea>
                             </div>
                         </div>
                         <div class="row">
