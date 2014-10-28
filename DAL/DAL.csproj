@@ -86,6 +86,7 @@
     <Compile Include="DomainModel\Base\ICutrureSpecific.cs" />
     <Compile Include="DomainModel\EnumProperties\PaySatus.cs" />
     <Compile Include="DomainModel\EnumProperties\PayType.cs" />
+    <Compile Include="DomainModel\File.cs" />
     <Compile Include="DomainModel\Pay.cs" />
     <Compile Include="DomainModel\Post.cs" />
     <Compile Include="DomainModel\Products.cs" />

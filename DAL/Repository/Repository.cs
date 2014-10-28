@@ -55,5 +55,10 @@ namespace DAL.Repository
         {
             return _context.Set<TEntity>();
         }
+
+        public void SaveChanges()
+        {
+            _context.SaveChanges();
+        }
     }
 }

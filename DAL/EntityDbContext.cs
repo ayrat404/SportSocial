@@ -22,6 +22,7 @@ namespace DAL
         public DbSet<Rubric> Rubrics { get; set; }
         public DbSet<Pay> Pays { get; set; }
         public DbSet<Profile> Profiles { get; set; }
+        public DbSet<BlogImage> BlogImages { get; set; }
 
         static EntityDbContext()
         {

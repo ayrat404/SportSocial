@@ -964,6 +964,7 @@
     <Folder Include="Scripts\spa\common\templates\" />
     <Folder Include="Scripts\spa\common\utils\" />
     <Folder Include="Scripts\spa\entities\" />
+    <Folder Include="Storage\Images\" />
     <Folder Include="Views\Conference\" />
     <Folder Include="Views\File\" />
   </ItemGroup>

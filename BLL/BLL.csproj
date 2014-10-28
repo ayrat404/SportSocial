@@ -68,6 +68,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
@@ -132,10 +133,13 @@
     <Compile Include="Sms\Impls\SmsPilotSmsService.cs" />
     <Compile Include="Sms\ISmsService.cs" />
     <Compile Include="Sms\Objects\SmsPilotSendModel.cs" />
+    <Compile Include="Storage\IFIleService.cs" />
+    <Compile Include="Storage\Impls\FileService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\Services\" />
     <Folder Include="Payment\Enums\" />
+    <Folder Include="Storage\ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
