@@ -324,10 +324,10 @@
     <Content Include="Scripts\app\blog\modules\registration\registration.srvc.js" />
     <Content Include="Scripts\app\blog\modules\registration\registration.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\conference\confDate.drct.js" />
-    <Content Include="Scripts\app\blog\shared\directives\thumb.drct.js" />
+    <Content Include="Scripts\app\blog\modules\article\redactor.drct.js" />
     <Content Include="Scripts\app\blog\shared\directives\scrollToPos.drct.js" />
     <Content Include="Scripts\app\blog\shared\services\serializeObj.srvc.js" />
-    <Content Include="Scripts\app\blog\shared\services\token.srvc.js" />
+    <Content Include="Scripts\app\blog\shared\services\utils.srvc.js" />
     <Content Include="Scripts\libs\angular-file-upload\angular-file-upload.js" />
     <Content Include="Scripts\libs\angular-file-upload\angular-file-upload.min.js" />
     <Content Include="Scripts\libs\angular\angular-animate.js" />
@@ -943,13 +943,17 @@
     <Content Include="Views\Registration\Shared\Layouts\RegistrationLayout.cshtml" />
     <Content Include="Views\Pay\Index.cshtml" />
     <Content Include="Views\Blog\New.cshtml" />
-    <Content Include="Views\Blog\Shared\Partials\Header.cshtml" />
-    <Content Include="Views\Blog\Shared\Partials\Footer.cshtml" />
-    <Content Include="Views\Blog\Shared\Partials\Promo.cshtml" />
-    <Content Include="Views\Blog\Shared\Partials\AuthRegBlock.cshtml" />
-    <Content Include="Views\Blog\Shared\Partials\Menu.cshtml" />
+    <Content Include="Views\Blog\Shared\Partials\Blocks\Header.cshtml" />
+    <Content Include="Views\Blog\Shared\Partials\Blocks\Footer.cshtml" />
+    <Content Include="Views\Blog\Shared\Partials\Blocks\Promo.cshtml" />
+    <Content Include="Views\Blog\Shared\Partials\Blocks\AuthRegBlock.cshtml" />
+    <Content Include="Views\Blog\Shared\Partials\Blocks\Menu.cshtml" />
     <Content Include="Views\Blog\Shared\Partials\ArticlesList.cshtml" />
-    <Content Include="Views\Blog\Shared\Partials\ContentNavigation.cshtml" />
+    <Content Include="Views\Blog\Shared\Partials\Blocks\ContentNavigation.cshtml" />
+    <Content Include="Views\Blog\Shared\Layouts\ArticleEdit.cshtml" />
+    <Content Include="Views\Blog\Shared\Partials\Blocks\User.cshtml" />
+    <Content Include="Views\Blog\Shared\Partials\ArticleEdit.cshtml" />
+    <Content Include="Views\Blog\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -970,6 +974,7 @@
     <Folder Include="Scripts\spa\common\utils\" />
     <Folder Include="Scripts\spa\entities\" />
     <Folder Include="Storage\Images\" />
+    <Folder Include="Views\Admin\" />
     <Folder Include="Views\Conference\" />
     <Folder Include="Views\File\" />
   </ItemGroup>

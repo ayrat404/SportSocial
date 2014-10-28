@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Fortress - Создание статьи";
+    Layout = "~/Views/Blog/Shared/Layouts/BlogLayout.cshtml";
+}
+
+<div class="article-new">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-8">
+                <div ng-controller="ArticleCreateCtrl"
+                     class="article-new__form">
+                    @RenderBody()
+                </div>
+            </div>
+            <div class="col-xs-4">
+
+                @*Информация пользователя который залогинен*@
+                <div class="block">
+                    @Html.Partial("Shared/Partials/Blocks/User")
+                </div>
+
+                @*Таймер конференции*@
+                <div class="block">
+                    <div conf-date="12312"></div>
+                </div>
+
+                @Html.Partial("Shared/Partials/Blocks/Menu")
+            </div>
+        </div>
+    </div>
+</div>

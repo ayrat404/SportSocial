@@ -1,0 +1,45 @@
+﻿<form ng-submit="createArticle(ar)"
+      class="blog-form">
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="blog-form__desc">Заголовок статьи</div>
+        </div>
+        <div class="col-xs-8">
+            <input ng-model="ar.title" type="text" class="input" placeholder="Заголовок статьи" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="blog-form__desc">Рубрика</div>
+        </div>
+        <div class="col-xs-8">
+            <select ng-model="ar.rubric" class="input">
+                <option value="" selected>Выберите рубрику</option>
+                @foreach (var r in Model.Rubrics)
+                {
+                    <option value="@r.Id">@r.Name</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="blog-form__desc">Фото</div>
+        </div>
+        <div class="col-xs-8">
+            <article-img-uploader images="ar.images"></article-img-uploader>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="blog-form__desc">Текст статьи</div>
+            <textarea redactor ng-model="ar.text" class="input article-new__text"></textarea>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <a href="@Url.Action("Index", "Blog")" class="link pull-left">Отмена</a>
+            <button type="submit" class="btn btn--main pull-right">Отправить на модерацию</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,8 @@
+﻿@{
+    Layout = "../../../Shared/Layouts/StaticPageLayout.cshtml";
+}
+
+<div ng-controller="MainAdminCtrl">
+    @Html.AntiForgeryToken()
+    @RenderBody()
+</div>

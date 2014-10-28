@@ -4,10 +4,10 @@
 }
 
 @*Промо блок на главной*@
-@Html.Partial("Shared/Partials/Promo")
+@Html.Partial("Shared/Partials/Blocks/Promo")
 
 @*Навигация по контенту*@
-@Html.Partial("Shared/Partials/ContentNavigation")
+@Html.Partial("Shared/Partials/Blocks/ContentNavigation")
 
 <div class="blog__content block">
     <div class="container">
@@ -20,7 +20,7 @@
             <div class="col-xs-4">
                 
                 @*Блок авторизации/регистрации*@
-                @Html.Partial("Shared/Partials/AuthRegBlock")
+                @Html.Partial("Shared/Partials/Blocks/AuthRegBlock")
 
                 @*Таймер конференции*@
                 <div class="block">
@@ -28,7 +28,7 @@
                 </div>
                 
                 @*Блок меню (по рубрикам)*@
-                @Html.Partial("Shared/Partials/Menu")
+                @Html.Partial("Shared/Partials/Blocks/Menu")
             </div>
         </div>
     </div>
