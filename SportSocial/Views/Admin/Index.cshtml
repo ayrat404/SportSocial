@@ -3,10 +3,10 @@
     Layout = "../Admin/Shared/Layouts/AdminLayout.cshtml";
 }
 <div class="cp">
-    <div class="cp__sidebar-left">
-        
+    <div ng-controller="SidebarCtrl" class="cp__sidebar-left">
+        @Html.Partial("Shared/Partials/Sidebar")
     </div>
     <div class="cp__content">
-        
+        <div ng-view></div>
     </div>
 </div>

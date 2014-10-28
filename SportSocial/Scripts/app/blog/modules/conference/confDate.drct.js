@@ -1,7 +1,7 @@
 ﻿'use strict';
 
 //------ скролл к текущему элементу
-angular.module('app').directive('confDate',
+angular.module('blog').directive('confDate',
     ['$interval',
      'conferenceRqst',
 function ($interval, conferenceRqst) {

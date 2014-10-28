@@ -1,8 +1,15 @@
-﻿@{
-    Layout = "../../../Shared/Layouts/StaticPageLayout.cshtml";
+﻿@using System.Web.Optimization
+@{
+    Layout = "~/Views/Shared/Layouts/Empty.cshtml";
 }
 
-<div ng-controller="MainAdminCtrl">
-    @Html.AntiForgeryToken()
-    @RenderBody()
+@section Scripts{
+    @Scripts.Render("~/bundles/blog/scripts")
+    @Scripts.Render("~/bundles/admin/scripts")
+}
+<div ng-app="admin" class="static-layout-app">
+    <div ng-controller="MainAdminCtrl">
+        @Html.AntiForgeryToken()
+        @RenderBody()
+    </div>
 </div>

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').directive('articleImgUploader', ['$timeout', function ($timeout) {
+angular.module('blog').directive('articleImgUploader', ['$timeout', function ($timeout) {
     return {
         restrict: 'AE',
         templateUrl: '/Scripts/templates/blog/article/img-uploader.html',

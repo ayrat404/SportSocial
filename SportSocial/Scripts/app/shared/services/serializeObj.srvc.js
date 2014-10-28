@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-angular.module('app').factory('serializeObj', [function () {
+angular.module('shared').factory('serializeObj', [function () {
     var serialize = function (obj, combineSameNamed) {
         var str = [];
         for (var p in obj)

@@ -30,7 +30,7 @@ namespace SportSocial
                         "~/Scripts/libs/jquery-fileapi/jquery.fileapi.min.js",
 
                         //"~/Scripts/libs/signalR/jquery.signalR-2.0.3.min.js",
-                        //"~/Scripts/libs/signalR/hub.js",
+                //"~/Scripts/libs/signalR/hub.js",
 
 
 
@@ -44,14 +44,31 @@ namespace SportSocial
                     )
                     .Include(
                         "~/Scripts/libs/angular/angular.min.js",
-                        "~/Scripts/app/blog/app.js"
+                        "~/Scripts/app/shared/app.js"
+                    )
+                    .IncludeDirectory(
+                        "~/Scripts/app/shared", "*.js", true
                     )
             );
 
             // блог
             bundles.Add(new ScriptBundle("~/bundles/blog/scripts")
+                    .Include(
+                        "~/Scripts/app/blog/app.js"
+                    )
                     .IncludeDirectory(
                         "~/Scripts/app/blog", "*.js", true
+                    )
+            );
+
+            // панель управления
+            bundles.Add(new ScriptBundle("~/bundles/admin/scripts")
+                    .Include(
+                        "~/Scripts/libs/angular/angular-route.min.js",
+                        "~/Scripts/app/admin/app.js"
+                    )
+                    .IncludeDirectory(
+                        "~/Scripts/app/admin", "*.js", true
                     )
             );
 

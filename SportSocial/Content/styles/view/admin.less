@@ -1,55 +1,78 @@
-/* Blog
+/* Admin
 ---------------------------------------------------------------------------------- */
 
-
-.blog-wrap {
-    background: @color-blog-bg;
-    padding-top: 70px;
+.static-layout-app > div {
+    height: 100%;
 }
 
-.blog-wrap,
-.blog__inner {
-    min-height: 100%;
-}
+.cp {
+    background: url(../../images/blur.jpg) no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
 
-.blog__inner {
-    padding-bottom: 70px;
-    margin: 20px 0 -70px 0;
-}
+    &__sidebar-left {
+        color: #fff;
+        height: 100%;
+        width: 200px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: rgba(0,0,0, .4);
+    }
 
-.blog__content {
-    &__top {
+    &__content {
+        margin-left: 230px;
+        padding: 20px;
+        .cp-block {
+            background: rgba(0,0,0, .4);
+            padding: 15px;
+        }
+    }
 
+    &__sb {
+        &__header {
+            padding: 15px;
+        }
+
+        &__user {
+            margin-top: 20px;
+            .no-float;
+            position: relative;
+            width: 100%;
+
+            &__avatar {
+                background: rgba(0,0,0, .5);
+                padding: 4px;
+                float: right;
+                position: relative;
+                right: -20px;
+                width: 130px;
+                height: 130px;
+                .border-radius(50%);
+                border: 2px solid #fff;
+            }
+        }
+
+        &__menu {
+            margin-top: 20px;
+
+            &__it {
+                color: #fff;
+                display: block;
+                padding: 10px 15px;
+                .box-sizing;
+                font-size: 1.126em;
+
+                &:hover {
+                    color: #ccc;
+                    text-decoration: none;
+                    border-right: 10px solid @color-blue;
+                }
+            }
+        }
     }
 }
 
-/* Blog form
--------------------------------------------------- */
-
-
-
-.blog-form {
-
-    input,
-    select,
-    textarea {
-        font-size: 1.286em;
-    }
-
-    .row {
-        margin-bottom: 20px;
-    }
-
-    &__desc {
-        line-height: 50px;
-        font-size: 1.286em;
-    }
-}
-
-/* /Blog form */
-
-
-
-
-/* /Blog
+/* /Admin
 ---------------------------------------------------------------------------------- */

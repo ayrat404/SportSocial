@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').controller('MainBlogCtrl', ['$scope',
+angular.module('blog').controller('MainBlogCtrl', ['$scope',
 function ($scope) {
 
 }]);

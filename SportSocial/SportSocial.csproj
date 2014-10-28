@@ -313,6 +313,11 @@
       <DependentUpon>blog.css</DependentUpon>
     </Content>
     <Content Include="Global.asax" />
+    <Content Include="Scripts\app\admin\app.js" />
+    <Content Include="Scripts\app\admin\modules\articles\articles.ctrl.js" />
+    <Content Include="Scripts\app\admin\modules\conference\conference.ctrl.js" />
+    <Content Include="Scripts\app\admin\modules\main\main.ctrl.js" />
+    <Content Include="Scripts\app\admin\modules\sidebar\sidebar.ctrl.js" />
     <Content Include="Scripts\app\blog\app.js" />
     <Content Include="Scripts\app\blog\modules\article\articleImgUploader.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\article\articleCreate.ctrl.js" />
@@ -325,9 +330,10 @@
     <Content Include="Scripts\app\blog\modules\registration\registration.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\conference\confDate.drct.js" />
     <Content Include="Scripts\app\blog\modules\article\redactor.drct.js" />
-    <Content Include="Scripts\app\blog\shared\directives\scrollToPos.drct.js" />
-    <Content Include="Scripts\app\blog\shared\services\serializeObj.srvc.js" />
-    <Content Include="Scripts\app\blog\shared\services\utils.srvc.js" />
+    <Content Include="Scripts\app\shared\app.js" />
+    <Content Include="Scripts\app\shared\directives\scrollToPos.drct.js" />
+    <Content Include="Scripts\app\shared\services\serializeObj.srvc.js" />
+    <Content Include="Scripts\app\shared\services\utils.srvc.js" />
     <Content Include="Scripts\libs\angular-file-upload\angular-file-upload.js" />
     <Content Include="Scripts\libs\angular-file-upload\angular-file-upload.min.js" />
     <Content Include="Scripts\libs\angular\angular-animate.js" />
@@ -821,6 +827,7 @@
     <Content Include="Content\styles\components\blog\header - Copy.css - Copy %283%29 - Copy %282%29.map">
       <DependentUpon>header - Copy - Copy %283%29 - Copy %282%29.css</DependentUpon>
     </Content>
+    <Content Include="Content\styles\view\admin.less" />
     <None Include="Scripts\libs\jquery\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.min.js" />
@@ -881,6 +888,8 @@
     <Content Include="Scripts\libs\signalR\hub.js" />
     <Content Include="Scripts\libs\signalR\jquery.signalR-2.0.3.js" />
     <Content Include="Scripts\libs\signalR\jquery.signalR-2.0.3.min.js" />
+    <Content Include="Scripts\templates\admin\articles.html" />
+    <Content Include="Scripts\templates\admin\conference.html" />
     <Content Include="Scripts\templates\blog\article\img-uploader.html" />
     <Content Include="Scripts\templates\blog\conference-counter.html" />
     <Content Include="Web.config">
@@ -896,6 +905,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Base\SportSocialControllerBase.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ConferenceController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\PayController.cs" />
@@ -954,6 +964,9 @@
     <Content Include="Views\Blog\Shared\Partials\Blocks\User.cshtml" />
     <Content Include="Views\Blog\Shared\Partials\ArticleEdit.cshtml" />
     <Content Include="Views\Blog\Edit.cshtml" />
+    <Content Include="Views\Admin\Shared\Layouts\AdminLayout.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Shared\Partials\Sidebar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -963,6 +976,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="Scripts\app\admin\shared\directives\" />
+    <Folder Include="Scripts\app\admin\shared\services\" />
+    <Folder Include="Scripts\app\blog\shared\directives\" />
+    <Folder Include="Scripts\app\blog\shared\services\" />
     <Folder Include="Scripts\spa\apps\blog\edit\" />
     <Folder Include="Scripts\spa\apps\blog\list\" />
     <Folder Include="Scripts\spa\apps\blog\new\" />
@@ -974,7 +991,6 @@
     <Folder Include="Scripts\spa\common\utils\" />
     <Folder Include="Scripts\spa\entities\" />
     <Folder Include="Storage\Images\" />
-    <Folder Include="Views\Admin\" />
     <Folder Include="Views\Conference\" />
     <Folder Include="Views\File\" />
   </ItemGroup>

@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-angular.module('app').factory('utilsSrvc', [ function () {
+angular.module('shared').factory('utilsSrvc', [function () {
     var tokenName = '__RequestVerificationToken',
         tokenEl = angular.element('input[type="hidden"][name=' + tokenName + ']'),
         tokenVal = tokenEl.length ? tokenEl.val() : null,

@@ -1,7 +1,7 @@
 ﻿'use strict';
 
     //------ скролл к текущему элементу
-angular.module('app').directive('scrollToCurrentPos', ['$timeout', function ($timeout) {
+angular.module('shared').directive('scrollToCurrentPos', ['$timeout', function ($timeout) {
         return {
             restrict: 'A',
             link: function (scope, element, attrs) {

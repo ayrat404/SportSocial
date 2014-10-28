@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').controller('ArticleCreateCtrl',
+angular.module('blog').controller('ArticleCreateCtrl',
     ['$scope',
      'articleRqst',
      'utilsSrvc',

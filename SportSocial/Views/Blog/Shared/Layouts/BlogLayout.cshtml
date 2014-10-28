@@ -2,12 +2,14 @@
     Layout = "../../../Shared/Layouts/StaticPageLayout.cshtml";
 }
 
-<div class="blog-wrap" ng-controller="MainBlogCtrl">
+<div ng-app="blog"
+     ng-controller="MainBlogCtrl" 
+     class="blog-wrap">
     @Html.AntiForgeryToken()
 
     @*Шапка в блоге*@
     @Html.Partial("Shared/Partials/Blocks/Header")
-    
+
     <div class="blog__inner">
         @RenderBody()
     </div>

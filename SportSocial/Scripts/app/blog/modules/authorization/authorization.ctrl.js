@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').controller('AuthorizationCtrl',
+angular.module('blog').controller('AuthorizationCtrl',
     ['$scope',
      '$interval',
      'authorizationRqst',

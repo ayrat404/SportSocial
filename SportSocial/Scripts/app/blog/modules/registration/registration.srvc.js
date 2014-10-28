@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app').factory('registrationRqst', ['$http', 'serializeObj', function ($http, serializeObj) {
+angular.module('blog').factory('registrationRqst', ['$http', 'serializeObj', function ($http, serializeObj) {
     var send = function (url, obj) {
         return $http({
             method  :   'POST',
