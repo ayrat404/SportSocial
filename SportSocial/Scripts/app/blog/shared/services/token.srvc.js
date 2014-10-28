@@ -7,6 +7,8 @@ angular.module('app').factory('utilsSrvc', [ function () {
         tokenObj = {};
     tokenObj[tokenName] = tokenVal;
 
+    // Получить antiforgery token
+    // ---------------
     function getToken() {
         return {
             obj: tokenObj,
@@ -14,6 +16,8 @@ angular.module('app').factory('utilsSrvc', [ function () {
         }
     }
 
+    // Добавить antiforgery token
+    // ---------------
     function addToken(obj) {
         return angular.extend(obj, tokenObj);
     }

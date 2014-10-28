@@ -86,6 +86,7 @@
     <Compile Include="DomainModel\Base\ICutrureSpecific.cs" />
     <Compile Include="DomainModel\EnumProperties\PaySatus.cs" />
     <Compile Include="DomainModel\EnumProperties\PayType.cs" />
+    <Compile Include="DomainModel\File.cs" />
     <Compile Include="DomainModel\Pay.cs" />
     <Compile Include="DomainModel\Post.cs" />
     <Compile Include="DomainModel\Products.cs" />
@@ -112,6 +113,10 @@
     <Compile Include="Migrations\201410271840483_PostRubricPayTables.cs" />
     <Compile Include="Migrations\201410271840483_PostRubricPayTables.Designer.cs">
       <DependentUpon>201410271840483_PostRubricPayTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201410281810125_BlogImagestable.cs" />
+    <Compile Include="Migrations\201410281810125_BlogImagestable.Designer.cs">
+      <DependentUpon>201410281810125_BlogImagestable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -143,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201410271840483_PostRubricPayTables.resx">
       <DependentUpon>201410271840483_PostRubricPayTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410281810125_BlogImagestable.resx">
+      <DependentUpon>201410281810125_BlogImagestable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

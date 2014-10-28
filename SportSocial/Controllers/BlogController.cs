@@ -1,6 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 using BLL.Blog;
+using BLL.Blog.ViewModels;
 using SportSocial.Controllers.Base;
 
 namespace SportSocial.Controllers
@@ -25,7 +26,11 @@ namespace SportSocial.Controllers
         public ActionResult New()
         {
             var rubrics = _blogService.GetRubrics();
-            return View(rubrics);
+            var blogModel = new PostModel()
+            {
+                Rubrics = rubrics,
+            };
+            return View(blogModel);
         }
 
         //[HttpGet]

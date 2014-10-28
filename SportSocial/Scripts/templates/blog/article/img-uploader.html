@@ -4,9 +4,11 @@
     </div>
     <input type="file" name="UploaderHelper" class="hide js-img-input">
     
-    <div ng-repeat="img in images">
-        <img ng-src="{{img.url}}"/>
-        <span ng-click="removeImage(img.id)">Удалить</span>
+    <div ng-repeat="img in images" class="article-new__images">
+        <img ng-src="{{img.url}}" class="article-new__img"/>
+        <div>
+            <span ng-click="removeImage(img.id)" class="article-new__img-del link">Удалить</span>
+        </div>
     </div>
     <div ng-show="errors.client" class="alert alert-danger">
         Минимальный размер изображения 400x300.<br>
