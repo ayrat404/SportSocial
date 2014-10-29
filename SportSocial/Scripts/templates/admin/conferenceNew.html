@@ -1,0 +1,60 @@
+﻿<div class="cp-conference">
+    <div class="cp-block">
+        <h2>Новая конференция</h2>
+        <div class="container-fluid">
+            <form ng-submit="createConference(model)"
+                  ng-if="!conferenceCreated"
+                  class="cp-conference__new">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <span class="cp-conference__label">Дата</span>
+                    </div>
+                    <div class="col-xs-4">
+                        <input ng-model="model.date"
+                               type="text" class="input" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <span class="cp-conference__label">Название</span>
+                    </div>
+                    <div class="col-xs-4">
+                        <input ng-model="model.title"
+                               type="text" class="input" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <span class="cp-conference__label">Ссылка</span>
+                    </div>
+                    <div class="col-xs-4">
+                        <input ng-model="model.link"
+                               type="text" class="input" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <span class="cp-conference__label">Краткое описание</span>
+                    </div>
+                    <div class="col-xs-4">
+                        <textarea ng-model="model.description"
+                                  class="input"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-7">
+                        <button type="submit" class="btn btn-success pull-right">Создать конференцию</button>
+                    </div>
+                </div>
+            </form>
+            <div class="bg-success"
+                 ng-if="conferenceCreated">
+                Конференция успешно создана
+                <button ng-click="conferenceCreated=false"
+                        class="btn btn-primary">
+                    Создать ещё
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

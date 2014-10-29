@@ -8,7 +8,7 @@
 .cp {
     background: url(../../images/blur.jpg) no-repeat;
     background-size: cover;
-    height: 100%;
+    min-height: 100%;
     width: 100%;
 
     &__sidebar-left {
@@ -24,9 +24,16 @@
     &__content {
         margin-left: 230px;
         padding: 20px;
+
         .cp-block {
             background: rgba(0,0,0, .4);
             padding: 15px;
+            margin-bottom: 10px;
+
+            h1,
+            h2 {
+                color: #fff;
+            }
         }
     }
 
@@ -65,14 +72,77 @@
                 font-size: 1.126em;
 
                 &:hover {
-                    color: #ccc;
                     text-decoration: none;
-                    border-right: 10px solid @color-blue;
+
+                    .cp__sb__menu__title {
+                        color: #ccc;
+                        text-decoration: none;
+                        border-right: 10px solid @color-blue;
+                    }
+
+                    .cp__sb__submenu {
+                        padding-left: 20px;
+                        height: auto;
+
+                        a {
+                            display: block;
+                        }
+                    }
+                }
+            }
+
+            &__title {
+                display: block;
+                text-decoration: none;
+            }
+        }
+
+        &__submenu {
+            height: 0;
+            overflow: hidden;
+        }
+    }
+
+    &-articles {
+        &__header {
+        }
+
+        &__content {
+            color: #fff;
+
+            table {
+                thead {
+                    font-size: 1.486em;
+                }
+
+                tbody {
+                    td {
+                        width: 25%;
+                        vertical-align: middle;
+                    }
                 }
             }
         }
     }
-}
 
+    &-conference {
+        &__label {
+            font-size: 1.426em;
+            line-height: 50px;
+            color: #fff;
+        }
+
+        &__new {
+            .row {
+                margin-bottom: 20px;
+            }
+
+            textarea {
+                max-width: 100%;
+                min-height: 200px;
+            }
+        }
+    }
+}
 /* /Admin
 ---------------------------------------------------------------------------------- */

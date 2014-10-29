@@ -315,9 +315,11 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\app\admin\app.js" />
     <Content Include="Scripts\app\admin\modules\articles\articles.ctrl.js" />
-    <Content Include="Scripts\app\admin\modules\conference\conference.ctrl.js" />
+    <Content Include="Scripts\app\admin\modules\conference\conferenceList.ctrl.js" />
+    <Content Include="Scripts\app\admin\modules\conference\conferenceNew.ctrl.js" />
     <Content Include="Scripts\app\admin\modules\main\main.ctrl.js" />
     <Content Include="Scripts\app\admin\modules\sidebar\sidebar.ctrl.js" />
+    <Content Include="Scripts\app\admin\shared\services\admin.srvc.js" />
     <Content Include="Scripts\app\blog\app.js" />
     <Content Include="Scripts\app\blog\modules\article\articleImgUploader.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\article\articleCreate.ctrl.js" />
@@ -889,7 +891,8 @@
     <Content Include="Scripts\libs\signalR\jquery.signalR-2.0.3.js" />
     <Content Include="Scripts\libs\signalR\jquery.signalR-2.0.3.min.js" />
     <Content Include="Scripts\templates\admin\articles.html" />
-    <Content Include="Scripts\templates\admin\conference.html" />
+    <Content Include="Scripts\templates\admin\conferenceNew.html" />
+    <Content Include="Scripts\templates\admin\conferenceList.html" />
     <Content Include="Scripts\templates\blog\article\img-uploader.html" />
     <Content Include="Scripts\templates\blog\conference-counter.html" />
     <Content Include="Web.config">
@@ -977,7 +980,6 @@
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Scripts\app\admin\shared\directives\" />
-    <Folder Include="Scripts\app\admin\shared\services\" />
     <Folder Include="Scripts\app\blog\shared\directives\" />
     <Folder Include="Scripts\app\blog\shared\services\" />
     <Folder Include="Scripts\spa\apps\blog\edit\" />

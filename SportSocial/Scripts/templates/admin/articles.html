@@ -1,1 +1,74 @@
-﻿<div class="cp-block">Articles!</div>
+﻿<div class="cp-articles">
+    <div class="cp-block">
+        <h2>Статьи</h2>
+        <div class="cp-articles__header">
+            <div class="container-fluid">
+                <div class="row">
+                    <form ng-submit="getArticles(model.search)"
+                          ng-init="getArticles(model.search)">
+                        <div class="col-xs-4">
+                            <select ng-model="model.search.status" class="input">
+                                <option value="">Все статьи</option>
+                                <option value="0">На модерации</option>
+                                <option value="1">Опубликованные</option>
+                                <option value="2">Отклоненные</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-4">
+                            <input ng-model="model.search.query" type="text" class="input" placeholder="Поиск по содержимому" />
+                        </div>
+                        <div class="col-xs-2">
+                            <button type="submit" class="btn btn-success">Найти</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cp-block">
+        <div class="cp-articles__content">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>Название</td>
+                        <td>Дата создания</td>
+                        <td>Статус</td>
+                        <td>Действия</td>
+                    </tr>
+                </thead>
+                <tbody ng-cloak>
+                    <tr ng-repeat="ar in model.articles">
+                        <td><a ng-href="{{ar.url}}" class="link">{{ar.title}}</a></td>
+                        <td>{{ar.date}}</td>
+                        <td>
+                            <div ng-if="ar.status==0">На модерации</div>
+                            <div ng-if="ar.status==1">Опубликована</div>
+                            <div ng-if="ar.status==2">Отклонена</div>
+                        </td>
+                        <td>
+                            <button ng-click="publish(ar.id, ar)"
+                                    ng-if="ar.status==0 || ar.status==2"
+                                    class="btn btn-info">
+                                Опубликовать
+                            </button>
+                            <button ng-click="reject(ar.id, ar)"
+                                    ng-if="ar.status==0"
+                                    class="btn btn-danger">
+                                Отклонить
+                            </button>
+                            <button ng-click="reject(ar.id, ar)"
+                                    ng-if="ar.status==1"
+                                    class="btn btn-danger">
+                                Убрать с публикации
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div ng-if="isLoading">Идет загрузка</div>
+            <div ng-if="!model.articles.length" class="bg-danger">
+                Нет статей
+            </div>
+        </div>
+    </div>
+</div>
