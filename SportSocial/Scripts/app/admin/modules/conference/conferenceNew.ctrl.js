@@ -2,7 +2,11 @@
 
 angular.module('admin').controller('ConferenceNewCtrl', ['$scope', 'utilsSrvc', 'adminRqst',
 function ($scope, utilsSrvc, adminRqst) {
-    $scope.conferenceCreated = false;
+    // сообщения
+    // ---------------
+    $scope.msg = {
+        created: false
+    };
 
     // ошибки
     // ---------------
@@ -13,13 +17,17 @@ function ($scope, utilsSrvc, adminRqst) {
     
     // создать конференцию
     // ---------------
-    $scope.createConference = function (data) {
+    $scope.createConference = function (data, isInvalid) {
+        if (isInvalid) {
+            $scope.er.create = true;
+            return;
+        }
         $scope.er.server = false;
         $scope.er.create = true;
         adminRqst.createConference(utilsSrvc.token.add(data))
             .then(function(res) {
                 if (res.data.success) {
-                    $scope.conferenceCreated = true;
+                    $scope.msg.created = true;
                     $scope.model.title = '';
                     $scope.model.description = '';
                     $scope.model.link = '';

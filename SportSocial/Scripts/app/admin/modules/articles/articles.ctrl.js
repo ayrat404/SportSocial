@@ -7,10 +7,17 @@ function ($scope, utilsSrvc, adminRqst) {
     // 1 - опубликована
     // 2 - отклонена
     
+    var articleStatuses = {
+        'Moderate': 0,
+        'Publish': 1,
+        'Reject': 2
+    };
+
     // данные
     // --------------
     $scope.model = {
-        articles: [
+        articles: 
+        [
             { id: 1, title: 'OPOPOP1', status: 0, url: '#', date: '20.11.2014' },
             { id: 2, title: 'OPOPOP2', status: 1, url: '#', date: '20.11.2014' },
             { id: 3, title: 'OPOPOP3', status: 2, url: '#', date: '20.11.2014' },
@@ -22,6 +29,7 @@ function ($scope, utilsSrvc, adminRqst) {
     // запрос списка статей
     // ---------------
     $scope.getArticles = function (filter) {
+        filter = filter || {};
         $scope.isLoading = true;
         adminRqst.getArticles(utilsSrvc.token.add(filter))
             .then(function (res) {
@@ -34,25 +42,16 @@ function ($scope, utilsSrvc, adminRqst) {
             });
     }
 
-    // публикация статьи
+    // сменить статус статьи
     // ---------------
-    $scope.publish = function (id, article) {
-        adminRqst.publishArticle(utilsSrvc.token.add({ id: id }))
+    $scope.changeArticleStatus = function (id, statusString, el) {
+        var statusNum = articleStatuses[statusString];
+        adminRqst.changeArticleStatus(utilsSrvc.token.add({ id: id, status: statusNum }))
             .then(function (res) {
                 if (res.data.success) {
-                    article.status = 1;
-                }
-            });
-    };
-
-    // отклонение статьи
-    // ---------------
-    $scope.reject = function (id, article) {
-        adminRqst.rejectArticle(utilsSrvc.token.add({ id: id }))
-            .then(function (res) {
-                if (res.data.success) {
-                    article.status = 2;
+                    el.status = statusNum;
                 }
             });
     }
+
 }]);

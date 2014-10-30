@@ -79,27 +79,23 @@
                         text-decoration: none;
                         border-right: 10px solid @color-blue;
                     }
-
-                    .cp__sb__submenu {
-                        padding-left: 20px;
-                        height: auto;
-
-                        a {
-                            display: block;
-                        }
-                    }
                 }
             }
 
             &__title {
                 display: block;
                 text-decoration: none;
+                text-transform: uppercase;
             }
         }
 
         &__submenu {
-            height: 0;
-            overflow: hidden;
+            padding-left: 20px;
+            a {
+                padding: 5px;
+                color: #8E8E8E;
+                display: block;
+            }
         }
     }
 
@@ -140,6 +136,26 @@
             textarea {
                 max-width: 100%;
                 min-height: 200px;
+            }
+        }
+        &__list {
+            color: #fff;
+            table {
+                thead {
+                    font-size: 1.486em;
+                }
+
+                tbody {
+                    td {
+                        width: 25%;
+                        vertical-align: middle;
+                    }
+                }
+                .btn {
+                    display: block;
+                    width: 100%;
+                    margin-bottom: 5px;
+                }
             }
         }
     }

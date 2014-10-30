@@ -12,7 +12,7 @@ app.config(function ($routeProvider) {
         })
         // список всех конференций
         // ---------------
-        .when('/conference', {
+        .when('/conference/', {
             templateUrl: '/Scripts/templates/admin/conferenceList.html',
             controller: 'ConferenceListCtrl'
         })

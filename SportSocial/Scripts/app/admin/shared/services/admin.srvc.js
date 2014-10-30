@@ -15,25 +15,25 @@ angular.module('admin').factory('adminRqst', ['$http', 'serializeObj', function 
         getArticles: function(obj) {
             return send('GetArticles', obj);
         },
-        // Опубликовать статью
+        // Изменить статус статьи
         // ---------------
-        publishArticle: function(obj) {
-            return send('PublishArticle', obj);
-        },
-        // Отклонить статью
-        // ---------------
-        rejectArticle: function(obj) {
-            return send('RejectArticle', obj);
+        changeArticleStatus: function (obj) {
+            return send('ChangeArticleStatus', obj);
         },
         // Получить список конференций
         // --------------
-        getConferences: function(obj) {
-            return send('getConferences', obj);
+        getConferences: function (obj) {
+            return send('GetConferences', obj);
         },
         // Создать конференцию
         // ---------------
         createConference: function(obj) {
             return send('CreateConference', obj);
+        },
+        // Изменить статус конференции
+        // ---------------
+        changeConferenceStatus: function(obj) {
+            return send('ChangeConferenceStatus', obj);
         }
     };
 }]);

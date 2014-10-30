@@ -46,17 +46,17 @@
                             <div ng-if="ar.status==2">Отклонена</div>
                         </td>
                         <td>
-                            <button ng-click="publish(ar.id, ar)"
+                            <button ng-click="changeArticleStatus(ar.id, 'Publish', ar)"
                                     ng-if="ar.status==0 || ar.status==2"
                                     class="btn btn-info">
                                 Опубликовать
                             </button>
-                            <button ng-click="reject(ar.id, ar)"
+                            <button ng-click="changeArticleStatus(ar.id, 'Reject', ar)"
                                     ng-if="ar.status==0"
                                     class="btn btn-danger">
                                 Отклонить
                             </button>
-                            <button ng-click="reject(ar.id, ar)"
+                            <button ng-click="changeArticleStatus(ar.id, 'Reject', ar)"
                                     ng-if="ar.status==1"
                                     class="btn btn-danger">
                                 Убрать с публикации
@@ -66,7 +66,7 @@
                 </tbody>
             </table>
             <div ng-if="isLoading">Идет загрузка</div>
-            <div ng-if="!model.articles.length" class="bg-danger">
+            <div ng-if="!model.articles.length" class="alert alert-warning">
                 Нет статей
             </div>
         </div>

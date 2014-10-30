@@ -333,6 +333,7 @@
     <Content Include="Scripts\app\blog\modules\conference\confDate.drct.js" />
     <Content Include="Scripts\app\blog\modules\article\redactor.drct.js" />
     <Content Include="Scripts\app\shared\app.js" />
+    <Content Include="Scripts\app\shared\directives\datepicker.drct.js" />
     <Content Include="Scripts\app\shared\directives\scrollToPos.drct.js" />
     <Content Include="Scripts\app\shared\services\serializeObj.srvc.js" />
     <Content Include="Scripts\app\shared\services\utils.srvc.js" />
