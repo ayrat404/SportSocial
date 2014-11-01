@@ -1,0 +1,85 @@
+﻿<div class="cp-conference">
+    <div class="cp-block">
+        <h2>Новая конференция</h2>
+        <div class="container-fluid">
+            <form name="ConfNew" ng-submit="createConference(model, ConfNew.$invalid)"
+                  ng-if="!msg.created"
+                  class="cp-conference__new">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <span class="cp-conference__label">Дата</span>
+                    </div>
+                    <div class="col-xs-4">
+                        <input ng-model="model.date"
+                               ng-blur="vs.date=true"
+                               ng-class="{'input--invalid': vs.date && !model.date.length}"
+                               datepicker="{lang:'ru', format:'d.m.Y H:i'}"
+                               required
+                               type="text" class="input" />
+                    </div>
+                    <div class="col-xs-5">
+                        <div ng-show="vs.date && !model.date.length || er.create"
+                             class="alert alert-danger">Укажите дату</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <span class="cp-conference__label">Название</span>
+                    </div>
+                    <div class="col-xs-4">
+                        <input ng-model="model.title"
+                               ng-blur="vs.title=true"
+                               ng-class="{'input--invalid': vs.title && !model.title.length}"
+                               required
+                               type="text" class="input" />
+                    </div>
+                    <div class="col-xs-5">
+                        <div ng-show="vs.title && !model.title.length || er.create"
+                             class="alert alert-danger">Укажите название</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <span class="cp-conference__label">Ссылка</span>
+                    </div>
+                    <div class="col-xs-4">
+                        <input ng-model="model.link"
+                               type="text" class="input" />
+                    </div>
+                    <div class="col-xs-5">
+                        <div class="alert alert-info">Ссылку можно указать за 30 минут до начала конференции</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <span class="cp-conference__label">Краткое описание</span>
+                    </div>
+                    <div class="col-xs-4">
+                        <textarea ng-model="model.description"
+                                  ng-blur="vs.description=true"
+                                  ng-class="{'input--invalid': vs.description && !model.description.length}"
+                                  required
+                                  class="input"></textarea>
+                    </div>
+                    <div class="col-xs-5">
+                        <div ng-show="vs.description && !model.description.length || er.create"
+                             class="alert alert-danger">Укажите краткое описание конференции, которое будет отображаться для аудитории сайта</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-7">
+                        <button type="submit" class="btn btn-success pull-right">Создать конференцию</button>
+                    </div>
+                </div>
+            </form>
+            <div class="bg-success"
+                 ng-show="msg.created">
+                Конференция успешно создана
+                <button ng-click="msg.created=false"
+                        class="btn btn-primary">
+                    Создать ещё
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

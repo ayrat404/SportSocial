@@ -12,6 +12,11 @@ namespace SportSocial
             //=======================================================
             var cssTransformer = new CssTransformer();
             var cssMinify = new CssMinify();
+            var cssBundle = new Bundle("~/content/bundles/main.css").Include(
+                "~/Scripts/libs/datepicker/jquery.datetimepicker.css"
+                );
+            cssBundle.Transforms.Add(cssMinify);
+            bundles.Add(cssBundle);
             var lessBundle = new Bundle("~/content/bundles/main.less").Include(
                 "~/Content/styles/style.less"
                 );
