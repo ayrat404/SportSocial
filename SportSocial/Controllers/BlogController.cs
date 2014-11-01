@@ -2,11 +2,12 @@
 using System.Web.Mvc;
 using BLL.Blog;
 using BLL.Blog.ViewModels;
+using BLL.Common.Objects;
 using SportSocial.Controllers.Base;
 
 namespace SportSocial.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class BlogController :SportSocialControllerBase
     {
         private readonly IBlogService _blogService;
@@ -33,20 +34,12 @@ namespace SportSocial.Controllers
             return View(blogModel);
         }
 
-        //[HttpGet]
-        //public ActionResult New()
-        //{
-        //    return View();
-        //}
-
-        //public ActionResult Image(HttpPostedFileBase image)
-        //{
-        //    if (image != null && image.ContentLength > 0)
-        //    {
-                
-        //    }
-
-        //}
-        
+        [HttpPost]
+        public ActionResult New(PostModel postModel)
+        {
+            if (ModelState.IsValid)
+                return Json(_blogService.CreatePost(postModel));
+            return Json(new {success = false});
+        }
 	}
 }

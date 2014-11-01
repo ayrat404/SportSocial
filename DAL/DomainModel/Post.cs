@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using DAL.DomainModel.Base;
+using DAL.DomainModel.EnumProperties;
 
 namespace DAL.DomainModel
 {
@@ -14,9 +15,15 @@ namespace DAL.DomainModel
 
         public string Text { get; set; }
 
-        public string RubricId { get; set; }
+        public int RubricId { get; set; }
 
         public string Lang { get; set; }
+
+        public string ImageUrl { get; set; }
+
+        public BlogPostStatus Status { get; set; }
+
+        public string CancelMessage { get; set; }
 
         public DateTime Created { get; set; }
         public DateTime Modified { get; set; }
