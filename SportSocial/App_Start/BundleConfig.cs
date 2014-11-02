@@ -13,7 +13,8 @@ namespace SportSocial
             var cssTransformer = new CssTransformer();
             var cssMinify = new CssMinify();
             var cssBundle = new Bundle("~/content/bundles/main.css").Include(
-                "~/Scripts/libs/datepicker/jquery.datetimepicker.css"
+                "~/Scripts/libs/datepicker/jquery.datetimepicker.css",
+                "~/Content/styles/other/font-awesome.min.css"
                 );
             cssBundle.Transforms.Add(cssMinify);
             bundles.Add(cssBundle);
@@ -35,13 +36,14 @@ namespace SportSocial
                         "~/Scripts/libs/jquery-fileapi/jquery.fileapi.min.js",
 
                         //"~/Scripts/libs/signalR/jquery.signalR-2.0.3.min.js",
-                //"~/Scripts/libs/signalR/hub.js",
+                        //"~/Scripts/libs/signalR/hub.js",
 
 
 
-                        "~/Scripts/libs/imperaviRedactor/redactor.min.js",
-                        "~/Scripts/libs/imperaviRedactor/ru.js",
-                        "~/Scripts/libs/imperaviRedactor/blockquote.js",
+                        //"~/Scripts/libs/imperaviRedactor/redactor.min.js",
+                        //"~/Scripts/libs/imperaviRedactor/ru.js",
+                        //"~/Scripts/libs/imperaviRedactor/blockquote.js",
+                        
                         "~/Scripts/libs/moment/moment.min.js",
                         "~/Scripts/libs/moment/ru.js",
                         "~/Scripts/libs/datepicker/jquery.datetimepicker.js",
@@ -49,6 +51,11 @@ namespace SportSocial
                     )
                     .Include(
                         "~/Scripts/libs/angular/angular.min.js",
+                        "~/Scripts/libs/text-angular/textAngular-sanitize.min.js",
+                        "~/Scripts/libs/text-angular/textAngular.min.js",
+                        //"~/Scripts/libs/text-angular/textangularA.min.js",
+                        
+
                         "~/Scripts/app/shared/app.js"
                     )
                     .IncludeDirectory(

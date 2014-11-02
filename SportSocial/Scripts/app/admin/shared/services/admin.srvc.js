@@ -1,19 +1,29 @@
 'use strict';
 
 angular.module('admin').factory('adminRqst', ['$http', 'serializeObj', function ($http, serializeObj) {
-    var send = function (url, obj) {
+    var send = function (action, obj) {
         return $http({
             method  :   'POST',
-            url     :   '/Admin/' + url,
+            url     :   '/Admin/' + action,
             data    :   serializeObj(obj),
             headers :   { 'Content-Type': 'application/x-www-form-urlencoded' }
         });
     };
+
+    var get = function(action, obj) {
+        return $http({
+            method  :   'GET',
+            url     :   '/Admin/' + action,
+            params  :   obj,
+            headers :   { 'Content-Type': 'application/x-www-form-urlencoded' }
+        });
+    }
+
     return {
         // Получить список статей
         // --------------
         getArticles: function(obj) {
-            return send('GetArticles', obj);
+            return get('GetArticles', obj);
         },
         // Изменить статус статьи
         // ---------------
@@ -23,12 +33,17 @@ angular.module('admin').factory('adminRqst', ['$http', 'serializeObj', function 
         // Получить список конференций
         // --------------
         getConferences: function (obj) {
-            return send('GetConferences', obj);
+            return get('GetConferences', obj);
         },
         // Создать конференцию
         // ---------------
         createConference: function(obj) {
             return send('CreateConference', obj);
+        },
+        // Редактировать конференцию
+        // ---------------
+        editConference: function (obj) {
+            return send('EditConference', obj);
         },
         // Изменить статус конференции
         // ---------------

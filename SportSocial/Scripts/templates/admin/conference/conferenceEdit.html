@@ -1,0 +1,28 @@
+﻿<div class="cp-conference">
+    <div class="cp-block">
+        <h2>Редактирование конференции</h2>
+        <div class="container-fluid">
+            <div ng-include
+                 ng-show="!msg.success && !er.id && ! er.server"
+                 ng-cloak
+                 src="'/Scripts/templates/admin/conference/partials/conferenceEditForm.html'"></div>
+            <div ng-cloak ng-show="ld.conference">Идет загрузка...</div>
+            <div ng-show="er.server"
+                 class="alert alert-danger">
+                Не удалось зарузить выбранную конференцию. Сервер не доступен
+            </div>
+            <div ng-show="!er.server && er.id"
+                 class="alert alert-warning">
+                Выбранная конференция не найдена
+            </div>
+            <div class="alert alert-success"
+                 ng-show="msg.success">
+                Конференция отредактирована
+                <a href="#/conference/list"
+                   class="btn btn-primary">
+                    Вернуться к списку конференций
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

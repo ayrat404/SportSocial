@@ -1,0 +1,18 @@
+﻿<div class="cp-conference">
+    <div class="cp-block">
+        <h2>Новая конференция</h2>
+        <div class="container-fluid">
+            <div ng-include 
+                 ng-show="!msg.success"
+                 src="'/Scripts/templates/admin/conference/partials/conferenceEditForm.html'"></div>
+            <div class="bg-success"
+                 ng-show="msg.success">
+                Конференция успешно создана
+                <button ng-click="msg.created=false"
+                        class="btn btn-primary">
+                    Создать ещё
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

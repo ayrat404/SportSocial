@@ -27,7 +27,8 @@
     </div>
     <div class="cp-block">
         <div class="cp-articles__content">
-            <table class="table">
+            <table class="table"
+                   ng-show="!er.server">
                 <thead>
                     <tr>
                         <td>Название</td>
@@ -65,8 +66,12 @@
                     </tr>
                 </tbody>
             </table>
-            <div ng-if="isLoading">Идет загрузка</div>
-            <div ng-if="!model.articles.length" class="alert alert-warning">
+            <div ng-cloak ng-show="ld.articles">Идет загрузка...</div>
+            <div ng-show="er.server"
+                 class="alert alert-danger">
+                Не удалось зарузить статьи. Сервер не доступен
+            </div>
+            <div ng-show="!model.articles.length && !er.server && !ld.articles" class="alert alert-warning">
                 Нет статей
             </div>
         </div>
