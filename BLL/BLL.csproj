@@ -110,8 +110,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\Conference\IConferenceService.cs" />
+    <Compile Include="Admin\Conference\Impls\ConferenceService.cs" />
+    <Compile Include="Admin\Conference\ViewModels\ConferencesList.cs" />
+    <Compile Include="Admin\Conference\ViewModels\EditConfModel.cs" />
+    <Compile Include="Admin\Moderation\IModerationService.cs" />
+    <Compile Include="Admin\Moderation\ViewModels\CreateConfModel.cs" />
     <Compile Include="Blog\Impls\BlogService.cs" />
     <Compile Include="Blog\IBlogService.cs" />
+    <Compile Include="Blog\ViewModels\PostForAdminViewModel.cs" />
     <Compile Include="Blog\ViewModels\PostModel.cs" />
     <Compile Include="Common\Enums\LangType.cs" />
     <Compile Include="Common\Helpers\CookieHelper.cs" />
@@ -143,6 +150,7 @@
     <Compile Include="Storage\Impls\FileService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Admin\Moderation\Impls\" />
     <Folder Include="Common\Services\" />
     <Folder Include="Payment\Enums\" />
     <Folder Include="Storage\ViewModels\" />

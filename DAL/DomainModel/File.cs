@@ -1,4 +1,5 @@
 ﻿using System;
+using DAL.DomainModel.Base;
 
 namespace DAL.DomainModel
 {

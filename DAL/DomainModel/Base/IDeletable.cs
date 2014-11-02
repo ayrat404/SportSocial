@@ -1,4 +1,4 @@
-﻿namespace DAL.DomainModel
+﻿namespace DAL.DomainModel.Base
 {
     public interface IDeletable
     {

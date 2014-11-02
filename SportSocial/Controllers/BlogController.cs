@@ -1,8 +1,6 @@
-﻿using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using BLL.Blog;
 using BLL.Blog.ViewModels;
-using BLL.Common.Objects;
 using SportSocial.Controllers.Base;
 
 namespace SportSocial.Controllers
@@ -26,19 +24,18 @@ namespace SportSocial.Controllers
         [HttpGet]
         public ActionResult New()
         {
-            var rubrics = _blogService.GetRubrics();
-            var blogModel = new PostModel()
+            var blogModel = new CreatePostModel()
             {
-                Rubrics = rubrics,
+                Rubrics = _blogService.GetRubrics(),
             };
             return View(blogModel);
         }
 
         [HttpPost]
-        public ActionResult New(PostModel postModel)
+        public ActionResult New(CreatePostModel createPostModel)
         {
             if (ModelState.IsValid)
-                return Json(_blogService.CreatePost(postModel));
+                return Json(_blogService.CreatePost(createPostModel));
             return Json(new {success = false});
         }
 	}

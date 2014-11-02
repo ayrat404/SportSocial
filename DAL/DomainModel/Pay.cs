@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using DAL.DomainModel.Base;
 using DAL.DomainModel.EnumProperties;
 
 namespace DAL.DomainModel

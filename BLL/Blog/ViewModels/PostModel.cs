@@ -5,7 +5,7 @@ using DAL.DomainModel;
 
 namespace BLL.Blog.ViewModels
 {
-    public class PostModel
+    public class CreatePostModel
     {
         [Required]
         public string Title { get; set; }
