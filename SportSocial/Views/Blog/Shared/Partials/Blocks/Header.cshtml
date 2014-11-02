@@ -15,6 +15,23 @@
                     <a href="#" class="nav__list__link">Соц.сеть</a>
                 </li>
             </ul>
+            <div class="nav__user">
+                <div ng-click="nav.user.isOpen=!nav.user.isOpen"
+                     click-outside="fn.closeHeaderMenu();"
+                     class="nav__user__link">
+                    <img src="~/Content/images/default-avatar.png" class="nav__user__avatar" />
+                    <div class="nav__user__name">Контантинов Павел</div>
+                </div>
+                <div ng-show="nav.user.isOpen==true"
+                     ng-cloak
+                     class="nav__user__menu-wrap">
+                    <div class="nav__user__menu">
+                        <a href="#">Панель управления</a>
+                        <a href="#">Настройки</a>
+                        <a href="#">Выход</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
