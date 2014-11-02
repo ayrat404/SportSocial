@@ -1,7 +1,8 @@
 'use strict';
 
-angular.module('admin').controller('ConferenceListCtrl', ['$scope', 'utilsSrvc', 'adminRqst',
-function ($scope, utilsSrvc, adminRqst) {
+angular.module('admin').controller('ConferenceListCtrl', ['$scope', 'utilsSrvc', 'adminRqst', '$routeParams',
+function ($scope, utilsSrvc, adminRqst, $routeParams) {
+    $scope.param = $routeParams.param;
     // статусы конференций
     // 0 - создана (не началась, не закончилась)
     // 1 - идет (началась, но не закончилась)
@@ -15,18 +16,30 @@ function ($scope, utilsSrvc, adminRqst) {
         'Remove': 3
     };
 
-    // данные
-    // --------------
-    $scope.model = {
-        conferences:
-        [
-            { id: 1, title: 'OPOPOP1', status: 0, url: '#', date: '20.11.2014' },
-            { id: 2, title: 'OPOPOP2', status: 1, url: '#', date: '20.11.2014' },
-            { id: 3, title: 'OPOPOP3', status: 2, url: '#', date: '20.11.2014' },
-            { id: 4, title: 'OPOPOP4', status: 0, url: '#', date: '20.11.2014' },
-            { id: 5, title: 'OPOPOP5', status: 1, url: '#', date: '20.11.2014' }
-        ]
+    // ошибки
+    // ---------------
+    $scope.er = {
+        server: false   // сервер недоступен
     }
+
+    // лоадеры
+    // ---------------
+    $scope.ld = {
+        conferences: false,  // loader загрузки списка конференций
+    }
+
+    // фейковые данные
+    // --------------
+    //$scope.model = {
+    //    conferences:
+    //    [
+    //        { id: 1, title: 'OPOPOP1', status: 0, url: '#', date: '20.11.2014' },
+    //        { id: 2, title: 'OPOPOP2', status: 1, url: '#', date: '20.11.2014' },
+    //        { id: 3, title: 'OPOPOP3', status: 2, url: '#', date: '20.11.2014' },
+    //        { id: 4, title: 'OPOPOP4', status: 0, url: '#', date: '20.11.2014' },
+    //        { id: 5, title: 'OPOPOP5', status: 1, url: '#', date: '20.11.2014' }
+    //    ]
+    //}
 
     // запрос списка конференций
     // ---------------
@@ -34,13 +47,14 @@ function ($scope, utilsSrvc, adminRqst) {
         filter = filter || {};
         $scope.isLoading = true;
         adminRqst.getConferences(utilsSrvc.token.add(filter))
-            .then(function (res) {
+            .then(function(res) {
                 if (res.data.success) {
                     $scope.model.conferences.push(res.data.conferences);
-                    $scope.isLoading = false;
                 }
-            }, function () {
-
+            }, function() {
+                $scope.er.server = true;
+            }).finally(function() {
+                $scope.isLoading = false;
             });
     }
 

@@ -1,5 +1,5 @@
 var app = angular.module('admin', ['shared', 'ngRoute']);
-  
+
 // SPA admin
 // ---------------
 app.config(function ($routeProvider) {
@@ -7,20 +7,26 @@ app.config(function ($routeProvider) {
         // модерация статей
         // ---------------
         .when('/', {
-            templateUrl: '/Scripts/templates/admin/articles.html',
+            templateUrl: '/Scripts/templates/admin/articles/articles.html',
             controller: 'ArticlesCtrl'
         })
         // список всех конференций
         // ---------------
-        .when('/conference/', {
-            templateUrl: '/Scripts/templates/admin/conferenceList.html',
+        .when('/conference/list', {
+            templateUrl: '/Scripts/templates/admin/conference/conferenceList.html',
             controller: 'ConferenceListCtrl'
         })
         // создание новой конференции
         // ---------------
         .when('/conference/new', {
-            templateUrl: '/Scripts/templates/admin/conferenceNew.html',
+            templateUrl: '/Scripts/templates/admin/conference/conferenceNew.html',
             controller: 'ConferenceNewCtrl'
+        })
+        // редактирование конференции
+        // ---------------
+        .when('/conference/item/:id', {
+            templateUrl: '/Scripts/templates/admin/conference/conferenceEdit.html',
+            controller: 'ConferenceEditCtrl'
         });
 });
 

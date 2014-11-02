@@ -200,6 +200,7 @@
     <Content Include="App_Data\SportStore_log.ldf">
       <DependentUpon>SportStore.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\fonts\awesome\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\ProximaNova\proximanova-lightitpn.svg" />
     <Content Include="Content\fonts\ProximaNova\proximanova-lightpn.svg" />
     <Content Include="Content\fonts\ProximaNova\proximanova-xboldpn.svg" />
@@ -288,11 +289,17 @@
     <Content Include="Content\styles\components\blog\header - Copy.min.css">
       <DependentUpon>header - Copy.css</DependentUpon>
     </Content>
+    <Content Include="Content\styles\components\common\header - Copy - Copy %282%29 - Copy - Copy - Copy - Copy.css">
+      <DependentUpon>wysiwyg.less</DependentUpon>
+    </Content>
     <Content Include="Content\styles\components\common\header - Copy - Copy %282%29 - Copy - Copy - Copy.css">
       <DependentUpon>buttons.less</DependentUpon>
     </Content>
     <Content Include="Content\styles\components\common\header - Copy - Copy %282%29 - Copy - Copy.css">
       <DependentUpon>form.less</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\components\common\header - Copy.min - Copy %282%29 - Copy - Copy - Copy - Copy.css">
+      <DependentUpon>header - Copy - Copy %282%29 - Copy - Copy - Copy - Copy.css</DependentUpon>
     </Content>
     <Content Include="Content\styles\components\common\header - Copy.min - Copy %282%29 - Copy - Copy - Copy.css">
       <DependentUpon>header - Copy - Copy %282%29 - Copy - Copy - Copy.css</DependentUpon>
@@ -300,6 +307,7 @@
     <Content Include="Content\styles\components\common\header - Copy.min - Copy %282%29 - Copy - Copy.css">
       <DependentUpon>header - Copy - Copy %282%29 - Copy - Copy.css</DependentUpon>
     </Content>
+    <Content Include="Content\styles\other\font-awesome.min.css" />
     <Content Include="Content\styles\style.css">
       <DependentUpon>style.less</DependentUpon>
     </Content>
@@ -322,6 +330,7 @@
     <Content Include="Scripts\app\admin\app.js" />
     <Content Include="Scripts\app\admin\modules\articles\articles.ctrl.js" />
     <Content Include="Scripts\app\admin\modules\conference\conferenceList.ctrl.js" />
+    <Content Include="Scripts\app\admin\modules\conference\conferenceEdit.ctrl.js" />
     <Content Include="Scripts\app\admin\modules\conference\conferenceNew.ctrl.js" />
     <Content Include="Scripts\app\admin\modules\main\main.ctrl.js" />
     <Content Include="Scripts\app\admin\modules\sidebar\sidebar.ctrl.js" />
@@ -343,6 +352,9 @@
     <Content Include="Scripts\app\shared\directives\scrollToPos.drct.js" />
     <Content Include="Scripts\app\shared\services\serializeObj.srvc.js" />
     <Content Include="Scripts\app\shared\services\utils.srvc.js" />
+    <Content Include="Scripts\libs\angucomplete\angucomplete-alt.css" />
+    <Content Include="Scripts\libs\angucomplete\angucomplete-alt.js" />
+    <Content Include="Scripts\libs\angucomplete\angucomplete-alt.min.js" />
     <Content Include="Scripts\libs\angular-file-upload\angular-file-upload.js" />
     <Content Include="Scripts\libs\angular-file-upload\angular-file-upload.min.js" />
     <Content Include="Scripts\libs\angular\angular-animate.js" />
@@ -837,6 +849,14 @@
       <DependentUpon>header - Copy - Copy %283%29 - Copy %282%29.css</DependentUpon>
     </Content>
     <Content Include="Content\styles\view\admin.less" />
+    <Content Include="Content\fonts\awesome\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\awesome\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\awesome\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\awesome\FontAwesome.otf" />
+    <Content Include="Content\styles\components\common\wysiwyg.less" />
+    <Content Include="Content\styles\components\common\header - Copy.css - Copy %282%29 - Copy - Copy - Copy - Copy.map">
+      <DependentUpon>header - Copy - Copy %282%29 - Copy - Copy - Copy - Copy.css</DependentUpon>
+    </Content>
     <None Include="Scripts\libs\jquery\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.min.js" />
@@ -897,9 +917,13 @@
     <Content Include="Scripts\libs\signalR\hub.js" />
     <Content Include="Scripts\libs\signalR\jquery.signalR-2.0.3.js" />
     <Content Include="Scripts\libs\signalR\jquery.signalR-2.0.3.min.js" />
-    <Content Include="Scripts\templates\admin\articles.html" />
-    <Content Include="Scripts\templates\admin\conferenceNew.html" />
-    <Content Include="Scripts\templates\admin\conferenceList.html" />
+    <Content Include="Scripts\libs\text-angular\textAngular-sanitize.min.js" />
+    <Content Include="Scripts\libs\text-angular\textAngular.min.js" />
+    <Content Include="Scripts\templates\admin\articles\articles.html" />
+    <Content Include="Scripts\templates\admin\conference\conferenceEdit.html" />
+    <Content Include="Scripts\templates\admin\conference\conferenceNew.html" />
+    <Content Include="Scripts\templates\admin\conference\conferenceList.html" />
+    <Content Include="Scripts\templates\admin\conference\partials\conferenceEditForm.html" />
     <Content Include="Scripts\templates\blog\article\img-uploader.html" />
     <Content Include="Scripts\templates\blog\conference-counter.html" />
     <Content Include="Web.config">

@@ -1,4 +1,4 @@
-var app = angular.module('blog', ['shared']);
+var app = angular.module('blog', ['shared', 'textAngular']);
    
 
 

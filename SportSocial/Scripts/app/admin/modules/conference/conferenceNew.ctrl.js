@@ -1,39 +1,49 @@
-'use strict';
+п»ї'use strict';
 
 angular.module('admin').controller('ConferenceNewCtrl', ['$scope', 'utilsSrvc', 'adminRqst',
 function ($scope, utilsSrvc, adminRqst) {
-    // сообщения
+    // СЃРѕРѕР±С‰РµРЅРёСЏ
     // ---------------
     $scope.msg = {
-        created: false
+        success: false  // СЃРѕРѕР±С‰РµРЅРёРµ РѕР± СѓСЃРїРµС€РЅРѕР№ РѕРїРµСЂР°С†РёРё
     };
 
-    // ошибки
+    // РЅР°С‡Р°Р»Рѕ РІР°Р»РёРґР°С†РёРё РїРѕР»РµР№
+    // ---------------
+    $scope.vs = {
+        date        :   false,
+        title       :   false,
+        description :   false
+    }
+
+    // РѕС€РёР±РєРё
     // ---------------
     $scope.er = {
-        server: false,  // сервер недоступен
-        create: false   // ошибка при создании
+        server  :   false,  // СЃРµСЂРІРµСЂ РЅРµРґРѕСЃС‚СѓРїРµРЅ
+        success :   false   // РѕС€РёР±РєР° РїСЂРё СЃРѕР·РґР°РЅРёРё
     }
     
-    // создать конференцию
+    // СЃРѕР·РґР°С‚СЊ РєРѕРЅС„РµСЂРµРЅС†РёСЋ
     // ---------------
-    $scope.createConference = function (data, isInvalid) {
+    $scope.sendForm = function (data, isInvalid) {
         if (isInvalid) {
-            $scope.er.create = true;
+            for (var vs in $scope.vs) {
+                $scope.vs[vs] = true;
+            }
             return;
         }
         $scope.er.server = false;
-        $scope.er.create = true;
+        $scope.er.success = true;
         adminRqst.createConference(utilsSrvc.token.add(data))
             .then(function(res) {
                 if (res.data.success) {
-                    $scope.msg.created = true;
+                    $scope.msg.success = true;
                     $scope.model.title = '';
                     $scope.model.description = '';
                     $scope.model.link = '';
                     $scope.model.date = '';
                 } else {
-                    $scope.er.create = true;
+                    $scope.er.success = true;
                 }
             }, function() {
             $scope.er.server = true;
