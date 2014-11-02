@@ -1,9 +1,12 @@
-﻿using BLL.Admin.Conference.ViewModels;
+﻿using System.Collections.Generic;
+using BLL.Admin.Conference.ViewModels;
 
 namespace BLL.Admin.Conference
 {
     public interface IConferenceService
     {
-        ConferencesList GetAll();
+        IEnumerable<ConfModel> GetAll();
+        void Create(CreateConfModel model);
+        void Edit(ConfModel model);
     }
 }

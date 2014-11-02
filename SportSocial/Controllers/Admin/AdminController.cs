@@ -1,4 +1,6 @@
 ﻿using System.Web.Mvc;
+using BLL.Admin.Conference;
+using BLL.Admin.Conference.ViewModels;
 using BLL.Blog;
 using DAL.DomainModel.EnumProperties;
 using SportSocial.Controllers.Base;
@@ -10,10 +12,12 @@ namespace SportSocial.Controllers
     public class AdminController :SportSocialControllerBase
     {
         private readonly IBlogService _blogService;
+        private readonly IConferenceService _conferenceService;
 
-        public AdminController(IBlogService blogService)
+        public AdminController(IBlogService blogService, IConferenceService conferenceService)
         {
             _blogService = blogService;
+            _conferenceService = conferenceService;
         }
 
         [AllowAnonymous]
@@ -34,6 +38,31 @@ namespace SportSocial.Controllers
         public void ChangeArticleStatus(int id, int status)
         {
             _blogService.ChangeStatus(id, status);
+        }
+
+        [HttpGet]
+        public ActionResult GetConferences()
+        {
+            var model = _conferenceService.GetAll();
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult Create(CreateConfModel model)
+        {
+            if (!ModelState.IsValid)
+                return Json(new {success = false});
+            _conferenceService.Create(model);
+            return Json(new {success = true});
+        }
+
+        [HttpPost]
+        public ActionResult Edit(ConfModel model)
+        {
+            if (!ModelState.IsValid)
+                return Json(new {success = false});
+            _conferenceService.Edit(model);
+            return Json(new {success = true});
         }
 	}
 }

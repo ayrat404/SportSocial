@@ -14,7 +14,7 @@ namespace DAL.DomainModel
 
         public string Description { get; set; }
 
-        public string Link { get; set; }
+        public string Url { get; set; }
 
         public DateTime Date { get; set; }
 

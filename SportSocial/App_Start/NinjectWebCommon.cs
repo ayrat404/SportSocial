@@ -1,4 +1,4 @@
-using BLL.Infrastrcture;
+using BLL.Infrastructure;
 using Microsoft.Owin.Security;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(SportSocial.App_Start.NinjectWebCommon), "Start")]

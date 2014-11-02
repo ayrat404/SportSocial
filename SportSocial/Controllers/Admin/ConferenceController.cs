@@ -2,7 +2,6 @@
 using System.Web.Mvc;
 using BLL.Admin.Conference;
 using BLL.Admin.Conference.ViewModels;
-using BLL.Admin.Moderation.ViewModels;
 
 namespace SportSocial.Controllers
 {
@@ -25,36 +24,29 @@ namespace SportSocial.Controllers
             return Json(new {url = "/"}, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpGet]
-        public ActionResult Index()
-        {
-            var model = _conferenceService.GetAll();
-            return View(model);
-        }
+        //[HttpGet]
+        //public ActionResult Index()
+        //{
+        //    var model = _conferenceService.GetAll();
+        //    return View(model);
+        //}
 
-        [HttpGet]
-        public ActionResult Create()
-        {
-            var model = new CreateConfModel();
-            return View(model);
-        }
+        //[HttpPost]
+        //public JsonResult Create(CreateConfModel model)
+        //{
+        //    if (!ModelState.IsValid)
+        //        return Json(new {success = false});
+        //    _conferenceService.Create(model);
+        //    return Json(new {success = true});
+        //}
 
-        [HttpPost]
-        public ActionResult Create(CreateConfModel model)
-        {
-            throw new NotImplementedException();
-        }
-
-        [HttpGet]
-        public ActionResult Edit()
-        {
-            throw new NotImplementedException();
-        }
-
-        [HttpPost]
-        public ActionResult Edit(EditConfModel model)
-        {
-            throw new NotImplementedException();
-        }
+        //[HttpPost]
+        //public ActionResult Edit(ConfModel model)
+        //{
+        //    if (!ModelState.IsValid)
+        //        return Json(new {success = false});
+        //    _conferenceService.Edit(model);
+        //    return Json(new {success = true});
+        //}
 	}
 }
