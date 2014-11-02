@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Text;
 using System.Threading;
 using System.Web.Mvc;
 using BLL.Common.Helpers;
@@ -15,6 +16,18 @@ namespace SportSocial.Controllers.Base
             Thread.CurrentThread.CurrentCulture = currentUserCulture;
             Thread.CurrentThread.CurrentUICulture = currentUserCulture;
             base.OnActionExecuting(filterContext);
+        }
+
+        protected override JsonResult Json(object data, string contentType, 
+            Encoding contentEncoding, JsonRequestBehavior behavior)
+        {
+            return new JsonNetResult
+            {
+                Data = data,
+                ContentType = contentType,
+                ContentEncoding = contentEncoding,
+                JsonRequestBehavior = behavior
+            };
         }
     }
 }

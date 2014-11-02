@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using DAL.DomainModel;
+using DAL.DomainModel.Base;
 using DAL.Repository.Interfaces;
 
 namespace DAL.Repository
@@ -27,11 +29,22 @@ namespace DAL.Repository
 
         public void Add<TEntity>(TEntity entity) where TEntity: class
         {
+            if (entity is IAuditable)
+            {
+                _context.Entry(entity).Property("Created").CurrentValue = DateTime.Now;
+                _context.Entry(entity).Property("Modified").CurrentValue = DateTime.Now;
+            }
+            if (entity is IDeletable)
+            {
+                _context.Entry(entity).Property("Deleted").CurrentValue = false;
+            }
             _context.Set<TEntity>().Add(entity);
         }
 
         public void Update<TEntity>(TEntity entity) where TEntity : class
         {
+            if (entity is IAuditable)
+                _context.Entry(entity).Property("Modified").CurrentValue = DateTime.Now;
             _context.Set<TEntity>().Attach(entity);
             _context.Entry(entity).State = EntityState.Modified;
         }

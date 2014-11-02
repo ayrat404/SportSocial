@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using DAL.DomainModel;
+using DAL.DomainModel.Base;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Ninject.Activation;
 
@@ -23,6 +24,7 @@ namespace DAL
         public DbSet<Pay> Pays { get; set; }
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<BlogImage> BlogImages { get; set; }
+        public DbSet<Conference> Conferences { get; set; }
 
         static EntityDbContext()
         {

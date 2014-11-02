@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using BLL.Infrastrcture.IdentityConfig;
+using BLL.Infrastructure.IdentityConfig;
 using DAL;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin;

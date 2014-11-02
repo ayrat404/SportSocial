@@ -13,7 +13,7 @@ namespace SportSocial.Controllers
     {
         private const string jsonContentType = "application/json";
 
-        private ILoginService _loginService;
+        private readonly ILoginService _loginService;
 
         public LoginController(ILoginService loginService)
         {

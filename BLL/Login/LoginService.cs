@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 using BLL.Common.Objects;
-using BLL.Infrastrcture.IdentityConfig;
+using BLL.Infrastructure.IdentityConfig;
 using BLL.Login.ViewModels;
 using BLL.Sms;
 using DAL.DomainModel;
