@@ -8,7 +8,7 @@ using WebGrease.Css.Extensions;
 
 namespace SportSocial.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class AdminController :SportSocialControllerBase
     {
         private readonly IBlogService _blogService;
@@ -48,7 +48,7 @@ namespace SportSocial.Controllers
         }
 
         [HttpPost]
-        public JsonResult Create(CreateConfModel model)
+        public JsonResult CreateConference(CreateConfModel model)
         {
             if (!ModelState.IsValid)
                 return Json(new {success = false});

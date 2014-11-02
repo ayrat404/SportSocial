@@ -32,6 +32,7 @@ namespace SportSocial.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult New(CreatePostModel createPostModel)
         {
             if (ModelState.IsValid)

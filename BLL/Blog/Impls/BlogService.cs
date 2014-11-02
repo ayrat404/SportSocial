@@ -30,7 +30,7 @@ namespace BLL.Blog.Impls
             var post = Mapper.Map<CreatePostModel, Post>(createPostModel);
             post.Status = BlogPostStatus.New;
             post.RubricId = createPostModel.Rubric;
-            post.UserId = HttpContext.Current.User.Identity.GetUserId();
+            //post.UserId = HttpContext.Current.User.Identity.GetUserId();
             post.Lang = Thread.CurrentThread.CurrentCulture.Name;
             //if (createPostModel.Images != null)
             //{
