@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web;
+using System.Web.Mvc;
 using DAL.DomainModel;
 
 namespace BLL.Blog.ViewModels
@@ -11,10 +12,11 @@ namespace BLL.Blog.ViewModels
         public string Title { get; set; }
 
         [Required]
+        [AllowHtml]
         public string Text { get; set; }
 
-        [Required]
-        public Images[] Images { get; set; }
+        ////[Required]
+        //public Images[] Images { get; set; }
 
         [Required]
         public int Rubric { get; set; }

@@ -133,6 +133,10 @@
     <Compile Include="Migrations\201411021359163_ConferencesRenameLinkFieldToUrl.Designer.cs">
       <DependentUpon>201411021359163_ConferencesRenameLinkFieldToUrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411021621536_PostAddFieldDeleted.cs" />
+    <Compile Include="Migrations\201411021621536_PostAddFieldDeleted.Designer.cs">
+      <DependentUpon>201411021621536_PostAddFieldDeleted.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AccountRepository.cs" />
@@ -175,6 +179,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411021359163_ConferencesRenameLinkFieldToUrl.resx">
       <DependentUpon>201411021359163_ConferencesRenameLinkFieldToUrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411021621536_PostAddFieldDeleted.resx">
+      <DependentUpon>201411021621536_PostAddFieldDeleted.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

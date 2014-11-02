@@ -17,7 +17,7 @@ namespace BLL.Infrastructure
             kernel.Bind<EntityDbContext>().ToMethod(EntityDbContext.Create);
             kernel.Bind(x => x
                 .FromThisAssembly()
-                .Select(t => t.Name.EndsWith("Service"))// && !t.Name.StartsWith("Sms"))
+                .Select(t => t.Name.EndsWith("Service") && !t.Name.Contains("Sms"))
                 .BindDefaultInterfaces());
 
             kernel.Bind(x => x

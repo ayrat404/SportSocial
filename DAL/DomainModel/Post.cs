@@ -5,7 +5,7 @@ using DAL.DomainModel.EnumProperties;
 
 namespace DAL.DomainModel
 {
-    public class Post: IEntity, IAuditable, ICultrureSpecific
+    public class Post: IEntity, IAuditable, ICultrureSpecific, IDeletable
     {
         public int Id { get; set; }
 
@@ -30,5 +30,6 @@ namespace DAL.DomainModel
 
         public Rubric Rubric { get; set; }
         public virtual AppUser User { get; set; }
+        public bool Deleted { get; set; }
     }
 }

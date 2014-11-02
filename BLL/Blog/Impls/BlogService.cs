@@ -26,13 +26,16 @@ namespace BLL.Blog.Impls
 
         public ServiceResult CreatePost(CreatePostModel createPostModel)
         {
-            Mapper.CreateMap<CreatePostModel, Post>();
+            Mapper.CreateMap<CreatePostModel, Post>().ForMember(o => o.Rubric, opt => opt.Ignore());
             var post = Mapper.Map<CreatePostModel, Post>(createPostModel);
             post.Status = BlogPostStatus.New;
             post.RubricId = createPostModel.Rubric;
             post.UserId = HttpContext.Current.User.Identity.GetUserId();
             post.Lang = Thread.CurrentThread.CurrentCulture.Name;
-            post.ImageUrl = createPostModel.Images[0].Url;//TODO проверять на наличие изображения в базе
+            //if (createPostModel.Images != null)
+            //{
+            //    post.ImageUrl = createPostModel.Images[0].Url;//TODO проверять на наличие изображения в базе
+            //}
             _repository.Add(post);
             _repository.SaveChanges();
             return new ServiceResult() {Success = true};
