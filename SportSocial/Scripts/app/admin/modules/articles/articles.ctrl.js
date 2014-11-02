@@ -8,9 +8,9 @@ function ($scope, utilsSrvc, adminRqst) {
     // 2 - отклонена
     
     var articleStatuses = {
-        'Moderate': 0,
-        'Publish': 1,
-        'Reject': 2
+        'Moderate'  :   0,
+        'Publish'   :   1,
+        'Reject'    :   2
     };
 
     // ошибки
