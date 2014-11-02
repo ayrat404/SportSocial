@@ -14,7 +14,7 @@ namespace BLL.Blog.ViewModels
         public string Text { get; set; }
 
         [Required]
-        public Images Images { get; set; }
+        public Images[] Images { get; set; }
 
         [Required]
         public int Rubric { get; set; }

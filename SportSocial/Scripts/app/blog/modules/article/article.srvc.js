@@ -4,7 +4,7 @@ angular.module('blog').factory('articleRqst', ['$http', 'serializeObj', function
     var send = function (url, obj) {
         return $http({
             method  :   'POST',
-            url     :   '/Article/' + url,
+            url     :   '/Blog/' + url,
             data    :   serializeObj(obj),
             headers :   { 'Content-Type': 'application/x-www-form-urlencoded' }
         });
@@ -13,7 +13,7 @@ angular.module('blog').factory('articleRqst', ['$http', 'serializeObj', function
         // Создание статьи
         // --------------
         createArticle: function(obj) {
-            return send('Create', obj);
+            return send('New', obj);
         }
     };
 }]);
