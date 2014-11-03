@@ -7,15 +7,19 @@ angular.module('blog').controller('AuthorizationCtrl',
      'utilsSrvc',
 function ($scope, $interval, authorizationRqst, utilsSrvc) {
     $scope.loading      =   false;  // показать/скрыть лоадер
-    $scope.serverError = {          // ошибка с сервера
-        isShow  :   false,
-        message :   ''
+    $scope.er = {                   // ошибки
+        server: false,              // сервер не доступен
+        custom: {                   // ошибка с сервера с сообщением
+            show: false,
+            msg: ''
+        }
     }
 
     // Отправка данных, запрос кода подтверждения
     // ---------------------
     $scope.authorization = function (data) {
-        $scope.serverError.isShow = false;
+        $scope.er.custom.show = false;
+        $scope.er.server = false;
         $scope.loading = true;
         $scope.formDisabled = true;
         data = angular.extend(data, utilsSrvc.token.get().obj);
@@ -24,22 +28,16 @@ function ($scope, $interval, authorizationRqst, utilsSrvc) {
                 if (res.data.success) {
                     $window.location.href = res.data.redirect;
                 } else {
-                    showError(res.data.error);
+                    $scope.er.custom.show = true;
+                    $scope.er.custom.msg = res.data.error;
                 }
                 $scope.loading = true;
                 $scope.formDisabled = true;
             }, function () {
-                showError({ text: 'Что то пошло не так, повторите позже' });
+                $scope.er.server = true;
                 $scope.loading = true;
                 $scope.formDisabled = true;
             });
-    }
-
-    // Валидация с сервера
-    // ---------------------
-    function showError(error) {
-        $scope.serverError.isShow = true;
-        $scope.serverError.message = error.text;
     }
 
 }]);
