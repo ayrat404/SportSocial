@@ -8,7 +8,7 @@ namespace BLL.Admin.Conference.ViewModels
         [Required]
         public string Title { get; set; }
 
-        [Required]
+        //[Required]
         public string Url { get; set; }
 
         [Required]

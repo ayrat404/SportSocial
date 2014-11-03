@@ -7,11 +7,13 @@ namespace BLL.Infrastructure.Map
     {
         public static TDest MapTo<TDest>(this object source)
         {
+            Mapper.CreateMap(source.GetType(), typeof(TDest));
             return (TDest)Mapper.Map(source, source.GetType(), typeof(TDest));
         }
 
         public static TDest MapTo<TDest, TSource>(this TSource source, TDest destination)
         {
+            Mapper.CreateMap(source.GetType(), typeof(TDest));
             return Mapper.Map(source, destination);
         }
 
