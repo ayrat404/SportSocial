@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using DAL.DomainModel.EnumProperties;
+using Newtonsoft.Json;
 
 namespace BLL.Admin.Conference.ViewModels
 {

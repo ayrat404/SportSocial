@@ -41,10 +41,12 @@ namespace SportSocial.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetConferences()
+        public ActionResult GetConferences(int? id = null)
         {
-            var model = _conferenceService.GetAll();
-            return Json(model, JsonRequestBehavior.AllowGet);
+            if (id.HasValue)
+                return Json(_conferenceService.GetConf(id.Value), JsonRequestBehavior.AllowGet);
+            else
+                return Json(_conferenceService.GetAll(), JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -57,7 +59,14 @@ namespace SportSocial.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(ConfModel model)
+        public JsonResult ChangeConferenceStatus(int id, ConfStatus status)
+        {
+            _conferenceService.ChangeStatus(id, status);
+            return Json(new {Success = true});
+        }
+
+        [HttpPost]
+        public ActionResult EditConference(ConfModel model)
         {
             if (!ModelState.IsValid)
                 return Json(new {success = false});

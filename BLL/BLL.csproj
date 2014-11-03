@@ -112,6 +112,7 @@
   <ItemGroup>
     <Compile Include="Admin\Conference\IConferenceService.cs" />
     <Compile Include="Admin\Conference\Impls\ConferenceService.cs" />
+    <Compile Include="Admin\Conference\MapProfiles\ConferenceProfile.cs" />
     <Compile Include="Admin\Moderation\IModerationService.cs" />
     <Compile Include="Admin\Conference\ViewModels\CreateConfModel.cs" />
     <Compile Include="Admin\Conference\ViewModels\EditConfModel.cs" />
@@ -131,8 +132,9 @@
     <Compile Include="Infrastructure\Map\CreateMaps.cs" />
     <Compile Include="Infrastructure\Map\MapExtensions.cs" />
     <Compile Include="Infrastructure\NinjectServiceRegistrator.cs" />
+    <Compile Include="Infrastructure\SomeClass.cs" />
     <Compile Include="Login\ILoginService.cs" />
-    <Compile Include="Login\LoginService.cs" />
+    <Compile Include="Login\Impls\LoginService.cs" />
     <Compile Include="Login\ViewModels\ConfirmSmsCode.cs" />
     <Compile Include="Login\ViewModels\RegistratioinModel.cs" />
     <Compile Include="Login\ViewModels\SignInModel.cs" />

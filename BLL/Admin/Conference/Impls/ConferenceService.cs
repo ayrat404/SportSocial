@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using BLL.Admin.Conference.ViewModels;
 using BLL.Infrastructure.Map;
+using DAL.DomainModel.EnumProperties;
 using DAL.Repository.Interfaces;
 
 namespace BLL.Admin.Conference.Impls
@@ -36,6 +37,25 @@ namespace BLL.Admin.Conference.Impls
                 conf = model.MapTo(conf);
                 _repository.SaveChanges();
             }
+        }
+
+        public void ChangeStatus(int id, ConfStatus status)
+        {
+            var conf = _repository.Find<DAL.DomainModel.Conference>(id);
+            if (conf != null)
+            {
+                conf.Status = status;
+                _repository.Update(conf);
+                _repository.SaveChanges();
+            }
+        }
+
+        public ConfModel GetConf(int id)
+        {
+            var conf = _repository.Find<DAL.DomainModel.Conference>(id);
+            if (conf != null)
+                return conf.MapTo<ConfModel>();
+            return null;
         }
     }
 }
