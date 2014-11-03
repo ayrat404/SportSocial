@@ -1,4 +1,4 @@
-'use strict';
+п»ї'use strict';
 
 angular.module('blog').controller('RegistrationCtrl',
     ['$scope',
@@ -6,18 +6,21 @@ angular.module('blog').controller('RegistrationCtrl',
      'registrationRqst',
      'utilsSrvc',
 function ($scope, $interval, registrationRqst, utilsSrvc) {
-    $scope.smsBlockShow =   false;  // показать/скрыть смс блок
-    $scope.loading      =   false;  // показать/скрыть лоадер
-    $scope.disableInp   =   false;  // отключить поля ввода
-    $scope.disabledCode =   false;  // отключить поле ввода смс
-    $scope.timerForSms  =   0;      // таймер для смс
-    $scope.serverError = {          // ошибка с сервера
-        isShow  :   false,
-        message :   ''
+    $scope.smsBlockShow =   false;  // РїРѕРєР°Р·Р°С‚СЊ/СЃРєСЂС‹С‚СЊ СЃРјСЃ Р±Р»РѕРє
+    $scope.loading      =   false;  // РїРѕРєР°Р·Р°С‚СЊ/СЃРєСЂС‹С‚СЊ Р»РѕР°РґРµСЂ
+    $scope.disableInp   =   false;  // РѕС‚РєР»СЋС‡РёС‚СЊ РїРѕР»СЏ РІРІРѕРґР°
+    $scope.disabledCode =   false;  // РѕС‚РєР»СЋС‡РёС‚СЊ РїРѕР»Рµ РІРІРѕРґР° СЃРјСЃ
+    $scope.timerForSms  =   0;      // С‚Р°Р№РјРµСЂ РґР»СЏ СЃРјСЃ
+    $scope.er = {                   // РѕС€РёР±РєРё
+        server  :   false,          // СЃРµСЂРІРµСЂ РЅРµ РґРѕСЃС‚СѓРїРµРЅ
+        custom  :   {               // РѕС€РёР±РєР° СЃ СЃРµСЂРІРµСЂР° СЃ СЃРѕРѕР±С‰РµРЅРёРµРј
+            show: false,
+            msg: ''
+        }
     }
 
 
-    // Отправка данных, запрос кода подтверждения
+    // РћС‚РїСЂР°РІРєР° РґР°РЅРЅС‹С…, Р·Р°РїСЂРѕСЃ РєРѕРґР° РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ
     // ---------------------
     $scope.requestCode = function (data) {
         toggleForm(true);
@@ -29,16 +32,17 @@ function ($scope, $interval, registrationRqst, utilsSrvc) {
                     $scope.timerForSms = res.data.canResendSms;
                     countdownTimer();
                 } else {
-                    showError(res.data.errorMessage);
+                    $scope.er.custom.show = true;
+                    $scope.er.custom.msg = res.data.error;
                 }
                 toggleForm(false);
             }, function() {
-                showError({ text: 'Что то пошло не так, попробуйте позже' });
+                $scope.er.server = true;
                 toggleForm(false);
             });
     }
 
-    // Отправка кода подтверждения, окончательная регистрация
+    // РћС‚РїСЂР°РІРєР° РєРѕРґР° РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ, РѕРєРѕРЅС‡Р°С‚РµР»СЊРЅР°СЏ СЂРµРіРёСЃС‚СЂР°С†РёСЏ
     // ---------------------
     $scope.registration = function (data) {
         toggleForm(true);
@@ -49,23 +53,25 @@ function ($scope, $interval, registrationRqst, utilsSrvc) {
                 if (res.data.success) {
                     $window.location.href = res.data.redirect;
                 } else {
-                    showError(res.data.errorMessage);
+                    $scope.er.custom.show = true;
+                    $scope.er.custom.msg = res.data.error;
                 }
                 toggleForm(false);
             }, function () {
-                showError({ text: 'Что то пошло не так, повторите позже' });
+                $scope.er.server = true;
                 toggleForm(false);
             });
     }
 
-    // Показать/скрыть лоадер, убрать ошибки
+    // РџРѕРєР°Р·Р°С‚СЊ/СЃРєСЂС‹С‚СЊ Р»РѕР°РґРµСЂ, СѓР±СЂР°С‚СЊ РѕС€РёР±РєРё
     // ---------------------
     function toggleForm(isSend) {
         if (isSend) {
             $scope.disableInp = true;
             $scope.disabledCode = true;
             $scope.loader = true;
-            $scope.serverError.isShow = false;
+            $scope.er.server = false;
+            $scope.er.custom.show = false;
         } else {
             $scope.disableInp = false;
             $scope.disabledCode = false;
@@ -73,7 +79,7 @@ function ($scope, $interval, registrationRqst, utilsSrvc) {
         }
     }
 
-    // Таймер повторной отправки смс
+    // РўР°Р№РјРµСЂ РїРѕРІС‚РѕСЂРЅРѕР№ РѕС‚РїСЂР°РІРєРё СЃРјСЃ
     // ---------------------
     function countdownTimer() {
         var smsTime = $interval(function () {
@@ -83,13 +89,6 @@ function ($scope, $interval, registrationRqst, utilsSrvc) {
                 $scope.timerForSms = $scope.timerForSms - 1;
             }
         }, 1000);
-    }
-
-    // Валидация с сервера
-    // ---------------------
-    function showError(message) {
-        $scope.serverError.isShow = true;
-        $scope.serverError.message = message;
     }
 
 }]);

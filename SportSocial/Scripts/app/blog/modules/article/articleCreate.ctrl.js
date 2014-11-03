@@ -15,7 +15,6 @@ function ($scope, articleRqst, utilsSrvc) {
     // создание статьи
     // ---------------
     $scope.createArticle = function (article) {
-        debugger;
         articleRqst.createArticle(utilsSrvc.token.add(article))
             .then(function(res) {
                 if (!res.data.success) {
