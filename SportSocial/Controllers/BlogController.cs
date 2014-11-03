@@ -39,5 +39,10 @@ namespace SportSocial.Controllers
                 return Json(_blogService.CreatePost(createPostModel));
             return Json(new {success = false});
         }
+
+        public ActionResult Item()
+        {
+            return View();
+        }
 	}
 }

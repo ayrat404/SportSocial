@@ -5,7 +5,7 @@ angular.module('blog').factory('articleRqst', ['$http', 'serializeObj', function
         return $http({
             method  :   'POST',
             url     :   '/Blog/' + url,
-            data    :   serializeObj(obj),
+            data    :   obj,
             headers :   { 'Content-Type': 'application/x-www-form-urlencoded' }
         });
     };
