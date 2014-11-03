@@ -18,7 +18,7 @@ angular.module('blog').directive('articleImgUploader', ['$timeout', function ($t
             // добавить изображение
             // ---------------
             $scope.addImage = function () {
-                element.find('.js-img-input').trigger('click');
+                $timeout(function () { element.find('.js-img-input').trigger('click'); });
             }
 
             // удалить изображение

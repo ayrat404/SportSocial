@@ -1,6 +1,7 @@
 ﻿'use strict';
 
-//------ скролл к текущему элементу
+// блок отсчета времени до конференции
+// ---------------
 angular.module('blog').directive('confDate',
     ['$interval',
      'conferenceRqst',

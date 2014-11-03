@@ -3,12 +3,11 @@
     Layout = "~/Views/Blog/Shared/Layouts/BlogLayout.cshtml";
 }
 
-<div class="article-new">
+<div class="article">
     <div class="container">
         <div class="row">
             <div class="col-xs-8">
-                <div ng-controller="ArticleCreateCtrl"
-                     class="article-new__form">
+                <div ng-controller="ArticleCreateCtrl">
                     @RenderBody()
                 </div>
             </div>

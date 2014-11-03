@@ -61,11 +61,12 @@
 /* /Articles-list (Blog main) */
 
 
-/* New/edit Article
+/* New/edit/item Article
 -------------------------------------------------- */
-
-.article-new {
-    &__form {
+.article {
+    // страница редактирования статьи
+    &__edit {
+        &__form {
         background: @color-block-bg;
         padding: 20px;
     }
@@ -84,9 +85,39 @@
     &__text {
         height: 300px;
     }
+    }
+    // страница просмотра статьи
+    &__item {
+        background: #fff;
+        &__img-wrap {
+
+        }
+        &__img {
+            width: 100%;
+            max-height: 430px;
+        }
+        &__text {
+            padding: 30px;
+        }
+        &__title {
+            text-transform: uppercase;
+            margin: 0 0 15px 0;
+            font-size: 1.786em;
+            font-weight: bold;
+        }
+        &__desc {
+
+        }
+        &__bottom {
+            padding-top: 20px;
+            margin-top: 20px;
+            border-top: 1px solid @color-gray3;
+            .no-float;
+        }
+    }
 }
 
-/* /New/edit Article */
+/* /New/edit/item Article */
 
 
 /* /Articles

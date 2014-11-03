@@ -238,6 +238,9 @@
     <Content Include="Content\styles\components\blog\header - Copy - Copy %282%29 - Copy - Copy %282%29.css">
       <DependentUpon>conference.less</DependentUpon>
     </Content>
+    <Content Include="Content\styles\components\blog\header - Copy - Copy %282%29 - Copy - Copy - Copy.css">
+      <DependentUpon>comments.less</DependentUpon>
+    </Content>
     <Content Include="Content\styles\components\blog\header - Copy - Copy %282%29 - Copy - Copy.css">
       <DependentUpon>articles.less</DependentUpon>
     </Content>
@@ -264,6 +267,9 @@
     </Content>
     <Content Include="Content\styles\components\blog\header - Copy.min - Copy %282%29 - Copy - Copy %282%29.css">
       <DependentUpon>header - Copy - Copy %282%29 - Copy - Copy %282%29.css</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\components\blog\header - Copy.min - Copy %282%29 - Copy - Copy - Copy.css">
+      <DependentUpon>header - Copy - Copy %282%29 - Copy - Copy - Copy.css</DependentUpon>
     </Content>
     <Content Include="Content\styles\components\blog\header - Copy.min - Copy %282%29 - Copy - Copy.css">
       <DependentUpon>header - Copy - Copy %282%29 - Copy - Copy.css</DependentUpon>
@@ -858,6 +864,10 @@
     <Content Include="Content\styles\components\common\header - Copy.css - Copy %282%29 - Copy - Copy - Copy - Copy.map">
       <DependentUpon>header - Copy - Copy %282%29 - Copy - Copy - Copy - Copy.css</DependentUpon>
     </Content>
+    <Content Include="Content\styles\components\blog\comments.less" />
+    <Content Include="Content\styles\components\blog\header - Copy.css - Copy %282%29 - Copy - Copy - Copy.map">
+      <DependentUpon>header - Copy - Copy %282%29 - Copy - Copy - Copy.css</DependentUpon>
+    </Content>
     <None Include="Scripts\libs\jquery\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.min.js" />
@@ -1003,6 +1013,7 @@
     <Content Include="Views\Admin\Shared\Layouts\AdminLayout.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Shared\Partials\Sidebar.cshtml" />
+    <Content Include="Views\Blog\Item.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
