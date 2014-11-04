@@ -1,9 +1,8 @@
 ﻿using System.Web.Mvc;
 using Knoema.Localization;
 using Knoema.Localization.Mvc;
-using SportSocial.Knoema;
 
-namespace SportSocial
+namespace SportSocial.Knoema
 {
     public class LocalizationConfig
     {

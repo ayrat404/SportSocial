@@ -16,6 +16,12 @@ function ($scope, utilsSrvc, adminRqst, $routeParams) {
         'Remove': 3
     };
 
+    // модели
+    // ---------------
+    $scope.model = {
+        conferences: []     // список конференций
+    }
+
     // ошибки
     // ---------------
     $scope.er = {
@@ -46,10 +52,10 @@ function ($scope, utilsSrvc, adminRqst, $routeParams) {
     $scope.getConferences = function (filter) {
         filter = filter || {};
         $scope.isLoading = true;
-        adminRqst.getConferences(utilsSrvc.token.add(filter))
-            .then(function(res) {
-                if (res.data.success) {
-                    $scope.model.conferences.push(res.data.conferences);
+        adminRqst.getConferences(filter)
+            .then(function (res) {
+                if (res.data.length) {
+                    $scope.model.conferences = res.data;
                 }
             }, function() {
                 $scope.er.server = true;

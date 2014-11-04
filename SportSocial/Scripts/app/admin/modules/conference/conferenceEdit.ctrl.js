@@ -47,10 +47,10 @@ function ($scope, utilsSrvc, adminRqst, $routeParams) {
     // загружаем данные о конференции
     // ---------------
     $scope.ld.conference = true;
-    adminRqst.getConferences(utilsSrvc.token.add({ id: id }))
+    adminRqst.getConferences({ id: id })
         .then(function (res) {
-            if (res.success) {
-                $scope.model = res.data.conference;
+            if (res.data !== '') {
+                $scope.model = res.data;
             } else {
                 $scope.er.id = true;
             }

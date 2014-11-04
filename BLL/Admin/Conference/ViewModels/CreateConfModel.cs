@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 namespace BLL.Admin.Conference.ViewModels
 {
@@ -8,11 +9,11 @@ namespace BLL.Admin.Conference.ViewModels
         [Required]
         public string Title { get; set; }
 
-        [Required]
+        //[Required]
         public string Url { get; set; }
 
         [Required]
-        public DateTime DateTime { get; set; }
+        public DateTime Date { get; set; }
 
         [Required]
         public string Description { get; set; }

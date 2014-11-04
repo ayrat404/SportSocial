@@ -1,5 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
+using BLL.Infrastructure.Map;
+using SportSocial.Knoema;
 
 namespace SportSocial
 {
@@ -10,7 +12,7 @@ namespace SportSocial
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(System.Web.Optimization.BundleTable.Bundles);
-
+            CreateMaps.Register();
             LocalizationConfig.RegisterBinding();
         }
     }
