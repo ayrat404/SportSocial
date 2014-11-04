@@ -4,6 +4,7 @@ using System.IO;
 using System.Web;
 using DAL.DomainModel;
 using DAL.Repository.Interfaces;
+using Knoema.Localization;
 
 namespace BLL.Storage.Impls
 {
@@ -43,23 +44,32 @@ namespace BLL.Storage.Impls
             {
                 Success = true,
             };
-            if (!IsImage(inputStream))
+            if (inputStream == null)
             {
                 result.Success = false;
-                result.ErrorMessage = "File is not image";
+                //result.ErrorMessage = "Empty stream";
                 return result;
             }
-            string fileExtensioin = Path.GetExtension(fileName);
-            var blogImage = new BlogImage()
+            using (inputStream)
             {
-                ContentType = fileExtensioin,
-            };
-            _repository.Add(blogImage);
-            _repository.SaveChanges();
-            var virtualPath = SaveFile(inputStream, blogImage.Id + fileExtensioin);
-            result.url = VirtualPathUtility.ToAbsolute(virtualPath);
-            result.id = blogImage.Id;
-            return result;
+                if (!IsImage(inputStream))
+                {
+                    result.Success = false;
+                    result.ErrorMessage = "Загружаемый файл не является изображением".Resource(this);
+                    return result;
+                }
+                string fileExtensioin = Path.GetExtension(fileName);
+                var blogImage = new BlogImage()
+                {
+                    ContentType = fileExtensioin,
+                };
+                _repository.Add(blogImage);
+                _repository.SaveChanges();
+                var virtualPath = SaveFile(inputStream, blogImage.Id + fileExtensioin);
+                result.Url = VirtualPathUtility.ToAbsolute(virtualPath);
+                result.Id = blogImage.Id;
+                return result;
+            }
         }
 
         private string SaveFile(Stream fileStream, string fileName)
@@ -68,9 +78,10 @@ namespace BLL.Storage.Impls
             {
                 string serverPath = HttpContext.Current.Server.MapPath(VirtualImagePath);
 
+                fileStream.Position = 0;
                 fileStream.CopyTo(stream);
                 var imagePath = Path.Combine(serverPath, fileName);
-                File.WriteAllBytes(Path.Combine(imagePath, fileName), stream.ToArray());
+                File.WriteAllBytes(imagePath, stream.ToArray());
 
                 return Path.Combine(VirtualImagePath, fileName);
             }

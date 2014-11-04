@@ -2,6 +2,8 @@
 using BLL.Admin.Conference.Impls;
 using BLL.Infrastructure.IdentityConfig;
 using BLL.Sms;
+using BLL.Storage;
+using BLL.Storage.Impls;
 using DAL;
 using DAL.DomainModel;
 using DAL.Repository.Interfaces;
@@ -29,6 +31,7 @@ namespace BLL.Infrastructure
 
             kernel.Bind<ISmsService>().To<SmsServiceBase>();
             kernel.Bind<IConferenceService>().To<ConferenceService>();
+            kernel.Bind<IFileService>().To<FileService>();
 
             kernel.Bind<IUserStore<AppUser>>().ToMethod(ctx => new UserStore<AppUser>(ctx.Kernel.Get<EntityDbContext>()));
             kernel.Bind<AppUserManager>().ToMethod(AppUserManager.Create);

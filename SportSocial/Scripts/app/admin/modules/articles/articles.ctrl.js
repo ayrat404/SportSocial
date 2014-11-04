@@ -25,6 +25,10 @@ function ($scope, utilsSrvc, adminRqst) {
         articles: false // loader загрузки статей
     }
 
+    // данные 
+    // ---------------
+    $scope.model = {};
+
     // фейковые данные
     // --------------
     //$scope.model = {
@@ -44,9 +48,9 @@ function ($scope, utilsSrvc, adminRqst) {
         filter = filter || {};
         $scope.isLoading = true;
         adminRqst.getArticles(utilsSrvc.token.add(filter))
-            .then(function(res) {
-                if (res.data.success) {
-                    $scope.model.articles.push(res.data.articles);
+            .then(function (res) {
+                if (res.data.length) {
+                    $scope.model.articles = res.data;
                 }
                 $scope.er.server = false;
             }, function() {

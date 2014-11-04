@@ -26,7 +26,7 @@ namespace SportSocial.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpGet]
         public JsonResult GetArticles(BlogPostStatus? status, string query = null)
         {
             var posts = _blogService.GetPostsForAdmin(status, query);

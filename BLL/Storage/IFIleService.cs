@@ -11,8 +11,8 @@ namespace BLL.Storage
 
     public class ImageUploadResult: ServiceResult
     {
-        public string url { get; set; }
+        public string Url { get; set; }
 
-        public int id { get; set; }
+        public int Id { get; set; }
    }
 }

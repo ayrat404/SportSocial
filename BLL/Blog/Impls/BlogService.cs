@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using BLL.Blog.ViewModels;
 using BLL.Common.Objects;
+using BLL.Infrastructure.Map;
 using DAL.DomainModel;
 using DAL.DomainModel.EnumProperties;
 using DAL.Repository.Interfaces;
@@ -32,10 +33,10 @@ namespace BLL.Blog.Impls
             post.RubricId = createPostModel.Rubric;
             //post.UserId = HttpContext.Current.User.Identity.GetUserId();
             post.Lang = Thread.CurrentThread.CurrentCulture.Name;
-            //if (createPostModel.Images != null)
-            //{
-            //    post.ImageUrl = createPostModel.Images[0].Url;//TODO проверять на наличие изображения в базе
-            //}
+            if (createPostModel.Images != null && _repository.Find<BlogImage>(createPostModel.Images[0].Id) != null)
+            {
+                post.ImageUrl = createPostModel.Images[0].Url;//TODO проверять на наличие изображения в базе
+            }
             _repository.Add(post);
             _repository.SaveChanges();
             return new ServiceResult() {Success = true};
@@ -57,13 +58,7 @@ namespace BLL.Blog.Impls
         {
             return _repository
                 .GetAll<Post>()
-                .Select(p => new PostForAdminViewModel()
-                {
-                    Id = p.Id,
-                    Status = p.Status,
-                    Date = p.Created,
-                    Title = p.Title,
-                });
+                .MapEachTo<PostForAdminViewModel>();
         }
     }
 }

@@ -118,6 +118,7 @@
     <Compile Include="Admin\Conference\ViewModels\EditConfModel.cs" />
     <Compile Include="Blog\Impls\BlogService.cs" />
     <Compile Include="Blog\IBlogService.cs" />
+    <Compile Include="Blog\MapProfiles\PostForAdminProfile.cs" />
     <Compile Include="Blog\ViewModels\PostForAdminViewModel.cs" />
     <Compile Include="Blog\ViewModels\PostModel.cs" />
     <Compile Include="Common\Enums\LangType.cs" />

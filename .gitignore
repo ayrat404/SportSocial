@@ -165,3 +165,4 @@ $RECYCLE.BIN/
 .DS_Store
 /SportSocial/App_Data/SportStore.mdf
 /SportSocial/App_Data/SportStore_log.ldf
+SportSocial/Storage/
