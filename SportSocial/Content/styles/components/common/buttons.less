@@ -2,6 +2,7 @@
 ---------------------------------------------------------------------------------- */
 
 .btn {
+    .transition(all .2s linear);
     &--main {
         outline: none;
         background: @color-blue;
@@ -28,6 +29,21 @@
         &[disabled]{
             background-color: #8d8d8d;
             border: 1px solid #8d8d8d;
+        }
+    }
+    &--transparent {
+        .border-radius(0);
+        text-transform: uppercase;
+        color: #fff;
+        background: transparent;
+        border: 1px solid #fff;
+        &:hover {
+            background: #fff;
+            color: #000;
+        }
+        &:active {
+            background: #e1e1e1;
+            color: #000;
         }
     }
 }

@@ -210,6 +210,9 @@
     <Content Include="Content\images\pattern\black.png" />
     <Content Include="Content\images\promo-bg.jpg" />
     <Content Include="Content\images\temp\example.jpg" />
+    <Content Include="Content\images\temp\photo1.jpg" />
+    <Content Include="Content\images\temp\photo2.jpg" />
+    <Content Include="Content\images\temp\photo3.jpg" />
     <Content Include="Content\images\temp\user.jpg" />
     <Content Include="Content\styles\base\colors.css">
       <DependentUpon>colors.less</DependentUpon>
@@ -250,6 +253,12 @@
     <Content Include="Content\styles\components\blog\header - Copy - Copy %282%29.css">
       <DependentUpon>module.less</DependentUpon>
     </Content>
+    <Content Include="Content\styles\components\blog\header - Copy - Copy %283%29 - Copy %282%29 - Copy - Copy.css">
+      <DependentUpon>video.less</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\components\blog\header - Copy - Copy %283%29 - Copy %282%29 - Copy.css">
+      <DependentUpon>galery.less</DependentUpon>
+    </Content>
     <Content Include="Content\styles\components\blog\header - Copy - Copy %283%29 - Copy %282%29.css">
       <DependentUpon>user.less</DependentUpon>
     </Content>
@@ -279,6 +288,12 @@
     </Content>
     <Content Include="Content\styles\components\blog\header - Copy.min - Copy %282%29.css">
       <DependentUpon>header - Copy - Copy %282%29.css</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\components\blog\header - Copy.min - Copy %283%29 - Copy %282%29 - Copy - Copy.css">
+      <DependentUpon>header - Copy - Copy %283%29 - Copy %282%29 - Copy - Copy.css</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\components\blog\header - Copy.min - Copy %283%29 - Copy %282%29 - Copy.css">
+      <DependentUpon>header - Copy - Copy %283%29 - Copy %282%29 - Copy.css</DependentUpon>
     </Content>
     <Content Include="Content\styles\components\blog\header - Copy.min - Copy %283%29 - Copy %282%29.css">
       <DependentUpon>header - Copy - Copy %283%29 - Copy %282%29.css</DependentUpon>
@@ -342,6 +357,7 @@
     <Content Include="Scripts\app\admin\modules\sidebar\sidebar.ctrl.js" />
     <Content Include="Scripts\app\admin\shared\services\admin.srvc.js" />
     <Content Include="Scripts\app\blog\app.js" />
+    <Content Include="Scripts\app\blog\modules\article\articleComment.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\article\articleImgUploader.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\article\articleCreate.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\article\article.srvc.js" />
@@ -353,6 +369,8 @@
     <Content Include="Scripts\app\blog\modules\registration\registration.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\conference\confDate.drct.js" />
     <Content Include="Scripts\app\blog\modules\article\redactor.drct.js" />
+    <Content Include="Scripts\app\blog\shared\directives\likeDislike.drct.js" />
+    <Content Include="Scripts\app\blog\shared\services\likeDislike.srvc.js" />
     <Content Include="Scripts\app\shared\app.js" />
     <Content Include="Scripts\app\shared\directives\clickOutside.drct.js" />
     <Content Include="Scripts\app\shared\directives\datepicker.drct.js" />
@@ -868,6 +886,14 @@
     <Content Include="Content\styles\components\blog\header - Copy.css - Copy %282%29 - Copy - Copy - Copy.map">
       <DependentUpon>header - Copy - Copy %282%29 - Copy - Copy - Copy.css</DependentUpon>
     </Content>
+    <Content Include="Content\styles\components\blog\galery.less" />
+    <Content Include="Content\styles\components\blog\header - Copy.css - Copy %283%29 - Copy %282%29 - Copy.map">
+      <DependentUpon>header - Copy - Copy %283%29 - Copy %282%29 - Copy.css</DependentUpon>
+    </Content>
+    <Content Include="Content\styles\components\blog\video.less" />
+    <Content Include="Content\styles\components\blog\header - Copy.css - Copy %283%29 - Copy %282%29 - Copy - Copy.map">
+      <DependentUpon>header - Copy - Copy %283%29 - Copy %282%29 - Copy - Copy.css</DependentUpon>
+    </Content>
     <None Include="Scripts\libs\jquery\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.min.js" />
@@ -935,6 +961,7 @@
     <Content Include="Scripts\templates\admin\conference\conferenceNew.html" />
     <Content Include="Scripts\templates\admin\conference\conferenceList.html" />
     <Content Include="Scripts\templates\admin\conference\partials\conferenceEditForm.html" />
+    <Content Include="Scripts\templates\blog\article\like-dislike.html" />
     <Content Include="Scripts\templates\blog\article\img-uploader.html" />
     <Content Include="Scripts\templates\blog\conference-counter.html" />
     <Content Include="Web.config">
@@ -1024,8 +1051,6 @@
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Scripts\app\admin\shared\directives\" />
-    <Folder Include="Scripts\app\blog\shared\directives\" />
-    <Folder Include="Scripts\app\blog\shared\services\" />
     <Folder Include="Scripts\spa\apps\blog\edit\" />
     <Folder Include="Scripts\spa\apps\blog\list\" />
     <Folder Include="Scripts\spa\apps\blog\new\" />
