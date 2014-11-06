@@ -9,6 +9,15 @@ body {
     background-color: #16181a;
 }
 
+a {
+    color: @color-blue;
+    .user-select;
+    &:hover {
+        text-decoration: none;
+        color: @color-gray1;
+    }
+}
+
 .static-layout-app {
     height: 100%;
 }

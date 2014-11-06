@@ -24,11 +24,21 @@
             &__it {
                 padding: 20px 0;
                 border-bottom: 1px solid @color-gray3;
-                .no-float;
+
+                &__inner {
+                    .transition(all .4s linear);
+                    .no-float;
+                }
+
+                &__for {
+                    text-align: right;
+                }
 
                 &__av-wrap {
                     float: left;
-                    width: 80px;
+                    width: 10%;
+                    max-width: 80px;
+                    min-width: 80px;
                 }
 
                 &__av {
@@ -39,6 +49,8 @@
                 &__info {
                     float: left;
                     font-size: 1.143em;
+                    width: 80%;
+                    margin-left: 3%;
                 }
 
                 &__name {
@@ -50,6 +62,15 @@
                 }
 
                 &__text {
+                    cursor: pointer;
+                }
+
+                &__answer {
+                    font-size: .87em;
+                }
+
+                &--light {
+                    background-color: red;
                 }
             }
         }
