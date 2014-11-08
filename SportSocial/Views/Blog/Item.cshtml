@@ -31,33 +31,46 @@
         </div>
     </div>
 </div>
-<div ng-controller="ArticleCommentCtrl"
+@*Комментарии*@
+<div ng-controller="CommentCtrl"
+     ng-init="itemId=666; more=666;"
+     @*startComments=[]*@
      class="mod block">
     <div class="mod__header">
         <div class="mod__header__title">Комментарии</div>
     </div>
     <div class="mod__content comment">
-        <form ng-submit="createComment(com)"
-              class="comment__form">
-            <textarea ng-model="com.text"></textarea>
-            <button type="submit" class="btn">Отправить</button>
-        </form>
+        <div ng-if="more!=0">
+            <span class="link" ng-click="loadAll();">Показать предыдущие {{more}} комментария</span>
+        </div>
         <div class="comment__list">
-            <div class="cl__it">
-                <div class="cl__it__av-wrap">
-                    <img class="cl__it__av" />
+            <div ng-repeat="c in comments" class="cl__it">
+                <div ng-attr-id="{{'comment_' + c.id}}"
+                     class="cl__it__inner">
+                    <a ng-href="/user/{{c.id}}" class="cl__it__av-wrap">
+                        <img ng-src="{{c.avatar}}" class="cl__it__av" alt="{{c.name}} {{c.surname}}" />
+                    </a>
+                    <div class="cl__it__info">
+                        <a ng-href="/user/{{c.id}}" class="cl__it__name">{{c.name}} {{c.surname}}</a>
+                        <div class="cl__it__date">{{c.date}}</div>
+                        <div ng-click="createAnswer(c)"
+                             class="cl__it__text">
+                            {{c.text}}
+                        </div>
+                    </div>
                 </div>
-                <div class="cl__it__info">
-                    <div class="cl__it__name">Username</div>
-                    <div class="cl__it__date">10.08.14</div>
-                    <div class="cl__it__text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    </div>
-                    <div class="text-right">
-                        <span class="link">Ответить</span>
-                    </div>
+                <div ng-if="c.cfor.id != undefined"
+                     class="cl__it__for">
+                    Ответ для <span class="link" ng-click="scrollToFor(c.cfor.id)">{{c.cfor.name}}</span>
                 </div>
             </div>
+            <form ng-submit="createComment(text)"
+                  class="comment__form">
+                <textarea ng-model="text"
+                          ng-autofocus="{{focus}}"
+                          scroll-to-current-pos="{{focus}}"></textarea>
+                <button type="submit" class="btn">Отправить</button>
+            </form>
         </div>
     </div>
 </div>

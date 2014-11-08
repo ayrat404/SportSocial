@@ -6,7 +6,6 @@ angular.module('blog').factory('articleRqst', ['$http', 'serializeObj', function
             method  :   'POST',
             url     :   '/Blog/' + url,
             data    :   obj
-            //headers :   { 'Content-Type': 'application/x-www-form-urlencoded' }
         });
     };
     return {
@@ -14,6 +13,16 @@ angular.module('blog').factory('articleRqst', ['$http', 'serializeObj', function
         // --------------
         createArticle: function(obj) {
             return send('New', obj);
+        },
+        // Создание комментария
+        // ---------------
+        createComment: function(obj) {
+            return send('Comment', obj);
+        },
+        // Загрузка комментариев
+        // ---------------
+        loadComments: function(obj) {
+            return send('LoadComments', obj);
         }
     };
 }]);

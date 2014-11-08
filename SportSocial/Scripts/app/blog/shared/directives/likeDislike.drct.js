@@ -10,8 +10,7 @@ angular
             replace: true,
             templateUrl: '/Scripts/templates/blog/article/like-dislike.html',
             scope: {
-                like        :   '@',    // количество лайков
-                dislike     :   '@',    // количество дислайков
+                count       :   '@',    // суммарное количество лайков/дислайков (like-dislike)
                 type        :   '@',    // тип (статья, комментарий)
                 id          :   '@',    // id сущности
                 isLiked     :   '@',    // уже был поставлен лайк
@@ -19,28 +18,18 @@ angular
             },
             link: function (scope, element, attrs) {
                 var data = {
-                    id: scope.id,
-                    type: scope.type
+                    id      : scope.id,
+                    type    : scope.type
                 };
-
-                // like/dislike
-                // ---------------
-                scope.rating = function(action) {
-                    data.action = action;
-                    changeRating();
-                }
 
                 // отправка запроса
                 // ---------------
-                function changeRating() {
+                scope.changeRating = function (action) {
+                    data.action = action;
                     likeDislikeRqst.send(utilsSrvc.token.add(data))
                         .then(function(res) {
                             if (res.data.success) {
-                                if (data.action === 'like') {
-                                    scope.like = res.data.status ? scope.like - 1 : scope.like + 1;
-                                } else if (data.action === 'dislike') {
-                                    scope.dislike = res.data.status ? scope.dislike - 1 : scope.dislike + 1;
-                                }
+                                scope.count = res.data.count;
                             }
                         });
                 }

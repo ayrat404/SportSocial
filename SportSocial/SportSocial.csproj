@@ -372,9 +372,11 @@
     <Content Include="Scripts\app\blog\shared\directives\likeDislike.drct.js" />
     <Content Include="Scripts\app\blog\shared\services\likeDislike.srvc.js" />
     <Content Include="Scripts\app\shared\app.js" />
+    <Content Include="Scripts\app\shared\directives\autofocus.drct.js" />
     <Content Include="Scripts\app\shared\directives\clickOutside.drct.js" />
     <Content Include="Scripts\app\shared\directives\datepicker.drct.js" />
-    <Content Include="Scripts\app\shared\directives\scrollToPos.drct.js" />
+    <Content Include="Scripts\app\shared\directives\scrollToPos.drct - Copy.js" />
+    <Content Include="Scripts\app\shared\directives\scrollTo.drct.js" />
     <Content Include="Scripts\app\shared\services\serializeObj.srvc.js" />
     <Content Include="Scripts\app\shared\services\utils.srvc.js" />
     <Content Include="Scripts\libs\angucomplete\angucomplete-alt.css" />
