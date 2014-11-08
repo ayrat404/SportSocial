@@ -111,6 +111,7 @@ function ($scope, articleRqst, utilsSrvc, $window, $timeout) {
         //});
         var data = {};
         data.text = text;
+        data.itemId = $scope.itemId;
         if (prop.isAnswer) {    // если создается ответ на комментарий
             data.type = 'answer';
             data.answerId = prop.answerFor.id;

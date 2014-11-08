@@ -18,9 +18,10 @@ angular
             },
             link: function (scope, element, attrs) {
                 var data = {
-                    id      : scope.id,
-                    type    : scope.type
-                };
+                        id: scope.id,
+                        type: scope.type
+                    },
+                    $el = angular.element(element).find('.js-count');
 
                 // отправка запроса
                 // ---------------
@@ -29,9 +30,19 @@ angular
                     likeDislikeRqst.send(utilsSrvc.token.add(data))
                         .then(function(res) {
                             if (res.data.success) {
-                                scope.count = res.data.count;
+                                changeCount(res.data.count);
                             }
                         });
+                }
+
+                // изменение счетчика с анимацией
+                // ---------------
+                function changeCount(count) {
+                    utilsSrvc.animation.add($el, 'fadeOutUp', function() {
+                        scope.count = count;
+                        scope.$digest();
+                        utilsSrvc.animation.add($el, 'fadeInUp');
+                    });
                 }
             }
         }

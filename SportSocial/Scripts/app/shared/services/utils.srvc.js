@@ -22,11 +22,24 @@ angular.module('shared').factory('utilsSrvc', [function () {
         return angular.extend(obj, tokenObj);
     }
 
+    // Работа с анимацей (animate.css)
+    // ---------------
+    function addAnimation($el, x, callback) {
+        $el.addClass(x + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+            $(this).removeClass(x);
+            if (callback != undefined) {
+                callback();
+            }
+        });
+    }
 
     return {
         token: {
             get: getToken,
             add: addToken
+        },
+        animation: {
+            add: addAnimation
         }
     }
 }]);
