@@ -1,6 +1,6 @@
 ﻿using System;
-using DAL.DomainModel.Base;
 using DAL.DomainModel.EnumProperties;
+using DAL.DomainModel.Interfaces;
 
 namespace DAL.DomainModel
 {

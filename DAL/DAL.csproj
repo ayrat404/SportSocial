@@ -78,20 +78,24 @@
   <ItemGroup>
     <Compile Include="DomainModel\AppRole.cs" />
     <Compile Include="DomainModel\AppUser.cs" />
+    <Compile Include="DomainModel\BlogEntities\BlogComment.cs" />
+    <Compile Include="DomainModel\BlogEntities\BlogCommentRating.cs" />
     <Compile Include="DomainModel\Conference.cs" />
-    <Compile Include="DomainModel\Base\IAuditable.cs" />
-    <Compile Include="DomainModel\Base\Auditable.cs" />
-    <Compile Include="DomainModel\Base\Entity.cs" />
-    <Compile Include="DomainModel\Base\IDeletable.cs" />
-    <Compile Include="DomainModel\Base\IEntity.cs" />
-    <Compile Include="DomainModel\Base\ICutrureSpecific.cs" />
+    <Compile Include="DomainModel\EnumProperties\RatingType.cs" />
+    <Compile Include="DomainModel\Interfaces\IAuditable.cs" />
+    <Compile Include="DomainModel\Interfaces\IComment.cs" />
+    <Compile Include="DomainModel\Interfaces\IDeletable.cs" />
+    <Compile Include="DomainModel\Interfaces\IEntity.cs" />
+    <Compile Include="DomainModel\Interfaces\ICutrureSpecific.cs" />
     <Compile Include="DomainModel\EnumProperties\BlogPostStatus.cs" />
     <Compile Include="DomainModel\EnumProperties\ConfStatus.cs" />
     <Compile Include="DomainModel\EnumProperties\PaySatus.cs" />
     <Compile Include="DomainModel\EnumProperties\PayType.cs" />
     <Compile Include="DomainModel\File.cs" />
+    <Compile Include="DomainModel\Interfaces\IHasRating.cs" />
+    <Compile Include="DomainModel\Interfaces\IRatingEntity.cs" />
     <Compile Include="DomainModel\Pay.cs" />
-    <Compile Include="DomainModel\Post.cs" />
+    <Compile Include="DomainModel\BlogEntities\Post.cs" />
     <Compile Include="DomainModel\Products.cs" />
     <Compile Include="DomainModel\Profile.cs" />
     <Compile Include="DomainModel\Rubric.cs" />
@@ -136,6 +140,10 @@
     <Compile Include="Migrations\201411021621536_PostAddFieldDeleted.cs" />
     <Compile Include="Migrations\201411021621536_PostAddFieldDeleted.Designer.cs">
       <DependentUpon>201411021621536_PostAddFieldDeleted.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411061033559_PostAddLikeDislikeFields.cs" />
+    <Compile Include="Migrations\201411061033559_PostAddLikeDislikeFields.Designer.cs">
+      <DependentUpon>201411061033559_PostAddLikeDislikeFields.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -182,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411021621536_PostAddFieldDeleted.resx">
       <DependentUpon>201411021621536_PostAddFieldDeleted.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411061033559_PostAddLikeDislikeFields.resx">
+      <DependentUpon>201411061033559_PostAddLikeDislikeFields.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

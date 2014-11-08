@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using DAL.DomainModel;
-using DAL.DomainModel.Base;
+using DAL.DomainModel.Interfaces;
 using DAL.Repository.Interfaces;
 
 namespace DAL.Repository

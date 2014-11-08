@@ -6,10 +6,12 @@ using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
+using BLL.Blog.Enums;
 using BLL.Blog.ViewModels;
 using BLL.Common.Objects;
 using BLL.Infrastructure.Map;
 using DAL.DomainModel;
+using DAL.DomainModel.BlogEntities;
 using DAL.DomainModel.EnumProperties;
 using DAL.Repository.Interfaces;
 using Microsoft.AspNet.Identity;
@@ -59,6 +61,40 @@ namespace BLL.Blog.Impls
             return _repository
                 .GetAll<Post>()
                 .MapEachTo<PostForAdminViewModel>();
+        }
+
+        public ServiceResult Rait(BlogRatingViewModel model)
+        {
+            var result = new ServiceResult {Success = true};
+            switch (model.EntityType)
+            {
+                case RatingEntityType.Article:
+                    var post = _repository.Find<Post>(model.Id);
+                    if (post == null)
+                    {
+                        result.Success = false;
+                        return result;
+                    }
+                    if (model.ActionType == RatingType.Like)
+                        post.Likes += 1;
+                    else
+                        post.DisLikes += 1;
+                    _repository.SaveChanges();
+                    return result;
+                case RatingEntityType.ArticleComment:
+                    //var comment = _repository.Find<Post>(model.Id);
+                    //if (post == null)
+                    //{
+                    //    result.Success = false;
+                    //    return result;
+                    //}
+                    //if (model.ActionType == RatingActionType.Like)
+                    //    post.Likes += 1;
+                    //else
+                    //    post.DisLikes += 1;
+                    break;
+            }
+            return result;
         }
     }
 }

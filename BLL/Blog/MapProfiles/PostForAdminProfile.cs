@@ -1,5 +1,6 @@
 ﻿using BLL.Blog.ViewModels;
 using DAL.DomainModel;
+using DAL.DomainModel.BlogEntities;
 using Profile = AutoMapper.Profile;
 
 namespace BLL.Blog.MapProfiles
