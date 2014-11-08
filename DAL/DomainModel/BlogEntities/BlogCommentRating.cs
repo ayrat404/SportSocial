@@ -1,4 +1,5 @@
-﻿using DAL.DomainModel.EnumProperties;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using DAL.DomainModel.EnumProperties;
 using DAL.DomainModel.Interfaces;
 
 namespace DAL.DomainModel.BlogEntities
@@ -13,6 +14,7 @@ namespace DAL.DomainModel.BlogEntities
         
         public RatingType RatingType { get; set; }
 
+        [ForeignKey("RatedEntityId")]
         public virtual BlogComment RatedEntity { get; set; }
     }
 }

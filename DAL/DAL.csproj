@@ -145,6 +145,10 @@
     <Compile Include="Migrations\201411061033559_PostAddLikeDislikeFields.Designer.cs">
       <DependentUpon>201411061033559_PostAddLikeDislikeFields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411081306456_AddBlogCommentTable.cs" />
+    <Compile Include="Migrations\201411081306456_AddBlogCommentTable.Designer.cs">
+      <DependentUpon>201411081306456_AddBlogCommentTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AccountRepository.cs" />
@@ -193,6 +197,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411061033559_PostAddLikeDislikeFields.resx">
       <DependentUpon>201411061033559_PostAddLikeDislikeFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411081306456_AddBlogCommentTable.resx">
+      <DependentUpon>201411081306456_AddBlogCommentTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

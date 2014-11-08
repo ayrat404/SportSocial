@@ -11,10 +11,12 @@ namespace DAL.DomainModel.BlogEntities
         public int TotalRating { get; set; }
         public string UserId { get; set; }
         public int CommentForId { get; set; }
+        public int PostId { get; set; }
         public DateTime Created { get; set; }
         public DateTime Modified { get; set; }
         public bool Deleted { get; set; }
 
+        public virtual Post Post { get; set; }
         public virtual BlogComment CommentFor { get; set; }
         public virtual AppUser User { get; set; }
         public virtual ICollection<IRatingEntity<BlogComment>> RatingEntites { get; set; }

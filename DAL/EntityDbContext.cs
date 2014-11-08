@@ -25,6 +25,8 @@ namespace DAL
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<BlogImage> BlogImages { get; set; }
         public DbSet<Conference> Conferences { get; set; }
+        public DbSet<BlogComment> BlogComments { get; set; }
+        public DbSet<BlogCommentRating> BlogCommentRatings { get; set; }
 
         static EntityDbContext()
         {

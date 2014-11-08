@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 using System.Web.Mvc;
 using BLL.Blog;
 using BLL.Blog.ViewModels;
@@ -80,6 +79,17 @@ namespace SportSocial.Controllers
             if (ModelState.IsValid)
             {
                 _blogService.Rait(model);
+                return Json(new {Success = true});
+            }
+            return Json(new {Success = false});
+        }
+
+        [HttpPost]
+        public JsonResult Comment(CreateComment createCommentModel)
+        {
+            if (ModelState.IsValid)
+            {
+                _blogService.AddComment(createCommentModel);
                 return Json(new {Success = true});
             }
             return Json(new {Success = false});

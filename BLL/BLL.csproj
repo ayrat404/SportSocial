@@ -125,6 +125,7 @@
     <Compile Include="Blog\ViewModels\BlogRatingViewModel.cs" />
     <Compile Include="Blog\ViewModels\Comment.cs" />
     <Compile Include="Blog\ViewModels\CommentFor.cs" />
+    <Compile Include="Blog\ViewModels\CreateComment.cs" />
     <Compile Include="Blog\ViewModels\PostForAdminViewModel.cs" />
     <Compile Include="Blog\ViewModels\PostModel.cs" />
     <Compile Include="Common\Enums\LangType.cs" />

@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Policy;
 using System.Threading;
 using System.Web;
-using System.Web.Mvc;
 using AutoMapper;
 using BLL.Blog.Enums;
 using BLL.Blog.ViewModels;
@@ -95,6 +92,14 @@ namespace BLL.Blog.Impls
                     break;
             }
             return result;
+        }
+
+        public void AddComment(CreateComment createCommentModel)
+        {
+            var blogComment = createCommentModel.MapTo<BlogComment>();
+            blogComment.UserId = HttpContext.Current.User.Identity.GetUserId();
+
+            throw new NotImplementedException();
         }
     }
 }
