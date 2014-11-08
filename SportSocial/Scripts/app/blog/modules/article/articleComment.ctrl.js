@@ -8,35 +8,14 @@ angular.module('blog').controller('CommentCtrl',
      '$timeout',
 function ($scope, articleRqst, utilsSrvc, $window, $timeout) {
 
-    // типы комментариев
+    // типы комментариев (комментарий к статье, ответ на комментарий)
     // type: comment/answer
 
     var prop = {
-        isAnswer    : false,
-        watcher     : null,
-        answerFor   : null
+        isAnswer    : false,    // если этот ответ к комментарию
+        watcher     : null,     // watcher для поля ответа к комментарию
+        answerFor   : null      // комментарий на который пишется ответ
     };
-
-    // fake
-    // ---------------
-    //$scope.comments = [
-    //    {
-    //        id: 1,
-    //        avatar: '/Content/images/temp/user.jpg',
-    //        name: 'Алексей',
-    //        surname: 'Рябов',
-    //        date: '10.08.14',
-    //        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
-    //    },
-    //    {
-    //        id: 2,
-    //        avatar: '/Content/images/temp/user.jpg',
-    //        name: 'Виктор',
-    //        surname: 'Рябов',
-    //        date: '11.08.14',
-    //        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
-    //    }
-    //];
 
     // ошибки
     // ---------------
@@ -56,8 +35,11 @@ function ($scope, articleRqst, utilsSrvc, $window, $timeout) {
     $scope.loadAll = function () {
         articleRqst.loadComments(utilsSrvc.token.add({ id: $scope.itemId }))
             .then(function(res) {
-                if (res.data.success) {
-                    $scope.comments = res.data.comments.concat($scope.comments);
+                if (res.data.length) {
+                    // если грузим все комменты и вставляем
+                    $scope.comments = res.data;
+                    // если грузим оставшиеся комменты
+                    //$scope.comments = res.data.comments.concat($scope.comments);
                 } else {
                     console.log('load comments : server error');
                 }
@@ -72,9 +54,9 @@ function ($scope, articleRqst, utilsSrvc, $window, $timeout) {
         prop.isAnswer = true;
         prop.answerFor = c;
         $scope.focus = !$scope.focus;
-        $scope.text = c.name + ', ';
+        $scope.text = c.Name + ', ';
         prop.watcher = $scope.$watch('text', function (val) {
-            if (c.name !== val.substr(0, c.name.length)) {
+            if (c.Name !== val.substr(0, c.Name.length)) {
                 prop.isAnswer = false;
                 prop.watcher();
             }
@@ -98,25 +80,26 @@ function ($scope, articleRqst, utilsSrvc, $window, $timeout) {
     // ---------------
     $scope.createComment = function (text) {
         //$scope.comments.push({
-        //    id: 2,
-        //    avatar: '/Content/images/temp/user.jpg',
-        //    name: 'Херасе',
-        //    surname: 'Тимофеевич',
-        //    date: '13123',
-        //    text: text,
-        //    cfor: {
-        //        id: prop.answerFor.id,
-        //        name: prop.answerFor.name
+        //    Id: 2,
+        //    Avatar: '/Content/images/temp/user.jpg',
+        //    Name: 'Херасе',
+        //    Surname: 'Тимофеевич',
+        //    Date: '13123',
+        //    Text: text,
+        //    CommentFor: {
+        //        Id: prop.answerFor.id,
+        //        Name: prop.answerFor.name
         //    }
         //});
         var data = {};
-        data.text = text;
         data.itemId = $scope.itemId;
         if (prop.isAnswer) {    // если создается ответ на комментарий
             data.type = 'answer';
-            data.answerId = prop.answerFor.id;
+            data.commentForId = prop.answerFor.Id;
+            data.text = text.substr(prop.answerFor.Name.length + 2, text.length-1);
         } else {                // если создается комментарий
             data.type = 'comment';
+            data.text = text;
         }
         articleRqst.createComment(utilsSrvc.token.add(data))
             .then(function(res) {

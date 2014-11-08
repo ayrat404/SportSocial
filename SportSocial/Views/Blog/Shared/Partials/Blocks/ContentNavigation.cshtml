@@ -3,11 +3,11 @@
         <div class="row">
             <ul class="nav__list">
                 <li class="active">
-                    <a href="#" class="nav__list__link">Все новости</a>
+                    <a href="#" class="nav__list__link">Все статьи</a>
                     <div class="nav__list__line"></div>
                 </li>
                 <li>
-                    <a href="#" class="nav__list__link">Лучшие новости</a>
+                    <a href="#" class="nav__list__link">Лучшие статьи</a>
                     <div class="nav__list__line"></div>
                 </li>
                 <li>
@@ -26,6 +26,9 @@
             @*<div class="nav__search">
                 <input class="nav__search__input" type="text" placeholder="Поиск" />
             </div>*@
+            <div class="nav__add-article">
+                <a href="@Url.Action("New", "Blog")" class="btn btn--main">+ Добавить статью</a>
+            </div>
         </div>
     </div>
 </div>

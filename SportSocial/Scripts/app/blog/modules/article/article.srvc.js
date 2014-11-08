@@ -1,13 +1,20 @@
 'use strict';
 
 angular.module('blog').factory('articleRqst', ['$http', 'serializeObj', function ($http, serializeObj) {
-    var send = function (url, obj) {
+    var send = function (action, obj) {
         return $http({
             method  :   'POST',
-            url     :   '/Blog/' + url,
+            url     :   '/Blog/' + action,
             data    :   obj
         });
     };
+    var get = function(action, obj) {
+        return $http({
+            method  :   'GET',
+            url     :   '/Blog/' + action,
+            params  :   obj
+        });
+    }
     return {
         // Создание статьи
         // --------------
@@ -22,7 +29,7 @@ angular.module('blog').factory('articleRqst', ['$http', 'serializeObj', function
         // Загрузка комментариев
         // ---------------
         loadComments: function(obj) {
-            return send('LoadComments', obj);
+            return get('LoadComments', obj);
         }
     };
 }]);

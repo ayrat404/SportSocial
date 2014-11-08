@@ -30,7 +30,11 @@ angular
                     likeDislikeRqst.send(utilsSrvc.token.add(data))
                         .then(function(res) {
                             if (res.data.success) {
-                                changeCount(res.data.count);
+                                if (action == 'like') {
+                                    changeCount(+scope.count + 1);
+                                } else {
+                                    changeCount(+scope.count - 1);
+                                }
                             }
                         });
                 }
@@ -38,10 +42,19 @@ angular
                 // изменение счетчика с анимацией
                 // ---------------
                 function changeCount(count) {
-                    utilsSrvc.animation.add($el, 'fadeOutUp', function() {
+                    var classIn,
+                        classOut;
+                    if (count < scope.count) {
+                        classIn = 'fadeInDown';
+                        classOut = 'fadeOutDown';
+                    } else {
+                        classIn = 'fadeInUp';
+                        classOut = 'fadeOutUp';
+                    }
+                    utilsSrvc.animation.add($el, classOut, function () {
                         scope.count = count;
                         scope.$digest();
-                        utilsSrvc.animation.add($el, 'fadeInUp');
+                        utilsSrvc.animation.add($el, classIn);
                     });
                 }
             }
