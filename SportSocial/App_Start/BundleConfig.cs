@@ -14,7 +14,8 @@ namespace SportSocial
             var cssMinify = new CssMinify();
             var cssBundle = new Bundle("~/content/bundles/main.css").Include(
                 "~/Scripts/libs/datepicker/jquery.datetimepicker.css",
-                "~/Content/styles/other/font-awesome.min.css"
+                "~/Content/styles/other/font-awesome.min.css",
+                "~/Content/styles/other/animate.css"
                 );
             cssBundle.Transforms.Add(cssMinify);
             bundles.Add(cssBundle);
