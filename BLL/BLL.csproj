@@ -116,9 +116,15 @@
     <Compile Include="Admin\Moderation\IModerationService.cs" />
     <Compile Include="Admin\Conference\ViewModels\CreateConfModel.cs" />
     <Compile Include="Admin\Conference\ViewModels\EditConfModel.cs" />
+    <Compile Include="Blog\Enums\RatingActionType.cs" />
+    <Compile Include="Blog\Enums\RatingEntityType.cs" />
     <Compile Include="Blog\Impls\BlogService.cs" />
     <Compile Include="Blog\IBlogService.cs" />
     <Compile Include="Blog\MapProfiles\PostForAdminProfile.cs" />
+    <Compile Include="Blog\ViewModels\BlogPostViewModel.cs" />
+    <Compile Include="Blog\ViewModels\BlogRatingViewModel.cs" />
+    <Compile Include="Blog\ViewModels\Comment.cs" />
+    <Compile Include="Blog\ViewModels\CommentFor.cs" />
     <Compile Include="Blog\ViewModels\PostForAdminViewModel.cs" />
     <Compile Include="Blog\ViewModels\PostModel.cs" />
     <Compile Include="Common\Enums\LangType.cs" />
@@ -128,6 +134,8 @@
     <Compile Include="Common\Helpers\ModelStateHelper.cs" />
     <Compile Include="Common\Enums\HttpMethod.cs" />
     <Compile Include="Common\Objects\ServiceResult.cs" />
+    <Compile Include="Common\Services\Rating\RatingService.cs" />
+    <Compile Include="Common\Services\Rating\IRatingService.cs" />
     <Compile Include="Infrastructure\IdentityConfig\AppRoleManager.cs" />
     <Compile Include="Infrastructure\IdentityConfig\AppUserManager.cs" />
     <Compile Include="Infrastructure\Map\CreateMaps.cs" />
@@ -156,7 +164,6 @@
   <ItemGroup>
     <Folder Include="Admin\Moderation\Impls\" />
     <Folder Include="Admin\Moderation\ViewModels\" />
-    <Folder Include="Common\Services\" />
     <Folder Include="Payment\Enums\" />
     <Folder Include="Storage\ViewModels\" />
   </ItemGroup>

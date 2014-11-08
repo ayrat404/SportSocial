@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity;
 using DAL.DomainModel;
-using DAL.DomainModel.Base;
+using DAL.DomainModel.BlogEntities;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Ninject.Activation;
 

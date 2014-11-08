@@ -1,4 +1,6 @@
-﻿namespace DAL.DomainModel
+﻿using DAL.DomainModel.Interfaces;
+
+namespace DAL.DomainModel
 {
     public class Rubric: IEntity
     {

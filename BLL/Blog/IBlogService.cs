@@ -12,6 +12,6 @@ namespace BLL.Blog
         IEnumerable<Rubric> GetRubrics();
         void ChangeStatus(int id, int status);
         IEnumerable<PostForAdminViewModel> GetPostsForAdmin(BlogPostStatus? status, string query);
-        
+        ServiceResult Rait(BlogRatingViewModel model);
     }
 }
