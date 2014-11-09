@@ -206,9 +206,14 @@
     <Content Include="Content\fonts\ProximaNova\proximanova-xboldpn.svg" />
     <Content Include="Content\fonts\ProximaNova\proximanovaexcn-sboldpn.svg" />
     <Content Include="Content\fonts\ProximaNova\proximanovaexcn-thinpn.svg" />
+    <Content Include="Content\images\blur.jpg" />
     <Content Include="Content\images\conference\conference-date.png" />
+    <Content Include="Content\images\default-avatar.png" />
+    <Content Include="Content\images\icons\logo-shape.png" />
+    <Content Include="Content\images\icons\logo.png" />
     <Content Include="Content\images\icons\sprite-article.png" />
     <Content Include="Content\images\pattern\black.png" />
+    <Content Include="Content\images\pattern\pattern_vertical.png" />
     <Content Include="Content\images\promo-bg.jpg" />
     <Content Include="Content\images\temp\example.jpg" />
     <Content Include="Content\images\temp\photo1.jpg" />

@@ -59,7 +59,7 @@ namespace SportSocial.Controllers
             {
                 return Json(_loginService.ConfirmSmsCode(confirmModel));
             }
-            return Json(new { success = true, errorMessage = "Не валидные значения полей" });
+            return Json(new { success = false, errorMessage = "Не валидные значения полей" });
         }
 
         //[HttpPost]

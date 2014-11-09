@@ -5,9 +5,9 @@ using System.Linq;
 using System.Threading;
 using System.Web;
 using AutoMapper;
-using BLL.Blog.Enums;
 using BLL.Blog.ViewModels;
 using BLL.Common.Objects;
+using BLL.Common.Services.CurrentUser;
 using BLL.Common.Services.Rating;
 using BLL.Infrastructure.Map;
 using DAL.DomainModel;
@@ -22,11 +22,13 @@ namespace BLL.Blog.Impls
     {
         private readonly IRepository _repository;
         private readonly IRatingService _ratingService;
+        private readonly ICurrentUser _currentUser;
 
-        public BlogService(IRepository repository, IRatingService ratingService)
+        public BlogService(IRepository repository, IRatingService ratingService, ICurrentUser currentUser)
         {
             _repository = repository;
             _ratingService = ratingService;
+            _currentUser = currentUser;
         }
 
         public ServiceResult CreatePost(CreatePostModel createPostModel)
@@ -70,21 +72,22 @@ namespace BLL.Blog.Impls
             return _ratingService.Rate<Post, PostRating>(model.Id, model.ActionType);
         }
 
-        public void AddComment(CreateCommentViewModel createCommentViewModelModel)
+        public Comment AddComment(CreateCommentViewModel createCommentViewModelModel)
         {
             var blogComment = createCommentViewModelModel.MapTo<BlogComment>();
-            blogComment.UserId = HttpContext.Current.User.Identity.GetUserId();
             _repository.Add(blogComment);
             _repository.SaveChanges();
+            return blogComment.MapTo<Comment>();
         }
 
         public IEnumerable<Comment> LoadComments(int postId)
         {
-            return _repository
+            var comments =  _repository
                 .Queryable<BlogComment>()
-                .Where(c => c.PostId == postId && !c.Deleted)
+                .Where(c => c.CommentedEntityId == postId && !c.Deleted)
                 .AsNoTracking()
                 .MapEachTo<Comment>();
+            return comments;
         }
 
         public BlogPostViewModel GetPost(int id)

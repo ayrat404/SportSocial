@@ -132,12 +132,15 @@
     <Compile Include="Blog\ViewModels\PostForAdminViewModel.cs" />
     <Compile Include="Blog\ViewModels\PostModel.cs" />
     <Compile Include="Common\Enums\LangType.cs" />
+    <Compile Include="Common\Extensions\JsonExtension.cs" />
     <Compile Include="Common\Helpers\CookieHelper.cs" />
     <Compile Include="Common\Helpers\HttpHelper.cs" />
     <Compile Include="Common\Helpers\LocalizationHelper.cs" />
     <Compile Include="Common\Helpers\ModelStateHelper.cs" />
     <Compile Include="Common\Enums\HttpMethod.cs" />
     <Compile Include="Common\Objects\ServiceResult.cs" />
+    <Compile Include="Common\Services\CurrentUser\Impls\CurrentUser.cs" />
+    <Compile Include="Common\Services\CurrentUser\ICurrentUser.cs" />
     <Compile Include="Common\Services\Rating\RatingService.cs" />
     <Compile Include="Common\Services\Rating\IRatingService.cs" />
     <Compile Include="Infrastructure\IdentityConfig\AppRoleManager.cs" />

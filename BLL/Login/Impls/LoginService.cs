@@ -1,9 +1,11 @@
 ﻿using System.Security.Claims;
+using BLL.Common.Helpers;
 using BLL.Common.Objects;
 using BLL.Infrastructure.IdentityConfig;
 using BLL.Login.ViewModels;
 using BLL.Sms;
 using DAL.DomainModel;
+using DAL.Repository.Interfaces;
 using Knoema.Localization;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
@@ -15,12 +17,14 @@ namespace BLL.Login.Impls
         private readonly ISmsService _smsService;
         private readonly AppUserManager _appUserManager;
         private readonly IAuthenticationManager _authManager;
+        private readonly IRepository _repository;
 
-        public LoginService(ISmsService smsService, AppUserManager appUserManager, IAuthenticationManager authManager)
+        public LoginService(ISmsService smsService, AppUserManager appUserManager, IAuthenticationManager authManager, IRepository repository)
         {
             _smsService = smsService;
             _appUserManager = appUserManager;
             _authManager = authManager;
+            _repository = repository;
         }
 
         public LoginServiceResult SignIn(SignInModel signInModel)
@@ -96,6 +100,13 @@ namespace BLL.Login.Impls
                     user.PhoneNumberConfirmed = true;
                     _appUserManager.AddPassword(user.Id, confirmModel.Password);
                     _appUserManager.Update(user);
+                    var profile = new Profile
+                    {
+                        Lang = LanguageHelper.GetCurrentCulture(),
+                        Avatar = "/Content/Images/default-avatar.png",
+                    };
+                    _repository.Add(profile);
+                    _repository.SaveChanges();
                 }
             }
             else

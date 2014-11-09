@@ -3,12 +3,22 @@ using System.Text;
 using System.Threading;
 using System.Web.Mvc;
 using BLL.Common.Helpers;
+using BLL.Common.Services.CurrentUser;
 using Knoema.Localization;
 
 namespace SportSocial.Controllers.Base
 {
-    public class SportSocialControllerBase: Controller
+    public abstract class SportSocialControllerBase: Controller
     {
+        protected readonly ICurrentUser CurrentUser;
+
+        public SportSocialControllerBase(): this(DependencyResolver.Current.GetService<ICurrentUser>()) { }
+
+        public SportSocialControllerBase(ICurrentUser currentUser)
+        {
+            CurrentUser = currentUser;
+        }
+
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             var currentUserCulture = new CultureInfo(LanguageHelper.GetCurrentCulture());

@@ -93,6 +93,7 @@
     <Compile Include="DomainModel\EnumProperties\PaySatus.cs" />
     <Compile Include="DomainModel\EnumProperties\PayType.cs" />
     <Compile Include="DomainModel\File.cs" />
+    <Compile Include="DomainModel\Interfaces\IHasComments.cs" />
     <Compile Include="DomainModel\Interfaces\IHasRating.cs" />
     <Compile Include="DomainModel\Interfaces\IRatingEntity.cs" />
     <Compile Include="DomainModel\Pay.cs" />

@@ -7,13 +7,12 @@ namespace SportSocial.Controllers
     [Authorize]
     public class PayController : SportSocialControllerBase
     {
-
         private readonly IPayPalService _payPalService;
 
-        //public PayController(IPayPalService payPalService)
-        //{
-        //    _payPalService = payPalService;
-        //}
+        public PayController(IPayPalService payPalService)
+        {
+            _payPalService = payPalService;
+        }
 
         public ActionResult Index()
         {

@@ -6,7 +6,7 @@ using DAL.Repository.Interfaces;
 
 namespace BLL.Admin.Conference.Impls
 {
-    class ConferenceService : IConferenceService
+    public class ConferenceService : IConferenceService
     {
         private readonly IRepository _repository;
 

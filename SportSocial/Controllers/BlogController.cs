@@ -89,8 +89,8 @@ namespace SportSocial.Controllers
         {
             if (ModelState.IsValid)
             {
-                _blogService.AddComment(createCommentViewModelModel);
-                return Json(new {Success = true});
+                var comment = _blogService.AddComment(createCommentViewModelModel);
+                return Json(new {Success = true, Comment = comment});
             }
             return Json(new {Success = false});
         }
@@ -98,7 +98,7 @@ namespace SportSocial.Controllers
         [HttpGet]
         public JsonResult LoadComments(int id)
         {
-            return Json(_blogService.LoadComments(id));
+            return Json(_blogService.LoadComments(id), JsonRequestBehavior.AllowGet);
         }
 	}
 }

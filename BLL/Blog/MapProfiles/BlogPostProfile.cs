@@ -19,9 +19,8 @@ namespace BLL.Blog.MapProfiles
                 .ForMember(dest => dest.CommentsCount, opt => opt.MapFrom(src => src.Comments.Count))
                 .ForMember(dest => dest.Images, 
                            opt => opt
-                               .MapFrom(src => 
-                                   new Images[] {new Images {Id = 1, Url = src.ImageUrl}} ))
-                .ForMember(dest => dest.Comments, opt => opt.MapFrom(src => src.Comments.Take(3)));
+                               .MapFrom(src => new[] {new Images {Id = 1, Url = src.ImageUrl}} ))
+                .ForMember(dest => dest.Comments, opt => opt.MapFrom(src => src.Comments.Skip(src.Comments.Count - 3)));
         }
     }
 }

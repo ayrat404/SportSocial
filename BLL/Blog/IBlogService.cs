@@ -13,7 +13,7 @@ namespace BLL.Blog
         void ChangeStatus(int id, int status);
         IEnumerable<PostForAdminViewModel> GetPostsForAdmin(BlogPostStatus? status, string query);
         ServiceResult RaitBlog(BlogRatingViewModel model);
-        void AddComment(CreateCommentViewModel createCommentViewModelModel);
+        Comment AddComment(CreateCommentViewModel createCommentViewModelModel);
         IEnumerable<Comment> LoadComments(int postId);
         BlogPostViewModel GetPost(int id);
     }

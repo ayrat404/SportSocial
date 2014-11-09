@@ -54,9 +54,9 @@ function ($scope, articleRqst, utilsSrvc, $window, $timeout) {
         prop.isAnswer = true;
         prop.answerFor = c;
         $scope.focus = !$scope.focus;
-        $scope.text = c.Name + ', ';
+        $scope.text = c.name + ', ';
         prop.watcher = $scope.$watch('text', function (val) {
-            if (c.Name !== val.substr(0, c.Name.length)) {
+            if (c.name !== val.substr(0, c.name.length)) {
                 prop.isAnswer = false;
                 prop.watcher();
             }
@@ -96,7 +96,7 @@ function ($scope, articleRqst, utilsSrvc, $window, $timeout) {
         if (prop.isAnswer) {    // если создается ответ на комментарий
             data.type = 'answer';
             data.commentForId = prop.answerFor.Id;
-            data.text = text.substr(prop.answerFor.Name.length + 2, text.length-1);
+            data.text = text.substr(prop.answerFor.name.length + 2, text.length-1);
         } else {                // если создается комментарий
             data.type = 'comment';
             data.text = text;

@@ -5,7 +5,7 @@ using DAL.DomainModel.Interfaces;
 
 namespace DAL.DomainModel.BlogEntities
 {
-    public class Post: IEntity, IAuditable, ICultrureSpecific, IDeletable, IHasRating<Post>
+    public class Post: IEntity, IAuditable, ICultrureSpecific, IDeletable, IHasComments<Post, BlogComment>, IHasRating<Post>
     {
         public int Id { get; set; }
 
@@ -32,7 +32,7 @@ namespace DAL.DomainModel.BlogEntities
         public bool Deleted { get; set; }
 
         public virtual Rubric Rubric { get; set; }
-        public virtual ICollection<BlogComment> Comments { get; set; }
+        public virtual ICollection<ICommentEntity<Post, BlogComment>> Comments { get; set; }
         public virtual ICollection<IRatingEntity<Post>> RatingEntites { get; set; }
         public virtual AppUser User { get; set; }
     }

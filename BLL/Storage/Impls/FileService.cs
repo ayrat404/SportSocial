@@ -8,7 +8,7 @@ using Knoema.Localization;
 
 namespace BLL.Storage.Impls
 {
-    class FileService : IFileService
+    public class FileService : IFileService
     {
         private readonly IRepository _repository;
 
