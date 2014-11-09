@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Security.Policy;
 using System.Threading;
 using System.Web;
-using System.Web.Mvc;
 using AutoMapper;
 using BLL.Blog.Enums;
 using BLL.Blog.ViewModels;
 using BLL.Common.Objects;
+using BLL.Common.Services.Rating;
 using BLL.Infrastructure.Map;
 using DAL.DomainModel;
 using DAL.DomainModel.BlogEntities;
@@ -21,10 +21,12 @@ namespace BLL.Blog.Impls
     public class BlogService : IBlogService
     {
         private readonly IRepository _repository;
+        private readonly IRatingService _ratingService;
 
-        public BlogService(IRepository repository)
+        public BlogService(IRepository repository, IRatingService ratingService)
         {
             _repository = repository;
+            _ratingService = ratingService;
         }
 
         public ServiceResult CreatePost(CreatePostModel createPostModel)
@@ -63,38 +65,38 @@ namespace BLL.Blog.Impls
                 .MapEachTo<PostForAdminViewModel>();
         }
 
-        public ServiceResult Rait(BlogRatingViewModel model)
+        public ServiceResult RaitBlog(BlogRatingViewModel model)
         {
-            var result = new ServiceResult {Success = true};
-            switch (model.EntityType)
-            {
-                case RatingEntityType.Article:
-                    var post = _repository.Find<Post>(model.Id);
-                    if (post == null)
-                    {
-                        result.Success = false;
-                        return result;
-                    }
-                    if (model.ActionType == RatingType.Like)
-                        post.Likes += 1;
-                    else
-                        post.DisLikes += 1;
-                    _repository.SaveChanges();
-                    return result;
-                case RatingEntityType.ArticleComment:
-                    //var comment = _repository.Find<Post>(model.Id);
-                    //if (post == null)
-                    //{
-                    //    result.Success = false;
-                    //    return result;
-                    //}
-                    //if (model.ActionType == RatingActionType.Like)
-                    //    post.Likes += 1;
-                    //else
-                    //    post.DisLikes += 1;
-                    break;
-            }
-            return result;
+            return _ratingService.Rate<Post, PostRating>(model.Id, model.ActionType);
+        }
+
+        public void AddComment(CreateCommentViewModel createCommentViewModelModel)
+        {
+            var blogComment = createCommentViewModelModel.MapTo<BlogComment>();
+            blogComment.UserId = HttpContext.Current.User.Identity.GetUserId();
+            _repository.Add(blogComment);
+            _repository.SaveChanges();
+        }
+
+        public IEnumerable<Comment> LoadComments(int postId)
+        {
+            return _repository
+                .Queryable<BlogComment>()
+                .Where(c => c.PostId == postId && !c.Deleted)
+                .AsNoTracking()
+                .MapEachTo<Comment>();
+        }
+
+        public BlogPostViewModel GetPost(int id)
+        {
+            var post =  _repository.Queryable<Post>()
+                .Where(p => p.Id == id && !p.Deleted)
+                .Include(p => p.User)
+                .Include(p => p.Comments)
+                .AsNoTracking()
+                .Single()
+                .MapTo<BlogPostViewModel>();
+            return post;
         }
     }
 }

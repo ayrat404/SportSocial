@@ -4,17 +4,18 @@ using DAL.DomainModel.Interfaces;
 
 namespace DAL.DomainModel.BlogEntities
 {
-    public class BlogCommentRating: IEntity, IRatingEntity<BlogComment>
+    public class PostRating: IEntity, IRatingEntity<Post>
     {
         public int Id { get; set; }
 
         public string UserId { get; set; }
 
         public int RatedEntityId { get; set; }
-        
+
         public RatingType RatingType { get; set; }
 
         [ForeignKey("RatedEntityId")]
-        public virtual BlogComment RatedEntity { get; set; }
+        public virtual Post RatedEntity { get; set; }
+        public virtual AppUser User { get; set; }
     }
 }

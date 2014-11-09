@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using DAL.DomainModel.EnumProperties;
 using DAL.DomainModel.Interfaces;
 
 namespace DAL.DomainModel.BlogEntities
 {
-    public class Post: IEntity, IAuditable, ICultrureSpecific, IDeletable
+    public class Post: IEntity, IAuditable, ICultrureSpecific, IDeletable, IHasRating<Post>
     {
         public int Id { get; set; }
 
@@ -24,14 +25,15 @@ namespace DAL.DomainModel.BlogEntities
 
         public string CancelMessage { get; set; }
 
-        public int Likes { get; set; }
-        public int DisLikes { get; set; }
+        public int TotalRating { get; set; }
 
         public DateTime Created { get; set; }
         public DateTime Modified { get; set; }
-
-        public Rubric Rubric { get; set; }
-        public virtual AppUser User { get; set; }
         public bool Deleted { get; set; }
+
+        public virtual Rubric Rubric { get; set; }
+        public virtual ICollection<BlogComment> Comments { get; set; }
+        public virtual ICollection<IRatingEntity<Post>> RatingEntites { get; set; }
+        public virtual AppUser User { get; set; }
     }
 }

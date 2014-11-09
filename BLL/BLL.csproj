@@ -120,11 +120,15 @@
     <Compile Include="Blog\Enums\RatingEntityType.cs" />
     <Compile Include="Blog\Impls\BlogService.cs" />
     <Compile Include="Blog\IBlogService.cs" />
+    <Compile Include="Blog\MapProfiles\BlogPostProfile.cs" />
+    <Compile Include="Blog\MapProfiles\CommentsProfile.cs" />
+    <Compile Include="Blog\MapProfiles\CreateCommentProfile.cs" />
     <Compile Include="Blog\MapProfiles\PostForAdminProfile.cs" />
     <Compile Include="Blog\ViewModels\BlogPostViewModel.cs" />
     <Compile Include="Blog\ViewModels\BlogRatingViewModel.cs" />
     <Compile Include="Blog\ViewModels\Comment.cs" />
     <Compile Include="Blog\ViewModels\CommentFor.cs" />
+    <Compile Include="Blog\ViewModels\CreateComment.cs" />
     <Compile Include="Blog\ViewModels\PostForAdminViewModel.cs" />
     <Compile Include="Blog\ViewModels\PostModel.cs" />
     <Compile Include="Common\Enums\LangType.cs" />
