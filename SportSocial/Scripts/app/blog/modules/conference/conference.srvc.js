@@ -1,19 +1,19 @@
 'use strict';
 
 angular.module('blog').factory('conferenceRqst', ['$http', 'serializeObj', function ($http, serializeObj) {
-    var send = function (url, obj) {
+    var send = function (action, obj) {
         return $http({
             method  :   'POST',
-            url     :   '/Conference/' + url,
+            url     :   '/Conference/' + action,
             data    :   serializeObj(obj),
             headers :   { 'Content-Type': 'application/x-www-form-urlencoded' }
         });
     };
-    var get = function(url, obj) {
+    var get = function(action, obj) {
         return $http({
             method: 'GET',
-            url: '/Conference/' + url,
-            data: serializeObj(obj),
+            url: '/Conference/' + action,
+            params: serializeObj(obj),
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
         });
     }

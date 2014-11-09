@@ -3,25 +3,39 @@
 
 .blog-user {
     background: @color-block-bg;
+
     &__info {
         .no-float;
         max-height: 80px;
     }
+
     &__photo {
         width: 21%;
         min-width: 80px;
         float: left;
     }
+
     &__name {
+        &__type {
+            font-style: italic;
+            color: #D5D5D5;
+            text-align: right;
+            float: right;
+        }
+
+        overflow: hidden;
+        height: 80px;
         width: 79%;
         padding: 20px;
         float: left;
         border-bottom: 1px solid @color-gray3;
         .box-sizing;
     }
+
     &__actions {
         .no-float;
     }
+
     &__action {
         .inline-block;
         float: left;

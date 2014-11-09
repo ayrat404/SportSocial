@@ -48,6 +48,7 @@
     &__link {
         color: #fff;
         font-size: 1.286em;
+
         &:hover {
             color: #fff;
         }
@@ -55,6 +56,43 @@
 }
 
 /* /Conference date */
+
+/* Conference view page
+-------------------------------------------------- */
+
+.conference-page {
+    .conference {
+        &__video {
+            background: #fff;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            padding-top: 25px;
+            height: 0;
+
+            iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        &__info,
+        &__comments {
+            background: #fff;
+            padding: 20px;
+        }
+
+        &__info {
+        }
+
+        &__comments {
+        }
+    }
+}
+
+/* /Conference view page */
 
 /* /Conference
 ---------------------------------------------------------------------------------- */
