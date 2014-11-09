@@ -21,9 +21,12 @@
                     @*TODO краткое описание конференции*@
                     <p>Краткое описание краткое описание краткое описание краткое описание краткое описание краткое описание </p>
                 </div>
+                
+                @*Комментарии*@
+                @Html.Partial("Partials/Comments")
 
                 @*Комментарии disqus*@
-                <div class="conference__comments">
+                @*<div class="conference__comments">
                     <div id="disqus_thread"></div>
                     <script type="text/javascript">
                         var disqus_shortname = 'fortress-social'; // required: replace example with your forum shortname
@@ -39,7 +42,7 @@
                         })();
                     </script>
                     <noscript>Пожалуйста включите Javascript чтобы увидеть комментарии</noscript>
-                </div>
+                </div>*@
             </div>
             <div class="col-sm-4">
                 

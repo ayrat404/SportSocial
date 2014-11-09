@@ -20,16 +20,6 @@ angular.module('blog').factory('articleRqst', ['$http', 'serializeObj', function
         // --------------
         createArticle: function(obj) {
             return send('New', obj);
-        },
-        // Создание комментария
-        // ---------------
-        createComment: function(obj) {
-            return send('Comment', obj);
-        },
-        // Загрузка комментариев
-        // ---------------
-        loadComments: function(obj) {
-            return get('LoadComments', obj);
         }
     };
 }]);
