@@ -765,6 +765,7 @@
     <Content Include="Content\styles\components\blog\video.less" />
     <Content Include="Content\styles\components\common\icons.less" />
     <Content Include="Content\styles\components\common\like-rating.less" />
+    <Content Include="Content\styles\view\settings.less" />
     <None Include="Scripts\libs\jquery\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.min.js" />
@@ -852,6 +853,7 @@
     <Compile Include="Controllers\Admin\ConferenceController.cs" />
     <Compile Include="Controllers\Base\SportSocialControllerBase.cs" />
     <Compile Include="Controllers\FileController.cs" />
+    <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Controllers\PayController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
@@ -914,6 +916,8 @@
     <Content Include="Views\Blog\Item.cshtml" />
     <Content Include="Views\Blog\Shared\Partials\Article\Info.cshtml" />
     <Content Include="Views\Conference\Index.cshtml" />
+    <Content Include="Views\Settings\Index.cshtml" />
+    <Content Include="Views\Shared\Partials\Comments.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -3,6 +3,7 @@
 
 .btn {
     .transition(all .2s linear);
+
     &--main {
         outline: none;
         background: @color-blue;
@@ -14,36 +15,70 @@
         font-family: 'PN_regular';
         text-transform: uppercase;
         .transition(all .2s linear);
-        &:focus{
+
+        &:focus {
             background: @color-blue;
             border: 1px solid @color-blue;
             color: #fff;
             outline: none;
         }
+
         &:hover,
         &:active {
             outline: none;
             background: transparent;
             color: @color-blue;
         }
-        &[disabled]{
+
+        &[disabled] {
             background-color: #8d8d8d;
             border: 1px solid #8d8d8d;
         }
     }
+
     &--transparent {
         .border-radius(0);
         text-transform: uppercase;
         color: #fff;
         background: transparent;
         border: 1px solid #fff;
+
         &:hover {
             background: #fff;
             color: #000;
         }
+
         &:active {
             background: #e1e1e1;
             color: #000;
+        }
+    }
+
+    &--xs {
+        font-size: 1em;
+        padding: 5px 10px;
+        height: auto;
+    }
+}
+
+.tabs {
+    &-row {
+        text-transform: uppercase;
+        font-size: 1.286em;
+        .no-float;
+        &__btn {
+            .user-select;
+            cursor: pointer;
+            float: left;
+            padding: 12px 20px;
+            border-bottom: 1px solid @color-gray3;
+            .box-sizing;
+            #gradient .vertical_3(#f9f9f9, #f7f7f7, #eee, 50%);
+
+            &.active {
+                background: #fff;
+                border-bottom: 1px solid #fff;
+            }
         }
     }
 }

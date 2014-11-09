@@ -1,0 +1,98 @@
+﻿@{
+    ViewBag.Title = "Fortress - Настройки";
+    Layout = "../Blog/Shared/Layouts/BlogLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <div class="mod settings">
+                <div class="mod__header">
+                    <div class="mod__header__title">Настройки</div>
+                </div>
+                <div class="mod__content">
+                    <div class="tabs-content">
+
+                        @*Добавить/изменить аватар*@
+                        <div class="separate">
+                            <div class="separate__header">
+                                Изменить аватар
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="blog-form__desc">Текущий аватар</div>
+                                </div>
+                                <div class="col-sm-5">
+                                    аватарка
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <button class="btn btn--main btn--xs">Сохранить изменения</button>
+                            </div>
+                        </div>
+
+                        @*Новый пароль*@
+                        <div class="separate">
+                            <div class="separate__header">
+                                Изменить пароль
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="blog-form__desc">Старый пароль</div>
+                                </div>
+                                <div class="col-sm-5">
+                                    <input class="input" type="password" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="blog-form__desc">Новый пароль</div>
+                                </div>
+                                <div class="col-sm-5">
+                                    <input class="input" type="password" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="blog-form__desc">Повторите пароль</div>
+                                </div>
+                                <div class="col-sm-5">
+                                    <input class="input" type="password" />
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <button class="btn btn--main btn--xs">Сохранить изменения</button>
+                            </div>
+                        </div>
+
+                        @*Новый номер телефона*@
+                        <div class="separate">
+                            <div class="separate__header">
+                                Изменить номер телефона
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="blog-form__desc">Текущий номер</div>
+                                </div>
+                                <div class="col-sm-5">
+                                    +7 *** *** ** 56
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="blog-form__desc">Новый номер</div>
+                                </div>
+                                <div class="col-sm-5">
+                                    <input type="text" class="input" />
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <button class="btn btn--main btn--xs">Получить код подтверждения</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

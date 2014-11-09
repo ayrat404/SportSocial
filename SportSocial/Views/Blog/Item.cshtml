@@ -33,50 +33,7 @@
                 </div>
 
                 @*Комментарии*@
-                <div ng-controller="CommentCtrl"
-                     ng-init='itemId=@Model.Id; more=666; comments=@Html.Raw(Json.Encode(@Model.Comments));'
-                     class="mod block">
-                    <div class="mod__header">
-                        <div class="mod__header__title">Комментарии</div>
-                    </div>
-                    <div class="mod__content comment">
-                        <div ng-if="more!=0"
-                             class="text-center">
-                            <span class="link" ng-click="loadAll();">Показать предыдущие 666 комментариев</span>
-                        </div>
-                        <div class="comment__list"
-                             ng-cloak>
-                            <div ng-repeat="c in comments" class="cl__it">
-                                <div ng-attr-id="{{'comment_' + c.Id}}"
-                                     class="cl__it__inner">
-                                    <a ng-href="/user/{{c.Id}}" class="cl__it__av-wrap">
-                                        <img ng-src="{{c.Avatar}}" class="cl__it__av" alt="{{c.Name}} {{c.Surname}}" />
-                                    </a>
-                                    <div class="cl__it__info">
-                                        <a ng-href="/user/{{c.Id}}" class="cl__it__name">{{c.Name}} {{c.Surname}}</a>
-                                        <div class="cl__it__date">{{c.Date}}</div>
-                                        <div ng-click="createAnswer(c)"
-                                             class="cl__it__text">
-                                            {{c.Text}}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div ng-if="c.CommentFor != null"
-                                     class="cl__it__for">
-                                    Ответ для <span class="link" ng-click="scrollToFor(c.CommentFor.Id)">{{c.CommentFor.Name}}</span>
-                                </div>
-                            </div>
-                            <form ng-submit="createComment(text)"
-                                  class="comment__form">
-                                <textarea ng-model="text"
-                                          ng-autofocus="{{focus}}"
-                                          scroll-to-current-pos="{{focus}}"
-                                          param-dopscroll="100"></textarea>
-                                <button type="submit" class="btn">Отправить</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                @Html.Partial("Partials/Comments")
             </div>
             <div class="col-sm-4">
 

@@ -1,8 +1,9 @@
 using System;
+using BLL.Common.Objects;
 
 namespace BLL.Blog.ViewModels
 {
-    public class BlogPostViewModel
+    public class BlogPostViewModel:IHasCommentViewModel
     {
         public int Id { get; set; }
 

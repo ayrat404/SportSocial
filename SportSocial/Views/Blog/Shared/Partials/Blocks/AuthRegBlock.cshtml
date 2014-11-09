@@ -84,11 +84,11 @@
                        name="password"
                        required
                        class="input" type="password" placeholder="Пароль" />
-                <input ng-model="verify.passwordRepeat"
+                <input ng-model="verify.confirmPassword"
                        ng-disabled="disableInp"
-                       ng-class="{'input--invalid': registrationTwo.passwordRepeat.$error.required && validstart.passwordRepeat}"
-                       ng-blur="validstart.passwordRepeat=true"
-                       name="passwordRepeat"
+                       ng-class="{'input--invalid': registrationTwo.confirmPassword.$error.required && validstart.confirmPassword}"
+                       ng-blur="validstart.confirmPassword=true"
+                       name="confirmPassword"
                        required
                        class="input" type="password" placeholder="Повторите пароль" />
                 <input ng-model="verify.code"

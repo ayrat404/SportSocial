@@ -5,3 +5,13 @@
 }
 <h2>Редактирование статьи</h2>
 @Html.Partial("Shared/Partials/ArticleEdit")
+<div ng-if="msg.show"
+     ng-cloak
+     class="msg">
+    <div class="container">
+        <div class="col-sm-6 col-sm-offset-3">
+            <div ng-show="msg.success" class="alert alert-success">Статья успешно отредактирована</div>
+            <div ng-show="msg.error" class="alert alert-danger">Неудалось сохранить изменения в статье</div>
+        </div>
+    </div>
+</div>
