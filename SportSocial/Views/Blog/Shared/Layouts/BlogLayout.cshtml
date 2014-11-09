@@ -1,5 +1,10 @@
-﻿@{
+﻿@using System.Web.Optimization
+@{
     Layout = "../../../Shared/Layouts/StaticPageLayout.cshtml";
+}
+
+@section Scripts{
+    @Scripts.Render("~/bundles/blog/scripts")
 }
 
 <div ng-app="blog"
@@ -8,12 +13,12 @@
     @Html.AntiForgeryToken()
 
     @*Шапка в блоге*@
-    @Html.Partial("Shared/Partials/Blocks/Header")
+    @Html.Partial("Partials/Header")
 
     <div class="blog__inner">
         @RenderBody()
     </div>
 
     @*Футер в блоге*@
-    @Html.Partial("Shared/Partials/Blocks/Footer")
+    @Html.Partial("Partials/Footer")
 </div>

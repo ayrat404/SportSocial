@@ -3,9 +3,10 @@
 angular.module('blog').controller('RegistrationCtrl',
     ['$scope',
      '$interval',
+     '$window',
      'registrationRqst',
      'utilsSrvc',
-function ($scope, $interval, registrationRqst, utilsSrvc) {
+function ($scope, $interval, $window, registrationRqst, utilsSrvc) {
     $scope.smsBlockShow =   false;  // показать/скрыть смс блок
     $scope.loading      =   false;  // показать/скрыть лоадер
     $scope.disableInp   =   false;  // отключить поля ввода
@@ -14,8 +15,8 @@ function ($scope, $interval, registrationRqst, utilsSrvc) {
     $scope.er = {                   // ошибки
         server  :   false,          // сервер не доступен
         custom  :   {               // ошибка с сервера с сообщением
-            show: false,
-            msg: ''
+            show    : false,
+            msg     : ''
         }
     }
 
@@ -33,7 +34,7 @@ function ($scope, $interval, registrationRqst, utilsSrvc) {
                     countdownTimer();
                 } else {
                     $scope.er.custom.show = true;
-                    $scope.er.custom.msg = res.data.error;
+                    $scope.er.custom.msg = res.data.errorMessage;
                 }
                 toggleForm(false);
             }, function() {
@@ -54,10 +55,11 @@ function ($scope, $interval, registrationRqst, utilsSrvc) {
                     $window.location.href = res.data.redirect;
                 } else {
                     $scope.er.custom.show = true;
-                    $scope.er.custom.msg = res.data.error;
+                    $scope.er.custom.msg = res.data.errorMessage;
                 }
                 toggleForm(false);
-            }, function () {
+            $window.location.reload();
+        }, function () {
                 $scope.er.server = true;
                 toggleForm(false);
             });

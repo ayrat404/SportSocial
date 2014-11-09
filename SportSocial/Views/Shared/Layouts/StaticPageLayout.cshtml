@@ -1,10 +1,9 @@
-﻿@using System.Web.Optimization
-@{
+﻿@{
     Layout = "Empty.cshtml";
 }
 
 @section Scripts{
-    @Scripts.Render("~/bundles/blog/scripts")
+    @RenderSection("Scripts", false)
 }
 
 <div class="static-layout-app">

@@ -138,6 +138,7 @@
     <Compile Include="Common\Helpers\LocalizationHelper.cs" />
     <Compile Include="Common\Helpers\ModelStateHelper.cs" />
     <Compile Include="Common\Enums\HttpMethod.cs" />
+    <Compile Include="Common\Objects\IHasCommentViewModel.cs" />
     <Compile Include="Common\Objects\ServiceResult.cs" />
     <Compile Include="Common\Services\CurrentUser\Impls\CurrentUser.cs" />
     <Compile Include="Common\Services\CurrentUser\ICurrentUser.cs" />

@@ -276,7 +276,7 @@
     <Content Include="Scripts\app\blog\app.js" />
     <Content Include="Scripts\app\blog\modules\article\articleComment.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\article\articleImgUploader.ctrl.js" />
-    <Content Include="Scripts\app\blog\modules\article\articleCreate.ctrl.js" />
+    <Content Include="Scripts\app\blog\modules\article\articleEdit.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\article\article.srvc.js" />
     <Content Include="Scripts\app\blog\modules\authorization\authorization.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\authorization\authorization.srvc.js" />
@@ -770,6 +770,7 @@
     <Content Include="Content\styles\components\blog\video.less" />
     <Content Include="Content\styles\components\common\icons.less" />
     <Content Include="Content\styles\components\common\like-rating.less" />
+    <Content Include="Content\styles\view\settings.less" />
     <None Include="Scripts\libs\jquery\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.min.js" />
@@ -857,6 +858,7 @@
     <Compile Include="Controllers\Admin\ConferenceController.cs" />
     <Compile Include="Controllers\Base\SportSocialControllerBase.cs" />
     <Compile Include="Controllers\FileController.cs" />
+    <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Controllers\PayController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
@@ -902,8 +904,8 @@
     <Content Include="Views\Registration\Shared\Layouts\RegistrationLayout.cshtml" />
     <Content Include="Views\Pay\Index.cshtml" />
     <Content Include="Views\Blog\New.cshtml" />
-    <Content Include="Views\Blog\Shared\Partials\Blocks\Header.cshtml" />
-    <Content Include="Views\Blog\Shared\Partials\Blocks\Footer.cshtml" />
+    <Content Include="Views\Shared\Partials\Header.cshtml" />
+    <Content Include="Views\Shared\Partials\Footer.cshtml" />
     <Content Include="Views\Blog\Shared\Partials\Blocks\Promo.cshtml" />
     <Content Include="Views\Blog\Shared\Partials\Blocks\AuthRegBlock.cshtml" />
     <Content Include="Views\Blog\Shared\Partials\Blocks\Menu.cshtml" />
@@ -918,6 +920,9 @@
     <Content Include="Views\Admin\Shared\Partials\Sidebar.cshtml" />
     <Content Include="Views\Blog\Item.cshtml" />
     <Content Include="Views\Blog\Shared\Partials\Article\Info.cshtml" />
+    <Content Include="Views\Conference\Index.cshtml" />
+    <Content Include="Views\Settings\Index.cshtml" />
+    <Content Include="Views\Shared\Partials\Comments.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -939,7 +944,8 @@
     <Folder Include="Scripts\spa\common\utils\" />
     <Folder Include="Scripts\spa\entities\" />
     <Folder Include="Storage\Images\" />
-    <Folder Include="Views\Conference\" />
+    <Folder Include="Views\Conference\Shared\Layouts\" />
+    <Folder Include="Views\Conference\Shared\Partials\" />
     <Folder Include="Views\File\" />
   </ItemGroup>
   <ItemGroup>

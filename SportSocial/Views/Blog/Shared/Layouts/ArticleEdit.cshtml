@@ -7,16 +7,12 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-8">
-                <div ng-controller="ArticleCreateCtrl">
+                <div ng-controller="ArticleEditCtrl"
+                     class="article__inner">
                     @RenderBody()
                 </div>
             </div>
             <div class="col-sm-4">
-
-                @*Информация пользователя который залогинен*@
-                <div class="block">
-                    @Html.Partial("Shared/Partials/Blocks/User")
-                </div>
 
                 @*Таймер конференции*@
                 <div class="block">

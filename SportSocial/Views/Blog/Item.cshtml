@@ -1,78 +1,62 @@
-﻿@using BLL.Common.Extensions
-@model BLL.Blog.ViewModels.BlogPostViewModel
+﻿@model BLL.Blog.ViewModels.BlogPostViewModel
 @{
-    @*TODO Добавить название статьи в Title*@
-    ViewBag.Title = "Fortress - Статья";
-    Layout = "../Blog/Shared/Layouts/ArticleEdit.cshtml";
+    ViewBag.Title = "Fortress - " + Model.Title;
+    Layout = "~/Views/Blog/Shared/Layouts/BlogLayout.cshtml";
 }
-<div class="article__item block">
-    <div class="article__item__img-wrap">
-        <img src="@Model.Images[0].Url?height=430&mode=crop" alt="статьюшка" class="article__item__img"/>
-    </div>
-    <div class="article__item__text">
-        <h2 class="article__item__title">@Model.Title</h2>
-        <div class="article__item__desc">
-            @Html.DisplayTextFor(model => model.Text);
-        </div>
-        <div class="article__item__bottom">
-            <div class="pull-left">
-                @Html.Partial("Shared/Partials/Article/Info")
+<div class="article">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="article__item block">
+                    <div class="article__item__img-wrap">
+                        <img src="@Model.Images[0].Url?width=800&height=430&mode=crop" alt="статьюшка" class="article__item__img" />
+                    </div>
+                    <div class="article__item__text">
+                        <h2 class="article__item__title">@Model.Title</h2>
+                        <div class="article__item__desc">
+                            @Model.Text
+                        </div>
+                        <div class="article__item__bottom">
+                            <div class="pull-left">
+                                @Html.Partial("Shared/Partials/Article/Info")
+                            </div>
+                            <div class="pull-right">
+                                <div like-dislike
+                                     count="@Model.Rating"
+                                     isliked="true"
+                                     isdisliked="false"
+                                     type="Article"
+                                     id="@Model.Id"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @*Комментарии*@
+                @Html.Partial("Partials/Comments")
             </div>
-            <div class="pull-right">
-                <div like-dislike
-                     count="@Model.Rating"
-                     isliked="true"
-                     isdisliked="false"
-                     type="Article"
-                     id="@Model.Id"></div>
+            <div class="col-sm-4">
+
+                @*Информация об авторе*@
+                <div class="block">
+                    @Html.Partial("Shared/Partials/Blocks/User")
+                </div>
+
+                @*Таймер конференции*@
+                <div class="block">
+                    <div conf-date="12312"></div>
+                </div>
+
+                @Html.Partial("Shared/Partials/Blocks/Menu")
             </div>
         </div>
     </div>
 </div>
 
-@*Комментарии*@
-<div ng-controller="CommentCtrl"
-     ng-init='itemId=@Model.Id; more=666; comments=@Html.Raw(Model.Comments.ToJson());'
-     class="mod block">
-    <div class="mod__header">
-        <div class="mod__header__title">Комментарии</div>
-    </div>
-    <div class="mod__content comment">
-        <div ng-if="more!=0"
-             class="text-center">
-            <span class="link" ng-click="loadAll();">Показать предыдущие 666 комментариев</span>
-        </div>
-        <div class="comment__list"
-             ng-cloak>
-            <div ng-repeat="c in comments" class="cl__it">
-                <div ng-attr-id="{{'comment_' + c.id}}"
-                     class="cl__it__inner">
-                    <a ng-href="/user/{{c.id}}" class="cl__it__av-wrap">
-                        <img ng-src="{{c.avatar}}" class="cl__it__av" alt="{{c.name}} {{c.surname}}" />
-                    </a>
-                    <div class="cl__it__info">
-                        <a ng-href="/user/{{c.id}}" class="cl__it__name">{{c.name}} {{c.surname}}</a>
-                        <div class="cl__it__date">{{c.date}}</div>
-                        <div ng-click="createAnswer(c)"
-                             class="cl__it__text">
-                            {{c.text}}
-                        </div>
-                    </div>
-                </div>
-                <div ng-if="c.CommentFor != null"
-                     class="cl__it__for">
-                    Ответ для <span class="link" ng-click="scrollToFor(c.CommentFor.Id)">{{c.commentFor.name}}</span>
-                </div>
-            </div>
-            <form ng-submit="createComment(text)"
-                  class="comment__form">
-                <textarea ng-model="text"
-                          ng-autofocus="{{focus}}"
-                          scroll-to-current-pos="{{focus}}"
-                          param-dopscroll="100"></textarea>
-                <button type="submit" class="btn">Отправить</button>
-            </form>
-        </div>
-    </div>
-</div>
+
+
+
+
+
+
 

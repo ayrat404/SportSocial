@@ -24,6 +24,11 @@ namespace SportSocial.Controllers
             return Json(new {url = "/"}, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         //[HttpGet]
         //public ActionResult Index()
         //{

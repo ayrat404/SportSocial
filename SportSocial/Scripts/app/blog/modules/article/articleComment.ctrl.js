@@ -79,26 +79,15 @@ function ($scope, articleRqst, utilsSrvc, $window, $timeout) {
     // отправка данных для создания комментария или ответа
     // ---------------
     $scope.createComment = function (text) {
-        //$scope.comments.push({
-        //    Id: 2,
-        //    Avatar: '/Content/images/temp/user.jpg',
-        //    Name: 'Херасе',
-        //    Surname: 'Тимофеевич',
-        //    Date: '13123',
-        //    Text: text,
-        //    CommentFor: {
-        //        Id: prop.answerFor.id,
-        //        Name: prop.answerFor.name
-        //    }
-        //});
         var data = {};
         data.itemId = $scope.itemId;
+        data.itemType = $scope.itemType;
         if (prop.isAnswer) {    // если создается ответ на комментарий
-            data.type = 'answer';
+            data.commentType = 'answer';
             data.commentForId = prop.answerFor.Id;
             data.text = text.substr(prop.answerFor.name.length + 2, text.length-1);
         } else {                // если создается комментарий
-            data.type = 'comment';
+            data.commentType = 'comment';
             data.text = text;
         }
         articleRqst.createComment(utilsSrvc.token.add(data))

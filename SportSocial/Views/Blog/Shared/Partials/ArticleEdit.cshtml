@@ -1,11 +1,12 @@
 ﻿<form ng-submit="createArticle(ar)"
+      name="ArticleEdit"
       class="blog-form  article__edit article-new__form">
     <div class="row">
         <div class="col-xs-4">
             <div class="blog-form__desc">Заголовок статьи</div>
         </div>
         <div class="col-xs-8">
-            <input ng-model="ar.title" type="text" class="input" placeholder="Заголовок статьи" />
+            <input ng-model="ar.title" required type="text" class="input" placeholder="Заголовок статьи" />
         </div>
     </div>
     <div class="row">
@@ -13,7 +14,7 @@
             <div class="blog-form__desc">Рубрика</div>
         </div>
         <div class="col-xs-8">
-            <select ng-model="ar.rubric" class="input">
+            <select ng-model="ar.rubric" required class="input">
                 <option value="" selected>Выберите рубрику</option>
                 @foreach (var r in Model.Rubrics)
                 {
@@ -39,7 +40,7 @@
     <div class="row">
         <div class="col-xs-12">
             <a href="@Url.Action("Index", "Blog")" class="link pull-left">Отмена</a>
-            <button type="submit" class="btn btn--main pull-right">Отправить на модерацию</button>
+            <button ng-disabled="prop.btnIsDisabled || !ar.text.length || !ar.images.length || ArticleEdit.$invalid" type="submit" class="btn btn--main pull-right">Отправить на модерацию</button>
         </div>
     </div>
 </form>
