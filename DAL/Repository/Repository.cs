@@ -19,7 +19,7 @@ namespace DAL.Repository
 
         public IEnumerable<TEntity> GetAll<TEntity>() where TEntity: class
         {
-            return _context.Set<TEntity>().AsNoTracking().ToList();
+            return _context.Set<TEntity>().ToList();
         }
 
         public TEntity Find<TEntity>(object id) where TEntity: class

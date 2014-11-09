@@ -27,6 +27,7 @@ namespace DAL
         public DbSet<Conference> Conferences { get; set; }
         public DbSet<BlogComment> BlogComments { get; set; }
         public DbSet<BlogCommentRating> BlogCommentRatings { get; set; }
+        public DbSet<PostRating> PostRatings { get; set; }
 
         static EntityDbContext()
         {

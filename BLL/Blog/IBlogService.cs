@@ -12,7 +12,9 @@ namespace BLL.Blog
         IEnumerable<Rubric> GetRubrics();
         void ChangeStatus(int id, int status);
         IEnumerable<PostForAdminViewModel> GetPostsForAdmin(BlogPostStatus? status, string query);
-        ServiceResult Rait(BlogRatingViewModel model);
-        void AddComment(CreateComment createCommentModel);
+        ServiceResult RaitBlog(BlogRatingViewModel model);
+        void AddComment(CreateCommentViewModel createCommentViewModelModel);
+        IEnumerable<Comment> LoadComments(int postId);
+        BlogPostViewModel GetPost(int id);
     }
 }

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Web.Mvc;
-using AutoMapper.Internal;
 using BLL.Common.Objects;
 using DAL.DomainModel.EnumProperties;
 using DAL.DomainModel.Interfaces;
@@ -8,7 +6,7 @@ using DAL.Repository.Interfaces;
 
 namespace BLL.Common.Services.Rating
 {
-    class RatingService : IRatingService
+    public class RatingService : IRatingService
     {
         private readonly IRepository _repository;
 

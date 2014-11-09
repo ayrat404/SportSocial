@@ -120,6 +120,9 @@
     <Compile Include="Blog\Enums\RatingEntityType.cs" />
     <Compile Include="Blog\Impls\BlogService.cs" />
     <Compile Include="Blog\IBlogService.cs" />
+    <Compile Include="Blog\MapProfiles\BlogPostProfile.cs" />
+    <Compile Include="Blog\MapProfiles\CommentsProfile.cs" />
+    <Compile Include="Blog\MapProfiles\CreateCommentProfile.cs" />
     <Compile Include="Blog\MapProfiles\PostForAdminProfile.cs" />
     <Compile Include="Blog\ViewModels\BlogPostViewModel.cs" />
     <Compile Include="Blog\ViewModels\BlogRatingViewModel.cs" />

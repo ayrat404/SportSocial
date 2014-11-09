@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BLL.Blog.ViewModels
 {
-    public class CreateComment
+    public class CreateCommentViewModel
     {
         [Required]
         public string Type { get; set; }
@@ -13,6 +13,6 @@ namespace BLL.Blog.ViewModels
         [Required]
         public int ItemId { get; set; }
 
-        public int CommentForId { get; set; }
+        public int? CommentForId { get; set; }
     }
 }

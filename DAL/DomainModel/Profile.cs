@@ -11,6 +11,8 @@ namespace DAL.DomainModel
 
         public string Lang { get; set; }
 
+        public string Avatar { get; set; }
+
         public virtual AppUser AppUser { get; set; }
     }
 }
