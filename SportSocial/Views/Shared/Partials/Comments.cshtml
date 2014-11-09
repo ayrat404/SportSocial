@@ -1,5 +1,5 @@
 ﻿@model BLL.Common.Objects.IHasCommentViewModel
-<div ng-controller="CommentCtrl"
+<div ng-controller="CommentsCtrl"
      ng-init='
      itemId=@Model.Id; 
      more=@Model.CommentsCount;
@@ -40,7 +40,7 @@
                 <textarea ng-model="text"
                           ng-autofocus="{{focus}}"
                           scroll-to-current-pos="{{focus}}"
-                          param-dopscroll="100"></textarea>
+                          param-dopscroll="100" class="input"></textarea>
                 <button type="submit" class="btn">Отправить</button>
             </form>
         </div>

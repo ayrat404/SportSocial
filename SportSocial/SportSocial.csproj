@@ -269,7 +269,8 @@
     <Content Include="Scripts\app\admin\modules\sidebar\sidebar.ctrl.js" />
     <Content Include="Scripts\app\admin\shared\services\admin.srvc.js" />
     <Content Include="Scripts\app\blog\app.js" />
-    <Content Include="Scripts\app\blog\modules\article\articleComment.ctrl.js" />
+    <Content Include="Scripts\app\blog\modules\comments\comments.srvc.js" />
+    <Content Include="Scripts\app\blog\modules\comments\comments.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\article\articleImgUploader.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\article\articleEdit.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\article\article.srvc.js" />
@@ -281,6 +282,8 @@
     <Content Include="Scripts\app\blog\modules\registration\registration.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\conference\confDate.drct.js" />
     <Content Include="Scripts\app\blog\modules\article\redactor.drct.js" />
+    <Content Include="Scripts\app\blog\modules\settings\settings.ctrl.js" />
+    <Content Include="Scripts\app\blog\modules\settings\settings.srvc.js" />
     <Content Include="Scripts\app\blog\shared\directives\likeDislike.drct.js" />
     <Content Include="Scripts\app\blog\shared\services\likeDislike.srvc.js" />
     <Content Include="Scripts\app\shared\app.js" />
@@ -918,6 +921,9 @@
     <Content Include="Views\Conference\Index.cshtml" />
     <Content Include="Views\Settings\Index.cshtml" />
     <Content Include="Views\Shared\Partials\Comments.cshtml" />
+    <Content Include="Views\Settings\Shared\Partials\Avatar.cshtml" />
+    <Content Include="Views\Settings\Shared\Partials\Password.cshtml" />
+    <Content Include="Views\Settings\Shared\Partials\Phone.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

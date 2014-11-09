@@ -1,12 +1,12 @@
 ﻿'use strict';
 
-angular.module('blog').controller('CommentCtrl',
+angular.module('blog').controller('CommentsCtrl',
     ['$scope',
-     'articleRqst',
+     'commentsRqst',
      'utilsSrvc',
      '$window',
      '$timeout',
-function ($scope, articleRqst, utilsSrvc, $window, $timeout) {
+function ($scope, commentsRqst, utilsSrvc, $window, $timeout) {
 
     // типы комментариев (комментарий к статье, ответ на комментарий)
     // type: comment/answer
@@ -33,7 +33,7 @@ function ($scope, articleRqst, utilsSrvc, $window, $timeout) {
     // загрузка комментариев, которые не отображаются
     // ---------------
     $scope.loadAll = function () {
-        articleRqst.loadComments(utilsSrvc.token.add({ id: $scope.itemId }))
+        commentsRqst.loadComments(utilsSrvc.token.add({ id: $scope.itemId }))
             .then(function(res) {
                 if (res.data.length) {
                     // если грузим все комменты и вставляем
@@ -90,7 +90,7 @@ function ($scope, articleRqst, utilsSrvc, $window, $timeout) {
             data.commentType = 'comment';
             data.text = text;
         }
-        articleRqst.createComment(utilsSrvc.token.add(data))
+        commentsRqst.createComment(utilsSrvc.token.add(data))
             .then(function(res) {
                 if (res.data.success) {
                     $scope.comments.push(res.data.comment);

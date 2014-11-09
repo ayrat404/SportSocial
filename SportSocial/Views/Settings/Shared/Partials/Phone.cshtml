@@ -1,0 +1,64 @@
+﻿@*Новый номер телефона*@
+<div class="separate">
+    <div class="separate__header">
+        Изменить номер телефона
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="blog-form__desc">Текущий номер</div>
+        </div>
+        <div class="col-sm-5">
+            +7 *** *** ** 56
+        </div>
+    </div>
+    <form ng-submit="phone.fn.requestCode(phn)"
+          name="phoneForm">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="blog-form__desc">Новый номер</div>
+            </div>
+            <div class="col-sm-5">
+                <input ng-model="phn.phone"
+                       ng-class="{'input--invalid': phoneForm.phone.$error.required && validstart.phone}"
+                       ng-blur="validstart.phone=true"
+                       name="phone"
+                       required
+                       type="text" class="input" />
+            </div>
+        </div>
+        <div class="text-right">
+            <button ng-disabled="phoneForm.$invalid"
+                    type="submit" class="btn btn--main btn--xs">
+                Получить код подтверждения
+            </button>
+        </div>
+    </form>
+    <form ng-submit="phone.fn.confirmCode(code)"
+          ng-show="phone.smsBlockShow"
+          ng-cloak
+          name="codeForm">
+        <div class="row">
+            <div class="col-sm-4">
+                Код подтврждения выслан по смс
+            </div>
+            <div class="col-sm-5">
+                <input ng-model="phn.code"
+                       name="code"
+                       required
+                       class="input" />  
+            </div>
+        </div>
+        <div class="text-right">
+            <button ng-disabled="phn.code.length != 4"
+                    type="submit" class="btn btn--main btn--xs">
+                Изменить номер телефона
+            </button>
+        </div>
+    </form>
+    <div ng-cloak>
+        <div ng-if="phone.er.s404"
+             class="alert alert-danger">Сервер недоступен</div>
+        <div ng-if="phone.er.server.length"
+             class="alert alert-warning">{{password.er.server}}</div>
+    </div>
+</div>
