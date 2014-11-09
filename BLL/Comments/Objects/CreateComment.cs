@@ -1,14 +1,18 @@
 using System.ComponentModel.DataAnnotations;
+using BLL.Common.Objects;
 
-namespace BLL.Blog.ViewModels
+namespace BLL.Comments.Objects
 {
     public class CreateCommentViewModel
     {
         [Required]
-        public string Type { get; set; }
+        public string CommentType { get; set; }
 
         [Required]
         public string Text { get; set; }
+
+        //[Required]
+        public CommentItemType? ItemType { get; set; }
 
         [Required]
         public int ItemId { get; set; }

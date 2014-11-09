@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using BLL.Blog.ViewModels;
+using BLL.Comments.Objects;
 using BLL.Common.Objects;
 using DAL.DomainModel;
 using DAL.DomainModel.EnumProperties;

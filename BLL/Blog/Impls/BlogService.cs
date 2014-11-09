@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading;
-using System.Web;
 using AutoMapper;
 using BLL.Blog.ViewModels;
+using BLL.Comments.Objects;
 using BLL.Common.Objects;
 using BLL.Common.Services.CurrentUser;
 using BLL.Common.Services.Rating;
@@ -14,7 +13,6 @@ using DAL.DomainModel;
 using DAL.DomainModel.BlogEntities;
 using DAL.DomainModel.EnumProperties;
 using DAL.Repository.Interfaces;
-using Microsoft.AspNet.Identity;
 
 namespace BLL.Blog.Impls
 {

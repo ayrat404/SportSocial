@@ -1,4 +1,4 @@
-namespace BLL.Blog.ViewModels
+namespace BLL.Comments.Objects
 {
     public class CommentFor
     {

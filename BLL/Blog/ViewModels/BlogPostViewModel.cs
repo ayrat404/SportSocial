@@ -1,9 +1,10 @@
 using System;
+using BLL.Comments.Objects;
 using BLL.Common.Objects;
 
 namespace BLL.Blog.ViewModels
 {
-    public class BlogPostViewModel:IHasCommentViewModel
+    public class BlogPostViewModel: IHasCommentViewModel
     {
         public int Id { get; set; }
 
@@ -22,6 +23,8 @@ namespace BLL.Blog.ViewModels
         public string AuthorName { get; set; }
 
         public int CommentsCount { get; set; }
+
+        public CommentItemType ItemType { get; set; }
 
         public Comment[] Comments { get; set; }
     }

@@ -1,10 +1,7 @@
-using System.Collections.Generic;
-using DAL.DomainModel.BlogEntities;
-
 namespace DAL.DomainModel.Interfaces
 {
-    public interface IHasComments<THasCommentEntity, TCommentEntity>
+    public interface IHasComments
     {
-        ICollection<ICommentEntity<THasCommentEntity, TCommentEntity>> Comments { get; set; }
+        //ICollection<ICommentEntity<THasCommentEntity, TCommentEntity>> Comments { get; set; }
     }
 }

@@ -33,7 +33,7 @@ namespace SportSocial.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> SignIn(SignInModel model, string returnUrl)
+        public ActionResult SignIn(SignInModel model, string returnUrl)
         {
             if (ModelState.IsValid)
             {
@@ -43,7 +43,7 @@ namespace SportSocial.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Register(RegistratioinModel model, string url = "")
+        public ActionResult Register(RegistratioinModel model, string url = "")
         {
             if (ModelState.IsValid)
             {
@@ -53,7 +53,7 @@ namespace SportSocial.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> ConfirmPhone(ConfirmSmsCode confirmModel)
+        public ActionResult ConfirmPhone(ConfirmSmsCode confirmModel)
         {
             if (ModelState.IsValid)
             {

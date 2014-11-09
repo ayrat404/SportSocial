@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
-using BLL.Blog.ViewModels;
+using BLL.Comments.Objects;
 using DAL.DomainModel.BlogEntities;
+using DAL.DomainModel.Interfaces;
 
-namespace BLL.Blog.MapProfiles
+namespace BLL.Comments.MapProfiles
 {
     public class CommentsProfile: Profile
     {

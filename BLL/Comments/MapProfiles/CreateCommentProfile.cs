@@ -1,10 +1,10 @@
 ﻿using System.Web.Mvc;
 using AutoMapper;
-using BLL.Blog.ViewModels;
+using BLL.Comments.Objects;
 using BLL.Common.Services.CurrentUser;
 using DAL.DomainModel.BlogEntities;
 
-namespace BLL.Blog.MapProfiles
+namespace BLL.Comments.MapProfiles
 {
     public class CreateCommentProfile: Profile
     {

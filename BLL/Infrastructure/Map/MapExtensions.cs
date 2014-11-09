@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using AutoMapper;
 
 namespace BLL.Infrastructure.Map
@@ -16,6 +18,11 @@ namespace BLL.Infrastructure.Map
             //Mapper.CreateMap(source.GetType(), typeof(TDest));
             return Mapper.Map(source, destination);
         }
+
+        //public static void MapTo(this object source, object dest)
+        //{
+        //    return Mapper.Map()
+        //}
 
         public static IEnumerable<TDest> MapEachTo<TDest>(this IEnumerable<object> source)
         {

@@ -857,7 +857,9 @@
     <Compile Include="Controllers\Admin\AdminController.cs" />
     <Compile Include="Controllers\Admin\ConferenceController.cs" />
     <Compile Include="Controllers\Base\SportSocialControllerBase.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\FileController.cs" />
+    <Compile Include="Controllers\RatingController.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Controllers\PayController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />

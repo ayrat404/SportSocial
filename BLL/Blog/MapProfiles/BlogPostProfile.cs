@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using AutoMapper;
 using BLL.Blog.ViewModels;
+using BLL.Common.Objects;
 using DAL.DomainModel.BlogEntities;
 
 namespace BLL.Blog.MapProfiles
@@ -17,10 +18,11 @@ namespace BLL.Blog.MapProfiles
                 .ForMember(dest => dest.Text, opt => opt.MapFrom(src => src.Text))
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
                 .ForMember(dest => dest.CommentsCount, opt => opt.MapFrom(src => src.Comments.Count))
-                .ForMember(dest => dest.Images, 
-                           opt => opt
-                               .MapFrom(src => new[] {new Images {Id = 1, Url = src.ImageUrl}} ))
-                .ForMember(dest => dest.Comments, opt => opt.MapFrom(src => src.Comments.Skip(src.Comments.Count - 3)));
+                .ForMember(dest => dest.Images,
+                    opt => opt
+                        .MapFrom(src => new[] {new Images {Id = 1, Url = src.ImageUrl}}))
+                .ForMember(dest => dest.Comments, opt => opt.MapFrom(src => src.Comments.Skip(src.Comments.Count - 3)))
+                .ForMember(dest => dest.ItemType, opt => opt.MapFrom(src => CommentItemType.Article));
         }
     }
 }

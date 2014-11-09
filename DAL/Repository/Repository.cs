@@ -69,6 +69,11 @@ namespace DAL.Repository
             return _context.Set<TEntity>();
         }
 
+        public IQueryable Queryable(Type type)
+        {
+            return _context.Set(type);
+        }
+
         public void SaveChanges()
         {
             _context.SaveChanges();
