@@ -7,7 +7,6 @@ namespace DAL.DomainModel.Interfaces
         string UserId { get; set; }
         int? CommentForId { get; set; }
         int CommentedEntityId { get; set; }
-        ICommentEntity<TCommentedEntity> CommentFor { get; set; }
         TCommentedEntity CommentedEntity { get; set; }
         AppUser User { get; set; }
     }

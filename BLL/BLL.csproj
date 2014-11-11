@@ -124,6 +124,7 @@
     <Compile Include="Blog\MapProfiles\BlogPostProfile.cs" />
     <Compile Include="Blog\ViewModels\PostListViewModel.cs" />
     <Compile Include="Blog\ViewModels\PostPreviewViewModel.cs" />
+    <Compile Include="Comments\MapProfiles\CProfile.cs" />
     <Compile Include="Comments\MapProfiles\CommentsProfile.cs" />
     <Compile Include="Comments\MapProfiles\CreateCommentProfile.cs" />
     <Compile Include="Blog\MapProfiles\PostForAdminProfile.cs" />

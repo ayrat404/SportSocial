@@ -19,7 +19,8 @@ namespace DAL.DomainModel.BlogEntities
 
         [ForeignKey("CommentedEntityId")]
         public virtual Post CommentedEntity { get; set; }
-        public ICommentEntity<Post> CommentFor { get; set; }
+        [ForeignKey("CommentForId")]
+        public BlogComment CommentFor { get; set; }
         public virtual AppUser User { get; set; }
         public virtual ICollection<IRatingEntity<BlogComment>> RatingEntites { get; set; }
     }

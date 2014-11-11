@@ -13,7 +13,7 @@ function ($scope, likeDislikeRqst, utilsSrvc, $window, $timeout) {
         id: $scope.id,
         entityType: $scope.type
     };
-
+    debugger;
     // отправка запроса
     // ---------------
     $scope.changeRating = function (action) {

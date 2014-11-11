@@ -17,7 +17,7 @@
                     </div>
                     <div class="al__item__info">
                         <div class="al__item__title">@item.Title</div>
-                        <div class="al__item__desc">@item.Text.Substring(0, 90)</div>
+                        <div class="al__item__desc">@item.Text.Substring(0, 10)</div>
                         <div class="al__item__bottom">
                             <div class="pull-left">
                                 @Html.Partial("Shared/Partials/Article/Info", item)
@@ -29,7 +29,7 @@
                     </div>
                 </div>
             }
-            <div class="al__item">
+            @*<div class="al__item">
                 <div class="al__item__img">
                     <img src="~/Content/images/temp/example.jpg?width=198&height=198&mode=crop" alt="тренировка" />
                 </div>
@@ -38,7 +38,7 @@
                     <div class="al__item__desc">Принято считать, что оптимальным временем для тренировки с целью набора мышечной массы является отрезок от 40 минут до полутора часов. В данной статье я попробую максимально наглядно объяснить, чем эти рамки обусловлены.</div>
                     <div class="al__item__bottom">
                         <div class="pull-left">
-                            @Html.Partial("Shared/Partials/Article/Info")
+                            @Html.Partial("Shared/Partials/Article/Info", item)
                         </div>
                         <div class="pull-right">
                             <div like-dislike 
@@ -50,9 +50,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>*@
         </div>
-        <br />
+        @*<br />*@
         Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
         @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

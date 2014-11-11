@@ -1,36 +1,65 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using BLL.Comments;
 using BLL.Comments.Objects;
 using BLL.Common.Objects;
+using DAL.DomainModel;
+using DAL.DomainModel.BlogEntities;
 using SportSocial.Controllers.Base;
 
 namespace SportSocial.Controllers
 {
     public class CommentsController: SportSocialControllerBase
     {
-        //private readonly ICommentService _commentService;
-
-        //public CommentsController(ICommentService commentService)
-        //{
-        //    _commentService = commentService;
-        //}
 
         [HttpPost]
-        public JsonResult Comment(CreateCommentViewModel createCommentViewModelModel)
+        public JsonResult Comment(CreateCommentViewModel createComment)
         {
             if (ModelState.IsValid)
             {
-                //var comment = _commentService.AddComment(createCommentViewModelModel);
-                //return Json(new {Success = true, Comment = comment});
+                var comment = CreateGenericService(createComment.ItemType).AddComment(createComment);
+                return Json(new { Success = true, Comment = comment });
             }
             return Json(new {Success = false});
         }
 
         [HttpGet]
-        public JsonResult LoadComments(int id, CommentItemType? itemType)
+        public JsonResult LoadComments(int id, CommentItemType itemType)
         {
-            //return Json(_commentService.LoadComments(id, CommentItemType.Article), JsonRequestBehavior.AllowGet);
+            var comments = CreateGenericService(itemType).LoadComments(id, itemType);
+            return Json(new {Comments = comments}, JsonRequestBehavior.AllowGet);
+        }
+
+        private ICommentServiceMethods CreateGenericService(CommentItemType type)
+        {
+            Type ratingServiseType = typeof (ICommentService<,>)
+                .MakeGenericType(GetComentedEntityByType(type), GetCommentEntityByType(type));
+            return (ICommentServiceMethods)DependencyResolver.Current.GetService(ratingServiseType);
+        }
+
+        private Type GetComentedEntityByType(CommentItemType type)
+        {
+            switch (type)
+            {
+                case CommentItemType.Article:
+                    return typeof (Post);
+                case CommentItemType.Conference:
+                    return typeof (Conference);
+            }
             return null;
         }
+
+        private Type GetCommentEntityByType(CommentItemType type)
+        {
+            switch (type)
+            {
+                case CommentItemType.Article:
+                    return typeof (BlogComment);
+                //case CommentItemType.Conference:
+                //    return typeof (Conference);
+            }
+            return null;
+        }
+
     }
 }

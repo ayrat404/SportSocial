@@ -160,10 +160,6 @@
     <Compile Include="Migrations\201411091853454_UpdatePostPostComments.Designer.cs">
       <DependentUpon>201411091853454_UpdatePostPostComments.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201411111857097_SomeMigration.cs" />
-    <Compile Include="Migrations\201411111857097_SomeMigration.Designer.cs">
-      <DependentUpon>201411111857097_SomeMigration.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AccountRepository.cs" />
@@ -221,9 +217,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411091853454_UpdatePostPostComments.resx">
       <DependentUpon>201411091853454_UpdatePostPostComments.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411111857097_SomeMigration.resx">
-      <DependentUpon>201411111857097_SomeMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

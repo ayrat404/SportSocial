@@ -4,7 +4,7 @@ using BLL.Common.Objects;
 
 namespace BLL.Blog.ViewModels
 {
-    public class BlogPostViewModel: IHasCommentViewModel
+    public class BlogPostViewModel: IHasCommentViewModel, IItemInfo
     {
         public int Id { get; set; }
 

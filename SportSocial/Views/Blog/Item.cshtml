@@ -18,7 +18,7 @@
                         </div>
                         <div class="article__item__bottom">
                             <div class="pull-left">
-                                @Html.Partial("Shared/Partials/Article/Info")
+                                @Html.Partial("Shared/Partials/Article/Info", Model)
                             </div>
                             <div class="pull-right">
                                 <div like-dislike
@@ -33,7 +33,7 @@
                 </div>
 
                 @*Комментарии*@
-                @Html.Partial("Partials/Comments")
+                @Html.Partial("Partials/Comments", Model)
             </div>
             <div class="col-sm-4">
 

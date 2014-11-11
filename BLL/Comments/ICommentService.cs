@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using BLL.Comments.Objects;
 using BLL.Common.Objects;
+using BLL.Common.Services.CurrentUser;
 using BLL.Infrastructure.Map;
 using DAL.DomainModel;
 using DAL.DomainModel.BlogEntities;
@@ -19,66 +20,53 @@ namespace BLL.Comments
         IEnumerable<Comment> LoadComments(int itemId, CommentItemType itemType);
     }
 
-    //public
+    public interface ICommentServiceMethods
+    {
+        Comment AddComment(CreateCommentViewModel createCommentViewModel);
+        IEnumerable<Comment> LoadComments(int itemId, CommentItemType itemType);
+    }
 
     public class CommentService<TEntity, TCommentEntity> : ICommentService<TEntity, TCommentEntity>
         where TEntity: class, IHasComments<TEntity>
         where TCommentEntity: class, ICommentEntity<TEntity>
     {
         private readonly IRepository _repository;
+        private readonly ICurrentUser _currentUser;
 
-        public CommentService(IRepository repository)
+        public CommentService(IRepository repository, ICurrentUser currentUser)
         {
             _repository = repository;
+            _currentUser = currentUser;
         }
 
         public Comment AddComment(CreateCommentViewModel createCommentViewModel)
         {
-            switch (createCommentViewModel.ItemType)
+            var entity = _repository.Find<TEntity>(createCommentViewModel.ItemId);
+            if (entity != null)
             {
-                case CommentItemType.Article:
-                    var blogComment = createCommentViewModel.MapTo<BlogComment>();
-                    _repository.Add(blogComment);
-                    _repository.SaveChanges();
-                    return blogComment.MapTo<Comment>();
+                var comment = Activator.CreateInstance<TCommentEntity>();
+                comment.CommentForId = createCommentViewModel.CommentForId;
+                comment.CommentedEntityId = createCommentViewModel.ItemId;
+                comment.UserId = _currentUser.UserId;
+                comment.Text = createCommentViewModel.Text;
+                _repository.Add(comment);
+                _repository.SaveChanges();
+                var resultComment = comment.MapTo<Comment>();
+                resultComment.Name = _currentUser.UserName;
+                resultComment.Avatar = _currentUser.User.Profile.Avatar;
+                return resultComment;
             }
-            //var commentedEntity = Activator.CreateInstance(GetComentedEntityByType(createCommentViewModel.ItemType));
-            //commentedEntity = createCommentViewModel.MapTo(commentedEntity);
-            //_repository.Add(commentedEntity);
-            //_repository.SaveChanges();
             return null;
         }
 
         public IEnumerable<Comment> LoadComments(int itemId, CommentItemType itemType)
         {
-            switch (itemType)
+            var entity = _repository.Find<TEntity>(itemId);
+            if (entity != null)
             {
-                case CommentItemType.Article:
-                    var comments =  _repository
-                        .Queryable<BlogComment>()
-                        .Where(c => c.CommentedEntityId == itemId && !c.Deleted)
-                        .AsNoTracking()
-                        .MapEachTo<Comment>();
-                    return comments;
-                case CommentItemType.Conference:
-                    //var  =  _repository
-                    //    .Queryable<BlogComment>()
-                    //    .Where(c => c.CommentedEntityId == itemId && !c.Deleted)
-                    //    .AsNoTracking()
-                    //    .MapEachTo<Comment>();
-                    return null;
-            }
-            return null;
-        }
-
-        private Type GetComentedEntityByType(CommentItemType type)
-        {
-            switch (type)
-            {
-                case CommentItemType.Article:
-                    return typeof (Post);
-                case CommentItemType.Conference:
-                    return typeof (Conference);
+                return entity
+                    .Comments
+                    .MapEachTo<Comment>();
             }
             return null;
         }

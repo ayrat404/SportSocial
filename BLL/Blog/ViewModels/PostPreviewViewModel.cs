@@ -7,6 +7,12 @@ namespace BLL.Blog.ViewModels
 {
     public class PostPreviewViewModel : IItemInfo, IRatingInfo
     {
+        public PostPreviewViewModel()
+        {
+            RatingEntityType = RatingEntityType.Article;
+            IsDisiked = false;
+            IsLiked = false;
+        }
         public int Id { get; set; }
 
         public string Title { get; set; }
