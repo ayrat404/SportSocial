@@ -85,6 +85,7 @@
     <Compile Include="DomainModel\EnumProperties\RatingType.cs" />
     <Compile Include="DomainModel\Interfaces\IAuditable.cs" />
     <Compile Include="DomainModel\Interfaces\IComment.cs" />
+    <Compile Include="DomainModel\Interfaces\ICommentEntity.cs" />
     <Compile Include="DomainModel\Interfaces\IDeletable.cs" />
     <Compile Include="DomainModel\Interfaces\IEntity.cs" />
     <Compile Include="DomainModel\Interfaces\ICutrureSpecific.cs" />

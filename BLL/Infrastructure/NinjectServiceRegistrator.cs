@@ -1,5 +1,6 @@
 ﻿using BLL.Common.Services.CurrentUser;
 using BLL.Common.Services.CurrentUser.Impls;
+using BLL.Common.Services.Rating;
 using BLL.Infrastructure.IdentityConfig;
 using BLL.Sms;
 using DAL;
@@ -29,6 +30,7 @@ namespace BLL.Infrastructure
 
             kernel.Bind<ISmsService>().To<SmsServiceBase>();
             kernel.Bind<ICurrentUser>().To<CurrentUser>();
+            kernel.Bind(typeof (IGRatingService<,>)).To(typeof (RatingService<,>));
 
             kernel.Bind<IUserStore<AppUser>>().ToMethod(ctx => new UserStore<AppUser>(ctx.Kernel.Get<EntityDbContext>()));
             kernel.Bind<AppUserManager>().ToMethod(AppUserManager.Create);

@@ -77,6 +77,7 @@ namespace BLL.Login.Impls
                 {
                     result.ErrorMessage = "Ошибка при регистрации".Resource(this);
                     result.Success = false;
+                    return result;
                 }
             }
             var smsResult = _smsService.GenerateAndSendCode(user.Id, regModel.Phone);
@@ -102,11 +103,16 @@ namespace BLL.Login.Impls
                     _appUserManager.Update(user);
                     var profile = new Profile
                     {
+                        Id = user.Id,
                         Lang = LanguageHelper.GetCurrentCulture(),
                         Avatar = "/Content/Images/default-avatar.png",
                     };
                     _repository.Add(profile);
                     _repository.SaveChanges();
+                    ClaimsIdentity ident = _appUserManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
+                    _authManager.SignOut();
+                    _authManager.SignIn(new AuthenticationProperties { IsPersistent = true }, ident);
+
                 }
             }
             else

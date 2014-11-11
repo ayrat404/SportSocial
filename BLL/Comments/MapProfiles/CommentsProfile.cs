@@ -9,7 +9,7 @@ namespace BLL.Comments.MapProfiles
     {
         protected override void Configure()
         {
-            CreateMap<BlogComment, Comment>()
+            CreateMap<ICommentEntity<object>, Comment>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Avatar, opt => opt.MapFrom(src => src.User.Profile.Avatar))
                 .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Created))

@@ -7,17 +7,23 @@ using BLL.Common.Objects;
 using BLL.Infrastructure.Map;
 using DAL.DomainModel;
 using DAL.DomainModel.BlogEntities;
+using DAL.DomainModel.Interfaces;
 using DAL.Repository.Interfaces;
-
 namespace BLL.Comments
 {
-    public interface ICommentService
+    public interface ICommentService<TEntity, TCommentEntity>
+        where TEntity: class, IHasComments<TEntity>
+        where TCommentEntity: class, ICommentEntity<TEntity>
     {
         Comment AddComment(CreateCommentViewModel createCommentViewModel);
         IEnumerable<Comment> LoadComments(int itemId, CommentItemType itemType);
     }
 
-    class CommentService : ICommentService
+    //public
+
+    public class CommentService<TEntity, TCommentEntity> : ICommentService<TEntity, TCommentEntity>
+        where TEntity: class, IHasComments<TEntity>
+        where TCommentEntity: class, ICommentEntity<TEntity>
     {
         private readonly IRepository _repository;
 
@@ -28,19 +34,18 @@ namespace BLL.Comments
 
         public Comment AddComment(CreateCommentViewModel createCommentViewModel)
         {
-            //switch (createCommentViewModel.ItemType)
-            //{
-            //    case CommentItemType.Article:
-            //        var blogComment = createCommentViewModel.MapTo<BlogComment>();
-            //        _repository.Add(blogComment);
-            //        _repository.SaveChanges();
-            //        return blogComment.MapTo<Comment>();
-            //}
+            switch (createCommentViewModel.ItemType)
+            {
+                case CommentItemType.Article:
+                    var blogComment = createCommentViewModel.MapTo<BlogComment>();
+                    _repository.Add(blogComment);
+                    _repository.SaveChanges();
+                    return blogComment.MapTo<Comment>();
+            }
             //var commentedEntity = Activator.CreateInstance(GetComentedEntityByType(createCommentViewModel.ItemType));
             //commentedEntity = createCommentViewModel.MapTo(commentedEntity);
             //_repository.Add(commentedEntity);
             //_repository.SaveChanges();
-            //return new ServiceResult {Success = true};
             return null;
         }
 

@@ -5,6 +5,7 @@ using System.Threading;
 using AutoMapper;
 using BLL.Blog.ViewModels;
 using BLL.Comments.Objects;
+using BLL.Common.Helpers;
 using BLL.Common.Objects;
 using BLL.Common.Services.CurrentUser;
 using BLL.Common.Services.Rating;
@@ -19,13 +20,11 @@ namespace BLL.Blog.Impls
     public class BlogService : IBlogService
     {
         private readonly IRepository _repository;
-        private readonly IRatingService _ratingService;
         private readonly ICurrentUser _currentUser;
 
-        public BlogService(IRepository repository, IRatingService ratingService, ICurrentUser currentUser)
+        public BlogService(IRepository repository, ICurrentUser currentUser)
         {
             _repository = repository;
-            _ratingService = ratingService;
             _currentUser = currentUser;
         }
 
@@ -65,10 +64,9 @@ namespace BLL.Blog.Impls
                 .MapEachTo<PostForAdminViewModel>();
         }
 
-        public ServiceResult RaitBlog(BlogRatingViewModel model)
-        {
-            return _ratingService.Rate<Post, PostRating>(model.Id, model.ActionType);
-        }
+        //public ServiceResult RaitBlog(BlogRatingViewModel model) {
+        //    //return _ratingService.Rate<Post, PostRating>(model.Id, model.ActionType);
+        //}
 
         public Comment AddComment(CreateCommentViewModel createCommentViewModelModel)
         {
@@ -99,5 +97,40 @@ namespace BLL.Blog.Impls
                 .MapTo<BlogPostViewModel>();
             return post;
         }
+
+        public PostListViewModel GetPosts(PostSortType sortType, int rubricId = 0, int page = 1)
+        {
+            int viewedPosts = 10;
+            int take = page * 10;
+            //int skip = 10
+            if (sortType == PostSortType.Last)
+            {
+                var posts = _repository
+                    .Queryable<Post>()
+                    .Where(x => x.RubricId == rubricId && rubricId > 0)
+                    .OrderByDescending(p => p.Created)
+                    .Take(page)
+                    .AsNoTracking()
+                    .ToList();
+            }
+            return null;
+        }
+
+        //public PostListViewModel GetPosts(int page, PostSortType sortType = PostSortType.Last, int rubricId = 0)
+        //{
+        //    int viewedPosts = 10;
+        //    int take = page*10;
+        //    //int skip = 10
+        //    if (sortType == PostSortType.Last)
+        //    {
+        //        var posts = _repository
+        //            .Queryable<Post>()
+        //            .Where(x => x.RubricId == rubricId && rubricId > 0)
+        //            .OrderByDescending(p => p.Created)
+        //            .Take(page )
+        //            .AsNoTracking()
+        //            .ToList();
+        //    }
+        //}
     }
 }

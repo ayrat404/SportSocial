@@ -12,7 +12,7 @@ namespace BLL.Comments.Objects
         public string Text { get; set; }
 
         //[Required]
-        public CommentItemType? ItemType { get; set; }
+        public CommentItemType ItemType { get; set; }
 
         [Required]
         public int ItemId { get; set; }

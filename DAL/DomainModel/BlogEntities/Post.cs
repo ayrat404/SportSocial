@@ -5,7 +5,7 @@ using DAL.DomainModel.Interfaces;
 
 namespace DAL.DomainModel.BlogEntities
 {
-    public class Post: IEntity, IAuditable, ICultrureSpecific, IDeletable, IHasRating<Post>
+    public class Post: IEntity, IAuditable, ICultrureSpecific, IDeletable, IHasRating<Post>, IHasComments<BlogComment>
     {
         public int Id { get; set; }
 

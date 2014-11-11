@@ -1,9 +1,10 @@
-﻿@model BLL.Common.Objects.IHasCommentViewModel
+﻿@using BLL.Common.Extensions
+@model BLL.Common.Objects.IHasCommentViewModel
 <div ng-controller="CommentsCtrl"
      ng-init='
      itemId=@Model.Id; 
      more=@Model.CommentsCount;
-     comments=@Html.Raw(Json.Encode(@Model.Comments));'
+     comments=@Html.Raw(Model.Comments.ToJson());'
      class="mod block">
     <div class="mod__header">
         <div class="mod__header__title">Комментарии</div>
@@ -16,23 +17,23 @@
         <div class="comment__list"
              ng-cloak>
             <div ng-repeat="c in comments" class="cl__it">
-                <div ng-attr-id="{{'comment_' + c.Id}}"
+                <div ng-attr-id="{{'comment_' + c.id}}"
                      class="cl__it__inner">
-                    <a ng-href="/user/{{c.Id}}" class="cl__it__av-wrap">
-                        <img ng-src="{{c.Avatar}}" class="cl__it__av" alt="{{c.Name}} {{c.Surname}}" />
-                    </a>
+                    <div class="cl__it__av-wrap">
+                        <img ng-src="{{c.avatar}}" class="cl__it__av" alt="{{c.name}} {{c.surname}}" />
+                    </div>
                     <div class="cl__it__info">
-                        <a ng-href="/user/{{c.Id}}" class="cl__it__name">{{c.Name}} {{c.Surname}}</a>
-                        <div class="cl__it__date">{{c.Date}}</div>
+                        <div class="cl__it__name">{{c.name}} {{c.surname}}</div>
+                        <div class="cl__it__date">{{c.date}}</div>
                         <div ng-click="createAnswer(c)"
                              class="cl__it__text">
-                            {{c.Text}}
+                            {{c.text}}
                         </div>
                     </div>
                 </div>
                 <div ng-if="c.CommentFor != null"
                      class="cl__it__for">
-                    Ответ для <span class="link" ng-click="scrollToFor(c.CommentFor.Id)">{{c.CommentFor.Name}}</span>
+                    Ответ для <span class="link" ng-click="scrollToFor(c.CommentFor.Id)">{{c.commentFor.name}}</span>
                 </div>
             </div>
             <form ng-submit="createComment(text)"

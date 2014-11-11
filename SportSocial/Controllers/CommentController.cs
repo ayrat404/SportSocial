@@ -6,30 +6,31 @@ using SportSocial.Controllers.Base;
 
 namespace SportSocial.Controllers
 {
-    public class CommentController: SportSocialControllerBase
+    public class CommentsController: SportSocialControllerBase
     {
-        private readonly ICommentService _commentService;
+        //private readonly ICommentService _commentService;
 
-        public CommentController(ICommentService commentService)
-        {
-            _commentService = commentService;
-        }
+        //public CommentsController(ICommentService commentService)
+        //{
+        //    _commentService = commentService;
+        //}
 
         [HttpPost]
         public JsonResult Comment(CreateCommentViewModel createCommentViewModelModel)
         {
             if (ModelState.IsValid)
             {
-                var comment = _commentService.AddComment(createCommentViewModelModel);
-                return Json(new {Success = true, Comment = comment});
+                //var comment = _commentService.AddComment(createCommentViewModelModel);
+                //return Json(new {Success = true, Comment = comment});
             }
             return Json(new {Success = false});
         }
 
         [HttpGet]
-        public JsonResult LoadComments(int id, CommentItemType itemType)
+        public JsonResult LoadComments(int id, CommentItemType? itemType)
         {
-            return Json(_commentService.LoadComments(id, itemType), JsonRequestBehavior.AllowGet);
+            //return Json(_commentService.LoadComments(id, CommentItemType.Article), JsonRequestBehavior.AllowGet);
+            return null;
         }
     }
 }

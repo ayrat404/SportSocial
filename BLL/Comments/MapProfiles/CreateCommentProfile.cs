@@ -3,6 +3,7 @@ using AutoMapper;
 using BLL.Comments.Objects;
 using BLL.Common.Services.CurrentUser;
 using DAL.DomainModel.BlogEntities;
+using DAL.DomainModel.Interfaces;
 
 namespace BLL.Comments.MapProfiles
 {
@@ -10,7 +11,7 @@ namespace BLL.Comments.MapProfiles
     {
         protected override void Configure()
         {
-            CreateMap<CreateCommentViewModel, BlogComment>()
+            CreateMap<CreateCommentViewModel, ICommentEntity<object>>()
                 .ForMember(dest => dest.CommentedEntityId, opts => opts.MapFrom(src => src.ItemId))
                 .ForMember(dest => dest.CommentForId, opts => opts.MapFrom(src => src.CommentForId))
                 .ForMember(dest => dest.Text, opts => opts.MapFrom(src => src.Text))

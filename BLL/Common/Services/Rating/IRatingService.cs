@@ -4,10 +4,15 @@ using DAL.DomainModel.Interfaces;
 
 namespace BLL.Common.Services.Rating
 {
-    public interface IRatingService
+    public interface IGRatingService<TEntity, TRatingEntity>
+        where TEntity: class, IHasRating<TEntity>
+        where TRatingEntity: class, IRatingEntity<TEntity>
     {
-        ServiceResult Rate<TEntity, TRatingEntity>(int entityId, RatingType ratingType)
-            where TEntity : class, IHasRating<TEntity>
-            where TRatingEntity : class, IRatingEntity<TEntity>;
+        ServiceResult Rate(int entityId, RatingType ratingType);
+    }
+
+    public interface IRatingServiceImpl
+    {
+        ServiceResult Rate(int entityId, RatingType ratingType);
     }
 }

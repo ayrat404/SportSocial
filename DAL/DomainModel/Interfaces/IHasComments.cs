@@ -1,7 +1,9 @@
+using System.Collections.Generic;
+
 namespace DAL.DomainModel.Interfaces
 {
-    public interface IHasComments
+    public interface IHasComments<T>: IEntity where T: class
     {
-        //ICollection<ICommentEntity<THasCommentEntity, TCommentEntity>> Comments { get; set; }
+        ICollection<T> Comments { get; set; }
     }
 }
