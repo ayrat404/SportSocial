@@ -18,7 +18,7 @@ namespace BLL.Blog
         Comment AddComment(CreateCommentViewModel createCommentViewModelModel);
         IEnumerable<Comment> LoadComments(int postId);
         BlogPostViewModel GetPost(int id);
-        PostListViewModel GetPosts(PostSortType sortType, int rubricId = 0, int page = 1);
+        PostListViewModel GetPosts(int pageSize, PostSortType sortType, int rubricId = 0, int page = 1);
     }
 
     public enum PostSortType

@@ -21,10 +21,11 @@ namespace SportSocial.Controllers
         [AllowAnonymous]
         public ActionResult Index(int page = 1, PostSortType sortType = PostSortType.Last, int rubricId = 0)
         {
-            int pageSize = 10;
+            int pageSize = 2;
             var posts = _blogService.GetPosts(pageSize, sortType, rubricId, page);
-            var pagedPosts = posts.PostPreview.ToPagedList(page, pageSize);
-            return View(posts);
+            var pageList = new StaticPagedList<PostPreviewViewModel>(posts.PostPreview, page, pageSize,
+                posts.PageInfo.Count);
+            return View(pageList);
         }
 
         [HttpGet]
