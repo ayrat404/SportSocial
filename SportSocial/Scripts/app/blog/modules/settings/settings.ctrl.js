@@ -57,7 +57,6 @@ function ($scope, settingsRqst, utilsSrvc, $window, $timeout) {
     // запросить код подтверждения нового телефона
     // ---------------
     $scope.phone.fn.requestCode = function (data) {
-        debugger;
         $scope.phone.er.s404 = false;
         $scope.phone.er.server = '';
         settingsRqst.requestCode(utilsSrvc.token.add(data))

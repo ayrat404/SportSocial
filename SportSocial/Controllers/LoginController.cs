@@ -74,6 +74,11 @@ namespace SportSocial.Controllers
         //    throw new NotImplementedException();
         //}
 
+        public ActionResult RestorePassword()
+        {
+            return View();
+        }
+
         private Dictionary<string, List<string>> GetErrors()
         {
             var errors = new Dictionary<string, List<string>>();

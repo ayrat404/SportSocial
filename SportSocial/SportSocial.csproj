@@ -287,16 +287,16 @@
     <Content Include="Scripts\app\blog\modules\article\articleEdit.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\article\article.srvc.js" />
     <Content Include="Scripts\app\blog\modules\authorization\authorization.ctrl.js" />
-    <Content Include="Scripts\app\blog\modules\authorization\authorization.srvc.js" />
     <Content Include="Scripts\app\blog\modules\conference\conference.srvc.js" />
     <Content Include="Scripts\app\blog\modules\main\main.ctrl.js" />
-    <Content Include="Scripts\app\blog\modules\registration\registration.srvc.js" />
     <Content Include="Scripts\app\blog\modules\registration\registration.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\conference\confDate.drct.js" />
     <Content Include="Scripts\app\blog\modules\article\redactor.drct.js" />
+    <Content Include="Scripts\app\blog\modules\restore-password\restorePassword.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\settings\settings.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\settings\settings.srvc.js" />
     <Content Include="Scripts\app\blog\shared\directives\likeDislike.drct.js" />
+    <Content Include="Scripts\app\blog\shared\services\login.srvc.js" />
     <Content Include="Scripts\app\blog\shared\services\likeDislike.srvc.js" />
     <Content Include="Scripts\app\shared\app.js" />
     <Content Include="Scripts\app\shared\directives\autofocus.drct.js" />
@@ -938,6 +938,7 @@
     <Content Include="Views\Settings\Shared\Partials\Avatar.cshtml" />
     <Content Include="Views\Settings\Shared\Partials\Password.cshtml" />
     <Content Include="Views\Settings\Shared\Partials\Phone.cshtml" />
+    <Content Include="Views\Login\RestorePassword.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
