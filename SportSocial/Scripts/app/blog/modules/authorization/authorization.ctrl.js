@@ -1,9 +1,11 @@
 'use strict';
 
+// Контроллер авторизации пользователя
+// ---------------
 angular.module('blog').controller('AuthorizationCtrl',
     ['$scope',
      '$interval',
-     'authorizationRqst',
+     'loginRqst',
      'utilsSrvc',
 function ($scope, $interval, authorizationRqst, utilsSrvc) {
     $scope.loading      =   false;  // показать/скрыть лоадер

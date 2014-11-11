@@ -1,5 +1,7 @@
 ﻿'use strict';
 
+// Контроллер добавления комментариев
+// ---------------
 angular.module('blog').controller('CommentsCtrl',
     ['$scope',
      'commentsRqst',

@@ -47,6 +47,7 @@
             <div ng-show="loading">Подождите, идет загрузка</div>
             <div class="auth__help">
                 <span ng-click="$parent.authTab=1" class="link">Eще не зарегистрированы?</span>
+                <a href="@Url.Action("RestorePassword", "Login")">Забыли пароль?</a>
             </div>
         </div>
         <div ng-controller="RegistrationCtrl"
@@ -81,6 +82,7 @@
                        ng-disabled="disableInp"
                        ng-class="{'input--invalid': registrationTwo.password.$error.required && validstart.password}"
                        ng-blur="validstart.password=true"
+                       ng-autofocus="{{smsBlockShow}}"
                        name="password"
                        required
                        class="input" type="password" placeholder="Пароль" />
@@ -93,7 +95,6 @@
                        class="input" type="password" placeholder="Повторите пароль" />
                 <input ng-model="verify.code"
                        ng-disabled="disableCode"
-                       ng-autofocus="{{smsBlockShow}}"
                        ng-class="{'input--invalid': verify.code.length!=4 && validstart.code}"
                        ng-blur="validstart.code=true"
                        maxlength="4" class="input" required placeholder="Код подтверждения" name="code" type="text" />

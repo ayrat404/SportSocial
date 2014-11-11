@@ -1,10 +1,12 @@
 ﻿'use strict';
 
+// Контроллер регистрации пользователя
+// ---------------
 angular.module('blog').controller('RegistrationCtrl',
     ['$scope',
      '$interval',
      '$window',
-     'registrationRqst',
+     'loginRqst',
      'utilsSrvc',
 function ($scope, $interval, $window, registrationRqst, utilsSrvc) {
     $scope.smsBlockShow =   false;  // показать/скрыть смс блок
@@ -25,8 +27,7 @@ function ($scope, $interval, $window, registrationRqst, utilsSrvc) {
     // ---------------------
     $scope.requestCode = function (data) {
         toggleForm(true);
-        data = angular.extend(data, utilsSrvc.token.get().obj);
-        registrationRqst.requestCode(data)
+        registrationRqst.requestCode(utilsSrvc.token.add(data))
             .then(function (res) {
                 if (res.data.success) {
                     $scope.smsBlockShow = true;
@@ -47,18 +48,16 @@ function ($scope, $interval, $window, registrationRqst, utilsSrvc) {
     // ---------------------
     $scope.registration = function (data) {
         toggleForm(true);
-        data = angular.extend(data, utilsSrvc.token.get().obj);
         data.phone = $scope.user.phone;
-        registrationRqst.registration(data)
+        registrationRqst.registration(utilsSrvc.token.add(data))
             .then(function (res) {
                 if (res.data.success) {
-                    $window.location.href = res.data.redirect;
+                    $window.location.reload();
                 } else {
                     $scope.er.custom.show = true;
                     $scope.er.custom.msg = res.data.errorMessage;
                 }
                 toggleForm(false);
-            $window.location.reload();
         }, function () {
                 $scope.er.server = true;
                 toggleForm(false);
