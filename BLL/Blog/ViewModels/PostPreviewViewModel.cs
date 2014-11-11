@@ -1,9 +1,11 @@
 using System;
+using BLL.Blog.Enums;
 using BLL.Common.Objects;
+using DAL.DomainModel.EnumProperties;
 
 namespace BLL.Blog.ViewModels
 {
-    public class PostPreviewViewModel
+    public class PostPreviewViewModel : IItemInfo, IRatingInfo
     {
         public int Id { get; set; }
 
@@ -17,10 +19,40 @@ namespace BLL.Blog.ViewModels
 
         public int Rating { get; set; }
 
+        public bool IsLiked { get; set; }
+
+        public bool IsDisiked { get; set; }
+
         public string AuthorId { get; set; }
 
         public string AuthorName { get; set; }
 
+        public RatingEntityType RatingEntityType { get; set; }
+
         public int CommentsCount { get; set; }
+    }
+
+    public interface IRatingInfo
+    {
+        int Id { get; set; }
+
+        int Rating { get; set; }
+
+        bool IsLiked { get; set; }
+
+        bool IsDisiked { get; set; }
+
+        RatingEntityType RatingEntityType { get; set; }
+    }
+
+    public interface IItemInfo
+    {
+        string AuthorId { get; set; }
+
+        string AuthorName { get; set; }
+
+        int CommentsCount { get; set; }
+
+        DateTime Date { get; set; }
     }
 }

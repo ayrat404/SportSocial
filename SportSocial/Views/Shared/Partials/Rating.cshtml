@@ -1,0 +1,18 @@
+﻿@model BLL.Blog.ViewModels.IRatingInfo
+<div ng-controller="LikeDislikeCtrl"
+     ng-init="
+     count=@Model.Rating ;
+     id=@Model.Id ;
+     type=@Model.RatingEntityType
+     is-liked=@Model.IsLiked ;
+     is-disliked=@Model.IsDisiked;"
+     class="like-rating">
+
+    <span ng="!isRated" ng-click="changeRating('like')" class="i-art i-art-like"></span>
+    <span ng="!isRated" ng-click="changeRating('dislike')" class="i-art i-art-dislike"></span>
+    <span ng="isRated"
+          ng-class="{'i-art-liked': isLiked=='true', 'i-art-disliked': isDisliked=='true'}"
+          class="i-art like-rating__rated">
+    </span>
+    <div animate-counter ng-model="count" class="like-rating__count"></div>
+</div>

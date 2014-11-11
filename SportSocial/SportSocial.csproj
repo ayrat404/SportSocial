@@ -281,6 +281,8 @@
     <Content Include="Scripts\app\admin\modules\sidebar\sidebar.ctrl.js" />
     <Content Include="Scripts\app\admin\shared\services\admin.srvc.js" />
     <Content Include="Scripts\app\blog\app.js" />
+    <Content Include="Scripts\app\blog\modules\like-dislike\likeDislike.ctrl.js" />
+    <Content Include="Scripts\app\blog\modules\like-dislike\likeDislike.srvc.js" />
     <Content Include="Scripts\app\blog\modules\comments\comments.srvc.js" />
     <Content Include="Scripts\app\blog\modules\comments\comments.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\article\articleImgUploader.ctrl.js" />
@@ -295,9 +297,8 @@
     <Content Include="Scripts\app\blog\modules\restore-password\restorePassword.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\settings\settings.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\settings\settings.srvc.js" />
-    <Content Include="Scripts\app\blog\shared\directives\likeDislike.drct.js" />
+    <Content Include="Scripts\app\blog\shared\directives\animateCounter.drct.js" />
     <Content Include="Scripts\app\blog\shared\services\login.srvc.js" />
-    <Content Include="Scripts\app\blog\shared\services\likeDislike.srvc.js" />
     <Content Include="Scripts\app\shared\app.js" />
     <Content Include="Scripts\app\shared\directives\autofocus.drct.js" />
     <Content Include="Scripts\app\shared\directives\clickOutside.drct.js" />
@@ -843,12 +844,14 @@
     <Content Include="Scripts\libs\signalR\jquery.signalR-2.0.3.min.js" />
     <Content Include="Scripts\libs\text-angular\textAngular-sanitize.min.js" />
     <Content Include="Scripts\libs\text-angular\textAngular.min.js" />
+    <Content Include="Scripts\old\like-dislike.html" />
+    <Content Include="Scripts\old\likeDislike.drct.js" />
+    <Content Include="Scripts\old\likeDislike.srvc.js" />
     <Content Include="Scripts\templates\admin\articles\articles.html" />
     <Content Include="Scripts\templates\admin\conference\conferenceEdit.html" />
     <Content Include="Scripts\templates\admin\conference\conferenceNew.html" />
     <Content Include="Scripts\templates\admin\conference\conferenceList.html" />
     <Content Include="Scripts\templates\admin\conference\partials\conferenceEditForm.html" />
-    <Content Include="Scripts\templates\blog\article\like-dislike.html" />
     <Content Include="Scripts\templates\blog\article\img-uploader.html" />
     <Content Include="Scripts\templates\blog\conference-counter.html" />
     <Content Include="Web.config">
@@ -939,6 +942,7 @@
     <Content Include="Views\Settings\Shared\Partials\Password.cshtml" />
     <Content Include="Views\Settings\Shared\Partials\Phone.cshtml" />
     <Content Include="Views\Login\RestorePassword.cshtml" />
+    <Content Include="Views\Shared\Partials\Rating.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
