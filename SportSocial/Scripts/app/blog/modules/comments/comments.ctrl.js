@@ -35,12 +35,10 @@ function ($scope, commentsRqst, utilsSrvc, $window, $timeout) {
     // загрузка комментариев, которые не отображаются
     // ---------------
     $scope.loadAll = function () {
-        debugger;
         commentsRqst.loadComments(utilsSrvc.token.add({ id: $scope.itemId }))
             .then(function(res) {
                 if (res.data.length) {
                     // если грузим все комменты и вставляем
-                    debugger;
                     $scope.comments = res.data;
                     // если грузим оставшиеся комменты
                     //$scope.comments = res.data.comments.concat($scope.comments);

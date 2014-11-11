@@ -16,25 +16,39 @@ angular
                 isLiked     :   '@',    // уже был поставлен лайк
                 isDisliked  :   '@'     // уже был поставлен дислайк
             },
-            link: function (scope, element, attrs) {
+            link: function(scope, element, attrs) {
                 var data = {
                         id: scope.id,
-                        type: scope.type
+                        entityType: scope.type
                     },
-                    $el = angular.element(element).find('.js-count');
+                    elms = {
+                        $root   :   angular.element(element),                       // корневой элемент
+                        $count  :   angular.element(element).find('.js-count'),     // счетчик
+                    };
+
+
+                // создаем флаг пользователь уже проголосовал или нет
+                // ---------------
+                scope.isRated = false;
+                if (scope.isLiked === 'true' || scope.isDisliked === 'true') {
+                    scope.isRated = true;
+                }
 
                 // отправка запроса
                 // ---------------
                 scope.changeRating = function (action) {
-                    data.action = action;
+                    data.actionType = action;
                     likeDislikeRqst.send(utilsSrvc.token.add(data))
                         .then(function(res) {
                             if (res.data.success) {
                                 if (action == 'like') {
                                     changeCount(+scope.count + 1);
+                                    scope.isLiked = 'true';
                                 } else {
                                     changeCount(+scope.count - 1);
+                                    scope.isDisliked = 'true';
                                 }
+                                scope.isRated = true;
                             }
                         });
                 }
@@ -51,10 +65,10 @@ angular
                         classIn = 'fadeInUp';
                         classOut = 'fadeOutUp';
                     }
-                    utilsSrvc.animation.add($el, classOut, function () {
+                    utilsSrvc.animation.add(elms.$count, classOut, function () {
                         scope.count = count;
                         scope.$digest();
-                        utilsSrvc.animation.add($el, classIn);
+                        utilsSrvc.animation.add(elms.$count, classIn);
                     });
                 }
             }

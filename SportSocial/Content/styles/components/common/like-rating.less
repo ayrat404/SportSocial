@@ -3,23 +3,46 @@
 
 .like-rating {
     color: #a7a7a7;
+
     .i-art {
         cursor: pointer;
         margin-right: 5px;
+
         &-like {
             &:hover {
                 background-position: -70px 0;
             }
         }
+
         &-dislike {
             &:hover {
                 background-position: -34px 0;
             }
         }
     }
+
     &__count {
         display: inline-block;
+        vertical-align: middle;
         min-width: 15px;
+    }
+
+    &__tooltip {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 30px;
+        word-break: keep-all;
+        white-space: nowrap;
+    }
+    
+    &__rated {
+        position: relative;
+        &:hover {
+            .like-rating__tooltip {
+                display: block;
+            }
+        }
     }
 }
 
