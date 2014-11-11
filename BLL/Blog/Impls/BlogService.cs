@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.Linq;
 using System.Threading;
+using System.Web.UI.WebControls;
 using AutoMapper;
 using BLL.Blog.ViewModels;
 using BLL.Comments.Objects;
@@ -34,7 +35,7 @@ namespace BLL.Blog.Impls
             var post = Mapper.Map<CreatePostModel, Post>(createPostModel);
             post.Status = BlogPostStatus.New;
             post.RubricId = createPostModel.Rubric;
-            //post.UserId = HttpContext.Current.User.Identity.GetUserId();
+            post.UserId = _currentUser.UserId;
             post.Lang = Thread.CurrentThread.CurrentCulture.Name;
             if (createPostModel.Images != null && _repository.Find<BlogImage>(createPostModel.Images[0].Id) != null)
             {
@@ -92,28 +93,43 @@ namespace BLL.Blog.Impls
                 .Where(p => p.Id == id && !p.Deleted)
                 .Include(p => p.User)
                 .Include(p => p.Comments)
-                .AsNoTracking()
                 .Single()
                 .MapTo<BlogPostViewModel>();
             return post;
         }
 
-        public PostListViewModel GetPosts(PostSortType sortType, int rubricId = 0, int page = 1)
+        public PostListViewModel GetPosts(int pageSize, PostSortType sortType, int rubricId = 0, int page = 1)
         {
-            int viewedPosts = 10;
-            int take = page * 10;
-            //int skip = 10
+            int take = page * pageSize;
+            int skip = take - pageSize;
+            var postListVM = new PostListViewModel();
+            postListVM.PageInfo = new PageInfo {CurrentPage = page};
+            postListVM.PageInfo.Count = _repository
+                .Queryable<Post>()
+                .Count(x => x.RubricId == rubricId || rubricId == 0);
             if (sortType == PostSortType.Last)
             {
-                var posts = _repository
+                postListVM.PostPreview = _repository
                     .Queryable<Post>()
-                    .Where(x => x.RubricId == rubricId && rubricId > 0)
+                    .Where(x => x.RubricId == rubricId || rubricId == 0)
                     .OrderByDescending(p => p.Created)
-                    .Take(page)
+                    .Take(take)
+                    .Skip(skip)
                     .AsNoTracking()
+                    .MapEachTo<PostPreviewViewModel>()
                     .ToList();
+                return postListVM;
             }
-            return null;
+            postListVM.PostPreview = _repository
+                .Queryable<Post>()
+                .Where(x => x.RubricId == rubricId || rubricId == 0)
+                .OrderByDescending(p => p.TotalRating)
+                .Take(take)
+                .Skip(skip)
+                .AsNoTracking()
+                .MapEachTo<PostPreviewViewModel>()
+                .ToList();
+                return postListVM;
         }
 
         //public PostListViewModel GetPosts(int page, PostSortType sortType = PostSortType.Last, int rubricId = 0)

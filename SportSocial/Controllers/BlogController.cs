@@ -1,7 +1,9 @@
 ﻿using System.Web.Mvc;
+using System.Web.UI;
 using BLL.Blog;
 using BLL.Blog.ViewModels;
 using BLL.Comments.Objects;
+using PagedList;
 using SportSocial.Controllers.Base;
 
 namespace SportSocial.Controllers
@@ -17,13 +19,12 @@ namespace SportSocial.Controllers
         }
 
         [AllowAnonymous]
-        public ActionResult Index(int? page)
+        public ActionResult Index(int page = 1, PostSortType sortType = PostSortType.Last, int rubricId = 0)
         {
-            //PostListViewModel model = new PostListViewModel
-            //{
-                
-            //}
-            return View();
+            int pageSize = 10;
+            var posts = _blogService.GetPosts(pageSize, sortType, rubricId, page);
+            var pagedPosts = posts.PostPreview.ToPagedList(page, pageSize);
+            return View(posts);
         }
 
         [HttpGet]

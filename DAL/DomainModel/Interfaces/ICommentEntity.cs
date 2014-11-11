@@ -1,6 +1,7 @@
 namespace DAL.DomainModel.Interfaces
 {
-    public interface ICommentEntity<TCommentedEntity>: IEntity, IAuditable where TCommentedEntity: class
+    public interface ICommentEntity<TCommentedEntity>: IEntity, IAuditable 
+        where TCommentedEntity: class
     {
         string Text { get; set; }
         string UserId { get; set; }
