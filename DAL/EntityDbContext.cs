@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using DAL.DomainModel;
 using DAL.DomainModel.BlogEntities;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -37,6 +38,11 @@ namespace DAL
         public static EntityDbContext Create(IContext context)
         {
             return new EntityDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
         }
     }
 

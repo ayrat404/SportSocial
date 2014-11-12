@@ -45,6 +45,9 @@
     <Reference Include="Knoema.Localization.Core">
       <HintPath>..\packages\Knoema.Localization.Core.0.1.66\lib\net40\Knoema.Localization.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Knoema.Localization.Mvc">
+      <HintPath>..\packages\Knoema.Localization.Mvc.0.1.66\lib\net40\Knoema.Localization.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -157,6 +160,7 @@
     <Compile Include="Infrastructure\Map\MapExtensions.cs" />
     <Compile Include="Infrastructure\NinjectServiceRegistrator.cs" />
     <Compile Include="Infrastructure\SomeClass.cs" />
+    <Compile Include="Infrastructure\SportSocialWebViewPage.cs" />
     <Compile Include="Login\ILoginService.cs" />
     <Compile Include="Login\Impls\LoginService.cs" />
     <Compile Include="Login\ViewModels\ConfirmSmsCode.cs" />
