@@ -34,13 +34,18 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="blog-form__desc">Текст статьи</div>
-            <div text-angular ta-toolbar="[['h1','h2','h3', 'quote'],['bold','italics', 'underline', 'undo'], ['justifyLeft', 'justifyCenter', 'justifyRight'], ['insertLink']]" ng-model="ar.text"></div>
+            <div text-angular
+                 ng-model="ar.text"
+                 ta-toolbar="[['h1','h2','h3', 'quote'],['bold','italics', 'underline', 'undo'], ['justifyLeft', 'justifyCenter', 'justifyRight'], ['insertLink']]"></div>
+            <div class="alert alert-warning">
+                Минимум 100 символов
+            </div>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
             <a href="@Url.Action("Index", "Blog")" class="link pull-left">Отмена</a>
-            <button ng-disabled="prop.btnIsDisabled || !ar.text.length || !ar.images.length || ArticleEdit.$invalid" type="submit" class="btn btn--main pull-right">Отправить на модерацию</button>
+            <button ng-disabled="prop.btnIsDisabled || !ar.text.length < 100 || !ar.images.length || ArticleEdit.$invalid" type="submit" class="btn btn--main pull-right">Отправить на модерацию</button>
         </div>
     </div>
 </form>

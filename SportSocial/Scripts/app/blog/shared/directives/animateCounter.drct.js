@@ -9,9 +9,7 @@ angular
             restrict: 'A',
             require: 'ngModel',
             link: function(scope, element, attrs, ngModelCtrl) {
-
                 var $el = angular.element(element);
-
                 scope.$watch(ngModelCtrl, function(newVal, oldVal) {
                     var classIn,
                         classOut;

@@ -1,10 +1,11 @@
 using System;
+using BLL.Blog.Enums;
 using BLL.Comments.Objects;
 using BLL.Common.Objects;
 
 namespace BLL.Blog.ViewModels
 {
-    public class BlogPostViewModel: IHasCommentViewModel, IItemInfo
+    public class BlogPostViewModel: IHasCommentViewModel, IItemInfo, IRatingInfo
     {
         public int Id { get; set; }
 
@@ -27,5 +28,11 @@ namespace BLL.Blog.ViewModels
         public CommentItemType ItemType { get; set; }
 
         public Comment[] Comments { get; set; }
+
+        public bool IsLiked { get; set; }
+
+        public bool IsDisiked { get; set; }
+
+        public RatingEntityType RatingEntityType { get; set; }
     }
 }

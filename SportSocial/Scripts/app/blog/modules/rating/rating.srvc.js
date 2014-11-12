@@ -4,7 +4,7 @@
 // ---------------
 angular
     .module('blog')
-    .factory('likeDislikeRqst', ['$http', 'serializeObj', function ($http, serializeObj) {
+    .factory('ratingRqst', ['$http', 'serializeObj', function ($http, serializeObj) {
         var send = function (action, obj) {
             return $http({
                 method: 'POST',

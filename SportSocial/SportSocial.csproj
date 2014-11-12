@@ -281,8 +281,8 @@
     <Content Include="Scripts\app\admin\modules\sidebar\sidebar.ctrl.js" />
     <Content Include="Scripts\app\admin\shared\services\admin.srvc.js" />
     <Content Include="Scripts\app\blog\app.js" />
-    <Content Include="Scripts\app\blog\modules\like-dislike\likeDislike.ctrl.js" />
-    <Content Include="Scripts\app\blog\modules\like-dislike\likeDislike.srvc.js" />
+    <Content Include="Scripts\app\blog\modules\rating\rating.ctrl.js" />
+    <Content Include="Scripts\app\blog\modules\rating\rating.srvc.js" />
     <Content Include="Scripts\app\blog\modules\comments\comments.srvc.js" />
     <Content Include="Scripts\app\blog\modules\comments\comments.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\article\articleImgUploader.ctrl.js" />
@@ -780,7 +780,7 @@
     <Content Include="Content\styles\components\blog\galery.less" />
     <Content Include="Content\styles\components\blog\video.less" />
     <Content Include="Content\styles\components\common\icons.less" />
-    <Content Include="Content\styles\components\common\like-rating.less" />
+    <Content Include="Content\styles\components\common\rating.less" />
     <Content Include="Content\styles\view\settings.less" />
     <None Include="Scripts\libs\jquery\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.js" />
