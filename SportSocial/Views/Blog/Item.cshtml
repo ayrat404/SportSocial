@@ -21,12 +21,7 @@
                                 @Html.Partial("Shared/Partials/Article/Info", Model)
                             </div>
                             <div class="pull-right">
-                                <div like-dislike
-                                     count="@Model.Rating"
-                                     is-liked="false"
-                                     is-disliked="false"
-                                     type="Article"
-                                     id="@Model.Id"></div>
+                                @Html.Partial("Partials/Rating", Model)
                             </div>
                         </div>
                     </div>
