@@ -13,11 +13,9 @@ using DAL.Repository.Interfaces;
 namespace BLL.Comments
 {
     public interface ICommentService<TEntity, TCommentEntity>
-        where TEntity: class, IHasComments<TEntity>
-        where TCommentEntity: class, ICommentEntity<TEntity>
+        where TEntity : class, IHasComments<TCommentEntity>
+        where TCommentEntity : class, ICommentEntity<TEntity>
     {
-        Comment AddComment(CreateCommentViewModel createCommentViewModel);
-        IEnumerable<Comment> LoadComments(int itemId, CommentItemType itemType);
     }
 
     public interface ICommentServiceMethods
@@ -26,9 +24,9 @@ namespace BLL.Comments
         IEnumerable<Comment> LoadComments(int itemId, CommentItemType itemType);
     }
 
-    public class CommentService<TEntity, TCommentEntity> : ICommentService<TEntity, TCommentEntity>
-        where TEntity: class, IHasComments<TEntity>
-        where TCommentEntity: class, ICommentEntity<TEntity>
+    public class CommentService<TEntity, TCommentEntity> : ICommentServiceMethods, ICommentService<TEntity, TCommentEntity>
+        where TEntity : class, IHasComments<TCommentEntity>
+        where TCommentEntity : class, ICommentEntity<TEntity>
     {
         private readonly IRepository _repository;
         private readonly ICurrentUser _currentUser;

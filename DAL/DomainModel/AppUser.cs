@@ -10,6 +10,6 @@ namespace DAL.DomainModel
 
         public virtual ICollection<SmsCode> SmsCodes{ get; set; }
 
-        public Profile Profile { get; set; }
+        public virtual Profile Profile { get; set; }
     }
 }

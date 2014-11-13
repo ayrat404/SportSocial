@@ -31,7 +31,9 @@ namespace BLL.Common.Services.Rating
                 ratingEntity.RatedEntity = entity;
                 ratingEntity.RatingType = ratingType;
                 ratingEntity.UserId = _currentUser.UserId;
+                entity.TotalRating += (int) ratingType;
                 _repository.Add(ratingEntity);
+                _repository.Update(entity);
                 _repository.SaveChanges();
                 return new ServiceResult() {Success = true};
             }

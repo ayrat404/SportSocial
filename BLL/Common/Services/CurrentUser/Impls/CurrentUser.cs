@@ -18,6 +18,11 @@ namespace BLL.Common.Services.CurrentUser.Impls
 
         public string UserName
         {
+            get { return User.Name; }
+        }
+
+        public string Phone
+        {
             get { return HttpContext.Current.User.Identity.GetUserName(); }
         }
 

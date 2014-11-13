@@ -1,4 +1,5 @@
-﻿using BLL.Common.Services.CurrentUser;
+﻿using BLL.Comments;
+using BLL.Common.Services.CurrentUser;
 using BLL.Common.Services.CurrentUser.Impls;
 using BLL.Common.Services.Rating;
 using BLL.Infrastructure.IdentityConfig;
@@ -10,6 +11,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Ninject;
 using Ninject.Extensions.Conventions;
+using Ninject.Web.Common;
 
 namespace BLL.Infrastructure
 {
@@ -28,13 +30,14 @@ namespace BLL.Infrastructure
                 .Select(t => t.Name.EndsWith("Repository"))
                 .BindDefaultInterfaces());
 
-            kernel.Bind<ISmsService>().To<SmsServiceBase>();
-            kernel.Bind<ICurrentUser>().To<CurrentUser>();
-            kernel.Bind(typeof (IGRatingService<,>)).To(typeof (RatingService<,>));
+            kernel.Bind<ISmsService>().To<SmsServiceBase>().InRequestScope();
+            kernel.Bind<ICurrentUser>().To<CurrentUser>().InRequestScope();
+            kernel.Bind(typeof(IGRatingService<,>)).To(typeof(RatingService<,>)).InRequestScope();
+            kernel.Bind(typeof(ICommentService<,>)).To(typeof(CommentService<,>)).InRequestScope();
 
-            kernel.Bind<IUserStore<AppUser>>().ToMethod(ctx => new UserStore<AppUser>(ctx.Kernel.Get<EntityDbContext>()));
-            kernel.Bind<AppUserManager>().ToMethod(AppUserManager.Create);
-            kernel.Bind<AppRoleManager>().ToSelf();
+            kernel.Bind<IUserStore<AppUser>>().ToMethod(ctx => new UserStore<AppUser>(ctx.Kernel.Get<EntityDbContext>())).InRequestScope();
+            kernel.Bind<AppUserManager>().ToMethod(AppUserManager.Create).InRequestScope();
+            kernel.Bind<AppRoleManager>().ToSelf().InRequestScope();
         }
     }
 }

@@ -2,13 +2,13 @@
 @model BLL.Common.Objects.IHasCommentViewModel
 <div ng-controller="CommentsCtrl"
      ng-init='
-     itemType=@Model.ItemType;
+     itemType="@Model.ItemType";
      itemId=@Model.Id; 
      more=@Model.CommentsCount;
      comments=@Html.Raw(Model.Comments.ToJson());'
      class="mod block">
     <div class="mod__header">
-        <div class="mod__header__title">Комментарии @CurrentUser.UserId</div>
+        <div class="mod__header__title">Комментарии</div>
     </div>
     <div class="mod__content comment">
         <div ng-if="more!=0"

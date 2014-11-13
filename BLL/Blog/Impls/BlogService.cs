@@ -93,9 +93,9 @@ namespace BLL.Blog.Impls
                 .Where(p => p.Id == id && !p.Deleted)
                 .Include(p => p.User)
                 .Include(p => p.Comments)
-                .Single()
-                .MapTo<BlogPostViewModel>();
-            return post;
+                .Single();
+            var postvm = post.MapTo<BlogPostViewModel>();
+            return postvm;
         }
 
         public PostListViewModel GetPosts(int pageSize, PostSortType sortType, int rubricId = 0, int page = 1)
