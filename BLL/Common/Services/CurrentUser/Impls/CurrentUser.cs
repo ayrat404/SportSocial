@@ -1,17 +1,19 @@
 ﻿using System.Web;
 using BLL.Infrastructure.IdentityConfig;
 using DAL.DomainModel;
+using DAL.Repository.Interfaces;
 using Microsoft.AspNet.Identity;
 
 namespace BLL.Common.Services.CurrentUser.Impls
 {
     public class CurrentUser: ICurrentUser
     {
-        private readonly AppUserManager _appUserManager;
+        private readonly IRepository _repository;
 
-        public CurrentUser(AppUserManager appUserManager)
+        public CurrentUser(IRepository repository)
         {
-            _appUserManager = appUserManager;
+            _repository = repository;
+            _user = _repository.Find<AppUser>(HttpContext.Current.User.Identity.GetUserId());
         }
 
         private AppUser _user;
@@ -55,7 +57,7 @@ namespace BLL.Common.Services.CurrentUser.Impls
             {
                 if (_user != null)
                     return _user;
-                _user = _appUserManager.FindById(HttpContext.Current.User.Identity.GetUserId());
+                _user = _repository.Find<AppUser>(HttpContext.Current.User.Identity.GetUserId());
                 return _user;
             }
         }

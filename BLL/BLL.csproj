@@ -143,6 +143,7 @@
     <Compile Include="Blog\ViewModels\PostModel.cs" />
     <Compile Include="Common\Enums\LangType.cs" />
     <Compile Include="Common\Extensions\JsonExtension.cs" />
+    <Compile Include="Common\Extensions\StringExtensions.cs" />
     <Compile Include="Common\Helpers\CookieHelper.cs" />
     <Compile Include="Common\Helpers\Hasher.cs" />
     <Compile Include="Common\Helpers\HttpHelper.cs" />
