@@ -924,7 +924,7 @@
     <Content Include="Views\Blog\Shared\Partials\Blocks\Promo.cshtml" />
     <Content Include="Views\Blog\Shared\Partials\Blocks\AuthRegBlock.cshtml" />
     <Content Include="Views\Blog\Shared\Partials\Blocks\Menu.cshtml" />
-    <Content Include="Views\Blog\Shared\Partials\ArticlesList.cshtml" />
+    <Content Include="Views\Blog\Shared\Partials\BlogArticlesList.cshtml" />
     <Content Include="Views\Blog\Shared\Partials\Blocks\ContentNavigation.cshtml" />
     <Content Include="Views\Blog\Shared\Layouts\ArticleEdit.cshtml" />
     <Content Include="Views\Blog\Shared\Partials\Blocks\User.cshtml" />
@@ -943,6 +943,8 @@
     <Content Include="Views\Settings\Shared\Partials\Phone.cshtml" />
     <Content Include="Views\Login\RestorePassword.cshtml" />
     <Content Include="Views\Shared\Partials\Rating.cshtml" />
+    <Content Include="Views\Blog\UserArticles.cshtml" />
+    <Content Include="Views\Blog\Shared\Partials\UserArticlesList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

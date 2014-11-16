@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Fortress - Мои статьи";
+    Layout = "../Blog/Shared/Layouts/BlogLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <div class="mod settings">
+                <div class="mod__header">
+                    <div class="mod__header__title">Мои статьи</div>
+                </div>
+                <div class="mod__content">
+                    <div class="tabs-content">
+                        @Html.Partial("Shared/Partials/UserArticlesList")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

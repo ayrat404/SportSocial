@@ -16,7 +16,7 @@
                     </a>
                     <div class="al__item__info">
                         <a href="@Url.Action("Item", "Blog", new { id = item.Id })" class="al__item__title">@item.Title</a>
-                        <div class="al__item__desc">@item.Text.Substring(0, 10)</div>
+                        <div class="al__item__desc">@(item.Text.Length > 90 ? item.Text.Substring(0, 90) : item.Text)))</div>
                         <div class="al__item__bottom">
                             <div class="pull-left">
                                 @Html.Partial("Shared/Partials/Article/Info", item)

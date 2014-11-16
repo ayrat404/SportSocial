@@ -36,6 +36,8 @@
             float: left;
             width: 75%;
             padding: 18px 20px;
+            position: relative;
+            height: 198px;
         }
 
         &__title {
@@ -50,9 +52,14 @@
             font-size: 1.143em;
             color: #4b4b4b;
             margin-bottom: 15px;
+            word-break: break-all;
         }
 
         &__bottom {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
             .no-float;
             & > span {
                 font-family: 'PN_light';

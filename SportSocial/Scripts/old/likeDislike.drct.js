@@ -26,7 +26,6 @@ angular
                         $count  :   angular.element(element).find('.js-count'),     // счетчик
                     };
 
-
                 // создаем флаг пользователь уже проголосовал или нет
                 // ---------------
                 scope.isRated = false;

@@ -28,6 +28,11 @@ namespace SportSocial.Controllers
             return View(pageList);
         }
 
+        public ActionResult UserArticles(long id)
+        {
+            return View();
+        }
+
         [HttpGet]
         public ActionResult New()
         {
