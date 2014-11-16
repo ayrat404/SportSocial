@@ -4,15 +4,16 @@
          count=@Model.Rating;
          id=@Model.Id;
          type='@Model.RatingEntityType';
-         isLiked=@Model.IsLiked.ToString();
-         isDisliked=@Model.IsDisiked.ToString();"
+         isLiked='@Model.IsLiked.ToString()';
+         isDisliked='@Model.IsDisiked.ToString()';"
+         ng-cloak
          class="like-rating">
 
         <span ng-if="!isRated" ng-click="changeRating('like')" class="i-art i-art-like"></span>
         <span ng-if="!isRated" ng-click="changeRating('dislike')" class="i-art i-art-dislike"></span>
         <span ng-if="isRated"
-              ng-class="{'i-art-liked': isLiked, 'i-art-disliked': isDisliked}"
-              class="i-art like-rating__rated">
+              ng-class="{'i-art-like': isLiked == 'True', 'i-art-dislike': isDisliked == 'True'}"
+              class="i-art like-rating__rated" title="Это ваша оценка">
         </span>
         <div animate-counter
              ng-model="count"

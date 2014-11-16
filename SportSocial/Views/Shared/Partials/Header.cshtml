@@ -18,24 +18,27 @@
                     <a href="#" class="nav__list__link">Соц.сеть</a>
                 </li>
             </ul>
-            <div class="nav__user">
+            @*<div class="nav__user">
                 <div ng-click="nav.user.isOpen=!nav.user.isOpen"
                      click-outside="fn.closeHeaderMenu();"
                      class="nav__user__link">
-                    <img src="~/Content/images/default-avatar.png" class="nav__user__avatar" />
-                    <div class="nav__user__name">Контантинов Павел</div>
+                    <img src="@CurrentUser.User.Profile.Avatar?width=40&height=40&mode=crop" class="nav__user__avatar" />
+                    <div class="nav__user__name">@CurrentUser.UserName</div>
                 </div>
                 <div ng-show="nav.user.isOpen==true"
                      ng-cloak
                      class="nav__user__menu-wrap">
                     <div class="nav__user__menu">
-                        <a href="@Url.Action("Index", "Admin")">Панель управления</a>
-                        <a href="#">Мои статьи</a>
-                        <a href="#">Настройки</a>
+                        @if (CurrentUser.IsAdmin)
+                        {
+                            <a href="@Url.Action("Index", "Admin")">Панель управления</a>
+                        }
+                        <a href="@Url.Action("UserArticles", "Blog", new {id = CurrentUser.UserId})">Мои статьи</a>
+                        <a href="@Url.Action("Index", "Settings")">Настройки</a>
                         <a href="#">Выход</a>
                     </div>
                 </div>
-            </div>
+            </div>*@
         </div>
     </div>
 </div>
