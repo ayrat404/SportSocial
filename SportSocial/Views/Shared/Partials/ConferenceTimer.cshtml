@@ -1,0 +1,8 @@
+﻿@model BLL.Admin.Conference.ViewModels.ConfModel
+@using DAL.DomainModel.EnumProperties;
+
+@Model.Title;
+@Model.Description;
+@Model.Date;
+@Model.Status;
+@(Model.Status == ConfStatus.Process)

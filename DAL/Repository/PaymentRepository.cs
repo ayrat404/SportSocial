@@ -21,5 +21,11 @@ namespace DAL.Repository
         {
             _repository.Add(pay);
         }
+
+        public void SaveChanges()
+        {
+            _repository.SaveChanges();
+        }
+
     }
 }

@@ -144,6 +144,7 @@
     <Compile Include="Common\Enums\LangType.cs" />
     <Compile Include="Common\Extensions\JsonExtension.cs" />
     <Compile Include="Common\Helpers\CookieHelper.cs" />
+    <Compile Include="Common\Helpers\Hasher.cs" />
     <Compile Include="Common\Helpers\HttpHelper.cs" />
     <Compile Include="Common\Helpers\LocalizationHelper.cs" />
     <Compile Include="Common\Helpers\ModelStateHelper.cs" />
@@ -174,7 +175,12 @@
     <Compile Include="Payment\IPayPalService.cs" />
     <Compile Include="Payment\IPayService.cs" />
     <Compile Include="Payment\Impls\PayService.cs" />
+    <Compile Include="Payment\IRobokassaService.cs" />
     <Compile Include="Payment\ViewModels\PayPalResult.cs" />
+    <Compile Include="Payment\ViewModels\PayResult.cs" />
+    <Compile Include="Payment\ViewModels\PayViewModel.cs" />
+    <Compile Include="Payment\ViewModels\RobocassaResultModel.cs" />
+    <Compile Include="Payment\ViewModels\RobokassaViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sms\SmsServcieBase.cs" />
     <Compile Include="Sms\Impls\SmsPilotSmsService.cs" />

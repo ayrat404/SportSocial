@@ -943,6 +943,7 @@
     <Content Include="Views\Settings\Shared\Partials\Phone.cshtml" />
     <Content Include="Views\Login\RestorePassword.cshtml" />
     <Content Include="Views\Shared\Partials\Rating.cshtml" />
+    <Content Include="Views\Shared\Partials\ConferenceTimer.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

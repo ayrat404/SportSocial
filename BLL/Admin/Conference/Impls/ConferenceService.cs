@@ -1,4 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 using BLL.Admin.Conference.ViewModels;
 using BLL.Infrastructure.Map;
 using DAL.DomainModel.EnumProperties;
@@ -55,6 +59,29 @@ namespace BLL.Admin.Conference.Impls
             var conf = _repository.Find<DAL.DomainModel.Conference>(id);
             if (conf != null)
                 return conf.MapTo<ConfModel>();
+            return null;
+        }
+
+        public ConfModel GetLastConf()
+        {
+            var confs = _repository
+                .Queryable<DAL.DomainModel.Conference>()
+                .Where(c => c.Status == ConfStatus.Process || c.Status == ConfStatus.Created)
+                .OrderBy(c => c.Created)
+                .AsNoTracking()
+                .ToList();
+            if (confs.Any())
+            {
+                var resultConf = confs.FirstOrDefault(c => c.Status == ConfStatus.Process);
+                if (resultConf != null)
+                {
+                    //UrlHelper url = new UrlHelper(HttpContext.Current.Request.RequestContext);
+                    //resultConf.Url = url.Action("index", "Conference", new {id = resultConf.Id});
+                    return resultConf.MapTo<ConfModel>();
+                }
+                else
+                    return confs.First().MapTo<ConfModel>();
+            }
             return null;
         }
     }
