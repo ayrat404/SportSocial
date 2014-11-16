@@ -26,13 +26,19 @@ namespace BLL.Common.Services.CurrentUser.Impls
             get { return HttpContext.Current.User.Identity.GetUserName(); }
         }
 
-        public bool IsAnonimous { get; private set; }
+        public bool IsAnonimous
+        {
+            get { return !HttpContext.Current.User.Identity.IsAuthenticated; }
+        }
 
-        public bool IsAdmin { get; private set; }
+        public bool IsAdmin
+        {
+            get { return IsInRole("Admin"); }
+        }
 
         public bool IsInRole(string role)
         {
-            return true;
+            return HttpContext.Current.User.IsInRole("Admin");
         }
 
         public string UserId

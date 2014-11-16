@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Mvc;
+using System.Web.UI.WebControls.WebParts;
 using BLL.Admin.Conference;
 using BLL.Admin.Conference.ViewModels;
 
@@ -19,9 +20,8 @@ namespace SportSocial.Controllers
         [AllowAnonymous]
         public ActionResult Time()
         {
-            if (new Random().Next(2) == 1)
-                return Json(new {stamp = TimeSpan.FromDays(23).TotalSeconds}, JsonRequestBehavior.AllowGet);
-            return Json(new {url = "/"}, JsonRequestBehavior.AllowGet);
+            var conf = _conferenceService.GetLastConf();
+            return View("Partials/ConferenceTimer", conf);
         }
 
         public ActionResult Index()

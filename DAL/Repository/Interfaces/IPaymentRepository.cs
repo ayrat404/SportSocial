@@ -6,5 +6,6 @@ namespace DAL.Repository.Interfaces
     {
         Product GetProductById(int productId);
         void AddPay(Pay pay);
+        void SaveChanges();
     }
 }
