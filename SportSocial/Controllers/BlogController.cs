@@ -58,38 +58,44 @@ namespace SportSocial.Controllers
         }
 
         [Authorize]
-        public ActionResult Edit(int id)
+        [HttpGet]
+        public ActionResult Edit(EditPostModel model)
         {
-            var model = _blogService.GetEditModel(id);
+            if (ModelState.IsValid)
+            {
+                model = _blogService.EditPost(model);
+                //TODO редирект на страницу своих постов
+            }
             return View(model);
         }
 
-        [HttpPost]
-        public ActionResult Rating(BlogRatingViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                //_blogService.RaitBlog(model);
-                return Json(new {Success = true});
-            }
-            return Json(new {Success = false});
-        }
 
-        [HttpPost]
-        public JsonResult Comment(CreateCommentViewModel createCommentViewModelModel)
-        {
-            if (ModelState.IsValid)
-            {
-                var comment = _blogService.AddComment(createCommentViewModelModel);
-                return Json(new {Success = true, Comment = comment});
-            }
-            return Json(new {Success = false});
-        }
+        //[HttpPost]
+        //public ActionResult Rating(BlogRatingViewModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        //_blogService.RaitBlog(model);
+        //        return Json(new {Success = true});
+        //    }
+        //    return Json(new {Success = false});
+        //}
 
-        [HttpGet]
-        public JsonResult LoadComments(int id)
-        {
-            return Json(_blogService.LoadComments(id), JsonRequestBehavior.AllowGet);
-        }
+        //[HttpPost]
+        //public JsonResult Comment(CreateCommentViewModel createCommentViewModelModel)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var comment = _blogService.AddComment(createCommentViewModelModel);
+        //        return Json(new {Success = true, Comment = comment});
+        //    }
+        //    return Json(new {Success = false});
+        //}
+
+        //[HttpGet]
+        //public JsonResult LoadComments(int id)
+        //{
+        //    return Json(_blogService.LoadComments(id), JsonRequestBehavior.AllowGet);
+        //}
 	}
 }

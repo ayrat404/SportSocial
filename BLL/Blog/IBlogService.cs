@@ -20,6 +20,7 @@ namespace BLL.Blog
         BlogPostViewModel GetPost(int id);
         PostListViewModel GetPosts(int pageSize, PostSortType sortType, int rubricId = 0, int page = 1);
         EditPostModel GetEditModel(int id);
+        ServiceResult EditPost(EditPostModel model);
     }
 
     public enum PostSortType

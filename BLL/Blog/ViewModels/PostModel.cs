@@ -26,6 +26,7 @@ namespace BLL.Blog.ViewModels
 
     public class EditPostModel: CreatePostModel
     {
+        [Required]
         public int Id { get; set; }
     }
 
