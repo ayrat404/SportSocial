@@ -12,7 +12,7 @@
     <div class="auth__content">
         <div ng-controller="AuthorizationCtrl"
              ng-show="authTab==2">
-            <form ng-submit="authorization(auth)"
+            <form ng-submit="signIn(auth)"
                   name="authorization">
                 <input ng-model="auth.phone"
                        ng-disabled="formDisabled"

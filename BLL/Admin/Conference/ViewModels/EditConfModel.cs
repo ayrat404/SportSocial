@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 using DAL.DomainModel.EnumProperties;
 using Newtonsoft.Json;
@@ -11,5 +12,7 @@ namespace BLL.Admin.Conference.ViewModels
 
         [Required]
         public ConfStatus Status { get; set; }
+
+        public int Stamp { get; set; }
     }
 }

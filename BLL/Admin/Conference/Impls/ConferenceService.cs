@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 using BLL.Admin.Conference.ViewModels;
 using BLL.Infrastructure.Map;
 using DAL.DomainModel.EnumProperties;
@@ -83,6 +81,7 @@ namespace BLL.Admin.Conference.Impls
                     return confs.First().MapTo<ConfModel>();
             }
             return null;
+
         }
     }
 }

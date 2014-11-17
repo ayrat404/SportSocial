@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Web.Mvc;
-using System.Web.UI.WebControls.WebParts;
 using BLL.Admin.Conference;
-using BLL.Admin.Conference.ViewModels;
+using SportSocial.Controllers.Base;
 
 namespace SportSocial.Controllers
 {
     [Authorize]
-    public class ConferenceController : Controller
+    public class ConferenceController : SportSocialControllerBase
     {
         private readonly IConferenceService _conferenceService;
 
@@ -21,6 +20,16 @@ namespace SportSocial.Controllers
         public ActionResult Time()
         {
             var conf = _conferenceService.GetLastConf();
+            conf.Stamp = (int)(conf.Date - DateTime.Now).TotalSeconds;
+            return Json(conf, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult RenderTime()
+        {
+            var conf = _conferenceService.GetLastConf();
+            conf.Stamp = (int)(conf.Date - DateTime.Now).TotalSeconds;
             return View("Partials/ConferenceTimer", conf);
         }
 

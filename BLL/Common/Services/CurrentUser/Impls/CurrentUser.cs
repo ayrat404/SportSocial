@@ -7,11 +7,12 @@ namespace BLL.Common.Services.CurrentUser.Impls
 {
     public class CurrentUser: ICurrentUser
     {
-        private readonly AppUserManager _appUserManager;
+        private readonly AppUserManager _repository;
 
-        public CurrentUser(AppUserManager appUserManager)
+        public CurrentUser(AppUserManager repository)
         {
-            _appUserManager = appUserManager;
+            _repository = repository;
+            User = _repository.FindById(HttpContext.Current.User.Identity.GetUserId());
         }
 
         private AppUser _user;
@@ -49,15 +50,15 @@ namespace BLL.Common.Services.CurrentUser.Impls
             }
         }
 
-        public AppUser User
-        {
-            get
-            {
-                if (_user != null)
-                    return _user;
-                _user = _appUserManager.FindById(HttpContext.Current.User.Identity.GetUserId());
-                return _user;
-            }
-        }
+        public AppUser User { get; private set; }
+        //{
+        //    get
+        //    {
+        //        if (_user != null)
+        //            return _user;
+        //        _user = _repository.Find<AppUser>(HttpContext.Current.User.Identity.GetUserId());
+        //        return _user;
+        //    }
+        //}
     }
 }
