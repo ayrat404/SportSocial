@@ -22,9 +22,14 @@ function ($scope, loginRqst, utilsSrvc, $interval) {
 
     // запросить код для восстановления пароля
     // ---------------
-    $scope.requestCode = function(phone) {
+    $scope.requestCode = function(data) {
         beforeSend();
-        loginRqst.requestRestoreCode(utilsSrvc.token.add({ phone: phone }))
+
+        $scope.smsBlockShow = true;
+        $scope.timerForSms = 200;
+        countdownTimer();
+
+        loginRqst.requestRestoreCode(utilsSrvc.token.add({ phone: data.phone }))
             .then(function(res) {
                 if (res.data.success) {
                     $scope.smsBlockShow = true;
@@ -45,6 +50,9 @@ function ($scope, loginRqst, utilsSrvc, $interval) {
     $scope.restorePasswrod = function (data) {
         data.phone = $scope.f.phone;
         beforeSend();
+
+        $scope.success = true;
+
         loginRqst.restorePassword(utilsSrvc.token.add(data))
             .then(function(res) {
                 if (res.data.success) {

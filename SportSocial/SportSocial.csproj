@@ -297,7 +297,7 @@
     <Content Include="Scripts\app\blog\modules\restore-password\restorePassword.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\settings\settings.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\settings\settings.srvc.js" />
-    <Content Include="Scripts\app\blog\shared\directives\animateCounter.drct.js" />
+    <Content Include="Scripts\app\shared\services\animateCounter.drct.js" />
     <Content Include="Scripts\app\blog\shared\services\login.srvc.js" />
     <Content Include="Scripts\app\shared\app.js" />
     <Content Include="Scripts\app\shared\directives\autofocus.drct.js" />
@@ -305,6 +305,7 @@
     <Content Include="Scripts\app\shared\directives\datepicker.drct.js" />
     <Content Include="Scripts\app\shared\directives\scrollToPos.drct.js" />
     <Content Include="Scripts\app\shared\directives\scrollTo.drct.js" />
+    <Content Include="Scripts\app\shared\filters\formatWord.fltr.js" />
     <Content Include="Scripts\app\shared\services\serializeObj.srvc.js" />
     <Content Include="Scripts\app\shared\services\utils.srvc.js" />
     <Content Include="Scripts\libs\angucomplete\angucomplete-alt.css" />
@@ -944,7 +945,7 @@
     <Content Include="Views\Login\RestorePassword.cshtml" />
     <Content Include="Views\Shared\Partials\Rating.cshtml" />
     <Content Include="Views\Shared\Partials\ConferenceTimer.cshtml" />
-	<Content Include="Views\Blog\UserArticles.cshtml" />
+    <Content Include="Views\Blog\UserArticles.cshtml" />
     <Content Include="Views\Blog\Shared\Partials\UserArticlesList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -956,6 +957,8 @@
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Scripts\app\admin\shared\directives\" />
+    <Folder Include="Scripts\app\blog\shared\directives\" />
+    <Folder Include="Scripts\app\blog\shared\filters\" />
     <Folder Include="Scripts\spa\apps\blog\edit\" />
     <Folder Include="Scripts\spa\apps\blog\list\" />
     <Folder Include="Scripts\spa\apps\blog\new\" />
