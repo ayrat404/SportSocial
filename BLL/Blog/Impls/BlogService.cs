@@ -141,6 +141,24 @@ namespace BLL.Blog.Impls
             return post;
         }
 
+        public ServiceResult EditPost(EditPostModel model)
+        {
+            var result = new ServiceResult
+            {
+                Success = true,
+            };
+            var post = _repository
+                .Find<Post>(model.Id);
+            if (post == null)
+            {
+                result.Success = false;
+                result.ErrorMessage = "Not Found";
+            }
+            model.MapTo(post);
+            _repository.SaveChanges();
+            return result;
+        }
+
         //public PostListViewModel GetPosts(int page, PostSortType sortType = PostSortType.Last, int rubricId = 0)
         //{
         //    int viewedPosts = 10;
