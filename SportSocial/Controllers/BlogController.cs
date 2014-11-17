@@ -57,6 +57,13 @@ namespace SportSocial.Controllers
             return View(_blogService.GetPost(id));
         }
 
+        [Authorize]
+        public ActionResult Edit(int id)
+        {
+            var model = _blogService.GetEditModel(id);
+            return View(model);
+        }
+
         [HttpPost]
         public ActionResult Rating(BlogRatingViewModel model)
         {

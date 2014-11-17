@@ -132,6 +132,15 @@ namespace BLL.Blog.Impls
                 return postListVM;
         }
 
+        public EditPostModel GetEditModel(int id)
+        {
+            var post =  _repository
+                .Find<Post>(id)
+                .MapTo<EditPostModel>();
+            post.Rubrics = GetRubrics();
+            return post;
+        }
+
         //public PostListViewModel GetPosts(int page, PostSortType sortType = PostSortType.Last, int rubricId = 0)
         //{
         //    int viewedPosts = 10;

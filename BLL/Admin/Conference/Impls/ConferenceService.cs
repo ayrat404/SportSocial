@@ -81,6 +81,7 @@ namespace BLL.Admin.Conference.Impls
                     return confs.First().MapTo<ConfModel>();
             }
             return null;
+
         }
     }
 }

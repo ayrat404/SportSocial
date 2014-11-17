@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Ninject;
 using Ninject.Extensions.Conventions;
+using Ninject.Extensions.Conventions.Syntax;
 using Ninject.Web.Common;
 
 namespace BLL.Infrastructure
@@ -19,25 +20,29 @@ namespace BLL.Infrastructure
     {
         public static void Register(IKernel kernel)
         {
-            kernel.Bind<EntityDbContext>().ToMethod(EntityDbContext.Create);
+            kernel.Bind<EntityDbContext>().ToMethod(EntityDbContext.Create).InRequestScope();
+
+            kernel.Bind<IUserStore<AppUser>>().ToMethod(ctx => new UserStore<AppUser>(ctx.Kernel.Get<EntityDbContext>())).InRequestScope();
+            kernel.Bind<AppUserManager>().ToMethod(AppUserManager.Create).InRequestScope();
+            kernel.Bind<AppRoleManager>().ToSelf().InRequestScope();
+            
             kernel.Bind(x => x
                 .FromThisAssembly()
                 .Select(t => t.Name.EndsWith("Service") && !t.Name.Contains("Sms"))
-                .BindDefaultInterfaces());
+                .BindDefaultInterfaces()
+                .Configure(c => c.InRequestScope()));
 
             kernel.Bind(x => x
                 .FromAssemblyContaining(typeof(IRepository))
                 .Select(t => t.Name.EndsWith("Repository"))
-                .BindDefaultInterfaces());
+                .BindDefaultInterfaces()
+                .Configure(c => c.InRequestScope()));
 
             kernel.Bind<ISmsService>().To<SmsServiceBase>().InRequestScope();
             kernel.Bind<ICurrentUser>().To<CurrentUser>().InRequestScope();
             kernel.Bind(typeof(IGRatingService<,>)).To(typeof(RatingService<,>)).InRequestScope();
             kernel.Bind(typeof(ICommentService<,>)).To(typeof(CommentService<,>)).InRequestScope();
 
-            kernel.Bind<IUserStore<AppUser>>().ToMethod(ctx => new UserStore<AppUser>(ctx.Kernel.Get<EntityDbContext>())).InRequestScope();
-            kernel.Bind<AppUserManager>().ToMethod(AppUserManager.Create).InRequestScope();
-            kernel.Bind<AppRoleManager>().ToSelf().InRequestScope();
         }
     }
 }

@@ -27,7 +27,8 @@ function ($interval, conferenceRqst) {
                     $interval.cancel(conferenceTime);
                     conferenceRqst.requestTime()
                         .then(function (res) {
-                            if (res.data.url != undefined) {
+                        debugger;
+                            if (res.data.url != undefined || res.data.url != null) {
                                 $scope.url = res.data.url;
                             } else {
                                 diff = res.data.stamp;
