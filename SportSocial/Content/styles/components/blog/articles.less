@@ -3,9 +3,11 @@
 
 .article-short-info {
     color: #a7a7a7;
+
     span {
         margin-right: 10px;
     }
+
     i {
         margin-right: 5px;
     }
@@ -61,6 +63,7 @@
             left: 20px;
             right: 20px;
             .no-float;
+
             & > span {
                 font-family: 'PN_light';
                 font-size: 1.143em;
@@ -86,50 +89,70 @@
     // страница редактирования статьи
     &__edit {
         &__form {
-        background: @color-block-bg;
-        padding: 20px;
-        &__img {
-            max-width: 140px;
-            max-height: 200px;
+            background: @color-block-bg;
+            padding: 20px;
         }
-    }
-    input,
-    textarea,
-    select {
-        font-size: 1.286em;
-    }
-    &__images {
 
-    }
-    &__img {
-        max-height: 300px;
-        max-width: 100%;
-    }
-    &__text {
-        height: 300px;
-    }
+        input,
+        textarea,
+        select {
+            font-size: 1.286em;
+        }
+
+        &__images {
+            text-align: center;
+            margin-right: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        &__img {
+            max-height: 250px;
+            max-width: 100%;
+
+            &-del {
+                text-align: right;
+                position: absolute;
+                bottom: 0;
+                padding: 10px;
+                width: 100%;
+                background: rgba(0,0,0,.5);
+            }
+        }
+
+        &__text {
+            height: 300px;
+        }
+
+        &__upload-btn {
+            margin-bottom: 10px;
+        }
     }
     // страница просмотра статьи
     &__item {
         background: #fff;
-        &__img-wrap {
 
+        &__img-wrap {
         }
+
         &__img {
             width: 100%;
         }
+
         &__text {
             padding: 30px;
         }
+
         &__title {
             text-transform: uppercase;
             margin: 0 0 15px 0;
             font-size: 1.786em;
             font-weight: bold;
         }
-        &__desc {
 
+        &__desc {
         }
+
         &__bottom {
             padding-top: 20px;
             margin-top: 20px;

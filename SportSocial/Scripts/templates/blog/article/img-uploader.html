@@ -1,13 +1,13 @@
 ﻿<div>
     <div>
-        <button ng-click="addImage()" type="button" class="btn btn-default btn-sm">Загрузить фото</button>
+        <button ng-show="images.length<1" ng-click="addImage()" type="button" class="btn btn-default btn-sm article__edit__upload-btn">Загрузить фото</button>
     </div>
     <input type="file" name="UploaderHelper" class="hide js-img-input">
-    
+
     <div ng-repeat="img in images" class="article__edit__images">
         <img ng-src="{{img.url}}" class="article__edit__img" />
-        <div>
-            <span ng-click="removeImage(img.id)" class="article__edit__img-del link">Удалить</span>
+        <div class="article__edit__img-del">
+            <span ng-click="removeImage(img.id)" class="link">Удалить</span>
         </div>
     </div>
     <div ng-show="errors.client" class="alert alert-danger">

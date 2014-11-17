@@ -8,6 +8,7 @@ namespace BLL.Blog.ViewModels
 {
     public class CreatePostModel
     {
+        public int Id { get; set; }
         [Required]
         public string Title { get; set; }
 
@@ -23,12 +24,6 @@ namespace BLL.Blog.ViewModels
 
         public IEnumerable<Rubric> Rubrics { get; set; }
     }
-
-    public class EditPostModel: CreatePostModel
-    {
-        public int Id { get; set; }
-    }
-
 
     public class Images
     {

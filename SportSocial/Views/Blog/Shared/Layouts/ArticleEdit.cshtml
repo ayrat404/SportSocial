@@ -15,9 +15,7 @@
             <div class="col-sm-4">
 
                 @*Таймер конференции*@
-                <div class="block">
-                    <div conf-date="12312"></div>
-                </div>
+                @Html.Action("RenderTime", "Conference")
 
                 @Html.Partial("Shared/Partials/Blocks/Menu")
             </div>

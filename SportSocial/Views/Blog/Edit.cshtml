@@ -1,10 +1,10 @@
-﻿@model BLL.Blog.ViewModels.EditPostModel
+﻿@model BLL.Blog.ViewModels.CreatePostModel
 @{
     ViewBag.Title = "Fortress - Редактирование статьи";
     Layout = "../Blog/Shared/Layouts/ArticleEdit.cshtml";
 }
 <h2>Редактирование статьи</h2>
-@Html.Partial("Shared/Partials/ArticleEdit")
+@Html.Partial("Shared/Partials/ArticleEdit", Model)
 <div ng-if="msg.show"
      ng-cloak
      class="msg">

@@ -25,9 +25,7 @@
                 @Html.Partial("Shared/Partials/Blocks/AuthRegBlock")
 
                 @*Таймер конференции*@
-                <div class="block">
-                    <div conf-date="112987200"></div>
-                </div>
+                @Html.Action("RenderTime", "Conference")
                 
                 @*Блок меню (по рубрикам)*@
                 @Html.Partial("Shared/Partials/Blocks/Menu")

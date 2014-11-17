@@ -1,9 +1,19 @@
 ﻿@model BLL.Admin.Conference.ViewModels.ConfModel
 @using DAL.DomainModel.EnumProperties;
 
-@Model.Title;
+@if (Model != null)
+{
+    <div class="block">
+        <div conf-date="@Model.Stamp"></div>
+    </div>
+}
+
+
+@*Доступпные поля*@
+@*@Model.Title;
 @CurrentUser.User.Profile.Avatar;
 @Model.Description;
 @Model.Date;
 @Model.Status;
-@(Model.Status == ConfStatus.Process)
+@Model.Stamp;
+@(Model.Status == ConfStatus.Process)*@
