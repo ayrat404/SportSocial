@@ -35,7 +35,7 @@ angular.module('shared').factory('utilsSrvc', [function () {
 
     // Склонение слов
     // ---------------
-    function formatWords(count, words) {
+    function formatWord(count, words) {
         var cnt = count.toString().substring(count.toString().length - 1, count.toString().length);
         if (cnt == 1) {
             return words[0];
@@ -53,7 +53,7 @@ angular.module('shared').factory('utilsSrvc', [function () {
             add: addAnimation
         },
         format: {
-            words: formatWords
+            word: formatWord
         }
     }
 }]);
