@@ -783,6 +783,7 @@
     <Content Include="Content\styles\components\common\icons.less" />
     <Content Include="Content\styles\components\common\rating.less" />
     <Content Include="Content\styles\view\settings.less" />
+    <None Include="Properties\PublishProfiles\Some.pubxml" />
     <None Include="Scripts\libs\jquery\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.min.js" />

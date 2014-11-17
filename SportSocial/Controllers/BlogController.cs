@@ -63,7 +63,7 @@ namespace SportSocial.Controllers
         {
             if (ModelState.IsValid)
             {
-                model = _blogService.EditPost(model);
+                _blogService.EditPost(model);
                 //TODO редирект на страницу своих постов
             }
             return View(model);

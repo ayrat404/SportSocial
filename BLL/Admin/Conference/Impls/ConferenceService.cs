@@ -67,21 +67,18 @@ namespace BLL.Admin.Conference.Impls
                 .Where(c => c.Status == ConfStatus.Process || c.Status == ConfStatus.Created)
                 .OrderBy(c => c.Created)
                 .AsNoTracking()
-                .ToList();
+                .ToList()
+                .MapEachTo<ConfModel>();
             if (confs.Any())
             {
                 var resultConf = confs.FirstOrDefault(c => c.Status == ConfStatus.Process);
                 if (resultConf != null)
                 {
-                    //UrlHelper url = new UrlHelper(HttpContext.Current.Request.RequestContext);
-                    //resultConf.Url = url.Action("index", "Conference", new {id = resultConf.Id});
                     return resultConf.MapTo<ConfModel>();
                 }
-                else
-                    return confs.First().MapTo<ConfModel>();
+                return confs.First().MapTo<ConfModel>();
             }
             return null;
-
         }
     }
 }
