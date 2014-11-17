@@ -20,7 +20,8 @@ namespace SportSocial.Controllers
         public ActionResult Time()
         {
             var conf = _conferenceService.GetLastConf();
-            conf.Stamp = (int)(conf.Date - DateTime.Now).TotalSeconds;
+            if (conf != null)
+                conf.Stamp = (int)(conf.Date - DateTime.Now).TotalSeconds;
             return Json(conf, JsonRequestBehavior.AllowGet);
         }
 
@@ -29,7 +30,8 @@ namespace SportSocial.Controllers
         public ActionResult RenderTime()
         {
             var conf = _conferenceService.GetLastConf();
-            conf.Stamp = (int)(conf.Date - DateTime.Now).TotalSeconds;
+            if (conf != null)
+                conf.Stamp = (int)(conf.Date - DateTime.Now).TotalMilliseconds;
             return View("Partials/ConferenceTimer", conf);
         }
 

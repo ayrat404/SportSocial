@@ -7,21 +7,21 @@
                     <div class="conf-date__item">{{dh}}</div>
                     <div class="conf-date__item">{{dm}}</div>
                 </div>
-                <p>Дней</p>
+                <p>{{dm | formatWord:['День', 'Дня', 'Дней']}}</p>
             </div>
             <div class="conf-date__col">
                 <div>
                     <div class="conf-date__item">{{hh}}</div>
                     <div class="conf-date__item">{{hm}}</div>
                 </div>
-                <p>Часов</p>
+                <p>{{dm | formatWord:['Час', 'Часа', 'Часов']}}</p>
             </div>
             <div class="conf-date__col">
                 <div>
                     <div class="conf-date__item">{{mh}}</div>
                     <div class="conf-date__item">{{mm}}</div>
                 </div>
-                <p>Минут</p>
+                <p>{{dm | formatWord:['Минута', 'Минуты', 'Минут']}}</p>
             </div>
         </div>
     </div>
