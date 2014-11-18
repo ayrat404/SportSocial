@@ -4,6 +4,7 @@ using BLL.Common.Services.CurrentUser.Impls;
 using BLL.Common.Services.Rating;
 using BLL.Infrastructure.IdentityConfig;
 using BLL.Sms;
+using BLL.Sms.Impls;
 using DAL;
 using DAL.DomainModel;
 using DAL.Repository.Interfaces;
@@ -11,7 +12,6 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Ninject;
 using Ninject.Extensions.Conventions;
-using Ninject.Extensions.Conventions.Syntax;
 using Ninject.Web.Common;
 
 namespace BLL.Infrastructure
@@ -38,7 +38,12 @@ namespace BLL.Infrastructure
                 .BindDefaultInterfaces()
                 .Configure(c => c.InRequestScope()));
 
+            #if DEBUG
             kernel.Bind<ISmsService>().To<SmsServiceBase>().InRequestScope();
+            #endif
+            #if !DEBUG
+            kernel.Bind<ISmsService>().To<SmsPilotSmsService>().InRequestScope();
+            #endif
             kernel.Bind<ICurrentUser>().To<CurrentUser>().InRequestScope();
             kernel.Bind(typeof(IGRatingService<,>)).To(typeof(RatingService<,>)).InRequestScope();
             kernel.Bind(typeof(ICommentService<,>)).To(typeof(CommentService<,>)).InRequestScope();

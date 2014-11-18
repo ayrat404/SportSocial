@@ -6,7 +6,7 @@ using SportSocial.Controllers.Base;
 
 namespace SportSocial.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class PayController : SportSocialControllerBase
     {
         private readonly IPayPalService _payPalService;
@@ -20,6 +20,7 @@ namespace SportSocial.Controllers
             _robokassaService = robokassaService;
         }
 
+        [HttpGet]
         public ActionResult Index(int productId, PayType payType)
         {
             var payInfo = _payService.InitPay(productId, PayType.Robokassa);

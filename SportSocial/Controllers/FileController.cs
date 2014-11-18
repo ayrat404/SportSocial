@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Web;
+﻿using System.Web;
 using System.Web.Mvc;
 using BLL.Storage;
 using SportSocial.Controllers.Base;
 
 namespace SportSocial.Controllers
 {
+    [Authorize]
     public class FileController : SportSocialControllerBase
     {
         private readonly IFileService _fileService;

@@ -1,14 +1,12 @@
 ﻿using System.Web.Mvc;
-using System.Web.UI;
 using BLL.Blog;
 using BLL.Blog.ViewModels;
-using BLL.Comments.Objects;
 using PagedList;
 using SportSocial.Controllers.Base;
 
 namespace SportSocial.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class BlogController :SportSocialControllerBase
     {
         private readonly IBlogService _blogService;
@@ -19,6 +17,7 @@ namespace SportSocial.Controllers
         }
 
         [AllowAnonymous]
+        [HttpGet]
         public ActionResult Index(int page = 1, PostSortType sortType = PostSortType.Last, int rubricId = 0)
         {
             int pageSize = 2;
@@ -28,6 +27,7 @@ namespace SportSocial.Controllers
             return View(pageList);
         }
 
+        [HttpGet]
         public ActionResult UserArticles(long id)
         {
             return View();
@@ -44,7 +44,7 @@ namespace SportSocial.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public ActionResult New(CreatePostModel createPostModel)
         {
             if (ModelState.IsValid)
@@ -57,9 +57,14 @@ namespace SportSocial.Controllers
             return View(_blogService.GetPost(id));
         }
 
-        [Authorize]
         [HttpGet]
-        public ActionResult Edit(EditPostModel model)
+        public ActionResult Edit(int id)
+        {
+            return View(_blogService.GetEditModel(id));
+        }
+
+        [HttpPost]
+        public ActionResult Edit(CreatePostModel model)
         {
             if (ModelState.IsValid)
             {

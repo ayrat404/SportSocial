@@ -1,11 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web.Mvc;
-using BLL.Login;
-using BLL.Login.ViewModels;
+﻿using System.Web.Mvc;
 using SportSocial.Controllers.Base;
-using WebGrease.Css.Extensions;
 
 namespace SportSocial.Controllers
 {

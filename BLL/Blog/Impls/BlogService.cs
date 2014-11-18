@@ -132,16 +132,16 @@ namespace BLL.Blog.Impls
                 return postListVM;
         }
 
-        public EditPostModel GetEditModel(int id)
+        public CreatePostModel GetEditModel(int id)
         {
             var post =  _repository
                 .Find<Post>(id)
-                .MapTo<EditPostModel>();
+                .MapTo<CreatePostModel>();
             post.Rubrics = GetRubrics();
             return post;
         }
 
-        public ServiceResult EditPost(EditPostModel model)
+        public ServiceResult EditPost(CreatePostModel model)
         {
             var result = new ServiceResult
             {

@@ -9,6 +9,7 @@ using SportSocial.Controllers.Base;
 
 namespace SportSocial.Controllers
 {
+    [Authorize]
     public class RatingController: SportSocialControllerBase
     {
         [HttpPost]

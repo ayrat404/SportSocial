@@ -8,7 +8,7 @@ namespace BLL.Blog.MapProfiles
     {
         protected override void Configure()
         {
-            CreateMap<Post, EditPostModel>()
+            CreateMap<Post, CreatePostModel>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
                 .ForMember(dest => dest.Text, opt => opt.MapFrom(src => src.Text))

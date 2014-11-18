@@ -11,6 +11,8 @@ namespace BLL.Blog.ViewModels
         [Required]
         public string Title { get; set; }
 
+        public int Id { get; set; }
+
         [Required]
         [AllowHtml]
         public string Text { get; set; }
@@ -22,12 +24,6 @@ namespace BLL.Blog.ViewModels
         public int Rubric { get; set; }
 
         public IEnumerable<Rubric> Rubrics { get; set; }
-    }
-
-    public class EditPostModel: CreatePostModel
-    {
-        [Required]
-        public int Id { get; set; }
     }
 
 
