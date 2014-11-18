@@ -18,14 +18,11 @@ namespace SportSocial.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        public ActionResult Index(int page = 1, PostSortType sortType = PostSortType.Last, int rubricId = 0)
+        public ActionResult Index(int page = 1, PostSortType sort = PostSortType.Last, int rubric = 0)
         {
-            if (page > 1)
-            {
-                ViewBag.HidePromo = true;
-            }
+            ViewBag.HidePromo = Request.Params.Count > 0;
             int pageSize = 2;
-            var posts = _blogService.GetPosts(pageSize, sortType, rubricId, page);
+            var posts = _blogService.GetPosts(pageSize, sort, rubric, page);
             var pageList = new StaticPagedList<PostPreviewViewModel>(posts.PostPreview, page, pageSize,
                 posts.PageInfo.Count);
             return View(pageList);
