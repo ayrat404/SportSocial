@@ -109,4 +109,8 @@ function ($scope, settingsRqst, utilsSrvc, $window, $timeout) {
             }
         }, 1000);
     }
+
+    // загрузка/смена аватарки
+    // ---------------
+
 }]);

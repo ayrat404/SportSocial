@@ -35,16 +35,10 @@ namespace SportSocial
                         "~/Scripts/libs/jquery-fileapi/FileAPI.min.js",
                         "~/Scripts/libs/jquery-fileapi/FileAPI.exif.js",
                         "~/Scripts/libs/jquery-fileapi/jquery.fileapi.min.js",
-
+                        
                         //"~/Scripts/libs/signalR/jquery.signalR-2.0.3.min.js",
                         //"~/Scripts/libs/signalR/hub.js",
 
-
-
-                        //"~/Scripts/libs/imperaviRedactor/redactor.min.js",
-                        //"~/Scripts/libs/imperaviRedactor/ru.js",
-                        //"~/Scripts/libs/imperaviRedactor/blockquote.js",
-                        
                         "~/Scripts/libs/moment/moment.min.js",
                         "~/Scripts/libs/moment/ru.js",
                         "~/Scripts/libs/datepicker/jquery.datetimepicker.js",

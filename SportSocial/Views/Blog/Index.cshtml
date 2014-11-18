@@ -6,7 +6,10 @@
 }
 
 @*Промо блок на главной*@
-@Html.Partial("Shared/Partials/Blocks/Promo")
+@if (!ViewBag.HidePromo)
+{
+    @Html.Partial("Shared/Partials/Blocks/Promo")
+}
 
 @*Навигация по контенту*@
 @Html.Partial("Shared/Partials/Blocks/ContentNavigation")
@@ -28,7 +31,8 @@
                 @Html.Action("RenderTime", "Conference")
                 
                 @*Блок меню (по рубрикам)*@
-                @Html.Partial("Shared/Partials/Blocks/Menu")
+                @*@Html.Partial("Shared/Partials/Blocks/Menu")*@
+                @Html.Action("GetRubrics", "Blog")
             </div>
         </div>
         <div class="row blog__content__middle">
