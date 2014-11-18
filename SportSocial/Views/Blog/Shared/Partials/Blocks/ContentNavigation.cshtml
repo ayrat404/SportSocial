@@ -1,17 +1,18 @@
-﻿<div class="nav nav--middle">
+﻿@using BLL.Blog
+<div class="nav nav--middle">
     <div class="container">
         <div class="row">
             <ul class="nav__list">
                 <li class="active">
-                    <a href="#" class="nav__list__link">Все статьи</a>
+                    <a href="@Url.Action("Index", "Blog", new { sort = PostSortType.Last })" class="nav__list__link">Все статьи</a>
                     <div class="nav__list__line"></div>
                 </li>
                 <li>
-                    <a href="#" class="nav__list__link">Лучшие статьи</a>
+                    <a href="@Url.Action("Index", "Blog", new { sort = PostSortType.Best })" class="nav__list__link">Лучшие статьи</a>
                     <div class="nav__list__line"></div>
                 </li>
                 <li>
-                    <a href="#" class="nav__list__link">Fortress</a>
+                    <a href="@Url.Action("Index", "Blog", new { sort = PostSortType.Fortress })" class="nav__list__link">Fortress</a>
                     <div class="nav__list__line"></div>
                 </li>
                 @*<li>

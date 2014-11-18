@@ -27,5 +27,6 @@ namespace BLL.Blog
     {
         Last,
         Best,
+        Fortress
     }
 }

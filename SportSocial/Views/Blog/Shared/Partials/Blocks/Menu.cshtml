@@ -1,17 +1,14 @@
-﻿<div class="mod block">
+﻿@model List<DAL.DomainModel.Rubric>
+<div class="mod block">
     <div class="mod__header">
         <div class="mod__header__title">Рубрики</div>
     </div>
     <div class="mod__content">
         <div class="blog-menu">
-            <a href="#" class="blog-menu__link">Здоровье</a>
-            <a href="#" class="blog-menu__link">Мотивация</a>
-            <a href="#" class="blog-menu__link">Новичку</a>
-            <a href="#" class="blog-menu__link">Общее</a>
-            <a href="#" class="blog-menu__link">Питание</a>
-            <a href="#" class="blog-menu__link">С чего начать</a>
-            <a href="#" class="blog-menu__link">Упражнения</a>
-            <a href="#" class="blog-menu__link">Элементы</a>
+            @foreach (var r in Model)
+            {
+                <a href="@Url.Action("Index", "Blog", new {rubric = r.Id})" class="blog-menu__link">@r.Name</a>
+            }
         </div>
     </div>
 </div>

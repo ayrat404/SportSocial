@@ -20,7 +20,11 @@ namespace SportSocial.Controllers
         [HttpGet]
         public ActionResult Index(int page = 1, PostSortType sort = PostSortType.Last, int rubric = 0)
         {
+<<<<<<< HEAD
             ViewBag.HidePromo = Request.Params.Count > 0;
+=======
+            ViewBag.HidePromo = page > 1;
+>>>>>>> 65c042cdbed0b10452b09ac204829618b11c1ddb
             int pageSize = 2;
             var posts = _blogService.GetPosts(pageSize, sort, rubric, page);
             var pageList = new StaticPagedList<PostPreviewViewModel>(posts.PostPreview, page, pageSize,
@@ -42,6 +46,12 @@ namespace SportSocial.Controllers
                 Rubrics = _blogService.GetRubrics(),
             };
             return View(blogModel);
+        }
+
+        public ActionResult GetRubrics()
+        {
+            var rubrics = _blogService.GetRubrics();
+            return View("Shared/Partials/Blocks/Menu", rubrics);
         }
 
         [HttpPost]

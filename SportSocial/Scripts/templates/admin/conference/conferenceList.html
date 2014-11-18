@@ -25,50 +25,57 @@
     </div>
     <div class="cp-block">
         <div class="cp-conference__list">
-            <table ng-show="!er.server"
-                   class="table">
-                <thead>
-                    <tr>
-                        <td>Название/ссылка</td>
-                        <td>Дата проведения</td>
-                        <td>Статус</td>
-                        <td>Действия</td>
-                    </tr>
-                </thead>
-                <tbody ng-cloak>
-                    <tr ng-repeat="cnf in model.conferences">
-                        <td>
-                            <p>{{cnf.title}}</p>
-                            <p>{{cnf.url}}</p>
-                        </td>
-                        <td>{{cnf.date}}</td>
-                        <td>
-                            <div ng-if="cnf.status==0">Предстоящая</div>
-                            <div ng-if="cnf.status==1">Идет сейчас</div>
-                            <div ng-if="cnf.status==2">Проведена</div>
-                        </td>
-                        <td>
-                            <button ng-click="changeConferenceStatus(cnf.id, 'Process', cnf)"
-                                    ng-if="cnf.status==0"
-                                    class="btn btn-info">
-                                Запустить прямо сейчас
-                            </button>
-                            <button ng-click="changeConferenceStatus(cnf.id, 'Finish', cnf)"
-                                    ng-if="cnf.status==1"
-                                    class="btn btn-success">
-                                Завершить
-                            </button>
-                            <a ng-href="#/conference/item/{{cnf.id}}" class="btn btn-warning">
-                                Редактировать
-                            </a>
-                            <button ng-click="changeConferenceStatus(cnf.id, 'Remove', cnf);"
-                                    class="btn btn-danger">
-                                Удалить
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-3">
+                        Название/ссылка
+                    </div>
+                    <div class="col-xs-2">
+                        Дата проведения
+                    </div>
+                    <div class="col-xs-2">
+                        Статус
+                    </div>
+                    <div class="col-xs-5">
+                        Действия
+                    </div>
+                </div>
+                <div ng-repeat="cnf in model.conferences"
+                     ng-cloak
+                     class="row">
+                    <div class="col-xs-3">
+                        <p>{{cnf.title}}</p>
+                        <p>{{cnf.url}}</p>
+                    </div>
+                    <div class="col-xs-2">
+                        {{cnf.date}}
+                    </div>
+                    <div class="col-xs-2">
+                        <div ng-if="cnf.status==0">Предстоящая</div>
+                        <div ng-if="cnf.status==1">Идет сейчас</div>
+                        <div ng-if="cnf.status==2">Проведена</div>
+                    </div>
+                    <div class="col-xs-5">
+                        <button ng-click="changeConferenceStatus(cnf.id, 'Process', cnf)"
+                                ng-if="cnf.status==0"
+                                class="btn btn-info">
+                            Запустить прямо сейчас
+                        </button>
+                        <button ng-click="changeConferenceStatus(cnf.id, 'Finish', cnf)"
+                                ng-if="cnf.status==1"
+                                class="btn btn-success">
+                            Завершить
+                        </button>
+                        <a ng-href="#/conference/item/{{cnf.id}}" class="btn btn-warning">
+                            Редактировать
+                        </a>
+                        <button ng-click="changeConferenceStatus(cnf.id, 'Remove', cnf);"
+                                class="btn btn-danger">
+                            Удалить
+                        </button>
+                    </div>
+                </div>
+            </div>
             <div ng-if="ld.conferences" ng-cloak>Идет загрузка...</div>
             <div ng-show="er.server"
                  class="alert alert-danger">
