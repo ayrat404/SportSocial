@@ -16,15 +16,11 @@ namespace SportSocial.Controllers
             _blogService = blogService;
         }
 
-        [AllowAnonymous]
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult Index(int page = 1, PostSortType sort = PostSortType.Last, int rubric = 0)
         {
-<<<<<<< HEAD
-            ViewBag.HidePromo = Request.Params.Count > 0;
-=======
-            ViewBag.HidePromo = page > 1;
->>>>>>> 65c042cdbed0b10452b09ac204829618b11c1ddb
+            ViewBag.HidePromo = Request.QueryString.Count > 0;
             int pageSize = 2;
             var posts = _blogService.GetPosts(pageSize, sort, rubric, page);
             var pageList = new StaticPagedList<PostPreviewViewModel>(posts.PostPreview, page, pageSize,
@@ -48,6 +44,8 @@ namespace SportSocial.Controllers
             return View(blogModel);
         }
 
+        [AllowAnonymous]
+        [HttpGet]
         public ActionResult GetRubrics()
         {
             var rubrics = _blogService.GetRubrics();
@@ -63,6 +61,7 @@ namespace SportSocial.Controllers
             return Json(new {success = false});
         }
 
+        [HttpGet]
         public ActionResult Item(int id)
         {
             return View(_blogService.GetPost(id));
