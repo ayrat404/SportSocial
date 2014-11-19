@@ -298,6 +298,7 @@
     <Content Include="Scripts\app\blog\modules\restore-password\restorePassword.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\settings\settings.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\settings\settings.srvc.js" />
+    <Content Include="Scripts\app\shared\directives\bgSlider.drct.js" />
     <Content Include="Scripts\app\shared\services\animateCounter.drct.js" />
     <Content Include="Scripts\app\blog\shared\services\login.srvc.js" />
     <Content Include="Scripts\app\shared\app.js" />
