@@ -1,11 +1,7 @@
-using DAL.DomainModel;
-
 namespace DAL.Migrations
 {
-    using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
+    using DAL.DomainModel;
 
     internal sealed class Configuration : DbMigrationsConfiguration<DAL.EntityDbContext>
     {
@@ -17,14 +13,14 @@ namespace DAL.Migrations
         protected override void Seed(DAL.EntityDbContext context)
         {
             context.Rubrics.AddOrUpdate(
-                new Rubric() { Name = "Здоровье" },
-                new Rubric() { Name = "Мотивация" },
-                new Rubric() { Name = "Новичку" },
-                new Rubric() { Name = "Общее" },
-                new Rubric() { Name = "Питание" },
-                new Rubric() { Name = "С чего начать" },
-                new Rubric() { Name = "Упражнения" },
-                new Rubric() { Name = "Элементы" }
+                new Rubric() { Id = 1, Name = "Здоровье" },
+                new Rubric() { Id = 2, Name = "Мотивация" },
+                new Rubric() { Id = 3, Name = "Новичку" },
+                new Rubric() { Id = 4, Name = "Общее" },
+                new Rubric() { Id = 5, Name = "Питание" },
+                new Rubric() { Id = 6, Name = "С чего начать" },
+                new Rubric() { Id = 7, Name = "Упражнения" },
+                new Rubric() { Id = 8, Name = "Элементы" }
             );
             //  This method will be called after migrating to the latest version.
 

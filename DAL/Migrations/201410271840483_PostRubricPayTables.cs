@@ -67,7 +67,7 @@ namespace DAL.Migrations
                 "dbo.Rubrics",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Int(nullable: false, identity: false),
                         Name = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
