@@ -107,29 +107,44 @@ namespace BLL.Blog.Impls
             postListVM.PageInfo.Count = _repository
                 .Queryable<Post>()
                 .Count(x => x.RubricId == rubricId || rubricId == 0);
-            if (sortType == PostSortType.Last)
+            switch (sortType)
             {
-                postListVM.PostPreview = _repository
-                    .Queryable<Post>()
-                    .Where(x => x.RubricId == rubricId || rubricId == 0)
-                    .OrderByDescending(p => p.Created)
-                    .Take(take)
-                    .Skip(skip)
-                    .AsNoTracking()
-                    .MapEachTo<PostPreviewViewModel>()
-                    .ToList();
-                return postListVM;
+                case PostSortType.Last:
+                    postListVM.PostPreview = _repository
+                        .Queryable<Post>()
+                        .Where(x => x.RubricId == rubricId || rubricId == 0)
+                        .OrderByDescending(p => p.Created)
+                        .Take(take)
+                        .Skip(skip)
+                        .AsNoTracking()
+                        .MapEachTo<PostPreviewViewModel>()
+                        .ToList();
+                    break;
+                case PostSortType.Fortress:
+                    postListVM.PostPreview = _repository
+                        .Queryable<Post>()
+                        .Where(x => (x.RubricId == rubricId || rubricId == 0)
+                                    && x.Status == BlogPostStatus.Fortress)
+                        .OrderByDescending(p => p.Created)
+                        .Take(take)
+                        .Skip(skip)
+                        .AsNoTracking()
+                        .MapEachTo<PostPreviewViewModel>()
+                        .ToList();
+                    break;
+                default:
+                    postListVM.PostPreview = _repository
+                        .Queryable<Post>()
+                        .Where(x => x.RubricId == rubricId || rubricId == 0)
+                        .OrderByDescending(p => p.TotalRating)
+                        .Take(take)
+                        .Skip(skip)
+                        .AsNoTracking()
+                        .MapEachTo<PostPreviewViewModel>()
+                        .ToList();
+                    break;
             }
-            postListVM.PostPreview = _repository
-                .Queryable<Post>()
-                .Where(x => x.RubricId == rubricId || rubricId == 0)
-                .OrderByDescending(p => p.TotalRating)
-                .Take(take)
-                .Skip(skip)
-                .AsNoTracking()
-                .MapEachTo<PostPreviewViewModel>()
-                .ToList();
-                return postListVM;
+            return postListVM;
         }
 
         public CreatePostModel GetEditModel(int id)

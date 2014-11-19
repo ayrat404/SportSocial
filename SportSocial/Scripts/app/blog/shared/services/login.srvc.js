@@ -31,12 +31,12 @@ function ($http, serializeObj) {
          // Запрос кода для восстановления пароля
          // ---------------
          requestRestoreCode: function(obj) {
-             return send('RestorePasswordCode', obj);
+             return send('RestorePassword', obj);
          },
          // Отправка данных для восстановления пароля
          // ---------------
          restorePassword: function(obj) {
-             return send('RestoreNewPassword', obj);
+             return send('RestorePasswordConfirm', obj);
          }
      };
  }]);

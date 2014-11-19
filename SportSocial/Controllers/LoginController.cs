@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Web.Mvc;
+using BLL.Common.Objects;
 using BLL.Login;
 using BLL.Login.ViewModels;
+using Knoema.Localization;
 using SportSocial.Controllers.Base;
 using WebGrease.Css.Extensions;
 
@@ -74,10 +75,32 @@ namespace SportSocial.Controllers
         //    throw new NotImplementedException();
         //}
 
+        [HttpGet]
         public ActionResult RestorePassword()
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult RestorePassword(string phone)
+        {
+            return Json(_loginService.RestorePassword(phone));
+        }
+
+        [HttpPost]
+        public ActionResult RestorePasswordConfirm(ConfirmSmsCode confirmModel)
+        {
+            if (ModelState.IsValid)
+                return Json(_loginService.RestorePasswordConfirm(confirmModel));
+            return
+                Json(new ServiceResult
+                {
+                    Success = false,
+                    ErrorMessage = "Одно или несколько полей заполнены неверно".Resource(this)
+                });
+        }
+
+
 
         private Dictionary<string, List<string>> GetErrors()
         {

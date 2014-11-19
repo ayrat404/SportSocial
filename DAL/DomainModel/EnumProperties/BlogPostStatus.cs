@@ -4,6 +4,7 @@
     {
         New = 0,
         Allow = 1,
-        Rejected = 2
+        Rejected = 2,
+        Fortress = 3
     }
 }

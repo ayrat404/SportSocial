@@ -12,5 +12,15 @@ namespace BLL.Login
         ServiceResult ConfirmSmsCode(ConfirmSmsCode regModel);
 
         ServiceResult ResendSmsCode();
+
+        ServiceResult ChangePassword(ChangePaswdModel changePaswdModel);
+
+        ServiceResult RestorePassword(string phone);
+
+        ServiceResult RestorePasswordConfirm(ConfirmSmsCode confirmModel);
+
+        ServiceResult ChangePhone(string phone);
+
+        ServiceResult ChangePhoneConfirm(ChangePhoneModel chPhoneModel);
     }
 }
