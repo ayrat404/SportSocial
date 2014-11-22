@@ -169,6 +169,8 @@
     <Compile Include="Infrastructure\SportSocialWebViewPage.cs" />
     <Compile Include="Login\ILoginService.cs" />
     <Compile Include="Login\Impls\LoginService.cs" />
+    <Compile Include="Login\ViewModels\ChangePaswdModel.cs" />
+    <Compile Include="Login\ViewModels\ChangePhoneModel.cs" />
     <Compile Include="Login\ViewModels\ConfirmSmsCode.cs" />
     <Compile Include="Login\ViewModels\RegistratioinModel.cs" />
     <Compile Include="Login\ViewModels\SignInModel.cs" />
