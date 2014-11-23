@@ -617,6 +617,7 @@
     <Content Include="Scripts\libs\angular\i18n\angular-locale_zh.js" />
     <Content Include="Scripts\libs\angular\i18n\angular-locale_zu-za.js" />
     <Content Include="Scripts\libs\angular\i18n\angular-locale_zu.js" />
+    <Content Include="Scripts\libs\bootstrap\tooltip.js" />
     <Content Include="Scripts\libs\datepicker\jquery.datetimepicker.css" />
     <Content Include="Scripts\libs\datepicker\jquery.datetimepicker.js" />
     <Content Include="Scripts\libs\fileApi\FileAPI.flash.camera.swf" />
@@ -789,6 +790,7 @@
     <Content Include="Content\fonts\ProximaNova\proximanova-regpn.ttf" />
     <Content Include="Content\fonts\ProximaNova\proximanova-regpn.woff" />
     <Content Include="Content\fonts\ProximaNova\proximanova-regpn.woff2" />
+    <Content Include="Content\styles\components\common\tooltip.less" />
     <None Include="Properties\PublishProfiles\Some.pubxml" />
     <Content Include="Scripts\libs\imperaviRedactor\redactor.less" />
     <None Include="Scripts\libs\jquery\jquery-2.0.3.intellisense.js" />
@@ -876,12 +878,14 @@
     <Compile Include="App_Start\Knoema\LocalizedObject.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\RulesController.cs" />
     <Compile Include="Controllers\Admin\AdminController.cs" />
     <Compile Include="Controllers\Admin\ConferenceController.cs" />
     <Compile Include="Controllers\Base\SportSocialControllerBase.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\RatingController.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Controllers\PayController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
@@ -955,6 +959,8 @@
     <Content Include="Views\Shared\Partials\ConferenceTimer.cshtml" />
     <Content Include="Views\Blog\UserArticles.cshtml" />
     <Content Include="Views\Blog\Shared\Partials\UserArticlesList.cshtml" />
+    <Content Include="Views\Rules\Index.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

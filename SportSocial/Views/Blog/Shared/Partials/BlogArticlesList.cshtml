@@ -38,8 +38,11 @@
             }
         </div>
         @*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount*@
-        <div class="text-center">
-            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
-        </div>
+        @if (Model.PageCount > Model.PageNumber)
+        {
+            <div class="text-center">
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+            </div>
+        }
     </div>
 </div>

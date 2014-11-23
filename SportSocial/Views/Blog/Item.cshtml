@@ -34,7 +34,7 @@
 
                 @*Информация об авторе*@
                 <div class="block">
-                    @Html.Partial("Shared/Partials/Blocks/User")
+                    @Html.Partial("Shared/Partials/Blocks/User", Model)
                 </div>
                 
                 @*Блок авторизации, регистрации*@
@@ -46,7 +46,8 @@
                 @*Таймер конференции*@
                 @Html.Action("RenderTime", "Conference")
 
-                @Html.Partial("Shared/Partials/Blocks/Menu")
+                @*Блок меню (по рубрикам)*@
+                @Html.Action("GetRubrics", "Blog")
             </div>
         </div>
     </div>

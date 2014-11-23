@@ -36,6 +36,7 @@ namespace SportSocial
                         "~/Scripts/libs/jquery-fileapi/FileAPI.exif.js",
                         "~/Scripts/libs/jquery-fileapi/jquery.fileapi.min.js",
                         
+                        "~/Scripts/libs/bootstrap/tooltip.js",
                         //"~/Scripts/libs/signalR/jquery.signalR-2.0.3.min.js",
                         //"~/Scripts/libs/signalR/hub.js",
 
@@ -86,7 +87,7 @@ namespace SportSocial
                 b.Orderer = nullOrderer;
             }
 
-            BundleTable.EnableOptimizations = false;
+            BundleTable.EnableOptimizations = true;
         }
     }
 }

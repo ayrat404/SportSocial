@@ -1,12 +1,14 @@
-﻿<div class="blog-user">
+﻿@model BLL.Blog.ViewModels.BlogPostViewModel
+<div class="blog-user">
     <div class="blog-user__info">
         <div class="blog-user__photo">
-            <img src="~/Content/images/temp/user.jpg" alt="Петров Константин" />
+            <img src="~/Content/images/temp/user.jpg?width=80&height=80&mode=crop" alt="@Model.AuthorName" />
         </div>
         <div class="blog-user__name">
             <div class="blog-user__name__type">Автор</div>
-            Петров<br />
-            Константин
+            @Model.AuthorName
+            @*Петров<br />
+            Константин*@
         </div>
     </div>
     @*<div class="blog-user__actions">
