@@ -1,19 +1,32 @@
-﻿<div class="articles-list">
-    <div class="al__item">
-        <a href="#" class="al__item__img">
-            <img src="#?width=198&height=198&mode=crop" alt="666" />
-        </a>
-        <div class="al__item__info">
-            <a href="#" class="al__item__title">Нахуй нада бегать?</a>
-            <div class="al__item__desc">Я все чаще начал слышать фразы от своих родных и близких что мне нужно бегать. Нахуй оно надо?</div>
-            <div class="al__item__bottom">
-                <div class="pull-left">
-                    @*@Html.Partial("Shared/Partials/Article/Info", item)*@
-                </div>
-                <div class="pull-right">
-                    На модерации
+﻿@using BLL.Common.Extensions
+@using PagedList.Mvc
+@model PagedList.StaticPagedList<BLL.Blog.ViewModels.PostPreviewViewModel>
+
+<div class="articles-list">
+    @foreach (var item in Model)
+    {
+        <div class="al__item">
+            <a href="@Url.Action("Item", "Blog", new { id = item.Id })" class="al__item__img">
+                <img src="@item.Images.Url?width=198&height=198&mode=crop" alt="@item.Title" />
+            </a>
+            <div class="al__item__info">
+                <a href="@Url.Action("Item", "Blog", new { id = item.Id })" class="al__item__title">@item.Title</a>
+                <div class="al__item__desc">@(item.Text.Length > 90 ? item.Text.Substring(0, 90) : item.Text)))</div>
+                <div class="al__item__bottom">
+                    <div class="pull-left">
+                        @Html.Partial("Shared/Partials/Article/Info", item)
+                    </div>
+                    <div class="pull-right">
+                        @item.Status.GetDescription()
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    }
 </div>
+@if (Model.PageCount > Model.PageNumber)
+{
+    <div class="text-center">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+    </div>
+}
