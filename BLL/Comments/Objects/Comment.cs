@@ -1,16 +1,15 @@
 using System;
+using BLL.Common.Objects;
 
 namespace BLL.Comments.Objects
 {
-    public class Comment
+    public class Comment: HasDate
     {
         public int Id { get; set; }
 
         public string Avatar { get; set; }
 
         public string Name { get; set; }
-
-        public DateTime Date { get; set; }
 
         public string Text { get; set; }
 

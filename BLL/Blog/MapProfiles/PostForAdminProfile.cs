@@ -10,7 +10,7 @@ namespace BLL.Blog.MapProfiles
         protected override void Configure()
         {
             CreateMap<Post, PostForAdminViewModel>()
-                .ForMember(dest => dest.Date, opts => opts.MapFrom(src => src.Created));
+                .ForMember(dest => dest.Date, opts => opts.MapFrom(src => src.Created.ToString()));
         }
     }
 }

@@ -5,7 +5,7 @@ using DAL.DomainModel.EnumProperties;
 
 namespace BLL.Blog.ViewModels
 {
-    public class PostPreviewViewModel : IItemInfo, IRatingInfo
+    public class PostPreviewViewModel : HasDate, IItemInfo, IRatingInfo
     {
         public PostPreviewViewModel()
         {
@@ -20,8 +20,6 @@ namespace BLL.Blog.ViewModels
         public string Text { get; set; }
 
         public Images Images { get; set; }
-
-        public DateTime Date { get; set; }
 
         public int Rating { get; set; }
 
@@ -61,6 +59,6 @@ namespace BLL.Blog.ViewModels
 
         int CommentsCount { get; set; }
 
-        DateTime Date { get; set; }
+        string Date { get; set; }
     }
 }

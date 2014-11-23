@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
-using BLL.Blog;
 
 namespace BLL.Common.Extensions
 {
@@ -33,7 +31,7 @@ namespace BLL.Common.Extensions
 
         public static List<T> GetValues<T>()
         {
-            return Enum.GetValues(typeof(T)).Cast<T>().ToList();
+            return Enum.GetValues(typeof (T)).Cast<T>().ToList();
         }
     }
 }
