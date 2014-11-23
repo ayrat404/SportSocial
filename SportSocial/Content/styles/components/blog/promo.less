@@ -7,6 +7,8 @@
     background-size: cover;
     position: relative;
     margin-top: -20px;
+    overflow: hidden;
+
     &__line {
         color: #fff;
         text-align: center;
@@ -17,16 +19,39 @@
         bottom: 0;
         margin: auto;
         height: 200px;
+        z-index: 3;
     }
+
     &__title {
         margin: 0;
         font-family: 'PN_xBld';
         font-size: 5.714em;
         text-transform: uppercase;
     }
+
     &__desc {
         font-family: 'PN_light';
         font-size: 1.786em;
+    }
+
+    &__bg-img {
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        .transition(all .3s linear);
+    }
+
+    &__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: url(/content/images/promo/overlay.png) rgba(0,0,0,0.5) repeat;
+        z-index: 2;
     }
 }
 

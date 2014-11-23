@@ -1,23 +1,34 @@
 ﻿@model BLL.Blog.ViewModels.IRatingInfo
-<div ng-controller="RatingCtrl">
-    <div ng-init="
-         count=@Model.Rating;
-         id=@Model.Id;
-         type='@Model.RatingEntityType';
-         isLiked='@Model.IsLiked.ToString()';
-         isDisliked='@Model.IsDisiked.ToString()';"
-         ng-cloak
-         class="like-rating">
-
-        <span ng-if="!isRated" ng-click="changeRating('like')" class="i-art i-art-like"></span>
-        <span ng-if="!isRated" ng-click="changeRating('dislike')" class="i-art i-art-dislike"></span>
-        <span ng-if="isRated"
-              ng-class="{'i-art-like': isLiked == 'True', 'i-art-dislike': isDisliked == 'True'}"
-              class="i-art like-rating__rated" title="Это ваша оценка">
-        </span>
-        <div animate-counter
-             ng-model="count"
-             ng-class="{'like-rating__count--minus': count<0, 'like-rating__count--plus': count>0}"
-             class="like-rating__count">{{count}}</div>
+@if (CurrentUser.IsAnonimous)
+{
+    <div class="like-rating">
+        <span class="i-art i-art-like" data-toggle="tooltip" data-placement="top" title="ставить оценку могут только зарегистрированные пользователи"></span>
+        <span class="i-art i-art-dislike" data-toggle="tooltip" data-placement="top" title="ставить оценку могут только зарегистрированные пользователи"></span>
+        <div class="like-rating__count">@Model.Rating</div>
     </div>
-</div>
+}
+else
+{
+    <div ng-controller="RatingCtrl">
+        <div ng-init="
+             count=@Model.Rating ;
+             id=@Model.Id ;
+             type='@Model.RatingEntityType' ;
+             isliked='@Model.IsLiked.ToString()' ;
+             isdisliked='@Model.IsDisiked.ToString()' ;"
+             ng-cloak
+             class="like-rating">
+
+            <span ng-if="!isRated" ng-click="changeRating('like')" class="i-art i-art-like"></span>
+            <span ng-if="!isRated" ng-click="changeRating('dislike')" class="i-art i-art-dislike"></span>
+            <span ng-if="isRated"
+                  ng-class="{'i-art-like': isLiked == 'True', 'i-art-dislike': isDisliked == 'True'}"
+                  class="i-art like-rating__rated" title="Ваша оценка">
+            </span>
+            <div animate-counter
+                 ng-model="count"
+                 ng-class="{'like-rating__count--minus': count<0, 'like-rating__count--plus': count>0}"
+                 class="like-rating__count">{{count}}</div>
+        </div>
+    </div>
+}

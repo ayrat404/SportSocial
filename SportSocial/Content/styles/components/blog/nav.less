@@ -18,6 +18,10 @@
         &__link {
             font-size: 1.286em;
             text-transform: uppercase;
+
+            &--disable {
+                cursor: default;
+            }
         }
     }
 
@@ -34,6 +38,7 @@
     &__add-article {
         float: right;
         line-height: 70px;
+
         .btn {
             line-height: 38px;
         }
@@ -52,10 +57,6 @@
                 .nav__user__name {
                     color: #fff;
                 }
-
-                .nav__user__avatar {
-                    border: 2px solid #fff;
-                }
             }
         }
 
@@ -63,7 +64,6 @@
             max-width: 40px;
             max-height: 40px;
             .border-radius(50%);
-            border: 2px solid @color-gray1;
             background: #fff;
             .inline-block;
             margin-right: 5px;
@@ -112,6 +112,12 @@
             li {
                 line-height: 70px;
                 margin-right: 15px;
+            }
+
+            .nav__list__link--disable {
+                &:hover {
+                    color: @color-gray1;
+                }
             }
 
             &__link {

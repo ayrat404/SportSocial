@@ -6,39 +6,42 @@
             </a>
             <ul class="nav__list">
                 <li>
-                    <a href="@Url.Action("Item", "Blog")" class="nav__list__link">Блог</a>
+                    <a href="@Url.Action("Index", "Blog")" class="nav__list__link">Блог</a>
                 </li>
-                <li>
+                @*<li>
                     <a href="#" class="nav__list__link">Конференция</a>
                 </li>
                 <li>
                     <a href="#" class="nav__list__link">Новости компании</a>
-                </li>
+                </li>*@
                 <li>
-                    <a href="#" class="nav__list__link">Соц.сеть</a>
+                    <span class="nav__list__link nav__list__link--disable" data-toggle="tooltip" data-placement="bottom" title="в разработке">Соц.сеть</span>
                 </li>
             </ul>
-            @*<div class="nav__user">
-                <div ng-click="nav.user.isOpen=!nav.user.isOpen"
-                     click-outside="fn.closeHeaderMenu();"
-                     class="nav__user__link">
-                    <img src="@CurrentUser.User.Profile.Avatar?width=40&height=40&mode=crop" class="nav__user__avatar" />
-                    <div class="nav__user__name">@CurrentUser.UserName</div>
-                </div>
-                <div ng-show="nav.user.isOpen==true"
-                     ng-cloak
-                     class="nav__user__menu-wrap">
-                    <div class="nav__user__menu">
-                        @if (CurrentUser.IsAdmin)
-                        {
-                            <a href="@Url.Action("Index", "Admin")">Панель управления</a>
-                        }
-                        <a href="@Url.Action("UserArticles", "Blog", new {id = CurrentUser.UserId})">Мои статьи</a>
-                        <a href="@Url.Action("Index", "Settings")">Настройки</a>
-                        <a href="#">Выход</a>
+            @if (!CurrentUser.IsAnonimous)
+            {
+                <div class="nav__user">
+                    <div ng-click="nav.user.isOpen=!nav.user.isOpen"
+                         click-outside="fn.closeHeaderMenu();"
+                         class="nav__user__link">
+                        <img src="@CurrentUser.User.Profile.Avatar?width=40&height=40&mode=crop" class="nav__user__avatar" />
+                        <div class="nav__user__name">@CurrentUser.UserName</div>
+                    </div>
+                    <div ng-show="nav.user.isOpen==true"
+                         ng-cloak
+                         class="nav__user__menu-wrap">
+                        <div class="nav__user__menu">
+                            @if (CurrentUser.IsAdmin)
+                            {
+                                <a href="@Url.Action("Index", "Admin")">Панель управления</a>
+                            }
+                            <a href="@Url.Action("UserArticles", "Blog", new {id = CurrentUser.UserId})">Мои статьи</a>
+                            <a href="@Url.Action("Index", "Settings")">Настройки</a>
+                            <a href="#">Выход</a>
+                        </div>
                     </div>
                 </div>
-            </div>*@
+            }
         </div>
     </div>
 </div>

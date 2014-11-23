@@ -34,8 +34,14 @@
 
                 @*Информация об авторе*@
                 <div class="block">
-                    @Html.Partial("Shared/Partials/Blocks/User")
+                    @Html.Partial("Shared/Partials/Blocks/User", Model)
                 </div>
+
+                @*Блок авторизации, регистрации*@
+                @if (CurrentUser.IsAnonimous)
+                {
+                    @Html.Partial("Shared/Partials/Blocks/AuthRegBlock")
+                }
 
                 @*Таймер конференции*@
                 @{ Html.RenderAction("RenderTime", "Conference"); }

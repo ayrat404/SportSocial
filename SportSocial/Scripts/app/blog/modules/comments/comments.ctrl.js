@@ -40,6 +40,8 @@ function ($scope, commentsRqst, utilsSrvc, $window, $timeout) {
                 if (res.data.length) {
                     // если грузим все комменты и вставляем
                     $scope.comments = res.data;
+                    // скрываем кнопку загрузки предыдущих комментариев
+                    $scope.more = 0;
                     // если грузим оставшиеся комменты
                     //$scope.comments = res.data.comments.concat($scope.comments);
                 } else {

@@ -13,7 +13,7 @@
     <div class="mod__content comment">
         <div ng-if="more!=0"
              class="text-center">
-            <span class="link" ng-click="loadAll();">Показать предыдущие 666 комментариев</span>
+            <span class="link" ng-click="loadAll();">Показать предыдущие {{more}} {{more | formatWord:['комментарий', 'комментария', 'комментариев']}}</span>
         </div>
         <div class="comment__list"
              ng-cloak>
