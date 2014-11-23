@@ -10,6 +10,8 @@ namespace SportSocial.Controllers
     public class BlogController :SportSocialControllerBase
     {
         private readonly IBlogService _blogService;
+        
+        private const int PageSize = 2;
 
         public BlogController(IBlogService blogService)
         {
@@ -21,18 +23,19 @@ namespace SportSocial.Controllers
         public ActionResult Index(int page = 1, PostSortType sort = PostSortType.Last, int rubric = 0)
         {
             ViewBag.HidePromo = Request.QueryString.Count > 0;
-            int pageSize = 2;
-            var posts = _blogService.GetPosts(pageSize, sort, rubric, page);
-            var pageList = new StaticPagedList<PostPreviewViewModel>(posts.PostPreview, page, pageSize,
+            ViewBag.Sort = sort;
+            ViewBag.Rubric = rubric;
+            var posts = _blogService.GetPosts(PageSize, sort, rubric, page);
+            var pageList = new StaticPagedList<PostPreviewViewModel>(posts.PostPreview, page, PageSize,
                 posts.PageInfo.Count);
             return View(pageList);
         }
 
-        [HttpGet]
-        public ActionResult UserArticles(long id)
-        {
-            return View();
-        }
+        //[HttpGet]
+        //public ActionResult UserArticles(long id)
+        //{
+        //    return View();
+        //}
 
         [HttpGet]
         public ActionResult New()
@@ -82,6 +85,15 @@ namespace SportSocial.Controllers
                 //TODO редирект на страницу своих постов
             }
             return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult My(int page = 1)
+        {
+            var myPosts = _blogService.MyPosts(PageSize, page);
+            var pageList = new StaticPagedList<PostPreviewViewModel>(myPosts.PostPreview, page, PageSize,
+                myPosts.PageInfo.Count);
+            return View("UserArticles", pageList);
         }
 
 

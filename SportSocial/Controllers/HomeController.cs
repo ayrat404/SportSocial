@@ -1,6 +1,4 @@
 ﻿using System.Web.Mvc;
-using BLL.Login;
-using BLL.Login.ViewModels;
 using SportSocial.Controllers.Base;
 
 namespace SportSocial.Controllers

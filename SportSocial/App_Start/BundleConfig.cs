@@ -87,7 +87,7 @@ namespace SportSocial
                 b.Orderer = nullOrderer;
             }
 
-            BundleTable.EnableOptimizations = true;
+            BundleTable.EnableOptimizations = false;
         }
     }
 }

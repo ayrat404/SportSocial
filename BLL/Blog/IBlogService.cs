@@ -21,12 +21,14 @@ namespace BLL.Blog
         PostListViewModel GetPosts(int pageSize, PostSortType sortType, int rubricId = 0, int page = 1);
         CreatePostModel GetEditModel(int id);
         ServiceResult EditPost(CreatePostModel model);
+        PostListViewModel MyPosts(int pageSize, int page = 1);
     }
 
     public enum PostSortType
     {
         Last,
         Best,
-        Fortress
+        Fortress,
+        My
     }
 }

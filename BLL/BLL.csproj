@@ -144,6 +144,7 @@
     <Compile Include="Blog\ViewModels\PostForAdminViewModel.cs" />
     <Compile Include="Blog\ViewModels\PostModel.cs" />
     <Compile Include="Common\Enums\LangType.cs" />
+    <Compile Include="Common\Extensions\EnumExtensions.cs" />
     <Compile Include="Common\Extensions\JsonExtension.cs" />
     <Compile Include="Common\Extensions\StringExtensions.cs" />
     <Compile Include="Common\Helpers\CookieHelper.cs" />

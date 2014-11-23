@@ -140,6 +140,21 @@ namespace BLL.Blog.Impls
                         .MapEachTo<PostPreviewViewModel>()
                         .ToList();
                     break;
+                case PostSortType.My:
+                    postListVM.PageInfo.Count = _repository
+                        .Queryable<Post>()
+                        .Count(x => x.UserId == _currentUser.UserId);
+                    postListVM.PostPreview = _repository
+                        .Queryable<Post>()
+                        .Where(x => x.UserId == _currentUser.UserId)
+                        .Include(p => p.RatingEntites)
+                        .OrderByDescending(p => p.Created)
+                        .Take(take)
+                        .Skip(skip)
+                        .AsNoTracking()
+                        .MapEachTo<PostPreviewViewModel>()
+                        .ToList();
+                    break;
                 default:
                     postListVM.PageInfo.Count = _repository
                         .Queryable<Post>()
@@ -186,6 +201,11 @@ namespace BLL.Blog.Impls
             model.MapTo(post);
             _repository.SaveChanges();
             return result;
+        }
+
+        public PostListViewModel MyPosts(int pageSize, int page = 1)
+        {
+            return GetPosts(pageSize, PostSortType.My, page: page);
         }
 
         //public PostListViewModel GetPosts(int page, PostSortType sortType = PostSortType.Last, int rubricId = 0)
