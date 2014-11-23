@@ -16,11 +16,14 @@ namespace BLL.Blog.MapProfiles
             CreateMap<Post, BlogPostViewModel>()
                 .ForMember(dest => dest.AuthorId, opt => opt.MapFrom(src => src.UserId))
                 .ForMember(dest => dest.AuthorName, opt => opt.MapFrom(src => src.User.Name))
+                .ForMember(dest => dest.AuthorAvatar, opt => opt.MapFrom(src => src.User.Profile.Avatar))
                 .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Created))
                 .ForMember(dest => dest.Rating, opt => opt.MapFrom(src => src.TotalRating))
                 .ForMember(dest => dest.Text, opt => opt.MapFrom(src => src.Text))
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
-                .ForMember(dest => dest.CommentsCount, opt => opt.MapFrom(src => src.Comments.Count))
+                .ForMember(dest => dest.CommentsCount, 
+                           opt => opt.
+                                   MapFrom(src => src.Comments.Count <= 3 ? 0 : src.Comments.Count - 3))
                 .ForMember(dest => dest.Images,
                     opt => opt
                         .MapFrom(src => new[] {new Images {Id = 1, Url = src.ImageUrl}}))

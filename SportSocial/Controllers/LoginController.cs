@@ -31,15 +31,16 @@ namespace SportSocial.Controllers
         [HttpGet]
         public ActionResult LogOut()
         {
-            return Json(_loginService.LogOut(), JsonRequestBehavior.AllowGet);
+            _loginService.LogOut();
+            return Redirect("/");
         }
 
-        [HttpGet]
-        [AllowAnonymous]
-        public ActionResult SignIn()
-        {
-            return View();
-        }
+        //[HttpGet]
+        //[AllowAnonymous]
+        //public ActionResult SignIn()
+        //{
+        //    return View();
+        //}
 
         [HttpPost]
         [AllowAnonymous]

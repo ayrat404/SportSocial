@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
 using BLL.Blog;
 using BLL.Blog.ViewModels;
 using PagedList;
@@ -25,6 +26,7 @@ namespace SportSocial.Controllers
             ViewBag.HidePromo = Request.QueryString.Count > 0;
             ViewBag.Sort = sort;
             ViewBag.Rubric = rubric;
+            ViewBag.RubricName = _blogService.GetRubrics().SingleOrDefault(r => r.Id == rubric);
             var posts = _blogService.GetPosts(PageSize, sort, rubric, page);
             var pageList = new StaticPagedList<PostPreviewViewModel>(posts.PostPreview, page, PageSize,
                 posts.PageInfo.Count);
