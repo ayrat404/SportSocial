@@ -46,7 +46,7 @@
                 @*Таймер конференции*@
                 @{ Html.RenderAction("RenderTime", "Conference"); }
 
-                @{ Html.RenderAction("GetRubrics", "Blog"); }
+                @{ Html.RenderAction("GetRubrics", "Blog", new {id = 0}); }
             </div>
         </div>
     </div>

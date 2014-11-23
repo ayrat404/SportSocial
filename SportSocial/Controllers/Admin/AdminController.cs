@@ -30,7 +30,7 @@ namespace SportSocial.Controllers
         public JsonResult GetArticles(BlogPostStatus? status, string query = null)
         {
             var posts = _blogService.GetPostsForAdmin(status, query);
-            posts.ForEach(p => p.Url = Url.Action("Index", "Blog", new {id = p.Id}));
+            posts.ForEach(p => p.Url = Url.Action("Item", "Blog", new {id = p.Id}));
             return Json(posts, JsonRequestBehavior.AllowGet);
         }
 

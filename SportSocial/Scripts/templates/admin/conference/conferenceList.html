@@ -76,13 +76,15 @@
                     </div>
                 </div>
             </div>
-            <div ng-if="ld.conferences" ng-cloak>Идет загрузка...</div>
-            <div ng-show="er.server"
-                 class="alert alert-danger">
-                Не удалось зарузить конференции. Сервер не доступен
-            </div>
-            <div ng-cloak ng-if="!(model.conferences.length || er.server || ld.conferences)" class="alert alert-warning">
-                Нет конференций
+            <div ng-cloak>
+                <div ng-if="ld.conferences">Идет загрузка...</div>
+                <div ng-show="er.server"
+                     class="alert alert-danger">
+                    Не удалось зарузить конференции. Сервер не доступен
+                </div>
+                <div ng-cloak ng-if="!(model.conferences.length || er.server || ld.conferences)" class="alert alert-warning">
+                    Нет конференций
+                </div>
             </div>
         </div>
     </div>

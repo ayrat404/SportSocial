@@ -8,7 +8,7 @@
         <div class="block">
             <div class="conf-date">
                 <div>
-                    <a href="@Model.Url" class="conf-date__link">Видеоконференция на тему "@Model.Title" уже началась! Ссылка</a>
+                    <a href="@Url.Action("Index", "Conference", new {id = Model.Id})" class="conf-date__link">Видеоконференция на тему "@Model.Title" уже началась! Ссылка</a>
                 </div>
             </div>
         </div>

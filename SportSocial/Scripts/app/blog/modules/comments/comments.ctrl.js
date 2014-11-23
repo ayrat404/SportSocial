@@ -88,7 +88,7 @@ function ($scope, commentsRqst, utilsSrvc, $window, $timeout) {
         data.itemType = $scope.itemType;
         if (prop.isAnswer) {    // если создается ответ на комментарий
             data.commentType = 'answer';
-            data.commentForId = prop.answerFor.Id;
+            data.commentForId = prop.answerFor.id;
             data.text = text.substr(prop.answerFor.name.length + 2, text.length-1);
         } else {                // если создается комментарий
             data.commentType = 'comment';

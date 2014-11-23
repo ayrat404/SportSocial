@@ -30,10 +30,12 @@ function ($scope, utilsSrvc, adminRqst) {
     // данные 
     // ---------------
     $scope.model = {};
-    
-    // запрос списка статей
+
+    getArticles();
+
+    // функция для загрузки статей
     // ---------------
-    $scope.getArticles = function (filter) {
+    function getArticles(filter) {
         filter = filter || {};
         $scope.isLoading = true;
         adminRqst.getArticles(utilsSrvc.token.add(filter))
@@ -42,11 +44,17 @@ function ($scope, utilsSrvc, adminRqst) {
                     $scope.model.articles = res.data;
                 }
                 $scope.er.server = false;
-            }, function() {
+            }, function () {
                 $scope.er.server = true;
             }).finally(function () {
                 $scope.isLoading = false;
             });
+    }
+
+    // запрос списка статей
+    // ---------------
+    $scope.getArticles = function (filter) {
+        getArticles(filter);
     }
 
     // сменить статус статьи

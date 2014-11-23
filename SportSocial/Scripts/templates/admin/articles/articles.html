@@ -48,7 +48,7 @@
                 <div ng-repeat="ar in model.articles"
                      class="row">
                     <div class="col-xs-3">
-                        <a ng-href="{{ar.url}}" class="link">{{ar.title}}</a>
+                        <a ng-href="{{ar.url}}" target="_blank" class="link">{{ar.title}}</a>
                     </div>
                     <div class="col-xs-2">
                         {{ar.date}}
@@ -82,13 +82,15 @@
                     </div>
                 </div>
             </div>
-            <div ng-cloak ng-show="ld.articles">Идет загрузка...</div>
-            <div ng-show="er.server"
-                 class="alert alert-danger">
-                Не удалось зарузить статьи. Сервер не доступен
-            </div>
-            <div ng-show="!model.articles.length && !er.server && !ld.articles" class="alert alert-warning">
-                Нет статей
+            <div ng-cloak>
+                <div ng-show="ld.articles">Идет загрузка...</div>
+                <div ng-show="er.server"
+                     class="alert alert-danger">
+                    Не удалось зарузить статьи. Сервер не доступен
+                </div>
+                <div ng-show="!model.articles.length && !er.server && !ld.articles" class="alert alert-warning">
+                    Нет статей
+                </div>
             </div>
         </div>
     </div>

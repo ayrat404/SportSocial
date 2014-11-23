@@ -49,7 +49,7 @@ namespace BLL.Comments
                 comment.Text = createCommentViewModel.Text;
                 _repository.Add(comment);
                 _repository.SaveChanges();
-                var resultComment = comment.MapTo<Comment>();
+                var resultComment = _repository.Find<TCommentEntity>(comment.Id).MapTo<Comment>();
                 resultComment.Name = _currentUser.UserName;
                 resultComment.Avatar = _currentUser.User.Profile.Avatar;
                 return resultComment;

@@ -1,5 +1,5 @@
 ﻿<div class="conf-date">
-    <div ng-if="!url.length">
+    <div ng-if="!model.id.length">
         <div class="conf-date__title">Видео конференция начнется через</div>
         <div class="conf-date__counter">
             <div class="conf-date__col">
@@ -25,7 +25,7 @@
             </div>
         </div>
     </div>
-    <div ng-if="url.length">
-        <a href="{{url}}" class="conf-date__link">Видеоконференция уже началась! Ссылка</a>
+    <div ng-if="!model.id.length">
+        <a ng-href="/conference/{{model.id}}" class="conf-date__link">Видеоконференция уже началась! Ссылка {{id}}</a>
     </div>
 </div>

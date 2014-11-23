@@ -10,10 +10,10 @@ function ($scope, utilsSrvc, adminRqst, $routeParams) {
     // 3 - удалена (конференция была создана и удалена без проведения)
 
     var confStatuses = {
-        'Created': 0,
-        'Process': 1,
-        'Finish': 2,
-        'Remove': 3
+        'Created'   :   0,
+        'Process'   :   1,
+        'Finish'    :   2,
+        'Remove'    :   3
     };
 
     // модели
@@ -47,9 +47,11 @@ function ($scope, utilsSrvc, adminRqst, $routeParams) {
     //    ]
     //}
 
-    // запрос списка конференций
+    getConferences();
+
+    // функция для загрузки конференций
     // ---------------
-    $scope.getConferences = function (filter) {
+    function getConferences(filter) {
         filter = filter || {};
         $scope.isLoading = true;
         adminRqst.getConferences(filter)
@@ -57,11 +59,17 @@ function ($scope, utilsSrvc, adminRqst, $routeParams) {
                 if (res.data.length) {
                     $scope.model.conferences = res.data;
                 }
-            }, function() {
+            }, function () {
                 $scope.er.server = true;
-            }).finally(function() {
+            }).finally(function () {
                 $scope.isLoading = false;
             });
+    }
+
+    // запрос списка конференций
+    // ---------------
+    $scope.getConferences = function (filter) {
+        getConferences(filter);
     }
 
     // сменить статус конференции

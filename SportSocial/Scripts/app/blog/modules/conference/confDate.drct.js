@@ -19,6 +19,10 @@ function ($interval, conferenceRqst) {
             count();
             var conferenceTime = $interval(count, interval);
 
+            // модель конференции
+            // ---------------
+            $scope.model = {}
+
             // запуск таймера
             // ---------------
             function count() {
@@ -28,7 +32,7 @@ function ($interval, conferenceRqst) {
                     conferenceRqst.requestTime()
                         .then(function (res) {
                             if (res.data.url != undefined || res.data.url != null) {
-                                $scope.url = res.data.url;
+                                $scope.model = res.data;
                             } else {
                                 diff = res.data.stamp;
                                 count();
