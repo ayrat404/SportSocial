@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Web.UI;
 using BLL.Blog.ViewModels;
 using BLL.Comments.Objects;
@@ -12,7 +13,7 @@ namespace BLL.Blog
     {
         ServiceResult CreatePost(CreatePostModel createPostModel);
         IEnumerable<Rubric> GetRubrics();
-        void ChangeStatus(int id, int status);
+        ServiceResult ChangeStatus(int id, int status);
         IEnumerable<PostForAdminViewModel> GetPostsForAdmin(BlogPostStatus? status, string query);
         //ServiceResult RaitBlog(BlogRatingViewModel model);
         Comment AddComment(CreateCommentViewModel createCommentViewModelModel);
@@ -26,9 +27,11 @@ namespace BLL.Blog
 
     public enum PostSortType
     {
+        [Description("Последние")]
         Last,
+        [Description("Лучшие")]
         Best,
+        [Description("Fortress")]
         Fortress,
-        My
     }
 }

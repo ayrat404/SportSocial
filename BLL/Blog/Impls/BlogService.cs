@@ -48,11 +48,12 @@ namespace BLL.Blog.Impls
             return _repository.GetAll<Rubric>();
         }
 
-        public void ChangeStatus(int id, int status)
+        public ServiceResult ChangeStatus(int id, int status)
         {
             var post = _repository.Find<Post>(id);
             post.Status = (BlogPostStatus) status;
             _repository.SaveChanges();
+            return new ServiceResult {Success = true};
         }
 
         public IEnumerable<PostForAdminViewModel> GetPostsForAdmin(BlogPostStatus? status, string query)
@@ -140,21 +141,6 @@ namespace BLL.Blog.Impls
                         .MapEachTo<PostPreviewViewModel>()
                         .ToList();
                     break;
-                case PostSortType.My:
-                    postListVM.PageInfo.Count = _repository
-                        .Queryable<Post>()
-                        .Count(x => x.UserId == _currentUser.UserId);
-                    postListVM.PostPreview = _repository
-                        .Queryable<Post>()
-                        .Where(x => x.UserId == _currentUser.UserId)
-                        .Include(p => p.RatingEntites)
-                        .OrderByDescending(p => p.Created)
-                        .Take(take)
-                        .Skip(skip)
-                        .AsNoTracking()
-                        .MapEachTo<PostPreviewViewModel>()
-                        .ToList();
-                    break;
                 default:
                     postListVM.PageInfo.Count = _repository
                         .Queryable<Post>()
@@ -205,7 +191,24 @@ namespace BLL.Blog.Impls
 
         public PostListViewModel MyPosts(int pageSize, int page = 1)
         {
-            return GetPosts(pageSize, PostSortType.My, page: page);
+            int take = page * pageSize;
+            int skip = take - pageSize;
+            var postListVM = new PostListViewModel();
+            postListVM.PageInfo = new PageInfo {CurrentPage = page};
+            postListVM.PageInfo.Count = _repository
+                .Queryable<Post>()
+                .Count(x => x.UserId == _currentUser.UserId);
+            postListVM.PostPreview = _repository
+                .Queryable<Post>()
+                .Where(x => x.UserId == _currentUser.UserId)
+                .Include(p => p.RatingEntites)
+                .OrderByDescending(p => p.Created)
+                .Take(take)
+                .Skip(skip)
+                .AsNoTracking()
+                .MapEachTo<PostPreviewViewModel>()
+                .ToList();
+            return postListVM;
         }
 
         //public PostListViewModel GetPosts(int page, PostSortType sortType = PostSortType.Last, int rubricId = 0)

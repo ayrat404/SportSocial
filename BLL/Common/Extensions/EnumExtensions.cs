@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Reflection;
+using BLL.Blog;
 
 namespace BLL.Common.Extensions
 {
@@ -25,6 +29,11 @@ namespace BLL.Common.Extensions
                 }
             }
             return null;
+        }
+
+        public static List<T> GetValues<T>()
+        {
+            Enum.GetValues(typeof (T)).Cast<T>().ToList();
         }
     }
 }
