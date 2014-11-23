@@ -958,8 +958,8 @@
     <Content Include="Views\Shared\Partials\ConferenceTimer.cshtml" />
     <Content Include="Views\Blog\UserArticles.cshtml" />
     <Content Include="Views\Blog\Shared\Partials\UserArticlesList.cshtml" />
-    <Content Include="Views\Rules\Index.cshtml" />
-    <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Rules.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

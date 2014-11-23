@@ -1,23 +1,25 @@
 ﻿@model BLL.Admin.Conference.ViewModels.ConfModel
 @using DAL.DomainModel.EnumProperties;
 
-@if (Model.Status != ConfStatus.Process && Model != null)
+@if (Model != null)
 {
-    <div class="block">
-        <div conf-date="@Model.Stamp"></div>
-    </div>
-}
-else if (Model.Status == ConfStatus.Process)
-{
-    <div class="block">
-        <div class="conf-date">
-            <div ng-if="url.length">
-                <a href="@Model.Url" class="conf-date__link">Видеоконференция тему "@Model.Title" уже началась! Ссылка</a>
+    if (Model.Status == ConfStatus.Process)
+    {
+        <div class="block">
+            <div class="conf-date">
+                <div>
+                    <a href="@Model.Url" class="conf-date__link">Видеоконференция тему "@Model.Title" уже началась! Ссылка</a>
+                </div>
             </div>
         </div>
-    </div>
+    }
+    else
+    {
+        <div class="block">
+            <div conf-date="@Model.Stamp"></div>
+        </div>
+    }
 }
-
 
 @*Доступпные поля*@
 @*@Model.Title;
