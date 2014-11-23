@@ -23,6 +23,8 @@ namespace BLL.Blog.ViewModels
 
         public string AuthorName { get; set; }
 
+        public string AuthorAvatar { get; set; }
+
         public int CommentsCount { get; set; }
 
         public CommentItemType ItemType { get; set; }

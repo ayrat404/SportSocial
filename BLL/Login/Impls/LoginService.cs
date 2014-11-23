@@ -64,6 +64,7 @@ namespace BLL.Login.Impls
             {
                 result.ErrorMessage = "Пользователь с указанным номером телефона уже зарегистрирован".Resource(this);
                 result.Success = false;
+                return result;
             }
 
             if (user == null)

@@ -36,17 +36,18 @@ namespace SportSocial.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        [HttpGet]
-        public ActionResult Item(int id)
+        public ActionResult Index(int id)
         {
             var conf = _conferenceService.GetInProcessConf(id);
-            return Json(conf, JsonRequestBehavior.AllowGet);
+            return View(conf);
         }
+
+        //[HttpGet]
+        //public ActionResult Item(int id)
+        //{
+        //    var conf = _conferenceService.GetInProcessConf(id);
+        //    return Json(conf, JsonRequestBehavior.AllowGet);
+        //}
 
         //[HttpGet]
         //public ActionResult Index()
