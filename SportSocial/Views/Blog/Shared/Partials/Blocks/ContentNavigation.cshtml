@@ -1,9 +1,17 @@
 ﻿@using BLL.Blog
+@using BLL.Common.Extensions
 <div class="nav nav--middle">
     <div class="container">
         <div class="row">
             <ul class="nav__list">
-                <li class="active">
+                @foreach (var sort in EnumExtensions.GetValues<PostSortType>())
+                {
+                    <li class="@(ViewBag.Sort == sort && ViewBag.Rubric == 0  ? "active" : "")">
+                        <a href="@Url.Action("Index", "Blog", new { sort })" class="nav__list__link">@sort.GetDescription()</a>
+                        <div class="nav__list__line"></div>
+                    </li>
+                }
+                @*<li class="active">
                     <a href="@Url.Action("Index", "Blog", new { sort = PostSortType.Last })" class="nav__list__link">Все статьи</a>
                     <div class="nav__list__line"></div>
                 </li>
@@ -14,7 +22,7 @@
                 <li>
                     <a href="@Url.Action("Index", "Blog", new { sort = PostSortType.Fortress })" class="nav__list__link">Fortress</a>
                     <div class="nav__list__line"></div>
-                </li>
+                </li>*@
                 @*<li>
                     <a href="#" class="nav__list__link">Видео</a>
                     <div class="nav__list__line"></div>

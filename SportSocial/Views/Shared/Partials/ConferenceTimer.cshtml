@@ -3,12 +3,12 @@
 
 @if (Model != null)
 {
-    if (Model.Status == ConfStatus.Process)
+    if (Model.Stamp < 0)
     {
         <div class="block">
             <div class="conf-date">
                 <div>
-                    <a href="@Model.Url" class="conf-date__link">Видеоконференция тему "@Model.Title" уже началась! Ссылка</a>
+                    <a href="@Model.Url" class="conf-date__link">Видеоконференция на тему "@Model.Title" уже началась! Ссылка</a>
                 </div>
             </div>
         </div>

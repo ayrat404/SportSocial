@@ -1,7 +1,7 @@
 ﻿<div class="cp-conference">
     <div class="cp-block">
         <h2>Список конференций</h2>
-        <div class="container-fluid">
+        <!--<div class="container-fluid">
             <div class="row">
                 <form ng-submit="getConferences(model.search)"
                       ng-init="getConferences(model.search)">
@@ -21,7 +21,7 @@
                     </div>
                 </form>
             </div>
-        </div>
+        </div>-->
     </div>
     <div class="cp-block">
         <div class="cp-conference__list">
@@ -30,13 +30,13 @@
                     <div class="col-xs-3">
                         Название/ссылка
                     </div>
-                    <div class="col-xs-2">
+                    <div class="col-xs-3">
                         Дата проведения
                     </div>
                     <div class="col-xs-2">
                         Статус
                     </div>
-                    <div class="col-xs-5">
+                    <div class="col-xs-4">
                         Действия
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                         <p>{{cnf.title}}</p>
                         <p>{{cnf.url}}</p>
                     </div>
-                    <div class="col-xs-2">
+                    <div class="col-xs-3">
                         {{cnf.date}}
                     </div>
                     <div class="col-xs-2">
@@ -55,7 +55,7 @@
                         <div ng-if="cnf.status==1">Идет сейчас</div>
                         <div ng-if="cnf.status==2">Проведена</div>
                     </div>
-                    <div class="col-xs-5">
+                    <div class="col-xs-4">
                         <button ng-click="changeConferenceStatus(cnf.id, 'Process', cnf)"
                                 ng-if="cnf.status==0"
                                 class="btn btn-info">

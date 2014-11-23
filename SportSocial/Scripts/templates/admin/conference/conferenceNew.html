@@ -5,7 +5,7 @@
             <div ng-include 
                  ng-show="!msg.success"
                  src="'/Scripts/templates/admin/conference/partials/conferenceEditForm.html'"></div>
-            <div class="bg-success"
+            <div class="alert alert-success"
                  ng-show="msg.success">
                 Конференция успешно создана
                 <button ng-click="msg.created=false"

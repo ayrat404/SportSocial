@@ -8,6 +8,8 @@ function ($scope, utilsSrvc, adminRqst) {
         success: false  // сообщение об успешной операции
     };
 
+    $scope.model = {};
+
     // начало валидации полей
     // ---------------
     $scope.vs = {

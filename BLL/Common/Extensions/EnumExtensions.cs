@@ -33,7 +33,7 @@ namespace BLL.Common.Extensions
 
         public static List<T> GetValues<T>()
         {
-            Enum.GetValues(typeof (T)).Cast<T>().ToList();
+            return Enum.GetValues(typeof(T)).Cast<T>().ToList();
         }
     }
 }

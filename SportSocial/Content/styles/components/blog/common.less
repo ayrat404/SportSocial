@@ -17,6 +17,12 @@ a,
     display: inline-block;
     color: @color-blue;
     .user-select;
+    &:focus {
+        color: red;
+        color: inherit;
+        outline: none;
+        text-decoration: none;
+    }
     &:hover {
         text-decoration: none;
         color: @color-gray1;
