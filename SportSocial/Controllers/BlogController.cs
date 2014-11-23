@@ -26,7 +26,8 @@ namespace SportSocial.Controllers
             ViewBag.HidePromo = Request.QueryString.Count > 0;
             ViewBag.Sort = sort;
             ViewBag.Rubric = rubric;
-            ViewBag.RubricName = _blogService.GetRubrics().SingleOrDefault(r => r.Id == rubric);
+            var currentRubric = _blogService.GetRubrics().SingleOrDefault(r => r.Id == rubric);
+            ViewBag.RubricName = currentRubric != null ? currentRubric.Name : "";
             var posts = _blogService.GetPosts(PageSize, sort, rubric, page);
             var pageList = new StaticPagedList<PostPreviewViewModel>(posts.PostPreview, page, PageSize,
                 posts.PageInfo.Count);
@@ -51,9 +52,10 @@ namespace SportSocial.Controllers
 
         [AllowAnonymous]
         [HttpGet]
-        public ActionResult GetRubrics()
+        public ActionResult GetRubrics(long id = 0)
         {
             var rubrics = _blogService.GetRubrics();
+            ViewBag.Rubric = id;
             return View("Shared/Partials/Blocks/Menu", rubrics);
         }
 

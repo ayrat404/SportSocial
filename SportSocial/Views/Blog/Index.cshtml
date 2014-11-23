@@ -34,8 +34,7 @@
                 @{ Html.RenderAction("RenderTime", "Conference"); }
                 
                 @*Блок меню (по рубрикам)*@
-                @*@Html.Partial("Shared/Partials/Blocks/Menu")*@
-                @{ Html.RenderAction("GetRubrics", "Blog"); }
+                @{ Html.RenderAction("GetRubrics", "Blog", new {id = ViewBag.Rubric}); }
             </div>
         </div>
         <div class="row blog__content__middle">

@@ -12,6 +12,7 @@
                                 <option value="0">На модерации</option>
                                 <option value="1">Опубликованные</option>
                                 <option value="2">Отклоненные</option>
+                                <option value="3">На главной</option>
                             </select>
                         </div>
                         <div class="col-xs-4">
@@ -56,6 +57,7 @@
                         <div ng-if="ar.status==0">На модерации</div>
                         <div ng-if="ar.status==1">Опубликована</div>
                         <div ng-if="ar.status==2">Отклонена</div>
+                        <div ng-if="ar.status==3">Отображена на главной</div>
                     </div>
                     <div class="col-xs-5">
                         <button ng-click="changeArticleStatus(ar.id, 'Publish', ar)"
@@ -74,7 +76,6 @@
                             Убрать с публикации
                         </button>
                         <button ng-click="changeArticleStatus(ar.id, 'Fortress', ar)"
-                                ng-if="ar.status==1"
                                 class="btn btn-success">
                             Отобразить на главной
                         </button>

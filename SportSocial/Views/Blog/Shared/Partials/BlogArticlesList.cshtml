@@ -3,7 +3,7 @@
 @using PagedList.Mvc;
 <div class="mod">
     <div class="mod__header">
-        <div class="mod__header__title"></div>
+        <div class="mod__header__title">@ViewBag.RubricName</div>
     </div>
     <div class="mod__content">
         <div class="articles-list">
@@ -39,7 +39,7 @@
         @if (Model.PageCount > Model.PageNumber)
         {
             <div class="text-center">
-                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sort = ViewBag.Sort, rubric = ViewBag.Rubric }))
             </div>
         }
     </div>

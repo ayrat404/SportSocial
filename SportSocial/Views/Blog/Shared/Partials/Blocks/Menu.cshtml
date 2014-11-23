@@ -5,9 +5,10 @@
     </div>
     <div class="mod__content">
         <div class="blog-menu">
+            <a href="@Url.Action("Index", "Blog")" class="blog-menu__link">Все рубрики</a>
             @foreach (var r in Model)
             {
-                <a href="@Url.Action("Index", "Blog", new {rubric = r.Id})" class="blog-menu__link">@r.Name</a>
+                <a href="@Url.Action("Index", "Blog", new {rubric = r.Id})" class="blog-menu__link@(ViewBag.Rubric == r.Id ? " active": "")">@r.Name</a>
             }
         </div>
     </div>
