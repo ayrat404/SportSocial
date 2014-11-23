@@ -878,14 +878,13 @@
     <Compile Include="App_Start\Knoema\LocalizedObject.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\RulesController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Admin\AdminController.cs" />
     <Compile Include="Controllers\Admin\ConferenceController.cs" />
     <Compile Include="Controllers\Base\SportSocialControllerBase.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\RatingController.cs" />
-    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Controllers\PayController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
@@ -959,8 +958,8 @@
     <Content Include="Views\Shared\Partials\ConferenceTimer.cshtml" />
     <Content Include="Views\Blog\UserArticles.cshtml" />
     <Content Include="Views\Blog\Shared\Partials\UserArticlesList.cshtml" />
-    <Content Include="Views\Rules\Index.cshtml" />
-    <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Rules.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -57,6 +57,9 @@ function ($scope, loginRqst, utilsSrvc, $interval) {
             .then(function(res) {
                 if (res.data.success) {
                     $scope.success = true;
+                    $timeout(function () {
+                        $window.location = '/';
+                    }, 4000);
                 } else {
                     $scope.er.server = res.data.errorMessage;
                 }

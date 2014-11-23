@@ -9,7 +9,12 @@ body {
     background-color: #16181a;
 }
 
-a {
+// стандартная ссылка
+a, 
+.link {
+    outline: none;
+    cursor: pointer;
+    display: inline-block;
     color: @color-blue;
     .user-select;
     &:hover {
@@ -22,15 +27,7 @@ a {
     height: 100%;
 }
 
-.link {
-    color: @color-blue;
-    cursor: pointer;
-    display: inline-block;
-    .user-select;
-    &:hover {
-        color: @color-gray1;
-    }
-}
+// отступы между блоками
 .block {
     margin-bottom: 20px;
 }
@@ -39,6 +36,7 @@ a {
     margin: 0;
 }
 
+// Сообщения
 .msg {
     z-index: 10;
     position: fixed;
@@ -48,6 +46,7 @@ a {
     text-align: center;
 }
 
+// Заголовок-разделитель
 .separate {
     &__header {
         font-style: italic;
@@ -57,6 +56,7 @@ a {
     margin-bottom: 15px;
 }
 
+// Часто нужен
 .m-top {
     margin-top: 10px;
 }

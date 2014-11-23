@@ -10,18 +10,15 @@ angular.module('blog').controller('AuthorizationCtrl',
 function ($scope, $interval, authorizationRqst, utilsSrvc) {
     $scope.loading      =   false;  // показать/скрыть лоадер
     $scope.er = {                   // ошибки
-        server: false,              // сервер не доступен
-        custom: {                   // ошибка с сервера с сообщением
-            show: false,
-            msg: ''
-        }
+        s404    :   false,          // сервер не доступен
+        server  :   ''              // ошибка с сервера с сообщением
     }
 
     // Отправка данных, запрос кода подтверждения
     // ---------------------
     $scope.signIn = function (data) {
-        $scope.er.custom.show = false;
-        $scope.er.server = false;
+        $scope.er.server = '';
+        $scope.er.s404 = false;
         $scope.loading = true;
         $scope.formDisabled = true;
         authorizationRqst.signIn(utilsSrvc.token.add(data))
@@ -29,13 +26,12 @@ function ($scope, $interval, authorizationRqst, utilsSrvc) {
                 if (res.data.success) {
                     $window.location.href = res.data.redirect;
                 } else {
-                    $scope.er.custom.show = true;
-                    $scope.er.custom.msg = res.data.error;
+                    $scope.er.server = res.data.error;
                 }
                 $scope.loading = true;
                 $scope.formDisabled = true;
             }, function () {
-                $scope.er.server = true;
+                $scope.er.s404 = true;
                 $scope.loading = true;
                 $scope.formDisabled = true;
             });

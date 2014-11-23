@@ -15,11 +15,8 @@ function ($scope, $interval, $window, registrationRqst, utilsSrvc) {
     $scope.disabledCode =   false;  // отключить поле ввода смс
     $scope.timerForSms  =   0;      // таймер для смс
     $scope.er = {                   // ошибки
-        server  :   false,          // сервер не доступен
-        custom  :   {               // ошибка с сервера с сообщением
-            show    : false,
-            msg     : ''
-        }
+        s404    :   false,          // сервер не доступен
+        server  :   ''              // ошибка с сервера с сообщением
     }
 
 
@@ -34,12 +31,11 @@ function ($scope, $interval, $window, registrationRqst, utilsSrvc) {
                     $scope.timerForSms = res.data.canResendSms;
                     countdownTimer();
                 } else {
-                    $scope.er.custom.show = true;
-                    $scope.er.custom.msg = res.data.errorMessage;
+                    $scope.er.server = res.data.errorMessage;
                 }
                 toggleForm(false);
             }, function() {
-                $scope.er.server = true;
+                $scope.er.s404 = true;
                 toggleForm(false);
             });
     }
@@ -54,12 +50,11 @@ function ($scope, $interval, $window, registrationRqst, utilsSrvc) {
                 if (res.data.success) {
                     $window.location.reload();
                 } else {
-                    $scope.er.custom.show = true;
-                    $scope.er.custom.msg = res.data.errorMessage;
+                    $scope.er.server = res.data.errorMessage;
                 }
                 toggleForm(false);
         }, function () {
-                $scope.er.server = true;
+                $scope.er.s404 = true;
                 toggleForm(false);
             });
     }
@@ -71,8 +66,8 @@ function ($scope, $interval, $window, registrationRqst, utilsSrvc) {
             $scope.disableInp = true;
             $scope.disabledCode = true;
             $scope.loader = true;
-            $scope.er.server = false;
-            $scope.er.custom.show = false;
+            $scope.er.s404 = false;
+            $scope.er.server = '';
         } else {
             $scope.disableInp = false;
             $scope.disabledCode = false;
