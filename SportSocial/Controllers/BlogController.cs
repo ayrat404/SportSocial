@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using BLL.Blog;
 using BLL.Blog.ViewModels;
@@ -23,6 +24,8 @@ namespace SportSocial.Controllers
         [AllowAnonymous]
         public ActionResult Index(int page = 1, PostSortType sort = PostSortType.Last, int rubric = 0)
         {
+
+            var df = 
             ViewBag.HidePromo = Request.QueryString.Count > 0;
             ViewBag.Sort = sort;
             ViewBag.Rubric = rubric;
