@@ -25,7 +25,10 @@
             <div class="col-sm-4">
                 
                 @*Блок авторизации/регистрации*@
-                @Html.Partial("Shared/Partials/Blocks/AuthRegBlock")
+                @if (CurrentUser.IsAnonimous)
+                {
+                    @Html.Partial("Shared/Partials/Blocks/AuthRegBlock")
+                }
 
                 @*Таймер конференции*@
                 @Html.Action("RenderTime", "Conference")

@@ -15,10 +15,10 @@
             <input type="file" name="UploaderHelper" class="hide js-img-input">
             <div class="settings__avatar-wrap">
                 <img ng-src="{{avatar.url}}" class="settings__avatar" />
-                <span ng-click="removeAvatar()" class="link">Удалить</span>
+                <span ng-show="avatar.url.length" ng-click="removeAvatar()" class="link">Удалить</span>
             </div>
             <div ng-show="errors.client" class="alert alert-danger">
-                Минимальный размер изображения 300x300.<br>
+                Минимальный размер изображения 200x200.<br>
                 Максимальный размер файла 10 мб.<br>
             </div>
             <div ng-show="errors.server" class="alert alert-danger">

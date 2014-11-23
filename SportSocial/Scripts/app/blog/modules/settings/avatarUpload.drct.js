@@ -4,10 +4,10 @@
 // ---------------
 angular
     .module('blog')
-    .directive('avatarUpload', [function () {
+    .directive('avatarUpload', ['$timeout', function ($timeout) {
         return {
             restrict: 'A',
-            link: function ($scope, elem, attr) {
+            link: function ($scope, element, attr) {
                 $scope.avatar = $scope.avatar != undefined ? $scope.avatar : {};    // модель для изображения
                 $scope.isLoading = false;   // статус загрузки
                 $scope.errors = {
@@ -18,6 +18,8 @@ angular
                 // добавить изображение
                 // ---------------
                 $scope.changeAvatar = function () {
+                    //var test = element.find('.js-img-input');
+                    //debugger;
                     $timeout(function () { element.find('.js-img-input').trigger('click'); });
                 }
 
@@ -29,11 +31,11 @@ angular
 
                 // FileApi плагин
                 // ---------------
-                element.find().fileapi({
+                element.fileapi({
                     url: '/settings/avatar',
                     accept: 'image/*',
                     maxSize: 10 * FileAPI.MB,
-                    imageSize: { minWidth: 300, minHeight: 300 },
+                    imageSize: { minWidth: 200, minHeight: 200 },
                     autoUpload: true,
                     onSelect: function (evt, uiEvt) {
                         if (uiEvt.other[0] != undefined && uiEvt.other[0].errors != undefined) {
