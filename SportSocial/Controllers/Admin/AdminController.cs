@@ -37,7 +37,7 @@ namespace SportSocial.Controllers
         [HttpPost]
         public JsonResult ChangeArticleStatus(int id, int status)
         {
-            return _blogService.ChangeStatus(id, status);
+            return Json(_blogService.ChangeStatus(id, status));
         }
 
         [HttpGet]

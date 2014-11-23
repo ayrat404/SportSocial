@@ -5,7 +5,7 @@ using BLL.Common.Objects;
 
 namespace BLL.Blog.ViewModels
 {
-    public class BlogPostViewModel: IHasCommentViewModel, IItemInfo, IRatingInfo
+    public class BlogPostViewModel: HasDate, IHasCommentViewModel, IItemInfo, IRatingInfo
     {
         public int Id { get; set; }
 
@@ -14,8 +14,6 @@ namespace BLL.Blog.ViewModels
         public string Text { get; set; }
 
         public Images[] Images { get; set; }
-
-        public DateTime Date { get; set; }
 
         public int Rating { get; set; }
 

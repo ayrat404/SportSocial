@@ -11,7 +11,7 @@ namespace BLL.Comments.MapProfiles
             CreateMap<BlogComment, Comment>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Avatar, opt => opt.MapFrom(src => src.User.Profile.Avatar))
-                .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Created))
+                .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Created.ToString()))
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.User.Name))
                 //.ForMember(dest => dest.CommentFor,
                 //        opt => opt.MapFrom(src => src.CommentForId.HasValue ? new CommentFor()
