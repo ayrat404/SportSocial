@@ -11,6 +11,7 @@ namespace BLL.Admin.Conference
         void Edit(ConfModel model);
         void ChangeStatus(int id, ConfStatus status);
         ConfModel GetConf(int id);
+        ProcessConfModel GetInProcessConf(int id);
         ConfModel GetLastConf();
     }
 }

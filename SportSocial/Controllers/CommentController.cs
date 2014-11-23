@@ -3,8 +3,8 @@ using System.Web.Mvc;
 using BLL.Comments;
 using BLL.Comments.Objects;
 using BLL.Common.Objects;
-using DAL.DomainModel;
 using DAL.DomainModel.BlogEntities;
+using DAL.DomainModel.ConferenceEntities;
 using SportSocial.Controllers.Base;
 
 namespace SportSocial.Controllers
@@ -56,8 +56,8 @@ namespace SportSocial.Controllers
             {
                 case CommentItemType.Article:
                     return typeof (BlogComment);
-                //case CommentItemType.Conference:
-                //    return typeof (Conference);
+                case CommentItemType.Conference:
+                    return typeof(ConferenceComment);
             }
             return null;
         }

@@ -1,6 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
-using BLL.Common.Objects;
-using DAL.DomainModel;
+﻿using BLL.Common.Objects;
 using Microsoft.AspNet.Identity;
 
 namespace BLL.Sms
@@ -14,5 +12,7 @@ namespace BLL.Sms
         ServiceResult GenerateAndSendCode(string userId, string phoneNumber);
 
         ServiceResult VerifyCode(string userId, string code);
+
+        void SendMessage(string msg, string phoneNumber);
     }
 }

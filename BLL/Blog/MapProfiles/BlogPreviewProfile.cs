@@ -1,8 +1,10 @@
 ﻿using System.Linq;
+using System.Web.Mvc;
 using AutoMapper;
 using BLL.Blog.ViewModels;
-using BLL.Common.Objects;
+using BLL.Common.Services.CurrentUser;
 using DAL.DomainModel.BlogEntities;
+using DAL.DomainModel.EnumProperties;
 
 namespace BLL.Blog.MapProfiles
 {
@@ -10,6 +12,7 @@ namespace BLL.Blog.MapProfiles
     {
         protected override void Configure()
         {
+            //var currentUser = DependencyResolver.Current.GetService<ICurrentUser>();
             CreateMap<Post, PostPreviewViewModel>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.AuthorId, opt => opt.MapFrom(src => src.UserId))
@@ -21,7 +24,17 @@ namespace BLL.Blog.MapProfiles
                 .ForMember(dest => dest.CommentsCount, opt => opt.MapFrom(src => src.Comments.Count))
                 .ForMember(dest => dest.Images,
                     opt => opt
-                        .MapFrom(src => new Images {Id = 1, Url = src.ImageUrl}));
+                        .MapFrom(src => new Images {Id = 1, Url = src.ImageUrl}))
+                .ForMember(dest => dest.IsLiked, 
+                           opt => opt.
+                               MapFrom(src => src.RatingEntites
+                                   .Any(r => r.UserId == DependencyResolver.Current.GetService<ICurrentUser>().UserId
+                                             && r.RatingType == RatingType.Like)))
+                .ForMember(dest => dest.IsDisiked, 
+                           opt => opt.
+                               MapFrom(src => src.RatingEntites.
+                                   Any(r => r.UserId == DependencyResolver.Current.GetService<ICurrentUser>().UserId
+                                            && r.RatingType == RatingType.Dislike)));
         }
     }
 }

@@ -1,12 +1,14 @@
 ﻿using System.IO;
 using BLL.Common.Objects;
+using BLL.Storage.Impls.Enums;
 
 namespace BLL.Storage
 {
     public interface IFileService
     {
         bool IsImage(Stream inputStream);
-        ImageUploadResult UploadBlogImage(Stream inputStream, string fileName);
+        ImageUploadResult UploadImage(Stream inputStream, string fileName, UploadType uploadType);
+        ServiceResult UploadAvatar(Stream inputStream, string fileName);
     }
 
     public class ImageUploadResult: ServiceResult

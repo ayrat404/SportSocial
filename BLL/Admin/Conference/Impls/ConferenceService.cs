@@ -19,13 +19,13 @@ namespace BLL.Admin.Conference.Impls
 
         public IEnumerable<ConfModel> GetAll()
         {
-            var conferences = _repository.GetAll<DAL.DomainModel.Conference>();
+            var conferences = _repository.GetAll<DAL.DomainModel.ConferenceEntities.Conference>();
             return conferences.MapEachTo<ConfModel>();
         }
 
         public void Create(CreateConfModel model)
         {
-            var conference = new DAL.DomainModel.Conference();
+            var conference = new DAL.DomainModel.ConferenceEntities.Conference();
             model.MapTo(conference);
             _repository.Add(conference);
             _repository.SaveChanges();
@@ -33,7 +33,7 @@ namespace BLL.Admin.Conference.Impls
 
         public void Edit(ConfModel model)
         {
-            var conf = _repository.Find<DAL.DomainModel.Conference>(model.Id);
+            var conf = _repository.Find<DAL.DomainModel.ConferenceEntities.Conference>(model.Id);
             if (conf != null) //TODO если не найден нужно об хтом сообщать
             {
                 conf = model.MapTo(conf);
@@ -43,7 +43,7 @@ namespace BLL.Admin.Conference.Impls
 
         public void ChangeStatus(int id, ConfStatus status)
         {
-            var conf = _repository.Find<DAL.DomainModel.Conference>(id);
+            var conf = _repository.Find<DAL.DomainModel.ConferenceEntities.Conference>(id);
             if (conf != null)
             {
                 conf.Status = status;
@@ -54,16 +54,28 @@ namespace BLL.Admin.Conference.Impls
 
         public ConfModel GetConf(int id)
         {
-            var conf = _repository.Find<DAL.DomainModel.Conference>(id);
+            var conf = _repository.Find<DAL.DomainModel.ConferenceEntities.Conference>(id);
             if (conf != null)
                 return conf.MapTo<ConfModel>();
+            return null;
+        }
+
+        public ProcessConfModel GetInProcessConf(int id)
+        {
+            var conf = _repository
+                .Queryable<DAL.DomainModel.ConferenceEntities.Conference>()
+                .Where(c => c.Id == id && c.Status == ConfStatus.Process)
+                .Include(c => c.Comments) 
+                .SingleOrDefault();
+            if (conf != null)
+                return conf.MapTo<ProcessConfModel>();
             return null;
         }
 
         public ConfModel GetLastConf()
         {
             var confs = _repository
-                .Queryable<DAL.DomainModel.Conference>()
+                .Queryable<DAL.DomainModel.ConferenceEntities.Conference>()
                 .Where(c => c.Status == ConfStatus.Process || c.Status == ConfStatus.Created)
                 .OrderBy(c => c.Created)
                 .AsNoTracking()

@@ -28,11 +28,11 @@
                 @Html.Partial("Shared/Partials/Blocks/AuthRegBlock")
 
                 @*Таймер конференции*@
-                @Html.Action("RenderTime", "Conference")
+                @{ Html.RenderAction("RenderTime", "Conference"); }
                 
                 @*Блок меню (по рубрикам)*@
                 @*@Html.Partial("Shared/Partials/Blocks/Menu")*@
-                @Html.Action("GetRubrics", "Blog")
+                @{ Html.RenderAction("GetRubrics", "Blog"); }
             </div>
         </div>
         <div class="row blog__content__middle">

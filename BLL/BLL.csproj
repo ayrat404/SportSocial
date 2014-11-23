@@ -131,8 +131,9 @@
     <Compile Include="Blog\MapProfiles\EditPostProfile.cs" />
     <Compile Include="Blog\ViewModels\PostListViewModel.cs" />
     <Compile Include="Blog\ViewModels\PostPreviewViewModel.cs" />
+    <Compile Include="Comments\MapProfiles\ConferenceCommentsProfile.cs" />
     <Compile Include="Comments\MapProfiles\CProfile.cs" />
-    <Compile Include="Comments\MapProfiles\CommentsProfile.cs" />
+    <Compile Include="Comments\MapProfiles\BlogCommentsProfile.cs" />
     <Compile Include="Comments\MapProfiles\CreateCommentProfile.cs" />
     <Compile Include="Blog\MapProfiles\PostForAdminProfile.cs" />
     <Compile Include="Blog\ViewModels\BlogPostViewModel.cs" />
@@ -191,14 +192,15 @@
     <Compile Include="Sms\ISmsService.cs" />
     <Compile Include="Sms\Objects\SmsPilotSendModel.cs" />
     <Compile Include="Storage\IFIleService.cs" />
+    <Compile Include="Storage\Impls\Enums\UploadType.cs" />
     <Compile Include="Storage\Impls\FileService.cs" />
+    <Compile Include="Storage\ViewModels\UploadImageModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Admin\Moderation\Impls\" />
     <Folder Include="Admin\Moderation\ViewModels\" />
     <Folder Include="Comments\Impls\" />
     <Folder Include="Payment\Enums\" />
-    <Folder Include="Storage\ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

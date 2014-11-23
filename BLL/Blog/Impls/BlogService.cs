@@ -2,14 +2,11 @@
 using System.Data.Entity;
 using System.Linq;
 using System.Threading;
-using System.Web.UI.WebControls;
 using AutoMapper;
 using BLL.Blog.ViewModels;
 using BLL.Comments.Objects;
-using BLL.Common.Helpers;
 using BLL.Common.Objects;
 using BLL.Common.Services.CurrentUser;
-using BLL.Common.Services.Rating;
 using BLL.Infrastructure.Map;
 using DAL.DomainModel;
 using DAL.DomainModel.BlogEntities;
@@ -93,8 +90,11 @@ namespace BLL.Blog.Impls
                 .Where(p => p.Id == id && !p.Deleted)
                 .Include(p => p.User)
                 .Include(p => p.Comments)
+                .Include(p => p.RatingEntites)
                 .Single();
             var postvm = post.MapTo<BlogPostViewModel>();
+            postvm.IsLiked =post.RatingEntites.Any(r => r.UserId == _currentUser.UserId && r.RatingType == RatingType.Like);
+            postvm.IsDisiked =post.RatingEntites.Any(r => r.UserId == _currentUser.UserId && r.RatingType == RatingType.Dislike);
             return postvm;
         }
 
@@ -104,16 +104,19 @@ namespace BLL.Blog.Impls
             int skip = take - pageSize;
             var postListVM = new PostListViewModel();
             postListVM.PageInfo = new PageInfo {CurrentPage = page};
-            postListVM.PageInfo.Count = _repository
-                .Queryable<Post>()
-                .Count(x => x.RubricId == rubricId || rubricId == 0);
             switch (sortType)
             {
-                case PostSortType.Last:
+                case PostSortType.Best:
+                    postListVM.PageInfo.Count = _repository
+                        .Queryable<Post>()
+                        .Count(x => (x.RubricId == rubricId || rubricId == 0)
+                                    && x.Status == BlogPostStatus.Allow);
                     postListVM.PostPreview = _repository
                         .Queryable<Post>()
-                        .Where(x => x.RubricId == rubricId || rubricId == 0)
-                        .OrderByDescending(p => p.Created)
+                        .Where(x => (x.RubricId == rubricId || rubricId == 0)
+                                    && x.Status == BlogPostStatus.Allow)
+                        .Include(p => p.RatingEntites)
+                        .OrderByDescending(p => p.TotalRating)
                         .Take(take)
                         .Skip(skip)
                         .AsNoTracking()
@@ -121,10 +124,15 @@ namespace BLL.Blog.Impls
                         .ToList();
                     break;
                 case PostSortType.Fortress:
+                    postListVM.PageInfo.Count = _repository
+                        .Queryable<Post>()
+                        .Count(x => (x.RubricId == rubricId || rubricId == 0)
+                                    && x.Status == BlogPostStatus.Fortress);
                     postListVM.PostPreview = _repository
                         .Queryable<Post>()
                         .Where(x => (x.RubricId == rubricId || rubricId == 0)
                                     && x.Status == BlogPostStatus.Fortress)
+                        .Include(p => p.RatingEntites)
                         .OrderByDescending(p => p.Created)
                         .Take(take)
                         .Skip(skip)
@@ -133,10 +141,16 @@ namespace BLL.Blog.Impls
                         .ToList();
                     break;
                 default:
+                    postListVM.PageInfo.Count = _repository
+                        .Queryable<Post>()
+                        .Count(x => (x.RubricId == rubricId || rubricId == 0)
+                                    && x.Status == BlogPostStatus.Allow);
                     postListVM.PostPreview = _repository
                         .Queryable<Post>()
-                        .Where(x => x.RubricId == rubricId || rubricId == 0)
-                        .OrderByDescending(p => p.TotalRating)
+                        .Where(x => (x.RubricId == rubricId || rubricId == 0)
+                                    && x.Status == BlogPostStatus.Allow)
+                        .Include(p => p.RatingEntites)
+                        .OrderByDescending(p => p.Created)
                         .Take(take)
                         .Skip(skip)
                         .AsNoTracking()

@@ -1,8 +1,11 @@
 ﻿using System.Linq;
+using System.Web.Mvc;
 using AutoMapper;
 using BLL.Blog.ViewModels;
 using BLL.Common.Objects;
+using BLL.Common.Services.CurrentUser;
 using DAL.DomainModel.BlogEntities;
+using DAL.DomainModel.EnumProperties;
 
 namespace BLL.Blog.MapProfiles
 {
@@ -21,8 +24,19 @@ namespace BLL.Blog.MapProfiles
                 .ForMember(dest => dest.Images,
                     opt => opt
                         .MapFrom(src => new[] {new Images {Id = 1, Url = src.ImageUrl}}))
-                .ForMember(dest => dest.Comments, opt => opt.MapFrom(src => src.Comments.Skip(src.Comments.Count - 3).ToList()))
-                .ForMember(dest => dest.ItemType, opt => opt.MapFrom(src => CommentItemType.Article));
+                .ForMember(dest => dest.Comments,
+                    opt => opt.MapFrom(src => src.Comments.Skip(src.Comments.Count - 3).ToList()))
+                .ForMember(dest => dest.ItemType, opt => opt.MapFrom(src => CommentItemType.Article))
+                .ForMember(dest => dest.IsLiked, 
+                           opt => opt.
+                               MapFrom(src => src.RatingEntites
+                                   .Any(r => r.UserId == DependencyResolver.Current.GetService<ICurrentUser>().UserId
+                                             && r.RatingType == RatingType.Like)))
+                .ForMember(dest => dest.IsDisiked, 
+                           opt => opt.
+                               MapFrom(src => src.RatingEntites.
+                                   Any(r => r.UserId == DependencyResolver.Current.GetService<ICurrentUser>().UserId
+                                            && r.RatingType == RatingType.Dislike)));
         }
     }
 }

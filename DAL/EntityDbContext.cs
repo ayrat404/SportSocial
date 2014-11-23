@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using DAL.DomainModel;
 using DAL.DomainModel.BlogEntities;
+using DAL.DomainModel.ConferenceEntities;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Ninject.Activation;
 
@@ -29,6 +30,10 @@ namespace DAL
         public DbSet<BlogComment> BlogComments { get; set; }
         public DbSet<BlogCommentRating> BlogCommentRatings { get; set; }
         public DbSet<PostRating> PostRatings { get; set; }
+        public DbSet<UserPhoto> UserPhotos { get; set; }
+        public DbSet<UserAvatarPhoto> UserAvatarPhotos { get; set; }
+        public DbSet<ConferenceComment> ConferenceComments { get; set; }
+        public DbSet<ConferenceCommentRating> ConferenceCommentRatings { get; set; }
 
         static EntityDbContext()
         {

@@ -38,9 +38,9 @@
                 </div>
 
                 @*Таймер конференции*@
-                @Html.Action("RenderTime", "Conference")
+                @{ Html.RenderAction("RenderTime", "Conference"); }
 
-                @Html.Partial("Shared/Partials/Blocks/Menu")
+                @{ Html.RenderAction("GetRubrics", "Blog"); }
             </div>
         </div>
     </div>

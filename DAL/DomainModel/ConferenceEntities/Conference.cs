@@ -1,10 +1,11 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
 using DAL.DomainModel.EnumProperties;
 using DAL.DomainModel.Interfaces;
 
-namespace DAL.DomainModel
+namespace DAL.DomainModel.ConferenceEntities
 {
-    public class Conference: IEntity, IDeletable, IAuditable
+    public class Conference: IEntity, IDeletable, IAuditable, IHasComments<ConferenceComment>
     {
         public int Id { get; set; }
 
@@ -25,5 +26,6 @@ namespace DAL.DomainModel
         public DateTime Modified { get; set; }
 
         public virtual AppUser User { get; set; }
+        public virtual ICollection<ConferenceComment> Comments { get; set; }
     }
 }

@@ -35,9 +35,17 @@ namespace SportSocial.Controllers
             return View("Partials/ConferenceTimer", conf);
         }
 
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult Item(int id)
+        {
+            var conf = _conferenceService.GetInProcessConf(id);
+            return Json(conf, JsonRequestBehavior.AllowGet);
         }
 
         //[HttpGet]

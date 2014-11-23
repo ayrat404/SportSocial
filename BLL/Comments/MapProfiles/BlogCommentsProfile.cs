@@ -1,11 +1,10 @@
 ﻿using AutoMapper;
 using BLL.Comments.Objects;
 using DAL.DomainModel.BlogEntities;
-using DAL.DomainModel.Interfaces;
 
 namespace BLL.Comments.MapProfiles
 {
-    public class CommentsProfile: Profile
+    public class BlogCommentsProfile: Profile
     {
         protected override void Configure()
         {

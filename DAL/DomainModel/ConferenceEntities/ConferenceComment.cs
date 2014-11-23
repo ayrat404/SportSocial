@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using DAL.DomainModel.Interfaces;
 
-namespace DAL.DomainModel.BlogEntities
+namespace DAL.DomainModel.ConferenceEntities
 {
-    public class BlogComment: IEntity, IAuditable, IDeletable, ICommentEntity<Post>, IHasRating<BlogCommentRating>
+    public class ConferenceComment: IDeletable, IEntity, ICommentEntity<Conference>, IHasRating<ConferenceCommentRating>
     {
         public int Id { get; set; }
         public string Text { get; set; }
@@ -17,11 +17,12 @@ namespace DAL.DomainModel.BlogEntities
         public DateTime Modified { get; set; }
         public bool Deleted { get; set; }
 
-        [ForeignKey("CommentedEntityId")]
-        public virtual Post CommentedEntity { get; set; }
+
         [ForeignKey("CommentForId")]
-        public BlogComment CommentFor { get; set; }
+        public ConferenceComment CommentFor { get; set; }
+        [ForeignKey("CommentedEntityId")]
+        public virtual Conference CommentedEntity { get; set; }
         public virtual AppUser User { get; set; }
-        public virtual ICollection<BlogCommentRating> RatingEntites { get; set; }
+        public ICollection<ConferenceCommentRating> RatingEntites { get; set; }
     }
 }

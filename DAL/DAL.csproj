@@ -81,7 +81,9 @@
     <Compile Include="DomainModel\BlogEntities\BlogComment.cs" />
     <Compile Include="DomainModel\BlogEntities\BlogCommentRating.cs" />
     <Compile Include="DomainModel\BlogEntities\PostRating.cs" />
-    <Compile Include="DomainModel\Conference.cs" />
+    <Compile Include="DomainModel\ConferenceEntities\Conference.cs" />
+    <Compile Include="DomainModel\ConferenceEntities\ConferenceComment.cs" />
+    <Compile Include="DomainModel\ConferenceEntities\ConferenceCommentRating.cs" />
     <Compile Include="DomainModel\EnumProperties\RatingType.cs" />
     <Compile Include="DomainModel\Interfaces\IAuditable.cs" />
     <Compile Include="DomainModel\Interfaces\IComment.cs" />
@@ -103,6 +105,8 @@
     <Compile Include="DomainModel\Profile.cs" />
     <Compile Include="DomainModel\Rubric.cs" />
     <Compile Include="DomainModel\SmsCode.cs" />
+    <Compile Include="DomainModel\UserAvatarPhoto.cs" />
+    <Compile Include="DomainModel\UserPhoto.cs" />
     <Compile Include="EntityDbContext.cs" />
     <Compile Include="Migrations\201410111050567_Init.cs" />
     <Compile Include="Migrations\201410111050567_Init.Designer.cs">
@@ -111,6 +115,10 @@
     <Compile Include="Migrations\201411182100289_WorkEntities.cs" />
     <Compile Include="Migrations\201411182100289_WorkEntities.Designer.cs">
       <DependentUpon>201411182100289_WorkEntities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411221204270_CommentsForConference.cs" />
+    <Compile Include="Migrations\201411221204270_CommentsForConference.Designer.cs">
+      <DependentUpon>201411221204270_CommentsForConference.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -133,6 +141,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411182100289_WorkEntities.resx">
       <DependentUpon>201411182100289_WorkEntities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411221204270_CommentsForConference.resx">
+      <DependentUpon>201411221204270_CommentsForConference.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

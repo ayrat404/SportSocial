@@ -8,7 +8,7 @@ using DAL.Repository.Interfaces;
 namespace BLL.Common.Services.Rating
 {
     public class RatingService<TEntity, TRatingEntity> : IRatingServiceImpl, IGRatingService<TEntity, TRatingEntity>
-        where TEntity: class, IHasRating<TEntity>
+        where TEntity: class, IHasRating<TRatingEntity>
         where TRatingEntity: class, IRatingEntity<TEntity>
     {
         private readonly IRepository _repository;

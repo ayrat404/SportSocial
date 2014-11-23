@@ -115,7 +115,6 @@ namespace BLL.Login.Impls
                     var ident = _appUserManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
                     _authManager.SignOut();
                     _authManager.SignIn(new AuthenticationProperties { IsPersistent = true }, ident);
-
                 }
             }
             else
@@ -164,7 +163,20 @@ namespace BLL.Login.Impls
                 result.ErrorMessage = "Пользователь не найден".Resource(this);
                 return result;
             }
-            return _smsService.VerifyCode(user.Id, confirmModel.Code);
+            var verifyResult = _smsService.VerifyCode(user.Id, confirmModel.Code);
+            if (verifyResult.Success)
+            {
+                _appUserManager.RemovePassword(user.Id);
+                var chPswdResult = _appUserManager.AddPassword(user.Id, confirmModel.Password);
+                if (chPswdResult.Succeeded)
+                {
+                    result.Success = true;
+                    return result;
+                }
+                result.ErrorMessage = "Ошибка на сервере".Resource(this); 
+                //TODO нетипичная ситуация, надо както уведомлять админа
+            }
+            return verifyResult;
         }
 
         public ServiceResult ChangePhone(string phone)
@@ -187,9 +199,33 @@ namespace BLL.Login.Impls
             return result;
         }
 
-        public ServiceResult ResendSmsCode()
+        public ServiceResult LogOut()
         {
-            throw new System.NotImplementedException();
+            var result = new ServiceResult {Success = false};
+            if (!_currentUser.IsAnonimous && !string.IsNullOrEmpty(_currentUser.UserId))
+            {
+                _authManager.SignOut();
+                result.Success = true;
+                return result;
+            }
+            result.ErrorMessage = "Ошибка".Resource(this);
+            return result;
+        }
+
+        public ServiceResult ResendSmsCode(string phone)
+        {
+            var user = _repository
+                .Queryable<AppUser>()
+                .SingleOrDefault(u => u.UserName == phone && !u.PhoneNumberConfirmed);
+            if (user != null)
+            {
+                return _smsService.GenerateAndSendCode(user.Id, phone);
+            }
+            return new ServiceResult
+            {
+                Success = false,
+                ErrorMessage = "Ошибка".Resource(this),
+            };
         }
     }
 }

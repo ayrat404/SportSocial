@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using BLL.Common.Objects;
 using DAL;
 using DAL.DomainModel;
+using Knoema.Localization;
 using Microsoft.AspNet.Identity;
 
 namespace BLL.Sms
@@ -43,7 +44,7 @@ namespace BLL.Sms
             {
                 if ((DateTime.Now - sms.RetryTime).Seconds <= 0)
                 {
-                    result.ErrorMessage = "Время для повторной отправки смс не наступило";
+                    result.ErrorMessage = "Время для повторной отправки смс не наступило".Resource(this);
                     return result;
                 }
                 var msg = GenerateMessage(sms.Code);
@@ -81,12 +82,12 @@ namespace BLL.Sms
             var sms = _db.SmsCodes.Where(s => s.UserId == userId).OrderByDescending(s => s.Created).FirstOrDefault();
             if (sms == null)
             {
-                result.ErrorMessage = "Не найдено смс";
+                result.ErrorMessage = "Не найдено смс".Resource(this);
                 return result;
             }
             if (sms.Expired < DateTime.Now)
             {
-                result.ErrorMessage = "Время ввода смс истекло. Повторите запрос.";
+                result.ErrorMessage = "Время ввода смс истекло. Повторите запрос.".Resource(this);
                 return result;
             }
             if (sms.Code == code)
@@ -94,7 +95,7 @@ namespace BLL.Sms
                 result.Success = true;
                 return result;
             }
-            result.ErrorMessage = "Введен неверный код.";
+            result.ErrorMessage = "Введен неверный код.".Resource(this);
             return result;
         }
 
@@ -114,7 +115,7 @@ namespace BLL.Sms
         {
             if (string.IsNullOrEmpty(code))
                 code = GenerateCode();
-            var msg = string.Format("Код проверки телефона: {0}", code);
+            var msg = string.Format("Код проверки телефона: {0}".Resource(this), code);
             return msg;
         }
     }

@@ -10,6 +10,7 @@ using WebGrease.Css.Extensions;
 
 namespace SportSocial.Controllers
 {
+    [Authorize]
     public class LoginController : SportSocialControllerBase
     {
         private const string jsonContentType = "application/json";
@@ -28,13 +29,21 @@ namespace SportSocial.Controllers
         }
 
         [HttpGet]
+        public ActionResult LogOut()
+        {
+            return Json(_loginService.LogOut(), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
         public ActionResult SignIn()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult SignIn(SignInModel model, string returnUrl)
+        [AllowAnonymous]
+        public JsonResult SignIn(SignInModel model, string returnUrl)
         {
             if (ModelState.IsValid)
             {
@@ -44,7 +53,8 @@ namespace SportSocial.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(RegistratioinModel model, string url = "")
+        [AllowAnonymous]
+        public JsonResult Register(RegistratioinModel model, string url = "")
         {
             if (ModelState.IsValid)
             {
@@ -54,7 +64,8 @@ namespace SportSocial.Controllers
         }
 
         [HttpPost]
-        public ActionResult ConfirmPhone(ConfirmSmsCode confirmModel)
+        [AllowAnonymous]
+        public JsonResult ConfirmPhone(ConfirmSmsCode confirmModel)
         {
             if (ModelState.IsValid)
             {
@@ -63,11 +74,12 @@ namespace SportSocial.Controllers
             return Json(new { success = false, errorMessage = "Не валидные значения полей" });
         }
 
-        //[HttpPost]
-        //public async Task<ActionResult> ResendCode()
-        //{
-        //    throw new Exception();
-        //}
+        [HttpPost]
+        [AllowAnonymous]
+        public JsonResult ResendCode(string phone)
+        {
+            return Json(_loginService.ResendSmsCode(phone));
+        }
 
         //[HttpPost]
         //public async Task<ActionResult> FinalRegistration(string code)
@@ -76,18 +88,21 @@ namespace SportSocial.Controllers
         //}
 
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult RestorePassword()
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult RestorePassword(string phone)
         {
             return Json(_loginService.RestorePassword(phone));
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult RestorePasswordConfirm(ConfirmSmsCode confirmModel)
         {
             if (ModelState.IsValid)
