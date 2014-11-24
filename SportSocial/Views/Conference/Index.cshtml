@@ -11,20 +11,17 @@
 
                 @*Видео*@
                 <div class="conference__video block">
-                    @*TODO ссылка на видео трансляции*@
                     <iframe width="560" height="315" src="@Model.Url" frameborder="0" allowfullscreen></iframe>
                 </div>
 
                 @*Краткая информация о конференции*@
                 <div class="conference__info block">
-                    @*TODO название конференции*@
-                    <h2>Название</h2>
-                    @*TODO краткое описание конференции*@
-                    <p>Краткое описание краткое описание краткое описание краткое описание краткое описание краткое описание </p>
+                    <h2>@Model.Title</h2>
+                    <p>@Model.Description</p>
                 </div>
                 
                 @*Комментарии*@
-                @*@Html.Partial("Partials/Comments")*@
+                @Html.Partial("Partials/Comments", Model)
 
                 @*Комментарии disqus*@
                 @*<div class="conference__comments">
@@ -48,7 +45,7 @@
             <div class="col-sm-4">
                 
                 @*Информаия о докладчике*@
-                @*@Html.Partial("~/Views/Blog/Shared/Partials/Blocks/User.cshtml")*@
+                @Html.Partial("~/Views/Blog/Shared/Partials/Blocks/User.cshtml", Model)
             </div>
         </div>
     </div>
