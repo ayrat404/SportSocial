@@ -27,6 +27,11 @@ namespace DAL.Repository
             return _context.Set<TEntity>().Find(id);
         }
 
+        public TEntity Create<TEntity>() where TEntity: class
+        {
+            return _context.Set<TEntity>().Create();
+        }
+
         public void Add<TEntity>(TEntity entity) where TEntity: class
         {
             if (entity is IAuditable)

@@ -8,6 +8,7 @@ namespace DAL.Repository.Interfaces
     {
         IEnumerable<TEntity> GetAll<TEntity>() where TEntity : class;
         TEntity Find<TEntity>(object id) where TEntity : class;
+        TEntity Create<TEntity>() where TEntity : class;
         void Add<TEntity>(TEntity entity) where TEntity : class;
         void Update<TEntity>(TEntity entity) where TEntity : class;
         void Delete<TEntity>(TEntity entity) where TEntity : class;

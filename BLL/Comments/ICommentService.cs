@@ -42,16 +42,27 @@ namespace BLL.Comments
             var entity = _repository.Find<TEntity>(createCommentViewModel.ItemId);
             if (entity != null)
             {
-                var comment = Activator.CreateInstance<TCommentEntity>();
+                var comment = _repository.Create<TCommentEntity>();
                 comment.CommentForId = createCommentViewModel.CommentForId;
                 comment.CommentedEntityId = createCommentViewModel.ItemId;
                 comment.UserId = _currentUser.UserId;
                 comment.Text = createCommentViewModel.Text;
                 _repository.Add(comment);
                 _repository.SaveChanges();
-                var resultComment = _repository.Find<TCommentEntity>(comment.Id).MapTo<Comment>();
+                
+                //var blogComment = _repository.Find<TCommentEntity>(comment.Id);
+                var resultComment = comment.MapTo<Comment>();
                 resultComment.Name = _currentUser.UserName;
                 resultComment.Avatar = _currentUser.User.Profile.Avatar;
+                if (createCommentViewModel.CommentForId.HasValue && resultComment.CommentFor == null)
+                {
+                    comment = _repository.Find<TCommentEntity>(createCommentViewModel.CommentForId);
+                    resultComment.CommentFor = new CommentFor
+                    {
+                        Id = comment.Id,
+                        Name = comment.User.Name,
+                    };
+                }
                 return resultComment;
             }
             return null;
