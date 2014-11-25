@@ -27,6 +27,8 @@ namespace BLL.Blog.ViewModels
 
         public bool IsDisiked { get; set; }
 
+        public string AuthorAvatar { get; set; }
+
         public string AuthorId { get; set; }
 
         public string AuthorName { get; set; }
@@ -53,6 +55,8 @@ namespace BLL.Blog.ViewModels
 
     public interface IItemInfo
     {
+        string AuthorAvatar { get; set; }
+
         string AuthorId { get; set; }
 
         string AuthorName { get; set; }

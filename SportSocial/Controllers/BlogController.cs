@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web.Mvc;
 using BLL.Blog;
 using BLL.Blog.ViewModels;
 using PagedList;
 using SportSocial.Controllers.Base;
+using WebGrease.Css.Extensions;
 
 namespace SportSocial.Controllers
 {
@@ -30,6 +32,7 @@ namespace SportSocial.Controllers
             var currentRubric = _blogService.GetRubrics().SingleOrDefault(r => r.Id == rubric);
             ViewBag.RubricName = currentRubric != null ? currentRubric.Name : "";
             var posts = _blogService.GetPosts(PageSize, sort, rubric, page);
+            //posts.PostPreview.ForEach(p => p.Text = Regex.Replace(p.Text, @"<[^>]+>|&nbsp;", "").Trim());
             var pageList = new StaticPagedList<PostPreviewViewModel>(posts.PostPreview, page, PageSize,
                 posts.PageInfo.Count);
             return View(pageList);

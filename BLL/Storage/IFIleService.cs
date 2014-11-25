@@ -8,7 +8,7 @@ namespace BLL.Storage
     {
         bool IsImage(Stream inputStream);
         ImageUploadResult UploadImage(Stream inputStream, string fileName, UploadType uploadType);
-        ServiceResult UploadAvatar(Stream inputStream, string fileName);
+        ServiceResult UploadAvatar(Stream inputStream, string filePath);
     }
 
     public class ImageUploadResult: ServiceResult

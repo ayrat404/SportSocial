@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Security.Policy;
 using System.Web;
-using System.Web.Mvc;
 using BLL.Admin.Conference.ViewModels;
 using BLL.Infrastructure.Map;
 using DAL.DomainModel.EnumProperties;
@@ -29,7 +29,12 @@ namespace BLL.Admin.Conference.Impls
         public void Create(CreateConfModel model)
         {
             var conference = new DAL.DomainModel.ConferenceEntities.Conference();
+            var url = new Uri(model.Url);
+            var videoId = HttpUtility.ParseQueryString(url.Query)["v"];
+            string resultUrl = "//www.youtube.com/embed/" + videoId;
             model.MapTo(conference);
+            conference.Url = resultUrl;
+            //var youtubeUrl = new Uri("//www.youtube.com/embed/Rqp8DltI858");
             _repository.Add(conference);
             _repository.SaveChanges();
         }
@@ -39,7 +44,9 @@ namespace BLL.Admin.Conference.Impls
             var conf = _repository.Find<DAL.DomainModel.ConferenceEntities.Conference>(model.Id);
             if (conf != null) //TODO если не найден нужно об хтом сообщать
             {
+                var youtubeUrl = new Uri("//www.youtube.com/embed/Rqp8DltI858");
                 conf = model.MapTo(conf);
+                var url = new Uri(conf.Url);
                 _repository.SaveChanges();
             }
         }
@@ -95,5 +102,7 @@ namespace BLL.Admin.Conference.Impls
             }
             return null;
         }
+
+
     }
 }

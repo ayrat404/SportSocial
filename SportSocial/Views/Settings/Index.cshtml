@@ -1,4 +1,5 @@
-﻿@{
+﻿@model SportSocial.Controllers.SettingsModel
+@{
     ViewBag.Title = "Fortress - Настройки";
     Layout = "../Blog/Shared/Layouts/BlogLayout.cshtml";
 }
@@ -16,13 +17,13 @@
                          class="tabs-content">
                         
                         @*Добавить/изменить аватар*@
-                        @Html.Partial("Shared/Partials/Avatar")
+                        @Html.Partial("Shared/Partials/Avatar", Model.Avatar)
 
                         @*Новый пароль*@
                         @Html.Partial("Shared/Partials/Password")
 
                         @*Новый номер телефона*@
-                        @Html.Partial("Shared/Partials/Phone")
+                        @Html.Partial("Shared/Partials/Phone", Model.Phone)
                     </div>
                 </div>
             </div>

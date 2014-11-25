@@ -123,6 +123,10 @@
     <Compile Include="Migrations\201411221204270_CommentsForConference.Designer.cs">
       <DependentUpon>201411221204270_CommentsForConference.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411241902225_ChangeBlogImageSchema.cs" />
+    <Compile Include="Migrations\201411241902225_ChangeBlogImageSchema.Designer.cs">
+      <DependentUpon>201411241902225_ChangeBlogImageSchema.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AccountRepository.cs" />
@@ -147,6 +151,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411221204270_CommentsForConference.resx">
       <DependentUpon>201411221204270_CommentsForConference.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411241902225_ChangeBlogImageSchema.resx">
+      <DependentUpon>201411241902225_ChangeBlogImageSchema.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

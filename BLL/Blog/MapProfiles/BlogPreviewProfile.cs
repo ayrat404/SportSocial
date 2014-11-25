@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web.Mvc;
 using AutoMapper;
 using BLL.Blog.ViewModels;
@@ -19,7 +20,8 @@ namespace BLL.Blog.MapProfiles
                 .ForMember(dest => dest.AuthorName, opt => opt.MapFrom(src => src.User.Name))
                 .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Created.ToShortDateString()))
                 .ForMember(dest => dest.Rating, opt => opt.MapFrom(src => src.TotalRating))
-                .ForMember(dest => dest.Text, opt => opt.MapFrom(src => src.Text))
+                .ForMember(dest => dest.Text, 
+                           opt => opt.MapFrom(src => Regex.Replace(src.Text, @"<[^>]+>|&nbsp;", "").Trim()))
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status))
                 .ForMember(dest => dest.CommentsCount, opt => opt.MapFrom(src => src.Comments.Count))
