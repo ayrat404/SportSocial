@@ -8,13 +8,6 @@ angular.module('blog').factory('settingsRqst', ['$http', 'serializeObj', functio
             data: obj
         });
     };
-    var get = function (action, obj) {
-        return $http({
-            method: 'GET',
-            url: '/Settings/' + action,
-            params: obj
-        });
-    }
     return {
         // Сменить пароль
         // ---------------
@@ -30,6 +23,11 @@ angular.module('blog').factory('settingsRqst', ['$http', 'serializeObj', functio
         // ---------------
         confirmCode: function(obj) {
             return send('ConfirmCode', obj);
+        },
+        // Удалить аватар пользователя
+        // ---------------
+        removeAvatar: function() {
+            return send('RemoveAvatar');
         }
     };
 }]);

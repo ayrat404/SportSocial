@@ -7,11 +7,6 @@ angular.module('blog').controller('RatingCtrl',
      'ratingRqst',
      'utilsSrvc',
 function ($scope, ratingRqst, utilsSrvc) {
-    
-    $scope.isRated = false;
-    if ($scope.isLiked === 'True' || $scope.isDisliked === 'True') {
-        $scope.isRated = true;
-    }
 
     // отправка запроса
     // ---------------
@@ -31,7 +26,6 @@ function ($scope, ratingRqst, utilsSrvc) {
                         $scope.count = $scope.count - 1;
                         $scope.isDisliked = 'True';
                     }
-                    $scope.isRated = true;
                 }
             });
     }

@@ -110,7 +110,15 @@ function ($scope, settingsRqst, utilsSrvc, $window, $timeout) {
         }, 1000);
     }
 
-    // загрузка/смена аватарки
+    // удаление аватарки
     // ---------------
-
+    $scope.removeAvatar = function () {
+        $scope.avatar = {};
+        settingsRqst.removeAvatar()
+            .then(function(res) {
+                if (res.data.success) {
+                    $scope.avatar.url = res.data.url;
+                }
+            });
+    }
 }]);

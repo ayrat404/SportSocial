@@ -93,7 +93,7 @@ function ($scope, commentsRqst, utilsSrvc, $window, $timeout) {
                 // -----
                 $timeout(function () {
                     $scope.scrollToFor(id, true);
-                }, 1000);
+                });
             });
         }
     }

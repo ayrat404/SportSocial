@@ -14,14 +14,14 @@ else
              count=@Model.Rating ;
              id=@Model.Id ;
              type='@Model.RatingEntityType' ;
-             isliked='@Model.IsLiked.ToString()' ;
-             isdisliked='@Model.IsDisiked.ToString()' ;"
+             isLiked='@Model.IsLiked.ToString()' ;
+             isDisliked='@Model.IsDisiked.ToString()' ;"
              ng-cloak
              class="like-rating">
 
-            <span ng-if="!isRated" ng-click="changeRating('like')" class="i-art i-art-like"></span>
-            <span ng-if="!isRated" ng-click="changeRating('dislike')" class="i-art i-art-dislike"></span>
-            <span ng-if="isRated"
+            <span ng-if="isLiked!='True' && isDisliked!='True'" ng-click="changeRating('like')" class="i-art i-art-like"></span>
+            <span ng-if="isLiked!='True' && isDisliked!='True'" ng-click="changeRating('dislike')" class="i-art i-art-dislike"></span>
+            <span ng-if="isLiked == 'True' || isDisliked == 'True'"
                   ng-class="{'i-art-like': isLiked == 'True', 'i-art-dislike': isDisliked == 'True'}"
                   class="i-art like-rating__rated" title="Ваша оценка">
             </span>
