@@ -19,6 +19,7 @@
                        ng-class="{'input--invalid': authorization.phone.$error.required && validstart.phone}"
                        ng-blur="validstart.phone=true"
                        name="phone"
+                       placeholder="+X XXX XXX XX XX"
                        required
                        class="input" type="text" placeholder="Телефон" />
                 <input ng-model="auth.pass"
@@ -67,6 +68,7 @@
                        ng-class="{'input--invalid': registrationOne.phone.$error.required && validstart.phone}"
                        ng-blur="validstart.phone=true"
                        name="phone"
+                       placeholder="+X XXX XXX XX XX"
                        required
                        class="input" type="text" placeholder="Номер телефона" />
                 <button ng-show="!loading"

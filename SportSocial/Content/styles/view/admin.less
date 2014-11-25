@@ -16,6 +16,22 @@
         text-decoration: underline;
     }
 
+    &-table {
+        color: #fff;
+
+        .row {
+            &:first-child {
+                font-size: 1.486em;
+                margin-bottom: 15px;
+            }
+
+            margin-bottom: 10px;
+        }
+        .btn {
+            margin-bottom: 10px;
+        }
+    }
+
     &__sidebar-left {
         color: #fff;
         height: 100%;
@@ -118,32 +134,6 @@
     &-articles {
         &__header {
         }
-
-        &__content {
-            color: #fff;
-
-            .row {
-                &:first-child {
-                    font-size: 1.486em;
-                    margin-bottom: 15px;
-                }
-
-                margin-bottom: 10px;
-            }
-
-            table {
-                thead {
-                    font-size: 1.486em;
-                }
-
-                tbody {
-                    td {
-                        width: 25%;
-                        vertical-align: middle;
-                    }
-                }
-            }
-        }
     }
 
     &-conference {
@@ -161,19 +151,6 @@
             textarea {
                 max-width: 100%;
                 min-height: 200px;
-            }
-        }
-
-        &__list {
-            color: #fff;
-
-            .row {
-                &:first-child {
-                    font-size: 1.486em;
-                    margin-bottom: 15px;
-                }
-
-                margin-bottom: 10px;
             }
         }
     }

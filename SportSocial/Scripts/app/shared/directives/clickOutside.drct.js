@@ -14,10 +14,8 @@ angular
                 var classList = (attr.outsideIfNot !== undefined) ? attr.outsideIfNot.replace(', ', ',').split(',') : [];
                 if (attr.id !== undefined) classList.push(attr.id);
                 $document.on('click touchstart', function (e) {
-                    var i = 0,
+                    var i,
                         element;
-                    var test1 = e.target;
-                    var test = elem.find(test1);
                     if (!e.target || elem.find(e.target).length > 0) return;
 
                     for (element = e.target; element; element = element.parentNode) {

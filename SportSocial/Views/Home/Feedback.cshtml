@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "Тех. поддержка Fortress";
+    Layout = "../Blog/Shared/Layouts/BlogLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <div ng-controller="FeedbackCtrl"
+                 class="mod block">
+                <div class="mod__header">
+                    <div class="mod__header__title">Техническая поддержка</div>
+                </div>
+                <div class="mod__content white p-all">
+                    <div class="tabs-content">
+                        Пишите нам о своих пожеланиях или проблемах. Нам важен каждый отзыв, ведь мы работаем для вас!
+                        <div class="alert alert-warning m-top">Обратите ВНИМАНИЕ. Все поля обязательны для заполнения</div>
+                        <div ng-show="false" class="text-center">Загрузка...</div>
+                        <form ng-submit="sendFeedback(f)"
+                              ng-cloak
+                              class="blog-form m-top" name="feedbackForm">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="blog-form__desc">Ваше имя</div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input ng-model="f.name"
+                                           required
+                                           type="text" class="input" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="blog-form__desc">Почта для связи</div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input ng-model="f.email"
+                                           required
+                                           type="email" class="input" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="blog-form__desc">Пожелание/проблема</div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <textarea ng-model="f.text"
+                                              ng-minlength="10"
+                                              required
+                                              class="input"></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <button type="submit" class="btn btn--main pull-right" ng-disabled="feedbackForm.$invalid">Отправить отзыв</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div ng-show="msg.show"
+                             ng-cloak
+                             class="container-fluid">
+                            <div class="col-xs-12">
+                                <div ng-show="msg.success" class="alert alert-success">Ваш отзыв успешно отправлен. Спасибо!</div>
+                                <div ng-show="msg.server != false && msg.server.length" class="alert alert-danger">{{msg.server}}</div>
+                                <div ng-show="msg.s404" class="alert alert-danger">Сервер временно недоступен. Повторите попытку позже</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

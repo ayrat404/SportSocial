@@ -285,6 +285,8 @@
     <Content Include="Scripts\app\admin\modules\sidebar\sidebar.ctrl.js" />
     <Content Include="Scripts\app\admin\shared\services\admin.srvc.js" />
     <Content Include="Scripts\app\blog\app.js" />
+    <Content Include="Scripts\app\blog\modules\feedback\feedback.srvc.js" />
+    <Content Include="Scripts\app\blog\modules\feedback\feedback.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\rating\rating.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\rating\rating.srvc.js" />
     <Content Include="Scripts\app\blog\modules\comments\comments.srvc.js" />
@@ -299,6 +301,7 @@
     <Content Include="Scripts\app\blog\modules\conference\confDate.drct.js" />
     <Content Include="Scripts\app\blog\modules\article\redactor.drct.js" />
     <Content Include="Scripts\app\blog\modules\restore-password\restorePassword.ctrl.js" />
+    <Content Include="Scripts\app\blog\modules\settings\avatarUpload.drct.js" />
     <Content Include="Scripts\app\blog\modules\settings\settings.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\settings\settings.srvc.js" />
     <Content Include="Scripts\app\shared\directives\bgSlider.drct.js" />
@@ -950,7 +953,7 @@
     <Content Include="Views\Admin\Shared\Partials\Sidebar.cshtml" />
     <Content Include="Views\Blog\Item.cshtml" />
     <Content Include="Views\Blog\Shared\Partials\Article\Info.cshtml" />
-    <Content Include="Views\Conference\Index.cshtml" />
+    <Content Include="Views\Conference\Item.cshtml" />
     <Content Include="Views\Settings\Index.cshtml" />
     <Content Include="Views\Shared\Partials\Comments.cshtml" />
     <Content Include="Views\Settings\Shared\Partials\Avatar.cshtml" />
@@ -963,6 +966,7 @@
     <Content Include="Views\Blog\Shared\Partials\UserArticlesList.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Rules.cshtml" />
+    <Content Include="Views\Home\Feedback.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

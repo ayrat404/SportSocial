@@ -9,18 +9,18 @@
       name="ArticleEdit"
       class="blog-form  article__edit article-new__form">
     <div class="row">
-        <div class="col-xs-4">
+        <div class="col-sm-4">
             <div class="blog-form__desc">Заголовок статьи</div>
         </div>
-        <div class="col-xs-8">
+        <div class="col-sm-8">
             <input ng-model="ar.title" required type="text" class="input" placeholder="Заголовок статьи" />
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-4">
+        <div class="col-sm-4">
             <div class="blog-form__desc">Рубрика</div>
         </div>
-        <div class="col-xs-8">
+        <div class="col-sm-8">
             <select ng-model="ar.rubric" required class="input">
                 <option value="" @(Model.Rubric == 0 ? "selected" : "")>Выберите рубрику</option>
                 @foreach (var r in Model.Rubrics)
@@ -31,15 +31,15 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-4">
+        <div class="col-sm-4">
             <div class="blog-form__desc">Фото</div>
         </div>
-        <div class="col-xs-8">
+        <div class="col-sm-8">
             <article-img-uploader images="ar.images"></article-img-uploader>
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-sm-12">
             <div class="blog-form__desc">Текст статьи</div>
             <div text-angular
                  ng-model="ar.text"
@@ -50,7 +50,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-sm-12">
             <a href="@Url.Action("Index", "Blog")" class="link pull-left">Отмена</a>
             <button ng-disabled="prop.btnIsDisabled || ar.text.length < 100 || ar.images.length < 1 || ArticleEdit.$invalid" type="submit" class="btn btn--main pull-right">Отправить на модерацию</button>
         </div>

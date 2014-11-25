@@ -34,7 +34,7 @@ function ($scope, commentsRqst, utilsSrvc, $window, $timeout) {
 
     // загрузка комментариев, которые не отображаются
     // ---------------
-    $scope.loadAll = function () {
+    $scope.loadAll = function (callback) {
         commentsRqst.loadComments({ id: $scope.itemId, itemType: $scope.itemType})
             .then(function(res) {
                 if (res.data.length) {
@@ -44,6 +44,10 @@ function ($scope, commentsRqst, utilsSrvc, $window, $timeout) {
                     $scope.more = 0;
                     // если грузим оставшиеся комменты
                     //$scope.comments = res.data.comments.concat($scope.comments);
+                    // если был передан callback, вызываем его
+                    if (typeof callback == 'function') {
+                        callback(res.data);
+                    }
                 } else {
                     console.log('load comments : server error');
                 }
@@ -69,15 +73,29 @@ function ($scope, commentsRqst, utilsSrvc, $window, $timeout) {
 
     // не в дериктиве, а через селектор id, чтобы снизить нагрузку
     // ---------------
-    $scope.scrollToFor = function (id) {
+    $scope.scrollToFor = function (id, repeatCall) {
         var $el = angular.element("#comment_" + id);
-        angular.element('html, body').animate({
-            scrollTop: $el.offset().top - $window.innerHeight / 2
-        }, 300);
-        $el.addClass('cl__it--light');
-        $timeout(function() {
-            $el.removeClass('cl__it--light');
-        }, 1000);
+        // если комментарий есть на странице, то скроллим к нему
+        // ----------
+        if ($el.length) {
+            angular.element('html, body').animate({
+                scrollTop: $el.offset().top - $window.innerHeight / 2
+            }, 300);
+            $el.addClass('cl__it--light');
+            $timeout(function () {
+                $el.removeClass('cl__it--light');
+            }, 1000);
+        // если нет, то подгружаем все комментарии и ищем его там
+        // ----------
+        } else if (repeatCall !== true) {
+            $scope.loadAll(function () {
+                // добавляем timeout для того чтобы элементы отрисовались
+                // -----
+                $timeout(function () {
+                    $scope.scrollToFor(id, true);
+                });
+            });
+        }
     }
 
     // отправка данных для создания комментария или ответа

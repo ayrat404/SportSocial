@@ -8,8 +8,14 @@
         <div class="block">
             <div class="conf-date">
                 <div>
-                    <a href="@Url.Action("Index", "Conference", new {id = Model.Id})" class="conf-date__link">Видеоконференция на тему "@Model.Title" уже началась! Ссылка</a>
+                    <a href="@Url.Action("Item", "Conference", new {id = Model.Id})" class="conf-date__link">Видеоконференция на тему "@Model.Title" уже началась! Ссылка</a>
                 </div>
+                @if (CurrentUser.IsAnonimous)
+                {
+                    <div class="conf-date__anonim">
+                        Чтобы перейти по ссылке нужно быть зарегистрированным пользователем
+                    </div>
+                }
             </div>
         </div>
     }
@@ -21,11 +27,11 @@
     }
 }
 
-@*Доступпные поля*@
-@*@Model.Title;
-@CurrentUser.User.Profile.Avatar;
-@Model.Description;
-@Model.Date;
-@Model.Status;
-@Model.Stamp;
-@(Model.Status == ConfStatus.Process)*@
+        @*Доступпные поля*@
+        @*@Model.Title;
+            @CurrentUser.User.Profile.Avatar;
+            @Model.Description;
+            @Model.Date;
+            @Model.Status;
+            @Model.Stamp;
+            @(Model.Status == ConfStatus.Process)*@

@@ -29,7 +29,7 @@ angular
                 // создаем флаг пользователь уже проголосовал или нет
                 // ---------------
                 scope.isRated = false;
-                if (scope.isLiked === 'true' || scope.isDisliked === 'true') {
+                if (scope.isLiked === 'True' || scope.isDisliked === 'True') {
                     scope.isRated = true;
                 }
 

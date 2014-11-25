@@ -8,6 +8,7 @@ angular
         return {
             restrict: 'A',
             link: function ($scope, element, attr) {
+                var cropOpts = '?h=100&w=100&mode=crop';
                 $scope.avatar = $scope.avatar != undefined ? $scope.avatar : {};    // модель для изображения
                 $scope.isLoading = false;   // статус загрузки
                 $scope.errors = {
@@ -18,22 +19,21 @@ angular
                 // добавить изображение
                 // ---------------
                 $scope.changeAvatar = function () {
-                    //var test = element.find('.js-img-input');
-                    //debugger;
                     $timeout(function () { element.find('.js-img-input').trigger('click'); });
                 }
 
                 // удалить изображение
                 // ---------------
-                $scope.removeAvatar = function () {
-                    $scope.avatar = {};
-                }
+                //$scope.removeAvatar = function () {
+                //    $scope.avatar = {};
+                //}
 
                 // FileApi плагин
                 // ---------------
                 element.fileapi({
-                    url: '/settings/avatar',
+                    url: '/file/images',
                     accept: 'image/*',
+                    //data: { type: 'avatar' },
                     maxSize: 10 * FileAPI.MB,
                     imageSize: { minWidth: 200, minHeight: 200 },
                     autoUpload: true,
@@ -52,6 +52,7 @@ angular
                         $scope.isLoading = false;
                         if (uiEvt.result.success) {
                             $scope.avatar = uiEvt.result;
+                            $scope.avatar.url = $scope.avatar.url + cropOpts;
                             $scope.errors.server = false;
                         } else {
                             $scope.errors.server = true;

@@ -36,6 +36,7 @@ angular.module('blog').directive('articleImgUploader', ['$timeout', function ($t
             element.fileapi({
                 url: '/file/images',
                 accept: 'image/*',
+                data: { type: 'article' },
                 multiple: false,
                 maxFiles: 1,
                 maxSize: 10 * FileAPI.MB,

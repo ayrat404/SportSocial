@@ -36,7 +36,7 @@ namespace SportSocial.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index(int id)
+        public ActionResult Item(int id)
         {
             var conf = _conferenceService.GetInProcessConf(id);
             return View(conf);

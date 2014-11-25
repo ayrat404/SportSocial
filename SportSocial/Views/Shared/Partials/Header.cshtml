@@ -20,9 +20,9 @@
             </ul>
             @if (!CurrentUser.IsAnonimous)
             {
-                <div class="nav__user">
+                <div class="nav__user"
+                     click-outside="fn.closeHeaderMenu();">
                     <div ng-click="nav.user.isOpen=!nav.user.isOpen"
-                         click-outside="fn.closeHeaderMenu();"
                          class="nav__user__link">
                         <img src="@CurrentUser.User.Profile.Avatar?width=40&height=40&mode=crop" class="nav__user__avatar" />
                         <div class="nav__user__name">@CurrentUser.UserName</div>
@@ -37,7 +37,7 @@
                             }
                             <a href="@Url.Action("My", "Blog")">Мои статьи</a>
                             <a href="@Url.Action("Index", "Settings")">Настройки</a>
-                            <a href="#">Выход</a>
+                            <a href="@Url.Action("Logout", "Login")">Выход</a>
                         </div>
                     </div>
                 </div>
