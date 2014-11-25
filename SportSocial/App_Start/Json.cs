@@ -13,6 +13,7 @@ namespace SportSocial
         {
             Settings = new JsonSerializerSettings
             {
+                NullValueHandling = NullValueHandling.Ignore,
                 ReferenceLoopHandling = ReferenceLoopHandling.Error,
                 ContractResolver = new CamelCasePropertyNamesContractResolver(),
             };

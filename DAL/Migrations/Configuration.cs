@@ -22,6 +22,13 @@ namespace DAL.Migrations
                 new Rubric() { Id = 7, Name = "”пражнени€" },
                 new Rubric() { Id = 8, Name = "Ёлементы" }
             );
+
+            context.Roles.AddOrUpdate(
+                new AppRole("Root"),
+                new AppRole("Admin"),
+                new AppRole("User"),
+                new AppRole("Moderator")
+            );
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

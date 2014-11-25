@@ -1,5 +1,6 @@
 ﻿using BLL.Common.Objects;
 using BLL.Login.ViewModels;
+using BLL.Storage;
 
 namespace BLL.Login
 {
@@ -22,6 +23,9 @@ namespace BLL.Login
         ServiceResult ChangePhone(string phone);
 
         ServiceResult ChangePhoneConfirm(ChangePhoneModel chPhoneModel);
+
         ServiceResult LogOut();
+
+        ImageUploadResult RemoveAvatar();
     }
 }

@@ -69,7 +69,7 @@ namespace BLL.Storage.Impls
                 string url = string.Empty;
                 switch (uploadType)
                 {
-                    case UploadType.Post:
+                    case UploadType.Article:
                         url = Path.Combine(VirtualBlogImagePath, serverFileName);
                         var blogImage = new BlogImage()
                         {
@@ -90,9 +90,13 @@ namespace BLL.Storage.Impls
                             Url = url,
                         };
                         _repository.Add(avatarImage);
+                        _currentUser.User.Profile.Avatar = url;
                         _repository.SaveChanges();
                         id = avatarImage.Id;
                         break;
+                    default:
+                        result.Success = false;
+                        return result;
                 }
                 SaveFile(inputStream, url);
                 result.Url = VirtualPathUtility.ToAbsolute(url);

@@ -5,6 +5,8 @@ using BLL.Common.Services.CurrentUser;
 using BLL.Infrastructure.IdentityConfig;
 using BLL.Login.ViewModels;
 using BLL.Sms;
+using BLL.Storage;
+using BLL.Storage.ViewModels;
 using DAL.DomainModel;
 using DAL.Repository.Interfaces;
 using Knoema.Localization;
@@ -20,6 +22,8 @@ namespace BLL.Login.Impls
         private readonly IAuthenticationManager _authManager;
         private readonly IRepository _repository;
         private readonly ICurrentUser _currentUser;
+
+        private const string DefaultAvatarUrl = "/Content/Images/default-avatar.png";
 
         public LoginService(ISmsService smsService, AppUserManager appUserManager, IAuthenticationManager authManager, IRepository repository, ICurrentUser currentUser)
         {
@@ -109,7 +113,7 @@ namespace BLL.Login.Impls
                     {
                         Id = user.Id,
                         Lang = LanguageHelper.GetCurrentCulture(),
-                        Avatar = "/Content/Images/default-avatar.png",
+                        Avatar = DefaultAvatarUrl,
                     };
                     _repository.Add(profile);
                     _repository.SaveChanges();
@@ -211,6 +215,17 @@ namespace BLL.Login.Impls
             }
             result.ErrorMessage = "Ошибка".Resource(this);
             return result;
+        }
+
+        public ImageUploadResult RemoveAvatar()
+        {
+            var userProfile = _repository.Find<Profile>(_currentUser.UserId);
+            userProfile.Avatar = DefaultAvatarUrl;
+            return new ImageUploadResult
+            {
+                Success = true,
+                Url = DefaultAvatarUrl,
+            };
         }
 
         public ServiceResult ResendSmsCode(string phone)

@@ -50,6 +50,12 @@ namespace SportSocial.Controllers
         {
             return Json(_loginService.ChangePhoneConfirm(chPhoneModel));
         }
+
+        [HttpPost]
+        public ActionResult RemoveAvatar()
+        {
+            return Json(_loginService.RemoveAvatar());
+        }
     }
 
     public class SettingsModel

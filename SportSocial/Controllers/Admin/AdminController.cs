@@ -54,15 +54,13 @@ namespace SportSocial.Controllers
         {
             if (!ModelState.IsValid)
                 return Json(new {success = false});
-            _conferenceService.Create(model);
-            return Json(new {success = true});
+            return Json(_conferenceService.Create(model));
         }
 
         [HttpPost]
         public JsonResult ChangeConferenceStatus(int id, ConfStatus status)
         {
-            _conferenceService.ChangeStatus(id, status);
-            return Json(new {Success = true});
+            return Json(_conferenceService.ChangeStatus(id, status));
         }
 
         [HttpPost]
@@ -70,8 +68,7 @@ namespace SportSocial.Controllers
         {
             if (!ModelState.IsValid)
                 return Json(new {success = false});
-            _conferenceService.Edit(model);
-            return Json(new {success = true});
+            return Json(_conferenceService.Edit(model));
         }
 	}
 }

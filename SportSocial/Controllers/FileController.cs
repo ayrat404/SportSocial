@@ -21,11 +21,14 @@ namespace SportSocial.Controllers
         }
 
         [HttpPost]
-        public ActionResult Images(HttpPostedFileBase uploaderHelper)
+        public ActionResult Images(UploadImageModel model)
         {
-            //return Json(new {success = true, id = 3288388, url = "/storage/images/1.jpg"});
-            var result = _fileService.UploadImage(uploaderHelper.InputStream, uploaderHelper.FileName, UploadType.Post);
-            return Json(result);
+            if (ModelState.IsValid)
+            {
+                var result = _fileService.UploadImage(model.Image.InputStream, model.Image.FileName, model.Type);
+                return Json(result);
+            }
+            return Json(new {Success = false});
         }
 
         public ActionResult UploadImage(UploadImageModel model)
@@ -36,8 +39,8 @@ namespace SportSocial.Controllers
                 {
                     case UploadType.Avatar:
                         return Json(_fileService.UploadAvatar(model.Image.InputStream, model.Image.FileName));
-                    case UploadType.Post:
-                        return Json(_fileService.UploadImage(model.Image.InputStream, model.Image.FileName, UploadType.Post));
+                    case UploadType.Article:
+                        return Json(_fileService.UploadImage(model.Image.InputStream, model.Image.FileName, UploadType.Article));
                     case UploadType.Album:
                         throw new NotImplementedException();
                 }

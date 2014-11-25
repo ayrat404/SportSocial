@@ -222,6 +222,9 @@
     <Content Include="Content\images\pattern\black.png" />
     <Content Include="Content\images\pattern\pattern_vertical.png" />
     <Content Include="Content\images\promo-bg.jpg" />
+    <Content Include="Content\images\promo\1.jpg" />
+    <Content Include="Content\images\promo\2.jpg" />
+    <Content Include="Content\images\promo\overlay.png" />
     <Content Include="Content\images\temp\example.jpg" />
     <Content Include="Content\images\temp\photo1.jpg" />
     <Content Include="Content\images\temp\photo2.jpg" />
