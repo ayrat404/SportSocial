@@ -13,7 +13,7 @@
     <div class="mod__content comment">
         <div ng-if="more!=0"
              class="text-center">
-            <span class="link" ng-click="loadAll();">Показать предыдущие {{more}} {{more | formatWord:['комментарий', 'комментария', 'комментариев']}}</span>
+            <span ng-click="loadAll();" class="link">Показать предыдущие {{more}} {{more | formatWord:['комментарий', 'комментария', 'комментариев']}}</span>
         </div>
         <div class="comment__list"
              ng-cloak>
@@ -32,9 +32,9 @@
                         </div>
                     </div>
                 </div>
-                <div ng-if="c.CommentFor != null"
+                <div ng-if="c.commentFor != null"
                      class="cl__it__for">
-                    Ответ для <span class="link" ng-click="scrollToFor(c.CommentFor.Id)">{{c.commentFor.name}}</span>
+                    Ответ для <span class="link" ng-click="scrollToFor(c.commentFor.id)">{{c.commentFor.name}}</span>
                 </div>
             </div>
             <form ng-submit="createComment(text)"

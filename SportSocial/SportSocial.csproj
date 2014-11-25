@@ -296,6 +296,7 @@
     <Content Include="Scripts\app\blog\modules\conference\confDate.drct.js" />
     <Content Include="Scripts\app\blog\modules\article\redactor.drct.js" />
     <Content Include="Scripts\app\blog\modules\restore-password\restorePassword.ctrl.js" />
+    <Content Include="Scripts\app\blog\modules\settings\avatarUpload.drct.js" />
     <Content Include="Scripts\app\blog\modules\settings\settings.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\settings\settings.srvc.js" />
     <Content Include="Scripts\app\shared\directives\bgSlider.drct.js" />
