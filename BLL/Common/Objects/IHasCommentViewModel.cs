@@ -7,6 +7,7 @@ namespace BLL.Common.Objects
         int Id { get; set; }
         Comment[] Comments { get; set; }
         int CommentsCount { get; set; }
+        int TotalCommentsCount { get; set; }
         CommentItemType ItemType { get; set; }
     }
 

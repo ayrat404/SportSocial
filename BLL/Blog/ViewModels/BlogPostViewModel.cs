@@ -25,6 +25,8 @@ namespace BLL.Blog.ViewModels
 
         public int CommentsCount { get; set; }
 
+        public int TotalCommentsCount { get; set; }
+
         public CommentItemType ItemType { get; set; }
 
         public Comment[] Comments { get; set; }

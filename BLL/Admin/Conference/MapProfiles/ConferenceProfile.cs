@@ -26,6 +26,7 @@ namespace BLL.Admin.Conference.MapProfiles
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status))
                 .ForMember(dest => dest.Url, opt => opt.MapFrom(src => src.Url))
+                .ForMember(dest => dest.TotalCommentsCount, opt => opt.MapFrom(src => src.Comments.Count))
                 .ForMember(dest => dest.Comments, 
                     opt => opt.MapFrom(src => src.Comments.Skip(src.Comments.Count - 3).ToList().Take(3)))
                 .ForMember(dest => dest.CommentsCount, 
