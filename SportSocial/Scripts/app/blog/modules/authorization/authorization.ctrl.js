@@ -5,9 +5,10 @@
 angular.module('blog').controller('AuthorizationCtrl',
     ['$scope',
      '$interval',
+     '$window',
      'loginRqst',
      'utilsSrvc',
-function ($scope, $interval, authorizationRqst, utilsSrvc) {
+function ($scope, $interval, $window, authorizationRqst, utilsSrvc) {
     $scope.loading      =   false;  // показать/скрыть лоадер
     $scope.er = {                   // ошибки
         s404    :   false,          // сервер не доступен

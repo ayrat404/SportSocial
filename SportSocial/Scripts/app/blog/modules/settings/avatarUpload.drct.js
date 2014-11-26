@@ -33,7 +33,7 @@ angular
                 element.fileapi({
                     url: '/file/images',
                     accept: 'image/*',
-                    //data: { type: 'avatar' },
+                    data: { type: 'avatar' },
                     maxSize: 10 * FileAPI.MB,
                     imageSize: { minWidth: 200, minHeight: 200 },
                     autoUpload: true,

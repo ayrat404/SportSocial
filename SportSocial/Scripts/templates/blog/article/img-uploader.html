@@ -2,7 +2,7 @@
     <div>
         <button ng-show="images.length<1" ng-click="addImage()" type="button" class="btn btn-default btn-sm article__edit__upload-btn">Загрузить фото</button>
     </div>
-    <input type="file" name="UploaderHelper" class="hide js-img-input">
+    <input type="file" name="Image" class="hide js-img-input">
 
     <div ng-repeat="img in images" class="article__edit__images">
         <img ng-src="{{img.url}}" class="article__edit__img" />
