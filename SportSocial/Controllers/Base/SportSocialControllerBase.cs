@@ -1,4 +1,7 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Web.Mvc;
@@ -38,6 +41,20 @@ namespace SportSocial.Controllers.Base
                 ContentEncoding = contentEncoding,
                 JsonRequestBehavior = behavior
             };
+        }
+
+        protected string GetModelStateErrors()
+        {
+            var errors = new List<string>();
+            foreach (var value in ModelState.Values)
+            {
+                if (value.Errors.Any())
+                {
+                    var err = value.Errors.GroupBy(e => e.ErrorMessage);
+                    errors.AddRange(err.Select(e => e.Key));
+                }
+            }
+            return string.Join(Environment.NewLine, errors);
         }
     }
 }
