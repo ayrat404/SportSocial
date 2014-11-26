@@ -106,9 +106,13 @@ namespace BLL.Sms
 
         private string GenerateCode()
         {
-            return "1111";
+            #if DEBUG
+                return "1111";
+            #endif
+            #if !DEBUG
             int code = new Random().Next(1000, 9999);
             return code.ToString();
+            #endif
         }
 
         private string GenerateMessage(string code = null)
