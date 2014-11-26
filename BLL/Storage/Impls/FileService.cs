@@ -80,10 +80,8 @@ namespace BLL.Storage.Impls
                         id = blogImage.Id;
                         break;
                     case UploadType.Avatar:
-                        string virtualPath = Path.Combine(VirtualPhotosImagePath, _currentUser.UserId);
-                        if (!Directory.Exists(virtualPath))
-                            Directory.CreateDirectory(virtualPath);
-                        url = Path.Combine(virtualPath, url);
+                        string virtualPath = Path.Combine(VirtualPhotosImagePath, _currentUser.UserId + "/");
+                        url = string.Concat(virtualPath, serverFileName);
                         var avatarImage = new UserAvatarPhoto()
                         {
                             UserId = _currentUser.UserId,
@@ -115,6 +113,9 @@ namespace BLL.Storage.Impls
             using (var stream = new MemoryStream())
             {
                 string serverPath = HttpContext.Current.Server.MapPath(filePath);
+                string dir = Path.GetDirectoryName(serverPath);
+                if (!Directory.Exists(dir))
+                    Directory.CreateDirectory(dir);
 
                 fileStream.Position = 0;
                 fileStream.CopyTo(stream);

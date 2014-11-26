@@ -21,7 +21,7 @@
                 <div ng-attr-id="{{'comment_' + c.id}}"
                      class="cl__it__inner">
                     <div class="cl__it__av-wrap">
-                        <img ng-src="{{c.avatar}}" class="cl__it__av" alt="{{c.name}} {{c.surname}}" />
+                        <img ng-src="{{c.avatar + '?w=80&h=80&mode=crop'}}" class="cl__it__av" alt="{{c.name}} {{c.surname}}" />
                     </div>
                     <div class="cl__it__info">
                         <div class="cl__it__name">{{c.name}} {{c.surname}}</div>

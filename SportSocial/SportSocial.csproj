@@ -990,6 +990,7 @@
     <Folder Include="Scripts\spa\common\utils\" />
     <Folder Include="Scripts\spa\entities\" />
     <Folder Include="Storage\Images\" />
+    <Folder Include="Storage\User\" />
     <Folder Include="Views\Conference\Shared\Layouts\" />
     <Folder Include="Views\Conference\Shared\Partials\" />
     <Folder Include="Views\File\" />

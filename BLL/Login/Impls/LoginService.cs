@@ -219,8 +219,10 @@ namespace BLL.Login.Impls
 
         public ImageUploadResult RemoveAvatar()
         {
-            var userProfile = _repository.Find<Profile>(_currentUser.UserId);
-            userProfile.Avatar = DefaultAvatarUrl;
+            //var userProfile = _repository.Find<Profile>(_currentUser.UserId);
+            //userProfile.Avatar = DefaultAvatarUrl;
+            _currentUser.User.Profile.Avatar = DefaultAvatarUrl;
+            _repository.SaveChanges();
             return new ImageUploadResult
             {
                 Success = true,
