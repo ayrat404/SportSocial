@@ -50,7 +50,7 @@ namespace SportSocial.Controllers
             {
                 return Json(_loginService.SignIn(model));
             }
-            return Json(new {success = false, ErrorMessage = GetErrors()}, jsonContentType);
+            return Json(new {success = false, ErrorMessage = GetModelStateErrors()}, jsonContentType);
         }
 
         [HttpPost]
@@ -61,7 +61,7 @@ namespace SportSocial.Controllers
             {
                 return Json(_loginService.PreRegister(model, url));
             }   
-            return Json(new {success = false, ErrorMessage = GetErrors()}, jsonContentType);
+            return Json(new {success = false, ErrorMessage = GetModelStateErrors()}, jsonContentType);
         }
 
         [HttpPost]
@@ -72,7 +72,7 @@ namespace SportSocial.Controllers
             {
                 return Json(_loginService.ConfirmSmsCode(confirmModel));
             }
-            return Json(new { success = false, errorMessage = "Не валидные значения полей" });
+            return Json(new { success = false, errorMessage = GetModelStateErrors() });
         }
 
         [HttpPost]
