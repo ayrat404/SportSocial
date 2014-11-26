@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Collections.Generic;
 using BLL.Comments.Objects;
 using BLL.Common.Objects;
 using BLL.Common.Services.CurrentUser;
 using BLL.Infrastructure.Map;
-using DAL.DomainModel;
-using DAL.DomainModel.BlogEntities;
 using DAL.DomainModel.Interfaces;
 using DAL.Repository.Interfaces;
 namespace BLL.Comments

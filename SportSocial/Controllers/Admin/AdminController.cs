@@ -8,7 +8,7 @@ using WebGrease.Css.Extensions;
 
 namespace SportSocial.Controllers
 {
-    //[Authorize]
+    [Authorize(Roles = "Admin")]
     public class AdminController :SportSocialControllerBase
     {
         private readonly IBlogService _blogService;
@@ -20,7 +20,7 @@ namespace SportSocial.Controllers
             _conferenceService = conferenceService;
         }
 
-        [AllowAnonymous]
+        [HttpGet]
         public ActionResult Index()
         {
             return View();

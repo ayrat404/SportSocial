@@ -68,6 +68,10 @@ namespace BLL.Admin.Conference.Impls
                     }
                 }
                 conf = model.MapTo(conf);
+                if ((conf.Status == ConfStatus.Finish || conf.Status == ConfStatus.Remove) && conf.Date > DateTime.Now)
+                {
+                    conf.Status = ConfStatus.Created;
+                }
                 _repository.SaveChanges();
             }
             return result;
