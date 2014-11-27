@@ -75,25 +75,25 @@
 
         &__menu-wrap {
             position: relative;
+        }
 
-            .nav__user__menu {
-                position: absolute;
-                top: 0;
-                right: 0;
-                left: 0;
-                padding: 10px 20px;
-                background: #000;
-                text-align: left;
+        &__menu {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            padding: 10px 20px;
+            background: #000;
+            text-align: left;
 
-                a {
-                    display: block;
-                    color: @color-gray1;
-                    font-size: 1.2em;
+            a {
+                display: block;
+                color: @color-gray1;
+                font-size: 1.2em;
 
-                    &:hover {
-                        color: #fff;
-                        text-decoration: none;
-                    }
+                &:hover {
+                    color: #fff;
+                    text-decoration: none;
                 }
             }
         }
@@ -183,6 +183,20 @@
                     }
                 }
             }
+        }
+    }
+}
+
+@media (max-width: @screen-sm-min) {
+    .nav__user {
+        width: auto;
+
+        &__name {
+            display: none;
+        }
+
+        &__menu {
+            left: auto;
         }
     }
 }

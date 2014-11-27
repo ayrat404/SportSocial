@@ -2,7 +2,7 @@ var app = angular.module('admin', ['shared', 'ngRoute']);
 
 // SPA admin
 // ---------------
-app.config(function ($routeProvider) {
+app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
         // модерация статей
         // ---------------
@@ -28,6 +28,6 @@ app.config(function ($routeProvider) {
             templateUrl: '/Scripts/templates/admin/conference/conferenceEdit.html',
             controller: 'ConferenceEditCtrl'
         });
-});
+}]);
 
 

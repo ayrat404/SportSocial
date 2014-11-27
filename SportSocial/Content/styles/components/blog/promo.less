@@ -2,12 +2,12 @@
 ---------------------------------------------------------------------------------- */
 
 .promo {
-    min-height: 530px;
     //background: url('../../../images/promo-bg.jpg') center center no-repeat;
     background-size: cover;
     position: relative;
     margin-top: -20px;
     overflow: hidden;
+    max-height: 530px;
 
     &__line {
         color: #fff;
@@ -36,11 +36,6 @@
 
     &__bg-img {
         width: 100%;
-        height: auto;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 1;
         .transition(all .3s linear);
     }
 

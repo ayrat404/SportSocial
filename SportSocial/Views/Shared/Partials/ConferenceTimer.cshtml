@@ -3,7 +3,7 @@
 
 @if (Model != null)
 {
-    if (Model.Stamp < 0)
+    if (Model.Status == ConfStatus.Process)
     {
         <div class="block">
             <div class="conf-date">
