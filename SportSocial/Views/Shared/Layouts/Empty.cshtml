@@ -28,6 +28,6 @@
     @RenderBody()
     @Scripts.Render("~/bundles/assets/scripts")
     @RenderSection("Scripts", false)
-    @RenderLocalizationIncludes(true)
+    @RenderLocalizationIncludes(CurrentUser.IsAdmin)
 </body>
 </html>

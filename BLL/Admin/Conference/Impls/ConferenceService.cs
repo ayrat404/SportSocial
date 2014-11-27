@@ -150,7 +150,8 @@ namespace BLL.Admin.Conference.Impls
                 return false;
             }
             var videoId = HttpUtility.ParseQueryString(url.Query)["v"];
-            if (url.Host.Contains("youtube.") && !string.IsNullOrEmpty(videoId))
+            if ((url.Host.Contains("youtube.") && !string.IsNullOrEmpty(videoId)) 
+                || url.Host.Contains("youtu.be"))
             {
                 return true;
             }
@@ -162,7 +163,8 @@ namespace BLL.Admin.Conference.Impls
             if (string.IsNullOrEmpty(youtubeUrl))
                 return youtubeUrl;
             var url = new Uri(youtubeUrl);
-            var videoId = HttpUtility.ParseQueryString(url.Query)["v"];
+            string videoId;
+            videoId = url.Host.Contains("youtu.be") ? url.Segments[1] : HttpUtility.ParseQueryString(url.Query)["v"];
             return "//www.youtube.com/embed/" + videoId;
         }
 

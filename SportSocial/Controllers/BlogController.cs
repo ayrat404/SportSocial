@@ -1,12 +1,9 @@
-﻿using System;
-using System.Linq;
-using System.Text.RegularExpressions;
+﻿using System.Linq;
 using System.Web.Mvc;
 using BLL.Blog;
 using BLL.Blog.ViewModels;
 using PagedList;
 using SportSocial.Controllers.Base;
-using WebGrease.Css.Extensions;
 
 namespace SportSocial.Controllers
 {
@@ -73,6 +70,7 @@ namespace SportSocial.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult Item(int id)
         {
             return View(_blogService.GetPost(id));

@@ -44,18 +44,18 @@ namespace SportSocial.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public JsonResult SignIn(SignInModel model, string returnUrl)
+        public JsonResult SignIn(SignInModel model, string returnUrl = "/")
         {
             if (ModelState.IsValid)
             {
                 return Json(_loginService.SignIn(model));
             }
-            return Json(new {success = false, ErrorMessage = GetModelStateErrors()}, jsonContentType);
+            return Json(new {success = false, ErrorMessage = GetModelStateErrors(), Redirect = returnUrl}, jsonContentType);
         }
 
         [HttpPost]
         [AllowAnonymous]
-        public JsonResult Register(RegistratioinModel model, string url = "")
+        public JsonResult Register(RegistratioinModel model, string url = "/")
         {
             if (ModelState.IsValid)
             {
