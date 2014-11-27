@@ -4,7 +4,7 @@ angular.module('blog').factory('feedbackRqst', ['$http', 'serializeObj', functio
     var send = function (action, obj) {
         return $http({
             method  :   'POST',
-            url     :   '/Feedback/' + action,
+            url     :   '/Home/' + action,
             data    :   obj
         });
     };
@@ -12,7 +12,7 @@ angular.module('blog').factory('feedbackRqst', ['$http', 'serializeObj', functio
         // Отправка отзыва
         // --------------
         sendFeedback: function(obj) {
-            return send('Send', obj);
+            return send('FeedBack', obj);
         }
     };
 }]);
