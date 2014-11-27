@@ -1,47 +1,49 @@
 ﻿<div class="nav nav--top">
     <div class="container">
         <div class="row">
-            <a href="@Url.Action("Index", "Blog")" class="nav__logo">
-                <img src="~/Content/images/icons/logo.png" alt="Fortress" />
-            </a>
-            <ul class="nav__list">
-                <li>
-                    <a href="@Url.Action("Index", "Blog")" class="nav__list__link">Блог</a>
-                </li>
-                @*<li>
-                    <a href="#" class="nav__list__link">Конференция</a>
-                </li>
-                <li>
-                    <a href="#" class="nav__list__link">Новости компании</a>
-                </li>*@
-                <li>
-                    <span class="nav__list__link nav__list__link--disable" data-toggle="tooltip" data-placement="bottom" title="в разработке">Соц.сеть</span>
-                </li>
-            </ul>
-            @if (!CurrentUser.IsAnonimous)
-            {
-                <div class="nav__user"
-                     click-outside="fn.closeHeaderMenu();">
-                    <div ng-click="nav.user.isOpen=!nav.user.isOpen"
-                         class="nav__user__link">
-                        <img src="@CurrentUser.User.Profile.Avatar?width=40&height=40&mode=crop" class="nav__user__avatar" />
-                        <div class="nav__user__name">@CurrentUser.UserName</div>
-                    </div>
-                    <div ng-show="nav.user.isOpen==true"
-                         ng-cloak
-                         class="nav__user__menu-wrap">
-                        <div class="nav__user__menu">
-                            @if (CurrentUser.IsAdmin)
-                            {
-                                <a href="@Url.Action("Index", "Admin")">Панель управления</a>
-                            }
-                            <a href="@Url.Action("My", "Blog")">Мои статьи</a>
-                            <a href="@Url.Action("Index", "Settings")">Настройки</a>
-                            <a href="@Url.Action("Logout", "Login")">Выход</a>
+            <div class="col-xs-12">
+                <a href="@Url.Action("Index", "Blog")" class="nav__logo">
+                    <img src="~/Content/images/icons/logo.png" alt="Fortress" />
+                </a>
+                <ul class="nav__list">
+                    <li>
+                        <a href="@Url.Action("Index", "Blog")" class="nav__list__link">Блог</a>
+                    </li>
+                    @*<li>
+                <a href="#" class="nav__list__link">Конференция</a>
+            </li>
+            <li>
+                <a href="#" class="nav__list__link">Новости компании</a>
+            </li>*@
+                    <li>
+                        <span class="nav__list__link nav__list__link--disable" data-toggle="tooltip" data-placement="bottom" title="в разработке">Соц.сеть</span>
+                    </li>
+                </ul>
+                @if (!CurrentUser.IsAnonimous)
+                {
+                    <div class="nav__user"
+                         click-outside="fn.closeHeaderMenu();">
+                        <div ng-click="nav.user.isOpen=!nav.user.isOpen"
+                             class="nav__user__link">
+                            <img src="@CurrentUser.User.Profile.Avatar?width=40&height=40&mode=crop" class="nav__user__avatar" />
+                            <div class="nav__user__name">@CurrentUser.UserName</div>
+                        </div>
+                        <div ng-show="nav.user.isOpen==true"
+                             ng-cloak
+                             class="nav__user__menu-wrap">
+                            <div class="nav__user__menu">
+                                @if (CurrentUser.IsAdmin)
+                                {
+                                    <a href="@Url.Action("Index", "Admin")">Панель управления</a>
+                                }
+                                <a href="@Url.Action("My", "Blog")">Мои статьи</a>
+                                <a href="@Url.Action("Index", "Settings")">Настройки</a>
+                                <a href="@Url.Action("Logout", "Login")">Выход</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            }
+                }
+            </div>
         </div>
     </div>
 </div>

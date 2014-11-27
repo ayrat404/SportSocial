@@ -8,6 +8,12 @@
         <div class="row">
             <div class="col-sm-8">
                 <div class="article__item block">
+                    @if (CurrentUser.UserId == Model.AuthorId)
+                    {
+                        <div class="article__item__edit">
+                            <a href="@Url.Action("Edit", "Blog", new {id = Model.Id})">Редактировать статью</a>
+                        </div>
+                    }
                     <div class="article__item__img-wrap">
                         <img src="@Model.Images[0].Url?width=800&height=430&mode=crop" alt="статьюшка" class="article__item__img" />
                     </div>

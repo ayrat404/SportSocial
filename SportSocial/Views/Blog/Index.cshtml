@@ -11,58 +11,57 @@
     @Html.Partial("Shared/Partials/Blocks/Promo")
 }
 
-@*Навигация по контенту*@
-@Html.Partial("Shared/Partials/Blocks/ContentNavigation")
+    @*Навигация по контенту*@
+    @Html.Partial("Shared/Partials/Blocks/ContentNavigation")
 
-<div class="blog__content block">
-    <div class="container">
-        <div class="row blog__content__top">
-            <div class="col-sm-8">
-                
-                @*Список статей*@
-                @Html.Partial("Shared/Partials/BlogArticlesList")
-            </div>
-            <div class="col-sm-4">
-                
-                @*Блок авторизации/регистрации*@
-                @if (CurrentUser.IsAnonimous)
-                {
-                @Html.Partial("Shared/Partials/Blocks/AuthRegBlock")
-                }
+    <div class="blog__content block">
+        <div class="container">
+            <div class="row blog__content__top">
+                <div class="col-sm-8">
 
-                @*Таймер конференции*@
-                @{ Html.RenderAction("RenderTime", "Conference"); }
-                
-                @*Блок меню (по рубрикам)*@
-                @{ Html.RenderAction("GetRubrics", "Blog", new {id = ViewBag.Rubric}); }
+                    @*Список статей*@
+                    @Html.Partial("Shared/Partials/BlogArticlesList")
+                </div>
+                <div class="col-sm-4">
+
+                    @*Блок авторизации/регистрации*@
+                    @if (CurrentUser.IsAnonimous)
+                    {
+                        @Html.Partial("Shared/Partials/Blocks/AuthRegBlock")
+                    }
+
+                    @*Таймер конференции*@
+                    @{ Html.RenderAction("RenderTime", "Conference"); }
+
+                    @*Блок меню (по рубрикам)*@
+                    @{ Html.RenderAction("GetRubrics", "Blog", new { id = ViewBag.Rubric }); }
+                </div>
             </div>
-        </div>
-        <div class="row blog__content__middle">
-            @*Видео*@
-            <div class="video-row">
-                
+            <div class="row blog__content__middle">
+                @*Видео*@
+                <div class="video-row">
+
+                </div>
             </div>
-        </div>
-        <div class="row blog__content__bottom">
-            @*Фотогалерея*@
-            <div class="block galery">
-                <div class="galery__title col-xs-12">Фотогалерея</div>
-                <div class="col-xs-8">
-                    <div class="galery__item galery__item--lg">
-                        <img src="~/Content/images/temp/photo1.jpg" alt="Картиночка" class="galery__item__img" />
-                        <div class="galery__item__info">
-                            <div class="galery__item__title">
-                                Тренировка с грушей
+            <div class="row blog__content__bottom">
+                @*Фотогалерея*@
+                <div class="block galery">
+                    <div class="galery__title col-xs-12">Фотогалерея</div>
+                    <div class="col-sm-8">
+                        <div class="galery__item galery__item--lg">
+                            <img src="~/Content/images/temp/photo1.jpg" alt="Картиночка" class="galery__item__img" />
+                            <div class="galery__item__info">
+                                <div class="galery__item__title">
+                                    Тренировка с грушей
+                                </div>
+                                <div class="galery__item__desc">
+                                    Боксерская груша – кожаный снаряд, предназначенный для отработки точности, резкости и быстроты прямых и боковых ударов в боксе. Удары по груше развивают мускулатуру рук, виртуозность в работе.
+                                </div>
+                                <a href="#" class="btn btn--transparent">Подробнее</a>
                             </div>
-                            <div class="galery__item__desc">
-                                Боксерская груша – кожаный снаряд, предназначенный для отработки точности, резкости и быстроты прямых и боковых ударов в боксе. Удары по груше развивают мускулатуру рук, виртуозность в работе.
-                            </div>
-                            <a href="#" class="btn btn--transparent">Подробнее</a>
                         </div>
                     </div>
-                </div>
-                <div class="col-xs-4">
-                    <div class="galery__item galery__item--sm block">
+                    <div class="col-xs-6 col-sm-4 galery__item galery__item--sm block">
                         <img src="~/Content/images/temp/photo2.jpg" alt="Картиночка" class="galery__item__img" />
                         <div class="galery__item__info">
                             <div class="galery__item__title">
@@ -71,7 +70,7 @@
                             <a href="#" class="btn btn--transparent">Подробнее</a>
                         </div>
                     </div>
-                    <div class="galery__item galery__item--sm">
+                    <div class="col-xs-6 col-sm-4 galery__item galery__item--sm">
                         <img src="~/Content/images/temp/photo3.jpg" alt="Картиночка" class="galery__item__img" />
                         <div class="galery__item__info">
                             <div class="galery__item__title">
@@ -84,4 +83,3 @@
             </div>
         </div>
     </div>
-</div>
