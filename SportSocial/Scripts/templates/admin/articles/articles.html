@@ -76,6 +76,7 @@
                             Убрать с публикации
                         </button>
                         <button ng-click="changeArticleStatus(ar.id, 'Fortress', ar)"
+                                ng-if="ar.status!=3"
                                 class="btn btn-success">
                             Отобразить на главной
                         </button>

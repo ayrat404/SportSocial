@@ -802,6 +802,7 @@
     <Content Include="Content\fonts\ProximaNova\proximanova-regpn.woff2" />
     <Content Include="Content\styles\components\common\tooltip.less" />
     <Content Include="NLog.config" />
+    <Content Include="Content\styles\view\payment.less" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -983,6 +984,7 @@
     <Content Include="Views\Pay\error.cshtml" />
     <Content Include="Views\Pay\PayPal.cshtml" />
     <Content Include="Views\Pay\Robokassa.cshtml" />
+    <Content Include="Views\Blog\FortressPosts.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
