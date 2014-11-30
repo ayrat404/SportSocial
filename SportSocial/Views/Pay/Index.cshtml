@@ -1,6 +1,7 @@
 ﻿@model BLL.Payment.ViewModels.RobokassaViewModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Выбор способа оплаты";
+    Layout = "../Blog/Shared/Layouts/BlogLayout.cshtml";
 }
 
 <h2>Index</h2>
@@ -38,3 +39,28 @@
     <input type="image" src="https://www.sandbox.paypal.com/ru_RU/i/btn/btn_paynow_LG.gif" border="0" name="submit" alt="PayPal — более безопасный и легкий способ оплаты через Интернет!">
     <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <div class="mod block">
+                <div class="mod__header">
+                    <div class="mod__header__title">Выбор способа оплаты</div>
+                </div>
+                <div class="mod__content p-all">
+                    <div class="tabs-content">
+                        <p>Стоимость платного аккаунта составляет 100 рублей. Платный аккаунт открывает доступ к конференциям Fortress.</p>
+                        <p>Выберите один из предложенных способов оплаты:</p>
+                        <ul>
+                            <li>
+                                <a href="#">Робокасса</a>
+                            </li>
+                            <li>
+                                <a href="#">PayPal</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

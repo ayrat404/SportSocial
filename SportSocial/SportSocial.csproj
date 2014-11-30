@@ -973,6 +973,8 @@
     <Content Include="Views\Pay\success.cshtml" />
     <Content Include="Views\Pay\cancel.cshtml" />
     <Content Include="Views\Pay\error.cshtml" />
+    <Content Include="Views\Pay\PayPal.cshtml" />
+    <Content Include="Views\Pay\Robokassa.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
