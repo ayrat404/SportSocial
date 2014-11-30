@@ -1,0 +1,9 @@
+﻿@model BLL.Payment.ViewModels.RobokassaViewModel
+<form action='http://test.robokassa.ru/Index.aspx' method=GET>
+    <input type=hidden name="MrchLogin" value="@Model.MerchantLogin">
+    <input type=hidden name="OutSum" value="@Model.Cost">
+    <input type=hidden name="InvId" value=@Model.Id>
+    <input type=hidden name="Desc" value="@Model.Description">
+    <input type=hidden name="SignatureValue" value="@Model.Signature">
+    <input type=submit value='Оплатить'>
+</form>

@@ -1,4 +1,9 @@
-﻿using System.Web;
+﻿using System.Globalization;
+using System.Linq;
+using System.Web;
+using BLL.Common.Extensions;
+using BLL.Common.Objects;
+using BLL.Common.Services.CurrentUser;
 using BLL.Infrastructure.Map;
 using BLL.Payment.ViewModels;
 using DAL.DomainModel;
@@ -11,15 +16,19 @@ namespace BLL.Payment.Impls
     public class PayService : IPayService
     {
         private readonly IPaymentRepository _paymentRepository;
+        private readonly IRepository _repository;
+        private readonly ICurrentUser _currentUser;
 
-        public PayService(IPaymentRepository paymentRepository)
+        public PayService(IPaymentRepository paymentRepository, IRepository repository, ICurrentUser currentUser)
         {
             _paymentRepository = paymentRepository;
+            _repository = repository;
+            _currentUser = currentUser;
         }
 
-        public PayResult InitPay(int productId, PayType payType, int count = 1)
+        public PayResult InitPay(PayType payType, int productId, int count)
         {
-            var result = new PayResult() {Success = true};
+            var result = new PayResult {Success = true};
             var product = _paymentRepository.GetProductById(productId);
             if (product == null)
             {
@@ -27,7 +36,7 @@ namespace BLL.Payment.Impls
                 return result;
             }
             var cost = product.Cost*count;
-            var pay = new Pay()
+            var pay = new Pay
             {
                 ProductId = productId,
                 Amount = cost,
@@ -41,10 +50,33 @@ namespace BLL.Payment.Impls
             _paymentRepository.SaveChanges();
             result.PayModel = new PayViewModel
             {
-                Cost = pay.Amount.ToString(),
+                Cost = pay.Amount.ToStringWithDot(),
                 Id = pay.Id,
-                Description = pay.Comment
+                Description = pay.Comment,
+                Currency = product.Currency
             };
+            return result;
+        }
+
+        public ServiceResult Cancel()
+        {
+            var result = new ServiceResult
+            {
+                Success = true
+            };
+            var lastPay = _repository
+                .Queryable<Pay>()
+                .Where(p => p.UserId == _currentUser.UserId)
+                .OrderByDescending(p => p.Created)
+                .Take(1)
+                .SingleOrDefault();
+            if (lastPay == null)
+                return result;
+            if (lastPay.PaySatus == PaySatus.Created)
+            {
+                lastPay.PaySatus = PaySatus.Canceled;
+                _repository.SaveChanges();
+            }
             return result;
         }
     }

@@ -162,7 +162,7 @@ namespace DAL.Migrations
                 "dbo.Products",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Int(nullable: false, identity: false),
                         Label = c.String(),
                         Cost = c.Decimal(nullable: false, precision: 18, scale: 2),
                         Currency = c.String(),

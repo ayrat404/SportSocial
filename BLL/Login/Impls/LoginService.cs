@@ -34,11 +34,12 @@ namespace BLL.Login.Impls
             _currentUser = currentUser;
         }
 
-        public LoginServiceResult SignIn(SignInModel signInModel)
+        public LoginServiceResult SignIn(SignInModel signInModel, string returnUrl)
         {
             var result = new LoginServiceResult
             {
-                Success = true
+                Success = true,
+                ReturnUrl = returnUrl
             };
             var user = _appUserManager.Find(signInModel.Phone, signInModel.Pass);
             if (user == null)

@@ -127,6 +127,10 @@
     <Compile Include="Migrations\201411241902225_ChangeBlogImageSchema.Designer.cs">
       <DependentUpon>201411241902225_ChangeBlogImageSchema.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411301138289_ProfileIsPaidField.cs" />
+    <Compile Include="Migrations\201411301138289_ProfileIsPaidField.Designer.cs">
+      <DependentUpon>201411301138289_ProfileIsPaidField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AccountRepository.cs" />
@@ -154,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411241902225_ChangeBlogImageSchema.resx">
       <DependentUpon>201411241902225_ChangeBlogImageSchema.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411301138289_ProfileIsPaidField.resx">
+      <DependentUpon>201411301138289_ProfileIsPaidField.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

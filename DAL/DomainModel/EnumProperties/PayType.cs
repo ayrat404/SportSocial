@@ -3,6 +3,7 @@
     public enum PayType
     {
         PayPal,
-        Robokassa
+        Robokassa,
+        Init
     }
 }

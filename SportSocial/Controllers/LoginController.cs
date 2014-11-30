@@ -48,7 +48,7 @@ namespace SportSocial.Controllers
         {
             if (ModelState.IsValid)
             {
-                return Json(_loginService.SignIn(model));
+                return Json(_loginService.SignIn(model, returnUrl));
             }
             return Json(new {success = false, ErrorMessage = GetModelStateErrors(), Redirect = returnUrl}, jsonContentType);
         }

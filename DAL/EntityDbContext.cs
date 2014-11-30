@@ -22,6 +22,7 @@ namespace DAL
     #endif
         public DbSet<SmsCode> SmsCodes { get; set; }
         public DbSet<Post> Posts { get; set; }
+        public DbSet<Product> Products { get; set; }
         public DbSet<Rubric> Rubrics { get; set; }
         public DbSet<Pay> Pays { get; set; }
         public DbSet<Profile> Profiles { get; set; }

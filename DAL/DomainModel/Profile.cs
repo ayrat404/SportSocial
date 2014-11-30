@@ -14,5 +14,7 @@ namespace DAL.DomainModel
         public string Avatar { get; set; }
 
         public virtual AppUser AppUser { get; set; }
+
+        public bool IsPaid { get; set; }
     }
 }

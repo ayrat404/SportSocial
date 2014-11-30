@@ -12,9 +12,9 @@ namespace BLL.Common.Helpers
 
         public static string Md5(byte[] bytesToHash)
         {
-            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+            var md5 = new MD5CryptoServiceProvider();
             byte[] bSignature = md5.ComputeHash(bytesToHash);
-            StringBuilder sbSignature = new StringBuilder();
+            var sbSignature = new StringBuilder();
             foreach (byte b in bSignature)
                 sbSignature.AppendFormat("{0:x2}", b);
             return sbSignature.ToString();

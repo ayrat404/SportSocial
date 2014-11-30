@@ -6,7 +6,7 @@ namespace BLL.Login
 {
     public interface ILoginService
     {
-        LoginServiceResult SignIn(SignInModel signInModel);
+        LoginServiceResult SignIn(SignInModel signInModel, string returnUrl);
 
         LoginServiceResult PreRegister(RegistratioinModel regModel, string url);
 

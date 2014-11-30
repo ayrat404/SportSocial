@@ -31,6 +31,17 @@ namespace DAL.Migrations
                 new AppRole("Root") { Id = "3541400f-1812-4126-9d5a-380e8a18ba80" },
                 new AppRole("User") { Id = "6c66a0c3-075b-4089-b338-af857d2f49df" }
             );
+
+            context.Products.AddOrUpdate(
+                new Product
+                {
+                    Id = 1,
+                    Cost = 100,
+                    Label = "Подписка на месяц",
+                    Currency = "RUB",
+                    Lang = "ru-RU",
+                }
+            );
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

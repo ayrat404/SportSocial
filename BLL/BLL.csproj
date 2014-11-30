@@ -144,6 +144,7 @@
     <Compile Include="Blog\ViewModels\PostForAdminViewModel.cs" />
     <Compile Include="Blog\ViewModels\PostModel.cs" />
     <Compile Include="Common\Enums\LangType.cs" />
+    <Compile Include="Common\Extensions\DecimalExtension.cs" />
     <Compile Include="Common\Extensions\EnumExtensions.cs" />
     <Compile Include="Common\Extensions\JsonExtension.cs" />
     <Compile Include="Common\Extensions\StringExtensions.cs" />
@@ -183,7 +184,9 @@
     <Compile Include="Payment\IPayService.cs" />
     <Compile Include="Payment\Impls\PayService.cs" />
     <Compile Include="Payment\IRobokassaService.cs" />
+    <Compile Include="Payment\ViewModels\PayPalModel.cs" />
     <Compile Include="Payment\ViewModels\PayPalResult.cs" />
+    <Compile Include="Payment\ViewModels\PayPalSuccesModel.cs" />
     <Compile Include="Payment\ViewModels\PayResult.cs" />
     <Compile Include="Payment\ViewModels\PayViewModel.cs" />
     <Compile Include="Payment\ViewModels\RobocassaResultModel.cs" />

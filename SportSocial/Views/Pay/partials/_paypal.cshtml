@@ -1,0 +1,18 @@
+﻿@model BLL.Payment.ViewModels.PayPalModel
+<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+    <input type="hidden" name="cmd" value="_xclick">
+    <input type="hidden" name="business" value="@Model.Business">
+    <input type="hidden" name="item_name" value="@Model.Description">
+    @*<input type="hidden" name="item_number" value="">*@
+    <input type="hidden" name="item_number" value="@Model.Id">
+    <input type="hidden" name="return" value="@Model.SuccessUrl">
+    <input type="hidden" name="cancel_return" value="@Model.CancelUrl">
+    <input type="hidden" name="amount" value="@Model.Cost">
+    <input type="hidden" name="currency_code" value="@Model.Currency">
+    <input type="hidden" name="rm" value="2">
+    <input type="hidden" name="lc" value="RU">
+    <input type="hidden" name="charset" value="utf-8">
+    <input type="hidden" name="cbt" value="@R("Fortress - лучшый блог о культуре спорта")" />
+    <input type="image" src="https://www.sandbox.paypal.com/ru_RU/i/btn/btn_paynow_LG.gif" border="0" name="submit" alt="PayPal — более безопасный и легкий способ оплаты через Интернет!">
+    <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>

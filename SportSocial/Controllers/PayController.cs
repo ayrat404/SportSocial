@@ -1,7 +1,9 @@
 ﻿using System.Web.Mvc;
+using Antlr.Runtime.Misc;
 using BLL.Payment;
 using BLL.Payment.ViewModels;
 using DAL.DomainModel.EnumProperties;
+using NLog;
 using SportSocial.Controllers.Base;
 
 namespace SportSocial.Controllers
@@ -12,6 +14,8 @@ namespace SportSocial.Controllers
         private readonly IPayPalService _payPalService;
         private readonly IPayService _payService;
         private readonly IRobokassaService _robokassaService;
+        private static Logger _logger = LogManager.GetCurrentClassLogger();
+
 
         public PayController(IPayPalService payPalService, IPayService payService, IRobokassaService robokassaService)
         {
@@ -20,50 +24,71 @@ namespace SportSocial.Controllers
             _robokassaService = robokassaService;
         }
 
+        //[HttpGet]
+        //public ActionResult Index()
+        //{
+        //    return View();
+        //}
+
         [HttpGet]
-        public ActionResult Index(int productId, PayType payType)
+        public ActionResult Index(PayType payType, int productId, int count = 1)
         {
-            var payInfo = _payService.InitPay(productId, PayType.Robokassa);
-            var model = _robokassaService.CreateModel(payInfo.PayModel.Id);
-            return View(model);
+            var payInfo = _payService.InitPay(payType, productId, count);
+            PayViewModel model;
+            switch (payType)
+            {
+                case PayType.Robokassa:
+                    model = _robokassaService.CreateModel(payInfo.PayModel.Id);
+                    break;
+                case PayType.PayPal:
+                    model = _payPalService.CreateModel(payInfo.PayModel);
+                    break;
+                default:
+                    return RedirectToAction("index");
+            }
+            return View("confirm", model);
         }
 
         [HttpGet]
-        public ActionResult RobokassaSuccess(int InvId, string OutSum, string SignatureValue, string Culture)
+        public ActionResult RobokassaSuccess(int invId, string outSum, string signatureValue, string culture)
         {
-            RobocassaResultModel successModel = new RobocassaResultModel
+            var successModel = new RobocassaResultModel
             {
-                InvId = InvId,
-                OutSum = OutSum,
-                SignatureValue = SignatureValue
+                InvId = invId,
+                OutSum = outSum,
+                SignatureValue = signatureValue
             };
             var result = _robokassaService.PaySuccess(successModel);
             return View();
         }
 
+        //[HttpPost]
+        //public ActionResult Paypal(string amount)
+        //{
+        //    //var result = _payPalService.SetExpressCheckout(amount);
+        //    //if (result.Success)
+        //    //{
+        //    //    return Redirect(result.RedirectUrl);
+        //    //}
+        //    //return RedirectToAction("Index");
+        //    return View();
+        //}
+
         [HttpPost]
-        public ActionResult Paypal(string amount)
+        public ActionResult PayPalSuccess(PayPalSuccesModel payPalSucces)
         {
-            //var result = _payPalService.SetExpressCheckout(amount);
-            //if (result.Success)
-            //{
-            //    return Redirect(result.RedirectUrl);
-            //}
-            //return RedirectToAction("Index");
-            return View();
+            var result = _payPalService.Succes(payPalSucces);
+            if (result.Success)
+            {
+                return View("success");
+            }
+            return View("error", result);
         }
 
         [HttpGet]
-        public ActionResult PayPalConfirm(string token, string payerId)
+        public ActionResult Cancel()
         {
-            var result = _payPalService.ExpressCheckoutDetails(token, payerId);
-            return View();
-        }
-
-        [HttpGet]
-        public ActionResult PayPalConfirm()
-        {
-            var result = _payPalService.DoExpressCheckout();
+            _payService.Cancel();
             return View();
         }
     }

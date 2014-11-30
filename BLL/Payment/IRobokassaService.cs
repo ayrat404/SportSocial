@@ -19,8 +19,9 @@ namespace BLL.Payment
     public class RobokassaService : IRobokassaService
     {
         private readonly IRepository _repository;
-        private string _merchantLogn = "FortressSport";
-        private string _merchantPasswd = "Qroi23is";
+        private const string MerchantLogn = "FortressSport";
+        private const string MerchantPasswd = "Qroi23is";
+        private const string ViewName = "_robokassa";
 
         public RobokassaService(IRepository repository)
         {
@@ -35,9 +36,10 @@ namespace BLL.Payment
                 Id = pay.Id,
                 Cost = pay.Amount.ToString("0.00", CultureInfo.InvariantCulture),
                 Description = pay.Comment,
-                MerchantLogin = _merchantLogn
+                MerchantLogin = MerchantLogn,
+                ViewName = ViewName,
             };
-            string stringToSign = string.Format("{0}:{1}:{2}:{3}", _merchantLogn, robocassaViewModel.Cost, pay.Id, _merchantPasswd);
+            string stringToSign = string.Format("{0}:{1}:{2}:{3}", MerchantLogn, robocassaViewModel.Cost, pay.Id, MerchantPasswd);
             robocassaViewModel.Signature = Hasher.Md5(stringToSign);
             return robocassaViewModel;
         }
@@ -48,8 +50,7 @@ namespace BLL.Payment
             var stringToVerify = string.Format("{0}:{1}:{2}", 
                 successModel.OutSum,
                 successModel.InvId,
-                _merchantPasswd
-            );
+                MerchantPasswd);
             var hashToVerify = Hasher.Md5(stringToVerify);
             if (!String.Equals(hashToVerify, successModel.SignatureValue, StringComparison.CurrentCultureIgnoreCase))
             {
