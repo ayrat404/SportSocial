@@ -5,13 +5,13 @@ namespace BLL.Sms
 {
     public interface ISmsService : IIdentityMessageService
     {
-        bool TimeNotExpired(string userId);
+        bool TimeNotExpired(int userId);
 
-        bool CanResendCode(string userId);
+        bool CanResendCode(int userId);
 
-        ServiceResult GenerateAndSendCode(string userId, string phoneNumber);
+        ServiceResult GenerateAndSendCode(int userId, string phoneNumber);
 
-        ServiceResult VerifyCode(string userId, string code);
+        ServiceResult VerifyCode(int userId, string code);
 
         void SendMessage(string msg, string phoneNumber);
     }

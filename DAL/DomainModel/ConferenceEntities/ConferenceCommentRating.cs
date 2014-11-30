@@ -7,11 +7,12 @@ namespace DAL.DomainModel.ConferenceEntities
     public class ConferenceCommentRating: IEntity, IRatingEntity<ConferenceComment>
     {
         public int Id { get; set; }
-        public string UserId { get; set; }
+        public int UserId { get; set; }
         public RatingType RatingType { get; set; }
         public int RatedEntityId { get; set; }
 
         [ForeignKey("RatedEntityId")]
-        public ConferenceComment RatedEntity { get; set; }
+        public virtual ConferenceComment RatedEntity { get; set; }
+        public virtual AppUser User { get; set; }
     }
 }

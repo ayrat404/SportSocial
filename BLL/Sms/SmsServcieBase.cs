@@ -23,7 +23,7 @@ namespace BLL.Sms
             return Task.FromResult(0);
         }
 
-        public bool TimeNotExpired(string userId)
+        public bool TimeNotExpired(int userId)
         {
             var sms = _db.SmsCodes.Where(s => s.UserId == userId
                                               && s.Expired > DateTime.Now
@@ -31,12 +31,12 @@ namespace BLL.Sms
             return false;
         }
 
-        public bool CanResendCode(string userId)
+        public bool CanResendCode(int userId)
         {
             throw new System.NotImplementedException();
         }
 
-        public ServiceResult GenerateAndSendCode(string userId, string phoneNumber)
+        public ServiceResult GenerateAndSendCode(int userId, string phoneNumber)
         {
             var result = new ServiceResult {Success = false};
             var sms = _db.SmsCodes.Where(s => s.UserId == userId).OrderByDescending(s => s.Created).FirstOrDefault();
@@ -76,7 +76,7 @@ namespace BLL.Sms
             }
         }
 
-        public ServiceResult VerifyCode(string userId, string code)
+        public ServiceResult VerifyCode(int userId, string code)
         {
             var result = new ServiceResult {Success = false};
             var sms = _db.SmsCodes.Where(s => s.UserId == userId).OrderByDescending(s => s.Created).FirstOrDefault();

@@ -22,7 +22,7 @@ namespace BLL.Infrastructure
         {
             kernel.Bind<EntityDbContext>().ToMethod(EntityDbContext.Create).InRequestScope();
 
-            kernel.Bind<IUserStore<AppUser>>().ToMethod(ctx => new UserStore<AppUser>(ctx.Kernel.Get<EntityDbContext>())).InRequestScope();
+            kernel.Bind<IUserStore<AppUser, int>>().ToMethod(ctx => new AppUserStore(ctx.Kernel.Get<EntityDbContext>())).InRequestScope();
             kernel.Bind<AppUserManager>().ToMethod(AppUserManager.Create).InRequestScope();
             kernel.Bind<AppRoleManager>().ToSelf().InRequestScope();
             

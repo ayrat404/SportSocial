@@ -14,12 +14,14 @@ namespace BLL.Payment.Impls
     public class PayPalService : IPayPalService
     {
         private readonly IRepository _repository;
+        private readonly IPayService _payService;
 
         private const string ViewName = "_paypal";
 
-        public PayPalService(IRepository repository)
+        public PayPalService(IRepository repository, IPayService payService)
         {
             _repository = repository;
+            _payService = payService;
         }
 
         public PayPalModel CreateModel(PayViewModel payModel)
@@ -51,11 +53,7 @@ namespace BLL.Payment.Impls
             if (pay.Amount.ToStringWithDot() == payPalSucces.Payment_gross 
                 && String.Equals(pay.Product.Currency, payPalSucces.Mc_currency, StringComparison.CurrentCultureIgnoreCase))
             {
-                pay.PaySatus = PaySatus.Completed;
-                pay.User.Profile.IsPaid = true;
-                _repository.SaveChanges();
-                result.Success = true;
-                return result;
+                return _payService.CompletePay(pay);
             }
             result.ErrorMessage = "Ошибка совершения платежа".Resource(this);
             return result;

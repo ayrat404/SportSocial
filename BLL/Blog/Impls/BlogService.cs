@@ -162,6 +162,11 @@ namespace BLL.Blog.Impls
             return postListVM;
         }
 
+        public PostListViewModel TopFortressPosts()
+        {
+            return GetPosts(3, PostSortType.Fortress);
+        }
+
         public CreatePostModel GetEditModel(int id)
         {
             var post =  _repository

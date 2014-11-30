@@ -1,5 +1,4 @@
 ﻿using System.Web.Mvc;
-using Antlr.Runtime.Misc;
 using BLL.Payment;
 using BLL.Payment.ViewModels;
 using DAL.DomainModel.EnumProperties;
@@ -24,16 +23,16 @@ namespace SportSocial.Controllers
             _robokassaService = robokassaService;
         }
 
-        //[HttpGet]
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
-
         [HttpGet]
-        public ActionResult Index(PayType payType, int productId, int count = 1)
+        public ActionResult Index()
         {
-            var payInfo = _payService.InitPay(payType, productId, count);
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Index(PayType payType, int product, int count = 1)
+        {
+            var payInfo = _payService.InitPay(payType, product, count);
             PayViewModel model;
             switch (payType)
             {
@@ -44,13 +43,26 @@ namespace SportSocial.Controllers
                     model = _payPalService.CreateModel(payInfo.PayModel);
                     break;
                 default:
-                    return RedirectToAction("index");
+                    return View("index");
             }
             return View("confirm", model);
         }
 
         [HttpGet]
-        public ActionResult RobokassaSuccess(int invId, string outSum, string signatureValue, string culture)
+        public ActionResult RobokassaSuccess(string invId, string outSum, string signatureValue, string culture)
+        {
+            //var successModel = new RobocassaResultModel
+            //{
+            //    InvId = invId,
+            //    OutSum = outSum,
+            //    SignatureValue = signatureValue
+            //};
+            //var result = _robokassaService.PaySuccess(successModel);
+            return View("success");
+        }
+
+        [HttpGet]
+        public ActionResult RobokassaFail(string outSum, string invId, string signatureValue)
         {
             var successModel = new RobocassaResultModel
             {
@@ -58,8 +70,22 @@ namespace SportSocial.Controllers
                 OutSum = outSum,
                 SignatureValue = signatureValue
             };
+            _payService.Cancel(int.Parse(invId));
+            return View("cancel");
+        }
+
+        [HttpPost]
+        public ActionResult RobokassaResult(string outSum, string invId, string signatureValue)
+        {
+            _logger.Info("RobokassaResult|outSum={0} invId={1} signatureValue={2}", outSum, invId, signatureValue);
+            var successModel = new RobocassaResultModel
+            {
+                InvId = invId,
+                OutSum = outSum,
+                SignatureValue = signatureValue
+            };
             var result = _robokassaService.PaySuccess(successModel);
-            return View();
+            return Content(result.Response);
         }
 
         //[HttpPost]

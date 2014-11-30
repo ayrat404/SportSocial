@@ -29,7 +29,7 @@ namespace BLL.Blog.ViewModels
 
         public string AuthorAvatar { get; set; }
 
-        public string AuthorId { get; set; }
+        public int AuthorId { get; set; }
 
         public string AuthorName { get; set; }
 
@@ -57,7 +57,7 @@ namespace BLL.Blog.ViewModels
     {
         string AuthorAvatar { get; set; }
 
-        string AuthorId { get; set; }
+        int AuthorId { get; set; }
 
         string AuthorName { get; set; }
 

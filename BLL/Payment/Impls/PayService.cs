@@ -42,7 +42,7 @@ namespace BLL.Payment.Impls
                 Amount = cost,
                 PaySatus = PaySatus.Created,
                 PayType = payType,
-                UserId = HttpContext.Current.User.Identity.GetUserId(),
+                UserId = _currentUser.UserId,
                 ProductCount = count,
                 Comment = product.Label,
             };
@@ -58,26 +58,56 @@ namespace BLL.Payment.Impls
             return result;
         }
 
+        public ServiceResult CompletePay(Pay pay)
+        {
+            var result = new ServiceResult() {Success = false};
+            if (pay == null)
+            {
+                return result;
+            }
+            pay.PaySatus = PaySatus.Completed;
+            pay.User.Profile.IsPaid = true;
+            _repository.SaveChanges();
+            result.Success = true;
+            return result;
+        }
+
+        public ServiceResult CompletePay(int payId)
+        {
+            var pay = _repository.Find<Pay>(payId);
+            return CompletePay(pay);
+        }
+
         public ServiceResult Cancel()
         {
-            var result = new ServiceResult
-            {
-                Success = true
-            };
             var lastPay = _repository
                 .Queryable<Pay>()
                 .Where(p => p.UserId == _currentUser.UserId)
                 .OrderByDescending(p => p.Created)
                 .Take(1)
                 .SingleOrDefault();
-            if (lastPay == null)
-                return result;
-            if (lastPay.PaySatus == PaySatus.Created)
+            return Cancel(lastPay);
+        }
+
+        public ServiceResult Cancel(Pay pay)
+        {
+            var result = new ServiceResult
             {
-                lastPay.PaySatus = PaySatus.Canceled;
+                Success = true
+            };
+            if (pay == null)
+                return result;
+            if (pay.PaySatus == PaySatus.Created)
+            {
+                pay.PaySatus = PaySatus.Canceled;
                 _repository.SaveChanges();
             }
             return result;
+        }
+
+        public ServiceResult Cancel(int payId)
+        {
+            return Cancel(_repository.Find<Pay>(payId));
         }
     }
 }

@@ -12,7 +12,7 @@ namespace BLL.Common.Services.CurrentUser.Impls
         public CurrentUser(AppUserManager repository)
         {
             _repository = repository;
-            User = _repository.FindById(HttpContext.Current.User.Identity.GetUserId());
+            User = _repository.FindById(HttpContext.Current.User.Identity.GetUserId<int>());
         }
 
         private AppUser _user;
@@ -42,11 +42,11 @@ namespace BLL.Common.Services.CurrentUser.Impls
             return HttpContext.Current.User.IsInRole("Admin");
         }
 
-        public string UserId
+        public int UserId
         {
             get
             {
-                return HttpContext.Current.User.Identity.GetUserId();
+                return HttpContext.Current.User.Identity.GetUserId<int>();
             }
         }
 

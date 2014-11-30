@@ -74,6 +74,9 @@
     <Reference Include="Ninject.Web.Common">
       <HintPath>..\packages\Ninject.Web.Common.3.2.3.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
     </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.3.1.0.0\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="Owin">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
@@ -165,7 +168,9 @@
     <Compile Include="Common\Services\Rating\RatingService.cs" />
     <Compile Include="Common\Services\Rating\IRatingService.cs" />
     <Compile Include="Infrastructure\IdentityConfig\AppRoleManager.cs" />
+    <Compile Include="Infrastructure\IdentityConfig\AppRoleStore.cs" />
     <Compile Include="Infrastructure\IdentityConfig\AppUserManager.cs" />
+    <Compile Include="Infrastructure\IdentityConfig\AppUserStore.cs" />
     <Compile Include="Infrastructure\Map\CreateMaps.cs" />
     <Compile Include="Infrastructure\Map\MapExtensions.cs" />
     <Compile Include="Infrastructure\NinjectServiceRegistrator.cs" />
@@ -209,6 +214,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="NLog.config" />
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

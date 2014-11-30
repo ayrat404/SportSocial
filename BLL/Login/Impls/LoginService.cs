@@ -208,7 +208,7 @@ namespace BLL.Login.Impls
         public ServiceResult LogOut()
         {
             var result = new ServiceResult {Success = false};
-            if (!_currentUser.IsAnonimous && !string.IsNullOrEmpty(_currentUser.UserId))
+            if (!_currentUser.IsAnonimous && _currentUser.UserId > 0)
             {
                 _authManager.SignOut();
                 result.Success = true;

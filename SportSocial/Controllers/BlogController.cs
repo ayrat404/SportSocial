@@ -102,6 +102,15 @@ namespace SportSocial.Controllers
             return View("UserArticles", pageList);
         }
 
+        [ChildActionOnly]
+        [HttpGet]
+        public ActionResult FortressPosts()
+        {
+            var posts = _blogService.TopFortressPosts();
+            //return Json(posts.PostPreview, JsonRequestBehavior.AllowGet);
+            return View(posts.PostPreview);
+        }
+
 
         //[HttpPost]
         //public ActionResult Rating(BlogRatingViewModel model)

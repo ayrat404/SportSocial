@@ -8,7 +8,7 @@ using Ninject.Activation;
 
 namespace DAL
 {
-    public class EntityDbContext: IdentityDbContext<AppUser>
+    public class EntityDbContext: IdentityDbContext<AppUser, AppRole, int, AppUserLogin, AppUserRole, AppUserClaim>
     {
     #if DEBUG 
         public EntityDbContext() : base("EntityDbContextDebug")

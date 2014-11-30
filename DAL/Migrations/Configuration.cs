@@ -26,10 +26,10 @@ namespace DAL.Migrations
             );
 
             context.Roles.AddOrUpdate(
-                new AppRole("Moderator") { Id = "12994707-e011-4910-9261-0bfa9820b176" },
-                new AppRole("Admin") { Id = "2798a2f1-44d7-4e41-bcac-5dcc4e96ca69" },
-                new AppRole("Root") { Id = "3541400f-1812-4126-9d5a-380e8a18ba80" },
-                new AppRole("User") { Id = "6c66a0c3-075b-4089-b338-af857d2f49df" }
+                new AppRole("Moderator") { Id = 1 },
+                new AppRole("Admin") { Id = 2 },
+                new AppRole("Root") { Id = 3 },
+                new AppRole("User") { Id = 4 }
             );
 
             context.Products.AddOrUpdate(

@@ -1,4 +1,5 @@
-﻿<div class="nav nav--top">
+﻿@using System.Activities.Statements
+<div class="nav nav--top">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
@@ -23,7 +24,10 @@
                 {
                     <div class="nav__user"
                          click-outside="fn.closeHeaderMenu();">
-                        <img src="~/Content/images/icons/payed.png" class="nav__status nav__status--payed" data-toggle="tooltip" data-placement="bottom" title="платный аккаунт открывает доступ к конференциям" />
+                        @if (CurrentUser.User.Profile.IsPaid)
+                        {
+                            <img src="~/Content/images/icons/payed.png" class="nav__status nav__status--payed" data-toggle="tooltip" data-placement="bottom" title="платный аккаунт открывает доступ к конференциям" />
+                        }
                         <a href="@Url.Action("Index", "Pay")" class="nav__status nav__status--unpayed" data-toggle="tooltip" data-placement="bottom" title="оплата">
                             <img src="~/Content/images/icons/rub.png" />
                         </a>

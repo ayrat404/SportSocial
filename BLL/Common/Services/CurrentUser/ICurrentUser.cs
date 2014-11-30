@@ -5,7 +5,7 @@ namespace BLL.Common.Services.CurrentUser
     public interface ICurrentUser
     {
         AppUser User { get; }
-        string UserId { get; }
+        int UserId { get; }
         string UserName { get; }
         string Phone { get; }
         bool IsAnonimous { get; }

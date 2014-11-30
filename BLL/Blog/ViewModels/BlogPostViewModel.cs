@@ -17,7 +17,7 @@ namespace BLL.Blog.ViewModels
 
         public int Rating { get; set; }
 
-        public string AuthorId { get; set; }
+        public int AuthorId { get; set; }
 
         public string AuthorName { get; set; }
 

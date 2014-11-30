@@ -1,4 +1,8 @@
 ﻿@model BLL.Payment.ViewModels.PayPalModel
+@{
+    ViewBag.Title = "PayPal";
+    Layout = "~/Views/Blog/Shared/Layouts/BlogLayout.cshtml";
+}
 <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
     <input type="hidden" name="cmd" value="_xclick">
     <input type="hidden" name="business" value="@Model.Business">

@@ -1,4 +1,8 @@
 ﻿@model BLL.Payment.ViewModels.RobokassaViewModel
+@{
+    ViewBag.Title = "Робокасса";
+    Layout = "~/Views/Blog/Shared/Layouts/BlogLayout.cshtml";
+}
 <form action='http://test.robokassa.ru/Index.aspx' method=GET>
     <input type=hidden name="MrchLogin" value="@Model.MerchantLogin">
     <input type=hidden name="OutSum" value="@Model.Cost">

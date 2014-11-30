@@ -79,8 +79,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DomainModel\AppRole.cs" />
-    <Compile Include="DomainModel\AppUser.cs" />
+    <Compile Include="DomainModel\IdentityEntities\AppRole.cs" />
+    <Compile Include="DomainModel\IdentityEntities\AppUser.cs" />
     <Compile Include="DomainModel\BlogEntities\BlogComment.cs" />
     <Compile Include="DomainModel\BlogEntities\BlogCommentRating.cs" />
     <Compile Include="DomainModel\BlogEntities\PostRating.cs" />
@@ -111,25 +111,9 @@
     <Compile Include="DomainModel\UserAvatarPhoto.cs" />
     <Compile Include="DomainModel\UserPhoto.cs" />
     <Compile Include="EntityDbContext.cs" />
-    <Compile Include="Migrations\201410111050567_Init.cs" />
-    <Compile Include="Migrations\201410111050567_Init.Designer.cs">
-      <DependentUpon>201410111050567_Init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201411182100289_WorkEntities.cs" />
-    <Compile Include="Migrations\201411182100289_WorkEntities.Designer.cs">
-      <DependentUpon>201411182100289_WorkEntities.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201411221204270_CommentsForConference.cs" />
-    <Compile Include="Migrations\201411221204270_CommentsForConference.Designer.cs">
-      <DependentUpon>201411221204270_CommentsForConference.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201411241902225_ChangeBlogImageSchema.cs" />
-    <Compile Include="Migrations\201411241902225_ChangeBlogImageSchema.Designer.cs">
-      <DependentUpon>201411241902225_ChangeBlogImageSchema.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201411301138289_ProfileIsPaidField.cs" />
-    <Compile Include="Migrations\201411301138289_ProfileIsPaidField.Designer.cs">
-      <DependentUpon>201411301138289_ProfileIsPaidField.cs</DependentUpon>
+    <Compile Include="Migrations\201411301852311_Init.cs" />
+    <Compile Include="Migrations\201411301852311_Init.Designer.cs">
+      <DependentUpon>201411301852311_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -147,20 +131,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201410111050567_Init.resx">
-      <DependentUpon>201410111050567_Init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411182100289_WorkEntities.resx">
-      <DependentUpon>201411182100289_WorkEntities.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411221204270_CommentsForConference.resx">
-      <DependentUpon>201411221204270_CommentsForConference.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411241902225_ChangeBlogImageSchema.resx">
-      <DependentUpon>201411241902225_ChangeBlogImageSchema.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411301138289_ProfileIsPaidField.resx">
-      <DependentUpon>201411301138289_ProfileIsPaidField.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201411301852311_Init.resx">
+      <DependentUpon>201411301852311_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

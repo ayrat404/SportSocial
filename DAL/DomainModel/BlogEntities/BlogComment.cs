@@ -10,7 +10,7 @@ namespace DAL.DomainModel.BlogEntities
         public int Id { get; set; }
         public string Text { get; set; }
         public int TotalRating { get; set; }
-        public string UserId { get; set; }
+        public int UserId { get; set; }
         public int? CommentForId { get; set; }
         public int CommentedEntityId { get; set; }
         public DateTime Created { get; set; }

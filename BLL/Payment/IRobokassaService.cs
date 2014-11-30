@@ -1,31 +1,39 @@
 using System;
 using System.Globalization;
+using BLL.Common.Extensions;
 using BLL.Common.Helpers;
 using BLL.Common.Objects;
+using BLL.Infrastructure.Map;
 using BLL.Payment.ViewModels;
 using DAL.DomainModel;
 using DAL.DomainModel.EnumProperties;
 using DAL.Repository.Interfaces;
+using Knoema.Localization;
+using NLog;
 
 namespace BLL.Payment
 {
     public interface IRobokassaService
     {
         RobokassaViewModel CreateModel(int payId);
-        ServiceResult PaySuccess(RobocassaResultModel successModel);
+        RobokassaSuccessResult PaySuccess(RobocassaResultModel successModel);
         ServiceResult PayFail(RobocassaResultModel successModel);
     }
 
     public class RobokassaService : IRobokassaService
     {
+        private static Logger _logger = LogManager.GetCurrentClassLogger();
+
         private readonly IRepository _repository;
+        private readonly IPayService _payService;
         private const string MerchantLogn = "FortressSport";
         private const string MerchantPasswd = "Qroi23is";
         private const string ViewName = "_robokassa";
 
-        public RobokassaService(IRepository repository)
+        public RobokassaService(IRepository repository, IPayService payService)
         {
             _repository = repository;
+            _payService = payService;
         }
 
         public RobokassaViewModel CreateModel(int payId)
@@ -44,9 +52,9 @@ namespace BLL.Payment
             return robocassaViewModel;
         }
 
-        public ServiceResult PaySuccess(RobocassaResultModel successModel)
+        public RobokassaSuccessResult PaySuccess(RobocassaResultModel successModel)
         {
-            var result = new ServiceResult {Success = false};
+            var result = new RobokassaSuccessResult {Success = false};
             var stringToVerify = string.Format("{0}:{1}:{2}", 
                 successModel.OutSum,
                 successModel.InvId,
@@ -54,30 +62,38 @@ namespace BLL.Payment
             var hashToVerify = Hasher.Md5(stringToVerify);
             if (!String.Equals(hashToVerify, successModel.SignatureValue, StringComparison.CurrentCultureIgnoreCase))
             {
-                result.ErrorMessage = "Хеши не совпадают";
+                _logger.Info("PaySuccess| Хеши не совпадают");
+                result.ErrorMessage = "Хеши не совпадают".Resource(this);
                 return result;
             }
-            var pay = _repository.Find<Pay>(successModel.InvId);
+            var pay = _repository.Find<Pay>(int.Parse(successModel.InvId));
             if (pay == null)
             {
-                result.ErrorMessage = "Не найден платеж";
+                _logger.Info("PaySuccess| Платеж не найден");
+                result.ErrorMessage = "Не найден платеж".Resource(this);
                 return result;
             }
-            if (pay.Amount != decimal.Parse(successModel.OutSum, NumberStyles.AllowDecimalPoint))
+            if (pay.Amount.ToStringWithDot() != successModel.OutSum)
             {
-                result.ErrorMessage = "Суммы не совпадают";
+                _logger.Info("PaySuccess| Суммы не совпадают");
+                result.ErrorMessage = "Суммы не совпадают".Resource(this);
                 return result;
             }
             //CultureInfo ci = C
-            pay.PaySatus = PaySatus.Completed;
-            _repository.Update(pay);
-            result.Success = true;
+            var resultPay = _payService.CompletePay(pay);
+            if (resultPay.Success)
+            {
+                result.Success = true;
+                result.Response = string.Format("OK{0}", successModel.InvId);
+                return result;
+            }
+            _logger.Info("PaySuccess| CompletePay success false");
             return result;
         }
 
         public ServiceResult PayFail(RobocassaResultModel successModel)
         {
-            var pay = _repository.Find<Pay>(successModel.InvId);
+            var pay = _repository.Find<Pay>(int.Parse(successModel.InvId));
             if (pay != null)
             {
                 pay.PaySatus = PaySatus.Failured;
@@ -86,5 +102,10 @@ namespace BLL.Payment
             }
             return new ServiceResult {Success = true};
         }
+    }
+
+    public class RobokassaSuccessResult: ServiceResult
+    {
+        public string Response { get; set; }
     }
 }

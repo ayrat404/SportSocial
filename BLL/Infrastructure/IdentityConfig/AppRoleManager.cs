@@ -1,13 +1,12 @@
 using System;
 using DAL.DomainModel;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace BLL.Infrastructure.IdentityConfig
 {
-    public class AppRoleManager: RoleManager<AppRole>, IDisposable
+    public class AppRoleManager: RoleManager<AppRole, int>, IDisposable
     {
-        public AppRoleManager(RoleStore<AppRole> store) : base(store)
+        public AppRoleManager(AppRoleStore store) : base(store)
         {
         }
 

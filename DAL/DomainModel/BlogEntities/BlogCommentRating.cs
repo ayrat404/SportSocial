@@ -8,7 +8,7 @@ namespace DAL.DomainModel.BlogEntities
     {
         public int Id { get; set; }
 
-        public string UserId { get; set; }
+        public int UserId { get; set; }
 
         public int RatedEntityId { get; set; }
         
@@ -16,5 +16,7 @@ namespace DAL.DomainModel.BlogEntities
 
         [ForeignKey("RatedEntityId")]
         public virtual BlogComment RatedEntity { get; set; }
+
+        public virtual AppUser User { get; set; }
     }
 }
