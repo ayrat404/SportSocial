@@ -21,11 +21,13 @@ namespace SportSocial.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index(int productId, PayType payType)
+        //public ActionResult Index(int productId, PayType payType)
+        public ActionResult Index()
         {
-            var payInfo = _payService.InitPay(productId, PayType.Robokassa);
-            var model = _robokassaService.CreateModel(payInfo.PayModel.Id);
-            return View(model);
+            //var payInfo = _payService.InitPay(productId, PayType.Robokassa);
+            //var model = _robokassaService.CreateModel(payInfo.PayModel.Id);
+            //return View(model);
+            return View();
         }
 
         [HttpGet]

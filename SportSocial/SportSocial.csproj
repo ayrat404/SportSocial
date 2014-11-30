@@ -967,6 +967,8 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Rules.cshtml" />
     <Content Include="Views\Home\Feedback.cshtml" />
+    <Content Include="Views\Pay\PayPal.cshtml" />
+    <Content Include="Views\Pay\Robokassa.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
