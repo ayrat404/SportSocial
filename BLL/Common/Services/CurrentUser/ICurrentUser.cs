@@ -9,6 +9,7 @@ namespace BLL.Common.Services.CurrentUser
         string UserName { get; }
         string Phone { get; }
         bool IsAnonimous { get; }
+        bool IsPaid { get; }
         bool IsAdmin { get; }
         bool IsInRole(string role);
     }

@@ -10,10 +10,10 @@
                 <div>
                     <a href="@Url.Action("Item", "Conference", new {id = Model.Id})" class="conf-date__link">Видеоконференция на тему "@Model.Title" уже началась! Ссылка</a>
                 </div>
-                @if (CurrentUser.IsAnonimous)
+                @if (!CurrentUser.IsPaid)
                 {
                     <div class="conf-date__anonim">
-                        Чтобы перейти по ссылке нужно быть зарегистрированным пользователем
+                        Конференции доступны только участникам клуба Fortress. <a href="@Url.Action("Index", "Pay")">Подробнее...</a>
                     </div>
                 }
             </div>

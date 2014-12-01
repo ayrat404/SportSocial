@@ -10,12 +10,19 @@
                     <li>
                         <a href="@Url.Action("Index", "Blog")" class="nav__list__link">Блог</a>
                     </li>
+                    <li>
+                        @if (CurrentUser.IsPaid)
+                        {
+                            <a href="@Url.Action("History", "Conference")" class="nav__list__link">Конференции</a>
+                        }
+                        else
+                        {
+                            <span class="nav__list__link link" data-toggle="modal" data-target="#payModal">Конференции</span>
+                        }
+                    </li>
                     @*<li>
-                            <a href="#" class="nav__list__link">Конференция</a>
-                        </li>
-                        <li>
-                            <a href="#" class="nav__list__link">Новости компании</a>
-                        </li>*@
+                        <a href="#" class="nav__list__link">Новости компании</a>
+                    </li>*@
                     <li>
                         <span class="nav__list__link nav__list__link--disable" data-toggle="tooltip" data-placement="bottom" title="в разработке">Соц.сеть</span>
                     </li>

@@ -12,7 +12,7 @@ function ($scope, utilsSrvc, adminRqst) {
         'Moderate'  :   0,
         'Publish'   :   1,
         'Reject'    :   2,
-        'Fortress'  :   3
+        'OnMain'    :   3
     };
 
     // ошибки

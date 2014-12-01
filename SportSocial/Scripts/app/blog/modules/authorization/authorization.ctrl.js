@@ -28,9 +28,9 @@ function ($scope, $interval, $window, authorizationRqst, utilsSrvc) {
                     $window.location.reload();
                 } else {
                     $scope.er.server = res.data.errorMessage;
+                    $scope.loading = false;
+                    $scope.formDisabled = false;
                 }
-                $scope.loading = false;
-                $scope.formDisabled = false;
             }, function () {
                 $scope.er.s404 = true;
                 $scope.loading = true;

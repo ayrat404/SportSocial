@@ -12,14 +12,15 @@ namespace SportSocial
             //=======================================================
             var cssTransformer = new CssTransformer();
             var cssMinify = new CssMinify();
-            var cssBundle = new Bundle("~/content/bundles/main.css").Include(
+            var cssBundle = new StyleBundle("~/content/stylesCss1").Include(
                 "~/Scripts/libs/datepicker/jquery.datetimepicker.css",
-                "~/Content/styles/other/font-awesome.min.css",
+                "~/Content/styles/other/font-awesome.css",
                 "~/Content/styles/other/animate.css"
                 );
-            cssBundle.Transforms.Add(cssMinify);
+            //cssBundle.Transforms.Add(cssTransformer);
+            //cssBundle.Transforms.Add(cssMinify);
             bundles.Add(cssBundle);
-            var lessBundle = new Bundle("~/content/bundles/main.less").Include(
+            var lessBundle = new Bundle("~/content/stylesLess").Include(
                 "~/Content/styles/style.less"
                 );
             lessBundle.Transforms.Add(cssTransformer);
@@ -37,6 +38,7 @@ namespace SportSocial
                         "~/Scripts/libs/jquery-fileapi/jquery.fileapi.min.js",
                         
                         "~/Scripts/libs/bootstrap/tooltip.js",
+                        "~/Scripts/libs/bootstrap/modal.js",
                         //"~/Scripts/libs/signalR/jquery.signalR-2.0.3.min.js",
                         //"~/Scripts/libs/signalR/hub.js",
 
@@ -81,13 +83,13 @@ namespace SportSocial
             );
 
 
-            var nullOrderer = new NullOrderer();
-            foreach (var b in bundles)
-            {
-                b.Orderer = nullOrderer;
-            }
+            //var nullOrderer = new NullOrderer();
+            //foreach (var b in bundles)
+            //{
+            //    b.Orderer = nullOrderer;
+            //}
 
-            BundleTable.EnableOptimizations = false;
+            BundleTable.EnableOptimizations = true;
         }
     }
 }

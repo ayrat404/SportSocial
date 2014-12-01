@@ -19,8 +19,8 @@
     <title>@(ViewBag.Title ?? "Fortress")</title>
     <meta name="keywords" content="@(ViewBag.Keywords ?? "Fortress")" />
     <meta name="description" content="@(ViewBag.Description ?? "Fortress")" />
-        @Styles.Render("~/content/bundles/main.less")
-        @Styles.Render("~/content/bundles/main.css")
+    @Styles.Render("~/content/stylesCss1")
+    @Styles.Render("~/content/stylesLess")
     @RenderSection("Styles", false)
     <link rel="shortcut icon" href="/favicon.ico?v=2" type="image/x-icon">
 </head>
@@ -29,5 +29,32 @@
     @Scripts.Render("~/bundles/assets/scripts")
     @RenderSection("Scripts", false)
     @RenderLocalizationIncludes(CurrentUser.IsAdmin)
+
+    @if (!CurrentUser.IsPaid)
+    {
+        <div id="payModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="mySmallModalLabel">Доступ к конференциям</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            Просмотр конференций доступен только участникам клуба Fortress
+                        </p>
+                        @if (CurrentUser.IsAnonimous)
+                        {
+                            <p>Зарегистрируйтесь, чтобы узнать подробности</p>
+                        }
+                        else
+                        {
+                            <p><a href="@Url.Action("Index", "Pay")">Подробнее</a></p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 </body>
 </html>

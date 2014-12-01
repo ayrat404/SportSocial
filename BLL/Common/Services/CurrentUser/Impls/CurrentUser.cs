@@ -32,6 +32,17 @@ namespace BLL.Common.Services.CurrentUser.Impls
             get { return !HttpContext.Current.User.Identity.IsAuthenticated; }
         }
 
+        public bool IsPaid
+        {
+            get
+            {
+                if (User != null)
+                    return User.Profile.IsPaid;
+                else
+                    return false;
+            }
+        }
+
         public bool IsAdmin
         {
             get { return IsInRole("Admin"); }
