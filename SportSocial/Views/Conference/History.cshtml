@@ -8,70 +8,55 @@
     <div class="container">
         <div class="row blog__content__top">
 
-            <div class="col-sm-8">
+            <div class="@(Model.Current != null ? "col-sm-8" : "col-xs-12")">
 
                 <div class="mod">
                     <div class="mod__header">
                         <div class="mod__header__title">
-                            Архив конференций
+                            @("Архив конференций")
                         </div>
                     </div>
                     <div class="mod__content p-all">
                         <div class="video-list">
-                            <div class="col-sm-6">
-                                <div class="video-list__it">
-                                    <div class="video-list__it__v-wrap">
-                                        <iframe height="315" src="//www.youtube.com/embed/z3Nj9nyDNEk" frameborder="0" allowfullscreen></iframe>
-                                    </div>
-                                    <div class="video-list__it__title">
-                                        Заголовок
-                                    </div>
-                                    <div class="video-list__it__desc">
-                                        Описаньеце
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="video-list__it">
-                                    <div class="video-list__it__v-wrap">
-                                        <iframe height="315" src="//www.youtube.com/embed/z3Nj9nyDNEk" frameborder="0" allowfullscreen></iframe>
-                                    </div>
-                                    <div class="video-list__it__title">
-                                        Заголовок
-                                    </div>
-                                    <div class="video-list__it__desc">
-                                        Описаньеце
+                            @foreach (var item in Model.Hostiry)
+                            {
+                                <div class="col-sm-6">
+                                    <div class="video-list__it">
+                                        <div class="video-list__it__v-wrap">
+                                            <iframe height="315" src="@item.Url" frameborder="0" allowfullscreen></iframe>
+                                        </div>
+                                        <div class="video-list__it__title">
+                                            @item.Title
+                                        </div>
+                                        <div class="video-list__it__desc">
+                                            @item.Description
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            }
+                            @if (!Model.Hostiry.Any())
+                            {
+                                <div class="alert alert-warning">@("В архиве нет конференций")</div>
+                            }
                         </div>
                     </div>
                 </div>
-
-
-                @*Видео*@
-                @*<div class="conference__video block">
-                    <iframe width="560" height="315" src="//www.youtube.com/embed/z3Nj9nyDNEk" frameborder="0" allowfullscreen></iframe>
-                </div>*@
-
-                @*Краткая информация о конференции*@
-                @*<div class="conference__info block">
-                    <h2></h2>
-                    <p></p>
-                </div>*@
             </div>
-            <div class="col-sm-4">
-                <div class="mod block">
-                    <div class="mod__header">
-                        <div class="mod__header__title">Предстоящая конференция</div>
-                    </div>
-                    <div class="mod__content p-all">
-                        <p>Название: <b>Как накачать зад</b></p>
-                        <p>Дата: <b>13.01.2015</b></p>
-                        <p>Краткое описание: Тра та та та та та тат ат ат тат тат тат атт тат ат тат тат тат таттат </p>
+            @if (Model.Current != null)
+            {
+                <div class="col-sm-4">
+                    <div class="mod block">
+                        <div class="mod__header">
+                            <div class="mod__header__title">@("Предстоящая конференция")</div>
+                        </div>
+                        <div class="mod__content p-all">
+                            <p>@("Название"): <b>@Model.Current.Title</b></p>
+                            <p>@("Дата"): <b>@Model.Current.Date</b></p>
+                            <p>@("Краткое описание"): @Model.Current.Description</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
         </div>
     </div>
 </div>
