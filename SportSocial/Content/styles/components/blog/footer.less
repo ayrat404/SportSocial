@@ -20,6 +20,10 @@
             display: inline-block;
             margin-left: 40px;
 
+            &:first-child {
+                margin-left: 0;
+            }
+
             a {
                 color: @color-gray1;
 
@@ -27,6 +31,24 @@
                     text-decoration: none;
                     color: #fff;
                 }
+            }
+        }
+    }
+}
+
+@media (max-width: @screen-sm-min) {
+    .footer {
+        text-align: center;
+        &__copyright {
+            line-height: 35px;
+        }
+        &__nav {
+            line-height: 35px;
+            float: none;
+
+            li {
+                float: none;
+                margin-left: 10px;
             }
         }
     }

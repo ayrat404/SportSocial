@@ -15,7 +15,7 @@
                     <div class="galery__item__title">
                         @firstItem.Title
                     </div>
-                    <div class="galery__item__desc">
+                    <div class="galery__item__desc visible-md visible-lg">
                         @Html.Raw(firstItem.Text.Length > 180 ? firstItem.Text.Substring(0, 180) : firstItem.Text)
                     </div>
                     <a href="@Url.Action("Item", "Blog", new { id = firstItem.Id })" class="btn btn--transparent">@("Подробнее")</a>

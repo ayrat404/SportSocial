@@ -6,6 +6,12 @@
         float: left;
         margin-right: 45px;
         line-height: 70px;
+
+        @media (max-width: @screen-sm-min) {
+            margin-right: 10px;
+            width: 26px;
+            overflow: hidden;
+        }
     }
 
     &__list {
@@ -38,6 +44,13 @@
     &__add-article {
         float: right;
         line-height: 70px;
+
+        @media (max-width: @screen-xs-min) {
+            float: none;
+            .btn {
+                width: 100%;
+            }
+        }
 
         .btn {
             line-height: 38px;
@@ -147,6 +160,13 @@
         margin-bottom: 40px;
 
         .nav__list {
+            @media (max-width: @screen-xs-min) {
+                float: none;
+                li {
+                    float: none;
+                }
+            }
+
             &__line {
                 height: 4px;
                 background: @color-blue;
@@ -158,6 +178,14 @@
                 padding: 0 15px;
                 line-height: 70px;
                 color: @color-gray2;
+
+                @media (max-width: @screen-xs-min) {
+                    line-height: 40px;
+                }
+
+                @media (max-width: @screen-xs-min) {
+                    line-height: 40px;
+                }
             }
 
             li {

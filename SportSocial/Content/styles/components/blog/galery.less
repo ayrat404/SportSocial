@@ -30,11 +30,16 @@
             right: 0;
             color: #fff;
             background: rgba(0,0,0,.5);
+
+            @media (max-width: @screen-md-min) {
+                padding: 10px 15px !important;
+            }
         }
 
         &__desc {
             margin-top: 20px;
             font-size: 1.143em;
+            word-break: break-all;
         }
 
         .btn {
