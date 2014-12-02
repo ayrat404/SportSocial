@@ -50,7 +50,7 @@ namespace BLL.Common.Services.CurrentUser.Impls
 
         public bool IsInRole(string role)
         {
-            return HttpContext.Current.User.IsInRole("Admin");
+            return HttpContext.Current.User.IsInRole(role);
         }
 
         public int UserId

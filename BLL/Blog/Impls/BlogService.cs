@@ -30,10 +30,12 @@ namespace BLL.Blog.Impls
         {
             Mapper.CreateMap<CreatePostModel, Post>().ForMember(o => o.Rubric, opt => opt.Ignore());
             var post = Mapper.Map<CreatePostModel, Post>(createPostModel);
-            post.Status = BlogPostStatus.New;
+            var publish = _currentUser.IsAdmin || _currentUser.IsInRole("Moderator");
+            post.Status = publish ? BlogPostStatus.Allow : BlogPostStatus.New;
             post.RubricId = createPostModel.Rubric;
             post.UserId = _currentUser.UserId;
             post.Lang = Thread.CurrentThread.CurrentCulture.Name;
+            post.IsFortress = publish;
             if (createPostModel.Images != null && _repository.Find<BlogImage>(createPostModel.Images[0].Id) != null)
             {
                 post.ImageUrl = createPostModel.Images[0].Url;//TODO проверять на наличие изображения в базе
@@ -111,11 +113,11 @@ namespace BLL.Blog.Impls
                     postListVM.PageInfo.Count = _repository
                         .Queryable<Post>()
                         .Count(x => (x.RubricId == rubricId || rubricId == 0)
-                                    && x.Status == BlogPostStatus.Allow);
+                                    && x.Status == BlogPostStatus.Allow || x.Status == BlogPostStatus.OnMain);
                     postListVM.PostPreview = _repository
                         .Queryable<Post>()
                         .Where(x => (x.RubricId == rubricId || rubricId == 0)
-                                    && x.Status == BlogPostStatus.Allow)
+                                    && x.Status == BlogPostStatus.Allow || x.Status == BlogPostStatus.OnMain)
                         .Include(p => p.RatingEntites)
                         .OrderByDescending(p => p.TotalRating)
                         .Take(take)
@@ -128,11 +130,11 @@ namespace BLL.Blog.Impls
                     postListVM.PageInfo.Count = _repository
                         .Queryable<Post>()
                         .Count(x => (x.RubricId == rubricId || rubricId == 0)
-                                    && x.Status == BlogPostStatus.Fortress);
+                                    && x.IsFortress);
                     postListVM.PostPreview = _repository
                         .Queryable<Post>()
                         .Where(x => (x.RubricId == rubricId || rubricId == 0)
-                                    && x.Status == BlogPostStatus.Fortress)
+                                    && x.IsFortress)
                         .Include(p => p.RatingEntites)
                         .OrderByDescending(p => p.Created)
                         .Take(take)
@@ -145,11 +147,11 @@ namespace BLL.Blog.Impls
                     postListVM.PageInfo.Count = _repository
                         .Queryable<Post>()
                         .Count(x => (x.RubricId == rubricId || rubricId == 0)
-                                    && x.Status == BlogPostStatus.Allow);
+                                    && x.Status == BlogPostStatus.Allow || x.Status == BlogPostStatus.OnMain);
                     postListVM.PostPreview = _repository
                         .Queryable<Post>()
                         .Where(x => (x.RubricId == rubricId || rubricId == 0)
-                                    && x.Status == BlogPostStatus.Allow)
+                                    && x.Status == BlogPostStatus.Allow || x.Status == BlogPostStatus.OnMain)
                         .Include(p => p.RatingEntites)
                         .OrderByDescending(p => p.Created)
                         .Take(take)
@@ -162,9 +164,18 @@ namespace BLL.Blog.Impls
             return postListVM;
         }
 
-        public PostListViewModel TopFortressPosts()
+        public IEnumerable<PostPreviewViewModel> OnMainPosts()
         {
-            return GetPosts(3, PostSortType.Fortress);
+            var postPreview = _repository
+                .Queryable<Post>()
+                .Where(x => x.Status == BlogPostStatus.OnMain)
+                .Include(p => p.RatingEntites)
+                .OrderByDescending(p => p.Created)
+                .Take(3)
+                .AsNoTracking()
+                .MapEachTo<PostPreviewViewModel>()
+                .ToList();
+            return postPreview;
         }
 
         public CreatePostModel GetEditModel(int id)
