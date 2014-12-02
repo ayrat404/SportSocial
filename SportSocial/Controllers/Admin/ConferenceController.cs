@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using BLL.Admin.Conference;
+using BLL.Admin.Conference.ViewModels;
 using SportSocial.Controllers.Base;
 
 namespace SportSocial.Controllers
@@ -45,7 +46,12 @@ namespace SportSocial.Controllers
         [HttpGet]
         public ActionResult History()
         {
-            return View();
+            var hostiryCOnfModel = new ConferenceHostiryModel
+            {
+                Current = _conferenceService.GetLastConf(),
+                Hostiry = _conferenceService.GetAll(),
+            };
+            return View(hostiryCOnfModel);
         }
 
         //[HttpGet]

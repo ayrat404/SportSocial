@@ -20,6 +20,13 @@ namespace BLL.Admin.Conference.ViewModels
         public int Stamp { get; set; }
     }
 
+    public class ConferenceHostiryModel
+    {
+        public IEnumerable<ConfModel> Hostiry { get; set; }
+
+        public ConfModel Current { get; set; }
+    }
+
     public class ProcessConfModel: ConfModel, IHasCommentViewModel
     {
         public int CommentsCount { get; set; }
