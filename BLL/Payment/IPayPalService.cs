@@ -1,4 +1,5 @@
-﻿using BLL.Common.Objects;
+﻿using System.Threading.Tasks;
+using BLL.Common.Objects;
 using BLL.Payment.ViewModels;
 
 namespace BLL.Payment
@@ -7,5 +8,6 @@ namespace BLL.Payment
     {
         PayPalModel CreateModel(PayViewModel payModel);
         ServiceResult Succes(PayPalSuccesModel payPalSucces);
+        void Ipn(PayPalIpnModel ipnModel, string queryString);
     }
 }

@@ -115,6 +115,10 @@
     <Compile Include="Migrations\201411301852311_Init.Designer.cs">
       <DependentUpon>201411301852311_Init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412011833232_PostsIsFortressField.cs" />
+    <Compile Include="Migrations\201412011833232_PostsIsFortressField.Designer.cs">
+      <DependentUpon>201412011833232_PostsIsFortressField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AccountRepository.cs" />
@@ -133,6 +137,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201411301852311_Init.resx">
       <DependentUpon>201411301852311_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412011833232_PostsIsFortressField.resx">
+      <DependentUpon>201412011833232_PostsIsFortressField.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
