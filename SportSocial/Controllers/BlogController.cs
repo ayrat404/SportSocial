@@ -107,7 +107,7 @@ namespace SportSocial.Controllers
         [HttpGet]
         public ActionResult FortressPosts()
         {
-            var posts = _blogService.TopFortressPosts();
+            var posts = _blogService.OnMainPosts();
             //return Json(posts.PostPreview, JsonRequestBehavior.AllowGet);
             return View(posts);
         }

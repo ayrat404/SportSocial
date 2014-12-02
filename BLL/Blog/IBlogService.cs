@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Web.UI;
 using BLL.Blog.ViewModels;
 using BLL.Comments.Objects;
 using BLL.Common.Objects;
@@ -20,7 +19,7 @@ namespace BLL.Blog
         IEnumerable<Comment> LoadComments(int postId);
         BlogPostViewModel GetPost(int id);
         PostListViewModel GetPosts(int pageSize, PostSortType sortType, int rubricId = 0, int page = 1);
-        PostListViewModel TopFortressPosts();
+        IEnumerable<PostPreviewViewModel> OnMainPosts();
         CreatePostModel GetEditModel(int id);
         ServiceResult EditPost(CreatePostModel model);
         PostListViewModel MyPosts(int pageSize, int page = 1);

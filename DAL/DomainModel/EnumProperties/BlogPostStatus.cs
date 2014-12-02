@@ -12,9 +12,9 @@ namespace DAL.DomainModel.EnumProperties
 
         [Description("Отклонено")]
         Rejected = 2,
-        
-        [Description("На модерации")]
-        Fortress = 3
+
+        [Description("Отклонено")]
+        OnMain = 3,
     }
 
     //public static class BlogPostStatusDescriptions {

@@ -5,7 +5,7 @@ namespace DAL.Migrations
     using System.Data.Entity.Migrations;
     using DAL.DomainModel;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<DAL.EntityDbContext>
+    public sealed class Configuration : DbMigrationsConfiguration<DAL.EntityDbContext>
     {
         public Configuration()
         {

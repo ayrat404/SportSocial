@@ -62,20 +62,20 @@ namespace BLL.Payment
             var hashToVerify = Hasher.Md5(stringToVerify);
             if (!String.Equals(hashToVerify, successModel.SignatureValue, StringComparison.CurrentCultureIgnoreCase))
             {
-                _logger.Info("PaySuccess| Хеши не совпадают");
+                _logger.Info("PaySuccess| Hashs not match");
                 result.ErrorMessage = "Хеши не совпадают".Resource(this);
                 return result;
             }
             var pay = _repository.Find<Pay>(int.Parse(successModel.InvId));
             if (pay == null)
             {
-                _logger.Info("PaySuccess| Платеж не найден");
+                _logger.Info("PaySuccess| Pay not found");
                 result.ErrorMessage = "Не найден платеж".Resource(this);
                 return result;
             }
             if (pay.Amount.ToStringWithDot() != successModel.OutSum)
             {
-                _logger.Info("PaySuccess| Суммы не совпадают");
+                _logger.Info("PaySuccess| Sums not match");
                 result.ErrorMessage = "Суммы не совпадают".Resource(this);
                 return result;
             }

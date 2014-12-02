@@ -15,6 +15,8 @@ namespace DAL.DomainModel.BlogEntities
 
         public string Text { get; set; }
 
+        public bool IsFortress { get; set; }
+
         public int RubricId { get; set; }
 
         public string Lang { get; set; }
