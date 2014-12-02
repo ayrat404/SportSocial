@@ -42,6 +42,12 @@ namespace SportSocial.Controllers
             return View(conf);
         }
 
+        [HttpGet]
+        public ActionResult History()
+        {
+            return View();
+        }
+
         //[HttpGet]
         //public ActionResult Item(int id)
         //{

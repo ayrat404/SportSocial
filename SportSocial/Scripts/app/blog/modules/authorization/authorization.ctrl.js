@@ -25,12 +25,12 @@ function ($scope, $interval, $window, authorizationRqst, utilsSrvc) {
         authorizationRqst.signIn(utilsSrvc.token.add(data))
             .then(function (res) {
                 if (res.data.success) {
-                    $window.location.href = res.data.redirect;
+                    $window.location.reload();
                 } else {
                     $scope.er.server = res.data.errorMessage;
+                    $scope.loading = false;
+                    $scope.formDisabled = false;
                 }
-                $scope.loading = false;
-                $scope.formDisabled = false;
             }, function () {
                 $scope.er.s404 = true;
                 $scope.loading = true;

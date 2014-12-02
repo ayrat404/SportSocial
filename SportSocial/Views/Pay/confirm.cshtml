@@ -1,6 +1,22 @@
 ﻿@model BLL.Payment.ViewModels.PayViewModel
 
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "Оплата";
+    Layout = "../Blog/Shared/Layouts/BlogLayout.cshtml";
 }
-@Html.Partial("partials/" + Model.ViewName, Model);
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <div class="mod block">
+                <div class="mod__header">
+                    <div class="mod__header__title">Оплата</div>
+                </div>
+                <div class="mod__content">
+                    <div class="tabs-content p-all">
+                        @Html.Partial("partials/" + Model.ViewName, Model)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

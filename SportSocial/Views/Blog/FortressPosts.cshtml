@@ -1,0 +1,77 @@
+﻿@using BLL.Blog.ViewModels
+@model BLL.Blog.ViewModels.PostListViewModel
+
+
+@if (Model.PageInfo.Count != 0)
+{
+    PostPreviewViewModel firstItem = Model.PostPreview.ToList()[0];
+
+    <div class="block galery">
+        <div class="galery__title col-xs-12">Фотогалерея</div>
+        <div class="col-sm-8">
+            <div class="galery__item galery__item--lg">
+                <img src="@firstItem.Images.Url?width=780&height=780&mode=crop" alt="@firstItem.Title" class="galery__item__img" />
+                <div class="galery__item__info">
+                    <div class="galery__item__title">
+                        @firstItem.Title
+                    </div>
+                    <div class="galery__item__desc">
+                        @Html.Raw(firstItem.Text.Length > 180 ? firstItem.Text.Substring(0, 180) : firstItem.Text)
+                    </div>
+                    <a href="@Url.Action("Item", "Blog", new { id = firstItem.Id })" class="btn btn--transparent">@("Подробнее")</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    foreach (var item in Model.PostPreview.Skip(1))
+    {
+        <div class="col-xs-6 col-sm-4">
+            <div class="galery__item galery__item--sm block">
+                <img src="@item.Images.Url?width=380&height=380&mode=crop" alt="@item.Title" class="galery__item__img" />
+                <div class="galery__item__info">
+                    <div class="galery__item__title">
+                        @item.Title
+                    </div>
+                    <a href="@Url.Action("Item", "Blog", new { id = item.Id })" class="btn btn--transparent">@("Подробнее")</a>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+@*Как должно выглядеть*@
+@*<div class="block galery">
+        <div class="galery__title col-xs-12">Фотогалерея</div>
+        <div class="col-sm-8">
+            <div class="galery__item galery__item--lg">
+                <img src="~/Content/images/temp/photo1.jpg" alt="Картиночка" class="galery__item__img" />
+                <div class="galery__item__info">
+                    <div class="galery__item__title">
+                        Тренировка с грушей
+                    </div>
+                    <div class="galery__item__desc">
+                        Боксерская груша – кожаный снаряд, предназначенный для отработки точности, резкости и быстроты прямых и боковых ударов в боксе. Удары по груше развивают мускулатуру рук, виртуозность в работе.
+                    </div>
+                    <a href="#" class="btn btn--transparent">Подробнее</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-4 galery__item galery__item--sm block">
+            <img src="~/Content/images/temp/photo2.jpg" alt="Картиночка" class="galery__item__img" />
+            <div class="galery__item__info">
+                <div class="galery__item__title">
+                    Перетягивание каната
+                </div>
+                <a href="#" class="btn btn--transparent">Подробнее</a>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-4 galery__item galery__item--sm">
+            <img src="~/Content/images/temp/photo3.jpg" alt="Картиночка" class="galery__item__img" />
+            <div class="galery__item__info">
+                <div class="galery__item__title">
+                    Тренировка звезд NFL
+                </div>
+                <a href="#" class="btn btn--transparent">Подробнее</a>
+            </div>
+        </div>
+    </div>*@

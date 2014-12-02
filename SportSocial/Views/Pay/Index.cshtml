@@ -17,19 +17,20 @@
                         @using (Html.BeginForm())
                         {
                             <input type="hidden" name="product" value="1"/>
-                            <input type="radio" name="payType" value="Robokassa"/>  @:Робокасса <br/>
-                            <input type="radio" name="payType" value="PayPal"/>  @:PayPal <br/>
-                            <input type="submit" value="Далее"/>
+                            <ul class="pay-list">
+                                <li>
+                                    <label>
+                                        <input type="radio" name="payType" value="Robokassa" checked />Робокасса
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input type="radio" name="payType" value="PayPal" />PayPal
+                                    </label>
+                                </li>
+                            </ul>
+                            <input class="btn" type="submit" value="Далее"/>
                         }
-                        @*<input type="radio" name=""/>
-                        <ul>
-                            <li>
-                                <a href="">Робокасса</a>
-                            </li>
-                            <li>
-                                <a href="#">PayPal</a>
-                            </li>
-                        </ul>*@
                     </div>
                 </div>
             </div>

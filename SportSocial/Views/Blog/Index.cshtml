@@ -45,42 +45,7 @@
             </div>
             <div class="row blog__content__bottom">
                 @*Фотогалерея*@
-                @*@{ Html.RenderAction("GetRubrics", "Blog", new { id = ViewBag.Rubric }); }*@
-                <div class="block galery">
-                    <div class="galery__title col-xs-12">Фотогалерея</div>
-                    <div class="col-sm-8">
-                        <div class="galery__item galery__item--lg">
-                            <img src="~/Content/images/temp/photo1.jpg" alt="Картиночка" class="galery__item__img" />
-                            <div class="galery__item__info">
-                                <div class="galery__item__title">
-                                    Тренировка с грушей
-                                </div>
-                                <div class="galery__item__desc">
-                                    Боксерская груша – кожаный снаряд, предназначенный для отработки точности, резкости и быстроты прямых и боковых ударов в боксе. Удары по груше развивают мускулатуру рук, виртуозность в работе.
-                                </div>
-                                <a href="#" class="btn btn--transparent">Подробнее</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 galery__item galery__item--sm block">
-                        <img src="~/Content/images/temp/photo2.jpg" alt="Картиночка" class="galery__item__img" />
-                        <div class="galery__item__info">
-                            <div class="galery__item__title">
-                                Перетягивание каната
-                            </div>
-                            <a href="#" class="btn btn--transparent">Подробнее</a>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-sm-4 galery__item galery__item--sm">
-                        <img src="~/Content/images/temp/photo3.jpg" alt="Картиночка" class="galery__item__img" />
-                        <div class="galery__item__info">
-                            <div class="galery__item__title">
-                                Тренировка звезд NFL
-                            </div>
-                            <a href="#" class="btn btn--transparent">Подробнее</a>
-                        </div>
-                    </div>
-                </div>
+                @{ Html.RenderAction("FortressPosts", "Blog"); }
             </div>
         </div>
     </div>

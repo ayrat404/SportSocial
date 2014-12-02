@@ -102,13 +102,14 @@ namespace SportSocial.Controllers
             return View("UserArticles", pageList);
         }
 
+        [AllowAnonymous]
         [ChildActionOnly]
         [HttpGet]
         public ActionResult FortressPosts()
         {
             var posts = _blogService.TopFortressPosts();
             //return Json(posts.PostPreview, JsonRequestBehavior.AllowGet);
-            return View(posts.PostPreview);
+            return View(posts);
         }
 
 

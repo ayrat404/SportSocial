@@ -20,7 +20,7 @@
                        ng-blur="validstart.phone=true"
                        name="phone"
                        required
-                       class="input" type="text" placeholder="Телефон" />
+                       class="input" type="text" placeholder="Номер телефона без +" />
                 <input ng-model="auth.pass"
                        ng-disabled="formDisabled"
                        ng-class="{'input--invalid': authorization.password.$error.required && validstart.password}"

@@ -210,7 +210,17 @@
     <Content Include="App_Data\SportStore_log.ldf">
       <DependentUpon>SportStore.mdf</DependentUpon>
     </Content>
-    <Content Include="Content\fonts\awesome\fontawesome-webfont.svg" />
+    <Content Include="Content\fonts\FontAwesome\fontawesome-webfont.svg" />
+    <Content Include="Content\fonts\OpenSans\BoldItalic\OpenSans-BoldItalic.svg" />
+    <Content Include="Content\fonts\OpenSans\Bold\OpenSans-Bold.svg" />
+    <Content Include="Content\fonts\OpenSans\ExtraBoldItalic\OpenSans-ExtraBoldItalic.svg" />
+    <Content Include="Content\fonts\OpenSans\ExtraBold\OpenSans-ExtraBold.svg" />
+    <Content Include="Content\fonts\OpenSans\Italic\OpenSans-Italic.svg" />
+    <Content Include="Content\fonts\OpenSans\LightItalic\OpenSans-LightItalic.svg" />
+    <Content Include="Content\fonts\OpenSans\Light\OpenSans-Light.svg" />
+    <Content Include="Content\fonts\OpenSans\Regular\OpenSans-Regular.svg" />
+    <Content Include="Content\fonts\OpenSans\SemiboldItalic\OpenSans-SemiboldItalic.svg" />
+    <Content Include="Content\fonts\OpenSans\Semibold\OpenSans-Semibold.svg" />
     <Content Include="Content\fonts\ProximaNova\proximanova-lightitpn.svg" />
     <Content Include="Content\fonts\ProximaNova\proximanova-lightpn.svg" />
     <Content Include="Content\fonts\ProximaNova\proximanova-regpn.svg" />
@@ -260,7 +270,7 @@
       <DependentUpon>variables.css</DependentUpon>
     </Content>
     <Content Include="Content\styles\other\animate.css" />
-    <Content Include="Content\styles\other\font-awesome.min.css" />
+    <Content Include="Content\styles\other\font-awesome.css" />
     <Content Include="Content\styles\style.css">
       <DependentUpon>style.less</DependentUpon>
     </Content>
@@ -785,10 +795,10 @@
     <Content Include="Content\styles\components\blog\blog-menu.less" />
     <Content Include="Content\styles\components\blog\user.less" />
     <Content Include="Content\styles\view\admin.less" />
-    <Content Include="Content\fonts\awesome\fontawesome-webfont.eot" />
-    <Content Include="Content\fonts\awesome\fontawesome-webfont.ttf" />
-    <Content Include="Content\fonts\awesome\fontawesome-webfont.woff" />
-    <Content Include="Content\fonts\awesome\FontAwesome.otf" />
+    <Content Include="Content\fonts\FontAwesome\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\FontAwesome\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\FontAwesome\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\FontAwesome\FontAwesome.otf" />
     <Content Include="Content\styles\components\common\wysiwyg.less" />
     <Content Include="Content\styles\components\blog\comments.less" />
     <Content Include="Content\styles\components\blog\galery.less" />
@@ -802,6 +812,37 @@
     <Content Include="Content\fonts\ProximaNova\proximanova-regpn.woff2" />
     <Content Include="Content\styles\components\common\tooltip.less" />
     <Content Include="NLog.config" />
+    <Content Include="Content\styles\view\payment.less" />
+    <Content Include="Content\fonts\OpenSans\BoldItalic\OpenSans-BoldItalic.eot" />
+    <Content Include="Content\fonts\OpenSans\BoldItalic\OpenSans-BoldItalic.ttf" />
+    <Content Include="Content\fonts\OpenSans\BoldItalic\OpenSans-BoldItalic.woff" />
+    <Content Include="Content\fonts\OpenSans\Bold\OpenSans-Bold.eot" />
+    <Content Include="Content\fonts\OpenSans\Bold\OpenSans-Bold.ttf" />
+    <Content Include="Content\fonts\OpenSans\Bold\OpenSans-Bold.woff" />
+    <Content Include="Content\fonts\OpenSans\ExtraBoldItalic\OpenSans-ExtraBoldItalic.eot" />
+    <Content Include="Content\fonts\OpenSans\ExtraBoldItalic\OpenSans-ExtraBoldItalic.ttf" />
+    <Content Include="Content\fonts\OpenSans\ExtraBoldItalic\OpenSans-ExtraBoldItalic.woff" />
+    <Content Include="Content\fonts\OpenSans\ExtraBold\OpenSans-ExtraBold.eot" />
+    <Content Include="Content\fonts\OpenSans\ExtraBold\OpenSans-ExtraBold.ttf" />
+    <Content Include="Content\fonts\OpenSans\ExtraBold\OpenSans-ExtraBold.woff" />
+    <Content Include="Content\fonts\OpenSans\Italic\OpenSans-Italic.eot" />
+    <Content Include="Content\fonts\OpenSans\Italic\OpenSans-Italic.ttf" />
+    <Content Include="Content\fonts\OpenSans\Italic\OpenSans-Italic.woff" />
+    <Content Include="Content\fonts\OpenSans\LightItalic\OpenSans-LightItalic.eot" />
+    <Content Include="Content\fonts\OpenSans\LightItalic\OpenSans-LightItalic.ttf" />
+    <Content Include="Content\fonts\OpenSans\LightItalic\OpenSans-LightItalic.woff" />
+    <Content Include="Content\fonts\OpenSans\Light\OpenSans-Light.eot" />
+    <Content Include="Content\fonts\OpenSans\Light\OpenSans-Light.ttf" />
+    <Content Include="Content\fonts\OpenSans\Light\OpenSans-Light.woff" />
+    <Content Include="Content\fonts\OpenSans\Regular\OpenSans-Regular.eot" />
+    <Content Include="Content\fonts\OpenSans\Regular\OpenSans-Regular.ttf" />
+    <Content Include="Content\fonts\OpenSans\Regular\OpenSans-Regular.woff" />
+    <Content Include="Content\fonts\OpenSans\SemiboldItalic\OpenSans-SemiboldItalic.eot" />
+    <Content Include="Content\fonts\OpenSans\SemiboldItalic\OpenSans-SemiboldItalic.ttf" />
+    <Content Include="Content\fonts\OpenSans\SemiboldItalic\OpenSans-SemiboldItalic.woff" />
+    <Content Include="Content\fonts\OpenSans\Semibold\OpenSans-Semibold.eot" />
+    <Content Include="Content\fonts\OpenSans\Semibold\OpenSans-Semibold.ttf" />
+    <Content Include="Content\fonts\OpenSans\Semibold\OpenSans-Semibold.woff" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -983,6 +1024,8 @@
     <Content Include="Views\Pay\error.cshtml" />
     <Content Include="Views\Pay\PayPal.cshtml" />
     <Content Include="Views\Pay\Robokassa.cshtml" />
+    <Content Include="Views\Blog\FortressPosts.cshtml" />
+    <Content Include="Views\Conference\History.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

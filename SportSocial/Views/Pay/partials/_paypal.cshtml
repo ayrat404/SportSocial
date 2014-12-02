@@ -1,7 +1,6 @@
 ﻿@model BLL.Payment.ViewModels.PayPalModel
 @{
     ViewBag.Title = "PayPal";
-    Layout = "~/Views/Blog/Shared/Layouts/BlogLayout.cshtml";
 }
 <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
     <input type="hidden" name="cmd" value="_xclick">
@@ -17,6 +16,12 @@
     <input type="hidden" name="lc" value="RU">
     <input type="hidden" name="charset" value="utf-8">
     <input type="hidden" name="cbt" value="@R("Fortress - лучшый блог о культуре спорта")" />
-    <input type="image" src="https://www.sandbox.paypal.com/ru_RU/i/btn/btn_paynow_LG.gif" border="0" name="submit" alt="PayPal — более безопасный и легкий способ оплаты через Интернет!">
+    @*<input type="image" src="https://www.sandbox.paypal.com/ru_RU/i/btn/btn_paynow_LG.gif" border="0" name="submit" alt="PayPal — более безопасный и легкий способ оплаты через Интернет!">*@
+    <div class="text-center">
+        <div>@R("Способ оплаты: PayPal")</div>
+        <div>@R("Сумма к оплате: 100 рублей")</div>
+        <div><button type="submit" class="btn btn--action">@("Оплатить")</button></div>
+        <a class="pull-left" href="@Url.Action("Index", "Pay")">Изменить способ оплаты</a>
+    </div>
     <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>
