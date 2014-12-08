@@ -113,11 +113,11 @@ namespace BLL.Blog.Impls
                     postListVM.PageInfo.Count = _repository
                         .Queryable<Post>()
                         .Count(x => (x.RubricId == rubricId || rubricId == 0)
-                                    && x.Status == BlogPostStatus.Allow || x.Status == BlogPostStatus.OnMain);
+                                    && (x.Status == BlogPostStatus.Allow || x.Status == BlogPostStatus.OnMain));
                     postListVM.PostPreview = _repository
                         .Queryable<Post>()
                         .Where(x => (x.RubricId == rubricId || rubricId == 0)
-                                    && x.Status == BlogPostStatus.Allow || x.Status == BlogPostStatus.OnMain)
+                                    && (x.Status == BlogPostStatus.Allow || x.Status == BlogPostStatus.OnMain))
                         .Include(p => p.RatingEntites)
                         .OrderByDescending(p => p.TotalRating)
                         .Take(take)
@@ -147,11 +147,11 @@ namespace BLL.Blog.Impls
                     postListVM.PageInfo.Count = _repository
                         .Queryable<Post>()
                         .Count(x => (x.RubricId == rubricId || rubricId == 0)
-                                    && x.Status == BlogPostStatus.Allow || x.Status == BlogPostStatus.OnMain);
+                                    && (x.Status == BlogPostStatus.Allow || x.Status == BlogPostStatus.OnMain));
                     postListVM.PostPreview = _repository
                         .Queryable<Post>()
                         .Where(x => (x.RubricId == rubricId || rubricId == 0)
-                                    && x.Status == BlogPostStatus.Allow || x.Status == BlogPostStatus.OnMain)
+                                    && (x.Status == BlogPostStatus.Allow || x.Status == BlogPostStatus.OnMain))
                         .Include(p => p.RatingEntites)
                         .OrderByDescending(p => p.Created)
                         .Take(take)
@@ -199,8 +199,13 @@ namespace BLL.Blog.Impls
             {
                 result.Success = false;
                 result.ErrorMessage = "Not Found";
+                return result;
             }
-            model.MapTo(post);
+            post.Title = model.Title;
+            if (model.Images != null && model.Images.Any())
+                post.ImageUrl = model.Images[0].Url;
+            post.Text = model.Text;
+            post.RubricId = model.Rubric;
             _repository.SaveChanges();
             return result;
         }
