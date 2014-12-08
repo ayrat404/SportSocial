@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using BLL.Blog;
 using BLL.Blog.ViewModels;
+using BLL.Common.Objects;
 using PagedList;
 using SportSocial.Controllers.Base;
 
@@ -87,10 +88,10 @@ namespace SportSocial.Controllers
         {
             if (ModelState.IsValid)
             {
-                _blogService.EditPost(model);
+                return Json(_blogService.EditPost(model));
                 //TODO редирект на страницу своих постов
             }
-            return View(model);
+            return Json(new ServiceResult {Success = false, ErrorMessage = GetModelStateErrors()});
         }
 
         [HttpGet]

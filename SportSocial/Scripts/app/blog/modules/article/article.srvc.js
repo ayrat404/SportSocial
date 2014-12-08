@@ -20,6 +20,11 @@ angular.module('blog').factory('articleRqst', ['$http', 'serializeObj', function
         // --------------
         createArticle: function(obj) {
             return send('New', obj);
+        },
+        // Редактирование статьи
+        // ---------------
+        editArticle: function(obj) {
+            return send('Edit', obj);
         }
     };
 }]);

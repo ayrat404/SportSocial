@@ -8,6 +8,13 @@ angular.module('blog').controller('ArticleEditCtrl',
      '$window',
 function ($scope, articleRqst, utilsSrvc, $timeout, $window) {
 
+    // service helper
+    // ---------------
+    var p = {
+        'edit': 'editArticle',
+        'new': 'createArticle'
+    }
+
     // сообщения после попытки создания/сохранения статьи
     // ---------------
     $scope.msg = {
@@ -22,11 +29,11 @@ function ($scope, articleRqst, utilsSrvc, $timeout, $window) {
         btnIsDisabled: false
     }
 
-    // создание статьи
+    // редактирование/создание статьи
     // ---------------
-    $scope.createArticle = function (article) {
+    $scope.sendArticleData = function (article) {
         $scope.prop.btnIsDisabled = true;
-        articleRqst.createArticle(utilsSrvc.token.add(article))
+        articleRqst[p[$scope.type]](utilsSrvc.token.add(article))
             .then(function (res) {
                 $scope.msg.show = true;
                 if (res.data.success) {
@@ -34,14 +41,14 @@ function ($scope, articleRqst, utilsSrvc, $timeout, $window) {
                 } else {
                     $scope.msg.error = true;
                 }
-            $timeout(function() {
-                for (var v in $scope.msg) {
-                    $scope.msg[v] = false;
-                }
-                $scope.prop.btnIsDisabled = false;
-                $window.location = '/';
-            }, 4000);
-        });
+                $timeout(function () {
+                    for (var v in $scope.msg) {
+                        $scope.msg[v] = false;
+                    }
+                    $scope.prop.btnIsDisabled = false;
+                    $window.location = '/';
+                }, 4000);
+            });
     }
 
 }]);

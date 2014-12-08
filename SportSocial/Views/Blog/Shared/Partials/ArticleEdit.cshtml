@@ -1,10 +1,10 @@
 ﻿@using BLL.Common.Extensions
 @model BLL.Blog.ViewModels.CreatePostModel
-<form ng-submit="createArticle(ar)"
+<form ng-submit="sendArticleData(ar)"
       ng-init='
-      ar.images = @Html.Raw(Model.Images.ToJson()) ; 
-      ar.text="@Model.Text";
-      ar.title="@Model.Title";
+      ar.images=@Html.Raw(Model.Images.ToJson()) ;
+      ar.text="@Model.Text" ;
+      ar.title="@Model.Title" ;
       ar.id=@Model.Id'
       name="ArticleEdit"
       class="blog-form  article__edit article-new__form">
@@ -21,7 +21,7 @@
             <div class="blog-form__desc">Рубрика</div>
         </div>
         <div class="col-sm-8">
-            <select ng-model="ar.rubric" required class="input">
+            <select ng-model="ar.rubric" required class="input" @(Model.Rubric != 0 ? "ng-init=ar.rubric=" + Model.Rubric + "" : "")>
                 <option value="" @(Model.Rubric == 0 ? "selected" : "")>Выберите рубрику</option>
                 @foreach (var r in Model.Rubrics)
                 {
@@ -55,4 +55,5 @@
             <button ng-disabled="prop.btnIsDisabled || ar.text.length < 100 || ar.images.length < 1 || ArticleEdit.$invalid" type="submit" class="btn btn--main pull-right">Отправить на модерацию</button>
         </div>
     </div>
+    {{ar}}
 </form>

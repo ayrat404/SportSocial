@@ -4,7 +4,7 @@
     ViewBag.Title = "Fortress - Создание статьи";
     Layout = "../Blog/Shared/Layouts/ArticleEdit.cshtml";
 }
-<h2>Создание статьи</h2>
+<h2 ng-init="type = 'new'">Создание статьи</h2>
 @Html.Partial("Shared/Partials/ArticleEdit", Model)
 <div ng-if="msg.show"
      ng-cloak
