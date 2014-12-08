@@ -232,6 +232,8 @@
     <Content Include="Content\images\default-avatar.png" />
     <Content Include="Content\images\icons\logo-shape.png" />
     <Content Include="Content\images\icons\logo.png" />
+    <Content Include="Content\images\icons\payed.png" />
+    <Content Include="Content\images\icons\rub.png" />
     <Content Include="Content\images\icons\sprite-article.png" />
     <Content Include="Content\images\pattern\black.png" />
     <Content Include="Content\images\pattern\pattern_vertical.png" />
