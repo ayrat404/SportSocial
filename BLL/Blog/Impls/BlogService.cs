@@ -206,6 +206,7 @@ namespace BLL.Blog.Impls
                 post.ImageUrl = model.Images[0].Url;
             post.Text = model.Text;
             post.RubricId = model.Rubric;
+            post.Status = BlogPostStatus.New;
             _repository.SaveChanges();
             return result;
         }
