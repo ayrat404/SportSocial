@@ -13,7 +13,7 @@ namespace SportSocial.Controllers
     {
         private readonly IBlogService _blogService;
         
-        private const int PageSize = 2;
+        private const int PageSize = 10;
 
         public BlogController(IBlogService blogService)
         {
