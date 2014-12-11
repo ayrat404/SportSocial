@@ -7,7 +7,7 @@ namespace BLL.Common.Helpers
 {
     public class HttpHelper
     {
-        public static void Send(string url, HttpMethod method, string stringToSend, string contentType)
+        public static string Send(string url, HttpMethod method, string stringToSend, string contentType)
         {
             using (var client = new HttpClient())
             {
@@ -18,6 +18,7 @@ namespace BLL.Common.Helpers
                     throw new Exception("Не удалось отправить смс");
                 }
                 string result = response.Content.ReadAsStringAsync().Result;
+                return result;
             }
         }
 

@@ -75,12 +75,12 @@ namespace BLL.Payment.Impls
                 try
                 {
                     string cmsQuery = "cmd=_notify-validate&" + queryString;
-                    payPalResponse = HttpHelper.Get(PayPalSanBoxUrl, queryString);
+                    payPalResponse = HttpHelper.Send(PayPalSanBoxUrl, HttpMethod.Post, queryString, "application/x-www-form-urlencoded");
                     break;
                 }
                 catch
                 {
-                    Thread.Sleep(200);
+                    Thread.Sleep(300);
                 }
             }
             if (payPalResponse != "VERIFIED")
