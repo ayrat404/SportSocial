@@ -24,13 +24,8 @@ function ($scope, loginRqst, utilsSrvc, $interval) {
     // ---------------
     $scope.requestCode = function(data) {
         beforeSend();
-
-        $scope.smsBlockShow = true;
-        $scope.timerForSms = 200;
-        countdownTimer();
-
         loginRqst.requestRestoreCode(utilsSrvc.token.add({ phone: data.phone }))
-            .then(function(res) {
+            .then(function (res) {
                 if (res.data.success) {
                     $scope.smsBlockShow = true;
                     $scope.timerForSms = res.data.canResendSms;
@@ -50,9 +45,6 @@ function ($scope, loginRqst, utilsSrvc, $interval) {
     $scope.restorePasswrod = function (data) {
         data.phone = $scope.f.phone;
         beforeSend();
-
-        $scope.success = true;
-
         loginRqst.restorePassword(utilsSrvc.token.add(data))
             .then(function(res) {
                 if (res.data.success) {
@@ -75,7 +67,7 @@ function ($scope, loginRqst, utilsSrvc, $interval) {
     function beforeSend() {
         $scope.isLoading = true;
         $scope.er.server = '';
-        $scope.er.s404 = true;
+        $scope.er.s404 = false;
     }
 
     // таймер для ввода кода
