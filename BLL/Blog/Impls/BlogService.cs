@@ -181,8 +181,11 @@ namespace BLL.Blog.Impls
         public CreatePostModel GetEditModel(int id)
         {
             var post =  _repository
-                .Find<Post>(id)
+                .Queryable<Post>()
+                .Where(p => p.Id == id && p.UserId == _currentUser.UserId)
                 .MapTo<CreatePostModel>();
+            if (post == null)
+                return null;
             post.Rubrics = GetRubrics();
             return post;
         }

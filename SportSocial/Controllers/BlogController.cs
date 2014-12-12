@@ -80,7 +80,10 @@ namespace SportSocial.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            return View(_blogService.GetEditModel(id));
+            var postVm = _blogService.GetEditModel(id);
+            if (postVm == null)
+                return RedirectToAction("Index");
+            return View();
         }
 
         [HttpPost]
