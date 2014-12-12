@@ -83,6 +83,7 @@ namespace BLL.Payment
             var resultPay = _payService.CompletePay(pay);
             if (resultPay.Success)
             {
+                _logger.Info("PaySuccess | CompletePay success");
                 result.Success = true;
                 result.Response = string.Format("OK{0}", successModel.InvId);
                 return result;

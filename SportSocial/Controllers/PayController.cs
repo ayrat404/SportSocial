@@ -119,7 +119,7 @@ namespace SportSocial.Controllers
         [AllowAnonymous]
         public void PayPalIpn(PayPalIpnModel ipnModel)
         {
-            string queryString = Request.QueryString.ToString();
+            string queryString = Request.Form.ToString();
             _logger.Info(queryString);
             //PayPalIpnModel ipnModel = new PayPalIpnModel
             //{
