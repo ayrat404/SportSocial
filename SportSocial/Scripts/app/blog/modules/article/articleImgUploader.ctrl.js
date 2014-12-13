@@ -40,7 +40,7 @@ angular.module('blog').directive('articleImgUploader', ['$timeout', function ($t
                 multiple: false,
                 maxFiles: 1,
                 maxSize: 10 * FileAPI.MB,
-                imageSize: { minWidth: 400, minHeight: 300 },
+                imageSize: { minWidth: 780, minHeight: 780 },
                 autoUpload: true,
                 onSelect: function (evt, uiEvt) {
                     if (uiEvt.other[0] != undefined && uiEvt.other[0].errors != undefined) {
