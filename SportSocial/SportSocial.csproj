@@ -240,6 +240,8 @@
     <Content Include="Content\images\promo-bg.jpg" />
     <Content Include="Content\images\promo\1.jpg" />
     <Content Include="Content\images\promo\2.jpg" />
+    <Content Include="Content\images\promo\3.jpg" />
+    <Content Include="Content\images\promo\4.jpg" />
     <Content Include="Content\images\promo\overlay.png" />
     <Content Include="Content\images\temp\example.jpg" />
     <Content Include="Content\images\temp\photo1.jpg" />

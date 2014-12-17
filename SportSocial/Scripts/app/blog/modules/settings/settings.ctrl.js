@@ -34,7 +34,7 @@ function ($scope, settingsRqst, utilsSrvc, $window, $timeout) {
                         $scope.password.btnIsDisabled = false;
                     }, 3000);
                 } else {
-                    $scope.password.er.server.show = res.data.errorMessage;
+                    $scope.password.er.server = res.data.errorMessage;
                 }
             }, function() {
             $scope.password.er.s404 = true;

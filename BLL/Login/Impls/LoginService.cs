@@ -197,7 +197,6 @@ namespace BLL.Login.Impls
             {
                 return verifyResult;
             }
-
             var user = _repository.Find<AppUser>(_currentUser.UserId);
             user.UserName = chPhoneModel.Phone;
             _repository.SaveChanges();
