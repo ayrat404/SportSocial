@@ -1,7 +1,9 @@
 using System;
 using System.Drawing;
 using System.IO;
+using System.Net;
 using System.Web;
+using BLL.Common.Helpers;
 using BLL.Common.Objects;
 using BLL.Common.Services.CurrentUser;
 using BLL.Storage.Impls.Enums;
@@ -120,6 +122,23 @@ namespace BLL.Storage.Impls
                 fileStream.Position = 0;
                 fileStream.CopyTo(stream);
                 File.WriteAllBytes(serverPath, stream.ToArray());
+            }
+        }
+
+        public ImageUploadResult YoutubeImage(string youtubeUrl)
+        {
+            var result = new ImageUploadResult {Success = true};
+            if (!YoutubeUrlHelper.UrlIsValid(youtubeUrl))
+            {
+                result.Success = false;
+                result.ErrorMessage = "Некорректный формат ссылки на видео".Resource(this);
+                return result;
+            }
+            string imageUrl = YoutubeUrlHelper.MaxResolutionImageUrl(youtubeUrl);
+            var imageBytes = new WebClient().DownloadData(imageUrl);
+            using (var stream = new MemoryStream(imageBytes))
+            {
+                return UploadImage(stream, YoutubeUrlHelper.MaxResImageName, UploadType.Article);
             }
         }
     }
