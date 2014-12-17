@@ -5,6 +5,7 @@ using System.Threading;
 using AutoMapper;
 using BLL.Blog.ViewModels;
 using BLL.Comments.Objects;
+using BLL.Common.Helpers;
 using BLL.Common.Objects;
 using BLL.Common.Services.CurrentUser;
 using BLL.Infrastructure.Map;
@@ -12,6 +13,7 @@ using DAL.DomainModel;
 using DAL.DomainModel.BlogEntities;
 using DAL.DomainModel.EnumProperties;
 using DAL.Repository.Interfaces;
+using Knoema.Localization;
 
 namespace BLL.Blog.Impls
 {
@@ -28,6 +30,7 @@ namespace BLL.Blog.Impls
 
         public ServiceResult CreatePost(CreatePostModel createPostModel)
         {
+            var result = new ServiceResult { Success = true };
             Mapper.CreateMap<CreatePostModel, Post>().ForMember(o => o.Rubric, opt => opt.Ignore());
             var post = Mapper.Map<CreatePostModel, Post>(createPostModel);
             var publish = _currentUser.IsAdmin || _currentUser.IsInRole("Moderator");
@@ -38,11 +41,21 @@ namespace BLL.Blog.Impls
             post.IsFortress = publish;
             if (createPostModel.Images != null && _repository.Find<BlogImage>(createPostModel.Images[0].Id) != null)
             {
-                post.ImageUrl = createPostModel.Images[0].Url;//TODO проверять на наличие изображения в базе
+                post.ImageUrl = createPostModel.Images[0].Url;
+            }
+            if (!string.IsNullOrEmpty(createPostModel.VideoUrl))
+            {
+                if (!YoutubeUrlHelper.UrlIsValid(createPostModel.VideoUrl))
+                {
+                    result.Success = false;
+                    result.ErrorMessage = "Неверный формат ссылки на видео".Resource(this);
+                    return result;
+                }
+                post.VideoUrl = YoutubeUrlHelper.EmbeddedYoutubeUrl(createPostModel.VideoUrl);
             }
             _repository.Add(post);
             _repository.SaveChanges();
-            return new ServiceResult() {Success = true};
+            return result;
         }
 
         public IEnumerable<Rubric> GetRubrics()

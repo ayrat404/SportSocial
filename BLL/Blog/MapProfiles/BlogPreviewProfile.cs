@@ -23,6 +23,7 @@ namespace BLL.Blog.MapProfiles
                 .ForMember(dest => dest.Text, 
                            opt => opt.MapFrom(src => Regex.Replace(src.Text, @"<[^>]+>|&nbsp;", "").Trim()))
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
+                .ForMember(dest => dest.IsVideo, opt => opt.MapFrom(src => !string.IsNullOrEmpty(src.Title)))
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status))
                 .ForMember(dest => dest.CommentsCount, opt => opt.MapFrom(src => src.Comments.Count))
                 .ForMember(dest => dest.Images,

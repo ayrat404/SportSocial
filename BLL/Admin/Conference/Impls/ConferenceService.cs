@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using BLL.Admin.Conference.ViewModels;
+using BLL.Common.Helpers;
 using BLL.Common.Objects;
 using BLL.Infrastructure.Map;
 using DAL.DomainModel.EnumProperties;
@@ -30,9 +31,9 @@ namespace BLL.Admin.Conference.Impls
         public ServiceResult Create(CreateConfModel model)
         {
             var result = new ServiceResult {Success = true};
-            if (UrlIsValid(model.Url))
+            if (YoutubeUrlHelper.UrlIsValid(model.Url))
             {
-                model.Url = EmbeddedYoutubeUrl(model.Url);
+                model.Url = YoutubeUrlHelper.EmbeddedYoutubeUrl(model.Url);
             }
             else
             {
@@ -56,9 +57,9 @@ namespace BLL.Admin.Conference.Impls
             {
                 if (!string.IsNullOrEmpty(model.Url) && conf.Url != model.Url && !model.Url.Contains("youtube.com/embed"))
                 {
-                    if (UrlIsValid(model.Url))
+                    if (YoutubeUrlHelper.UrlIsValid(model.Url))
                     {
-                        model.Url = EmbeddedYoutubeUrl(model.Url);
+                        model.Url = YoutubeUrlHelper.EmbeddedYoutubeUrl(model.Url);
                     }
                     else
                     {
@@ -136,37 +137,6 @@ namespace BLL.Admin.Conference.Impls
             return null;
         }
 
-        private bool UrlIsValid(string youtubeUrl)
-        {
-            if (string.IsNullOrEmpty(youtubeUrl))
-                return true;
-            Uri url;
-            try
-            {
-                url = new Uri(youtubeUrl);
-            }
-            catch
-            {
-                return false;
-            }
-            var videoId = HttpUtility.ParseQueryString(url.Query)["v"];
-            if ((url.Host.Contains("youtube.") && !string.IsNullOrEmpty(videoId)) 
-                || url.Host.Contains("youtu.be"))
-            {
-                return true;
-            }
-            return false;
-        }
-
-        private string EmbeddedYoutubeUrl(string youtubeUrl)
-        {
-            if (string.IsNullOrEmpty(youtubeUrl))
-                return youtubeUrl;
-            var url = new Uri(youtubeUrl);
-            string videoId;
-            videoId = url.Host.Contains("youtu.be") ? url.Segments[1] : HttpUtility.ParseQueryString(url.Query)["v"];
-            return "//www.youtube.com/embed/" + videoId;
-        }
 
     }
 }

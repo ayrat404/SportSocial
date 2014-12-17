@@ -23,6 +23,8 @@ namespace DAL.DomainModel.BlogEntities
 
         public string ImageUrl { get; set; }
 
+        public string VideoUrl { get; set; }
+
         public BlogPostStatus Status { get; set; }
 
         public string CancelMessage { get; set; }

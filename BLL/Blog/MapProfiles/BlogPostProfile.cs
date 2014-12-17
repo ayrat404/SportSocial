@@ -21,6 +21,7 @@ namespace BLL.Blog.MapProfiles
                 .ForMember(dest => dest.Rating, opt => opt.MapFrom(src => src.TotalRating))
                 .ForMember(dest => dest.Text, opt => opt.MapFrom(src => src.Text))
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
+                .ForMember(dest => dest.IsVideo, opt => opt.MapFrom(src => !string.IsNullOrEmpty(src.VideoUrl)))
                 .ForMember(dest => dest.TotalCommentsCount, opt => opt.MapFrom(src => src.Comments.Count))
                 .ForMember(dest => dest.CommentsCount, 
                            opt => opt.
