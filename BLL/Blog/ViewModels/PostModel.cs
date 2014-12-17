@@ -20,6 +20,8 @@ namespace BLL.Blog.ViewModels
         ////[Required]
         public Images[] Images { get; set; }
 
+        public string VideoUrl { get; set; }
+
         [Required]
         public int Rubric { get; set; }
 

@@ -19,6 +19,8 @@ namespace BLL.Blog.ViewModels
 
         public int AuthorId { get; set; }
 
+        public bool IsVideo { get; set; }
+
         public string AuthorName { get; set; }
 
         public string AuthorAvatar { get; set; }

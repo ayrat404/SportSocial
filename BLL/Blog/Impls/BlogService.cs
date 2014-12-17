@@ -180,14 +180,15 @@ namespace BLL.Blog.Impls
 
         public CreatePostModel GetEditModel(int id)
         {
-            var post =  _repository
+            var post = _repository
                 .Queryable<Post>()
                 .Where(p => p.Id == id && p.UserId == _currentUser.UserId)
-                .MapTo<CreatePostModel>();
+                .SingleOrDefault();
             if (post == null)
                 return null;
-            post.Rubrics = GetRubrics();
-            return post;
+            var postVm = post.MapTo<CreatePostModel>();
+            postVm.Rubrics = GetRubrics();
+            return postVm;
         }
 
         public ServiceResult EditPost(CreatePostModel model)

@@ -83,7 +83,7 @@ namespace SportSocial.Controllers
             var postVm = _blogService.GetEditModel(id);
             if (postVm == null)
                 return RedirectToAction("Index");
-            return View();
+            return View(postVm);
         }
 
         [HttpPost]

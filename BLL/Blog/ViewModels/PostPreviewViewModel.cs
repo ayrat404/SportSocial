@@ -21,9 +21,13 @@ namespace BLL.Blog.ViewModels
 
         public Images Images { get; set; }
 
+        public string VideoUrl { get; set; }
+
         public int Rating { get; set; }
 
         public bool IsLiked { get; set; }
+
+        public bool IsVideo { get; set; }
 
         public bool IsDisiked { get; set; }
 
