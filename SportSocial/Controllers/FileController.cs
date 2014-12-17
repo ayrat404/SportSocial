@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Web;
 using System.Web.Mvc;
 using BLL.Common.Objects;
 using BLL.Storage;
@@ -18,6 +17,13 @@ namespace SportSocial.Controllers
         public FileController(IFileService fileService)
         {
             _fileService = fileService;
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public JsonResult YoutubeUrl(string youtubeUrl)
+        {
+            return Json(_fileService.YoutubeImage(youtubeUrl));
         }
 
         [HttpPost]

@@ -9,6 +9,7 @@ namespace BLL.Storage
         bool IsImage(Stream inputStream);
         ImageUploadResult UploadImage(Stream inputStream, string fileName, UploadType uploadType);
         ServiceResult UploadAvatar(Stream inputStream, string filePath);
+        ImageUploadResult YoutubeImage(string youtubeUrl);
     }
 
     public class ImageUploadResult: ServiceResult
