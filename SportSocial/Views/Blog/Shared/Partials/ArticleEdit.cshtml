@@ -34,8 +34,21 @@
         <div class="col-sm-4">
             <div class="blog-form__desc">Медиа</div>
         </div>
-        <div class="col-sm-8">
-            <article-img-uploader images="ar.images"></article-img-uploader>
+        <div class="col-sm-8" ng-cloak>
+            <div ng-show="!media.photo.show && !media.video.show">
+                <span class="link" ng-click="media.photo.show = true;">Добавить фото</span>
+                или
+                <span class="link" ng-click="media.video.show = true;">Видео с youtube</span>
+            </div>
+            <div ng-show="media.video.show">
+                <input ng-model="ar.videoUrl" type="text" placeholder="ссылка на видео" class="input" />
+                <div class="alert alert-danger" ng-show="media.videoInvalid">Ссылка неверная</div>
+                <span class="link article__edit__cancel-media" ng-click="media.cancel('video')">Отмена</span>
+            </div>
+            <div ng-show="media.photo.show">
+                <article-img-uploader images="ar.images"></article-img-uploader>
+                <span class="link article__edit__cancel-media" ng-click="media.cancel('img')">Отмена</span>
+            </div>
         </div>
     </div>
     <div class="row">
@@ -52,7 +65,7 @@
     <div class="row">
         <div class="col-sm-12">
             <a href="@Url.Action("Index", "Blog")" class="link pull-left">Отмена</a>
-            <button ng-disabled="prop.btnIsDisabled || ar.text.length < 100 || ar.images.length < 1 || ArticleEdit.$invalid" type="submit" class="btn btn--main pull-right">Отправить на модерацию</button>
+            <button ng-disabled="prop.btnIsDisabled || ar.text.length < 100 || (ar.images.length < 1 && !media.videoValid) || ArticleEdit.$invalid" type="submit" class="btn btn--main pull-right">Отправить на модерацию</button>
         </div>
     </div>
 </form>

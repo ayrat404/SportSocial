@@ -11,9 +11,10 @@ function ($scope, articleRqst, utilsSrvc, $timeout, $window) {
     // service helper
     // ---------------
     var p = {
-        'edit': 'editArticle',
-        'new': 'createArticle'
-    }
+            'edit': 'editArticle',
+            'new': 'createArticle'
+        },
+        getVideoImgTimer = null;
 
     // сообщения после попытки создания/сохранения статьи
     // ---------------
@@ -23,11 +24,53 @@ function ($scope, articleRqst, utilsSrvc, $timeout, $window) {
         error   :   false   // сообщение об ошибке
     }
 
+    // переменные для медиа контента
+    // ---------------
+    $scope.media = {
+        img: {
+            isShow: false   // в качестве контента выбраны картинки
+        },
+        video: {
+            isShow  :   false,  // в качестве контента выбрано видео
+            valid   :   false,  // ссылка на видео нормальная
+            loaded  :   false,  // ссылка на видео уже вставлялась
+            loading :   false,  // идет загрузка
+        },
+        cancel: function(type) {
+            for (var pr in $scope.media[type]) {
+                $scope.media[type][pr] = false;
+            }
+            //$scope.ar.images = [];
+        }
+    }
+
     // свойста
     // ---------------
     $scope.prop = {
         btnIsDisabled: false
     }
+
+    // работа с видео
+    // ---------------
+    $scope.$watch('ar.videoUrl', function (val) {
+        if (val != undefined && val.length) {
+            if (getVideoImgTimer) $timeout.cancel(getVideoImgTimer);
+            getVideoImgTimer = $timeout(function () {
+                $scope.media.video.loading = true;
+                articleRqst.getYoutubeImg(utilsSrvc.token.add({ youtubeurl: val }))
+                    .then(function (res) {
+                        if (res.data.success) {
+                            $scope.images.push(res.data);
+                            $scope.media.video.valid = true;
+                        } else {
+                            $scope.media.video.valid = false;
+                        }
+                        $scope.media.video.loaded = true;
+                        $scope.media.video.loading = false;
+                    });
+            }, 350);
+        }
+    });
 
     // редактирование/создание статьи
     // ---------------

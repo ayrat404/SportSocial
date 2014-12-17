@@ -8,11 +8,13 @@ angular.module('blog').factory('articleRqst', ['$http', 'serializeObj', function
             data    :   obj
         });
     };
-    var get = function(action, obj) {
+
+    // в отдельный модуль, когда понадобится ещё в одном месте
+    var getYoutubeImg = function(obj) {
         return $http({
-            method  :   'GET',
-            url     :   '/Blog/' + action,
-            params  :   obj
+            method: 'POST',
+            url: '/File/youtubeurl',
+            data: obj
         });
     }
     return {
@@ -25,6 +27,11 @@ angular.module('blog').factory('articleRqst', ['$http', 'serializeObj', function
         // ---------------
         editArticle: function(obj) {
             return send('Edit', obj);
+        },
+        // Загрузка видео
+        // ---------------
+        getYoutubeImg: function (obj) {
+            return getYoutubeImg(obj);
         }
     };
 }]);
