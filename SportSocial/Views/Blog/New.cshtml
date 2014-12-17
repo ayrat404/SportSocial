@@ -9,7 +9,7 @@
 <div ng-if="msg.show"
      ng-cloak
      class="msg">
-    <div class="container">
+    <div class="container" ng-cloak>
         <div class="col-sm-6 col-sm-offset-3">
             <div ng-show="msg.success" class="alert alert-success">Статья оптравлена на модерацию</div>
             <div ng-show="msg.error" class="alert alert-danger">Неудалось сохранить статью</div>
