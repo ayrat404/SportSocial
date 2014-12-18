@@ -8,6 +8,7 @@
       ar.id=@Model.Id'
       name="ArticleEdit"
       class="blog-form  article__edit article-new__form">
+    @Html.AntiForgeryToken()
     <div class="row">
         <div class="col-sm-4">
             <div class="blog-form__desc">Заголовок статьи</div>

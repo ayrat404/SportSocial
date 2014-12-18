@@ -221,6 +221,16 @@ namespace BLL.Blog.Impls
             post.Title = model.Title;
             if (model.Images != null && model.Images.Any())
                 post.ImageUrl = model.Images[0].Url;
+            if (!string.IsNullOrEmpty(model.VideoUrl))
+            {
+                if (!YoutubeUrlHelper.UrlIsValid(model.VideoUrl))
+                {
+                    result.Success = false;
+                    result.ErrorMessage = "Неверный формат ссылки на видео".Resource(this);
+                    return result;
+                }
+                post.VideoUrl = YoutubeUrlHelper.EmbeddedYoutubeUrl(model.VideoUrl);
+            }
             post.Text = model.Text;
             post.RubricId = model.Rubric;
             post.Status = BlogPostStatus.New;

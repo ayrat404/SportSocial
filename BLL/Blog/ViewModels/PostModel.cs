@@ -22,6 +22,8 @@ namespace BLL.Blog.ViewModels
 
         public string VideoUrl { get; set; }
 
+        public bool IsVideo { get; set; }
+
         [Required]
         public int Rubric { get; set; }
 

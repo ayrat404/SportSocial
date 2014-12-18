@@ -19,7 +19,7 @@ namespace SportSocial.Controllers
             _fileService = fileService;
         }
 
-        [HttpPost]
+        [HttpGet]
         [ValidateAntiForgeryToken]
         public JsonResult YoutubeUrl(string youtubeUrl)
         {
