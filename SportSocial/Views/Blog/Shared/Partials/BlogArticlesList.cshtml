@@ -13,6 +13,12 @@
                 {
                     <div class="al__item">
                         <a href="@Url.Action("Item", "Blog", new { id = item.Id })" class="al__item__img">
+                            @if (item.IsVideo)
+                            {
+                                <div class="al__item__overlay">
+                                    <div class="i-art i-art-play"></div>
+                                </div>
+                            }
                             <img src="@item.Images.Url?width=198&height=198&mode=crop" alt="@item.Title" />
                         </a>
                         <div class="al__item__info">

@@ -32,6 +32,7 @@
         &__img {
             float: left;
             width: 25%;
+            position: relative;
 
             img {
                 max-height: 100%;
@@ -88,6 +89,23 @@
         &__edit {
             margin-left: 20px;
         }
+
+        &__overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,.4);
+
+            .i-art-play {
+                display: block;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+            }
+        }
     }
 }
 
@@ -97,6 +115,7 @@
 /* New/edit/item Article
 -------------------------------------------------- */
 .article {
+
     &__inner {
         background: #fff;
         padding: 15px;
@@ -143,6 +162,7 @@
         &__upload-btn {
             margin-bottom: 10px;
         }
+
         &__cancel-media {
             margin-top: 10px;
             font-size: .8em;
@@ -153,6 +173,22 @@
         background: #fff;
         position: relative;
 
+        &__video {
+            background: #fff;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            padding-top: 25px;
+            height: 0;
+
+            iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
         &__edit {
             position: absolute;
             top: 0;
@@ -162,6 +198,7 @@
             padding: 10px;
             background: rgba(0,0,0,.5);
             text-align: right;
+            z-index: 3;
         }
 
         &__img-wrap {

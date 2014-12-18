@@ -25,6 +25,8 @@ namespace BLL.Blog.ViewModels
 
         public string AuthorAvatar { get; set; }
 
+        public string VideoUrl { get; set; }
+
         public int CommentsCount { get; set; }
 
         public int TotalCommentsCount { get; set; }

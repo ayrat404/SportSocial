@@ -15,7 +15,16 @@
                         </div>
                     }
                     <div class="article__item__img-wrap">
-                        <img src="@Model.Images[0].Url?width=800&mode=crop" alt="статьюшка" class="article__item__img" />
+                        @if (!Model.IsVideo)
+                        {
+                            <img src="@Model.Images[0].Url?width=800&mode=crop" alt="@Model.Title" class="article__item__img" />
+                        }
+                        else
+                        {
+                            <div class="article__item__video">
+                                <iframe width="700" height="500" src="@Model.VideoUrl" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        }
                     </div>
                     <div class="article__item__text">
                         <h2 class="article__item__title">@Model.Title</h2>
