@@ -75,6 +75,7 @@ namespace BLL.Blog.Impls
         {
             return _repository
                 .GetAll<Post>()
+                .OrderByDescending(p => p.Created)
                 .MapEachTo<PostForAdminViewModel>();
         }
 
@@ -230,6 +231,10 @@ namespace BLL.Blog.Impls
                     return result;
                 }
                 post.VideoUrl = YoutubeUrlHelper.EmbeddedYoutubeUrl(model.VideoUrl);
+            }
+            else
+            {
+                post.VideoUrl = null;
             }
             post.Text = model.Text;
             post.RubricId = model.Rubric;

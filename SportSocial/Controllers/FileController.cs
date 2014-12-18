@@ -5,6 +5,7 @@ using BLL.Storage;
 using BLL.Storage.Impls.Enums;
 using BLL.Storage.ViewModels;
 using Knoema.Localization;
+using NLog;
 using SportSocial.Controllers.Base;
 
 namespace SportSocial.Controllers
