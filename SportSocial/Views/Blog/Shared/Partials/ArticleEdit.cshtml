@@ -1,9 +1,12 @@
 ﻿@using BLL.Common.Extensions
 @model BLL.Blog.ViewModels.CreatePostModel
+      @*media.video.show=@Model.IsVideo.ToString().ToLower() ;
+      media.img.show=@Model.IsVideo.ToString().ToLower() ;*@
 <form ng-submit="sendArticleData(ar)"
       ng-init='
       ar.images=@Html.Raw(Model.Images.ToJson()) ;
       ar.text="@Model.Text" ;
+      ar.videourl="@Model.VideoUrl" ;
       ar.title="@Model.Title" ;
       ar.id=@Model.Id'
       name="ArticleEdit"
@@ -35,19 +38,32 @@
             <div class="blog-form__desc">Медиа</div>
         </div>
         <div class="col-sm-8" ng-cloak>
-            <div ng-show="!media.photo.show && !media.video.show">
-                <span class="link" ng-click="media.photo.show = true;">Добавить фото</span>
+            <div ng-show="!media.img.show && !media.video.show" class="blog-form__line-height">
+                <span class="link" ng-click="media.img.show = true;">Добавить фото</span>
                 или
                 <span class="link" ng-click="media.video.show = true;">Видео с youtube</span>
             </div>
             <div ng-show="media.video.show">
-                <input ng-model="ar.videoUrl" type="text" placeholder="ссылка на видео" class="input" />
-                <div class="alert alert-danger" ng-show="media.videoInvalid">Ссылка неверная</div>
-                <span class="link article__edit__cancel-media" ng-click="media.cancel('video')">Отмена</span>
+                <input ng-model="ar.videoUrl"
+                       ng-show="!ar.images.length"
+                       ng-autofocus="{{media.video.show}}"
+                       type="text" placeholder="ссылка на видео" class="input" />
+                <div class="alert alert-danger" ng-show="!media.video.valid && media.video.loaded">Ссылка неверная</div>
+                <div ng-repeat="img in ar.images" class="article__edit__images">
+                    <img ng-src="{{img.url}}" class="article__edit__img" />
+                    <div class="article__edit__img-del">
+                        <span ng-click="ar.images = []; ar.videoUrl = '';" class="link">Удалить видео</span>
+                    </div>
+                </div>
+                <div>
+                    <span class="link article__edit__cancel-media" ng-click="media.cancel('video')">Отмена</span>
+                </div>
             </div>
-            <div ng-show="media.photo.show">
+            <div ng-show="media.img.show">
                 <article-img-uploader images="ar.images"></article-img-uploader>
-                <span class="link article__edit__cancel-media" ng-click="media.cancel('img')">Отмена</span>
+                <div>
+                    <span class="link article__edit__cancel-media" ng-click="media.cancel('img')">Отмена</span>
+                </div>
             </div>
         </div>
     </div>

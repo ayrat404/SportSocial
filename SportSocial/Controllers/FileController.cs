@@ -20,7 +20,7 @@ namespace SportSocial.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public JsonResult YoutubeUrl(string youtubeUrl)
         {
             return Json(_fileService.YoutubeImage(youtubeUrl));

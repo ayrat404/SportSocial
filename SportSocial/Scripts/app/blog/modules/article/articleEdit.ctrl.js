@@ -16,6 +16,8 @@ function ($scope, articleRqst, utilsSrvc, $timeout, $window) {
         },
         getVideoImgTimer = null;
 
+    $scope.ar = {};
+
     // сообщения после попытки создания/сохранения статьи
     // ---------------
     $scope.msg = {
@@ -27,20 +29,21 @@ function ($scope, articleRqst, utilsSrvc, $timeout, $window) {
     // переменные для медиа контента
     // ---------------
     $scope.media = {
-        img: {
-            isShow: false   // в качестве контента выбраны картинки
+        photo: {
+            show: false   // в качестве контента выбраны картинки
         },
         video: {
-            isShow  :   false,  // в качестве контента выбрано видео
+            show  :   false,  // в качестве контента выбрано видео
             valid   :   false,  // ссылка на видео нормальная
             loaded  :   false,  // ссылка на видео уже вставлялась
             loading :   false,  // идет загрузка
         },
-        cancel: function(type) {
+        cancel: function (type) {
             for (var pr in $scope.media[type]) {
                 $scope.media[type][pr] = false;
             }
-            //$scope.ar.images = [];
+            $scope.ar.images = [];
+            $scope.ar.videoUrl = '';
         }
     }
 
@@ -60,7 +63,7 @@ function ($scope, articleRqst, utilsSrvc, $timeout, $window) {
                 articleRqst.getYoutubeImg(utilsSrvc.token.add({ youtubeurl: val }))
                     .then(function (res) {
                         if (res.data.success) {
-                            $scope.images.push(res.data);
+                            $scope.ar.images.push(res.data);
                             $scope.media.video.valid = true;
                         } else {
                             $scope.media.video.valid = false;
