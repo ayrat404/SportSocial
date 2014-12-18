@@ -38,7 +38,7 @@ namespace BLL.Common.Helpers
             var url = new Uri(youtubeUrl);
             string videoId;
             videoId = url.Host.Contains("youtu.be") ? url.Segments[1] : HttpUtility.ParseQueryString(url.Query)["v"];
-            return "//www.youtube.com/embed/" + videoId;
+            return "http://www.youtube.com/embed/" + videoId;
         }
 
         public static string MaxResolutionImageUrl(string youtubeUrl)

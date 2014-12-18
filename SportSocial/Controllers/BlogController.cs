@@ -63,6 +63,7 @@ namespace SportSocial.Controllers
 
         [HttpPost]
         //[AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public ActionResult New(CreatePostModel createPostModel)
         {
             if (ModelState.IsValid)

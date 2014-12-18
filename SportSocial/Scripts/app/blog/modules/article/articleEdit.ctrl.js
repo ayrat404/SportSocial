@@ -33,7 +33,7 @@ function ($scope, articleRqst, utilsSrvc, $timeout, $window) {
             show: false   // в качестве контента выбраны картинки
         },
         video: {
-            show  :   false,  // в качестве контента выбрано видео
+            show    :   false,  // в качестве контента выбрано видео
             valid   :   false,  // ссылка на видео нормальная
             loaded  :   false,  // ссылка на видео уже вставлялась
             loading :   false,  // идет загрузка
@@ -43,7 +43,7 @@ function ($scope, articleRqst, utilsSrvc, $timeout, $window) {
                 $scope.media[type][pr] = false;
             }
             $scope.ar.images = [];
-            $scope.ar.videoUrl = '';
+            $scope.ar.videourl = '';
         }
     }
 
@@ -55,8 +55,8 @@ function ($scope, articleRqst, utilsSrvc, $timeout, $window) {
 
     // работа с видео
     // ---------------
-    $scope.$watch('ar.videoUrl', function (val) {
-        if (val != undefined && val.length) {
+    $scope.$watch('ar.videourl', function (val, oldVal) {
+        if (val != undefined && val.length && val != oldVal) {
             if (getVideoImgTimer) $timeout.cancel(getVideoImgTimer);
             getVideoImgTimer = $timeout(function () {
                 $scope.media.video.loading = true;

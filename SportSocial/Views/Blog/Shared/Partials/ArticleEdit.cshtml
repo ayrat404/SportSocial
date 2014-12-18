@@ -1,16 +1,18 @@
 ﻿@using BLL.Common.Extensions
 @model BLL.Blog.ViewModels.CreatePostModel
-      @*media.video.show=@Model.IsVideo.ToString().ToLower() ;
-      media.img.show=@Model.IsVideo.ToString().ToLower() ;*@
+      
 <form ng-submit="sendArticleData(ar)"
       ng-init='
+      media.video.show=@Model.IsVideo.ToString().ToLower() ;
+      media.img.show=@((!Model.IsVideo).ToString().ToLower()) ;
       ar.images=@Html.Raw(Model.Images.ToJson()) ;
       ar.text="@Model.Text" ;
-      ar.videoUrl="@Model.VideoUrl" ;
+      ar.videourl="@Model.VideoUrl" ;
       ar.title="@Model.Title" ;
       ar.id=@Model.Id'
       name="ArticleEdit"
       class="blog-form  article__edit article-new__form">
+    @Html.AntiForgeryToken()
     <div class="row">
         <div class="col-sm-4">
             <div class="blog-form__desc">Заголовок статьи</div>
@@ -44,7 +46,7 @@
                 <span class="link" ng-click="media.video.show = true;">Видео с youtube</span>
             </div>
             <div ng-show="media.video.show">
-                <input ng-model="ar.videoUrl"
+                <input ng-model="ar.videourl"
                        ng-show="!ar.images.length"
                        ng-autofocus="{{media.video.show}}"
                        type="text" placeholder="ссылка на видео" class="input" />
@@ -52,7 +54,7 @@
                 <div ng-repeat="img in ar.images" class="article__edit__images">
                     <img ng-src="{{img.url}}" class="article__edit__img" />
                     <div class="article__edit__img-del">
-                        <span ng-click="ar.images = []; ar.videoUrl = '';" class="link">Удалить видео</span>
+                        <span ng-click="ar.images = []; ar.videourl = '';" class="link">Удалить видео</span>
                     </div>
                 </div>
                 <div>
