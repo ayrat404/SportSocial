@@ -4,7 +4,7 @@
 <form ng-submit="sendArticleData(ar)"
       ng-init='
       media.video.show=@Model.IsVideo.ToString().ToLower() ;
-      media.img.show=@((!Model.IsVideo).ToString().ToLower()) ;
+      media.img.show=@((!Model.IsVideo).ToString().ToLower()) && ar.images.length;
       ar.images=@Html.Raw(Model.Images.ToJson()) ;
       ar.text="@Model.Text" ;
       ar.videourl="@Model.VideoUrl" ;
