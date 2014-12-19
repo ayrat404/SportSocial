@@ -157,6 +157,9 @@
     <Compile Include="Common\Helpers\LocalizationHelper.cs" />
     <Compile Include="Common\Helpers\ModelStateHelper.cs" />
     <Compile Include="Common\Enums\HttpMethod.cs" />
+    <Compile Include="Common\Helpers\WebDownloader.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Common\Helpers\YoutubeUrlHelper.cs" />
     <Compile Include="Common\Objects\HasDate.cs" />
     <Compile Include="Common\Objects\IHasCommentViewModel.cs" />

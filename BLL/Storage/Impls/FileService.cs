@@ -2,6 +2,7 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.Net;
+using System.Net.Http;
 using System.Web;
 using BLL.Common.Helpers;
 using BLL.Common.Objects;
@@ -10,11 +11,14 @@ using BLL.Storage.Impls.Enums;
 using DAL.DomainModel;
 using DAL.Repository.Interfaces;
 using Knoema.Localization;
+using NLog;
 
 namespace BLL.Storage.Impls
 {
     public class FileService : IFileService
     {
+        private static Logger _logger = LogManager.GetCurrentClassLogger();
+
         private readonly IRepository _repository;
         private readonly ICurrentUser _currentUser;
 
@@ -135,10 +139,29 @@ namespace BLL.Storage.Impls
                 return result;
             }
             string imageUrl = YoutubeUrlHelper.MaxResolutionImageUrl(youtubeUrl);
-            var imageBytes = new WebClient().DownloadData(imageUrl);
-            using (var stream = new MemoryStream(imageBytes))
+            using (var client = new HttpClient())
             {
-                return UploadImage(stream, YoutubeUrlHelper.MaxResImageName, UploadType.Article);
+                var response = client.GetAsync(imageUrl).Result;
+                if (!response.IsSuccessStatusCode)
+                {
+                    response = client.GetAsync(YoutubeUrlHelper.SdImageUrl(youtubeUrl)).Result;
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        response = client.GetAsync(YoutubeUrlHelper.LowImageUrl(youtubeUrl)).Result;
+                        if (!response.IsSuccessStatusCode)
+                        {
+                            result.Success = false;
+                            result.ErrorMessage = "Ќе удалось загрузить картинку-превью".Resource(this);
+                            _logger.Error("Ќе удалось загрузить картинку-превью. url={0}", youtubeUrl);
+                            return result;
+                        }
+                    }
+                }
+                var imageBytes = response.Content.ReadAsByteArrayAsync().Result;
+                using (var stream = new MemoryStream(imageBytes))
+                {
+                    return UploadImage(stream, YoutubeUrlHelper.MaxResImageName, UploadType.Article);
+                }
             }
         }
     }
