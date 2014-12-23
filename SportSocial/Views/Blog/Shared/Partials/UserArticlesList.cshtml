@@ -1,6 +1,6 @@
 ﻿@using BLL.Common.Extensions
 @using PagedList.Mvc
-@model PagedList.StaticPagedList<BLL.Blog.ViewModels.PostPreviewViewModel>
+@model PagedList.StaticPagedList<BLL.Blog.ViewModels.PostPreviewModel>
 
 <div class="articles-list">
     @foreach (var item in Model)
@@ -13,7 +13,7 @@
                         <div class="i-art i-art-play"></div>
                     </div>
                 }
-                <img src="@item.Images.Url?width=198&height=198&mode=crop" alt="@item.Title" />
+                <img src="@item.Images[0].Url?width=198&height=198&mode=crop" alt="@item.Title" />
             </a>
             <div class="al__item__info">
                 <a href="@Url.Action("Item", "Blog", new { id = item.Id })" class="al__item__title">@item.Title</a>

@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Linq;
 using BLL.Common.Objects;
 using BLL.Common.Services.CurrentUser;
 using DAL.DomainModel.EnumProperties;
 using DAL.DomainModel.Interfaces;
 using DAL.Repository.Interfaces;
 
-namespace BLL.Common.Services.Rating
+namespace BLL.Rating
 {
     public class RatingService<TEntity, TRatingEntity> : IRatingServiceImpl, IGRatingService<TEntity, TRatingEntity>
         where TEntity: class, IHasRating<TRatingEntity>
@@ -24,18 +25,32 @@ namespace BLL.Common.Services.Rating
             //where TEntity : class, IHasRating<TEntity>
             //where TRatingEntity : class, IRatingEntity<TEntity>
         {
+            var result = new ServiceResult() {Success = true};
             var entity = _repository.Find<TEntity>(entityId);
             if (entity != null)
             {
-                var ratingEntity = Activator.CreateInstance<TRatingEntity>();
-                ratingEntity.RatedEntity = entity;
-                ratingEntity.RatingType = ratingType;
-                ratingEntity.UserId = _currentUser.UserId;
-                entity.TotalRating += (int) ratingType;
-                _repository.Add(ratingEntity);
-                _repository.Update(entity);
-                _repository.SaveChanges();
-                return new ServiceResult() {Success = true};
+                if (ratingType == RatingType.Remove)
+                {
+                    var ratingEntity = entity.RatingEntites.SingleOrDefault(r => r.UserId == _currentUser.UserId);
+                    if (ratingEntity != null)
+                    {
+                        _repository.Delete(ratingEntity);
+                        _repository.SaveChanges();
+                        return result;
+                    }
+                }
+                else
+                {
+                    var ratingEntity = Activator.CreateInstance<TRatingEntity>();
+                    ratingEntity.RatedEntity = entity;
+                    ratingEntity.RatingType = ratingType;
+                    ratingEntity.UserId = _currentUser.UserId;
+                    entity.TotalRating += (int) ratingType;
+                    _repository.Add(ratingEntity);
+                    _repository.Update(entity);
+                    _repository.SaveChanges();
+                }
+                return result;
             }
             return new ServiceResult() {Success = false};
         }

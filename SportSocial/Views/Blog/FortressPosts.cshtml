@@ -1,16 +1,16 @@
 ﻿@using BLL.Blog.ViewModels
-@model IEnumerable<BLL.Blog.ViewModels.PostPreviewViewModel>
+@model IEnumerable<BLL.Blog.ViewModels.PostPreviewModel>
 
 
 @if (Model.Count() != 0)
 {
-    PostPreviewViewModel firstItem = Model.ToList()[0];
+    PostPreviewModel firstItem = Model.ToList()[0];
 
     <div class="block galery">
         <div class="galery__title col-xs-12">Моя история</div>
         <div class="col-sm-8">
             <div class="galery__item galery__item--lg">
-                <img src="@firstItem.Images.Url?width=780&height=780&mode=crop" alt="@firstItem.Title" class="galery__item__img" />
+                <img src="@firstItem.Images[0].Url?width=780&height=780&mode=crop" alt="@firstItem.Title" class="galery__item__img" />
                 <div class="galery__item__info">
                     <div class="galery__item__title">
                         @firstItem.Title
@@ -27,7 +27,7 @@
     {
         <div class="col-xs-6 col-sm-4">
             <div class="galery__item galery__item--sm block">
-                <img src="@item.Images.Url?width=380&height=380&mode=crop" alt="@item.Title" class="galery__item__img" />
+                <img src="@item.Images[0].Url?width=380&height=380&mode=crop" alt="@item.Title" class="galery__item__img" />
                 <div class="galery__item__info">
                     <div class="galery__item__title">
                         @item.Title

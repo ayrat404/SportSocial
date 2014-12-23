@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading;
-using AutoMapper;
 using BLL.Blog.ViewModels;
 using BLL.Comments.Objects;
 using BLL.Common.Helpers;
@@ -28,16 +26,12 @@ namespace BLL.Blog.Impls
             _currentUser = currentUser;
         }
 
-        public ServiceResult CreatePost(CreatePostModel createPostModel)
+        public ServiceResult CreatePost(PostCreateModel createPostModel)
         {
             var result = new ServiceResult { Success = true };
-            Mapper.CreateMap<CreatePostModel, Post>().ForMember(o => o.Rubric, opt => opt.Ignore());
-            var post = Mapper.Map<CreatePostModel, Post>(createPostModel);
+            var post = createPostModel.MapTo<Post>();
             var publish = _currentUser.IsAdmin || _currentUser.IsInRole("Moderator");
             post.Status = publish ? BlogPostStatus.Allow : BlogPostStatus.New;
-            post.RubricId = createPostModel.Rubric;
-            post.UserId = _currentUser.UserId;
-            post.Lang = Thread.CurrentThread.CurrentCulture.Name;
             post.IsFortress = publish;
             if (createPostModel.Images != null && _repository.Find<BlogImage>(createPostModel.Images[0].Id) != null)
             {
@@ -71,12 +65,12 @@ namespace BLL.Blog.Impls
             return new ServiceResult {Success = true};
         }
 
-        public IEnumerable<PostForAdminViewModel> GetPostsForAdmin(BlogPostStatus? status, string query)
+        public IEnumerable<PostForAdminModel> GetPostsForAdmin(BlogPostStatus? status, string query)
         {
             return _repository
                 .GetAll<Post>()
                 .OrderByDescending(p => p.Created)
-                .MapEachTo<PostForAdminViewModel>();
+                .MapEachTo<PostForAdminModel>();
         }
 
         //public ServiceResult RaitBlog(BlogRatingViewModel model) {
@@ -101,7 +95,7 @@ namespace BLL.Blog.Impls
             return comments;
         }
 
-        public BlogPostViewModel GetPost(int id)
+        public PostDisplayModel GetPost(int id)
         {
             var post =  _repository.Queryable<Post>()
                 .Where(p => p.Id == id && !p.Deleted)
@@ -109,17 +103,17 @@ namespace BLL.Blog.Impls
                 .Include(p => p.Comments)
                 .Include(p => p.RatingEntites)
                 .Single();
-            var postvm = post.MapTo<BlogPostViewModel>();
+            var postvm = post.MapTo<PostDisplayModel>();
             postvm.IsLiked =post.RatingEntites.Any(r => r.UserId == _currentUser.UserId && r.RatingType == RatingType.Like);
             postvm.IsDisiked =post.RatingEntites.Any(r => r.UserId == _currentUser.UserId && r.RatingType == RatingType.Dislike);
             return postvm;
         }
 
-        public PostListViewModel GetPosts(int pageSize, PostSortType sortType, int rubricId = 0, int page = 1)
+        public PostListModel GetPosts(int pageSize, PostSortType sortType, int rubricId = 0, int page = 1)
         {
             int take = page * pageSize;
             int skip = take - pageSize;
-            var postListVM = new PostListViewModel();
+            var postListVM = new PostListModel();
             postListVM.PageInfo = new PageInfo {CurrentPage = page};
             switch (sortType)
             {
@@ -137,7 +131,7 @@ namespace BLL.Blog.Impls
                         .Take(take)
                         .Skip(skip)
                         .AsNoTracking()
-                        .MapEachTo<PostPreviewViewModel>()
+                        .MapEachTo<PostPreviewModel>()
                         .ToList();
                     break;
                 case PostSortType.Fortress:
@@ -154,7 +148,7 @@ namespace BLL.Blog.Impls
                         .Take(take)
                         .Skip(skip)
                         .AsNoTracking()
-                        .MapEachTo<PostPreviewViewModel>()
+                        .MapEachTo<PostPreviewModel>()
                         .ToList();
                     break;
                 default:
@@ -171,14 +165,14 @@ namespace BLL.Blog.Impls
                         .Take(take)
                         .Skip(skip)
                         .AsNoTracking()
-                        .MapEachTo<PostPreviewViewModel>()
+                        .MapEachTo<PostPreviewModel>()
                         .ToList();
                     break;
             }
             return postListVM;
         }
 
-        public IEnumerable<PostPreviewViewModel> OnMainPosts()
+        public IEnumerable<PostPreviewModel> OnMainPosts()
         {
             var postPreview = _repository
                 .Queryable<Post>()
@@ -187,12 +181,12 @@ namespace BLL.Blog.Impls
                 .OrderByDescending(p => p.Created)
                 .Take(3)
                 .AsNoTracking()
-                .MapEachTo<PostPreviewViewModel>()
+                .MapEachTo<PostPreviewModel>()
                 .ToList();
             return postPreview;
         }
 
-        public CreatePostModel GetEditModel(int id)
+        public PostEditModel GetEditModel(int id)
         {
             var post = _repository
                 .Queryable<Post>()
@@ -200,12 +194,12 @@ namespace BLL.Blog.Impls
                 .SingleOrDefault();
             if (post == null)
                 return null;
-            var postVm = post.MapTo<CreatePostModel>();
+            var postVm = post.MapTo<PostEditModel>();
             postVm.Rubrics = GetRubrics();
             return postVm;
         }
 
-        public ServiceResult EditPost(CreatePostModel model)
+        public ServiceResult EditPost(PostEditModel model)
         {
             var result = new ServiceResult
             {
@@ -243,11 +237,11 @@ namespace BLL.Blog.Impls
             return result;
         }
 
-        public PostListViewModel MyPosts(int pageSize, int page = 1)
+        public PostListModel MyPosts(int pageSize, int page = 1)
         {
             int take = page * pageSize;
             int skip = take - pageSize;
-            var postListVM = new PostListViewModel();
+            var postListVM = new PostListModel();
             postListVM.PageInfo = new PageInfo {CurrentPage = page};
             postListVM.PageInfo.Count = _repository
                 .Queryable<Post>()
@@ -260,7 +254,7 @@ namespace BLL.Blog.Impls
                 .Take(take)
                 .Skip(skip)
                 .AsNoTracking()
-                .MapEachTo<PostPreviewViewModel>()
+                .MapEachTo<PostPreviewModel>()
                 .ToList();
             return postListVM;
         }

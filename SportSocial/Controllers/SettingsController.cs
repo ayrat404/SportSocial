@@ -40,18 +40,21 @@ namespace SportSocial.Controllers
         }
 
         [HttpPost]
+        [CustomAntiForgeryValidator]
         public ActionResult RequestCode(string phone)
         {
             return Json(_loginService.ChangePhone(phone));
         }
 
         [HttpPost]
+        [CustomAntiForgeryValidator]
         public ActionResult ChangePhone(ChangePhoneModel chPhoneModel)
         {
             return Json(_loginService.ChangePhoneConfirm(chPhoneModel));
         }
 
         [HttpPost]
+        [CustomAntiForgeryValidator]
         public ActionResult RemoveAvatar()
         {
             return Json(_loginService.RemoveAvatar());

@@ -12,7 +12,6 @@ namespace SportSocial
     {
         private void ConfigureAuth(IAppBuilder app)
         {
-            //app.CreatePerOwinContext<EntityDbContext>(EntityDbContext.Create);
             app.CreatePerOwinContext(() => DependencyResolver.Current.GetService<AppUserManager>());
             app.CreatePerOwinContext(() => DependencyResolver.Current.GetService<AppRoleManager>());
 

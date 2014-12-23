@@ -26,6 +26,7 @@ namespace SportSocial.Controllers
         }
 
         [HttpPost]
+        [CustomAntiForgeryValidator]
         public ActionResult Feedback(FeedBackModel feedBackModel)
         {
             if (ModelState.IsValid)

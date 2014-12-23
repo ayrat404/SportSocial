@@ -3,9 +3,9 @@ using BLL.Common.Objects;
 
 namespace BLL.Blog.ViewModels
 {
-    public class PostListViewModel: IPagedViewModel
+    public class PostListModel: IPagedViewModel
     {
         public PageInfo PageInfo { get; set; }
-        public IEnumerable<PostPreviewViewModel> PostPreview { get; set; }
+        public IEnumerable<PostPreviewModel> PostPreview { get; set; }
     }
 }

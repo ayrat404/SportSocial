@@ -1,15 +1,13 @@
 ﻿using BLL.Comments;
 using BLL.Common.Services.CurrentUser;
 using BLL.Common.Services.CurrentUser.Impls;
-using BLL.Common.Services.Rating;
 using BLL.Infrastructure.IdentityConfig;
+using BLL.Rating;
 using BLL.Sms;
-using BLL.Sms.Impls;
 using DAL;
 using DAL.DomainModel;
 using DAL.Repository.Interfaces;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Ninject;
 using Ninject.Extensions.Conventions;
 using Ninject.Web.Common;

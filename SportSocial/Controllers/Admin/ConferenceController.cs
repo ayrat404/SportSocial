@@ -53,37 +53,5 @@ namespace SportSocial.Controllers
             };
             return View(hostiryCOnfModel);
         }
-
-        //[HttpGet]
-        //public ActionResult Item(int id)
-        //{
-        //    var conf = _conferenceService.GetInProcessConf(id);
-        //    return Json(conf, JsonRequestBehavior.AllowGet);
-        //}
-
-        //[HttpGet]
-        //public ActionResult Index()
-        //{
-        //    var model = _conferenceService.GetAll();
-        //    return View(model);
-        //}
-
-        //[HttpPost]
-        //public JsonResult Create(CreateConfModel model)
-        //{
-        //    if (!ModelState.IsValid)
-        //        return Json(new {success = false});
-        //    _conferenceService.Create(model);
-        //    return Json(new {success = true});
-        //}
-
-        //[HttpPost]
-        //public ActionResult Edit(ConfModel model)
-        //{
-        //    if (!ModelState.IsValid)
-        //        return Json(new {success = false});
-        //    _conferenceService.Edit(model);
-        //    return Json(new {success = true});
-        //}
 	}
 }

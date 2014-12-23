@@ -10,19 +10,19 @@ namespace BLL.Blog
 {
     public interface IBlogService
     {
-        ServiceResult CreatePost(CreatePostModel createPostModel);
+        ServiceResult CreatePost(PostCreateModel createPostModel);
         IEnumerable<Rubric> GetRubrics();
         ServiceResult ChangeStatus(int id, int status);
-        IEnumerable<PostForAdminViewModel> GetPostsForAdmin(BlogPostStatus? status, string query);
+        IEnumerable<PostForAdminModel> GetPostsForAdmin(BlogPostStatus? status, string query);
         //ServiceResult RaitBlog(BlogRatingViewModel model);
         Comment AddComment(CreateCommentViewModel createCommentViewModelModel);
         IEnumerable<Comment> LoadComments(int postId);
-        BlogPostViewModel GetPost(int id);
-        PostListViewModel GetPosts(int pageSize, PostSortType sortType, int rubricId = 0, int page = 1);
-        IEnumerable<PostPreviewViewModel> OnMainPosts();
-        CreatePostModel GetEditModel(int id);
-        ServiceResult EditPost(CreatePostModel model);
-        PostListViewModel MyPosts(int pageSize, int page = 1);
+        PostDisplayModel GetPost(int id);
+        PostListModel GetPosts(int pageSize, PostSortType sortType, int rubricId = 0, int page = 1);
+        IEnumerable<PostPreviewModel> OnMainPosts();
+        PostEditModel GetEditModel(int id);
+        ServiceResult EditPost(PostEditModel model);
+        PostListModel MyPosts(int pageSize, int page = 1);
     }
 
     public enum PostSortType

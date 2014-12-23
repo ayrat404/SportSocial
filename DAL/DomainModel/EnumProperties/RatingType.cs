@@ -4,5 +4,6 @@ namespace DAL.DomainModel.EnumProperties
     {
         Like = 1,
         Dislike = -1,
+        Remove = 2,
     }
 }

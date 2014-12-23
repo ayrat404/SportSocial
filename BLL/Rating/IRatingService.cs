@@ -2,7 +2,7 @@
 using DAL.DomainModel.EnumProperties;
 using DAL.DomainModel.Interfaces;
 
-namespace BLL.Common.Services.Rating
+namespace BLL.Rating
 {
     public interface IGRatingService<TEntity, TRatingEntity>
         where TEntity: class, IHasRating<TRatingEntity>

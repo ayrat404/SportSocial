@@ -44,6 +44,7 @@ namespace SportSocial.Controllers
 
         [HttpPost]
         [AllowAnonymous]
+        [CustomAntiForgeryValidator]
         public JsonResult SignIn(SignInModel model, string returnUrl = "/")
         {
             if (ModelState.IsValid)
@@ -55,6 +56,7 @@ namespace SportSocial.Controllers
 
         [HttpPost]
         [AllowAnonymous]
+        [CustomAntiForgeryValidator]
         public JsonResult Register(RegistratioinModel model, string url = "/")
         {
             if (ModelState.IsValid)
@@ -66,6 +68,7 @@ namespace SportSocial.Controllers
 
         [HttpPost]
         [AllowAnonymous]
+        [CustomAntiForgeryValidator]
         public JsonResult ConfirmPhone(ConfirmSmsCode confirmModel)
         {
             if (ModelState.IsValid)
@@ -77,6 +80,7 @@ namespace SportSocial.Controllers
 
         [HttpPost]
         [AllowAnonymous]
+        [CustomAntiForgeryValidator]
         public JsonResult ResendCode(string phone)
         {
             return Json(_loginService.ResendSmsCode(phone));
@@ -90,6 +94,7 @@ namespace SportSocial.Controllers
 
         [HttpGet]
         [AllowAnonymous]
+        [CustomAntiForgeryValidator]
         public ActionResult RestorePassword()
         {
             return View();
@@ -97,6 +102,7 @@ namespace SportSocial.Controllers
 
         [HttpPost]
         [AllowAnonymous]
+        [CustomAntiForgeryValidator]
         public ActionResult RestorePassword(string phone)
         {
             return Json(_loginService.RestorePassword(phone));
@@ -104,6 +110,7 @@ namespace SportSocial.Controllers
 
         [HttpPost]
         [AllowAnonymous]
+        [CustomAntiForgeryValidator]
         public ActionResult RestorePasswordConfirm(ConfirmSmsCode confirmModel)
         {
             if (ModelState.IsValid)

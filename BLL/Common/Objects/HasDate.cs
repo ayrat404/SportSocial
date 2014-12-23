@@ -4,4 +4,9 @@
     {
         public string Date { get; set; }
     }
+
+    public interface IHasDate
+    {
+        string Date { get; set; }
+    }
 }

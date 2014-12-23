@@ -4,7 +4,7 @@ using DAL.DomainModel.EnumProperties;
 
 namespace BLL.Blog.ViewModels
 {
-    public class PostForAdminViewModel: HasDate
+    public class PostForAdminModel: HasDate
     {
         public int Id { get; set; }
         public string Title { get; set; }

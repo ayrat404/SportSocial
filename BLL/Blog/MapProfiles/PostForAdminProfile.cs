@@ -9,7 +9,7 @@ namespace BLL.Blog.MapProfiles
     {
         protected override void Configure()
         {
-            CreateMap<Post, PostForAdminViewModel>()
+            CreateMap<Post, PostForAdminModel>()
                 .ForMember(dest => dest.Date, opts => opts.MapFrom(src => src.Created.ToString()));
         }
     }

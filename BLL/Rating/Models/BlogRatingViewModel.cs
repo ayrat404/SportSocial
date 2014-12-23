@@ -1,10 +1,11 @@
 using System.ComponentModel.DataAnnotations;
 using BLL.Blog.Enums;
+using BLL.Rating.Enums;
 using DAL.DomainModel.EnumProperties;
 
-namespace BLL.Blog.ViewModels
+namespace BLL.Rating.Models
 {
-    public class BlogRatingViewModel
+    public class RatingModel
     {
         [Required]
         public int Id { get; set; }

@@ -14,6 +14,7 @@ namespace SportSocial.Controllers
     {
 
         [HttpPost]
+        [CustomAntiForgeryValidator]
         public JsonResult Comment(CreateCommentViewModel createComment)
         {
             if (ModelState.IsValid)

@@ -1,4 +1,4 @@
-namespace BLL.Blog.Enums
+namespace BLL.Rating.Enums
 {
     public enum RatingEntityType
     {

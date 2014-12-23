@@ -1,5 +1,6 @@
-﻿@using BLL.Common.Extensions
-@model BLL.Blog.ViewModels.CreatePostModel
+﻿@using BLL.Blog.ViewModels
+@using BLL.Common.Extensions
+@model BLL.Blog.ViewModels.PostCreateModel
       
 <form ng-submit="sendArticleData(ar)"
       ng-init='
@@ -9,7 +10,7 @@
       ar.text="@Model.Text" ;
       ar.videourl="@Model.VideoUrl" ;
       ar.title="@Model.Title" ;
-      ar.id=@Model.Id'
+      ar.id=@((Model is PostEditModel) ? .Id)'
       name="ArticleEdit"
       class="blog-form  article__edit article-new__form">
     @Html.AntiForgeryToken()

@@ -31,21 +31,15 @@ namespace SportSocial.Controllers
             ViewBag.RubricName = currentRubric != null ? currentRubric.Name : "";
             var posts = _blogService.GetPosts(PageSize, sort, rubric, page);
             //posts.PostPreview.ForEach(p => p.Text = Regex.Replace(p.Text, @"<[^>]+>|&nbsp;", "").Trim());
-            var pageList = new StaticPagedList<PostPreviewViewModel>(posts.PostPreview, page, PageSize,
+            var pageList = new StaticPagedList<PostPreviewModel>(posts.PostPreview, page, PageSize,
                 posts.PageInfo.Count);
             return View(pageList);
         }
 
-        //[HttpGet]
-        //public ActionResult UserArticles(long id)
-        //{
-        //    return View();
-        //}
-
         [HttpGet]
         public ActionResult New()
         {
-            var blogModel = new CreatePostModel()
+            var blogModel = new PostCreateModel()
             {
                 Rubrics = _blogService.GetRubrics(),
             };
@@ -62,9 +56,8 @@ namespace SportSocial.Controllers
         }
 
         [HttpPost]
-        //[AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult New(CreatePostModel createPostModel)
+        [CustomAntiForgeryValidator]
+        public ActionResult New(PostCreateModel createPostModel)
         {
             if (ModelState.IsValid)
                 return Json(_blogService.CreatePost(createPostModel));
@@ -88,7 +81,8 @@ namespace SportSocial.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(CreatePostModel model)
+        [CustomAntiForgeryValidator]
+        public ActionResult Edit(PostEditModel model)
         {
             if (ModelState.IsValid)
             {
@@ -102,7 +96,7 @@ namespace SportSocial.Controllers
         public ActionResult My(int page = 1)
         {
             var myPosts = _blogService.MyPosts(PageSize, page);
-            var pageList = new StaticPagedList<PostPreviewViewModel>(myPosts.PostPreview, page, PageSize,
+            var pageList = new StaticPagedList<PostPreviewModel>(myPosts.PostPreview, page, PageSize,
                 myPosts.PageInfo.Count);
             return View("UserArticles", pageList);
         }
@@ -113,37 +107,7 @@ namespace SportSocial.Controllers
         public ActionResult FortressPosts()
         {
             var posts = _blogService.OnMainPosts();
-            //return Json(posts.PostPreview, JsonRequestBehavior.AllowGet);
             return View(posts);
         }
-
-
-        //[HttpPost]
-        //public ActionResult Rating(BlogRatingViewModel model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        //_blogService.RaitBlog(model);
-        //        return Json(new {Success = true});
-        //    }
-        //    return Json(new {Success = false});
-        //}
-
-        //[HttpPost]
-        //public JsonResult Comment(CreateCommentViewModel createCommentViewModelModel)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var comment = _blogService.AddComment(createCommentViewModelModel);
-        //        return Json(new {Success = true, Comment = comment});
-        //    }
-        //    return Json(new {Success = false});
-        //}
-
-        //[HttpGet]
-        //public JsonResult LoadComments(int id)
-        //{
-        //    return Json(_blogService.LoadComments(id), JsonRequestBehavior.AllowGet);
-        //}
 	}
 }

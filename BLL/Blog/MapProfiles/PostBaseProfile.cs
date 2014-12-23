@@ -1,15 +1,19 @@
 ﻿using AutoMapper;
 using BLL.Blog.ViewModels;
+using BLL.Blog.ViewModels.Base;
+using BLL.Common.Objects;
 using DAL.DomainModel.BlogEntities;
 
 namespace BLL.Blog.MapProfiles
 {
-    public class EditPostProfile: Profile
+    public class PostBaseProfile: Profile
     {
         protected override void Configure()
         {
-            CreateMap<Post, CreatePostModel>()
-                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+            CreateMap<Post, PostBaseModel>()
+                .Include<Post, PostEditModel>()
+                .Include<Post, PostDisplayModel>()
+                .Include<Post, PostPreviewModel>()
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
                 .ForMember(dest => dest.Text, opt => opt.MapFrom(src => src.Text))
                 .ForMember(dest => dest.Rubric, opt => opt.MapFrom(src => src.RubricId))

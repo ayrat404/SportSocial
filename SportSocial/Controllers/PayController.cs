@@ -31,6 +31,7 @@ namespace SportSocial.Controllers
         }
 
         [HttpPost]
+        [CustomAntiForgeryValidator]
         public ActionResult Index(PayType payType, int product, int count = 1)
         {
             var queryString = Request.Form.ToString();
@@ -91,18 +92,6 @@ namespace SportSocial.Controllers
             var result = _robokassaService.PaySuccess(successModel);
             return Content(result.Response);
         }
-
-        //[HttpPost]
-        //public ActionResult Paypal(string amount)
-        //{
-        //    //var result = _payPalService.SetExpressCheckout(amount);
-        //    //if (result.Success)
-        //    //{
-        //    //    return Redirect(result.RedirectUrl);
-        //    //}
-        //    //return RedirectToAction("Index");
-        //    return View();
-        //}
 
         [HttpPost]
         public ActionResult PayPalSuccess(PayPalSuccesModel payPalSucces)

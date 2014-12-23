@@ -19,7 +19,9 @@ namespace BLL.Infrastructure.Map
                         var types = typeof (SomeClass)
                             .Assembly
                             .GetTypes()
-                            .Where(x => typeof (Profile).IsAssignableFrom(x)).ToList();
+                            .Where(x => typeof (Profile).IsAssignableFrom(x))
+                            .OrderBy(x => x.Name)
+                            .ToList();
                         types.Each(x => Mapper.AddProfile((Profile) Activator.CreateInstance(x)));
                         _isRegistered = true;
                     }

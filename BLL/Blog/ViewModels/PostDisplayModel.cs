@@ -1,31 +1,23 @@
 using System;
 using BLL.Blog.Enums;
+using BLL.Blog.ViewModels.Base;
 using BLL.Comments.Objects;
 using BLL.Common.Objects;
+using BLL.Rating.Enums;
 
 namespace BLL.Blog.ViewModels
 {
-    public class BlogPostViewModel: HasDate, IHasCommentViewModel, IItemInfo, IRatingInfo
+    public class PostDisplayModel: PostBaseModel, IHasCommentViewModel, IItemInfo, IRatingInfo
     {
         public int Id { get; set; }
-
-        public string Title { get; set; }
-
-        public string Text { get; set; }
-
-        public Images[] Images { get; set; }
 
         public int Rating { get; set; }
 
         public int AuthorId { get; set; }
 
-        public bool IsVideo { get; set; }
-
         public string AuthorName { get; set; }
 
         public string AuthorAvatar { get; set; }
-
-        public string VideoUrl { get; set; }
 
         public int CommentsCount { get; set; }
 
@@ -40,5 +32,7 @@ namespace BLL.Blog.ViewModels
         public bool IsDisiked { get; set; }
 
         public RatingEntityType RatingEntityType { get; set; }
+
+        public string Date { get; set; }
     }
 }

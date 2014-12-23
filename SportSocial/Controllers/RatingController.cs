@@ -3,7 +3,9 @@ using System.Web.Helpers;
 using System.Web.Mvc;
 using BLL.Blog.Enums;
 using BLL.Blog.ViewModels;
-using BLL.Common.Services.Rating;
+using BLL.Rating;
+using BLL.Rating.Enums;
+using BLL.Rating.Models;
 using DAL.DomainModel.BlogEntities;
 using SportSocial.Controllers.Base;
 
@@ -13,7 +15,8 @@ namespace SportSocial.Controllers
     public class RatingController: SportSocialControllerBase
     {
         [HttpPost]
-        public JsonResult Rate(BlogRatingViewModel rateModel)
+        [CustomAntiForgeryValidator]
+        public JsonResult Rate(RatingModel rateModel)
         {
             var type = rateModel.EntityType;
             Type ratingServiseType = typeof (IGRatingService<,>)

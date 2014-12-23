@@ -21,13 +21,14 @@ namespace SportSocial.Controllers
         }
 
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        [CustomAntiForgeryValidator]
         public JsonResult YoutubeUrl(string youtubeUrl)
         {
             return Json(_fileService.YoutubeImage(youtubeUrl));
         }
 
         [HttpPost]
+        //[CustomAntiForgeryValidator]
         public ActionResult Images(UploadImageModel model)
         {
             if (ModelState.IsValid)
@@ -38,6 +39,8 @@ namespace SportSocial.Controllers
             return Json(new {Success = false});
         }
 
+        [HttpPost]
+        //[CustomAntiForgeryValidator]
         public ActionResult UploadImage(UploadImageModel model)
         {
             if (ModelState.IsValid)

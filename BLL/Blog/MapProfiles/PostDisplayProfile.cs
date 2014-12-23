@@ -9,27 +9,20 @@ using DAL.DomainModel.EnumProperties;
 
 namespace BLL.Blog.MapProfiles
 {
-    public class BlogPostProfile: Profile
+    public class PostDisplayProfile: Profile
     {
         protected override void Configure()
         {
-            CreateMap<Post, BlogPostViewModel>()
+            CreateMap<Post, PostDisplayModel>()
                 .ForMember(dest => dest.AuthorId, opt => opt.MapFrom(src => src.UserId))
                 .ForMember(dest => dest.AuthorName, opt => opt.MapFrom(src => src.User.Name))
                 .ForMember(dest => dest.AuthorAvatar, opt => opt.MapFrom(src => src.User.Profile.Avatar))
                 .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Created.ToString()))
                 .ForMember(dest => dest.Rating, opt => opt.MapFrom(src => src.TotalRating))
-                .ForMember(dest => dest.Text, opt => opt.MapFrom(src => src.Text))
-                .ForMember(dest => dest.VideoUrl, opt => opt.MapFrom(src => src.VideoUrl))
-                .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
-                .ForMember(dest => dest.IsVideo, opt => opt.MapFrom(src => !string.IsNullOrEmpty(src.VideoUrl)))
                 .ForMember(dest => dest.TotalCommentsCount, opt => opt.MapFrom(src => src.Comments.Count))
                 .ForMember(dest => dest.CommentsCount, 
                            opt => opt.
                                    MapFrom(src => src.Comments.Count <= 3 ? 0 : src.Comments.Count - 3))
-                .ForMember(dest => dest.Images,
-                    opt => opt
-                        .MapFrom(src => new[] {new Images {Id = 1, Url = src.ImageUrl}}))
                 .ForMember(dest => dest.Comments,
                     opt => opt.MapFrom(src => src.Comments.Skip(src.Comments.Count - 3).ToList()))
                 .ForMember(dest => dest.ItemType, opt => opt.MapFrom(src => CommentItemType.Article))

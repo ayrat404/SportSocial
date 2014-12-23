@@ -931,6 +931,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\ConfigureAuth.cs" />
+    <Compile Include="App_Start\CustomAntiForgeryValidator.cs" />
     <Compile Include="App_Start\Json.cs" />
     <Compile Include="App_Start\Knoema\LocalizationConfig.cs" />
     <Compile Include="App_Start\Knoema\LocalizationRepository.cs" />
