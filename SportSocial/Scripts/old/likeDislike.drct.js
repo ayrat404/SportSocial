@@ -37,19 +37,20 @@ angular
                 // ---------------
                 scope.changeRating = function (action) {
                     data.actionType = action;
-                    likeDislikeRqst.send(utilsSrvc.token.add(data))
-                        .then(function(res) {
-                            if (res.data.success) {
-                                if (action == 'like') {
-                                    changeCount(+scope.count + 1);
-                                    scope.isLiked = 'true';
-                                } else {
-                                    changeCount(+scope.count - 1);
-                                    scope.isDisliked = 'true';
-                                }
-                                scope.isRated = true;
-                            }
-                        });
+                    changeCount(+scope.count + 1);
+                    //likeDislikeRqst.send(utilsSrvc.token.add(data))
+                    //    .then(function(res) {
+                    //        if (res.data.success) {
+                    //            if (action == 'like') {
+                    //                changeCount(+scope.count + 1);
+                    //                scope.isLiked = 'true';
+                    //            } else {
+                    //                changeCount(+scope.count - 1);
+                    //                scope.isDisliked = 'true';
+                    //            }
+                    //            scope.isRated = true;
+                    //        }
+                    //    });
                 }
 
                 // изменение счетчика с анимацией

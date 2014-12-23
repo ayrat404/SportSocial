@@ -16,6 +16,7 @@ function ($scope, ratingRqst, utilsSrvc) {
             actionType  :   action,     // лайк или дислайк
             entityType  :   $scope.type // тип сущности
         }
+
         ratingRqst.send(utilsSrvc.token.add(data))
             .then(function (res) {
                 if (res.data.success) {
