@@ -847,6 +847,7 @@
     <Content Include="Content\fonts\OpenSans\Semibold\OpenSans-Semibold.eot" />
     <Content Include="Content\fonts\OpenSans\Semibold\OpenSans-Semibold.ttf" />
     <Content Include="Content\fonts\OpenSans\Semibold\OpenSans-Semibold.woff" />
+    <Content Include="Content\styles\view\rules.less" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
