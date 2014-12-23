@@ -10,7 +10,7 @@
       ar.text="@Model.Text" ;
       ar.videourl="@Model.VideoUrl" ;
       ar.title="@Model.Title" ;
-      ar.id=@((Model is PostEditModel) ? .Id)'
+      ar.id=@(Model is PostEditModel ? (Model as PostEditModel).Id : 0)'
       name="ArticleEdit"
       class="blog-form  article__edit article-new__form">
     @Html.AntiForgeryToken()
