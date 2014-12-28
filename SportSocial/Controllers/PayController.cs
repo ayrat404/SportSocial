@@ -32,23 +32,28 @@ namespace SportSocial.Controllers
 
         [HttpPost]
         [CustomAntiForgeryValidator]
-        public ActionResult Index(PayType payType, int product, int count = 1)
+        public ActionResult Index(int product, int count = 1)
         {
-            var queryString = Request.Form.ToString();
-            var payInfo = _payService.InitPay(payType, product, count);
-            PayViewModel model;
-            switch (payType)
+            var payInfo = _payService.InitPay(PayType.Init, product, count);
+            return View("confirm", payInfo);
+        }
+
+        [HttpPost]
+        public ActionResult Html(PayType type, int payId)
+        {
+            PayViewModel model = null;
+            switch (type)
             {
-                case PayType.Robokassa:
-                    model = _robokassaService.CreateModel(payInfo.PayModel.Id);
-                    break;
                 case PayType.PayPal:
-                    model = _payPalService.CreateModel(payInfo.PayModel);
+                    model = _payPalService.CreateModel(payId);
                     break;
-                default:
-                    return View("index");
+                case PayType.Robokassa:
+                    model = _robokassaService.CreateModel(payId);
+                    break;
             }
-            return View("confirm", model);
+            if (model == null)
+                return HttpNotFound();
+            return PartialView("partials/" + model.ViewName, model);
         }
 
         [HttpGet]

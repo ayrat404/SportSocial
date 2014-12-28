@@ -33,6 +33,7 @@ namespace BLL.Blog.Impls
             var publish = _currentUser.IsAdmin || _currentUser.IsInRole("Moderator");
             post.Status = publish ? BlogPostStatus.Allow : BlogPostStatus.New;
             post.IsFortress = publish;
+            post.UserId = _currentUser.UserId;
             if (createPostModel.Images != null && _repository.Find<BlogImage>(createPostModel.Images[0].Id) != null)
             {
                 post.ImageUrl = createPostModel.Images[0].Url;
@@ -192,7 +193,7 @@ namespace BLL.Blog.Impls
                 .Queryable<Post>()
                 .Where(p => p.Id == id && p.UserId == _currentUser.UserId)
                 .SingleOrDefault();
-            if (post == null)
+            if (post == null || (!_currentUser.IsAdmin && post.UserId != _currentUser.UserId))
                 return null;
             var postVm = post.MapTo<PostEditModel>();
             postVm.Rubrics = GetRubrics();
@@ -232,7 +233,8 @@ namespace BLL.Blog.Impls
             }
             post.Text = model.Text;
             post.RubricId = model.Rubric;
-            post.Status = BlogPostStatus.New;
+            var publish = _currentUser.IsAdmin || _currentUser.IsInRole("Moderator");
+            post.Status = publish ? BlogPostStatus.Allow : BlogPostStatus.New;
             _repository.SaveChanges();
             return result;
         }

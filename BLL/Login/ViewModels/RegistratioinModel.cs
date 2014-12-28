@@ -7,7 +7,7 @@ namespace BLL.Login.ViewModels
     public class RegistratioinModel
     {
         [Required(ErrorMessage = "Не введен номер телефона")]
-        [RegularExpression(@"^[0-9]*$", ErrorMessage = "Номер телефона должен содержать только цифры без сивола \"+\".")]
+        [RegularExpression(@"^[0-9]{11,13}$", ErrorMessage = "Номер телефона должен содержать только цифры в формате <код страны><номер> без сивола \"+\".")]
         public string Phone { get; set; }
 
         [Required(ErrorMessage = "Не введено имя")]

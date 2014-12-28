@@ -1,9 +1,13 @@
 using System;
+using System.Data.Entity;
+using System.Globalization;
+using System.Linq;
 using System.Threading;
 using AutoMapper;
 using BLL.Common.Extensions;
 using BLL.Common.Helpers;
 using BLL.Common.Objects;
+using BLL.Common.Services.CurrentUser;
 using BLL.Infrastructure.Map;
 using BLL.Payment.ViewModels;
 using DAL;
@@ -19,6 +23,7 @@ namespace BLL.Payment.Impls
     {
         private readonly IRepository _repository;
         private readonly IPayService _payService;
+        private readonly ICurrentUser _currentUser;
 
         private static Logger _logger = LogManager.GetCurrentClassLogger();
 
@@ -26,22 +31,35 @@ namespace BLL.Payment.Impls
         private const string PayPalUrl = "https://www.paypal.com/cgi-bin/webscr/";
         private const string PayPalSanBoxUrl = "https://www.sandbox.paypal.com/cgi-bin/webscr/";
 
-        public PayPalService(IRepository repository, IPayService payService)
+        public PayPalService(IRepository repository, IPayService payService, ICurrentUser currentUser)
         {
             _repository = repository;
             _payService = payService;
+            _currentUser = currentUser;
         }
 
-        public PayPalModel CreateModel(PayViewModel payModel)
+        public PayPalModel CreateModel(int payId)
         {
-            Mapper.CreateMap<PayViewModel, PayPalModel>();
-            var resultModel = payModel.MapTo<PayPalModel>();
-            resultModel.ViewName = ViewName;
-            resultModel.Business = "ayrat404-facilitator@gmail.com";
-            resultModel.SuccessUrl = "http://fortress.club/pay/PayPalSuccess/"; //"http://fortress.club/";
-            resultModel.CancelUrl = "http://fortress.club/pay/Cancel/";  //""http://fortress.club/";
-            resultModel.NotificationUrl = "http://fortress.club/";
-            return resultModel;
+            var pay = _repository
+                .Queryable<Pay>()
+                .Where(p => p.Id == payId && p.UserId == _currentUser.UserId)
+                .Include(p => p.Product)
+                .SingleOrDefault();
+            if (pay == null)
+                return null;
+            var payModel = new PayPalModel()
+            {
+                Id = pay.Id,
+                Cost = pay.Amount.ToString("0.00", CultureInfo.InvariantCulture),
+                Description = pay.Comment,
+                ViewName = ViewName,
+                Business = "ayrat404-facilitator@gmail.com",
+                SuccessUrl = "http://fortress.club/pay/PayPalSuccess/", //"http://fortress.club/";
+                CancelUrl = "http://fortress.club/pay/Cancel/", //""http://fortress.club/";
+                NotificationUrl = "http://fortress.club/",
+                Currency = pay.Product.Currency,
+            };
+            return payModel;
         }
 
         public ServiceResult Succes(PayPalSuccesModel payPalSucces)

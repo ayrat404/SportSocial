@@ -13,7 +13,6 @@
       ar.id=@(Model is PostEditModel ? (Model as PostEditModel).Id : 0)'
       name="ArticleEdit"
       class="blog-form  article__edit article-new__form">
-    @Html.AntiForgeryToken()
     <div class="row">
         <div class="col-sm-4">
             <div class="blog-form__desc">Заголовок статьи</div>

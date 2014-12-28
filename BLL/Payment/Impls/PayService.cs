@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using BLL.Common.Extensions;
@@ -108,6 +109,11 @@ namespace BLL.Payment.Impls
         public ServiceResult Cancel(int payId)
         {
             return Cancel(_repository.Find<Pay>(payId));
+        }
+
+        public IEnumerable<Product> GetProducts()
+        {
+            return _repository.GetAll<Product>();
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Web;
 using BLL.Admin.Conference.ViewModels;
 using BLL.Common.Helpers;
 using BLL.Common.Objects;
+using BLL.Common.Services.CurrentUser;
 using BLL.Infrastructure.Map;
 using DAL.DomainModel.EnumProperties;
 using DAL.Repository.Interfaces;
@@ -16,10 +17,12 @@ namespace BLL.Admin.Conference.Impls
     public class ConferenceService : IConferenceService
     {
         private readonly IRepository _repository;
+        private readonly ICurrentUser _currentUser;
 
-        public ConferenceService(IRepository repository)
+        public ConferenceService(IRepository repository, ICurrentUser currentUser)
         {
             _repository = repository;
+            _currentUser = currentUser;
         }
 
         public IEnumerable<ConfModel> GetAll()
@@ -42,6 +45,7 @@ namespace BLL.Admin.Conference.Impls
                 return result;
             }
             var conference = model.MapTo<DAL.DomainModel.ConferenceEntities.Conference>();
+            conference.UserId = _currentUser.UserId;
             //var youtubeUrl = new Uri("//www.youtube.com/embed/Rqp8DltI858");
             _repository.Add(conference);
             _repository.SaveChanges();

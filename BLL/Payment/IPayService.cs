@@ -1,4 +1,5 @@
-﻿using BLL.Common.Objects;
+﻿using System.Collections.Generic;
+using BLL.Common.Objects;
 using BLL.Payment.ViewModels;
 using DAL.DomainModel;
 using DAL.DomainModel.EnumProperties;
@@ -13,5 +14,6 @@ namespace BLL.Payment
         ServiceResult Cancel();
         ServiceResult Cancel(Pay pay);
         ServiceResult Cancel(int payId);
+        IEnumerable<Product> GetProducts();
     }
 }

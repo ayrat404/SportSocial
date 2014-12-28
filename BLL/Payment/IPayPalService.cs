@@ -6,7 +6,7 @@ namespace BLL.Payment
 {
     public interface IPayPalService
     {
-        PayPalModel CreateModel(PayViewModel payModel);
+        PayPalModel CreateModel(int payId);
         ServiceResult Succes(PayPalSuccesModel payPalSucces);
         void Ipn(PayPalIpnModel ipnModel, string queryString);
     }
