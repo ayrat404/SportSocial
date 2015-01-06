@@ -1,36 +1,59 @@
 ﻿@model BLL.Payment.ViewModels.RobokassaViewModel
 @{
-    ViewBag.Title = "Выбор способа оплаты";
+    ViewBag.Title = "Оплата";
     Layout = "../Blog/Shared/Layouts/BlogLayout.cshtml";
 }
 <div class="container">
     <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
+        <div class="col-sm-10 col-sm-offset-1">
             <div class="mod block">
                 <div class="mod__header">
-                    <div class="mod__header__title">Выбор способа оплаты</div>
+                    <div class="mod__header__title">Оплата</div>
                 </div>
                 <div class="mod__content p-all">
                     <div class="tabs-content">
-                        <p>Стоимость платного аккаунта составляет 100 рублей. Платный аккаунт открывает доступ к конференциям Fortress.</p>
-                        <p>Выберите один из предложенных способов оплаты:</p>
-                        @using (Html.BeginForm())
-                        {
-                            <input type="hidden" name="product" value="1"/>
-                            <ul class="pay-list">
-                                <li>
-                                    <label>
-                                        <input type="radio" name="payType" value="Robokassa" checked />Робокасса
-                                    </label>
-                                </li>
-                                <li>
-                                    <label>
-                                        <input type="radio" name="payType" value="PayPal" />PayPal
-                                    </label>
-                                </li>
-                            </ul>
-                            <input class="btn" type="submit" value="Далее"/>
-                        }
+                        
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <iframe width="460" height="315" src="//www.youtube.com/embed/B8i-jwUsP4I" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <div class="col-sm-6">
+                                toggle
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                Подписываясь, вы поддерживаете развитие сайта и помогаете сделать его еще лучше и полезнее для вас и других участников компании FORTRESS.
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <slider ng-model="slierVal" floor="0" ceiling="20"></slider>
+                            </div>
+                            <div class="col-sm-6">
+                                <button type="submit" class="">Оплатить</button>
+                            </div>
+                        </div>
+
+                        @*<p>Стоимость платного аккаунта составляет 100 рублей. Платный аккаунт открывает доступ к конференциям Fortress.</p>
+                            <p>Выберите один из предложенных способов оплаты:</p>
+                            @using (Html.BeginForm())
+                            {
+                                <input type="hidden" name="product" value="1"/>
+                                <ul class="pay-list">
+                                    <li>
+                                        <label>
+                                            <input type="radio" name="payType" value="Robokassa" checked />Робокасса
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input type="radio" name="payType" value="PayPal" />PayPal
+                                        </label>
+                                    </li>
+                                </ul>
+                                <input class="btn" type="submit" value="Далее"/>
+                            }*@
                     </div>
                 </div>
             </div>

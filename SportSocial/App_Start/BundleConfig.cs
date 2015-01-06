@@ -49,10 +49,10 @@ namespace SportSocial
                     )
                     .Include(
                         "~/Scripts/libs/angular/angular.min.js",
+                        "~/Scripts/libs/angular/angular-touch.min.js",
                         "~/Scripts/libs/text-angular/textAngular-sanitize.min.js",
                         "~/Scripts/libs/text-angular/textAngular.min.js",
-                        //"~/Scripts/libs/text-angular/textangularA.min.js",
-                        
+                        "~/Scripts/libs/angular-slider/angular-slider.js",
 
                         "~/Scripts/app/shared/app.js"
                     )
@@ -89,7 +89,7 @@ namespace SportSocial
             //    b.Orderer = nullOrderer;
             //}
 
-            BundleTable.EnableOptimizations = true;
+            BundleTable.EnableOptimizations = false;
         }
     }
 }
