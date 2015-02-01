@@ -143,7 +143,8 @@ namespace BLL.Blog.Impls
                     postListVM.PostPreview = _repository
                         .Queryable<Post>()
                         .Where(x => (x.RubricId == rubricId || rubricId == 0)
-                                    && x.IsFortress)
+                                    && x.IsFortress
+                                    && x.Status != BlogPostStatus.Rejected)
                         .Include(p => p.RatingEntites)
                         .OrderByDescending(p => p.Created)
                         .Take(take)
