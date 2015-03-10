@@ -1,13 +1,16 @@
 /* Payment
 ---------------------------------------------------------------------------------- */
 
-
+.slider-wrap {
+    margin: 15px auto;
+    position: relative;
+}
 
 	slider {
 		display:     block;
 		position:    relative;
 		height:      30px;
-		width:       500px;
+		width:       100%;
 	}
 
 	slider span.bar {
@@ -38,7 +41,9 @@
 		width:            15px;
 		top:              0;
 		bottom:           0;
-		background-color: #00a;
+	    background: url(../../images/icons/sprite-article.png) no-repeat;
+        background-position: 0 0; width: 12px; height: 12px;
+        .user-select;
 	}
 
 	slider span.pointer:hover {

@@ -303,6 +303,7 @@
     <Content Include="Scripts\app\admin\modules\sidebar\sidebar.ctrl.js" />
     <Content Include="Scripts\app\admin\shared\services\admin.srvc.js" />
     <Content Include="Scripts\app\blog\app.js" />
+    <Content Include="Scripts\app\blog\modules\payment\payment.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\feedback\feedback.srvc.js" />
     <Content Include="Scripts\app\blog\modules\feedback\feedback.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\rating\rating.ctrl.js" />
