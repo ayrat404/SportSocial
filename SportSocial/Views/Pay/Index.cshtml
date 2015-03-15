@@ -3,7 +3,8 @@
     ViewBag.Title = "Оплата";
     Layout = "../Blog/Shared/Layouts/BlogLayout.cshtml";
 }
-<div class="container">
+<div ng-controller="PaymentCtrl"
+     class="container payment">
     <div class="row">
         <div class="col-sm-10 col-sm-offset-1">
             <div class="mod block">
@@ -12,7 +13,7 @@
                 </div>
                 <div class="mod__content p-all">
                     <div class="tabs-content">
-                        
+
                         <div class="row">
                             <div class="col-sm-6">
                                 <iframe width="460" height="315" src="//www.youtube.com/embed/B8i-jwUsP4I" frameborder="0" allowfullscreen></iframe>
@@ -29,11 +30,14 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="slider-wrap">
-                                    <slider ng-model="slierVal" floor="1" ceiling="12"></slider>
+                                    <div pay-slider ng-model="tarif" class="slider"></div>
+                                </div>
+                                <div class="slider__desc">
+                                    {{sliderText}}
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <button type="submit" class="btn btn--main">Оплатить</button>
+                                <button type="submit" class="btn btn--main" ng-click="fn.selectTarif();">Оплатить</button>
                             </div>
                         </div>
 

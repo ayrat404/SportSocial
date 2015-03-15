@@ -303,6 +303,8 @@
     <Content Include="Scripts\app\admin\modules\sidebar\sidebar.ctrl.js" />
     <Content Include="Scripts\app\admin\shared\services\admin.srvc.js" />
     <Content Include="Scripts\app\blog\app.js" />
+    <Content Include="Scripts\app\blog\modules\payment\payment.srvc.js" />
+    <Content Include="Scripts\app\blog\modules\payment\slider.drct.js" />
     <Content Include="Scripts\app\blog\modules\payment\payment.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\feedback\feedback.srvc.js" />
     <Content Include="Scripts\app\blog\modules\feedback\feedback.ctrl.js" />
@@ -855,6 +857,14 @@
     <None Include="Properties\PublishProfiles\Some.pubxml" />
     <Content Include="Scripts\libs\imperaviRedactor\redactor.less" />
     <None Include="Scripts\libs\jquery\jquery-2.0.3.intellisense.js" />
+    <Content Include="Scripts\libs\jquery-noui\jquery.nouislider.all.js" />
+    <Content Include="Scripts\libs\jquery-noui\jquery.nouislider.all.min.js" />
+    <Content Include="Scripts\libs\jquery-noui\jquery.nouislider.css" />
+    <Content Include="Scripts\libs\jquery-noui\jquery.nouislider.js" />
+    <Content Include="Scripts\libs\jquery-noui\jquery.nouislider.min.css" />
+    <Content Include="Scripts\libs\jquery-noui\jquery.nouislider.min.js" />
+    <Content Include="Scripts\libs\jquery-noui\jquery.nouislider.pips.css" />
+    <Content Include="Scripts\libs\jquery-noui\jquery.nouislider.pips.min.css" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.min.js" />
     <Content Include="Scripts\libs\maskedinput\jquery.mask.js" />

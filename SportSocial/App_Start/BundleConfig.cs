@@ -15,7 +15,9 @@ namespace SportSocial
             var cssBundle = new StyleBundle("~/content/stylesCss1").Include(
                 "~/Scripts/libs/datepicker/jquery.datetimepicker.css",
                 "~/Content/styles/other/font-awesome.css",
-                "~/Content/styles/other/animate.css"
+                "~/Content/styles/other/animate.css",
+                "~/Scripts/libs/jquery-noui/jquery.nouislider.min.css",
+                "~/Scripts/libs/jquery-noui/jquery.nouislider.pips.min.css"
                 );
             //cssBundle.Transforms.Add(cssTransformer);
             //cssBundle.Transforms.Add(cssMinify);
@@ -45,14 +47,14 @@ namespace SportSocial
                         "~/Scripts/libs/moment/moment.min.js",
                         "~/Scripts/libs/moment/ru.js",
                         "~/Scripts/libs/datepicker/jquery.datetimepicker.js",
-                       "~/Scripts/libs/maskedinput/jquery.mask.min.js"
+                        "~/Scripts/libs/maskedinput/jquery.mask.min.js",
+                        "~/Scripts/libs/jquery-noui/jquery.nouislider.all.min.js"
                     )
                     .Include(
                         "~/Scripts/libs/angular/angular.min.js",
                         "~/Scripts/libs/angular/angular-touch.min.js",
                         "~/Scripts/libs/text-angular/textAngular-sanitize.min.js",
                         "~/Scripts/libs/text-angular/textAngular.min.js",
-                        "~/Scripts/libs/angular-slider/angular-slider.js",
 
                         "~/Scripts/app/shared/app.js"
                     )

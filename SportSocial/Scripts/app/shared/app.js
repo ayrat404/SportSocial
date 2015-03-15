@@ -1,4 +1,4 @@
-var app = angular.module('shared', ['vr.directives.slider', 'textAngular']);
+var app = angular.module('shared', ['textAngular']);
 
 // bootstrap tooltips init
 // ---------------

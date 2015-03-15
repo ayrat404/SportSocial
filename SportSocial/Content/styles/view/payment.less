@@ -1,94 +1,70 @@
 /* Payment
 ---------------------------------------------------------------------------------- */
 
+.noUi-connect {
+    background: #0095ff;
+}
+
+.payment {
+    .slider-wrap {
+        margin: 55px auto 40px auto;
+    }
+
+    .slider__desc {
+        background: #26282a;
+        padding: 10px;
+        margin-top: 70px;
+        color: #fff;
+    }
+}
+
 .slider-wrap {
-    margin: 15px auto;
     position: relative;
 }
 
-	slider {
-		display:     block;
-		position:    relative;
-		height:      30px;
-		width:       100%;
-	}
+slider {
+    display: block;
+    position: relative;
+    height: 30px;
+    width: 100%;
+}
 
-	slider span.bar {
-		height:     50%;
-		z-index:    0;
-		background: #eee;
-		left:       0;
-		top:        25%;
-		cursor:     pointer;
-	}
+.slider__tooltip {
+    position: absolute;
+    top: -35px;
+    width: 100px;
+    left: -31px;
+    background: #26282a;
+    color: #fff;
+    text-align: center;
+    padding: 2px 0;
+    .no-float;
 
-	slider span.bar.selection, slider span.bar.unselected {
-	}
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: -6px;
+        left: 50%;
+        margin-left: -8px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 6px 6px 0 6px;
+        border-color: #26282a transparent transparent transparent;
+    }
+}
 
-	slider span.bar.selection {
-		background: #0a0;
-		opacity:    0.5;
-	}
+.slider__old {
+    width: 50%;
+    float: left;
+    color: #a0a0a0;
+    text-decoration: line-through;
+}
 
-	slider span.bar.unselected {
-		width:      auto;
-		background: #a00;
-		opacity:    0.5;
-	}
-
-	slider span.pointer {
-		cursor:           pointer;
-		width:            15px;
-		top:              0;
-		bottom:           0;
-	    background: url(../../images/icons/sprite-article.png) no-repeat;
-        background-position: 0 0; width: 12px; height: 12px;
-        .user-select;
-	}
-
-	slider span.pointer:hover {
-	}
-
-	slider span.pointer.active {
-	}
-
-	slider span.bubble {
-		font-size:   0.7em;
-		line-height: 1.4em;
-		font-family: sans-serif;
-		text-align:  center;
-		text-shadow: none;
-		top:         -1.3em;
-		cursor:      pointer;
-	}
-
-	slider span.bubble.selection, slider span.bubble.limit {
-		top: 25%;
-	}
-
-	slider span.bubble.selection {
-	}
-
-	slider span.bubble.limit {
-	}
-
-	slider span.bubble.low, slider span.bubble.high {
-	}
-	
-	::-ms-tooltip {
-		display: none;
-	}
-
-	#slider-container {
-		-webkit-touch-callout: none;
-		-webkit-user-select:   none;
-		-khtml-user-select:    none;
-		-moz-user-select:      -moz-none;
-		-ms-user-select:       none;
-		user-select:           none;
-	}
-
-    
+.slider__new {
+    float: right;
+    width: 50%;
+}
 
 /* /Payment
 ---------------------------------------------------------------------------------- */
