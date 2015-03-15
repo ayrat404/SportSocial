@@ -40,6 +40,94 @@ namespace DAL.Migrations
                     Label = "Подписка на месяц",
                     Currency = "RUB",
                     Lang = "ru-RU",
+                },
+                new Product
+                {
+                    Id = 2,
+                    Cost = 200,
+                    Label = "Подписка на месяц",
+                    Currency = "RUB",
+                    Lang = "ru-RU",
+                },
+                new Product
+                {
+                    Id = 3,
+                    Cost = 300,
+                    Label = "Подписка на месяц",
+                    Currency = "RUB",
+                    Lang = "ru-RU",
+                },
+                new Product
+                {
+                    Id = 4,
+                    Cost = 400,
+                    Label = "Подписка на месяц",
+                    Currency = "RUB",
+                    Lang = "ru-RU",
+                },
+                new Product
+                {
+                    Id = 5,
+                    Cost = 500,
+                    Label = "Подписка на месяц",
+                    Currency = "RUB",
+                    Lang = "ru-RU",
+                },
+                new Product
+                {
+                    Id = 6,
+                    Cost = 600,
+                    Label = "Подписка на месяц",
+                    Currency = "RUB",
+                    Lang = "ru-RU",
+                },
+                new Product
+                {
+                    Id = 7,
+                    Cost = 700,
+                    Label = "Подписка на месяц",
+                    Currency = "RUB",
+                    Lang = "ru-RU",
+                },
+                new Product
+                {
+                    Id = 8,
+                    Cost = 800,
+                    Label = "Подписка на месяц",
+                    Currency = "RUB",
+                    Lang = "ru-RU",
+                },
+                new Product
+                {
+                    Id = 9,
+                    Cost = 900,
+                    Label = "Подписка на месяц",
+                    Currency = "RUB",
+                    Lang = "ru-RU",
+                },
+                new Product
+                {
+                    Id = 10,
+                    Cost = 1000,
+                    Label = "Подписка на месяц",
+                    Currency = "RUB",
+                    Lang = "ru-RU",
+                },
+                new Product
+                {
+                    Id = 11,
+                    Cost = 1100,
+                    Label = "Подписка на месяц",
+                    Currency = "RUB",
+                    Lang = "ru-RU",
+                },
+                new Product
+                {
+                    Id = 12,
+                    Cost = 1200,
+                    Label = "Подписка на месяц",
+                    Currency = "RUB",
+                    Lang = "ru-RU",
                 }
             );
             //  This method will be called after migrating to the latest version.

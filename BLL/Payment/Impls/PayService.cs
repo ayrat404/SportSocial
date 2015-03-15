@@ -1,16 +1,12 @@
 ﻿using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Web;
 using BLL.Common.Extensions;
 using BLL.Common.Objects;
 using BLL.Common.Services.CurrentUser;
-using BLL.Infrastructure.Map;
 using BLL.Payment.ViewModels;
 using DAL.DomainModel;
 using DAL.DomainModel.EnumProperties;
 using DAL.Repository.Interfaces;
-using Microsoft.AspNet.Identity;
 
 namespace BLL.Payment.Impls
 {
@@ -114,6 +110,23 @@ namespace BLL.Payment.Impls
         public IEnumerable<Product> GetProducts()
         {
             return _repository.GetAll<Product>();
+        }
+
+        public PayViewModel GetPayInfo(int payId)
+        {
+            var pay = _repository.Find<Pay>(payId);
+            return GetPayInfo(pay);
+        }
+
+        public PayViewModel GetPayInfo(Pay pay)
+        {
+            return new PayViewModel
+            {
+                Cost = pay.Amount.ToStringWithDot(),
+                Id = pay.Id,
+                Description = pay.Comment,
+                Currency = pay.Product.Currency
+            };
         }
     }
 }

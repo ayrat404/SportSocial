@@ -15,5 +15,7 @@ namespace BLL.Payment
         ServiceResult Cancel(Pay pay);
         ServiceResult Cancel(int payId);
         IEnumerable<Product> GetProducts();
+        PayViewModel GetPayInfo(int payId);
+        PayViewModel GetPayInfo(Pay pay);
     }
 }
