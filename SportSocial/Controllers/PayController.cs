@@ -35,7 +35,14 @@ namespace SportSocial.Controllers
         public ActionResult Index(int product, int count = 1)
         {
             var payInfo = _payService.InitPay(PayType.Init, product, count);
-            return View("confirm", payInfo);
+            return RedirectToAction("Confirm", new {payId = payInfo.PayModel.Id});
+        }
+
+        [HttpGet]
+        public ActionResult Confirm(int payId)
+        {
+            var payVm = _robokassaService.CreateModel(payId);
+            return View(payVm);
         }
 
         [HttpPost]
