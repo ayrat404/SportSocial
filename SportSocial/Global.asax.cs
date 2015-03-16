@@ -15,12 +15,13 @@ namespace SportSocial
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(System.Web.Optimization.BundleTable.Bundles);
+            GlobalFilters.Filters.Add(new ErrorHandlerAttr());
             CreateMaps.Register();
             LocalizationConfig.RegisterBinding();
 
             var conf = new Configuration();
             DbMigrator migrator = new DbMigrator(conf);
-            migrator.Update();
+            //migrator.Update();
         }
     }
 }

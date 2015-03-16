@@ -11,8 +11,8 @@
     @*<input type=submit value='Оплатить'>*@
     <div class="text-center">
         <div>@R("Способ оплаты: Робокасса")</div>
-        <div>@R("Сумма к оплате: 100 рублей")</div>
+        <div>@R(string.Format("Сумма к оплате: {0} рублей", Model.Cost))</div>
         <div><button type="submit" class="btn btn--action">@("Оплатить")</button></div>
-        <a class="pull-left" href="@Url.Action("Index", "Pay")">Изменить способ оплаты</a>
+        @*<a class="pull-left" href="@Url.Action("Index", "Pay")">Изменить способ оплаты</a>*@
     </div>
 </form>

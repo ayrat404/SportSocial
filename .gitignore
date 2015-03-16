@@ -21,6 +21,8 @@ DAL/obj/
 DAL/bin/
 SportSocial/obj/
 SportSocial/bin/
+packages/
+Packages/
 
 # Enable "build/" folder in the NuGet Packages folder since NuGet packages use it for MSBuild targets
 !packages/*/build/
