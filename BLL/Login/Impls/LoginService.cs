@@ -151,6 +151,7 @@ namespace BLL.Login.Impls
             {
                 Success = false,
             };
+            var usera = _repository.GetAll<AppUser>();
             var user = _appUserManager.FindByName(phone);
             if (user == null)
             {

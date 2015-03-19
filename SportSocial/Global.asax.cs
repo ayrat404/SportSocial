@@ -21,7 +21,7 @@ namespace SportSocial
 
             var conf = new Configuration();
             DbMigrator migrator = new DbMigrator(conf);
-            //migrator.Update();
+            migrator.Update();
         }
     }
 }

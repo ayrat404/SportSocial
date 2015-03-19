@@ -94,7 +94,6 @@ namespace SportSocial.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        [CustomAntiForgeryValidator]
         public ActionResult RestorePassword()
         {
             return View();

@@ -35,13 +35,13 @@ namespace SportSocial.Controllers
         public ActionResult Index(int product, int count = 1)
         {
             var payInfo = _payService.InitPay(PayType.Init, product, count);
-            return RedirectToAction("Confirm", new {payId = payInfo.PayModel.Id});
+            return RedirectToAction("Confirm", new {id = payInfo.PayModel.Id});
         }
 
         [HttpGet]
-        public ActionResult Confirm(int payId)
+        public ActionResult Confirm(int id)
         {
-            var payVm = _robokassaService.CreateModel(payId);
+            var payVm = _robokassaService.CreateModel(id);
             return View(payVm);
         }
 
@@ -90,11 +90,12 @@ namespace SportSocial.Controllers
         }
 
         [HttpPost]
+        //[HttpGet]
         [AllowAnonymous]
         public ActionResult RobokassaResult(string outSum, string invId, string signatureValue)
         {
-            _logger.Info(Request.Form.ToString());
-            _logger.Info("RobokassaResult|outSum={0} invId={1} signatureValue={2}", outSum, invId, signatureValue);
+            _logger.Info("Robokassa form: {0}", Request.Form.ToString());
+            //_logger.Info("RobokassaResult|outSum={0} invId={1} signatureValue={2}", outSum, invId, signatureValue);
             var successModel = new RobocassaResultModel
             {
                 InvId = invId,

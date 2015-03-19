@@ -10,16 +10,9 @@ namespace DAL
 {
     public class EntityDbContext: IdentityDbContext<AppUser, AppRole, int, AppUserLogin, AppUserRole, AppUserClaim>
     {
-    #if DEBUG 
-        public EntityDbContext() : base("EntityDbContextDebug")
+        public EntityDbContext() : base("EntityDbContext")
         {
         }
-    #endif
-    #if !DEBUG 
-        public EntityDbContext() : base("EntityDbContextRelease")
-        {
-        }
-    #endif
         public DbSet<SmsCode> SmsCodes { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Product> Products { get; set; }

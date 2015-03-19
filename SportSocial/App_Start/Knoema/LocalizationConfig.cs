@@ -8,13 +8,7 @@ namespace SportSocial.Knoema
     {
         public static void RegisterBinding()
         {
-            #if DEBUG 
-            LocalizationManager.Repository = new LocalizationRepository("EntityDbContextDebug");
-            #endif
-
-            #if !DEBUG 
-            LocalizationManager.Repository = new LocalizationRepository("EntityDbContextRelease");
-            #endif
+            LocalizationManager.Repository = new LocalizationRepository("EntityDbContext");
 
             ModelValidatorProviders.Providers.Clear();
             ModelValidatorProviders.Providers.Add(new ValidationLocalizer());

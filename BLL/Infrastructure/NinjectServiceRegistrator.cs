@@ -19,7 +19,7 @@ namespace BLL.Infrastructure
     {
         public static void Register(IKernel kernel)
         {
-            kernel.Bind<EntityDbContext>().ToMethod(EntityDbContext.Create).InRequestScope();
+            kernel.Bind<EntityDbContext>().ToSelf().InRequestScope();
 
             kernel.Bind<IUserStore<AppUser, int>>().ToMethod(ctx => new AppUserStore(ctx.Kernel.Get<EntityDbContext>())).InRequestScope();
             kernel.Bind<AppUserManager>().ToMethod(AppUserManager.Create).InRequestScope();

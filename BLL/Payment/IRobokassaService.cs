@@ -3,7 +3,7 @@ using System.Globalization;
 using BLL.Common.Extensions;
 using BLL.Common.Helpers;
 using BLL.Common.Objects;
-using BLL.Infrastructure.Map;
+using BLL.Common.Services.CurrentUser;
 using BLL.Payment.ViewModels;
 using DAL.DomainModel;
 using DAL.DomainModel.EnumProperties;
@@ -26,19 +26,25 @@ namespace BLL.Payment
 
         private readonly IRepository _repository;
         private readonly IPayService _payService;
+        private readonly ICurrentUser _currentUser;
         private const string MerchantLogn = "FortressSport";
         private const string MerchantPasswd = "Qroi23is";
         private const string ViewName = "_robokassa";
 
-        public RobokassaService(IRepository repository, IPayService payService)
+        public RobokassaService(IRepository repository, IPayService payService, ICurrentUser currentUser)
         {
             _repository = repository;
             _payService = payService;
+            _currentUser = currentUser;
         }
 
         public RobokassaViewModel CreateModel(int payId)
         {
             var pay = _repository.Find<Pay>(payId);
+            if (pay.UserId != _currentUser.UserId)
+            {
+                throw new Exception();
+            }
             var robocassaViewModel = new RobokassaViewModel
             {
                 Id = pay.Id,
@@ -54,6 +60,7 @@ namespace BLL.Payment
 
         public RobokassaSuccessResult PaySuccess(RobocassaResultModel successModel)
         {
+            _logger.Info("PaySuccess| Robokassa result: outSum={0} invId={1} signatureValue={2}", successModel.OutSum, successModel.InvId, successModel.SignatureValue);
             var result = new RobokassaSuccessResult {Success = false};
             var stringToVerify = string.Format("{0}:{1}:{2}", 
                 successModel.OutSum,
@@ -62,33 +69,41 @@ namespace BLL.Payment
             var hashToVerify = Hasher.Md5(stringToVerify);
             if (!String.Equals(hashToVerify, successModel.SignatureValue, StringComparison.CurrentCultureIgnoreCase))
             {
-                _logger.Error("PaySuccess| Hashs not match");
+                _logger.Error("PaySuccess| Hashs not match. payId={0}", successModel.InvId);
                 result.ErrorMessage = "Хеши не совпадают".Resource(this);
                 return result;
             }
             var pay = _repository.Find<Pay>(int.Parse(successModel.InvId));
             if (pay == null)
             {
-                _logger.Error("PaySuccess| Pay not found");
+                _logger.Error("PaySuccess| Pay not found. payId={0}", successModel.InvId);
                 result.ErrorMessage = "Не найден платеж".Resource(this);
                 return result;
             }
             if (pay.Amount.ToStringWithDot() != successModel.OutSum)
             {
-                _logger.Error("PaySuccess| Sums not match");
+                _logger.Error("PaySuccess| Sums not match. payId={0}, outSum={1}", successModel.InvId, successModel.OutSum);
                 result.ErrorMessage = "Суммы не совпадают".Resource(this);
                 return result;
             }
-            //CultureInfo ci = C
-            var resultPay = _payService.CompletePay(pay);
+            ServiceResult resultPay;
+            try
+            {
+                resultPay = _payService.CompletePay(pay);
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(string.Format("Complete pay error. payId={0}, sum={1}", pay.Id, pay.Amount), ex);
+                throw;
+            }
             if (resultPay.Success)
             {
-                _logger.Info("PaySuccess | CompletePay success");
+                _logger.Info("PaySuccess| CompletePay success. payId={0}", successModel.InvId);
                 result.Success = true;
                 result.Response = string.Format("OK{0}", successModel.InvId);
                 return result;
             }
-            _logger.Error("PaySuccess| CompletePay success false");
+            _logger.Error("PaySuccess| CompletePay success ERROR");
             return result;
         }
 
