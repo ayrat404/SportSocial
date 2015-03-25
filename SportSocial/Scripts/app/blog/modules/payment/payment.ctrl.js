@@ -11,7 +11,7 @@ function ($scope, utilsSrvc, paymentRqst) {
     // tarifs description
     // ---------------
     var desc = {
-        1: 'asdasdsd',
+        1: 'asdas<br/>dsd',
         2: '1231231232',
         3: '132213312132',
         4: '45gdsfsdfgsdfgsdfg',

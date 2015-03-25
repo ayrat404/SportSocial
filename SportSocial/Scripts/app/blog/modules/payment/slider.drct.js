@@ -14,7 +14,7 @@ angular
                 // ---------------
                 var prices = {
                     1: 100,
-                    2: 150,
+                    2: 200,
                     3: 300,
                     4: 400,
                     5: 500,
@@ -24,7 +24,7 @@ angular
                     9: 900,
                     10: 1000,
                     11: 1100,
-                    12: 950
+                    12: 1200
                 }
 
                 // slider init
@@ -41,10 +41,17 @@ angular
 
                 // bind to tooltip
                 // ---------------
-                element.Link('lower').to('-inline-<div class="slider__tooltip"></div>', function (value) {
+                element.Link('lower').to('-inline-<div class="slider__tooltip slider__tooltip--once"></div>', function (value) {
+                    var isOldHidden = value == 1 ? ' hidden' : '',
+                        $this = angular.element(this);
+                    //if (value == 1) {
+                    //    $this.addClass('slider__tooltip--once');
+                    //} else {
+                    //    $this.removeClass('slider__tooltip--once');
+                    //}
                     value = Math.round(value);
                     $(this).html(
-                        '<span class="slider__old">' + Math.round(prices[value] * 1.3) + 'р. </span>' +
+                        //'<span class="slider__old' + isOldHidden + '">' + Math.round(prices[value] * 1.3) + 'р. </span>' +
                         '<span class="slider__new">' + prices[value] + 'р. </span>'
                     );
                     ngModelCtrl.$setViewValue(value);

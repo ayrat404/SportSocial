@@ -25,6 +25,7 @@ namespace SportSocial.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();

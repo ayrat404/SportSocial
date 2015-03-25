@@ -16,10 +16,32 @@
         margin-top: 70px;
         color: #fff;
     }
+    .payment__submit {
+        margin-top: 40px;
+    }
+    .clps {
+        @media (min-width: @screen-xs-max) { 
+            width: 70%;
+            margin: 0 auto;
+        }
+    }
+}
+
+.payment__video {
+    margin: 0 auto;
+    display: block;
+}
+
+.payment__video__desc {
+    margin-top: 20px;
+    font-weight: 600;
 }
 
 .slider-wrap {
     position: relative;
+    .noUi-handle {
+        cursor: pointer;
+    }
 }
 
 slider {
@@ -51,6 +73,12 @@ slider {
         border-style: solid;
         border-width: 6px 6px 0 6px;
         border-color: #26282a transparent transparent transparent;
+    }
+}
+
+.slider__tooltip--once {
+    .slider__new {
+        float: none !important;
     }
 }
 
