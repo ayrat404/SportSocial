@@ -14,18 +14,18 @@
                     <div class="conf-date__item">{{hh}}</div>
                     <div class="conf-date__item">{{hm}}</div>
                 </div>
-                <p>{{dm | formatWord:['Час', 'Часа', 'Часов']}}</p>
+                <p>{{hm | formatWord:['Час', 'Часа', 'Часов']}}</p>
             </div>
             <div class="conf-date__col">
                 <div>
                     <div class="conf-date__item">{{mh}}</div>
                     <div class="conf-date__item">{{mm}}</div>
                 </div>
-                <p>{{dm | formatWord:['Минута', 'Минуты', 'Минут']}}</p>
+                <p>{{mm | formatWord:['Минута', 'Минуты', 'Минут']}}</p>
             </div>
         </div>
     </div>
-    <div ng-if="!model.id.length">
-        <a ng-href="/conference/{{model.id}}" class="conf-date__link">Видеоконференция уже началась! Ссылка {{id}}</a>
+    <div ng-if="model.id.length">
+        <a ng-href="/conference/{{model.id}}" class="conf-date__link">Видеоконференция уже началась! Ссылка.</a>
     </div>
 </div>
