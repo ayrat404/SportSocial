@@ -4,6 +4,9 @@ var app = angular.module('shared', ['textAngular']);
 // ---------------
 (function () {
     $('[data-toggle="tooltip"]').tooltip();
+    $(document).on('click', '.modal-backdrop', function() {
+        bootbox.hideAll();
+    });
 })();
 
 

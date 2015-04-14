@@ -30,12 +30,12 @@
                         <span class="nav__list__link nav__list__link--disable" data-toggle="tooltip" data-placement="bottom" title="в разработке">Магазин</span>
                     </li>
                 </ul>
-                @if (CurrentUser.IsAnonimous)
+                @*@if (CurrentUser.IsAnonimous)
                 {
                     <a href="@Url.Action("Index", "Pay")" class="nav__status nav__status--unpayed" data-toggle="tooltip" data-placement="bottom" title="оплата">
                         <img src="~/Content/images/icons/rub.png" />
                     </a>
-                }
+                }*@
                 @if (!CurrentUser.IsAnonimous)
                 {
                     <div class="nav__user"

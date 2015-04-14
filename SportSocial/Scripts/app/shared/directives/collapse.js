@@ -8,11 +8,12 @@ angular.module('shared').directive('collapse', [function () {
         link: function (scope, element, attrs) {
             var $this = angular.element(element),
                 $items = angular.element('.clps__item', $this);
-            $this.on('click', '.clps__item', function () {
-                if (!angular.element(this).hasClass('clps__item--active')) {
+            $this.on('click', '.clps__title', function () {
+                var $wrap = angular.element(this).closest('.clps__item');
+                if ($wrap.length && !$wrap.hasClass('clps__item--active')) {
                     $items.removeClass('clps__item--active');
                 }
-                angular.element(this).toggleClass('clps__item--active');
+                $wrap.toggleClass('clps__item--active');
             });
         }
     }
