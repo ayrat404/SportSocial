@@ -341,6 +341,7 @@
     <Content Include="Scripts\app\blog\modules\settings\avatarUpload.drct.js" />
     <Content Include="Scripts\app\blog\modules\settings\settings.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\settings\settings.srvc.js" />
+    <Content Include="Scripts\app\shared\directives\aboutVideo.drct.js" />
     <Content Include="Scripts\app\shared\directives\collapse.js" />
     <Content Include="Scripts\app\shared\directives\bgSlider.drct.js" />
     <Content Include="Scripts\app\shared\services\animateCounter.drct.js" />
@@ -1064,6 +1065,7 @@
     <Content Include="Views\Pay\Robokassa.cshtml" />
     <Content Include="Views\Blog\FortressPosts.cshtml" />
     <Content Include="Views\Conference\History.cshtml" />
+    <Content Include="Views\Shared\Partials\Modals\NonPayed.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

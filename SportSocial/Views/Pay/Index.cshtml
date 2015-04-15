@@ -94,14 +94,18 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="text-center">
-                                        @if (CurrentUser.IsAnonimous)
+                                    <div class="payment__negative-submit  text-center">
+                                        @if (!CurrentUser.IsAnonimous)
                                         {
                                             @: чтобы оплатить и получить доступ к онлайн конференциям, необходимо пройти регистрацию на <a href="@Url.Action("Index", "Blog")">главной странице</a>
                                         }
                                         else
                                         {
                                             <button type="submit" class="btn btn--main payment__submit">Оплатить</button>
+                                            <label class="payment__agree">
+                                                <input type="checkbox"/>
+                                                Оплачивая, вы соглашаетесь с тем, что занимаетесь спортом и ведете здоровый образ жизни
+                                            </label>
                                         }
                                     </div>
                                 </div>

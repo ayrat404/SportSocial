@@ -29,23 +29,20 @@ namespace BLL.Rating
             var entity = _repository.Find<TEntity>(entityId);
             if (entity != null)
             {
-                if (ratingType == RatingType.Remove)
+                var ratingEntity = entity.RatingEntites.SingleOrDefault(r => r.UserId == _currentUser.UserId);
+                if (ratingEntity != null)
                 {
-                    var ratingEntity = entity.RatingEntites.SingleOrDefault(r => r.UserId == _currentUser.UserId);
-                    if (ratingEntity != null)
-                    {
-                        _repository.Delete(ratingEntity);
-                        _repository.SaveChanges();
-                        return result;
-                    }
+                    _repository.Delete(ratingEntity);
+                    _repository.SaveChanges();
                 }
-                else
+                if (ratingEntity == null || ratingEntity.RatingType != ratingType)
                 {
-                    var ratingEntity = Activator.CreateInstance<TRatingEntity>();
+
+                    ratingEntity = Activator.CreateInstance<TRatingEntity>();
                     ratingEntity.RatedEntity = entity;
                     ratingEntity.RatingType = ratingType;
                     ratingEntity.UserId = _currentUser.UserId;
-                    entity.TotalRating += (int) ratingType;
+                    entity.TotalRating += (int)ratingType;
                     _repository.Add(ratingEntity);
                     _repository.Update(entity);
                     _repository.SaveChanges();

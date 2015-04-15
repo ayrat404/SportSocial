@@ -41,6 +41,7 @@ namespace SportSocial
                         
                         "~/Scripts/libs/bootstrap/tooltip.js",
                         "~/Scripts/libs/bootstrap/modal.js",
+                        "~/Scripts/libs/bootbox/bootbox.js",
                         //"~/Scripts/libs/signalR/jquery.signalR-2.0.3.min.js",
                         //"~/Scripts/libs/signalR/hub.js",
 

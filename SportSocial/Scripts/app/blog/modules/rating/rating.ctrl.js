@@ -10,22 +10,35 @@ function ($scope, ratingRqst, utilsSrvc) {
 
     // отправка запроса
     // ---------------
-    $scope.changeRating = function (action) {
+    $scope.changeRating = function (action, isLiked, isDisliked) {
         var data = {
             id          :   $scope.id,  // id сущности
             actionType  :   action,     // лайк или дислайк
             entityType  :   $scope.type // тип сущности
         }
-
         ratingRqst.send(utilsSrvc.token.add(data))
-            .then(function (res) {
+            .then(function(res) {
                 if (res.data.success) {
                     if (action == 'like') {
-                        $scope.count = $scope.count + 1;
+                        if (isDisliked) {
+                            $scope.count = $scope.count + 2;
+                        } else if (isLiked) {
+                            $scope.count = $scope.count - 1;
+                        } else {
+                            $scope.count = $scope.count + 1;
+                        }
                         $scope.isLiked = 'True';
+                        $scope.isDisliked = 'False';
                     } else {
-                        $scope.count = $scope.count - 1;
+                        if (isLiked) {
+                            $scope.count = $scope.count - 2;
+                        } else if (isDisliked) {
+                            $scope.count = $scope.count + 1;
+                        } else {
+                            $scope.count = $scope.count - 1;
+                        }
                         $scope.isDisliked = 'True';
+                        $scope.isLiked = 'False';
                     }
                 }
             });
