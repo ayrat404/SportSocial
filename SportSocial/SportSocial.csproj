@@ -38,6 +38,7 @@
       </Objects>
     </PublishDatabaseSettings>
     <PublishDatabases>false</PublishDatabases>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>

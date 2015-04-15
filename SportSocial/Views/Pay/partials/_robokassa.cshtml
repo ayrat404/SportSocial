@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Робокасса";
 }
-<form action='http://test.robokassa.ru/Index.aspx' method=GET>
+<form action='https://auth.robokassa.ru/Merchant/Index.aspx' method=GET>
     <input type=hidden name="MrchLogin" value="@Model.MerchantLogin">
     <input type=hidden name="OutSum" value="@Model.Cost">
     <input type=hidden name="InvId" value=@Model.Id>

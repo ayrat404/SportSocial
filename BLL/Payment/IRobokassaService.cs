@@ -27,8 +27,9 @@ namespace BLL.Payment
         private readonly IRepository _repository;
         private readonly IPayService _payService;
         private readonly ICurrentUser _currentUser;
-        private const string MerchantLogn = "FortressSport";
+        private const string MerchantLogn = "fortress-fitness";
         private const string MerchantPasswd = "Qroi23is";
+        private const string MerchantPasswd2 = "Qroi23is0";
         private const string ViewName = "_robokassa";
 
         public RobokassaService(IRepository repository, IPayService payService, ICurrentUser currentUser)
@@ -65,7 +66,7 @@ namespace BLL.Payment
             var stringToVerify = string.Format("{0}:{1}:{2}", 
                 successModel.OutSum,
                 successModel.InvId,
-                MerchantPasswd);
+                MerchantPasswd2);
             var hashToVerify = Hasher.Md5(stringToVerify);
             if (!String.Equals(hashToVerify, successModel.SignatureValue, StringComparison.CurrentCultureIgnoreCase))
             {
@@ -80,7 +81,14 @@ namespace BLL.Payment
                 result.ErrorMessage = "Не найден платеж".Resource(this);
                 return result;
             }
-            if (pay.Amount.ToStringWithDot() != successModel.OutSum)
+            decimal outSum;
+            if (!decimal.TryParse(successModel.OutSum, out outSum))
+            {
+                _logger.Error("PaySuccess| outSum not parsed. payId={0}, outSum={1}", pay.Id, successModel.OutSum);
+                result.ErrorMessage = "Неверный формат".Resource(this);
+                return result;
+            }
+            if (pay.Amount != outSum)
             {
                 _logger.Error("PaySuccess| Sums not match. payId={0}, outSum={1}", successModel.InvId, successModel.OutSum);
                 result.ErrorMessage = "Суммы не совпадают".Resource(this);
