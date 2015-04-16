@@ -1,12 +1,7 @@
 ﻿<footer class="footer">
     <div class="container">
         <div class="row">
-            <div class="col-sm-3">
-                <div class="footer__copyright">
-                    &#169; FORTRESS, 2014
-                </div>
-            </div>
-            <div class="col-sm-5">
+            <div class="col-sm-6">
                 <ul class="contact-list">
                     <li>
                         <span class="cl__icon cl__icon--phone"></span>
@@ -22,11 +17,52 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <ul class="footer__nav">
                     <li>
                         <a href="javascript:;" about-video>О сайте</a>
-                        @*<span data-toggle="modal" data-target="#about">О сайте</span>*@
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Feedback", "Home")">Техподдержка</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Rules", "Home")">Правила</a>
+                    </li>
+                    <li>
+                        <span data-toggle="tooltip" data-placement="top" title="в разработке">Магазин</span>
+                    </li>
+                    <li>
+                        <span data-toggle="tooltip" data-placement="top" title="в разработке">Соц.сеть</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <div class="footer__copyright">
+                    &#169; FORTRESS, 2014
+                </div>
+            </div>
+            @*<div class="col-sm-9">
+                <ul class="contact-list">
+                    <li>
+                        <span class="cl__icon cl__icon--phone"></span>
+                        <span class="ci__text">+79533159049</span>
+                    </li>
+                    <li>
+                        <span class="cl__icon cl__icon--skype"></span>
+                        <span class="ci__text">saschabelebecha</span>
+                    </li>
+                    <li>
+                        <span class="cl__icon cl__icon--email"></span>
+                        <span class="ci__text">support@fortress.club</span>
+                    </li>
+                </ul>
+            </div>*@
+            @*<div class="col-sm-4">
+                <ul class="footer__nav">
+                    <li>
+                        <a href="javascript:;" about-video>О сайте</a>
                     </li>
                     <li>
                         <a href="@Url.Action("Feedback", "Home")">Техподдержка</a>
@@ -34,8 +70,14 @@
                     <li>    
                         <a href="@Url.Action("Rules", "Home")">Правила</a>
                     </li>
+                    <li>
+                        <span data-toggle="tooltip" data-placement="bottom" title="в разработке">Магазин</span>
+                    </li>
+                    <li>
+                        <span data-toggle="tooltip" data-placement="bottom" title="в разработке">Соц.сеть</span>
+                    </li>
                 </ul>
-            </div>
+            </div>*@
         </div>
     </div>
 </footer>

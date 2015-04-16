@@ -20,46 +20,47 @@
                                     <iframe width="460" height="315" src="//www.youtube.com/embed/Mnr8dIE-T9Y" frameborder="0" allowfullscreen class="payment__video"></iframe>
                                     <div class="payment__video__desc">
                                         Пользователям платного аккаунта становятся доступны ссылки на онлайн конференции Fortress, которые проводятся раз в неделю.
-                                        @*Подписываясь, вы поддерживаете развитие сайта и помогаете сделать его еще лучше и полезнее для вас и других участников компании FORTRESS.*@
                                     </div>
                                     <div class="slider-wrap">
                                         <div pay-slider ng-model="tarif" class="slider"></div>
                                     </div>
-                                    @*<div class="slider__desc" ng-cloak>
+                                    <div class="slider__desc bonus" ng-cloak>
                                         <div ng-show="tarif==1">
-                                            1: asdsdasdasdasd
+                                            Для участников клуба, подписавшихся на 2 месяца и более предусмотрен бесплатный бонус!
                                         </div>
-                                        <div ng-show="tarif==2">
-                                            2: asdsdasdasdasd
+                                        <div ng-show="tarif==2 || tarif==3">
+                                            <div class="bonus__text">
+                                                Приобретая подписку на 2 месяца вы получаете <b>два видео</b> из курса "Прорыв к результату" совершенно бесплатно!
+                                            </div>
+                                            <div class="bonus__img">
+                                                <img src="~/Content/images/courses/course_1.png" />
+                                            </div>
                                         </div>
-                                        <div ng-show="tarif==3">
-                                            3: asdsdasdasdasd
+                                        <div ng-show="tarif==4 || tarif==5">
+                                            <div class="bonus__text">
+                                                Приобретая подписку на 4 месяца вы получаете <b>четыре видео</b> из курса "Прорыв к результату" совершенно бесплатно!
+                                            </div>
+                                            <div class="bonus__img">
+                                                <img src="~/Content/images/courses/course_1.png" />
+                                            </div>
                                         </div>
-                                        <div ng-show="tarif==4">
-                                            4: asdsdasdasdasd
+                                        <div ng-show="tarif==6 || tarif==7">
+                                            <div class="bonus__text">
+                                                Приобретая подписку на 6 месяцев вы получаете <b>шесть видео</b> из курса "Прорыв к результату" совершенно бесплатно!
+                                            </div>
+                                            <div class="bonus__img">
+                                                <img src="~/Content/images/courses/course_1.png" />
+                                            </div>
                                         </div>
-                                        <div ng-show="tarif==5">
-                                            5: asdsdasdasdasd
+                                        <div ng-show="tarif>=8">
+                                            <div class="bonus__text">
+                                                Приобретая подписку на 8 месяцец и больше вы получаете <b>восемь видео</b> из курса "Прорыв к результату" совершенно бесплатно!
+                                            </div>
+                                            <div class="bonus__img">
+                                                <img src="~/Content/images/courses/course_1.png" />
+                                            </div>
                                         </div>
-                                        <div ng-show="tarif==6">
-                                            6: asdsdasdasdasd
-                                        </div>
-                                        <div ng-show="tarif==7">
-                                            7: asdsdasdasdasd
-                                        </div>
-                                        <div ng-show="tarif==8">
-                                            8: asdsdasdasdasd
-                                        </div>
-                                        <div ng-show="tarif==9">
-                                            9: asdsdasdasdasd
-                                        </div>
-                                        <div ng-show="tarif==10 || tarif==11">
-                                            10-11: asdsdasdasdasd
-                                        </div>
-                                        <div ng-show="tarif==12">
-                                            12: asdsdasdasdasd
-                                        </div>
-                                    </div>*@
+                                    </div>
                                     <input type="hidden" value="{{tarif}}" name="product" />
                                 </div>
                                 <div class="col-sm-6">
@@ -95,7 +96,7 @@
                                         </div>
                                     </div>
                                     <div class="payment__negative-submit  text-center">
-                                        @if (!CurrentUser.IsAnonimous)
+                                        @if (CurrentUser.IsAnonimous)
                                         {
                                             @: чтобы оплатить и получить доступ к онлайн конференциям, необходимо пройти регистрацию на <a href="@Url.Action("Index", "Blog")">главной странице</a>
                                         }
@@ -111,25 +112,6 @@
                                 </div>
                             </div>
                         </form>
-                        @*<p>Стоимость платного аккаунта составляет 100 рублей. Платный аккаунт открывает доступ к конференциям Fortress.</p>
-                            <p>Выберите один из предложенных способов оплаты:</p>
-                            @using (Html.BeginForm())
-                            {
-                                <input type="hidden" name="product" value="1"/>
-                                <ul class="pay-list">
-                                    <li>
-                                        <label>
-                                            <input type="radio" name="payType" value="Robokassa" checked />Робокасса
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <label>
-                                            <input type="radio" name="payType" value="PayPal" />PayPal
-                                        </label>
-                                    </li>
-                                </ul>
-                                <input class="btn" type="submit" value="Далее"/>
-                            }*@
                     </div>
                 </div>
             </div>

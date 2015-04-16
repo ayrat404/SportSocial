@@ -1,0 +1,74 @@
+﻿@model BLL.Payment.ViewModels.RobokassaViewModel
+@{
+    ViewBag.Title = "Бонусные видео";
+    Layout = "../Blog/Shared/Layouts/BlogLayout.cshtml";
+}
+<div ng-controller="BonusCtrl"
+     class="container bonus-page">
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+            <div class="mod block">
+                <div class="mod__header">
+                    <div class="mod__header__title">Бонусный курс "Прорыв к результату"</div>
+                </div>
+                <div class="mod__content p-all">
+                    <div class="tabs-content">
+                        <ul class="bp-list">
+                            <li class="bp-list__it bp-list__it--available">
+                                <h3 class="bp-list__it__title">Название 1</h3>
+                                <div class="bp-list__it__img-wrap">
+                                    <img class="bp-list__it__img" src="#" />
+                                    <div class="bp-list__it__status">
+                                        <div>Видео 1</div>
+                                    </div>
+                                    <div class="bp__play"></div>
+                                </div>
+                            </li>
+                            <li class="bp-list__it bp-list__it--available">
+                                <h3 class="bp-list__it__title">Название 1</h3>
+                                <div class="bp-list__it__img-wrap">
+                                    <img class="bp-list__it__img" src="#" />
+                                    <div class="bp-list__it__status">
+                                        <div>Видео 1</div>
+                                    </div>
+                                    <div class="bp__play"></div>
+                                </div>
+                            </li>
+                            <li class="bp-list__it">
+                                <h3 class="bp-list__it__title">Название 1</h3>
+                                <div class="bp-list__it__img-wrap">
+                                    <img class="bp-list__it__img" src="#" />
+                                    <div class="bp-list__it__status">
+                                        Чтобы видео стало доступным, необходимо иметь суммарную подписку на членство в клубе не менее 2-х месяцев
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="bp-list__it">
+                                <h3 class="bp-list__it__title">Название 1</h3>
+                                <div class="bp-list__it__img-wrap">
+                                    <img class="bp-list__it__img" src="#" />
+                                    <div class="bp-list__it__status">
+                                        Чтобы видео стало доступным, необходимо иметь суммарную подписку на членство в клубе не менее 2-х месяцев
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="bp-watch">
+                            <h1 class="bp-watch__title text-center">Название 1</h1>
+                            <video class="video-js vjs-default-skin bp-watch__video" controls preload="none"
+                                   poster="http://video-js.zencoder.com/oceans-clip.png"
+                                   data-setup="{}">
+                                <source src="http://video-js.zencoder.com/oceans-clip.mp4" type='video/mp4' />
+                                <source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm' />
+                                <source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg' />
+                                @*<track kind="captions" src="demo.captions.vtt" srclang="en" label="English"></track><!-- Tracks need an ending tag thanks to IE9 -->
+                                <track kind="subtitles" src="demo.captions.vtt" srclang="en" label="English"></track><!-- Tracks need an ending tag thanks to IE9 -->*@
+                                <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -22,12 +22,12 @@ namespace SportSocial
             //cssBundle.Transforms.Add(cssTransformer);
             //cssBundle.Transforms.Add(cssMinify);
             bundles.Add(cssBundle);
-            var lessBundle = new Bundle("~/content/stylesLess").Include(
-                "~/Content/styles/style.less"
-                );
-            lessBundle.Transforms.Add(cssTransformer);
-            lessBundle.Transforms.Add(cssMinify);
-            bundles.Add(lessBundle);
+            //var lessBundle = new Bundle("~/content/stylesLess").Include(
+            //    "~/Content/styles/style.less"
+            //    );
+            //lessBundle.Transforms.Add(cssTransformer);
+            //lessBundle.Transforms.Add(cssMinify);
+            //bundles.Add(lessBundle);
 
             // библиотеки
             bundles.Add(new ScriptBundle("~/bundles/assets/scripts")
@@ -42,6 +42,7 @@ namespace SportSocial
                         "~/Scripts/libs/bootstrap/tooltip.js",
                         "~/Scripts/libs/bootstrap/modal.js",
                         "~/Scripts/libs/bootbox/bootbox.js",
+                        "~/Scripts/libs/videojs/video.js",
                         //"~/Scripts/libs/signalR/jquery.signalR-2.0.3.min.js",
                         //"~/Scripts/libs/signalR/hub.js",
 
@@ -53,6 +54,7 @@ namespace SportSocial
                     )
                     .Include(
                         "~/Scripts/libs/angular/angular.min.js",
+                        "~/Scripts/libs/angular/angular-mocks.js",
                         "~/Scripts/libs/angular/angular-touch.min.js",
                         "~/Scripts/libs/text-angular/textAngular-sanitize.min.js",
                         "~/Scripts/libs/text-angular/textAngular.min.js",

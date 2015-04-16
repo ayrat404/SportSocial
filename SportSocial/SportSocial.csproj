@@ -244,6 +244,7 @@
     <Content Include="Content\fonts\ProximaNova\proximanovaexcn-thinpn.svg" />
     <Content Include="Content\images\blur.jpg" />
     <Content Include="Content\images\conference\conference-date.png" />
+    <Content Include="Content\images\courses\course_1.png" />
     <Content Include="Content\images\default-avatar.png" />
     <Content Include="Content\images\icons\logo-shape.png" />
     <Content Include="Content\images\icons\logo.png" />
@@ -288,6 +289,7 @@
     <Content Include="Content\styles\bootstrap\variables.min.css">
       <DependentUpon>variables.css</DependentUpon>
     </Content>
+    <Content Include="Content\styles\css\fortress.min.css" />
     <Content Include="Content\styles\other\animate.css" />
     <Content Include="Content\styles\other\font-awesome.css" />
     <Content Include="Content\styles\style.css">
@@ -309,6 +311,7 @@
       <DependentUpon>blog.css</DependentUpon>
     </Content>
     <Content Include="Global.asax" />
+    <Content Include="gulpfile.js" />
     <Content Include="Scripts\app\admin\app.js" />
     <Content Include="Scripts\app\admin\modules\articles\articles.ctrl.js" />
     <Content Include="Scripts\app\admin\modules\conference\conferenceList.ctrl.js" />
@@ -318,6 +321,8 @@
     <Content Include="Scripts\app\admin\modules\sidebar\sidebar.ctrl.js" />
     <Content Include="Scripts\app\admin\shared\services\admin.srvc.js" />
     <Content Include="Scripts\app\blog\app.js" />
+    <Content Include="Scripts\app\blog\modules\bonus\bonus.srvc.js" />
+    <Content Include="Scripts\app\blog\modules\bonus\bonus.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\payment\payment.srvc.js" />
     <Content Include="Scripts\app\blog\modules\payment\slider.drct.js" />
     <Content Include="Scripts\app\blog\modules\payment\payment.ctrl.js" />
@@ -661,6 +666,7 @@
     <Content Include="Scripts\libs\angular\i18n\angular-locale_zh.js" />
     <Content Include="Scripts\libs\angular\i18n\angular-locale_zu-za.js" />
     <Content Include="Scripts\libs\angular\i18n\angular-locale_zu.js" />
+    <Content Include="Scripts\libs\bootbox\bootbox.js" />
     <Content Include="Scripts\libs\bootstrap\tooltip.js" />
     <Content Include="Scripts\libs\datepicker\jquery.datetimepicker.css" />
     <Content Include="Scripts\libs\datepicker\jquery.datetimepicker.js" />
@@ -871,9 +877,12 @@
     <Content Include="Content\fonts\OpenSans\Semibold\OpenSans-Semibold.woff" />
     <Content Include="Content\styles\view\rules.less" />
     <Content Include="Content\styles\components\blog\collapse.less" />
+    <Content Include="Content\styles\components\blog\bonus.less" />
+    <Content Include="Content\styles\base\icons-set.less" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="package.json" />
     <None Include="Properties\PublishProfiles\Some.pubxml" />
     <Content Include="Scripts\libs\imperaviRedactor\redactor.less" />
     <None Include="Scripts\libs\jquery\jquery-2.0.3.intellisense.js" />
@@ -946,6 +955,7 @@
     <Content Include="Scripts\libs\signalR\jquery.signalR-2.0.3.min.js" />
     <Content Include="Scripts\libs\text-angular\textAngular-sanitize.min.js" />
     <Content Include="Scripts\libs\text-angular\textAngular.min.js" />
+    <Content Include="Scripts\libs\videojs\video.js" />
     <Content Include="Scripts\old\like-dislike.html" />
     <Content Include="Scripts\old\likeDislike.drct.js" />
     <Content Include="Scripts\old\likeDislike.srvc.js" />
@@ -971,6 +981,7 @@
     <Compile Include="App_Start\Knoema\LocalizedObject.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BonusController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Admin\AdminController.cs" />
     <Compile Include="Controllers\Admin\ConferenceController.cs" />
@@ -1065,6 +1076,8 @@
     <Content Include="Views\Blog\FortressPosts.cshtml" />
     <Content Include="Views\Conference\History.cshtml" />
     <Content Include="Views\Shared\Partials\Modals\NonPayed.cshtml" />
+    <Content Include="Views\Bonus\Index.cshtml" />
+    <Content Include="Scripts\libs\videojs\video-js.less" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

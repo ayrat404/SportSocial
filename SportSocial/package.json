@@ -1,0 +1,19 @@
+{
+  "name": "fortress",
+  "version": "0.3.0",
+  "homepage": "http://fortress.club",
+  "author": "UniqLab",
+  "style": "fortress.min.css",
+  "output": "Content/styles/css",
+  "less": "Content/styles/style.less",
+  "devDependencies": {
+    "gulp": "latest",
+    "gulp-autoprefixer": "latest",
+    "gulp-filesize": "latest",
+    "gulp-header": "latest",
+    "gulp-less": "latest",
+    "gulp-minify-css": "^1.0.0",
+    "gulp-rename": "latest",
+    "gulp.spritesmith": "latest"
+  }
+}

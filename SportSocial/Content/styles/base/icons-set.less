@@ -1,0 +1,227 @@
+/*
+LESS variables are information about icon's compiled state, stored under its original file name
+
+.icon-home {
+  width: @icon-home-width;
+}
+
+The large array-like variables contain all information about a single icon
+@icon-home: x y offset_x offset_y width height total_width total_height image_path name;
+
+At the bottom of this section, we provide information about the spritesheet itself
+@spritesheet: width height image @spritesheet-sprites;
+*/
+@check-xs-name: check-xs;
+@check-xs-x: 0px;
+@check-xs-y: 88px;
+@check-xs-offset-x: 0px;
+@check-xs-offset-y: -88px;
+@check-xs-width: 14px;
+@check-xs-height: 11px;
+@check-xs-total-width: 126px;
+@check-xs-total-height: 99px;
+@check-xs-image: '../../images/icons/sprite.png';
+@check-xs: 0px 88px 0px -88px 14px 11px 126px 99px '../../images/icons/sprite.png' check-xs;
+@close-xs-name: close-xs;
+@close-xs-x: 114px;
+@close-xs-y: 0px;
+@close-xs-offset-x: -114px;
+@close-xs-offset-y: 0px;
+@close-xs-width: 12px;
+@close-xs-height: 12px;
+@close-xs-total-width: 126px;
+@close-xs-total-height: 99px;
+@close-xs-image: '../../images/icons/sprite.png';
+@close-xs: 114px 0px -114px 0px 12px 12px 126px 99px '../../images/icons/sprite.png' close-xs;
+@comment-xs-name: comment-xs;
+@comment-xs-x: 114px;
+@comment-xs-y: 44px;
+@comment-xs-offset-x: -114px;
+@comment-xs-offset-y: -44px;
+@comment-xs-width: 12px;
+@comment-xs-height: 12px;
+@comment-xs-total-width: 126px;
+@comment-xs-total-height: 99px;
+@comment-xs-image: '../../images/icons/sprite.png';
+@comment-xs: 114px 44px -114px -44px 12px 12px 126px 99px '../../images/icons/sprite.png' comment-xs;
+@date-xs-name: date-xs;
+@date-xs-x: 114px;
+@date-xs-y: 22px;
+@date-xs-offset-x: -114px;
+@date-xs-offset-y: -22px;
+@date-xs-width: 12px;
+@date-xs-height: 12px;
+@date-xs-total-width: 126px;
+@date-xs-total-height: 99px;
+@date-xs-image: '../../images/icons/sprite.png';
+@date-xs: 114px 22px -114px -22px 12px 12px 126px 99px '../../images/icons/sprite.png' date-xs;
+@dislike-md-hover-name: dislike-md--hover;
+@dislike-md-hover-x: 59px;
+@dislike-md-hover-y: 0px;
+@dislike-md-hover-offset-x: -59px;
+@dislike-md-hover-offset-y: 0px;
+@dislike-md-hover-width: 21px;
+@dislike-md-hover-height: 19px;
+@dislike-md-hover-total-width: 126px;
+@dislike-md-hover-total-height: 99px;
+@dislike-md-hover-image: '../../images/icons/sprite.png';
+@dislike-md-hover: 59px 0px -59px 0px 21px 19px 126px 99px '../../images/icons/sprite.png' dislike-md--hover;
+@dislike-md-name: dislike-md;
+@dislike-md-x: 59px;
+@dislike-md-y: 29px;
+@dislike-md-offset-x: -59px;
+@dislike-md-offset-y: -29px;
+@dislike-md-width: 21px;
+@dislike-md-height: 19px;
+@dislike-md-total-width: 126px;
+@dislike-md-total-height: 99px;
+@dislike-md-image: '../../images/icons/sprite.png';
+@dislike-md: 59px 29px -59px -29px 21px 19px 126px 99px '../../images/icons/sprite.png' dislike-md;
+@dislike-xs-hover-name: dislike-xs--hover;
+@dislike-xs-hover-x: 90px;
+@dislike-xs-hover-y: 46px;
+@dislike-xs-hover-offset-x: -90px;
+@dislike-xs-hover-offset-y: -46px;
+@dislike-xs-hover-width: 13px;
+@dislike-xs-hover-height: 13px;
+@dislike-xs-hover-total-width: 126px;
+@dislike-xs-hover-total-height: 99px;
+@dislike-xs-hover-image: '../../images/icons/sprite.png';
+@dislike-xs-hover: 90px 46px -90px -46px 13px 13px 126px 99px '../../images/icons/sprite.png' dislike-xs--hover;
+@dislike-xs-name: dislike-xs;
+@dislike-xs-x: 90px;
+@dislike-xs-y: 23px;
+@dislike-xs-offset-x: -90px;
+@dislike-xs-offset-y: -23px;
+@dislike-xs-width: 13px;
+@dislike-xs-height: 13px;
+@dislike-xs-total-width: 126px;
+@dislike-xs-total-height: 99px;
+@dislike-xs-image: '../../images/icons/sprite.png';
+@dislike-xs: 90px 23px -90px -23px 13px 13px 126px 99px '../../images/icons/sprite.png' dislike-xs;
+@like-md-hover-name: like-md--hover;
+@like-md-hover-x: 31px;
+@like-md-hover-y: 59px;
+@like-md-hover-offset-x: -31px;
+@like-md-hover-offset-y: -59px;
+@like-md-hover-width: 21px;
+@like-md-hover-height: 19px;
+@like-md-hover-total-width: 126px;
+@like-md-hover-total-height: 99px;
+@like-md-hover-image: '../../images/icons/sprite.png';
+@like-md-hover: 31px 59px -31px -59px 21px 19px 126px 99px '../../images/icons/sprite.png' like-md--hover;
+@like-md-name: like-md;
+@like-md-x: 0px;
+@like-md-y: 59px;
+@like-md-offset-x: 0px;
+@like-md-offset-y: -59px;
+@like-md-width: 21px;
+@like-md-height: 19px;
+@like-md-total-width: 126px;
+@like-md-total-height: 99px;
+@like-md-image: '../../images/icons/sprite.png';
+@like-md: 0px 59px 0px -59px 21px 19px 126px 99px '../../images/icons/sprite.png' like-md;
+@like-xs-hover-name: like-xs--hover;
+@like-xs-hover-x: 90px;
+@like-xs-hover-y: 0px;
+@like-xs-hover-offset-x: -90px;
+@like-xs-hover-offset-y: 0px;
+@like-xs-hover-width: 14px;
+@like-xs-hover-height: 13px;
+@like-xs-hover-total-width: 126px;
+@like-xs-hover-total-height: 99px;
+@like-xs-hover-image: '../../images/icons/sprite.png';
+@like-xs-hover: 90px 0px -90px 0px 14px 13px 126px 99px '../../images/icons/sprite.png' like-xs--hover;
+@like-xs-name: like-xs;
+@like-xs-x: 62px;
+@like-xs-y: 59px;
+@like-xs-offset-x: -62px;
+@like-xs-offset-y: -59px;
+@like-xs-width: 14px;
+@like-xs-height: 13px;
+@like-xs-total-width: 126px;
+@like-xs-total-height: 99px;
+@like-xs-image: '../../images/icons/sprite.png';
+@like-xs: 62px 59px -62px -59px 14px 13px 126px 99px '../../images/icons/sprite.png' like-xs;
+@man-xs-name: man-xs;
+@man-xs-x: 114px;
+@man-xs-y: 66px;
+@man-xs-offset-x: -114px;
+@man-xs-offset-y: -66px;
+@man-xs-width: 12px;
+@man-xs-height: 12px;
+@man-xs-total-width: 126px;
+@man-xs-total-height: 99px;
+@man-xs-image: '../../images/icons/sprite.png';
+@man-xs: 114px 66px -114px -66px 12px 12px 126px 99px '../../images/icons/sprite.png' man-xs;
+@play-md-name: play-md;
+@play-md-x: 0px;
+@play-md-y: 0px;
+@play-md-offset-x: 0px;
+@play-md-offset-y: 0px;
+@play-md-width: 49px;
+@play-md-height: 49px;
+@play-md-total-width: 126px;
+@play-md-total-height: 99px;
+@play-md-image: '../../images/icons/sprite.png';
+@play-md: 0px 0px 0px 0px 49px 49px 126px 99px '../../images/icons/sprite.png' play-md;
+@spritesheet-width: 126px;
+@spritesheet-height: 99px;
+@spritesheet-image: '../../images/icons/sprite.png';
+@spritesheet-sprites: @check-xs @close-xs @comment-xs @date-xs @dislike-md-hover @dislike-md @dislike-xs-hover @dislike-xs @like-md-hover @like-md @like-xs-hover @like-xs @man-xs @play-md;
+@spritesheet: 126px 99px '../../images/icons/sprite.png' @spritesheet-sprites;
+
+/*
+The provided classes are intended to be used with the array-like variables
+
+.icon-home {
+  .sprite-width(@icon-home);
+}
+.icon-email {
+  .sprite(@icon-email);
+}
+*/
+.sprite-width(@sprite) {
+  width: extract(@sprite, 5);
+}
+
+.sprite-height(@sprite) {
+  height: extract(@sprite, 6);
+}
+
+.sprite-position(@sprite) {
+  @sprite-offset-x: extract(@sprite, 3);
+  @sprite-offset-y: extract(@sprite, 4);
+  background-position: @sprite-offset-x @sprite-offset-y;
+}
+
+.sprite-image(@sprite) {
+  @sprite-image: extract(@sprite, 9);
+  @sprite-image-bare: ~`"@{sprite-image}".slice(1, -1)`;
+  background-image: url(@sprite-image-bare);
+}
+
+.sprite(@sprite) {
+  .sprite-image(@sprite);
+  .sprite-position(@sprite);
+  .sprite-width(@sprite);
+  .sprite-height(@sprite);
+}
+
+/*
+The `.sprites` mixin generates identical output to the CSS template
+  but can be overridden inside of LESS
+
+This must be run when you have at least 2 sprites.
+  If run with a single sprite, then there will be reference errors.
+
+.sprites(@spritesheet-sprites);
+*/
+.sprites(@sprites, @i: 1) when (@i <= length(@sprites)) {
+  @sprite: extract(@sprites, @i);
+  @sprite-name: extract(@sprite, 10);
+  .@{sprite-name} {
+    .sprite(@sprite);
+  }
+  .sprites(@sprites, @i + 1);
+}

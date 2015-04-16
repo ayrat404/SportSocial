@@ -6,24 +6,59 @@
 
 .i-art {
     display: inline-block;
-    background: url(../../../images/icons/sprite-article.png) no-repeat;
-    .user-select();
+    user-select: none;
 }
 
-.i-art-comments { background-position: 0 0; width: 12px; height: 12px; } 
-.i-art-date { background-position: -17px 0; width: 12px; height: 12px; } 
-/*.i-art-dislike-hover { background-position: -34px 0; width: 13px; height: 13px; }*/ 
-.i-art-dislike-hover { background-position: -78px -21px; width: 21px; height: 19px; }
-/*.i-art-dislike { background-position: -52px 0; width: 13px; height: 13px; }*/ 
-.i-art-dislike { background-position: -52px -21px; width: 21px; height: 19px; }
-/*.i-art-like-hover { background-position: -70px 0; width: 14px; height: 13px; }*/ 
-.i-art-like-hover { background-position: -26px -21px; width: 21px; height: 19px; } 
-/*.i-art-like { background-position: -89px 0; width: 14px; height: 13px; }*/
-.i-art-like { background-position: 0 -21px; width: 21px; height: 19px; } 
-.i-art-user { background-position: -108px 0; width: 12px; height: 12px; } 
-.i-art-liked { background-position: -124px 0; width: 15px; height: 12px; } 
-.i-art-disliked { background-position: -144px 0; width: 12px; height: 12px; } 
-.i-art-play { background-position: -162px 0; width: 50px; height: 50px; } 
+.i-art-comments {
+    .sprite(@comment-xs);
+}
+
+.i-art-date {
+    .sprite(@date-xs);
+}
+
+.i-art-dislike-hover {
+    .sprite(@dislike-md-hover);
+}
+
+.i-art-dislike {
+    .sprite(@dislike-md);
+}
+
+.i-art-like-hover {
+    .sprite(@like-md-hover);
+}
+
+.i-art-like {
+    .sprite(@like-md);
+}
+
+.i-art-user {
+    .sprite(@man-xs);
+}
+
+.i-art-liked {
+    .sprite(@like-md-hover);
+}
+
+.i-art-disliked {
+    .sprite(@dislike-md-hover);
+}
+
+.i-art-play {
+    .sprite(@play-md);
+}
+
+//.i-art-comments { background-position: 0 0; width: 12px; height: 12px; } 
+//.i-art-date { background-position: -17px 0; width: 12px; height: 12px; } 
+//.i-art-dislike-hover { background-position: -78px -21px; width: 21px; height: 19px; }
+//.i-art-dislike { background-position: -52px -21px; width: 21px; height: 19px; }
+//.i-art-like-hover { background-position: -26px -21px; width: 21px; height: 19px; } 
+//.i-art-like { background-position: 0 -21px; width: 21px; height: 19px; } 
+//.i-art-user { background-position: -108px 0; width: 12px; height: 12px; } 
+//.i-art-liked { background-position: -124px 0; width: 15px; height: 12px; } 
+//.i-art-disliked { background-position: -144px 0; width: 12px; height: 12px; } 
+//.i-art-play { background-position: -162px 0; width: 50px; height: 50px; } 
 
 /* /Article icons */
 

@@ -20,9 +20,9 @@
     <meta name="keywords" content="@(ViewBag.Keywords ?? "Fortress")" />
     <meta name="description" content="@(ViewBag.Description ?? "Fortress")" />
     @Styles.Render("~/content/stylesCss1")
-    @Styles.Render("~/content/stylesLess")
     @RenderSection("Styles", false)
     <link rel="shortcut icon" href="/favicon.ico?v=2" type="image/x-icon">
+    <link type="text/css" rel="stylesheet" media="all" href="/Content/styles/css/fortress.min.css">
 </head>
 <body style="opacity: 0;">
     <form id="__AjaxAntiForgeryForm" action="#" method="post" style="display: none;">

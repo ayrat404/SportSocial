@@ -21,6 +21,7 @@ DAL/obj/
 DAL/bin/
 SportSocial/obj/
 SportSocial/bin/
+SportSocial/node_modules/
 packages/
 Packages/
 
