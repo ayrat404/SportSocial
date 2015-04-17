@@ -32,8 +32,8 @@ namespace BLL.Rating
                 var ratingEntity = entity.RatingEntites.SingleOrDefault(r => r.UserId == _currentUser.UserId);
                 if (ratingEntity != null)
                 {
+                    entity.TotalRating -= (int)ratingEntity.RatingType;
                     _repository.Delete(ratingEntity);
-                    _repository.SaveChanges();
                 }
                 if (ratingEntity == null || ratingEntity.RatingType != ratingType)
                 {
@@ -45,8 +45,8 @@ namespace BLL.Rating
                     entity.TotalRating += (int)ratingType;
                     _repository.Add(ratingEntity);
                     _repository.Update(entity);
-                    _repository.SaveChanges();
                 }
+                _repository.SaveChanges();
                 return result;
             }
             return new ServiceResult() {Success = false};

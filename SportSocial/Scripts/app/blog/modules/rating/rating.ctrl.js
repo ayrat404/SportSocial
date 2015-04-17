@@ -20,24 +20,28 @@ function ($scope, ratingRqst, utilsSrvc) {
             .then(function(res) {
                 if (res.data.success) {
                     if (action == 'like') {
-                        if (isDisliked) {
+                        var tmpIsLiked = 'True';
+                        if (isDisliked == 'True') {
                             $scope.count = $scope.count + 2;
-                        } else if (isLiked) {
+                        } else if (isLiked == 'True') {
                             $scope.count = $scope.count - 1;
+                            tmpIsLiked = 'False';
                         } else {
                             $scope.count = $scope.count + 1;
                         }
-                        $scope.isLiked = 'True';
+                        $scope.isLiked = tmpIsLiked;
                         $scope.isDisliked = 'False';
                     } else {
-                        if (isLiked) {
+                        var tmpIsDisliked = 'True';
+                        if (isLiked == 'True') {
                             $scope.count = $scope.count - 2;
-                        } else if (isDisliked) {
+                        } else if (isDisliked == 'True') {
                             $scope.count = $scope.count + 1;
+                            tmpIsDisliked = 'False';
                         } else {
                             $scope.count = $scope.count - 1;
                         }
-                        $scope.isDisliked = 'True';
+                        $scope.isDisliked = tmpIsDisliked;
                         $scope.isLiked = 'False';
                     }
                 }
