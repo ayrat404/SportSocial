@@ -54,7 +54,7 @@ namespace SportSocial
                     )
                     .Include(
                         "~/Scripts/libs/angular/angular.min.js",
-                        "~/Scripts/libs/angular/angular-mocks.js",
+                        //"~/Scripts/libs/angular/angular-mocks.js",
                         "~/Scripts/libs/angular/angular-touch.min.js",
                         "~/Scripts/libs/text-angular/textAngular-sanitize.min.js",
                         "~/Scripts/libs/text-angular/textAngular.min.js",
