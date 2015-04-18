@@ -251,7 +251,7 @@
     <Content Include="Content\images\icons\logo.png" />
     <Content Include="Content\images\icons\payed.png" />
     <Content Include="Content\images\icons\rub.png" />
-    <Content Include="Content\images\icons\sprite-article.png" />
+    <Content Include="Content\images\icons\sprite.png" />
     <Content Include="Content\images\pattern\black.png" />
     <Content Include="Content\images\pattern\pattern_vertical.png" />
     <Content Include="Content\images\promo-bg.jpg" />
@@ -668,6 +668,7 @@
     <Content Include="Scripts\libs\angular\i18n\angular-locale_zu-za.js" />
     <Content Include="Scripts\libs\angular\i18n\angular-locale_zu.js" />
     <Content Include="Scripts\libs\bootbox\bootbox.js" />
+    <Content Include="Scripts\libs\bootstrap\modal.js" />
     <Content Include="Scripts\libs\bootstrap\tooltip.js" />
     <Content Include="Scripts\libs\datepicker\jquery.datetimepicker.css" />
     <Content Include="Scripts\libs\datepicker\jquery.datetimepicker.js" />
