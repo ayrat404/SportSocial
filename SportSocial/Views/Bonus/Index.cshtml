@@ -1,4 +1,4 @@
-﻿@model BLL.Payment.ViewModels.RobokassaViewModel
+﻿@model List<BLL.Bonus.Objects.BonusVideoModel>
 @{
     ViewBag.Title = "Бонусные видео";
     Layout = "../Blog/Shared/Layouts/BlogLayout.cshtml";
@@ -14,44 +14,28 @@
                 <div class="mod__content p-all">
                     <div class="tabs-content">
                         <ul class="bp-list">
-                            <li class="bp-list__it bp-list__it--available">
-                                <h3 class="bp-list__it__title">Название 1</h3>
-                                <div class="bp-list__it__img-wrap">
-                                    <img class="bp-list__it__img" src="#" />
-                                    <div class="bp-list__it__status">
-                                        <div>Видео 1</div>
+                            @foreach (var video in Model)
+                            {
+                                <li class="bp-list__it bp-list__it--available">
+                                    <h3 class="bp-list__it__title">@video.Title</h3>
+                                    <div class="bp-list__it__img-wrap">
+                                        <img class="bp-list__it__img" src="@video.ImageUrl" />
+                                        @if (video.IsActive)
+                                        {
+                                            <div class="bp-list__it__status">
+                                                <div>Видео 1</div>
+                                            </div>
+                                            <div class="bp__play"></div>
+                                        }
+                                        else
+                                        {
+                                            <div class="bp-list__it__status">
+                                                Чтобы видео стало доступным, необходимо иметь суммарную подписку на членство в клубе не менее 2-х месяцев
+                                            </div>
+                                        }
                                     </div>
-                                    <div class="bp__play"></div>
-                                </div>
-                            </li>
-                            <li class="bp-list__it bp-list__it--available">
-                                <h3 class="bp-list__it__title">Название 1</h3>
-                                <div class="bp-list__it__img-wrap">
-                                    <img class="bp-list__it__img" src="#" />
-                                    <div class="bp-list__it__status">
-                                        <div>Видео 1</div>
-                                    </div>
-                                    <div class="bp__play"></div>
-                                </div>
-                            </li>
-                            <li class="bp-list__it">
-                                <h3 class="bp-list__it__title">Название 1</h3>
-                                <div class="bp-list__it__img-wrap">
-                                    <img class="bp-list__it__img" src="#" />
-                                    <div class="bp-list__it__status">
-                                        Чтобы видео стало доступным, необходимо иметь суммарную подписку на членство в клубе не менее 2-х месяцев
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="bp-list__it">
-                                <h3 class="bp-list__it__title">Название 1</h3>
-                                <div class="bp-list__it__img-wrap">
-                                    <img class="bp-list__it__img" src="#" />
-                                    <div class="bp-list__it__status">
-                                        Чтобы видео стало доступным, необходимо иметь суммарную подписку на членство в клубе не менее 2-х месяцев
-                                    </div>
-                                </div>
-                            </li>
+                                </li>
+                            }
                         </ul>
                         <div class="bp-watch">
                             <h1 class="bp-watch__title text-center">Название 1</h1>
