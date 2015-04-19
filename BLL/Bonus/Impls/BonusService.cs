@@ -64,12 +64,7 @@ namespace BLL.Bonus.Impls
 
         public string GetVideoFilePAth(string fileName)
         {
-            string filePath = HttpContext.Current.Server.MapPath(Path.Combine(basePath, fileName));
-            if (!File.Exists(filePath))
-            {
-                return "";
-            }
-            return filePath;
+            return HttpContext.Current.Server.MapPath(Path.Combine(basePath, fileName));
         }
 
         private int GetMounths()

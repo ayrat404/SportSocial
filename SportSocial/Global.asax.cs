@@ -14,12 +14,12 @@ namespace SportSocial
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             BundleConfig.RegisterBundles(System.Web.Optimization.BundleTable.Bundles);
             GlobalFilters.Filters.Add(new ErrorHandlerAttr());
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
             CreateMaps.Register();
             LocalizationConfig.RegisterBinding();
-            GlobalConfiguration.Configure(WebApiConfig.Register);
 
             var conf = new Configuration();
             DbMigrator migrator = new DbMigrator(conf);
