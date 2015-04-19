@@ -126,9 +126,9 @@
     <Compile Include="Migrations\201412172011053_Post_IsVideoField.Designer.cs">
       <DependentUpon>201412172011053_Post_IsVideoField.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201504191858001_CreateModifyed_AppUser.cs" />
-    <Compile Include="Migrations\201504191858001_CreateModifyed_AppUser.Designer.cs">
-      <DependentUpon>201504191858001_CreateModifyed_AppUser.cs</DependentUpon>
+    <Compile Include="Migrations\201504191913083_CreateModifyed_AppUser.cs" />
+    <Compile Include="Migrations\201504191913083_CreateModifyed_AppUser.Designer.cs">
+      <DependentUpon>201504191913083_CreateModifyed_AppUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -155,8 +155,8 @@
     <EmbeddedResource Include="Migrations\201412172011053_Post_IsVideoField.resx">
       <DependentUpon>201412172011053_Post_IsVideoField.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504191858001_CreateModifyed_AppUser.resx">
-      <DependentUpon>201504191858001_CreateModifyed_AppUser.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201504191913083_CreateModifyed_AppUser.resx">
+      <DependentUpon>201504191913083_CreateModifyed_AppUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

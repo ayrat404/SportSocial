@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using DAL.DomainModel.BlogEntities;
 using DAL.DomainModel.ConferenceEntities;
 using DAL.DomainModel.Interfaces;
@@ -27,8 +28,10 @@ namespace DAL.DomainModel
 
         public virtual ICollection<Pay> Pays { get; set; }
 
+        [Column(TypeName = "datetime2")]
         public DateTime Created { get; set; }
 
+        [Column(TypeName = "datetime2")]
         public DateTime Modified { get; set; }
     }
 

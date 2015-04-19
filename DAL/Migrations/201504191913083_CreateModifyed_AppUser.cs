@@ -7,8 +7,10 @@ namespace DAL.Migrations
     {
         public override void Up()
         {
-            AddColumn("dbo.AspNetUsers", "Created", c => c.DateTime(nullable: false, defaultValueSql: "SYSDATETIME()"));
-            AddColumn("dbo.AspNetUsers", "Modified", c => c.DateTime(nullable: false, defaultValueSql: "SYSDATETIME()"));
+            AddColumn("dbo.AspNetUsers", "Created",
+                c => c.DateTime(nullable: false, precision: 7, storeType: "datetime2", defaultValueSql: "SYSDATETIME()"));
+            AddColumn("dbo.AspNetUsers", "Modified", 
+                c => c.DateTime(nullable: false, precision: 7, storeType: "datetime2", defaultValueSql: "SYSDATETIME()"));
         }
         
         public override void Down()
