@@ -1105,6 +1105,7 @@
     <Content Include="Views\Bonus\Index.cshtml" />
     <Content Include="Scripts\libs\videojs\video-js.less" />
     <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\Shared\Partials\Video.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
