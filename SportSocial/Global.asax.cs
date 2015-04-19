@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.Migrations;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
 using BLL.Infrastructure.Map;
@@ -18,6 +19,7 @@ namespace SportSocial
             GlobalFilters.Filters.Add(new ErrorHandlerAttr());
             CreateMaps.Register();
             LocalizationConfig.RegisterBinding();
+            GlobalConfiguration.Configure(WebApiConfig.Register);
 
             var conf = new Configuration();
             DbMigrator migrator = new DbMigrator(conf);

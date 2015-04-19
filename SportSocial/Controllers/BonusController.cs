@@ -1,9 +1,12 @@
 ﻿using System.Linq;
+using System.Net.Http;
 using System.Web.Mvc;
 using BLL.Blog;
-using BLL.Blog.ViewModels;
-using BLL.Common.Objects;
-using PagedList;
+using BLL.Bonus;
+using BLL.Common.Services.CurrentUser;
+using DAL.DomainModel;
+using DAL.DomainModel.EnumProperties;
+using DAL.Repository.Interfaces;
 using SportSocial.Controllers.Base;
 
 namespace SportSocial.Controllers
@@ -12,18 +15,31 @@ namespace SportSocial.Controllers
     public class BonusController :SportSocialControllerBase
     {
         private readonly IBlogService _blogService;
+        private readonly IRepository _repository;
+        private readonly ICurrentUser _currentUser;
+        private readonly IBonusService _bonusService;
 
-        public BonusController(IBlogService blogService)
+        public BonusController(IBlogService blogService, IRepository repository, IBonusService bonusService)
         {
             _blogService = blogService;
+            _repository = repository;
+            _bonusService = bonusService;
         }
 
         [HttpGet]
-        [AllowAnonymous]
         public ActionResult Index()
         {
-            return View();
+            if (!_bonusService.HaveAccess())
+            {
+                return RedirectToAction("Index", "Pay");
+            }
+            var videos = _bonusService.GetBonusVideos();
+            return View(videos);
         }
-
 	}
+
+    public class BonusModel
+    {
+        
+    }
 }

@@ -65,7 +65,7 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
@@ -141,6 +141,9 @@
     <Compile Include="Blog\ViewModels\PostListModel.cs" />
     <Compile Include="Blog\ViewModels\PostPreviewModel.cs" />
     <Compile Include="Blog\ViewModels\PostPreviewViewModel.cs" />
+    <Compile Include="Bonus\IBonusService.cs" />
+    <Compile Include="Bonus\Impls\BonusService.cs" />
+    <Compile Include="Bonus\Objects\BonusVideoModel.cs" />
     <Compile Include="Comments\MapProfiles\ConferenceCommentsProfile.cs" />
     <Compile Include="Comments\MapProfiles\CProfile.cs" />
     <Compile Include="Comments\MapProfiles\BlogCommentsProfile.cs" />
@@ -157,6 +160,7 @@
     <Compile Include="Common\Extensions\JsonExtension.cs" />
     <Compile Include="Common\Extensions\StringExtensions.cs" />
     <Compile Include="Common\Helpers\CookieHelper.cs" />
+    <Compile Include="Common\Helpers\FileStreamingHelper.cs" />
     <Compile Include="Common\Helpers\Hasher.cs" />
     <Compile Include="Common\Helpers\HttpHelper.cs" />
     <Compile Include="Common\Helpers\LocalizationHelper.cs" />
