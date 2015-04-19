@@ -60,26 +60,32 @@
                         <div ng-if="ar.status==3">Отображена на главной</div>
                     </div>
                     <div class="col-xs-5">
-                        <button ng-click="changeArticleStatus(ar.id, 'Publish', ar)"
-                                ng-if="ar.status==0 || ar.status==2"
-                                class="btn btn-info">
-                            Опубликовать
-                        </button>
-                        <button ng-click="changeArticleStatus(ar.id, 'Reject', ar)"
-                                ng-if="ar.status==0"
-                                class="btn btn-warning">
-                            Отклонить
-                        </button>
-                        <button ng-click="changeArticleStatus(ar.id, 'Reject', ar)"
-                                ng-if="ar.status==1 || ar.status==3"
-                                class="btn btn-danger">
-                            Убрать с публикации
-                        </button>
-                        <button ng-click="changeArticleStatus(ar.id, 'OnMain', ar)"
-                                ng-if="ar.status!=3"
-                                class="btn btn-success">
-                            Отобразить на главной
-                        </button>
+                        <div class="btn-group c-buttons">
+                            <button ng-click="changeArticleStatus(ar.id, 'Publish', ar)"
+                                    ng-if="ar.status==0 || ar.status==2"
+                                    class="btn btn-default" title="Опубликовать">
+                                <span class="cb__icon cb__icon--publish"></span>
+                            </button>
+                            <button ng-click="changeArticleStatus(ar.id, 'Reject', ar)"
+                                    ng-if="ar.status==0"
+                                    class="btn btn-default" title="Отклонить">
+                                <span class="cb__icon cb__icon--reject"></span>
+                            </button>
+                            <button ng-click="changeArticleStatus(ar.id, 'Reject', ar)"
+                                    ng-if="ar.status==1 || ar.status==3"
+                                    class="btn btn-default" title="Убрать с публикации">
+                                <span class="cb__icon cb__icon--unpublish"></span>
+                            </button>
+                            <button ng-click="changeArticleStatus(ar.id, 'OnMain', ar)"
+                                    ng-if="ar.status!=3"
+                                    class="btn btn-default" title="Отобразить на главной">
+                                <span class="cb__icon cb__icon--main"></span>
+                            </button>
+                            <button ng-click="changeArticleStatus(ar.id, 'Remove', ar)"
+                                    class="btn btn-default" title="Удалить">
+                                <span class="cb__icon cb__icon--remove"></span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

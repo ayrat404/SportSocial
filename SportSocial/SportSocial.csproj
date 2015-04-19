@@ -337,6 +337,7 @@
     <Content Include="Scripts\app\admin\modules\conference\conferenceNew.ctrl.js" />
     <Content Include="Scripts\app\admin\modules\main\main.ctrl.js" />
     <Content Include="Scripts\app\admin\modules\sidebar\sidebar.ctrl.js" />
+    <Content Include="Scripts\app\admin\modules\users\users.ctrl.js" />
     <Content Include="Scripts\app\admin\shared\services\admin.srvc.js" />
     <Content Include="Scripts\app\blog\app.js" />
     <Content Include="Scripts\app\blog\modules\bonus\bonus.srvc.js" />
@@ -363,6 +364,7 @@
     <Content Include="Scripts\app\blog\modules\settings\avatarUpload.drct.js" />
     <Content Include="Scripts\app\blog\modules\settings\settings.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\settings\settings.srvc.js" />
+    <Content Include="Scripts\app\shared\directives\nav-active.drct.js" />
     <Content Include="Scripts\app\shared\directives\aboutVideo.drct.js" />
     <Content Include="Scripts\app\shared\directives\collapse.js" />
     <Content Include="Scripts\app\shared\directives\bgSlider.drct.js" />
@@ -898,6 +900,7 @@
     <Content Include="Content\styles\components\blog\collapse.less" />
     <Content Include="Content\styles\components\blog\bonus.less" />
     <Content Include="Content\styles\base\icons-set.less" />
+    <Content Include="Content\styles\base\icons-set--admin.less" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -983,6 +986,7 @@
     <Content Include="Scripts\templates\admin\conference\conferenceNew.html" />
     <Content Include="Scripts\templates\admin\conference\conferenceList.html" />
     <Content Include="Scripts\templates\admin\conference\partials\conferenceEditForm.html" />
+    <Content Include="Scripts\templates\admin\users\users-list.html" />
     <Content Include="Scripts\templates\blog\article\img-uploader.html" />
     <Content Include="Scripts\templates\blog\conference-counter.html" />
     <Content Include="Web.config">
@@ -1001,6 +1005,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\BonusController - Copy.cs" />
     <Compile Include="Controllers\BonusController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Admin\AdminController.cs" />
@@ -1099,6 +1104,7 @@
     <Content Include="Views\Shared\Partials\Modals\NonPayed.cshtml" />
     <Content Include="Views\Bonus\Index.cshtml" />
     <Content Include="Scripts\libs\videojs\video-js.less" />
+    <Content Include="Views\News\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

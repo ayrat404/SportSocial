@@ -1,0 +1,80 @@
+﻿<div class="cp-articles">
+    <div class="cp-block">
+        <h2>Пользователи</h2>
+        <div ng-cloak>
+            <div ng-if="!statisticIsLoaded && !ld.statistic">Не удалось загрузить статистику. <button class="btn btn-default" ng-click="getUsersStatistic();">Попробовать снова</button></div>
+            <div ng-if="statisticIsLoaded">
+                Количество зарегистрированных пользователей: <b>{{model.statistic.users}}</b>
+                Количество пользователей, хоть раз купивших подписку: <b>{{model.statistic.paymentUsers}}</b>
+                Общее количество оплаченных месяцев: <b>{{model.statistic.paymentMonths}}</b>
+                Среднее количество месяцев подписки, оплачиваемых за один раз: <b>{{model.statistic.paymentMiddle}}</b>
+            </div>
+        </div>
+        <div ng-if="ld.statistic">Загрузка статистики...</div>
+    </div>
+    <div class="cp-block">
+        <div class="cp-table">
+            <div ng-show="!er.server"
+                 ng-cloak
+                 class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-2">
+                        Имя
+                    </div>
+                    <div class="col-xs-2">
+                        Дата регистрации
+                    </div>
+                    <div class="col-xs-2">
+                        Приобрел подписок (в мес.)
+                    </div>
+                    <div class="col-xs-2">
+                        Статус пользователя
+                    </div>
+                    <div class="col-xs-4">
+                        Действия
+                    </div>
+                </div>
+                <div ng-repeat="u in model.users"
+                     class="row">
+                    <div class="col-xs-2">
+                        <span>{{u.name}}</span>
+                    </div>
+                    <div class="col-xs-2">
+                        {{u.regDate}}
+                    </div>
+                    <div class="col-xs-1">
+                        {{u.subscribes}}
+                    </div>
+                    <div class="col-xs-2">
+                        <div ng-if="u.status==2">Доверенный</div>
+                        <div ng-if="u.status==3">Обычный</div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="btn-group c-buttons">
+                            <button ng-click="changeUserStatus(u.id, 'Trust', ar)"
+                                    ng-if="u.status==3"
+                                    class="btn btn-default" title="Сделать доверенным пользователем">
+                                <span class="cb__icon cb__icon--trust"></span>
+                            </button>
+                            <button ng-click="changeUserStatus(u.id, 'Simple', ar)"
+                                    ng-if="u.status==2"
+                                    class="btn btn-default" title="Сделать обычным пользователем">
+                                <span class="cb__icon cb__icon--baby"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-cloak>
+                <div ng-show="ld.users">Идет загрузка...</div>
+                <div ng-show="er.server"
+                     class="alert alert-danger">
+                    Не удалось зарузить список пользователей. Сервер не доступен
+                </div>
+                <div ng-show="!model.users.length && !er.server && !ld.users" class="alert alert-warning">
+                    Нет пользователей
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -49,6 +49,22 @@ angular.module('admin').factory('adminRqst', ['$http', 'serializeObj', function 
         // ---------------
         changeConferenceStatus: function(obj) {
             return send('ChangeConferenceStatus', obj);
+        },
+
+        // Загрузить список пользователей
+        // ---------------
+        getUsers: function(obj) {
+            return get('getUsers', obj);
+        },
+        // Загрузить статистику по пользователям
+        // ---------------
+        getUsersStatistic: function (obj) {
+            return get('getUsersStatistic', obj);
+        },
+        // Изменить статус пользователя
+        // ---------------
+        changeUserStatus: function(obj) {
+            return send('changeUserStatus', obj);
         }
     };
 }]);

@@ -5,6 +5,10 @@
     height: 100%;
 }
 
+.cp-block {
+    color: #fff;
+}
+
 .cp {
     background: url(../../images/blur.jpg) no-repeat;
     background-size: cover;
@@ -13,7 +17,6 @@
 
     a {
         color: #fff;
-        text-decoration: underline;
     }
 
     &-table {
@@ -21,7 +24,7 @@
 
         .row {
             &:first-child {
-                font-size: 1.486em;
+                font-size: 1em;
                 margin-bottom: 15px;
             }
 
@@ -90,9 +93,12 @@
             margin-top: 20px;
 
             a {
-                &:hover {
-                    text-decoration: none;
+                &:hover,
+                &.active {
                     border-right: 5px solid @color-blue;
+                    background-color: rgba(71, 71, 71, 0.54);
+                    border-top: 1px solid rgba(0, 149, 255, 0.36);
+                    border-bottom: 1px solid rgba(0, 149, 255, 0.36);
                 }
             }
 
@@ -102,21 +108,13 @@
                 padding: 10px 15px;
                 .box-sizing;
                 font-size: 1.126em;
-                /*&:hover {
-                    text-decoration: none;
-
-                    .cp__sb__menu__title {
-                        color: #ccc;
-                        text-decoration: none;
-                        //border-right: 10px solid @color-blue;
-                    }
-                }*/
+                border-top: 1px solid transparent;
+                border-bottom: 1px solid transparent;
             }
 
             &__title {
                 display: block;
                 text-decoration: none;
-                text-transform: uppercase;
             }
         }
 
@@ -153,6 +151,35 @@
                 min-height: 200px;
             }
         }
+    }
+}
+
+
+.c-buttons {
+    .cb__icon {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .cb__icon--publish {
+        .sprite(@adm-cloud-upload);
+    }
+    .cb__icon--unpublish {
+        .sprite(@adm-cloud-unload);
+    }
+    .cb__icon--main {
+        .sprite(@adm-cup);
+    }
+    .cb__icon--reject {
+        .sprite(@adm-stop);
+    }
+    .cb__icon--remove {
+        .sprite(@adm-remove);
+    }
+    .cb__icon--trust {
+        .sprite(@adm-trust);
+    }
+    .cb__icon--baby {
+        .sprite(@adm-baby);
     }
 }
 /* /Admin

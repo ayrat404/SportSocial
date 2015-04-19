@@ -12,7 +12,8 @@ function ($scope, utilsSrvc, adminRqst) {
         'Moderate'  :   0,
         'Publish'   :   1,
         'Reject'    :   2,
-        'OnMain'    :   3
+        'OnMain'    :   3,
+        'Remove'    :   4
     };
 
     // ошибки

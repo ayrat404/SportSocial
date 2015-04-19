@@ -1,0 +1,59 @@
+﻿@model List<BLL.Bonus.Objects.BonusVideoModel>
+@{
+    ViewBag.Title = "Fortress - новости";
+    Layout = "../Blog/Shared/Layouts/BlogLayout.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+            <div class="mod block">
+                <div class="mod__header">
+                    <div class="mod__header__title">Новости клуба Fortress</div>
+                </div>
+                <div class="mod__content p-all">
+                    @*<div class="articles-list">
+        @if (Model.Count != 0)
+        {
+            foreach (var item in Model)
+            {
+                <div class="al__item">
+                    <a href="@Url.Action("Item", "Blog", new { id = item.Id })" class="al__item__img">
+                        @if (item.IsVideo)
+                        {
+                            <div class="al__item__overlay">
+                                <div class="i-art i-art-play"></div>
+                            </div>
+                        }
+                        <img src="@item.Images[0].Url?width=198&height=198&mode=crop" alt="@item.Title" />
+                    </a>
+                    <div class="al__item__info">
+                        <a href="@Url.Action("Item", "Blog", new { id = item.Id })" class="al__item__title">@item.Title</a>
+                        <div class="al__item__desc">@Html.Raw(item.Text.Length > 90 ? item.Text.Substring(0, 90) : item.Text)</div>
+                    </div>
+                    <div class="al__item__bottom">
+                        <div class="pull-left">
+                            @Html.Partial("Shared/Partials/Article/Info", item)
+                        </div>
+                        <div class="pull-right">
+                            @Html.Partial("Partials/Rating", item)
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="alert alert-warning">Статей на эту тему пока нет. Станьте первым, кто добавит статью!</div>
+        }
+    </div>
+    @if (Model.PageCount > 1)
+    {
+        <div class="text-center">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sort = ViewBag.Sort, rubric = ViewBag.Rubric }))
+        </div>
+    }*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

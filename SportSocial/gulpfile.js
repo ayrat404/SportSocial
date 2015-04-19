@@ -43,6 +43,19 @@ gulp.task('sprite', function() {
 	spriteData.css.pipe(gulp.dest('Content/styles/base/'));
 });
 
+gulp.task('sprite-admin', function () {
+    var spriteData = gulp.src('Content/images/icons/sprites-admin/*.png')
+	                 .pipe(spritesmith({
+	                     imgName: '../../images/icons/sprite-admin.png',
+	                     cssName: 'icons-set--admin.less',
+	                     algorithm: 'binary-tree',
+	                     cssFormat: 'less',
+	                     padding: 10
+	                 }));
+    spriteData.img.pipe(gulp.dest('Content/images/icons/'));
+    spriteData.css.pipe(gulp.dest('Content/styles/base/'));
+});
+
 gulp.task('watch', function() {
 	var watcher = gulp.watch([
 		'Content/styles/*.less',

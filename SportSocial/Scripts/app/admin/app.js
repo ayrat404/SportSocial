@@ -22,6 +22,12 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: '/Scripts/templates/admin/conference/conferenceNew.html',
             controller: 'ConferenceNewCtrl'
         })
+        // список всех пользователей
+        // ---------------
+        .when('/users', {
+            templateUrl: '/Scripts/templates/admin/users/users-list.html',
+            controller: 'UsersCtrl'
+        })
         // редактирование конференции
         // ---------------
         .when('/conference/item/:id', {
