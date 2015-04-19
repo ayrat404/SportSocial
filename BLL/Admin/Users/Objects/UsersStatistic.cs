@@ -5,6 +5,6 @@ namespace BLL.Admin.Users.Objects
         public int UsersCount { get; set; }
         public int PayedUsers { get; set; }
         public int PayedMounths { get; set; }
-        public int AverageMounths { get; set; }
+        public double AverageMounths { get; set; }
     }
 }

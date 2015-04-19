@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using DAL.DomainModel.BlogEntities;
 using DAL.DomainModel.ConferenceEntities;
+using DAL.DomainModel.EnumProperties;
 using DAL.DomainModel.Interfaces;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -11,6 +12,8 @@ namespace DAL.DomainModel
     public class AppUser: IdentityUser<int, AppUserLogin, AppUserRole, AppUserClaim>, IAuditable
     {
         public string Name { get; set; }
+
+        public UserStatus Status { get; set; }
 
         public virtual Profile Profile { get; set; }
 

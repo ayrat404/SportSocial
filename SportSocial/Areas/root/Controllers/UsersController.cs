@@ -7,6 +7,7 @@ using BLL.Admin.Users;
 
 namespace SportSocial.Areas.root.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class UsersController : Controller
     {
         private readonly IUserManagmentService _userseService;

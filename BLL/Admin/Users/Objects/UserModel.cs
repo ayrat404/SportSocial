@@ -1,4 +1,5 @@
 using System;
+using DAL.DomainModel.EnumProperties;
 
 namespace BLL.Admin.Users.Objects
 {
@@ -7,6 +8,6 @@ namespace BLL.Admin.Users.Objects
         public string Name { get; set; }
         public DateTime RegDate { get; set; }
         public int Subscribes { get; set; }
-        public int Status { get; set; }
+        public UserStatus Status { get; set; }
     }
 }

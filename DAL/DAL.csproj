@@ -82,6 +82,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DomainModel\EnumProperties\UserStatus.cs" />
     <Compile Include="DomainModel\IdentityEntities\AppRole.cs" />
     <Compile Include="DomainModel\IdentityEntities\AppUser.cs" />
     <Compile Include="DomainModel\BlogEntities\BlogComment.cs" />
@@ -130,6 +131,10 @@
     <Compile Include="Migrations\201504191913083_CreateModifyed_AppUser.Designer.cs">
       <DependentUpon>201504191913083_CreateModifyed_AppUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201504192100032_Status_AppUser.cs" />
+    <Compile Include="Migrations\201504192100032_Status_AppUser.Designer.cs">
+      <DependentUpon>201504192100032_Status_AppUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AccountRepository.cs" />
@@ -157,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504191913083_CreateModifyed_AppUser.resx">
       <DependentUpon>201504191913083_CreateModifyed_AppUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504192100032_Status_AppUser.resx">
+      <DependentUpon>201504192100032_Status_AppUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
