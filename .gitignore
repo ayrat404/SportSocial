@@ -170,3 +170,5 @@ $RECYCLE.BIN/
 /SportSocial/App_Data/SportStore_log.ldf
 SportSocial/Storage/
 SportSocial/imagecache/
+SportSocial/videos/
+packages/

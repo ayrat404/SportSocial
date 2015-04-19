@@ -7,7 +7,12 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Web.Http;
 using BLL.Bonus;
+using BLL.Bonus.Impls;
 using BLL.Common.Helpers;
+using BLL.Common.Services.CurrentUser.Impls;
+using BLL.Infrastructure.IdentityConfig;
+using DAL;
+using DAL.Repository;
 
 namespace SportSocial.Controllers
 {
@@ -16,11 +21,14 @@ namespace SportSocial.Controllers
     {
         private readonly IBonusService _bonusService;
 
-        public VideoController(IBonusService bonusService)
+        public VideoController()
         {
-            _bonusService = bonusService;
+            var context = new EntityDbContext();
+            _bonusService = new BonusService(new Repository(context), new CurrentUser(new AppUserManager(new AppUserStore(context))));
         }
 
+        [Route("api/play")]
+        [HttpGet]
         public HttpResponseMessage Play(string id)
         {
             if (string.IsNullOrWhiteSpace(id) || FileStreamingHelper.AnyInvalidFileNameChars(id))
