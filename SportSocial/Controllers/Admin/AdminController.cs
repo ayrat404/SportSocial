@@ -88,7 +88,7 @@ namespace SportSocial.Controllers
             _userManagment.ChangeUserStatus(id, status);
         }
 
-        [HttpPost]
+        [HttpGet]
         public JsonResult GetUsersStatistic()
         {
             var stat = _userManagment.GetUsersStatistic();

@@ -22,6 +22,7 @@ namespace BLL.Admin.Users.Impls
         public IEnumerable<UserModel> GetUsers()
         {
             var users = _repository.Queryable<AppUser>()
+                .Where(u => u.PhoneNumberConfirmed)
                 .Include(u => u.Profile)
                 .Include(u => u.Pays)
                 .ToList()
@@ -47,14 +48,14 @@ namespace BLL.Admin.Users.Impls
             userStatistic.PayedUsers = _repository.Queryable<AppUser>().Count(u => u.Profile.IsPaid);
 
             userStatistic.PayedMounths = _repository
-                .Queryable<AppUser>()
-                .Where(u => u.Profile.IsPaid)
-                .Sum(u => u.Pays.Where(p => p.PaySatus == PaySatus.Completed).Sum(p => p.ProductId));
+                .Queryable<Pay>()
+                .Where(p => p.PaySatus == PaySatus.Completed)
+                .Sum(p => p.ProductId);
 
             userStatistic.AverageMounths = _repository
-                .Queryable<AppUser>()
-                .Where(u => u.Profile.IsPaid)
-                .Average(u => u.Pays.Where(p => p.PaySatus == PaySatus.Completed).Average(p => p.ProductId));
+                .Queryable<Pay>()
+                .Where(p => p.PaySatus == PaySatus.Completed)
+                .Average(p => p.ProductId);
             return userStatistic;
         }
     }

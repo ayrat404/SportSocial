@@ -268,6 +268,7 @@
     <Content Include="Content\images\icons\logo.png" />
     <Content Include="Content\images\icons\payed.png" />
     <Content Include="Content\images\icons\rub.png" />
+    <Content Include="Content\images\icons\sprite-admin.png" />
     <Content Include="Content\images\icons\sprite.png" />
     <Content Include="Content\images\pattern\black.png" />
     <Content Include="Content\images\pattern\pattern_vertical.png" />

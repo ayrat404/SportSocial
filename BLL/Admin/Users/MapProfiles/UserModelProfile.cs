@@ -11,7 +11,6 @@ namespace BLL.Admin.Users.MapProfiles
         {
             CreateMap<AppUser, UserModel>()
                 .ForMember(dest => dest.RegDate, opt => opt.MapFrom(s => s.Created))
-                .ForMember(dest => dest.Status, opt => opt.MapFrom(s => s.Status))
                 .ForMember(dest => dest.Subscribes, opt => opt.MapFrom(s => s.Pays.Sum(p => p.ProductId)));
         }
     }
