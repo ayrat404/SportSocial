@@ -364,6 +364,7 @@
     <Content Include="Scripts\app\blog\modules\settings\avatarUpload.drct.js" />
     <Content Include="Scripts\app\blog\modules\settings\settings.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\settings\settings.srvc.js" />
+    <Content Include="Scripts\app\shared\directives\videoPlaylist.drct.js" />
     <Content Include="Scripts\app\shared\directives\nav-active.drct.js" />
     <Content Include="Scripts\app\shared\directives\aboutVideo.drct.js" />
     <Content Include="Scripts\app\shared\directives\collapse.js" />
@@ -1105,6 +1106,7 @@
     <Content Include="Views\Bonus\Index.cshtml" />
     <Content Include="Scripts\libs\videojs\video-js.less" />
     <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\Shared\Partials\Video.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1127,6 +1129,7 @@
     <Folder Include="Scripts\spa\common\templates\" />
     <Folder Include="Scripts\spa\common\utils\" />
     <Folder Include="Scripts\spa\entities\" />
+    <Folder Include="Scripts\templates\shared\video\" />
     <Folder Include="Storage\Images\" />
     <Folder Include="Storage\User\" />
     <Folder Include="Views\Conference\Shared\Layouts\" />

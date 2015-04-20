@@ -79,9 +79,9 @@ function ($scope, utilsSrvc, adminRqst) {
 
     // сменить статус пользователя
     // ---------------
-    $scope.changeUserStatus = function (id, statusString, el) {
+    $scope.changeUserStatus = function (statusString, el) {
         var statusNum = usersStatuses[statusString];
-        adminRqst.changeUserStatus(utilsSrvc.token.add({ id: id, status: statusNum }))
+        adminRqst.changeUserStatus(utilsSrvc.token.add({ id: el.id, status: statusNum }))
             .then(function (res) {
                 if (res.data.success) {
                     el.status = statusNum;
