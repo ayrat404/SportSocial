@@ -20,6 +20,12 @@
                             <span class="nav__list__link link" data-toggle="modal" data-target="#payModal">Конференции</span>
                         }
                     </li>
+                    @if (!CurrentUser.IsAnonimous)
+                    {
+                        <li>
+                            <a href="@Url.Action("Index", "Bonus")" class="nav__list__link">Бонусные курсы</a>
+                        </li>
+                    }
                     @*<li>
                         <a href="#" class="nav__list__link">Новости компании</a>
                     </li>*@
