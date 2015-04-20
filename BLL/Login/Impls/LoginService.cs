@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using BLL.Common.Helpers;
 using BLL.Common.Objects;
 using BLL.Common.Services.CurrentUser;
@@ -64,6 +65,12 @@ namespace BLL.Login.Impls
                 Success = true,
                 ReturnUrl = url,
             };
+            if (IsValidPhone(regModel.Phone))
+            {
+                result.ErrorMessage = "Номер телефона должен содержать только цифры в формате <код страны><номер> без сивола \"+\".".Resource(this);
+                result.Success = false;
+                return result;
+            }
             var user = _appUserManager.FindByName(regModel.Phone);
             if (user != null && user.PhoneNumberConfirmed)
             {
@@ -80,6 +87,8 @@ namespace BLL.Login.Impls
                     PhoneNumber = regModel.Phone,
                     UserName = regModel.Phone,
                     PhoneNumberConfirmed = false,
+                    Created = DateTime.Now,
+                    Modified = DateTime.Now
                 };
                 var createUserResult = _appUserManager.Create(user);
                 if (!createUserResult.Succeeded)
@@ -188,6 +197,13 @@ namespace BLL.Login.Impls
 
         public ServiceResult ChangePhone(string phone)
         {
+            var result = new ServiceResult();
+            if (!IsValidPhone(phone))
+            {
+                result.ErrorMessage = "Номер телефона должен содержать только цифры в формате <код страны><номер> без сивола \"+\".".Resource(this);
+                result.Success = false;
+                return result;
+            }
             return _smsService.GenerateAndSendCode(_currentUser.UserId, _currentUser.Phone);
         }
 
@@ -245,6 +261,15 @@ namespace BLL.Login.Impls
                 Success = false,
                 ErrorMessage = "Ошибка".Resource(this),
             };
+        }
+
+        private bool IsValidPhone(string phone)
+        {
+            if (phone.Length == 11 && phone[0] == '8')
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

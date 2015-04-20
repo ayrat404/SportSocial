@@ -268,7 +268,15 @@
     <Content Include="Content\images\icons\logo.png" />
     <Content Include="Content\images\icons\payed.png" />
     <Content Include="Content\images\icons\rub.png" />
+    <Content Include="Content\images\icons\sprite-admin.png" />
     <Content Include="Content\images\icons\sprite.png" />
+    <Content Include="Content\images\icons\sprites-admin\adm-baby.png" />
+    <Content Include="Content\images\icons\sprites-admin\adm-cloud-unload.png" />
+    <Content Include="Content\images\icons\sprites-admin\adm-cloud-upload.png" />
+    <Content Include="Content\images\icons\sprites-admin\adm-cup.png" />
+    <Content Include="Content\images\icons\sprites-admin\adm-remove.png" />
+    <Content Include="Content\images\icons\sprites-admin\adm-stop.png" />
+    <Content Include="Content\images\icons\sprites-admin\adm-trust.png" />
     <Content Include="Content\images\pattern\black.png" />
     <Content Include="Content\images\pattern\pattern_vertical.png" />
     <Content Include="Content\images\promo-bg.jpg" />
@@ -716,6 +724,7 @@
     <Content Include="Scripts\libs\jquery-fileapi\FileAPI.min.js" />
     <Content Include="Scripts\libs\jquery-fileapi\jquery.fileapi.js" />
     <Content Include="Scripts\libs\jquery-fileapi\jquery.fileapi.min.js" />
+    <Content Include="Areas\root\Views\web.config" />
     <None Include="BundleTransformer.Configuration.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -1006,6 +1015,8 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\root\Controllers\UsersController.cs" />
+    <Compile Include="Areas\root\RootAreaRegistration.cs" />
     <Compile Include="Controllers\BonusController - Copy.cs" />
     <Compile Include="Controllers\BonusController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -1115,6 +1126,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\root\Models\" />
+    <Folder Include="Areas\root\Views\Shared\" />
+    <Folder Include="Areas\root\Views\Users\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\app\admin\shared\directives\" />
     <Folder Include="Scripts\app\blog\shared\directives\" />

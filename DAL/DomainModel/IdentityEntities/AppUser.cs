@@ -1,13 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using DAL.DomainModel.BlogEntities;
 using DAL.DomainModel.ConferenceEntities;
+using DAL.DomainModel.EnumProperties;
+using DAL.DomainModel.Interfaces;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace DAL.DomainModel
 {
-    public class AppUser: IdentityUser<int, AppUserLogin, AppUserRole, AppUserClaim>
+    public class AppUser: IdentityUser<int, AppUserLogin, AppUserRole, AppUserClaim>, IAuditable
     {
         public string Name { get; set; }
+
+        public UserStatus Status { get; set; }
 
         public virtual Profile Profile { get; set; }
 
@@ -22,6 +28,14 @@ namespace DAL.DomainModel
         public virtual ICollection<Post> Posts { get; set; }
 
         public virtual ICollection<UserAvatarPhoto> UserAvatarPhotos { get; set; }
+
+        public virtual ICollection<Pay> Pays { get; set; }
+
+        [Column(TypeName = "datetime2")]
+        public DateTime Created { get; set; }
+
+        [Column(TypeName = "datetime2")]
+        public DateTime Modified { get; set; }
     }
 
     public class AppUserClaim: IdentityUserClaim<int> { }

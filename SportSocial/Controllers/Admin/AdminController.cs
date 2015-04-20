@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using BLL.Admin.Conference;
 using BLL.Admin.Conference.ViewModels;
+using BLL.Admin.Users;
 using BLL.Blog;
 using DAL.DomainModel.EnumProperties;
 using SportSocial.Controllers.Base;
@@ -9,15 +10,18 @@ using WebGrease.Css.Extensions;
 namespace SportSocial.Controllers
 {
     [Authorize(Roles = "Admin")]
-    public class AdminController :SportSocialControllerBase
+    public class AdminController : SportSocialControllerBase
     {
         private readonly IBlogService _blogService;
         private readonly IConferenceService _conferenceService;
+        private readonly IUserManagmentService _userManagment;
 
-        public AdminController(IBlogService blogService, IConferenceService conferenceService)
+        public AdminController(IBlogService blogService, IConferenceService conferenceService,
+            IUserManagmentService userManagment)
         {
             _blogService = blogService;
             _conferenceService = conferenceService;
+            _userManagment = userManagment;
         }
 
         [HttpGet]
@@ -70,5 +74,25 @@ namespace SportSocial.Controllers
                 return Json(new {success = false});
             return Json(_conferenceService.Edit(model));
         }
-	}
+
+        [HttpGet]
+        public JsonResult GetUsers()
+        {
+            var users = _userManagment.GetUsers();
+            return Json(users, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public void ChangeUserStatus(int id, UserStatus status)
+        {
+            _userManagment.ChangeUserStatus(id, status);
+        }
+
+        [HttpGet]
+        public JsonResult GetUsersStatistic()
+        {
+            var stat = _userManagment.GetUsersStatistic();
+            return Json(stat, JsonRequestBehavior.AllowGet);
+        }
+    }
 }

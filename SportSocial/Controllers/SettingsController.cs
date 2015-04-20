@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 using BLL.Common.Services.CurrentUser;
 using BLL.Login;
 using BLL.Login.ViewModels;
@@ -41,7 +42,11 @@ namespace SportSocial.Controllers
 
         [HttpPost]
         [CustomAntiForgeryValidator]
-        public ActionResult RequestCode(string phone)
+        public ActionResult RequestCode(
+            [Required(ErrorMessage = "Не введен номер телефона")]
+            [RegularExpression(@"^[0-9]{11,13}$", ErrorMessage = "Номер телефона должен содержать только цифры в формате <код страны><номер> без сивола \"+\".")]
+            string phone
+        )
         {
             return Json(_loginService.ChangePhone(phone));
         }

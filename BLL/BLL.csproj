@@ -124,9 +124,13 @@
     <Compile Include="Admin\Conference\IConferenceService.cs" />
     <Compile Include="Admin\Conference\Impls\ConferenceService.cs" />
     <Compile Include="Admin\Conference\MapProfiles\ConferenceProfile.cs" />
-    <Compile Include="Admin\Moderation\IModerationService.cs" />
     <Compile Include="Admin\Conference\ViewModels\CreateConfModel.cs" />
     <Compile Include="Admin\Conference\ViewModels\EditConfModel.cs" />
+    <Compile Include="Admin\Users\Impls\UserManagmentService.cs" />
+    <Compile Include="Admin\Users\IUserManagmentService.cs" />
+    <Compile Include="Admin\Users\MapProfiles\UserModelProfile.cs" />
+    <Compile Include="Admin\Users\Objects\UserModel.cs" />
+    <Compile Include="Admin\Users\Objects\UsersStatistic.cs" />
     <Compile Include="Blog\Enums\RatingActionType.cs" />
     <Compile Include="Blog\Impls\BlogService.cs" />
     <Compile Include="Blog\IBlogService.cs" />
@@ -224,8 +228,6 @@
     <Compile Include="Storage\ViewModels\UploadImageModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Admin\Moderation\Impls\" />
-    <Folder Include="Admin\Moderation\ViewModels\" />
     <Folder Include="Comments\Impls\" />
     <Folder Include="Payment\Enums\" />
   </ItemGroup>

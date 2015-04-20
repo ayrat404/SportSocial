@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Web.Http;
+using System.Web.Mvc;
 using BLL.Bonus;
 using BLL.Bonus.Impls;
 using BLL.Common.Helpers;
@@ -16,7 +17,7 @@ using DAL.Repository;
 
 namespace SportSocial.Controllers
 {
-    [Authorize]
+    [System.Web.Http.Authorize]
     public class VideoController : ApiController
     {
         private readonly IBonusService _bonusService;
@@ -27,8 +28,7 @@ namespace SportSocial.Controllers
             _bonusService = new BonusService(new Repository(context), new CurrentUser(new AppUserManager(new AppUserStore(context))));
         }
 
-        [Route("api/play")]
-        [HttpGet]
+        [System.Web.Http.HttpGet]
         public HttpResponseMessage Play(string id)
         {
             if (string.IsNullOrWhiteSpace(id) || FileStreamingHelper.AnyInvalidFileNameChars(id))
