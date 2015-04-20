@@ -270,6 +270,13 @@
     <Content Include="Content\images\icons\rub.png" />
     <Content Include="Content\images\icons\sprite-admin.png" />
     <Content Include="Content\images\icons\sprite.png" />
+    <Content Include="Content\images\icons\sprites-admin\adm-baby.png" />
+    <Content Include="Content\images\icons\sprites-admin\adm-cloud-unload.png" />
+    <Content Include="Content\images\icons\sprites-admin\adm-cloud-upload.png" />
+    <Content Include="Content\images\icons\sprites-admin\adm-cup.png" />
+    <Content Include="Content\images\icons\sprites-admin\adm-remove.png" />
+    <Content Include="Content\images\icons\sprites-admin\adm-stop.png" />
+    <Content Include="Content\images\icons\sprites-admin\adm-trust.png" />
     <Content Include="Content\images\pattern\black.png" />
     <Content Include="Content\images\pattern\pattern_vertical.png" />
     <Content Include="Content\images\promo-bg.jpg" />
