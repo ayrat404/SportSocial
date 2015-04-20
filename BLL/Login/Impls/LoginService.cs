@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using BLL.Common.Helpers;
 using BLL.Common.Objects;
 using BLL.Common.Services.CurrentUser;
@@ -80,6 +81,8 @@ namespace BLL.Login.Impls
                     PhoneNumber = regModel.Phone,
                     UserName = regModel.Phone,
                     PhoneNumberConfirmed = false,
+                    Created = DateTime.Now,
+                    Modified = DateTime.Now
                 };
                 var createUserResult = _appUserManager.Create(user);
                 if (!createUserResult.Succeeded)
