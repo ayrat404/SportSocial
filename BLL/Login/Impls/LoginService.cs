@@ -65,7 +65,7 @@ namespace BLL.Login.Impls
                 Success = true,
                 ReturnUrl = url,
             };
-            if (IsValidPhone(regModel.Phone))
+            if (!IsValidPhone(regModel.Phone))
             {
                 result.ErrorMessage = "Номер телефона должен содержать только цифры в формате <код страны><номер> без сивола \"+\".".Resource(this);
                 result.Success = false;
