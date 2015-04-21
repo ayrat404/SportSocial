@@ -4,10 +4,10 @@
         <div ng-cloak>
             <div ng-if="!statisticIsLoaded && !ld.statistic">Не удалось загрузить статистику. <button class="btn btn-default" ng-click="getUsersStatistic();">Попробовать снова</button></div>
             <div ng-if="statisticIsLoaded">
-                Количество зарегистрированных пользователей: <b>{{model.statistic.users}}</b>
-                Количество пользователей, хоть раз купивших подписку: <b>{{model.statistic.paymentUsers}}</b>
-                Общее количество оплаченных месяцев: <b>{{model.statistic.paymentMonths}}</b>
-                Среднее количество месяцев подписки, оплачиваемых за один раз: <b>{{model.statistic.paymentMiddle}}</b>
+                Количество зарегистрированных пользователей: <b>{{model.statistic.usersCount}}</b>
+                Количество пользователей, хоть раз купивших подписку: <b>{{model.statistic.payedUsers}}</b>
+                Общее количество оплаченных месяцев: <b>{{model.statistic.payedMounths}}</b>
+                Среднее количество месяцев подписки, оплачиваемых за один раз: <b>{{model.statistic.averageMounths}}</b>
             </div>
         </div>
         <div ng-if="ld.statistic">Загрузка статистики...</div>
@@ -51,12 +51,12 @@
                     </div>
                     <div class="col-xs-4">
                         <div class="btn-group c-buttons">
-                            <button ng-click="changeUserStatus(u.id, 'Trust', ar)"
+                            <button ng-click="changeUserStatus('Trust', u)"
                                     ng-if="u.status==3"
                                     class="btn btn-default" title="Сделать доверенным пользователем">
                                 <span class="cb__icon cb__icon--trust"></span>
                             </button>
-                            <button ng-click="changeUserStatus(u.id, 'Simple', ar)"
+                            <button ng-click="changeUserStatus('Simple', u)"
                                     ng-if="u.status==2"
                                     class="btn btn-default" title="Сделать обычным пользователем">
                                 <span class="cb__icon cb__icon--baby"></span>

@@ -2,21 +2,12 @@
 
 //  онтроллер авторизации пользовател€
 // ---------------
-//angular.module('blog').controller('BonusCtrl',
-//    ['$scope',
-//     '$http',
-//     'bonusRqst',
-//     //'$httpBackend',
-//function ($scope, $http, bonusRqst) {
-
-//    //$httpBackend.whenGET('/Bonus/GetVideo').respond(function(method, url, data) {
-//    //    return [200, {id: 1}];
-//    //});
+angular.module('blog').controller('BonusCtrl',
+    ['$scope',
+     '$http',
+     'bonusRqst',
+function ($scope, $http, bonusRqst) {
 
 
 
-//    //$http.get('/Bonus/GetVideo').then(function (response) {
-//    //    debugger;
-//    //});
-
-//}]);
+}]);

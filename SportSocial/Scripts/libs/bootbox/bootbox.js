@@ -673,7 +673,7 @@
      * respective triggers
      */
 
-    if (options.backdrop !== "static") {
+    //if (options.backdrop !== "static") {
       // A boolean true/false according to the Bootstrap docs
       // should show a dialog the user can dismiss by clicking on
       // the background.
@@ -695,7 +695,7 @@
 
         dialog.trigger("escape.close.bb");
       });
-    }
+    //}
 
     dialog.on("escape.close.bb", function(e) {
       if (callbacks.onEscape) {

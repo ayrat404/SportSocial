@@ -14,7 +14,7 @@ namespace BLL.Bonus.Impls
 {
     public class BonusService : IBonusService
     {
-        private readonly string basePath = @"\\videos\\";
+        private readonly string basePath = @"\\Storage\\Videos\\";
         
         private readonly IRepository _repository;
         private readonly ICurrentUser _currentUser;
