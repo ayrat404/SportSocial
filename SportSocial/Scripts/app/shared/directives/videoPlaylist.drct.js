@@ -12,7 +12,7 @@ angular
                 wrap: $('<video>', { class: 'video-js vjs-default-skin', preload: 'none', poster: data.imageUrl, id: 'video_' + data.id, controls: 'true' }),
                 negative: $('<p>', { class: 'vjs-no-js' }).html('To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>'),
             },
-            apiUrl = '/api/play?id=',
+            apiUrl = '/api/video/play?id=',
             formats = [
                 { type: 'video/mp4', exp: '.mp4' },
                 { type: 'video/webm', exp: '.webm' },

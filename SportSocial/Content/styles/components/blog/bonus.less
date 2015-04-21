@@ -13,6 +13,9 @@
         float: left;
         width: 20%;
         margin: 20px 5/2%;
+        @media(max-width: @screen-md-min){
+            width: 45%;
+        }
     }
 
     .bp-list__it--available {
@@ -33,7 +36,6 @@
 
     .bp-list__it__img-wrap {
         position: relative;
-        min-height: 140px;
     }
 
     .bp-list__it__img {
@@ -41,8 +43,9 @@
     }
 
     .bp-list__it__status {
+        color: #fff;
         position: absolute;
-        top: 20%;
+        top: 33%;
         width: 100%;
         font-size: 0.857em;
         padding: 10px;

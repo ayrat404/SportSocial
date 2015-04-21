@@ -14,8 +14,9 @@ namespace BLL.Bonus.Impls
 {
     public class BonusService : IBonusService
     {
-        private readonly string basePath = @"\\Storage\\Videos\\course1\\";
-        
+        private readonly string basePath = @"\\Videos\\course1\\";
+        private readonly string basePathImgs = @"/Content/images/courses/imgs/";
+       
         private readonly IRepository _repository;
         private readonly ICurrentUser _currentUser;
 
@@ -37,7 +38,7 @@ namespace BLL.Bonus.Impls
         public List<BonusVideoModel> GetBonusVideos()
         {
             var mounths = GetMounths();
-            mounths = mounths%2 == 0 ? mounths : mounths - 1;
+            mounths = mounths*2;//%2 == 0 ? mounths : mounths - 1;
             foreach (var video in _bonusVideos)
             {
                 if (video.Id <= mounths)
@@ -78,56 +79,56 @@ namespace BLL.Bonus.Impls
             {
                 Id = 1,
                 Title = "1 видео",
-                ImageUrl = Path.Combine(imgsPath, "1.jpg"),
+                ImageUrl = basePathImgs + "1.jpg",
                 IsActive = false
             });
             _bonusVideos.Add(new BonusVideoModel
             {
                 Id = 2,
                 Title = "2 видео",
-                ImageUrl = Path.Combine(imgsPath, "2.jpg"),
+                ImageUrl = basePathImgs + "2.jpg",
                 IsActive = false
             });
             _bonusVideos.Add(new BonusVideoModel
             {
                 Id = 3,
                 Title = "3 видео",
-                ImageUrl = Path.Combine(imgsPath, "3.jpg"),
+                ImageUrl = basePathImgs + "3.jpg",
                 IsActive = false
             });
             _bonusVideos.Add(new BonusVideoModel
             {
                 Id = 4,
                 Title = "4 видео",
-                ImageUrl = Path.Combine(imgsPath, "4.jpg"),
+                ImageUrl = basePathImgs + "4.jpg",
                 IsActive = false
             });
             _bonusVideos.Add(new BonusVideoModel
             {
                 Id = 5,
                 Title = "5 видео",
-                ImageUrl = Path.Combine(imgsPath, "5.jpg"),
+                ImageUrl = basePathImgs + "5.jpg",
                 IsActive = false
             });
             _bonusVideos.Add(new BonusVideoModel
             {
                 Id = 6,
                 Title = "5 видео",
-                ImageUrl = Path.Combine(imgsPath, "6.jpg"),
+                ImageUrl = basePathImgs + "6.jpg",
                 IsActive = false
             });
             _bonusVideos.Add(new BonusVideoModel
             {
                 Id = 7,
                 Title = "7 видео",
-                ImageUrl = Path.Combine(imgsPath, "7.jpg"),
+                ImageUrl = basePathImgs + "7.jpg",
                 IsActive = false
             });
             _bonusVideos.Add(new BonusVideoModel
             {
                 Id = 8,
                 Title = "8 видео",
-                ImageUrl = Path.Combine(imgsPath, "8.jpg"),
+                ImageUrl = basePathImgs + "8.jpg",
                 IsActive = false
             });
         }
