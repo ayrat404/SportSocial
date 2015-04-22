@@ -21,7 +21,20 @@
             <input ng-model="ar.title" required type="text" class="input" placeholder="Заголовок статьи" />
         </div>
     </div>
-    <div class="row">
+    
+    @if (CurrentUser.IsAdmin)
+    {
+        <div class="row">
+            <div class="col-xs-12">
+                <label>
+                    <input type="checkbox" ng-model="ar.isFortressNews"/>
+                    Это новость Fortress
+                </label>
+            </div>
+        </div>
+    }
+
+    <div class="row" ng-show="ar.isFortressNews == undefined || !ar.isFortressNews">
         <div class="col-sm-4">
             <div class="blog-form__desc">Рубрика</div>
         </div>

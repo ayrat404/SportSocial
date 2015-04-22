@@ -17,7 +17,7 @@
             foreach (var item in Model)
             {
                 <div class="al__item">
-                    <a href="@Url.Action("Item", "Blog", new { id = item.Id })" class="al__item__img">
+                    <a href="@Url.Action("Item", "News", new { id = item.Id })" class="al__item__img">
                         @if (item.IsVideo)
                         {
                             <div class="al__item__overlay">
@@ -27,12 +27,12 @@
                         <img src="@item.Images[0].Url?width=198&height=198&mode=crop" alt="@item.Title" />
                     </a>
                     <div class="al__item__info">
-                        <a href="@Url.Action("Item", "Blog", new { id = item.Id })" class="al__item__title">@item.Title</a>
+                        <a href="@Url.Action("Item", "News", new { id = item.Id })" class="al__item__title">@item.Title</a>
                         <div class="al__item__desc">@Html.Raw(item.Text.Length > 90 ? item.Text.Substring(0, 90) : item.Text)</div>
                     </div>
                     <div class="al__item__bottom">
                         <div class="pull-left">
-                            @Html.Partial("Shared/Partials/Article/Info", item)
+                            @Html.Partial("~/Views/Blog/Shared/Partials/Article/Info.cshtml", item)
                         </div>
                         <div class="pull-right">
                             @Html.Partial("Partials/Rating", item)
@@ -43,7 +43,7 @@
         }
         else
         {
-            <div class="alert alert-warning">Статей на эту тему пока нет. Станьте первым, кто добавит статью!</div>
+            <div class="alert alert-warning">Новостей пока нет.</div>
         }
     </div>
     @if (Model.PageCount > 1)
