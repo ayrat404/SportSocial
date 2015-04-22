@@ -31,5 +31,13 @@ namespace SportSocial.Controllers
         { 
             return View();
         }
+
+        // надо модель нормальную засунуть
+        //[HttpGet]
+        //[AllowAnonymous]
+        //public ActionResult Item(int id)
+        //{
+        //    return View("~/Views/Blog/Shared/Partials/Article/Info.cshtml", _blogService.GetPost(id));
+        //}
 	}
 }
