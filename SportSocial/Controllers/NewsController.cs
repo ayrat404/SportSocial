@@ -43,7 +43,7 @@ namespace SportSocial.Controllers
         [AllowAnonymous]
         public ActionResult Item(int id)
         {
-            return View("~/Views/Blog/Shared/Partials/Article/Info.cshtml", _blogService.GetPost(id));
+            return View("~/Views/Blog/Item.cshtml", _blogService.GetPost(id));
         }
 	}
 }

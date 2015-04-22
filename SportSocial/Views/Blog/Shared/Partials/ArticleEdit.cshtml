@@ -10,7 +10,8 @@
       ar.text="@Model.Text" ;
       ar.videourl="@Model.VideoUrl" ;
       ar.title="@Model.Title" ;
-      ar.id=@(Model is PostEditModel ? (Model as PostEditModel).Id : 0)'
+      ar.id=@(Model is PostEditModel ? (Model as PostEditModel).Id : 0)
+      ar.isfortressnews=@Model.IsFortressNews.ToString()'
       name="ArticleEdit"
       class="blog-form  article__edit article-new__form">
     <div class="row">
@@ -21,19 +22,18 @@
             <input ng-model="ar.title" required type="text" class="input" placeholder="Заголовок статьи" />
         </div>
     </div>
-    
+
     @if (CurrentUser.IsAdmin)
     {
         <div class="row">
             <div class="col-xs-12">
                 <label>
-                    <input type="checkbox" ng-model="ar.isFortressNews"/>
+                    <input type="checkbox" ng-model="ar.isFortressNews"/> @*@(Model.IsFortressNews ? "checked" : "") />*@
                     Это новость Fortress
                 </label>
             </div>
         </div>
     }
-
     <div class="row" ng-show="ar.isFortressNews == undefined || !ar.isFortressNews">
         <div class="col-sm-4">
             <div class="blog-form__desc">Рубрика</div>
