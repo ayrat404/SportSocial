@@ -260,9 +260,18 @@
     <Content Include="Content\fonts\ProximaNova\proximanova-xboldpn.svg" />
     <Content Include="Content\fonts\ProximaNova\proximanovaexcn-sboldpn.svg" />
     <Content Include="Content\fonts\ProximaNova\proximanovaexcn-thinpn.svg" />
+    <Content Include="Content\fonts\VideoJs\vjs.svg" />
     <Content Include="Content\images\blur.jpg" />
     <Content Include="Content\images\conference\conference-date.png" />
     <Content Include="Content\images\courses\course_1.png" />
+    <Content Include="Content\images\courses\imgs\1.jpg" />
+    <Content Include="Content\images\courses\imgs\2.jpg" />
+    <Content Include="Content\images\courses\imgs\3.jpg" />
+    <Content Include="Content\images\courses\imgs\4.jpg" />
+    <Content Include="Content\images\courses\imgs\5.jpg" />
+    <Content Include="Content\images\courses\imgs\6.jpg" />
+    <Content Include="Content\images\courses\imgs\7.jpg" />
+    <Content Include="Content\images\courses\imgs\8.jpg" />
     <Content Include="Content\images\default-avatar.png" />
     <Content Include="Content\images\icons\logo-shape.png" />
     <Content Include="Content\images\icons\logo.png" />
@@ -911,6 +920,9 @@
     <Content Include="Content\styles\components\blog\bonus.less" />
     <Content Include="Content\styles\base\icons-set.less" />
     <Content Include="Content\styles\base\icons-set--admin.less" />
+    <Content Include="Content\fonts\VideoJs\vjs.eot" />
+    <Content Include="Content\fonts\VideoJs\vjs.ttf" />
+    <Content Include="Content\fonts\VideoJs\vjs.woff" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -1017,7 +1029,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\root\Controllers\UsersController.cs" />
     <Compile Include="Areas\root\RootAreaRegistration.cs" />
-    <Compile Include="Controllers\BonusController - Copy.cs" />
     <Compile Include="Controllers\BonusController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Admin\AdminController.cs" />
@@ -1025,6 +1036,7 @@
     <Compile Include="Controllers\Base\SportSocialControllerBase.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\FileController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\RatingController.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Controllers\PayController.cs" />

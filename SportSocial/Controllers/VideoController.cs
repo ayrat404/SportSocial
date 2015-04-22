@@ -38,8 +38,8 @@ namespace SportSocial.Controllers
             if (!int.TryParse(Path.GetFileNameWithoutExtension(id), out videoId))
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
-            //if (!_bonusService.CanViewVideo(videoId))
-            //    throw new HttpResponseException(HttpStatusCode.NotFound);
+            if (!_bonusService.CanViewVideo(videoId))
+                throw new HttpResponseException(HttpStatusCode.NotFound);
 
             string filePath = _bonusService.GetVideoFilePAth(id);
 

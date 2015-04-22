@@ -122,11 +122,13 @@ namespace BLL.Blog.Impls
                     postListVM.PageInfo.Count = _repository
                         .Queryable<Post>()
                         .Count(x => (x.RubricId == rubricId || rubricId == 0)
-                                    && (x.Status == BlogPostStatus.Allow || x.Status == BlogPostStatus.OnMain));
+                                    && (x.Status == BlogPostStatus.Allow || x.Status == BlogPostStatus.OnMain)
+                                    && !x.IsFortressNews);
                     postListVM.PostPreview = _repository
                         .Queryable<Post>()
                         .Where(x => (x.RubricId == rubricId || rubricId == 0)
-                                    && (x.Status == BlogPostStatus.Allow || x.Status == BlogPostStatus.OnMain))
+                                    && (x.Status == BlogPostStatus.Allow || x.Status == BlogPostStatus.OnMain)
+                                    && !x.IsFortressNews)
                         .Include(p => p.RatingEntites)
                         .OrderByDescending(p => p.TotalRating)
                         .Take(take)
@@ -139,12 +141,13 @@ namespace BLL.Blog.Impls
                     postListVM.PageInfo.Count = _repository
                         .Queryable<Post>()
                         .Count(x => (x.RubricId == rubricId || rubricId == 0)
-                                    && x.IsFortress);
+                                    && x.IsFortress && !x.IsFortressNews);
                     postListVM.PostPreview = _repository
                         .Queryable<Post>()
                         .Where(x => (x.RubricId == rubricId || rubricId == 0)
                                     && x.IsFortress
-                                    && x.Status != BlogPostStatus.Rejected)
+                                    && x.Status != BlogPostStatus.Rejected
+                                    && !x.IsFortressNews)
                         .Include(p => p.RatingEntites)
                         .OrderByDescending(p => p.Created)
                         .Take(take)
@@ -157,11 +160,13 @@ namespace BLL.Blog.Impls
                     postListVM.PageInfo.Count = _repository
                         .Queryable<Post>()
                         .Count(x => (x.RubricId == rubricId || rubricId == 0)
-                                    && (x.Status == BlogPostStatus.Allow || x.Status == BlogPostStatus.OnMain));
+                                    && (x.Status == BlogPostStatus.Allow || x.Status == BlogPostStatus.OnMain)
+                                    && !x.IsFortressNews);
                     postListVM.PostPreview = _repository
                         .Queryable<Post>()
                         .Where(x => (x.RubricId == rubricId || rubricId == 0)
-                                    && (x.Status == BlogPostStatus.Allow || x.Status == BlogPostStatus.OnMain))
+                                    && (x.Status == BlogPostStatus.Allow || x.Status == BlogPostStatus.OnMain)
+                                    && !x.IsFortressNews)
                         .Include(p => p.RatingEntites)
                         .OrderByDescending(p => p.Created)
                         .Take(take)
@@ -260,6 +265,28 @@ namespace BLL.Blog.Impls
                 .MapEachTo<PostPreviewModel>()
                 .ToList();
             return postListVM;
+        }
+
+        public PostListModel GetNews(int pageSize, int page = 1)
+        {
+            int take = page * pageSize;
+            int skip = take - pageSize;
+            var postListVm = new PostListModel();
+            postListVm.PageInfo = new PageInfo {CurrentPage = page};
+            postListVm.PageInfo.Count = _repository
+                .Queryable<Post>()
+                .Count(x => x.IsFortressNews);
+            postListVm.PostPreview = _repository
+                .Queryable<Post>()
+                .Where(x => x.IsFortressNews)
+                .Include(p => p.RatingEntites)
+                .OrderByDescending(p => p.Created)
+                .Take(take)
+                .Skip(skip)
+                .AsNoTracking()
+                .MapEachTo<PostPreviewModel>()
+                .ToList();
+            return postListVm;
         }
 
         //public PostListViewModel GetPosts(int page, PostSortType sortType = PostSortType.Last, int rubricId = 0)
