@@ -7,6 +7,7 @@ using BLL.Common.Helpers;
 using BLL.Common.Objects;
 using BLL.Common.Services.CurrentUser;
 using BLL.Infrastructure.Map;
+using BLL.Login.Impls;
 using DAL.DomainModel;
 using DAL.DomainModel.BlogEntities;
 using DAL.DomainModel.EnumProperties;
@@ -103,11 +104,18 @@ namespace BLL.Blog.Impls
                 .Include(p => p.User)
                 .Include(p => p.Comments)
                 .Include(p => p.RatingEntites)
+                .Include(p => p.Rubric)
                 .Single();
-            var postvm = post.MapTo<PostDisplayModel>();
-            postvm.IsLiked =post.RatingEntites.Any(r => r.UserId == _currentUser.UserId && r.RatingType == RatingType.Like);
-            postvm.IsDisiked =post.RatingEntites.Any(r => r.UserId == _currentUser.UserId && r.RatingType == RatingType.Dislike);
-            return postvm;
+            var postVm = post.MapTo<PostDisplayModel>();
+            postVm.IsLiked =post.RatingEntites.Any(r => r.UserId == _currentUser.UserId && r.RatingType == RatingType.Like);
+            postVm.IsDisiked =post.RatingEntites.Any(r => r.UserId == _currentUser.UserId && r.RatingType == RatingType.Dislike);
+            if (post.IsFortressNews)
+            {
+                postVm.RubricTitle = "Новости Fortress";
+                postVm.AuthorName = "Fortress";
+                postVm.AuthorAvatar = LoginService.DefaultAvatarUrl;
+            }
+            return postVm;
         }
 
         public PostListModel GetPosts(int pageSize, PostSortType sortType, int rubricId = 0, int page = 1)

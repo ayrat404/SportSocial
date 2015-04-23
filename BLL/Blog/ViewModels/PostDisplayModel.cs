@@ -34,5 +34,7 @@ namespace BLL.Blog.ViewModels
         public RatingEntityType RatingEntityType { get; set; }
 
         public string Date { get; set; }
+
+        public string RubricTitle { get; set; }
     }
 }

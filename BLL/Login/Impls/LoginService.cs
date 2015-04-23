@@ -24,7 +24,7 @@ namespace BLL.Login.Impls
         private readonly IRepository _repository;
         private readonly ICurrentUser _currentUser;
 
-        private const string DefaultAvatarUrl = "/Content/Images/default-avatar.png";
+        public const string DefaultAvatarUrl = "/Content/Images/default-avatar.png";
 
         public LoginService(ISmsService smsService, AppUserManager appUserManager, IAuthenticationManager authManager, IRepository repository, ICurrentUser currentUser)
         {
