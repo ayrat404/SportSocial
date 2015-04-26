@@ -3,7 +3,7 @@
   "version": "0.3.0",
   "homepage": "http://fortress.club",
   "author": "UniqLab",
-  "style": "fortress-0.2.min.css",
+  "style": "fortress-0.3.min.css",
   "output": "Content/styles/css",
   "less": "Content/styles/style.less",
   "devDependencies": {
