@@ -24,7 +24,7 @@ namespace BLL.Blog.MapProfiles
                 .ForMember(dest => dest.Text, 
                            opt => opt.MapFrom(src => Regex.Replace(src.Text, @"<[^>]+>|&nbsp;", "").Trim()))
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status))
-                .ForMember(dest => dest.CommentsCount, opt => opt.MapFrom(src => src.Comments.Count))
+                .ForMember(dest => dest.TotalCommentsCount, opt => opt.MapFrom(src => src.Comments.Count))
                 .ForMember(dest => dest.IsLiked, 
                            opt => opt.
                                MapFrom(src => src.RatingEntites

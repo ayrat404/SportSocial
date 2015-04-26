@@ -26,6 +26,6 @@ namespace BLL.Blog.ViewModels
 
         string AuthorName { get; set; }
 
-        int CommentsCount { get; set; }
+        int TotalCommentsCount { get; set; }
     }
 }

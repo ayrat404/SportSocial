@@ -30,7 +30,7 @@ namespace BLL.Blog.ViewModels
 
         public RatingEntityType RatingEntityType { get; set; }
 
-        public int CommentsCount { get; set; }
+        public int TotalCommentsCount { get; set; }
 
         public BlogPostStatus Status { get; set; }
 

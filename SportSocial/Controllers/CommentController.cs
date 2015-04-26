@@ -26,6 +26,7 @@ namespace SportSocial.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public JsonResult LoadComments(int id, CommentItemType itemType)
         {
             var comments = CreateGenericService(itemType).LoadComments(id, itemType);

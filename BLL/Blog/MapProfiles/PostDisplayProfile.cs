@@ -21,7 +21,7 @@ namespace BLL.Blog.MapProfiles
                 .ForMember(dest => dest.Rating, opt => opt.MapFrom(src => src.TotalRating))
                 .ForMember(dest => dest.TotalCommentsCount, opt => opt.MapFrom(src => src.Comments.Count))
                 .ForMember(dest => dest.RubricTitle, opt => opt.MapFrom(src => src.Rubric.Name))
-                .ForMember(dest => dest.CommentsCount, 
+                .ForMember(dest => dest.MoreCommentsCount, 
                            opt => opt.
                                    MapFrom(src => src.Comments.Count <= 3 ? 0 : src.Comments.Count - 3))
                 .ForMember(dest => dest.Comments,
