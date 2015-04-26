@@ -13,7 +13,7 @@ using SportSocial.Controllers.Base;
 
 namespace SportSocial.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class NewsController :SportSocialControllerBase
     {
         private readonly IBlogService _blogService;
@@ -40,7 +40,7 @@ namespace SportSocial.Controllers
 
          //надо модель нормальную засунуть
         [HttpGet]
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public ActionResult Item(int id)
         {
             return View("~/Views/Blog/Item.cshtml", _blogService.GetPost(id));
