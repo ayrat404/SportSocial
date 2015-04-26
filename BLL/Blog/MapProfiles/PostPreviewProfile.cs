@@ -17,20 +17,20 @@ namespace BLL.Blog.MapProfiles
             //var currentUser = DependencyResolver.Current.GetService<ICurrentUser>();
             CreateMap<Post, PostPreviewModel>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
-                .ForMember(dest => dest.AuthorId, opt => opt.MapFrom(src => src.UserId))
-                .ForMember(dest => dest.AuthorName, opt => opt.MapFrom(src => src.User.Name))
+                .ForMember(dest => dest.ItemInfo.AuthorId, opt => opt.MapFrom(src => src.UserId))
+                .ForMember(dest => dest.ItemInfo.AuthorName, opt => opt.MapFrom(src => src.User.Name))
                 .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Created.ToShortDateString()))
-                .ForMember(dest => dest.Rating, opt => opt.MapFrom(src => src.TotalRating))
+                .ForMember(dest => dest.RatingInfo.Rating, opt => opt.MapFrom(src => src.TotalRating))
                 .ForMember(dest => dest.Text, 
                            opt => opt.MapFrom(src => Regex.Replace(src.Text, @"<[^>]+>|&nbsp;", "").Trim()))
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status))
-                .ForMember(dest => dest.CommentsCount, opt => opt.MapFrom(src => src.Comments.Count))
-                .ForMember(dest => dest.IsLiked, 
+                .ForMember(dest => dest.ItemInfo.CommentsCount, opt => opt.MapFrom(src => src.Comments.Count))
+                .ForMember(dest => dest.RatingInfo.IsLiked, 
                            opt => opt.
                                MapFrom(src => src.RatingEntites
                                    .Any(r => r.UserId == DependencyResolver.Current.GetService<ICurrentUser>().UserId
                                              && r.RatingType == RatingType.Like)))
-                .ForMember(dest => dest.IsDisiked, 
+                .ForMember(dest => dest.RatingInfo.IsDisiked, 
                            opt => opt.
                                MapFrom(src => src.RatingEntites.
                                    Any(r => r.UserId == DependencyResolver.Current.GetService<ICurrentUser>().UserId

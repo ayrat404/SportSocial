@@ -2,6 +2,7 @@
 using System.Linq;
 using AutoMapper;
 using BLL.Admin.Conference.ViewModels;
+using BLL.Comments.Objects;
 using BLL.Common.Objects;
 
 namespace BLL.Admin.Conference.MapProfiles
@@ -26,12 +27,12 @@ namespace BLL.Admin.Conference.MapProfiles
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status))
                 .ForMember(dest => dest.Url, opt => opt.MapFrom(src => src.Url))
-                .ForMember(dest => dest.TotalCommentsCount, opt => opt.MapFrom(src => src.Comments.Count))
-                .ForMember(dest => dest.Comments, 
+                //.ForMember(dest => dest.TotalCommentsCount, opt => opt.MapFrom(src => src.Comments.Count))
+                .ForMember(dest => dest.CommentsInfo.Comments, 
                     opt => opt.MapFrom(src => src.Comments.Skip(src.Comments.Count - 3).ToList().Take(3)))
-                .ForMember(dest => dest.CommentsCount, 
+                .ForMember(dest => dest.CommentsInfo.MoreCommentsCount, 
                     opt => opt.MapFrom(src => src.Comments.Count <= 3 ? 0 : src.Comments.Count - 3))
-                .ForMember(dest => dest.ItemType, opt => opt.MapFrom(src => CommentItemType.Conference))
+                .ForMember(dest => dest.CommentsInfo.ItemType, opt => opt.MapFrom(src => CommentItemType.Conference))
                 .ForMember(dest => dest.Stamp, opt => opt.MapFrom(src => (int)(src.Date - DateTime.Now).TotalMilliseconds));
 
             CreateMap<DAL.DomainModel.ConferenceEntities.Conference, CreateConfModel>();

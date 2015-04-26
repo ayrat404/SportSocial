@@ -1,6 +1,6 @@
-﻿@model BLL.Blog.ViewModels.IItemInfo
+﻿@model BLL.Common.Objects.IHasItemInfo
 <div class="article-short-info">
-    <span><i class="i-art i-art-user"></i>@Model.AuthorName</span>
+    <span><i class="i-art i-art-user"></i>@Model.ItemInfo.AuthorName</span>
     <span><i class="i-art i-art-date"></i>@Model.Date</span>
-    <span><i class="i-art i-art-comments"></i>@Model.CommentsCount</span>
+    <span><i class="i-art i-art-comments"></i>@Model.ItemInfo.CommentsCount</span>
 </div>

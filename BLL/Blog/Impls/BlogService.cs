@@ -109,13 +109,13 @@ namespace BLL.Blog.Impls
                 .Include(p => p.Rubric)
                 .Single();
             var postVm = post.MapTo<PostDisplayModel>();
-            postVm.IsLiked =post.RatingEntites.Any(r => r.UserId == _currentUser.UserId && r.RatingType == RatingType.Like);
-            postVm.IsDisiked =post.RatingEntites.Any(r => r.UserId == _currentUser.UserId && r.RatingType == RatingType.Dislike);
+            postVm.RatingInfo.IsLiked =post.RatingEntites.Any(r => r.UserId == _currentUser.UserId && r.RatingType == RatingType.Like);
+            postVm.RatingInfo.IsDisiked =post.RatingEntites.Any(r => r.UserId == _currentUser.UserId && r.RatingType == RatingType.Dislike);
             if (post.IsFortressNews)
             {
                 postVm.RubricTitle = "Новости Fortress";
-                postVm.AuthorName = "Fortress";
-                postVm.AuthorAvatar = LoginService.DefaultAvatarUrl;
+                postVm.ItemInfo.AuthorName = "Fortress";
+                postVm.ItemInfo.AuthorAvatar = LoginService.DefaultAvatarUrl;
             }
             return postVm;
         }
@@ -151,7 +151,7 @@ namespace BLL.Blog.Impls
                                     && x.IsFortress 
                                     && !x.IsFortressNews;
                     postCount = posts.Count(query);
-                    postQuery = posts.Where(query).OrderBy(p => p.Created);
+                    postQuery = posts.Where(query).OrderByDescending(p => p.Created);
                     break;
                 default:
                     query = x => (x.RubricId == rubricId || rubricId == 0)

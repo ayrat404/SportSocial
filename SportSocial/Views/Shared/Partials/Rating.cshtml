@@ -1,9 +1,9 @@
-﻿@model BLL.Blog.ViewModels.IRatingInfo
+﻿@model BLL.Rating.IHasRating
 @if (CurrentUser.IsAnonimous)
 {
     <div class="like-rating">
         <span class="i-art i-art-like" data-toggle="tooltip" data-placement="top" title="зарегистрируйтесь"></span>
-        <div class="like-rating__count">@Model.Rating</div>
+        <div class="like-rating__count">@Model.RatingInfo.Rating</div>
         <span class="i-art i-art-dislike" data-toggle="tooltip" data-placement="top" title="зарегистрируйтесь"></span>
     </div>
 }
@@ -11,11 +11,11 @@ else
 {
     <div ng-controller="RatingCtrl">
         <div ng-init="
-             count=@Model.Rating ;
+             count=@Model.RatingInfo.Rating ;
              id=@Model.Id ;
-             type='@Model.RatingEntityType' ;
-             isLiked='@Model.IsLiked.ToString()' ;
-             isDisliked='@Model.IsDisiked.ToString()' ;"
+             type='@Model.RatingInfo.RatingEntityType' ;
+             isLiked='@Model.RatingInfo.IsLiked.ToString()' ;
+             isDisliked='@Model.RatingInfo.IsDisiked.ToString()' ;"
              ng-cloak
              class="like-rating">
             

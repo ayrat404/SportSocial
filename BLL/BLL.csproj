@@ -124,8 +124,10 @@
     <Compile Include="Admin\Conference\IConferenceService.cs" />
     <Compile Include="Admin\Conference\Impls\ConferenceService.cs" />
     <Compile Include="Admin\Conference\MapProfiles\ConferenceProfile.cs" />
+    <Compile Include="Admin\Conference\ViewModels\ConferenceHostiryModel.cs" />
     <Compile Include="Admin\Conference\ViewModels\CreateConfModel.cs" />
-    <Compile Include="Admin\Conference\ViewModels\EditConfModel.cs" />
+    <Compile Include="Admin\Conference\ViewModels\ConfModel.cs" />
+    <Compile Include="Admin\Conference\ViewModels\ProcessConfModel.cs" />
     <Compile Include="Admin\Users\Impls\UserManagmentService.cs" />
     <Compile Include="Admin\Users\IUserManagmentService.cs" />
     <Compile Include="Admin\Users\MapProfiles\UserModelProfile.cs" />
@@ -144,7 +146,6 @@
     <Compile Include="Blog\ViewModels\PostEditModel.cs" />
     <Compile Include="Blog\ViewModels\PostListModel.cs" />
     <Compile Include="Blog\ViewModels\PostPreviewModel.cs" />
-    <Compile Include="Blog\ViewModels\PostPreviewViewModel.cs" />
     <Compile Include="Bonus\IBonusService.cs" />
     <Compile Include="Bonus\Impls\BonusService.cs" />
     <Compile Include="Bonus\Objects\BonusVideoModel.cs" />
@@ -156,8 +157,11 @@
     <Compile Include="Blog\ViewModels\PostDisplayModel.cs" />
     <Compile Include="Comments\Objects\Comment.cs" />
     <Compile Include="Comments\Objects\CommentFor.cs" />
+    <Compile Include="Comments\Objects\CommentItemType.cs" />
+    <Compile Include="Comments\Objects\CommentsInfo.cs" />
     <Compile Include="Comments\Objects\CreateComment.cs" />
     <Compile Include="Blog\ViewModels\PostForAdminModel.cs" />
+    <Compile Include="Comments\Objects\IHasCommentViewModel.cs" />
     <Compile Include="Common\Enums\LangType.cs" />
     <Compile Include="Common\Extensions\DecimalExtension.cs" />
     <Compile Include="Common\Extensions\EnumExtensions.cs" />
@@ -175,15 +179,17 @@
     </Compile>
     <Compile Include="Common\Helpers\YoutubeUrlHelper.cs" />
     <Compile Include="Common\Objects\HasDate.cs" />
-    <Compile Include="Common\Objects\IHasCommentViewModel.cs" />
+    <Compile Include="Common\Objects\IHasItemInfo.cs" />
     <Compile Include="Common\Objects\Images.cs" />
     <Compile Include="Common\Objects\IPagedViewModel.cs" />
+    <Compile Include="Common\Objects\ItemInfo.cs" />
     <Compile Include="Common\Objects\PageInfo.cs" />
     <Compile Include="Common\Objects\ServiceResult.cs" />
     <Compile Include="Comments\ICommentService.cs" />
     <Compile Include="Common\Services\CurrentUser\Impls\CurrentUser.cs" />
     <Compile Include="Common\Services\CurrentUser\ICurrentUser.cs" />
     <Compile Include="Rating\Enums\RatingEntityType.cs" />
+    <Compile Include="Rating\IRatingInfo.cs" />
     <Compile Include="Rating\Models\BlogRatingViewModel.cs" />
     <Compile Include="Rating\RatingService.cs" />
     <Compile Include="Rating\IRatingService.cs" />
