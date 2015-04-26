@@ -125,8 +125,10 @@
     <Compile Include="Admin\Conference\Impls\ConferenceService.cs" />
     <Compile Include="Admin\Conference\MapProfiles\ConferenceProfile.cs" />
     <Compile Include="Admin\Conference\ViewModels\ConferenceHostiryModel.cs" />
+    <Compile Include="Admin\Conference\ViewModels\ConfModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Admin\Conference\ViewModels\CreateConfModel.cs" />
-    <Compile Include="Admin\Conference\ViewModels\ConfModel.cs" />
     <Compile Include="Admin\Conference\ViewModels\ProcessConfModel.cs" />
     <Compile Include="Admin\Users\Impls\UserManagmentService.cs" />
     <Compile Include="Admin\Users\IUserManagmentService.cs" />
