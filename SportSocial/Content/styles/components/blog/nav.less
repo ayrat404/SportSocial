@@ -211,9 +211,11 @@
 
         &__user {
             padding: 10px;
+
             .nav__user__name {
                 display: inline-block;
             }
+
             .nav__status {
                 margin: 0;
                 float: right;
@@ -315,11 +317,16 @@
 }
 
 .nav__mobile-toggle {
+    display: none;
     float: left;
     margin-top: 7px;
     margin-right: -24px;
     cursor: pointer;
     .sprite(@menu);
+
+    @media(max-width: @mobileShow) {
+        display: inherit;
+    }
 }
 
 @media (max-width: @screen-sm-max) {
