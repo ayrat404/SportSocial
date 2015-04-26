@@ -1,4 +1,5 @@
-﻿@model List<BLL.Bonus.Objects.BonusVideoModel>
+﻿@model PagedList.IPagedList<BLL.Blog.ViewModels.PostPreviewModel>
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "Fortress - новости";
     Layout = "../Blog/Shared/Layouts/BlogLayout.cshtml";
@@ -11,7 +12,7 @@
                     <div class="mod__header__title">Новости клуба Fortress</div>
                 </div>
                 <div class="mod__content p-all">
-                    @*<div class="articles-list">
+                    <div class="articles-list">
         @if (Model.Count != 0)
         {
             foreach (var item in Model)
@@ -51,7 +52,7 @@
         <div class="text-center">
             @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sort = ViewBag.Sort, rubric = ViewBag.Rubric }))
         </div>
-    }*@
+    }
                 </div>
             </div>
         </div>

@@ -2,11 +2,13 @@
 using System.Net.Http;
 using System.Web.Mvc;
 using BLL.Blog;
+using BLL.Blog.ViewModels;
 using BLL.Bonus;
 using BLL.Common.Services.CurrentUser;
 using DAL.DomainModel;
 using DAL.DomainModel.EnumProperties;
 using DAL.Repository.Interfaces;
+using PagedList;
 using SportSocial.Controllers.Base;
 
 namespace SportSocial.Controllers
@@ -27,17 +29,21 @@ namespace SportSocial.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index()
-        { 
-            return View();
+        public ActionResult Index(int page = 1)
+        {
+            var pageSize = 10;
+            var posts = _blogService.GetNews(pageSize, page);
+            var pageList = new StaticPagedList<PostPreviewModel>(posts.PostPreview, page, pageSize,
+                posts.PageInfo.Count);
+            return View(pageList);
         }
 
-        // надо модель нормальную засунуть
-        //[HttpGet]
-        //[AllowAnonymous]
-        //public ActionResult Item(int id)
-        //{
-        //    return View("~/Views/Blog/Shared/Partials/Article/Info.cshtml", _blogService.GetPost(id));
-        //}
+         //надо модель нормальную засунуть
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult Item(int id)
+        {
+            return View("~/Views/Blog/Item.cshtml", _blogService.GetPost(id));
+        }
 	}
 }

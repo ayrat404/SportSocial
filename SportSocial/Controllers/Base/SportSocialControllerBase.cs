@@ -25,7 +25,18 @@ namespace SportSocial.Controllers.Base
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            var currentUserCulture = new CultureInfo(LanguageHelper.GetCurrentCulture());
+            CultureInfo currentUserCulture;
+            string currentCultureString = LanguageHelper.GetCurrentCulture();
+            try
+            {
+                currentUserCulture = new CultureInfo(currentCultureString);
+            }
+            catch (CultureNotFoundException ex)
+            {
+                //TODO логгировать
+                Elmah.ErrorSignal.FromCurrentContext().Raise(ex);
+                currentUserCulture = currentCultureString.StartsWith("ru") ? new CultureInfo("ru-RU") : new CultureInfo("en-US");
+            }
             LocalizationManager.Instance.SetCulture(currentUserCulture);
             Thread.CurrentThread.CurrentCulture = currentUserCulture;
             Thread.CurrentThread.CurrentUICulture = currentUserCulture;

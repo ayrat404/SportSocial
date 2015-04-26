@@ -32,7 +32,7 @@ namespace BLL.Bonus.Impls
 
         public bool HaveAccess()
         {
-            return GetMounths() >= 2;
+            return GetMounths() >= 1;
         }
 
         public List<BonusVideoModel> GetBonusVideos()
@@ -54,7 +54,7 @@ namespace BLL.Bonus.Impls
         public bool CanViewVideo(int videoId)
         {
             var mounths = GetMounths();
-            return videoId <= mounths;
+            return videoId <= mounths * 2;
         }
 
         public string GetVideoFilePAth(string fileName)
