@@ -25,7 +25,7 @@ namespace SportSocial.Controllers
         public VideoController()
         {
             var context = new EntityDbContext();
-            _bonusService = new BonusService(new Repository(context), new CurrentUser(new AppUserManager(new AppUserStore(context))));
+            _bonusService = new BonusService(new Repository(context), new CurrentUser(new Repository(context)));
         }
 
         [System.Web.Http.HttpGet]

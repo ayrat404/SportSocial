@@ -6,6 +6,10 @@ namespace BLL.Blog.ViewModels.Base
 {
     public class PostBaseModel
     {
+        public PostBaseModel()
+        {
+            Rubric = 1;
+        }
         [Required]
         public string Title { get; set; }
 

@@ -10,18 +10,10 @@
       ar.text="@Model.Text" ;
       ar.videourl="@Model.VideoUrl" ;
       ar.title="@Model.Title" ;
-      ar.id=@(Model is PostEditModel ? (Model as PostEditModel).Id : 0)
-      ar.isfortressnews=@Model.IsFortressNews.ToString()'
+      ar.id=@(Model is PostEditModel ? (Model as PostEditModel).Id : 0);
+      ar.isFortressNews=@Model.IsFortressNews.ToString().ToLower();'
       name="ArticleEdit"
       class="blog-form  article__edit article-new__form">
-    <div class="row">
-        <div class="col-sm-4">
-            <div class="blog-form__desc">Заголовок статьи</div>
-        </div>
-        <div class="col-sm-8">
-            <input ng-model="ar.title" required type="text" class="input" placeholder="Заголовок статьи" />
-        </div>
-    </div>
 
     @if (CurrentUser.IsAdmin)
     {
@@ -34,7 +26,15 @@
             </div>
         </div>
     }
-    <div class="row" ng-show="ar.isFortressNews == undefined || !ar.isFortressNews">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="blog-form__desc">Заголовок статьи</div>
+        </div>
+        <div class="col-sm-8">
+            <input ng-model="ar.title" required type="text" class="input" placeholder="Заголовок статьи" />
+        </div>
+    </div>
+    <div class="row" ng-if="ar.isFortressNews == undefined || !ar.isFortressNews">
         <div class="col-sm-4">
             <div class="blog-form__desc">Рубрика</div>
         </div>
@@ -88,7 +88,7 @@
             <div text-angular
                  ng-model="ar.text"
                  ta-toolbar="[['h1','h2','h3', 'quote'],['bold','italics', 'underline', 'undo'], ['justifyLeft', 'justifyCenter', 'justifyRight'], ['insertLink']]"></div>
-            <div class="alert alert-warning">
+            <div class="alert alert-warning" ng-show="ar.text.length < 100">
                 Минимум 100 символов
             </div>
         </div>
@@ -96,7 +96,7 @@
     <div class="row">
         <div class="col-sm-12">
             <a href="@Url.Action("Index", "Blog")" class="link pull-left">Отмена</a>
-            <button ng-disabled="prop.btnIsDisabled || ar.text.length < 100 || (ar.images.length < 1 && !media.videoValid) || ArticleEdit.$invalid" type="submit" class="btn btn--main pull-right">Отправить на модерацию</button>
+            <button ng-disabled="prop.btnIsDisabled || ar.text.length < 100 || (ar.images.length < 1 && !media.videoValid) || ArticleEdit.$invalid" type="submit" class="btn btn--main pull-right">@(CurrentUser.IsAdmin ? "Опубликовать" : "Отправить на модерацию")</button>
         </div>
     </div>
 </form>

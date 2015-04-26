@@ -18,6 +18,7 @@
 
 .articles-list {
     background: #fff;
+    margin-bottom: 20px;
 
     .al__item {
         border-bottom: 1px solid @color-gray3;
@@ -33,6 +34,7 @@
             float: left;
             width: 25%;
             position: relative;
+            text-align: center;
 
             img {
                 max-height: 100%;
@@ -71,7 +73,7 @@
 
         &__bottom {
             position: absolute;
-            bottom: 18px;
+            bottom: 5px;
             left: 20px;
             right: 20px;
             margin-left: 25%;
@@ -248,6 +250,26 @@
 }
 
 /* /New/edit/item Article */
+
+@media(max-width: 400px) {
+    .articles-list {
+        .al__item__img {
+            float: none;
+            width: 100%;
+        }
+
+        .al__item__info {
+            max-height: inherit;
+            margin-bottom: 18px;
+            float: none;
+            width: 100%;
+        }
+
+        .al__item__bottom {
+            margin-left: 0;
+        }
+    }
+}
 
 
 /* /Articles

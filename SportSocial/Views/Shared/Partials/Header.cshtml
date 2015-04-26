@@ -1,8 +1,9 @@
 ﻿@using System.Activities.Statements
 <div class="nav nav--top">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
+                <div class="nav__mobile-toggle js-nav-toggle"></div>
                 <a href="@Url.Action("Index", "Blog")" class="nav__logo">
                     <img src="~/Content/images/icons/logo.png" alt="Fortress" />
                 </a>
@@ -26,22 +27,10 @@
                             <a href="@Url.Action("Index", "Bonus")" class="nav__list__link">Бонусные курсы</a>
                         </li>
                     }
-                    @*<li>
-                        <a href="#" class="nav__list__link">Новости компании</a>
-                    </li>*@
-                    @*<li class="hidden-xs hidden-sm">
-                        <span class="nav__list__link nav__list__link--disable" data-toggle="tooltip" data-placement="bottom" title="в разработке">Соц.сеть</span>
+                    <li>
+                        <a href="@Url.Action("Index", "News")" class="nav__list__link">Новости</a>
                     </li>
-                    <li class="hidden-xs hidden-sm">
-                        <span class="nav__list__link nav__list__link--disable" data-toggle="tooltip" data-placement="bottom" title="в разработке">Магазин</span>
-                    </li>*@
                 </ul>
-                @*@if (CurrentUser.IsAnonimous)
-                {
-                    <a href="@Url.Action("Index", "Pay")" class="nav__status nav__status--unpayed" data-toggle="tooltip" data-placement="bottom" title="оплата">
-                        <img src="~/Content/images/icons/rub.png" />
-                    </a>
-                }*@
                 @if (!CurrentUser.IsAnonimous)
                 {
                     <div class="nav__user"

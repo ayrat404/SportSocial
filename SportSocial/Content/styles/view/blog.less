@@ -9,6 +9,10 @@ body {
 .blog-wrap {
     background: @color-blog-bg;
     padding-top: 70px;
+
+    @media (max-width: @mobileShow) {
+        padding-top: 40px;
+    }
 }
 
 .blog-wrap,
@@ -23,15 +27,15 @@ body {
 
 .blog__content {
     &__top {
-
     }
+
     &__middle {
         .video-row {
             margin: 40px 0;
         }
     }
-    &__bottom {
 
+    &__bottom {
     }
 }
 

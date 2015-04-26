@@ -1,0 +1,82 @@
+﻿@using System.Activities.Statements
+<div class="nav nav--mobile" data-mobile-menu=".js-nav-toggle">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                @*<div class="nav--mobile__header">
+                        <div class="nav__mobile-toggle js-nav-toggle"></div>
+                        <a href="@Url.Action("Index", "Blog")" class="nav__logo">
+                            <img src="~/Content/images/icons/logo.png" alt="Fortress" />
+                        </a>
+
+                        <a href="@Url.Action("Index", "Pay")" class="nav__status nav__status--unpayed" data-toggle="tooltip" data-placement="bottom" title="оплата">
+                            <img src="~/Content/images/icons/rub.png" />
+                        </a>
+                        @if (CurrentUser.User.Profile.IsPaid)
+                        {
+                            <img src="~/Content/images/icons/payed.png" class="nav__status nav__status--payed" data-toggle="tooltip" data-placement="bottom" title="платный аккаунт открывает доступ к конференциям" />
+                        }
+                    </div>*@
+
+                <ul class="nav__list">
+                    <li>
+                        <a href="@Url.Action("Index", "Blog")" class="nav__list__link">Блог</a>
+                    </li>
+                    <li>
+                        @if (CurrentUser.IsPaid)
+                        {
+                            <a href="@Url.Action("History", "Conference")" class="nav__list__link">Конференции</a>
+                        }
+                        else
+                        {
+                            <span class="nav__list__link link" data-toggle="modal" data-target="#payModal">Конференции</span>
+                        }
+                    </li>
+                    @if (!CurrentUser.IsAnonimous)
+                    {
+                        <li>
+                            <a href="@Url.Action("Index", "Bonus")" class="nav__list__link">Бонусные курсы</a>
+                        </li>
+                    }
+                    <li>
+                        <a href="@Url.Action("Index", "News")" class="nav__list__link">Новости</a>
+                    </li>
+                </ul>
+                @if (!CurrentUser.IsAnonimous)
+                {
+                    <div class="nav__list--user-wrap">
+                        <div class="nav--mobile__user">
+                            <img src="@CurrentUser.User.Profile.Avatar?width=40&height=40&mode=crop" class="nav__user__avatar" />
+                            <div class="nav__user__name">@CurrentUser.UserName</div>
+
+                            <a href="@Url.Action("Index", "Pay")" class="nav__status nav__status--unpayed" title="оплата">
+                                <img src="~/Content/images/icons/rub.png" />
+                            </a>
+                            @if (CurrentUser.User.Profile.IsPaid)
+                            {
+                                <img src="~/Content/images/icons/payed.png" class="nav__status nav__status--payed" data-toggle="tooltip" data-placement="bottom" title="платный аккаунт открывает доступ к конференциям" />
+                            }
+                        </div>
+                        <ul class="nav__list nav__list--user">
+                            @if (CurrentUser.IsAdmin)
+                            {
+                                <li>
+                                    <a href="@Url.Action("Index", "Admin")" class="nav__list__link">Панель управления</a>
+                                </li>
+                            }
+                            <li>
+                                <a href="@Url.Action("My", "Blog")" class="nav__list__link">Мои статьи</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", "Settings")" class="nav__list__link">Настройки</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Logout", "Login")" class="nav__list__link">Выход</a>
+                            </li>
+                        </ul>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
