@@ -4,14 +4,14 @@
       
 <form ng-submit="sendArticleData(ar)"
       ng-init='
-      media.video.show=@Model.IsVideo.ToString().ToLower() ;
-      media.img.show=@((!Model.IsVideo).ToString().ToLower()) && ar.images.length;
       ar.images=@Html.Raw(Model.Images.ToJson()) ;
       ar.text="@Model.Text" ;
       ar.videourl="@Model.VideoUrl" ;
       ar.title="@Model.Title" ;
-      ar.id=@(Model is PostEditModel ? (Model as PostEditModel).Id : 0);
-      ar.isFortressNews=@Model.IsFortressNews.ToString().ToLower();'
+      ar.id=@(Model is PostEditModel ? (Model as PostEditModel).Id : 0) ;
+      media.video.show=ar.videourl.length;
+      media.img.show=ar.images.length && !ar.videourl.length;
+      ar.isfortressnews=@Model.IsFortressNews.ToString().ToLower() ;'
       name="ArticleEdit"
       class="blog-form  article__edit article-new__form">
 
@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-xs-12">
                 <label>
-                    <input type="checkbox" ng-model="ar.isFortressNews"/> @*@(Model.IsFortressNews ? "checked" : "") />*@
+                    <input type="checkbox" ng-model="ar.isFortressNews" /> @*@(Model.IsFortressNews ? "checked" : "") />*@
                     Это новость Fortress
                 </label>
             </div>

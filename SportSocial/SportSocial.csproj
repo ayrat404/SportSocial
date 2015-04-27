@@ -324,7 +324,7 @@
     <Content Include="Content\styles\bootstrap\variables.min.css">
       <DependentUpon>variables.css</DependentUpon>
     </Content>
-    <Content Include="Content\styles\css\fortress-0.2.min.css" />
+    <Content Include="Content\styles\css\fortress-0.3.min.css" />
     <Content Include="Content\styles\other\animate.css" />
     <Content Include="Content\styles\other\font-awesome.css" />
     <Content Include="Content\styles\style.css">
