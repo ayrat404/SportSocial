@@ -93,8 +93,9 @@ namespace SportSocial
             //{
             //    b.Orderer = nullOrderer;
             //}
-
+#if !DEBUG
             BundleTable.EnableOptimizations = true;
+#endif
         }
     }
 }

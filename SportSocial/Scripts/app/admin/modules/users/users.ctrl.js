@@ -57,8 +57,8 @@ function ($scope, utilsSrvc, adminRqst) {
     // ---------------
     function getStatistic() {
         adminRqst.getUsersStatistic(utilsSrvc.token.add({}))
-            .then(function(res) {
-                if (res.data.length) {
+            .then(function (res) {
+                if (res.data != undefined) {
                     $scope.model.statistic = res.data;
                     $scope.statisticIsLoaded = true;
                 }

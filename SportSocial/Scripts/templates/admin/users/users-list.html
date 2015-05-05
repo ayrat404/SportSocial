@@ -4,10 +4,10 @@
         <div ng-cloak>
             <div ng-if="!statisticIsLoaded && !ld.statistic">Не удалось загрузить статистику. <button class="btn btn-default" ng-click="getUsersStatistic();">Попробовать снова</button></div>
             <div ng-if="statisticIsLoaded">
-                Количество зарегистрированных пользователей: <b>{{model.statistic.usersCount}}</b>
-                Количество пользователей, хоть раз купивших подписку: <b>{{model.statistic.payedUsers}}</b>
-                Общее количество оплаченных месяцев: <b>{{model.statistic.payedMounths}}</b>
-                Среднее количество месяцев подписки, оплачиваемых за один раз: <b>{{model.statistic.averageMounths}}</b>
+                <p>Количество зарегистрированных пользователей: <b>{{model.statistic.usersCount}}</b></p>
+                <p>Количество пользователей, хоть раз купивших подписку: <b>{{model.statistic.payedUsers}}</b></p>
+                <p>Общее количество оплаченных месяцев: <b>{{model.statistic.payedMounths}}</b></p>
+                <p>Среднее количество месяцев подписки, оплачиваемых за один раз: <b>{{model.statistic.averageMounths}}</b></p>
             </div>
         </div>
         <div ng-if="ld.statistic">Загрузка статистики...</div>
