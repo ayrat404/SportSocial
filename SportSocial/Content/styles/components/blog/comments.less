@@ -13,11 +13,23 @@
             font-style: italic;
             font-size: 1.286em;
             padding: 10px;
-            width: 100%;
-            height: 80px;
-            max-height: 240px;
             margin-bottom: 10px;
-            max-width: 100%;
+            width: 100%;
+            min-height: inherit;
+            height: 56px;
+            transition: height 200ms ease-in-out;
+
+            &.input--active {
+                height: 150px;
+            }
+        }
+
+        .btn {
+            float: right;
+        }
+
+        &__bottom {
+            .no-float;
         }
     }
 
@@ -37,8 +49,9 @@
                 }
 
                 &__av-wrap {
+                    position: relative;
                     float: left;
-                    width: 10%;
+                    margin: 0 -100% 0 0;
                     max-width: 80px;
                     min-width: 80px;
                 }
@@ -46,21 +59,25 @@
                 &__av {
                     max-height: 100%;
                     max-width: 100%;
+                    border-radius: 50%;
+                    border: 1px solid rgba(22, 24, 26, .2);
                 }
 
                 &__info {
+                    width: 100%;
+                    padding-left: 100px;
                     float: left;
                     font-size: 1.143em;
-                    width: 80%;
-                    margin-left: 3%;
                 }
 
                 &__name {
-                    
                 }
 
                 &__date {
                     color: @color-gray4;
+                    font-size: .76em;
+                    font-style: italic;
+                    margin: 2px 0 4px 0;
                 }
 
                 &__text {

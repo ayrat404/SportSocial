@@ -10,14 +10,15 @@ angular.module('blog').controller('CommentsCtrl',
      '$timeout',
 function ($scope, commentsRqst, utilsSrvc, $window, $timeout) {
 
-    // типы комментариев (комментарий к статье, ответ на комментарий)
+    // типы комментариев (новый комментарий, ответ на комментарий)
     // type: comment/answer
 
     var prop = {
-        isAnswer    : false,    // если этот ответ к комментарию
-        watcher     : null,     // watcher для поля ответа к комментарию
-        answerFor   : null      // комментарий на который пишется ответ
-    };
+            isAnswer    :   false,  // если этот ответ к комментарию
+            watcher     :   null,   // watcher для поля ответа к комментарию
+            answerFor   :   null    // комментарий на который пишется ответ
+        },
+        lightClass = 'cl__it--light';   // класс который подсвечивает комментарий
 
     // ошибки
     // ---------------
@@ -81,9 +82,9 @@ function ($scope, commentsRqst, utilsSrvc, $window, $timeout) {
             angular.element('html, body').animate({
                 scrollTop: $el.offset().top - $window.innerHeight / 2
             }, 300);
-            $el.addClass('cl__it--light');
+            $el.addClass(lightClass);
             $timeout(function () {
-                $el.removeClass('cl__it--light');
+                $el.removeClass(lightClass);
             }, 1000);
         // если нет, то подгружаем все комментарии и ищем его там
         // ----------

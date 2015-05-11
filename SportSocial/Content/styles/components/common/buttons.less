@@ -57,6 +57,20 @@
         }
     }
 
+    &--st1 {
+        font-size: 1em;
+        font-weight: normal;
+        padding: 6px 25px;
+        border: 1px solid #c0c0c0;
+        border-radius: 3px;
+        cursor: pointer;
+        color: #333;
+        &:hover {
+            box-shadow: inset 0 0 7px rgba(0,0,0,.3);
+            color: @color-blue;
+        }
+    }
+
     &--xs {
         font-size: 1em;
         padding: 5px 10px;
@@ -82,6 +96,29 @@
                 background: #fff;
                 border-bottom: 1px solid #fff;
             }
+        }
+    }
+}
+
+// btns list with inputs (radio & checkbox)
+
+.btns-radio {
+    list-style-type: none;
+    .br__it {
+        display: inline-block;
+    }
+    .br__label {
+        font-weight: normal;
+        padding: 6px 25px;
+        border: 1px solid #c0c0c0;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    .br__input {
+        display: none;
+        &:checked + .br__label {
+            box-shadow: inset 0 0 7px rgba(0,0,0,.3);
+            color: @color-blue;
         }
     }
 }
