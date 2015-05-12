@@ -1,4 +1,5 @@
 using System;
+using DAL.DomainModel.FeedBackEntities;
 
 namespace DAL.Migrations
 {
@@ -25,6 +26,12 @@ namespace DAL.Migrations
                 new Rubric() { Id = 8, Name = "Элементы" }
             );
 
+            context.FeedbackTypes.AddOrUpdate(
+                new FeedbackType() { Id = 1, Label = "Предложить идею" },
+                new FeedbackType() { Id = 2, Label = "Задать вопрос" },
+                new FeedbackType() { Id = 3, Label = "Оставить благодарность" }
+            );
+
             context.Roles.AddOrUpdate(
                 new AppRole("Moderator") { Id = 1 },
                 new AppRole("Admin") { Id = 2 },
@@ -45,7 +52,7 @@ namespace DAL.Migrations
                 {
                     Id = 2,
                     Cost = 200,
-                    Label = "Подписка на месяц",
+                    Label = "Подписка на 2 месяца",
                     Currency = "RUB",
                     Lang = "ru-RU",
                 },
@@ -53,7 +60,7 @@ namespace DAL.Migrations
                 {
                     Id = 3,
                     Cost = 300,
-                    Label = "Подписка на месяц",
+                    Label = "Подписка на 3 месяца",
                     Currency = "RUB",
                     Lang = "ru-RU",
                 },
@@ -61,7 +68,7 @@ namespace DAL.Migrations
                 {
                     Id = 4,
                     Cost = 400,
-                    Label = "Подписка на месяц",
+                    Label = "Подписка на 4 месяца",
                     Currency = "RUB",
                     Lang = "ru-RU",
                 },
@@ -69,7 +76,7 @@ namespace DAL.Migrations
                 {
                     Id = 5,
                     Cost = 500,
-                    Label = "Подписка на месяц",
+                    Label = "Подписка на 5 месяцев",
                     Currency = "RUB",
                     Lang = "ru-RU",
                 },
@@ -77,7 +84,7 @@ namespace DAL.Migrations
                 {
                     Id = 6,
                     Cost = 600,
-                    Label = "Подписка на месяц",
+                    Label = "Подписка на 6 месяцев",
                     Currency = "RUB",
                     Lang = "ru-RU",
                 },
@@ -85,7 +92,7 @@ namespace DAL.Migrations
                 {
                     Id = 7,
                     Cost = 700,
-                    Label = "Подписка на месяц",
+                    Label = "Подписка на 7 месяцев",
                     Currency = "RUB",
                     Lang = "ru-RU",
                 },
@@ -93,7 +100,7 @@ namespace DAL.Migrations
                 {
                     Id = 8,
                     Cost = 800,
-                    Label = "Подписка на месяц",
+                    Label = "Подписка на 8 месяцев",
                     Currency = "RUB",
                     Lang = "ru-RU",
                 },
@@ -101,7 +108,7 @@ namespace DAL.Migrations
                 {
                     Id = 9,
                     Cost = 900,
-                    Label = "Подписка на месяц",
+                    Label = "Подписка на 9 месяцев",
                     Currency = "RUB",
                     Lang = "ru-RU",
                 },
@@ -109,7 +116,7 @@ namespace DAL.Migrations
                 {
                     Id = 10,
                     Cost = 1000,
-                    Label = "Подписка на месяц",
+                    Label = "Подписка на 10 месяцев",
                     Currency = "RUB",
                     Lang = "ru-RU",
                 },
@@ -117,7 +124,7 @@ namespace DAL.Migrations
                 {
                     Id = 11,
                     Cost = 1100,
-                    Label = "Подписка на месяц",
+                    Label = "Подписка на 11 месяцев",
                     Currency = "RUB",
                     Lang = "ru-RU",
                 },
@@ -125,7 +132,7 @@ namespace DAL.Migrations
                 {
                     Id = 12,
                     Cost = 1200,
-                    Label = "Подписка на месяц",
+                    Label = "Подписка на 12 месяцев",
                     Currency = "RUB",
                     Lang = "ru-RU",
                 }

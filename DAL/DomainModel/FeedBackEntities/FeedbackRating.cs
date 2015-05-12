@@ -1,4 +1,5 @@
-﻿using DAL.DomainModel.EnumProperties;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using DAL.DomainModel.EnumProperties;
 using DAL.DomainModel.Interfaces;
 
 namespace DAL.DomainModel.FeedBackEntities
@@ -13,6 +14,7 @@ namespace DAL.DomainModel.FeedBackEntities
 
         public int RatedEntityId { get; set; }
 
+        [ForeignKey("RatedEntityId")]
         public Feedback RatedEntity { get; set; }
 
         public AppUser User { get; set; }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using DAL.DomainModel.Interfaces;
 
 namespace DAL.DomainModel.FeedBackEntities
@@ -22,7 +23,11 @@ namespace DAL.DomainModel.FeedBackEntities
 
         public int TotalRating { get; set; }
 
+        [ForeignKey("CommentedEntityId")]
         public virtual Feedback CommentedEntity { get; set; }
+
+        [ForeignKey("CommentForId")]
+        public FeedbackComment CommentFor { get; set; }
 
         public virtual AppUser User { get; set; }
 

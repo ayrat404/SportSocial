@@ -87,6 +87,7 @@
     <Compile Include="DomainModel\FeedBackEntities\FeedbackComment.cs" />
     <Compile Include="DomainModel\FeedBackEntities\FeedbackCommentRating.cs" />
     <Compile Include="DomainModel\FeedBackEntities\FeedbackRating.cs" />
+    <Compile Include="DomainModel\FeedBackEntities\FeedbackType.cs" />
     <Compile Include="DomainModel\IdentityEntities\AppRole.cs" />
     <Compile Include="DomainModel\IdentityEntities\AppUser.cs" />
     <Compile Include="DomainModel\BlogEntities\BlogComment.cs" />
@@ -143,6 +144,10 @@
     <Compile Include="Migrations\201504221809499_IsFortressNews_Post.Designer.cs">
       <DependentUpon>201504221809499_IsFortressNews_Post.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505121250082_FeedBackTables.cs" />
+    <Compile Include="Migrations\201505121250082_FeedBackTables.Designer.cs">
+      <DependentUpon>201505121250082_FeedBackTables.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AccountRepository.cs" />
@@ -176,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504221809499_IsFortressNews_Post.resx">
       <DependentUpon>201504221809499_IsFortressNews_Post.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505121250082_FeedBackTables.resx">
+      <DependentUpon>201505121250082_FeedBackTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
