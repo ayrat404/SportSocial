@@ -7,7 +7,7 @@ namespace BLL.Admin.Users.Objects
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public DateTime RegDate { get; set; }
+        public string RegDate { get; set; }
         public int Subscribes { get; set; }
         public UserStatus Status { get; set; }
     }

@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
+using System.Threading;
 using BLL.Admin.Users.Objects;
 using BLL.Infrastructure.Map;
 using DAL.DomainModel;
@@ -25,11 +27,12 @@ namespace BLL.Admin.Users.Impls
                 .Where(u => u.PhoneNumberConfirmed)
                 .Include(u => u.Profile)
                 .Include(u => u.Pays)
+                .ToList()
                 .Select(u => new UserModel()
                 {
                     Id = u.Id,
                     Name = u.Name,
-                    RegDate = u.Created,
+                    RegDate = u.Created.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongDatePattern),//"dd MMMM yyyy hh:mm"),
                     Status = u.Status,
                     Subscribes = (int?)u.Pays.Where(p => p.PaySatus == PaySatus.Completed).Sum(p => p.ProductId) ?? 0
                 })
