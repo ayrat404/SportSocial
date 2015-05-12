@@ -1,13 +1,12 @@
 ﻿using System.Linq;
 using System.Net.Http;
 using System.Web.Mvc;
-using BLL.Blog;
 using BLL.Blog.ViewModels;
-using BLL.Bonus;
 using BLL.Common.Services.CurrentUser;
+using BLL.Feedbacks;
+using BLL.Feedbacks.Objects;
 using DAL.DomainModel;
 using DAL.DomainModel.EnumProperties;
-using DAL.Repository.Interfaces;
 using PagedList;
 using SportSocial.Controllers.Base;
 
@@ -16,21 +15,36 @@ namespace SportSocial.Controllers
     //[Authorize]
     public class ReviewsController :SportSocialControllerBase
     {
-        private readonly IBlogService _blogService;
-        private readonly IRepository _repository;
-        private readonly ICurrentUser _currentUser;
-        private readonly IBonusService _bonusService;
+        private readonly IFeedbackService _feedbackService;
 
-        public ReviewsController(IBlogService blogService, IRepository repository, IBonusService bonusService)
+        private const int PageSize = 10;
+
+        public ReviewsController(IFeedbackService feedbackService)
         {
-            _blogService = blogService;
-            _repository = repository;
-            _bonusService = bonusService;
+            _feedbackService = feedbackService;
         }
 
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(int page = 1, FeedbackSortType sort = FeedbackSortType.Date)
         {
+            ViewBag.Sort = sort;
+            var feeds = _feedbackService.GetFeedbacks(PageSize, sort, page);
+            var pageList = new StaticPagedList<FeedbackPreviewModel>(feeds.PostPreview, page, PageSize,
+                feeds.PageInfo.Count);
+            return View(pageList);
+        }
+
+        
+        [HttpPost]
+        [CustomAntiForgeryValidator]
+        [Authorize]
+        public ActionResult Add(CreateFeedbackModel feedbackModel)
+        {
+            if (ModelState.IsValid)
+            {
+                _feedbackService.AddFeedback(feedbackModel);
+                return RedirectToAction("Index");
+            }
             return View();
         }
 	}

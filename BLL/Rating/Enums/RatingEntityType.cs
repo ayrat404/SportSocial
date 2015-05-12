@@ -4,5 +4,7 @@ namespace BLL.Rating.Enums
     {
         Article,
         ArticleComment,
+        Feedback,
+        FeedbackComment,
     }
 }
