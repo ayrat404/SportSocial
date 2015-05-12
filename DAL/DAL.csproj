@@ -83,6 +83,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DomainModel\EnumProperties\UserStatus.cs" />
+    <Compile Include="DomainModel\FeedBackEntities\Feedback.cs" />
+    <Compile Include="DomainModel\FeedBackEntities\FeedbackComment.cs" />
+    <Compile Include="DomainModel\FeedBackEntities\FeedbackCommentRating.cs" />
+    <Compile Include="DomainModel\FeedBackEntities\FeedbackRating.cs" />
     <Compile Include="DomainModel\IdentityEntities\AppRole.cs" />
     <Compile Include="DomainModel\IdentityEntities\AppUser.cs" />
     <Compile Include="DomainModel\BlogEntities\BlogComment.cs" />
