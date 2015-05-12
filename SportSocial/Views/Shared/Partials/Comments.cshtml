@@ -41,9 +41,14 @@
                   class="comment__form">
                 <textarea ng-model="text"
                           ng-autofocus="{{focus}}"
+                          ng-class="{ 'input--active': text.length }"
                           scroll-to-current-pos="{{focus}}"
-                          param-dopscroll="100" class="input"></textarea>
-                <button type="submit" class="btn">Отправить</button>
+                          param-dopscroll="100" 
+                          class="input"
+                          placeholder="Комментировать..."></textarea>
+                <div class="comment__form__bottom">
+                    <button type="submit" class="btn btn--main btn--xs">Отправить</button>
+                </div>
             </form>
         </div>
     </div>

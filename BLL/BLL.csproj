@@ -183,6 +183,12 @@
     <Compile Include="Comments\ICommentService.cs" />
     <Compile Include="Common\Services\CurrentUser\Impls\CurrentUser.cs" />
     <Compile Include="Common\Services\CurrentUser\ICurrentUser.cs" />
+    <Compile Include="Feedbacks\IFeedbackService.cs" />
+    <Compile Include="Feedbacks\Impls\FeedbackService.cs" />
+    <Compile Include="Feedbacks\Objects\CreateFeedbackModel.cs" />
+    <Compile Include="Feedbacks\Objects\FeedbackListModel.cs" />
+    <Compile Include="Feedbacks\Objects\FeedbackPreviewModel.cs" />
+    <Compile Include="Feedbacks\Objects\FeedbackSortType.cs" />
     <Compile Include="Rating\Enums\RatingEntityType.cs" />
     <Compile Include="Rating\Models\BlogRatingViewModel.cs" />
     <Compile Include="Rating\RatingService.cs" />

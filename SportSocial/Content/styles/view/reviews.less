@@ -1,0 +1,292 @@
+/* Reviews
+---------------------------------------------------------------------------------- */
+
+.reviews {
+}
+
+.reviews__sort {
+    padding: 16px 21px;
+
+    .rs__links {
+        list-style-type: none;
+        margin-left: 8px;
+        display: inline-block;
+
+        .btn {
+            min-height: 36px;
+            margin-bottom: 3px;
+            &:hover,
+            &.rs-active {
+                box-shadow: inset 0 0 7px rgba(0,0,0,.3);
+                color: @color-blue;
+
+                .rs__icon--voite {
+                    .sprite(@rev-like-xs-hover);
+                }
+
+                .rs__icon--date {
+                    .sprite(@rev-clock-xs-hover);
+                }
+
+                .rs__icon--comments {
+                    .sprite(@rev-comments-xs-hover);
+                }
+            }
+        }
+    }
+
+    .rs__links__it {
+        display: inline-block;
+        user-select: none;
+        margin-right: 6px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    .rs__icon {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 6px;
+    }
+
+    .rs__icon--voite {
+        .sprite(@rev-like-xs);
+    }
+
+    .rs__icon--date {
+        .sprite(@rev-clock-xs);
+    }
+
+    .rs__icon--comments {
+        .sprite(@rev-comments-xs);
+    }
+}
+
+.reviews__form {
+    background-color: @color-blog-bg;
+    .no-float;
+
+    .rf__type-wrap {
+        line-height: 80px;
+        position: relative;
+    }
+
+    .rf__type__text {
+        margin-left: 20px;
+        color: #fff;
+    }
+
+    .rf__type__select {
+        margin-left: 20px;
+        height: 35px;
+        line-height: 35px;
+        border-radius: 3px;
+    }
+
+    .rf__text {
+        line-height: 60px;
+        padding-left: 20px;
+        width: 100%;
+        height: 70px;
+        margin-top: 5px;
+        transition: height 200ms ease-in-out;
+    }
+
+    .rf__min {
+        text-align: center;
+        color: #767171;
+        font-size: 0.857em;
+        display: none;
+        position: absolute;
+        bottom: -50px;
+        width: 100%;
+    }
+
+    .btn--main {
+        width: 100%;
+        display: none;
+        margin-top: 24px;
+    }
+}
+
+.reviews__form--active {
+    .btn--main {
+        display: block;
+    }
+
+    .rf__text {
+        line-height: inherit;
+        padding: 5px;
+        height: 150px;
+    }
+    
+    .rf__min {
+        display: block;
+    }
+    padding-bottom: 6px;
+}
+
+.reviews__form--valid {
+    .rf__min {
+        display: none !important;
+    }
+}
+
+
+
+.reviews__list {
+    list-style-type: none;
+}
+
+.reviews__it {
+    padding: 30px 0 30px 70px;
+    border-bottom: 1px solid @color-blog-bg;
+    .no-float;
+
+    .ri__about {
+        width: 250px;
+        position: relative;
+        float: left;
+        margin: 0 -100% 0 0;
+        .no-float;
+    }
+
+    .ri__info {
+        float: left;
+        width: 90px;
+        margin-right: 50px;
+        text-align: center;
+        font-size: 0.786em;
+        font-weight: 600;
+    }
+
+    .ri__content {
+        padding: 0 3% 0 270px;
+        float: left;
+    }
+
+    .ri__text {
+        max-width: 700px;
+    }
+
+    .ri__icon-clock {
+        display: block;
+        margin: 0 auto;
+        .sprite(@rev-clock-md);
+    }
+
+    .ri__date {
+        text-transform: uppercase;
+        margin-top: 5px;
+    }
+
+    .ri__rating {
+        color: @color-blue;
+        margin-top: 12px;
+    }
+
+    .ri__progress {
+        margin-top: 5px;
+        height: 2px;
+        background-color: #4a4a4a;
+
+        .ri__bar {
+            height: 2px;
+            background-color: @color-blue;
+        }
+    }
+
+    .ri__actions {
+        margin-top: 7px;
+
+        .ri__like,
+        .ri__dislike {
+            margin: 0 6px;
+            cursor: pointer;
+        }
+
+        .ri__like {
+            .sprite(@like-md);
+            display: inline-block;
+
+            &:hover {
+                .sprite(@like-md-hover);
+            }
+        }
+
+        .ri__dislike {
+            .sprite(@dislike-md);
+            display: inline-block;
+
+            &:hover {
+                .sprite(@dislike-md-hover);
+            }
+        }
+    }
+
+    .ri__avatar-wrap {
+    }
+
+    .ri__avatar {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+    }
+
+    .ri__authorname {
+        font-size: 1.143em;
+        font-weight: 600;
+    }
+
+    .ri__type {
+        position: relative;
+        margin: 15px 0;
+        color: #7b7f84;
+        font-size: 0.857em;
+        padding-left: 23px;
+
+        &:before {
+            position: absolute;
+            left: 0;
+            top: -4px;
+            content: '';
+        }
+    }
+
+    .ri__type--idea {
+        &:before {
+            .sprite(@rev-light-xs);
+        }
+    }
+
+    .ri__type--question {
+        &:before {
+            .sprite(@rev-question-xs);
+        }
+    }
+
+    .ri__type--thank {
+        &:before {
+            .sprite(@rev-star-xs);
+        }
+    }
+
+    .ri__comments-show {
+        margin-top: 25px;
+        font-size: 0.857em;
+        cursor: pointer;
+        display: inline-block;
+        user-select: none;
+    }
+
+    .ri__comments-show__icon {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 7px;
+        .sprite(@show-comments-xs);
+    }
+}
+/* /Reviews
+---------------------------------------------------------------------------------- */

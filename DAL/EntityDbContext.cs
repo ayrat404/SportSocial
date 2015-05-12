@@ -3,6 +3,7 @@ using System.Data.Entity;
 using DAL.DomainModel;
 using DAL.DomainModel.BlogEntities;
 using DAL.DomainModel.ConferenceEntities;
+using DAL.DomainModel.FeedBackEntities;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Ninject.Activation;
 
@@ -28,6 +29,13 @@ namespace DAL
         public DbSet<UserAvatarPhoto> UserAvatarPhotos { get; set; }
         public DbSet<ConferenceComment> ConferenceComments { get; set; }
         public DbSet<ConferenceCommentRating> ConferenceCommentRatings { get; set; }
+
+
+        public DbSet<Feedback> Feedbacks { get; set; }
+        public DbSet<FeedbackComment> FeedbackComments { get; set; }
+        public DbSet<FeedbackRating> FeedbackRatings { get; set; }
+        public DbSet<FeedbackCommentRating> FeedbackCommentRatings { get; set; }
+        public DbSet<FeedbackType> FeedbackTypes { get; set; }
 
         static EntityDbContext()
         {

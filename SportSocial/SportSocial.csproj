@@ -286,6 +286,28 @@
     <Content Include="Content\images\icons\sprites-admin\adm-remove.png" />
     <Content Include="Content\images\icons\sprites-admin\adm-stop.png" />
     <Content Include="Content\images\icons\sprites-admin\adm-trust.png" />
+    <Content Include="Content\images\icons\sprites\check-xs.png" />
+    <Content Include="Content\images\icons\sprites\close-xs.png" />
+    <Content Include="Content\images\icons\sprites\comment-xs.png" />
+    <Content Include="Content\images\icons\sprites\date-xs.png" />
+    <Content Include="Content\images\icons\sprites\dislike-md--hover.png" />
+    <Content Include="Content\images\icons\sprites\dislike-md.png" />
+    <Content Include="Content\images\icons\sprites\like-md--hover.png" />
+    <Content Include="Content\images\icons\sprites\like-md.png" />
+    <Content Include="Content\images\icons\sprites\man-xs.png" />
+    <Content Include="Content\images\icons\sprites\menu.png" />
+    <Content Include="Content\images\icons\sprites\play-md.png" />
+    <Content Include="Content\images\icons\sprites\rev_clock-md.png" />
+    <Content Include="Content\images\icons\sprites\rev_clock-xs--hover.png" />
+    <Content Include="Content\images\icons\sprites\rev_clock-xs.png" />
+    <Content Include="Content\images\icons\sprites\rev_comments-xs--hover.png" />
+    <Content Include="Content\images\icons\sprites\rev_comments-xs.png" />
+    <Content Include="Content\images\icons\sprites\rev_light-xs.png" />
+    <Content Include="Content\images\icons\sprites\rev_like-xs--hover.png" />
+    <Content Include="Content\images\icons\sprites\rev_like-xs.png" />
+    <Content Include="Content\images\icons\sprites\rev_question-xs.png" />
+    <Content Include="Content\images\icons\sprites\rev_star-xs.png" />
+    <Content Include="Content\images\icons\sprites\show-comments-xs.png" />
     <Content Include="Content\images\pattern\black.png" />
     <Content Include="Content\images\pattern\pattern_vertical.png" />
     <Content Include="Content\images\promo-bg.jpg" />
@@ -333,18 +355,6 @@
     <Content Include="Content\styles\style.min.css">
       <DependentUpon>style.css</DependentUpon>
     </Content>
-    <Content Include="Content\styles\view\registration.css">
-      <DependentUpon>registration.less</DependentUpon>
-    </Content>
-    <Content Include="Content\styles\view\registration.min.css">
-      <DependentUpon>registration.css</DependentUpon>
-    </Content>
-    <Content Include="Content\styles\view\blog.css">
-      <DependentUpon>blog.less</DependentUpon>
-    </Content>
-    <Content Include="Content\styles\view\blog.min.css">
-      <DependentUpon>blog.css</DependentUpon>
-    </Content>
     <Content Include="Global.asax" />
     <Content Include="gulpfile.js" />
     <Content Include="Scripts\app\admin\app.js" />
@@ -364,6 +374,8 @@
     <Content Include="Scripts\app\blog\modules\payment\payment.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\feedback\feedback.srvc.js" />
     <Content Include="Scripts\app\blog\modules\feedback\feedback.ctrl.js" />
+    <Content Include="Scripts\app\blog\modules\reviews\reviews.ctrl.js" />
+    <Content Include="Scripts\app\blog\modules\reviews\reviews.srvc.js" />
     <Content Include="Scripts\app\blog\modules\rating\rating.ctrl.js" />
     <Content Include="Scripts\app\blog\modules\rating\rating.srvc.js" />
     <Content Include="Scripts\app\blog\modules\comments\comments.srvc.js" />
@@ -817,9 +829,6 @@
     <Content Include="Content\styles\bootstrap\bootstrap.css.map">
       <DependentUpon>bootstrap.css</DependentUpon>
     </Content>
-    <Content Include="Content\styles\view\blog.css.map">
-      <DependentUpon>blog.css</DependentUpon>
-    </Content>
     <Content Include="Content\styles\base\mixins.css.map">
       <DependentUpon>mixins.css</DependentUpon>
     </Content>
@@ -828,9 +837,6 @@
       <DependentUpon>colors.css</DependentUpon>
     </Content>
     <Content Include="Content\styles\view\registration.less" />
-    <Content Include="Content\styles\view\registration.css.map">
-      <DependentUpon>registration.css</DependentUpon>
-    </Content>
     <Content Include="Scripts\libs\angular\angular-aria.min.js.map" />
     <Content Include="Scripts\libs\angular\angular-messages.min.js.map" />
     <Content Include="Content\styles\components\blog\nav.less" />
@@ -924,6 +930,7 @@
     <Content Include="Content\fonts\VideoJs\vjs.eot" />
     <Content Include="Content\fonts\VideoJs\vjs.ttf" />
     <Content Include="Content\fonts\VideoJs\vjs.woff" />
+    <Content Include="Content\styles\view\reviews.less" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -1037,6 +1044,7 @@
     <Compile Include="Controllers\Base\SportSocialControllerBase.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\FileController.cs" />
+    <Compile Include="Controllers\ReviewsController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\RatingController.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
@@ -1132,6 +1140,7 @@
     <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\Shared\Partials\Video.cshtml" />
     <Content Include="Views\Shared\Partials\HeaderMobile.cshtml" />
+    <Content Include="Views\Reviews\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

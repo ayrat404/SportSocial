@@ -1,9 +1,0 @@
-{
-  "version": 3,
-  "file": "blog.css",
-  "sources": [
-    "blog.less"
-  ],
-  "names": [],
-  "mappings": ";;;;AAMI,OAAC;EACG,YAAA;;AACA,OAFH,MAEI;EACG,WAAA;EACA,UAAA;;AAEJ,OANH,MAMI;EACG,WAAA;EACA,UAAA"
-}
