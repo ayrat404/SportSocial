@@ -9,6 +9,7 @@ using BLL.Sms;
 using BLL.Storage;
 using BLL.Storage.ViewModels;
 using DAL.DomainModel;
+using DAL.DomainModel.EnumProperties;
 using DAL.Repository.Interfaces;
 using Knoema.Localization;
 using Microsoft.AspNet.Identity;
@@ -87,6 +88,7 @@ namespace BLL.Login.Impls
                     PhoneNumber = regModel.Phone,
                     UserName = regModel.Phone,
                     PhoneNumberConfirmed = false,
+                    Status = UserStatus.Normal,
                     Created = DateTime.Now,
                     Modified = DateTime.Now
                 };
