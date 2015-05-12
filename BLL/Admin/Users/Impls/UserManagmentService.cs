@@ -53,6 +53,7 @@ namespace BLL.Admin.Users.Impls
             //    .Select(u => )
             var userStatistic = new UsersStatistic();
             userStatistic.UsersCount = _repository.Queryable<AppUser>().Count(u => u.PhoneNumberConfirmed);
+            userStatistic.NotConfirmedUsersCount = _repository.Queryable<AppUser>().Count(u => !u.PhoneNumberConfirmed);
             userStatistic.PayedUsers = _repository.Queryable<AppUser>().Count(u => u.Profile.IsPaid);
 
             userStatistic.PayedMounths = _repository
