@@ -83,9 +83,10 @@ namespace SportSocial.Controllers
         }
 
         [HttpPost]
-        public void ChangeUserStatus(int id, UserStatus status)
+        public JsonResult ChangeUserStatus(int id, UserStatus status)
         {
             _userManagment.ChangeUserStatus(id, status);
+            return Json(new {success = true});
         }
 
         [HttpGet]

@@ -25,8 +25,16 @@ namespace BLL.Admin.Users.Impls
                 .Where(u => u.PhoneNumberConfirmed)
                 .Include(u => u.Profile)
                 .Include(u => u.Pays)
-                .ToList()
-                .MapEachTo<UserModel>();
+                .Select(u => new UserModel()
+                {
+                    Id = u.Id,
+                    Name = u.Name,
+                    RegDate = u.Created,
+                    Status = u.Status,
+                    Subscribes = (int?)u.Pays.Where(p => p.PaySatus == PaySatus.Completed).Sum(p => p.ProductId) ?? 0
+                })
+                .ToList();
+                //.MapEachTo<UserModel>();
             return users;
         }
 
@@ -44,7 +52,8 @@ namespace BLL.Admin.Users.Impls
             //var stat = _repository.Queryable<AppUser>()
             //    .Select(u => )
             var userStatistic = new UsersStatistic();
-            userStatistic.UsersCount = _repository.Queryable<AppUser>().Count();
+            userStatistic.UsersCount = _repository.Queryable<AppUser>().Count(u => u.PhoneNumberConfirmed);
+            userStatistic.NotConfirmedUsersCount = _repository.Queryable<AppUser>().Count(u => !u.PhoneNumberConfirmed);
             userStatistic.PayedUsers = _repository.Queryable<AppUser>().Count(u => u.Profile.IsPaid);
 
             userStatistic.PayedMounths = _repository
