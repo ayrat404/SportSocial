@@ -1,4 +1,5 @@
-﻿@model SportSocial.Controllers.SettingsModel
+﻿@using BLL.Feedbacks.Objects
+@model PagedList.IPagedList<BLL.Feedbacks.Objects.FeedbackPreviewModel>
 @{
     ViewBag.Title = "Fortress - Отзывы";
     Layout = "../Blog/Shared/Layouts/BlogLayout.cshtml";
@@ -6,6 +7,7 @@
 
 <div class="container"
      ng-controller="ReviewsCtrl"
+     data-reviews
      ng-cloak>
     <div class="row">
         <div class="col-xs-12">
@@ -66,6 +68,63 @@
                             </div>
                         </form>
                         <ul class="reviews__list">
+
+                            @*@foreach (var item in Model)
+                            {
+                                <li class="reviews__it">
+                                    <div class="ri__about">
+                                        <div class="ri__info">
+                                            <div class="ri__icon-clock"></div>
+                                            <div class="ri__date">29 АПР 2015<br />14:37</div>
+                                            <div class="ri__rating@(item.Rating < 0 ? " ri__rating--minus" : item.Rating > 0 ? " ri__rating--plus" : "")">@item.Rating</div>
+                                            <div class="ri__progress">
+                                                <div class="ri__bar" style="width: 66%;"></div>
+                                            </div>
+                                            <div class="ri__actions">
+                                                <div class="ri__like"></div>
+                                                <div class="ri__dislike"></div>
+                                            </div>
+                                        </div>
+                                        <div class="ri__avatar-wrap">
+                                            <img src="@item.AuthorAvatar?width=90&height=90mode=crop" alt="@item.AuthorName" class="ri__avatar" />
+                                        </div>
+                                    </div>
+                                    <div class="ri__content">
+                                        <div class="ri__authorname">@item.AuthorName</div>
+                                        @switch (item.Type)
+                                        {
+                                            case (1):
+                                                <div class="ri__type ri__type--idea">
+                                                    предложил(а) идею
+                                                </div>
+                                                break;
+                                            case (2):
+                                                <div class="ri__type ri__type--question">
+                                                    задал(а) вопрос
+                                                </div>
+                                                break;
+                                            case (3):
+                                                <div class="ri__type ri__type--thank">
+                                                    поблагодарил(а)
+                                                </div>
+                                                break;
+                                            default:
+                                                break;
+                                        }
+                                        <div class="ri__text">
+                                            @item.Text
+                                        </div>
+                                        <div class="ri__comments-show">
+                                            <span class="ri__comments-show__icon"></span>
+                                            <span class="ri__comments-show__text">Показать комментарии</span>: @item.TotalCommentsCount
+                                        </div>
+                                        <div class="ri__comments-list hidden">
+                                            @Html.Partial("Partials/Comments", Model)
+                                        </div>
+                                    </div>
+                                </li>
+                            }*@
+
                             <li class="reviews__it">
                                 <div class="ri__about">
                                     <div class="ri__info">
@@ -75,9 +134,13 @@
                                         <div class="ri__progress">
                                             <div class="ri__bar" style="width: 66%;"></div>
                                         </div>
-                                        <div class="ri__actions">
-                                            <div class="ri__like"></div>
-                                            <div class="ri__dislike"></div>
+                                        <div class="ri__actions" 
+                                             data-id="666"
+                                             data-likes="120"
+                                             data-dislikes="25" 
+                                             data-type="Review">
+                                            <div class="ri__act ri__act--like active" data-action="like"></div>
+                                            <div class="ri__act ri__act--dislike" data-action="dislike"></div>
                                         </div>
                                     </div>
                                     <div class="ri__avatar-wrap">
@@ -94,7 +157,10 @@
                                     </div>
                                     <div class="ri__comments-show">
                                         <span class="ri__comments-show__icon"></span>
-                                        Показать комментарии: 0
+                                        <span class="ri__comments-show__text">Показать комментарии</span>: 0
+                                    </div>
+                                    <div class="ri__comments-list hidden">
+                                        Comments
                                     </div>
                                 </div>
                             </li>
@@ -127,7 +193,10 @@
                                     </div>
                                     <div class="ri__comments-show">
                                         <span class="ri__comments-show__icon"></span>
-                                        Показать комментарии: 0
+                                        <span class="ri__comments-show__text">Показать комментарии</span>: 0
+                                    </div>
+                                    <div class="ri__comments-list hidden">
+                                        Comments
                                     </div>
                                 </div>
                             </li>

@@ -11,7 +11,8 @@ namespace BLL.Feedbacks.Impls
 
         public FeedbackListModel GetFeedbacks(int pageSize, FeedbackSortType sortType, int page = 1)
         {
-            throw new System.NotImplementedException();
+            //throw new System.NotImplementedException();
+            return null;
         }
     }
 }

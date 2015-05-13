@@ -27,11 +27,12 @@ namespace SportSocial.Controllers
         [HttpGet]
         public ActionResult Index(int page = 1, FeedbackSortType sort = FeedbackSortType.Date)
         {
-            ViewBag.Sort = sort;
-            var feeds = _feedbackService.GetFeedbacks(PageSize, sort, page);
-            var pageList = new StaticPagedList<FeedbackPreviewModel>(feeds.PostPreview, page, PageSize,
-                feeds.PageInfo.Count);
-            return View(pageList);
+            //ViewBag.Sort = sort;
+            //var feeds = _feedbackService.GetFeedbacks(PageSize, sort, page);
+            //var pageList = new StaticPagedList<FeedbackPreviewModel>(feeds.PostPreview, page, PageSize,
+            //    feeds.PageInfo.Count);
+            //return View(pageList);
+            return View();
         }
 
         
@@ -46,6 +47,11 @@ namespace SportSocial.Controllers
                 return RedirectToAction("Index");
             }
             return View();
+        }
+
+        public ActionResult GetFeedbackTypes()
+        {
+            _feedbackService.GetFbTypes();
         }
 	}
 }
