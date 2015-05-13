@@ -347,6 +347,7 @@
       <DependentUpon>variables.css</DependentUpon>
     </Content>
     <Content Include="Content\styles\css\fortress-0.3.min.css" />
+    <Content Include="Content\styles\css\fortress-0.4.min.css" />
     <Content Include="Content\styles\other\animate.css" />
     <Content Include="Content\styles\other\font-awesome.css" />
     <Content Include="Content\styles\style.css">

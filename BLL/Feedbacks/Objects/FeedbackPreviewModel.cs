@@ -10,6 +10,7 @@ namespace BLL.Feedbacks.Objects
         public FeedbackPreviewModel()
         {
             RatingEntityType = BLL.Rating.Enums.RatingEntityType.Feedback;
+            ItemType = CommentItemType.Feedback;
             IsDisiked = false;
             IsLiked = false;
         }
@@ -23,6 +24,10 @@ namespace BLL.Feedbacks.Objects
 
         public bool IsDisiked { get; set; }
 
+        public int LikesCount { get; set; }
+
+        public int DislikesCount { get; set; }
+
         public RatingEntityType RatingEntityType { get; set; }
 
         public Comment[] Comments { get; set; }
@@ -32,6 +37,8 @@ namespace BLL.Feedbacks.Objects
         public CommentItemType ItemType { get; set; }
 
         public string Date { get; set; }
+
+        public string Time { get; set; }
 
         public string AuthorAvatar { get; set; }
 

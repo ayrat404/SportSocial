@@ -185,6 +185,7 @@
     <Compile Include="Common\Services\CurrentUser\ICurrentUser.cs" />
     <Compile Include="Feedbacks\IFeedbackService.cs" />
     <Compile Include="Feedbacks\Impls\FeedbackService.cs" />
+    <Compile Include="Feedbacks\MapProfiles\FeedbackDisplayProfile.cs" />
     <Compile Include="Feedbacks\Objects\CreateFeedbackModel.cs" />
     <Compile Include="Feedbacks\Objects\FeedbackListModel.cs" />
     <Compile Include="Feedbacks\Objects\FeedbackPreviewModel.cs" />

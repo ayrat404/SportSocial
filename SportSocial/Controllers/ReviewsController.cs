@@ -29,7 +29,7 @@ namespace SportSocial.Controllers
         {
             ViewBag.Sort = sort;
             var feeds = _feedbackService.GetFeedbacks(PageSize, sort, page);
-            var pageList = new StaticPagedList<FeedbackPreviewModel>(feeds.PostPreview, page, PageSize,
+            var pageList = new StaticPagedList<FeedbackPreviewModel>(feeds.FeedbackPreview, page, PageSize,
                 feeds.PageInfo.Count);
             return View(pageList);
         }
@@ -38,14 +38,14 @@ namespace SportSocial.Controllers
         [HttpPost]
         [CustomAntiForgeryValidator]
         [Authorize]
-        public ActionResult Add(CreateFeedbackModel feedbackModel)
+        public JsonResult Add(CreateFeedbackModel feedbackModel)
         {
             if (ModelState.IsValid)
             {
                 _feedbackService.AddFeedback(feedbackModel);
-                return RedirectToAction("Index");
+                return Json(new {success = true});
             }
-            return View();
+            return Json(new {success = false});
         }
 	}
 }
