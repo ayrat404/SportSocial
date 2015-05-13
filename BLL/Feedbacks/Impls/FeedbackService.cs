@@ -46,6 +46,9 @@ namespace BLL.Feedbacks.Impls
                 case FeedbackSortType.Comments:
                     fbsQuery = fbsQuery.OrderBy(f => f.Comments.Count);
                     break;
+                default:
+                    fbsQuery = fbsQuery.OrderBy(f => f.Id);
+                    break;
             }
             fbsList.FeedbackPreview = fbsQuery
                 .Take(take)

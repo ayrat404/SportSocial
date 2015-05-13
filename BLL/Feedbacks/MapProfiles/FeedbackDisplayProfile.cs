@@ -25,7 +25,8 @@ namespace BLL.Feedbacks.MapProfiles
                 .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src.FeedbackTypeId))
                 .ForMember(dest => dest.TypeName, opt => opt.MapFrom(src => src.FeedbackType.Label))
                 .ForMember(dest => dest.TypeName, opt => opt.MapFrom(src => src.FeedbackType.Label))
-                .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Created.ToShortDateString()))
+                .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Created.ToString("dd MMM yyyy")))
+                .ForMember(dest => dest.Time, opt => opt.MapFrom(src => src.Created.ToString("hh:mm")))
                 .ForMember(dest => dest.Rating, opt => opt.MapFrom(src => src.TotalRating))
 
                 .ForMember(dest => dest.AuthorId, opt => opt.MapFrom(src => src.UserId))

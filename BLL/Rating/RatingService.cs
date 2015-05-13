@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using BLL.Common.Objects;
 using BLL.Common.Services.CurrentUser;
@@ -25,8 +26,10 @@ namespace BLL.Rating
             //where TEntity : class, IHasRating<TEntity>
             //where TRatingEntity : class, IRatingEntity<TEntity>
         {
-            var result = new ServiceResult() {Success = true};
-            var entity = _repository.Find<TEntity>(entityId);
+            var result = new RateResult() {Success = true};
+            var entity = _repository.Queryable<TEntity>()
+                .Include(e => e.RatingEntites)
+                .SingleOrDefault(e => e.Id == entityId);
             if (entity != null)
             {
                 var ratingEntity = entity.RatingEntites.SingleOrDefault(r => r.UserId == _currentUser.UserId);
@@ -34,6 +37,7 @@ namespace BLL.Rating
                 {
                     entity.TotalRating -= (int)ratingEntity.RatingType;
                     _repository.Delete(ratingEntity);
+                    //result.
                 }
                 if (ratingEntity == null || ratingEntity.RatingType != ratingType)
                 {
@@ -47,9 +51,19 @@ namespace BLL.Rating
                     _repository.Update(entity);
                 }
                 _repository.SaveChanges();
+                var ratingEntities = entity.RatingEntites.ToList();
+                result.LikesCount = ratingEntities.Count(r => r.RatingType == RatingType.Like);
+                result.DislikesCount = ratingEntities.Count(r => r.RatingType == RatingType.Dislike);
+
                 return result;
             }
             return new ServiceResult() {Success = false};
         }
+    }
+
+    public class RateResult : ServiceResult
+    {
+        public int LikesCount { get; set; }
+        public int DislikesCount { get; set; }
     }
 }
