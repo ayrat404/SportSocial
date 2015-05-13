@@ -13,6 +13,7 @@ namespace BLL.Common.Objects
     public enum CommentItemType
     {
         Article,
-        Conference
+        Conference,
+        Feedback
     }
 }

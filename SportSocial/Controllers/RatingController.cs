@@ -7,6 +7,7 @@ using BLL.Rating;
 using BLL.Rating.Enums;
 using BLL.Rating.Models;
 using DAL.DomainModel.BlogEntities;
+using DAL.DomainModel.FeedBackEntities;
 using SportSocial.Controllers.Base;
 
 namespace SportSocial.Controllers
@@ -33,6 +34,10 @@ namespace SportSocial.Controllers
                     return typeof (Post);
                 case RatingEntityType.ArticleComment:
                     return typeof (BlogComment);
+                case RatingEntityType.Feedback:
+                    return typeof (Feedback);
+                case RatingEntityType.FeedbackComment:
+                    return typeof (FeedbackComment);
             }
             return null;
         }
@@ -45,6 +50,10 @@ namespace SportSocial.Controllers
                     return typeof (PostRating);
                 case RatingEntityType.ArticleComment:
                     return typeof (BlogCommentRating);
+                case RatingEntityType.Feedback:
+                    return typeof (FeedbackRating);
+                case RatingEntityType.FeedbackComment:
+                    return typeof (FeedbackCommentRating);
             }
             return null;
         }

@@ -27,31 +27,25 @@ namespace SportSocial.Controllers
         [HttpGet]
         public ActionResult Index(int page = 1, FeedbackSortType sort = FeedbackSortType.Date)
         {
-            //ViewBag.Sort = sort;
-            //var feeds = _feedbackService.GetFeedbacks(PageSize, sort, page);
-            //var pageList = new StaticPagedList<FeedbackPreviewModel>(feeds.PostPreview, page, PageSize,
-            //    feeds.PageInfo.Count);
-            //return View(pageList);
-            return View();
+            ViewBag.Sort = sort;
+            var feeds = _feedbackService.GetFeedbacks(PageSize, sort, page);
+            var pageList = new StaticPagedList<FeedbackPreviewModel>(feeds.FeedbackPreview, page, PageSize,
+                feeds.PageInfo.Count);
+            return View(pageList);
         }
 
         
         [HttpPost]
         [CustomAntiForgeryValidator]
         [Authorize]
-        public ActionResult Add(CreateFeedbackModel feedbackModel)
+        public JsonResult Add(CreateFeedbackModel feedbackModel)
         {
             if (ModelState.IsValid)
             {
                 _feedbackService.AddFeedback(feedbackModel);
-                return RedirectToAction("Index");
+                return Json(new {success = true});
             }
-            return View();
-        }
-
-        public ActionResult GetFeedbackTypes()
-        {
-            _feedbackService.GetFbTypes();
+            return Json(new {success = false});
         }
 	}
 }

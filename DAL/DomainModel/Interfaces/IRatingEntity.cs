@@ -2,7 +2,7 @@ using DAL.DomainModel.EnumProperties;
 
 namespace DAL.DomainModel.Interfaces
 {
-    public interface IRatingEntity<THasRatingEntity>
+    public interface IRatingEntity<THasRatingEntity>: IEntity
     {
         int UserId { get; set; }
         RatingType RatingType { get; set; }
