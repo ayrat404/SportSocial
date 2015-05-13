@@ -169,6 +169,7 @@
 
     .ri__text {
         max-width: 700px;
+        word-break: break-word;
     }
 
     .ri__icon-clock {
@@ -183,8 +184,16 @@
     }
 
     .ri__rating {
-        color: @color-blue;
+        color: @color-gray1;
         margin-top: 12px;
+    }
+
+    .ri__rating--plus {
+        color: @color-blue;
+    }
+
+    .ri__rating--minus {
+        color: @color-red;
     }
 
     .ri__progress {

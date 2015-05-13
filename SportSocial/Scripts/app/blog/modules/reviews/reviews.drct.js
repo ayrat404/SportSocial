@@ -50,14 +50,14 @@ angular
                             },
                             ratingClasses = {
                                 minus: 'ri__rating--minus',
-                                plus: 'ri__rating--minus'
+                                plus: 'ri__rating--plus'
                             };
 
                         $wrap.on('click', select.act, function() {
                             var $this = ae(this),
                                 $parent = $this.parent(),
-                                $rating = $this.siblings(select.total),
-                                $bar = $this.siblings(select.progress).find(select.bar),
+                                $rating = $parent.siblings(select.total),
+                                $bar = $parent.siblings(select.progress).find(select.bar),
                                 //currentAction = $parent.find(select.act + '.active').length ? $parent.find(select.act + '.active').data('action') : null,
                                 data = {
                                     id: $parent.data('id'),
@@ -82,6 +82,7 @@ angular
                                             ratingText = '-' + rating;
                                         } else {
                                             ratingClass = '';
+                                            ratingText = 0;
                                         }
 
                                         if (!$rating.hasClass(ratingClass)) {
@@ -102,7 +103,8 @@ angular
 
                                         // change progress width
                                         // ----------
-                                        $bar.css({ width: total / res.data.likesCount + '%' });
+                                        total = total == 0 ? 1 : total;
+                                        $bar.css({ width: res.data.likesCount / total * 100 + '%' });
 
                                         // set like/dislike active class
                                         // ----------
