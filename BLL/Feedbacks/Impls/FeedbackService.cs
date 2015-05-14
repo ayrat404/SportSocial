@@ -18,11 +18,17 @@ namespace BLL.Feedbacks.Impls
             _repository = repository;
         }
 
-        public void AddFeedback(CreateFeedbackModel createModel)
+        public FeedbackPreviewModel AddFeedback(CreateFeedbackModel createModel)
         {
             var fb = createModel.MapTo<Feedback>();
             _repository.Add(fb);
             _repository.SaveChanges();
+            fb = _repository.Queryable<Feedback>()
+                .Include(f => f.Comments)
+                .Include(f => f.RatingEntites)
+                .Include(f => f.User)
+                .Single(f => f.Id == fb.Id);
+            return fb.MapTo<FeedbackPreviewModel>();
         }
 
         public FeedbackListModel GetFeedbacks(int pageSize, FeedbackSortType sortType, int page = 1)
