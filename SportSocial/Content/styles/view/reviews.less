@@ -169,6 +169,7 @@
 
     .ri__text {
         max-width: 700px;
+        word-break: break-word;
     }
 
     .ri__icon-clock {
@@ -183,8 +184,16 @@
     }
 
     .ri__rating {
-        color: @color-blue;
+        color: @color-gray1;
         margin-top: 12px;
+    }
+
+    .ri__rating--plus {
+        color: @color-blue;
+    }
+
+    .ri__rating--minus {
+        color: @color-red;
     }
 
     .ri__progress {
@@ -201,26 +210,27 @@
     .ri__actions {
         margin-top: 7px;
 
-        .ri__like,
-        .ri__dislike {
+        .ri__act {
             margin: 0 6px;
             cursor: pointer;
         }
 
-        .ri__like {
+        .ri__act--like {
             .sprite(@like-md);
             display: inline-block;
 
-            &:hover {
+            &:hover,
+            &.active {
                 .sprite(@like-md-hover);
             }
         }
 
-        .ri__dislike {
+        .ri__act--dislike {
             .sprite(@dislike-md);
             display: inline-block;
 
-            &:hover {
+            &:hover,
+            &.active {
                 .sprite(@dislike-md-hover);
             }
         }

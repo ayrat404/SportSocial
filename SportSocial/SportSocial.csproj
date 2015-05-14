@@ -1142,6 +1142,7 @@
     <Content Include="Views\Shared\Partials\Video.cshtml" />
     <Content Include="Views\Shared\Partials\HeaderMobile.cshtml" />
     <Content Include="Views\Reviews\Index.cshtml" />
+    <Content Include="Views\Reviews\Shared\Partials\Review.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

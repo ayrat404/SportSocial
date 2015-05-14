@@ -1,4 +1,5 @@
-﻿@model SportSocial.Controllers.SettingsModel
+﻿@using BLL.Feedbacks.Objects
+@model PagedList.IPagedList<BLL.Feedbacks.Objects.FeedbackPreviewModel>
 @{
     ViewBag.Title = "Fortress - Отзывы";
     Layout = "../Blog/Shared/Layouts/BlogLayout.cshtml";
@@ -6,6 +7,7 @@
 
 <div class="container"
      ng-controller="ReviewsCtrl"
+     data-reviews
      ng-cloak>
     <div class="row">
         <div class="col-xs-12">
@@ -19,19 +21,19 @@
                             <span class="rs__text">Сортировать по:</span>
                             <ul class="rs__links">
                                 <li class="rs__links__it">
-                                    <a href="#" class="btn btn--st1 rs-active">
+                                    <a href="@Url.Action("Index", "Reviews", new { sort = FeedbackSortType.Rating })" class="btn btn--st1@(ViewBag.Sort == FeedbackSortType.Rating ? " rs-active" : "")">
                                         <span class="rs__icon rs__icon--voite"></span>
                                         Голосам
                                     </a>
                                 </li>
                                 <li class="rs__links__it">
-                                    <a href="#" class="btn btn--st1">
+                                    <a href="@Url.Action("Index", "Reviews", new { sort = FeedbackSortType.Date })" class="btn btn--st1@(ViewBag.Sort == FeedbackSortType.Date ? " rs-active" : "")">
                                         <span class="rs__icon rs__icon--date"></span>
                                         Дате
                                     </a>
                                 </li>
                                 <li class="rs__links__it">
-                                    <a href="#" class="btn btn--st1">
+                                    <a href="@Url.Action("Index", "Reviews", new { sort = FeedbackSortType.Comments })" class="btn btn--st1@(ViewBag.Sort == FeedbackSortType.Comments ? " rs-active" : "")">
                                         <span class="rs__icon rs__icon--comments"></span>
                                         Комментариям
                                     </a>
@@ -47,11 +49,8 @@
                                     <div class="rf__type-wrap">
                                         <span class="rf__type__text">Я хочу</span>
                                         <select ng-model="m.type"
-                                                class="rf__type__select">
-                                            <option>Предложить идею</option>
-                                            <option>Задать вопрос</option>
-                                            <option>Оставить благодарность</option>
-                                        </select>
+                                                ng-options="item.id as item.name for item in types"
+                                                class="rf__type__select"></select>
                                         <div class="rf__min">Напишите ещё хотя бы {{ minlength-m.text.length | formatWord:['символ', 'символа', 'символов']:true}}</div>
                                     </div>
                                     <button ng-disabled="m.text.length < minlength"
@@ -66,72 +65,10 @@
                             </div>
                         </form>
                         <ul class="reviews__list">
-                            <li class="reviews__it">
-                                <div class="ri__about">
-                                    <div class="ri__info">
-                                        <div class="ri__icon-clock"></div>
-                                        <div class="ri__date">29 АПР 2015<br />14:37</div>
-                                        <div class="ri__rating">+174</div>
-                                        <div class="ri__progress">
-                                            <div class="ri__bar" style="width: 66%;"></div>
-                                        </div>
-                                        <div class="ri__actions">
-                                            <div class="ri__like"></div>
-                                            <div class="ri__dislike"></div>
-                                        </div>
-                                    </div>
-                                    <div class="ri__avatar-wrap">
-                                        <img src="#" alt="#" class="ri__avatar" />
-                                    </div>
-                                </div>
-                                <div class="ri__content">
-                                    <div class="ri__authorname">Ганнибал Андреев</div>
-                                    <div class="ri__type ri__type--idea">
-                                        предложил идею
-                                    </div>
-                                    <div class="ri__text">
-                                        Русскому царю телеграмму объяснить, как очутился. Была гордая и спал с точками на стене висели фрукты с дочерью. Зад в космос постель медвежонка. Наглым oбразoм приставала к берегу передо мной сидело невиданное. Я бросился спать и молчалина произошел. Вошел негр, румяный с нежностью смотрели друг. Ледяную воду.. русской натурой, очень любила. Осталось ни одного ласкового слова, кроме слова дура глаза с точками.
-                                    </div>
-                                    <div class="ri__comments-show">
-                                        <span class="ri__comments-show__icon"></span>
-                                        Показать комментарии: 0
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="reviews__it">
-                                <div class="ri__about">
-                                    <div class="ri__info">
-                                        <div class="ri__icon-clock"></div>
-                                        <div class="ri__date">29 АПР 2015<br />14:37</div>
-                                        <div class="ri__rating">+174</div>
-                                        <div class="ri__progress">
-                                            <div class="ri__bar" style="width: 66%;"></div>
-                                        </div>
-                                        <div class="ri__actions">
-                                            <div class="ri__like"></div>
-                                            <div class="ri__dislike"></div>
-                                        </div>
-                                    </div>
-                                    <div class="ri__avatar-wrap">
-                                        <img src="#" alt="#" class="ri__avatar" />
-                                    </div>
-                                </div>
-                                <div class="ri__content">
-                                    <div class="ri__authorname">Ганнибал Андреев</div>
-                                    <div class="ri__type ri__type--idea">
-                                        предложил идею
-                                    </div>
-                                    <div class="ri__text">
-                                        Русскому царю телеграмму объяснить, как очутился. Была гордая и спал с точками на стене висели фрукты с дочерью. Зад в космос постель медвежонка. Наглым oбразoм приставала к берегу передо мной сидело невиданное. Я бросился спать и молчалина произошел. Вошел негр, румяный с нежностью смотрели друг. Ледяную воду.. русской натурой, очень любила. Осталось ни одного ласкового слова, кроме слова дура глаза с точками.
-                                    </div>
-                                    <div class="ri__comments-show">
-                                        <span class="ri__comments-show__icon"></span>
-                                        Показать комментарии: 0
-                                    </div>
-                                </div>
-                            </li>
-
+                            @foreach (var item in Model)
+                            {
+                                @Html.Partial("Shared/Partials/Review", item);
+                            }
                         </ul>
                     </div>
                 </div>

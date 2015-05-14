@@ -5,6 +5,7 @@ using BLL.Comments.Objects;
 using BLL.Common.Objects;
 using DAL.DomainModel.BlogEntities;
 using DAL.DomainModel.ConferenceEntities;
+using DAL.DomainModel.FeedBackEntities;
 using SportSocial.Controllers.Base;
 
 namespace SportSocial.Controllers
@@ -48,6 +49,8 @@ namespace SportSocial.Controllers
                     return typeof (Post);
                 case CommentItemType.Conference:
                     return typeof (Conference);
+                case CommentItemType.Feedback:
+                    return typeof (Feedback);
             }
             return null;
         }
@@ -60,6 +63,8 @@ namespace SportSocial.Controllers
                     return typeof (BlogComment);
                 case CommentItemType.Conference:
                     return typeof(ConferenceComment);
+                case CommentItemType.Feedback:
+                    return typeof (FeedbackComment);
             }
             return null;
         }

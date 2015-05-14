@@ -1,0 +1,66 @@
+﻿@using BLL.Feedbacks.Objects
+@model BLL.Feedbacks.Objects.FeedbackPreviewModel
+@{
+    Layout = null;
+}
+@{
+    int total = Model.LikesCount + Model.DislikesCount;
+    total = total == 0 ? 1 : total;
+    int bar = (Model.LikesCount) / total * 100;
+}
+<li class="reviews__it">
+    <div class="ri__about">
+        <div class="ri__info">
+            <div class="ri__icon-clock"></div>
+            <div class="ri__date">@Model.Date<br />@Model.Time</div>
+            <div class="ri__rating@(Model.Rating < 0 ? " ri__rating--minus" : Model.Rating > 0 ? " ri__rating--plus" : "")">@Model.Rating.ToString()</div>
+            <div class="ri__progress">
+                <div class="ri__bar" style="width: @bar%;"></div>
+            </div>
+            <div class="ri__actions"
+                 data-id="@Model.Id"
+                 data-likes="@Model.LikesCount"
+                 data-dislikes="@Model.DislikesCount"
+                 data-type="@Model.ItemType">
+                <div class="ri__act ri__act--like@(Model.IsLiked ? " active" : "")" data-action="like"></div>
+                <div class="ri__act ri__act--dislike@(Model.IsDisiked ? " active" : "")" data-action="dislike"></div>
+            </div>
+        </div>
+        <div class="ri__avatar-wrap">
+            <img src="@Model.AuthorAvatar?width=90&height=90&mode=crop" alt="@Model.AuthorName" class="ri__avatar" />
+        </div>
+    </div>
+    <div class="ri__content">
+        <div class="ri__authorname">@Model.AuthorName</div>
+        @switch (Model.Type)
+        {
+            case (1):
+                <div class="ri__type ri__type--idea">
+                    предложил(а) идею
+                </div>
+                break;
+            case (2):
+                <div class="ri__type ri__type--question">
+                    задал(а) вопрос
+                </div>
+                break;
+            case (3):
+                <div class="ri__type ri__type--thank">
+                    поблагодарил(а)
+                </div>
+                break;
+            default:
+                break;
+        }
+        <div class="ri__text">
+            @Model.Text
+        </div>
+        <div class="ri__comments-show">
+            <span class="ri__comments-show__icon"></span>
+            <span class="ri__comments-show__text">Показать комментарии</span>: @Model.TotalCommentsCount
+        </div>
+        <div class="ri__comments-list hidden">
+            @Html.Partial("Partials/Comments", Model)
+        </div>
+    </div>
+</li>

@@ -8,7 +8,7 @@ angular
         var send = function (action, obj) {
             return $http({
                 method: 'POST',
-                url: '/Review/' + action,
+                url: '/Reviews/' + action,
                 data: serializeObj(obj),
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             });
@@ -16,7 +16,7 @@ angular
 
         return {
             create: function (obj) {
-                return send('Create', obj);
+                return send('Add', obj);
             }
         }
     }]);
