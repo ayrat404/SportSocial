@@ -4,9 +4,7 @@
 // ---------------
 angular.module('blog').controller('ReviewsCtrl',
     ['$scope',
-     'reviewsRqst',
-     'utilsSrvc',
-function ($scope, reviewsRqst, utilsSrvc) {
+function ($scope) {
     $scope.m = {};
 
     $scope.minlength = 100; // review minlength
@@ -17,17 +15,4 @@ function ($scope, reviewsRqst, utilsSrvc) {
         { name: 'Оставить благодарность', id: 3 }
     ];
     $scope.m.type = 1;
-
-
-    // create review
-    // ---------------
-    $scope.createReview = function(data) {
-        reviewsRqst.create(utilsSrvc.token.add(data))
-            .then(function(res) {
-                if (res.success) {
-                    // prepend to list
-                }
-            });
-    }
-
 }]);

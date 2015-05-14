@@ -5,10 +5,12 @@
 angular
     .module('blog')
     .directive('reviews',
-    [   'ratingRqst',
+    ['ratingRqst',
+        'reviewsRqst',
         'utilsSrvc',
         function
         (ratingRqst,
+            reviewsRqst,
             utilsSrvc) {
             return {
                 restrict: 'A',
@@ -120,6 +122,17 @@ angular
 
                     })();
 
+                    // add new review
+                    // ----------
+                    scope.createReview = function (data) {
+                        reviewsRqst.create(utilsSrvc.token.add(data))
+                            .then(function (res) {
+                                if (res.data.success) {
+                                    scope.m.text = '';
+                                    $('.reviews__list').prepend(res.content);
+                                }
+                            });
+                    }
 
                 }
             }
