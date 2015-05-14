@@ -41,13 +41,13 @@ namespace BLL.Feedbacks.Impls
             switch (sortType)
             {
                 case FeedbackSortType.Rating:
-                    fbsQuery = fbsQuery.OrderBy(f => f.FeedbackType);
+                    fbsQuery = fbsQuery.OrderByDescending(f => f.TotalRating);
                     break;
                 case FeedbackSortType.Comments:
-                    fbsQuery = fbsQuery.OrderBy(f => f.Comments.Count);
+                    fbsQuery = fbsQuery.OrderByDescending(f => f.Comments.Count);
                     break;
                 default:
-                    fbsQuery = fbsQuery.OrderBy(f => f.Id);
+                    fbsQuery = fbsQuery.OrderByDescending(f => f.Id);
                     break;
             }
             fbsList.FeedbackPreview = fbsQuery
