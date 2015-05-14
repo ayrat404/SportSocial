@@ -154,6 +154,7 @@
     <Compile Include="Comments\MapProfiles\CreateCommentProfile.cs" />
     <Compile Include="Blog\MapProfiles\PostForAdminProfile.cs" />
     <Compile Include="Blog\ViewModels\PostDisplayModel.cs" />
+    <Compile Include="Comments\MapProfiles\FeedbackCommentsProfile.cs" />
     <Compile Include="Comments\Objects\Comment.cs" />
     <Compile Include="Comments\Objects\CommentFor.cs" />
     <Compile Include="Comments\Objects\CreateComment.cs" />
