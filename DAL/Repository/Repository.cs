@@ -34,6 +34,7 @@ namespace DAL.Repository
 
         public void Add<TEntity>(TEntity entity) where TEntity: class
         {
+            //_context.Entry(entity).Re
             if (entity is IAuditable)
             {
                 _context.Entry(entity).Property("Created").CurrentValue = DateTime.Now;

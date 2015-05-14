@@ -42,8 +42,9 @@ namespace SportSocial.Controllers
         {
             if (ModelState.IsValid)
             {
-                _feedbackService.AddFeedback(feedbackModel);
-                return Json(new {success = true});
+                var fbDisplay = _feedbackService.AddFeedback(feedbackModel);
+                var content = RenderPartialToString("~/Views/Reviews/Shared/Partials/Review.cshtml", fbDisplay);
+                return Json(new {success = true, content});
             }
             return Json(new {success = false});
         }
