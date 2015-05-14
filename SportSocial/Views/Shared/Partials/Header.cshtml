@@ -37,6 +37,7 @@
                 @if (!CurrentUser.IsAnonimous)
                 {
                     <div class="nav__user"
+                         ng-cloak
                          click-outside="fn.closeHeaderMenu();">
                         @if (CurrentUser.User.Profile.IsPaid)
                         {

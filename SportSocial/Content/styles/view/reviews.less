@@ -143,6 +143,7 @@
 .reviews__it {
     padding: 30px 0 30px 70px;
     border-bottom: 1px solid @color-blog-bg;
+    transition: background-color 200ms linear;
     .no-float;
 
     .ri__about {
@@ -303,6 +304,10 @@
             display: none;
         }
     }
+}
+
+.reviews__it--new {
+    background-color: lighten(@color-blue, 30%);
 }
 /* /Reviews
 ---------------------------------------------------------------------------------- */

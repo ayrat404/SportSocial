@@ -8,15 +8,20 @@ angular
     ['ratingRqst',
         'reviewsRqst',
         'utilsSrvc',
+        '$timeout',
+        '$compile',
         function
         (ratingRqst,
             reviewsRqst,
-            utilsSrvc) {
+            utilsSrvc,
+            $timeout,
+            $compile) {
             return {
                 restrict: 'A',
                 link: function(scope, element, attr) {
                     var ae = angular.element,
-                        $wrap = ae(element);
+                        $wrap = ae(element),
+                        newReviewClass = 'reviews__it--new';
 
                     // show/hide comments
                     // ----------
@@ -128,8 +133,13 @@ angular
                         reviewsRqst.create(utilsSrvc.token.add(data))
                             .then(function (res) {
                                 if (res.data.success) {
+                                    var $el = ae($compile(res.data.content)(scope));
                                     scope.m.text = '';
-                                    $('.reviews__list').prepend(res.content);
+                                    $('.reviews__list').prepend($el);
+                                    $el.addClass(newReviewClass);
+                                    $timeout(function() {
+                                        $el.removeClass(newReviewClass);
+                                    }, 1500);
                                 }
                             });
                     }
