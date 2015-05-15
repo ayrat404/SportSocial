@@ -22,8 +22,16 @@
                  data-likes="@Model.LikesCount"
                  data-dislikes="@Model.DislikesCount"
                  data-type="@Model.ItemType">
-                <div class="ri__act ri__act--like@(Model.IsLiked ? " active" : "")" data-action="like"></div>
-                <div class="ri__act ri__act--dislike@(Model.IsDisiked ? " active" : "")" data-action="dislike"></div>
+                @if (CurrentUser.IsAnonimous)
+                {
+                    <div class="ri__act ri__act--like" data-toggle="tooltip" data-placement="top" title="зарегистрируйтесь"></div>
+                    <div class="ri__act ri__act--dislike" data-toggle="tooltip" data-placement="top" title="зарегистрируйтесь"></div>
+                }
+                else
+                {
+                    <div class="ri__act ri__act--like@(Model.IsLiked ? " active" : "")" data-action="like"></div>
+                    <div class="ri__act ri__act--dislike@(Model.IsDisiked ? " active" : "")" data-action="dislike"></div>
+                }
             </div>
         </div>
         <div class="ri__avatar-wrap">
@@ -63,4 +71,8 @@
             @Html.Partial("Partials/Comments", Model)
         </div>
     </div>
+    @if (CurrentUser.IsAdmin || CurrentUser.UserId == Model.AuthorId)
+    {
+        <div class="reviews__it__remove js-review__remove" data-id="@Model.Id"></div>
+    }
 </li>

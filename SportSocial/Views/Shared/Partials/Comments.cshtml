@@ -37,16 +37,23 @@
                     Ответ для <span class="link" ng-click="scrollToFor(c.commentFor.id)">{{c.commentFor.name}}</span>
                 </div>
             </div>
-            <form ng-submit="createComment(text)"
+            <form ng-submit="createComment(m)"
                   class="comment__form">
-                <textarea ng-model="text"
+                <textarea ng-model="m.text"
                           ng-autofocus="{{focus}}"
-                          ng-class="{ 'input--active': text.length }"
+                          ng-class="{ 'input--active': m.text.length }"
                           scroll-to-current-pos="{{focus}}"
                           param-dopscroll="100" 
                           class="input"
                           placeholder="Комментировать..."></textarea>
                 <div class="comment__form__bottom">
+                    @if (CurrentUser.IsAdmin)
+                    {
+                        <label>
+                            <input type="checkbox" ng-model="m.byFortress" />
+                            От имени Fortress
+                        </label>
+                    }
                     <button type="submit" class="btn btn--main btn--xs">Отправить</button>
                 </div>
             </form>

@@ -1,9 +1,9 @@
 {
   "name": "fortress",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "homepage": "http://fortress.club",
   "author": "UniqLab",
-  "style": "fortress-0.6.min.css",
+  "style": "fortress-0.7.min.css",
   "output": "Content/styles/css",
   "less": "Content/styles/style.less",
   "devDependencies": {
