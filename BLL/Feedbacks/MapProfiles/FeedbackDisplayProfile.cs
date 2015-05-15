@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Globalization;
+using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
 using BLL.Common.Services.CurrentUser;
@@ -26,7 +27,7 @@ namespace BLL.Feedbacks.MapProfiles
                 .ForMember(dest => dest.TypeName, opt => opt.MapFrom(src => src.FeedbackType.Label))
                 .ForMember(dest => dest.TypeName, opt => opt.MapFrom(src => src.FeedbackType.Label))
                 .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Created.ToString("dd MMM yyyy")))
-                .ForMember(dest => dest.Time, opt => opt.MapFrom(src => src.Created.ToString("hh:mm")))
+                .ForMember(dest => dest.Time, opt => opt.MapFrom(src => src.Created.ToString(CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern)))
                 .ForMember(dest => dest.Rating, opt => opt.MapFrom(src => src.TotalRating))
 
                 .ForMember(dest => dest.AuthorId, opt => opt.MapFrom(src => src.UserId))

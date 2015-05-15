@@ -18,5 +18,7 @@ namespace BLL.Comments.Objects
         public int ItemId { get; set; }
 
         public int? CommentForId { get; set; }
+
+        public bool ByFortress { get; set; }
     }
 }

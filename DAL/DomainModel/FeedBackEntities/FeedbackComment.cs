@@ -23,6 +23,8 @@ namespace DAL.DomainModel.FeedBackEntities
 
         public int TotalRating { get; set; }
 
+        public bool ByFortress { get; set; }
+
         [ForeignKey("CommentedEntityId")]
         public virtual Feedback CommentedEntity { get; set; }
 

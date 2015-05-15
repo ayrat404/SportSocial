@@ -9,6 +9,9 @@ namespace DAL.DomainModel.BlogEntities
     {
         public int Id { get; set; }
         public string Text { get; set; }
+
+        public bool ByFortress { get; set; }
+
         public int TotalRating { get; set; }
         public int UserId { get; set; }
         public int? CommentForId { get; set; }

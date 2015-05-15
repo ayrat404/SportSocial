@@ -26,6 +26,7 @@ namespace BLL.Login.Impls
         private readonly ICurrentUser _currentUser;
 
         public const string DefaultAvatarUrl = "/Content/Images/default-avatar.png";
+        public const string DefaultFortressAvatar = "/Content/Images/fortress-avatar.png";
 
         public LoginService(ISmsService smsService, AppUserManager appUserManager, IAuthenticationManager authManager, IRepository repository, ICurrentUser currentUser)
         {

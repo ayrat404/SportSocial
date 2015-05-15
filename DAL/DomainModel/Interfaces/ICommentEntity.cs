@@ -4,6 +4,7 @@ namespace DAL.DomainModel.Interfaces
         where TCommentedEntity: class
     {
         string Text { get; set; }
+        bool ByFortress { get; set; }
         int UserId { get; set; }
         int? CommentForId { get; set; }
         int CommentedEntityId { get; set; }

@@ -148,6 +148,10 @@
     <Compile Include="Migrations\201505121250082_FeedBackTables.Designer.cs">
       <DependentUpon>201505121250082_FeedBackTables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505151423181_ByFortressFieldForComments.cs" />
+    <Compile Include="Migrations\201505151423181_ByFortressFieldForComments.Designer.cs">
+      <DependentUpon>201505151423181_ByFortressFieldForComments.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AccountRepository.cs" />
@@ -184,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505121250082_FeedBackTables.resx">
       <DependentUpon>201505121250082_FeedBackTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505151423181_ByFortressFieldForComments.resx">
+      <DependentUpon>201505151423181_ByFortressFieldForComments.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

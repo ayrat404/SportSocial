@@ -115,7 +115,7 @@ namespace BLL.Blog.Impls
             {
                 postVm.RubricTitle = "Новости Fortress";
                 postVm.AuthorName = "Fortress";
-                postVm.AuthorAvatar = LoginService.DefaultAvatarUrl;
+                postVm.AuthorAvatar = LoginService.DefaultFortressAvatar;
             }
             return postVm;
         }

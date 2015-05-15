@@ -13,6 +13,7 @@ namespace DAL.DomainModel.ConferenceEntities
         public int UserId { get; set; }
         public int? CommentForId { get; set; }
         public int CommentedEntityId { get; set; }
+        public bool ByFortress { get; set; }
         public DateTime Created { get; set; }
         public DateTime Modified { get; set; }
         public bool Deleted { get; set; }

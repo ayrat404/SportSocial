@@ -48,5 +48,15 @@ namespace SportSocial.Controllers
             }
             return Json(new {success = false});
         }
+
+        //[HttpPost]
+        [HttpGet]
+        //[CustomAntiForgeryValidator]
+        [Authorize]
+        public JsonResult Remove(int id)
+        {
+            _feedbackService.Remove(id);
+            return Json(new {success = true});
+        }
 	}
 }

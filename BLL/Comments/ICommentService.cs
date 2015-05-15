@@ -42,6 +42,7 @@ namespace BLL.Comments
                 comment.CommentedEntityId = createCommentViewModel.ItemId;
                 comment.UserId = _currentUser.UserId;
                 comment.Text = createCommentViewModel.Text;
+                comment.ByFortress = _currentUser.IsAdmin ? createCommentViewModel.ByFortress : false;
                 _repository.Add(comment);
                 _repository.SaveChanges();
                 

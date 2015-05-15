@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-xs-12">
                 <label>
-                    <input type="checkbox" ng-model="ar.isFortressNews" /> @*@(Model.IsFortressNews ? "checked" : "") />*@
+                    <input type="checkbox" ng-model="ar.isfortressnews" /> @*@(Model.IsFortressNews ? "checked" : "") />*@
                     Это новость Fortress
                 </label>
             </div>
@@ -34,7 +34,7 @@
             <input ng-model="ar.title" required type="text" class="input" placeholder="Заголовок статьи" />
         </div>
     </div>
-    <div class="row" ng-if="ar.isFortressNews == undefined || !ar.isFortressNews">
+    <div class="row" ng-if="ar.isfortressnews == undefined || !ar.isfortressnews">
         <div class="col-sm-4">
             <div class="blog-form__desc">Рубрика</div>
         </div>

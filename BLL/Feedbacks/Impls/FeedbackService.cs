@@ -2,6 +2,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Reflection.Emit;
 using BLL.Common.Objects;
+using BLL.Common.Services.CurrentUser;
 using BLL.Feedbacks.Objects;
 using BLL.Infrastructure.Map;
 using DAL.DomainModel.FeedBackEntities;
@@ -12,6 +13,7 @@ namespace BLL.Feedbacks.Impls
     public class FeedbackService : IFeedbackService
     {
         private readonly IRepository _repository;
+        private readonly ICurrentUser _currentUser;
 
         public FeedbackService(IRepository repository)
         {
@@ -63,6 +65,18 @@ namespace BLL.Feedbacks.Impls
                 .MapEachTo<FeedbackPreviewModel>();
 
             return fbsList;
+        }
+
+        public void Remove(int id)
+        {
+            var fb = _repository.Find<Feedback>(id);
+            if (fb == null)
+                return;
+            if (_currentUser.IsAdmin || _currentUser.UserId == fb.UserId)
+            {
+                _repository.Delete(fb);
+                _repository.SaveChanges();
+            }
         }
     }
 }
