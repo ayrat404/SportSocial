@@ -1,0 +1,28 @@
+﻿@{
+    Layout = null
+}
+
+<form class="reviews__form"
+      ng-class="{ 'reviews__form--active': m.text.length,
+                              'reviews__form--valid': m.text.length >= minlength}"
+      ng-submit="createReview(m)">
+    <div class="row">
+        <div class="col-sm-5 col-md-4 col-lg-3">
+            <div class="rf__type-wrap">
+                <span class="rf__type__text">Я хочу</span>
+                <select ng-model="m.type"
+                        ng-options="item.id as item.name for item in types"
+                        class="rf__type__select"></select>
+                <div class="rf__min">Напишите ещё хотя бы {{ minlength-m.text.length | formatWord:['символ', 'символа', 'символов']:true}}</div>
+            </div>
+            <button ng-disabled="m.text.length < minlength"
+                    type="submit" class="btn btn--main">
+                Отправить
+            </button>
+        </div>
+        <div class="col-sm-7 col-md-8 col-lg-9">
+            <textarea ng-model="m.text"
+                      class="rf__text" placeholder="Введите текст..."></textarea>
+        </div>
+    </div>
+</form>
