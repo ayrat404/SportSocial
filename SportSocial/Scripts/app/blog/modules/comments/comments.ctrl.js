@@ -101,29 +101,30 @@ function ($scope, commentsRqst, utilsSrvc, $window, $timeout) {
 
     // отправка данных для создания комментария или ответа
     // ---------------
-    $scope.createComment = function (text) {
+    $scope.createComment = function (d) {
         var data = {};
+        angular.extend(data, d);
         data.itemId = $scope.itemId;
         data.itemType = $scope.itemType;
         if (prop.isAnswer) {    // если создается ответ на комментарий
             data.commentType = 'answer';
             data.commentForId = prop.answerFor.id;
-            data.text = text.substr(prop.answerFor.name.length + 2, text.length-1);
+            data.text = d.text.substr(prop.answerFor.name.length + 2, d.text.length - 1);
         } else {                // если создается комментарий
             data.commentType = 'comment';
-            data.text = text;
+            data.text = d.text;
         }
         commentsRqst.createComment(utilsSrvc.token.add(data))
-            .then(function(res) {
+            .then(function (res) {
                 if (res.data.success) {
                     $scope.comments.push(res.data.comment);
-                    $scope.text = '';
+                    $scope.m.text = '';
                 } else {
                     $scope.er.create = true;
                 }
-            }, function() {
+            }, function () {
                 $scope.er.server = true;
-            }).finally(function() {
+            }).finally(function () {
                 $scope.ld.creating = false;
             });
     }

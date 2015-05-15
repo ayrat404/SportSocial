@@ -5,7 +5,7 @@
 angular.module('blog').controller('ReviewsCtrl',
     ['$scope',
 function ($scope) {
-    $scope.m = {};
+    $scope.reviewForm = {};
 
     $scope.minlength = 100; // review minlength
 
@@ -14,5 +14,5 @@ function ($scope) {
         { name: 'Задать вопрос', id: 2 },
         { name: 'Оставить благодарность', id: 3 }
     ];
-    $scope.m.type = 1;
+    $scope.reviewForm.type = 1;
 }]);

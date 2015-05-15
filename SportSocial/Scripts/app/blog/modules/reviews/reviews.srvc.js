@@ -17,6 +17,9 @@ angular
         return {
             create: function (obj) {
                 return send('Add', obj);
+            },
+            remove: function(obj) {
+                return send('Remove', obj);
             }
         }
     }]);

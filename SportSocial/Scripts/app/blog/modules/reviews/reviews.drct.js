@@ -127,22 +127,44 @@ angular
 
                     })();
 
+                    // remove review
+                    // ----------
+                    (function () {
+                        var select = {
+                            remove: '.js-review__remove',
+                            reviewItem: '.reviews__it'
+                        };
+                        $wrap.on('click', select.remove, function () {
+                            var id = ae(this).data('id'),
+                                $item = ae(this).parent(select.reviewItem);
+                            reviewsRqst.remove(utilsSrvc.token.add({id: id}))
+                                .then(function (res) {
+                                    if (res.data.success) {
+                                        if ($item.length)
+                                            $item.remove();
+                                    } else {
+                                        // todo: общая система вывода сообщений
+                                    }
+                                });
+                        });
+                    })();
+
                     // add new review
                     // ----------
-                    scope.createReview = function (data) {
-                        reviewsRqst.create(utilsSrvc.token.add(data))
-                            .then(function (res) {
-                                if (res.data.success) {
-                                    var $el = ae($compile(res.data.content)(scope));
-                                    scope.m.text = '';
-                                    $('.reviews__list').prepend($el);
-                                    $el.addClass(newReviewClass);
-                                    $timeout(function() {
-                                        $el.removeClass(newReviewClass);
-                                    }, 1500);
-                                }
-                            });
-                    }
+                    scope.createReview = function(data) {
+                            reviewsRqst.create(utilsSrvc.token.add(data))
+                                .then(function(res) {
+                                    if (res.data.success) {
+                                        var $el = ae($compile(res.data.content)(scope));
+                                        scope.reviewForm.text = '';
+                                        $('.reviews__list').prepend($el);
+                                        $el.addClass(newReviewClass);
+                                        $timeout(function() {
+                                            $el.removeClass(newReviewClass);
+                                        }, 1500);
+                                    }
+                                });
+                        }
 
                 }
             }
