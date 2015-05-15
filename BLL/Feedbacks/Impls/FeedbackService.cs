@@ -15,9 +15,10 @@ namespace BLL.Feedbacks.Impls
         private readonly IRepository _repository;
         private readonly ICurrentUser _currentUser;
 
-        public FeedbackService(IRepository repository)
+        public FeedbackService(IRepository repository, ICurrentUser currentUser)
         {
             _repository = repository;
+            _currentUser = currentUser;
         }
 
         public FeedbackPreviewModel AddFeedback(CreateFeedbackModel createModel)
