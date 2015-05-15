@@ -273,6 +273,7 @@
     <Content Include="Content\images\courses\imgs\7.jpg" />
     <Content Include="Content\images\courses\imgs\8.jpg" />
     <Content Include="Content\images\default-avatar.png" />
+    <Content Include="Content\images\fortress-avatar.jpg" />
     <Content Include="Content\images\icons\logo-shape.png" />
     <Content Include="Content\images\icons\logo.png" />
     <Content Include="Content\images\icons\payed.png" />

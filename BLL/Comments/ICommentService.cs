@@ -48,8 +48,8 @@ namespace BLL.Comments
                 
                 //var blogComment = _repository.Find<TCommentEntity>(comment.Id);
                 var resultComment = comment.MapTo<Comment>();
-                resultComment.Name = _currentUser.UserName;
-                resultComment.Avatar = _currentUser.User.Profile.Avatar;
+                //resultComment.Name = _currentUser.UserName;
+                //resultComment.Avatar = _currentUser.User.Profile.Avatar;
                 if (createCommentViewModel.CommentForId.HasValue && resultComment.CommentFor == null)
                 {
                     comment = _repository.Find<TCommentEntity>(createCommentViewModel.CommentForId);
