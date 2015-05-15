@@ -50,7 +50,7 @@ namespace SportSocial.Controllers
         }
 
         //[HttpPost]
-        [HttpGet]
+        [HttpPost]
         //[CustomAntiForgeryValidator]
         [Authorize]
         public JsonResult Remove(int id)
