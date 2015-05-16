@@ -29,7 +29,7 @@ namespace DAL.DomainModel.FeedBackEntities
         public virtual Feedback CommentedEntity { get; set; }
 
         [ForeignKey("CommentForId")]
-        public FeedbackComment CommentFor { get; set; }
+        public virtual FeedbackComment CommentFor { get; set; }
 
         public virtual AppUser User { get; set; }
 

@@ -20,7 +20,7 @@ namespace DAL.DomainModel.ConferenceEntities
 
 
         [ForeignKey("CommentForId")]
-        public ConferenceComment CommentFor { get; set; }
+        public virtual ConferenceComment CommentFor { get; set; }
         [ForeignKey("CommentedEntityId")]
         public virtual Conference CommentedEntity { get; set; }
         public virtual AppUser User { get; set; }
