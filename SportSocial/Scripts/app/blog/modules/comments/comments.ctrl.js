@@ -63,8 +63,8 @@ function ($scope, commentsRqst, utilsSrvc, $window, $timeout) {
         prop.isAnswer = true;
         prop.answerFor = c;
         $scope.focus = !$scope.focus;
-        $scope.text = c.name + ', ';
-        prop.watcher = $scope.$watch('text', function (val) {
+        $scope.m.text = c.name + ', ';
+        prop.watcher = $scope.$watch('m.text', function (val) {
             if (c.name !== val.substr(0, c.name.length)) {
                 prop.isAnswer = false;
                 prop.watcher();
