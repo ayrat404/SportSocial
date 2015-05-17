@@ -20,6 +20,10 @@ function ($scope, commentsRqst, utilsSrvc, $window, $timeout) {
         },
         lightClass = 'cl__it--light';   // класс который подсвечивает комментарий
 
+    // new comment model
+    // ---------------
+    $scope.m = {};
+
     // ошибки
     // ---------------
     $scope.er = {
