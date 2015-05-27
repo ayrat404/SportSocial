@@ -164,6 +164,7 @@
     <Compile Include="Common\Extensions\EnumExtensions.cs" />
     <Compile Include="Common\Extensions\JsonExtension.cs" />
     <Compile Include="Common\Extensions\StringExtensions.cs" />
+    <Compile Include="Common\Helpers\ApplicationStateHelper.cs" />
     <Compile Include="Common\Helpers\CookieHelper.cs" />
     <Compile Include="Common\Helpers\FileStreamingHelper.cs" />
     <Compile Include="Common\Helpers\Hasher.cs" />
@@ -171,6 +172,7 @@
     <Compile Include="Common\Helpers\LocalizationHelper.cs" />
     <Compile Include="Common\Helpers\ModelStateHelper.cs" />
     <Compile Include="Common\Enums\HttpMethod.cs" />
+    <Compile Include="Common\Helpers\SessionStateHelper.cs" />
     <Compile Include="Common\Helpers\WebDownloader.cs">
       <SubType>Component</SubType>
     </Compile>

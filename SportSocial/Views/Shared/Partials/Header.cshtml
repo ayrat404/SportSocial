@@ -30,12 +30,9 @@
                     <li>
                         <a href="@Url.Action("Index", "News")" class="nav__list__link">
                             Новости
-                            @{
-                                long count = 666;
-                            }
-                            @if (count > 0)
+                            @if (CurrentUser.UnreadedNews > 0)
                             {
-                                <span class="nav__link__counter">@count</span>
+                                <span class="nav__link__counter">@CurrentUser.UnreadedNews</span>
                             }
                         </a>
                     </li>

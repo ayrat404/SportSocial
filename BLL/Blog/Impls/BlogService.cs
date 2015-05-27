@@ -53,6 +53,10 @@ namespace BLL.Blog.Impls
             }
             _repository.Add(post);
             _repository.SaveChanges();
+            if (post.IsFortressNews)
+            {
+                ApplicationStateHelper.NewsCount++;
+            }
             return result;
         }
 
@@ -279,6 +283,7 @@ namespace BLL.Blog.Impls
                 .AsNoTracking()
                 .MapEachTo<PostPreviewModel>()
                 .ToList();
+            SessionStateHelper.SetReadedNews(ApplicationStateHelper.NewsCount);
             return postListVm;
         }
 

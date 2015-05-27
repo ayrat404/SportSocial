@@ -12,5 +12,6 @@ namespace BLL.Common.Services.CurrentUser
         bool IsPaid { get; }
         bool IsAdmin { get; }
         bool IsInRole(string role);
+        int UnreadedNews { get; }
     }
 }

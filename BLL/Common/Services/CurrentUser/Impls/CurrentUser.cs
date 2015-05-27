@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using BLL.Common.Helpers;
 using BLL.Infrastructure.IdentityConfig;
 using DAL.DomainModel;
 using DAL.Repository.Interfaces;
@@ -78,5 +79,10 @@ namespace BLL.Common.Services.CurrentUser.Impls
         //        return _user;
         //    }
         //}
+
+        public int UnreadedNews
+        {
+            get { return ApplicationStateHelper.NewsCount - SessionStateHelper.GetReadedNews(); }
+        }
     }
 }
