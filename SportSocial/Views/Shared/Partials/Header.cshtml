@@ -28,7 +28,16 @@
                         </li>
                     }
                     <li>
-                        <a href="@Url.Action("Index", "News")" class="nav__list__link">Новости</a>
+                        <a href="@Url.Action("Index", "News")" class="nav__list__link">
+                            Новости
+                            @{
+                                long count = 666;
+                            }
+                            @if (count > 0)
+                            {
+                                <span class="nav__link__counter">@count</span>
+                            }
+                        </a>
                     </li>
                     <li>
                         <a href="@Url.Action("Index", "Reviews")" class="nav__list__link">Отзывы</a>
