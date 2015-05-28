@@ -91,7 +91,7 @@ namespace BLL.Common.Services.CurrentUser.Impls
                 if (_cookiesService.ExistReadedNews())
                     return ApplicationStateHelper.NewsCount - _cookiesService.GetReadedNews();
                 _cookiesService.SetReadedNews(ApplicationStateHelper.NewsCount - 1);
-                return 1;
+                return ApplicationStateHelper.NewsCount - 1;
             }
         }
 
@@ -105,6 +105,5 @@ namespace BLL.Common.Services.CurrentUser.Impls
             }
             _repository.SaveChanges();
         }
-
     }
 }
