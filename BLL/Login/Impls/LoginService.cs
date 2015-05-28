@@ -2,6 +2,7 @@
 using System.Linq;
 using BLL.Common.Helpers;
 using BLL.Common.Objects;
+using BLL.Common.Services.Cookies;
 using BLL.Common.Services.CurrentUser;
 using BLL.Infrastructure.IdentityConfig;
 using BLL.Login.ViewModels;
@@ -24,17 +25,19 @@ namespace BLL.Login.Impls
         private readonly IAuthenticationManager _authManager;
         private readonly IRepository _repository;
         private readonly ICurrentUser _currentUser;
+        private readonly ICookiesService _cookiesService;
 
         public const string DefaultAvatarUrl = "/Content/Images/default-avatar.png";
         public const string DefaultFortressAvatar = "/Content/Images/fortress-avatar.jpg";
 
-        public LoginService(ISmsService smsService, AppUserManager appUserManager, IAuthenticationManager authManager, IRepository repository, ICurrentUser currentUser)
+        public LoginService(ISmsService smsService, AppUserManager appUserManager, IAuthenticationManager authManager, IRepository repository, ICurrentUser currentUser, ICookiesService cookiesService)
         {
             _smsService = smsService;
             _appUserManager = appUserManager;
             _authManager = authManager;
             _repository = repository;
             _currentUser = currentUser;
+            _cookiesService = cookiesService;
         }
 
         public LoginServiceResult SignIn(SignInModel signInModel, string returnUrl)
@@ -122,11 +125,13 @@ namespace BLL.Login.Impls
                     user.PhoneNumberConfirmed = true;
                     _appUserManager.AddPassword(user.Id, confirmModel.Password);
                     _appUserManager.Update(user);
+                    
                     var profile = new Profile
                     {
                         Id = user.Id,
                         Lang = LanguageHelper.GetCurrentCulture(),
                         Avatar = DefaultAvatarUrl,
+                        ReadedNews = _cookiesService.GetReadedNews()
                     };
                     _repository.Add(profile);
                     _repository.SaveChanges();

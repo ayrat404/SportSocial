@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using BLL.Bonus;
 using BLL.Bonus.Impls;
 using BLL.Common.Helpers;
+using BLL.Common.Services.Cookies;
 using BLL.Common.Services.CurrentUser.Impls;
 using BLL.Infrastructure.IdentityConfig;
 using DAL;
@@ -25,7 +26,7 @@ namespace SportSocial.Controllers
         public VideoController()
         {
             var context = new EntityDbContext();
-            _bonusService = new BonusService(new Repository(context), new CurrentUser(new Repository(context)));
+            _bonusService = new BonusService(new Repository(context), new CurrentUser(new Repository(context), new CookiesService()));
         }
 
         [System.Web.Http.HttpGet]

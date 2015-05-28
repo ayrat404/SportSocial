@@ -184,6 +184,7 @@
     <Compile Include="Common\Objects\PageInfo.cs" />
     <Compile Include="Common\Objects\ServiceResult.cs" />
     <Compile Include="Comments\ICommentService.cs" />
+    <Compile Include="Common\Services\Cookies\ICookiesService.cs" />
     <Compile Include="Common\Services\CurrentUser\Impls\CurrentUser.cs" />
     <Compile Include="Common\Services\CurrentUser\ICurrentUser.cs" />
     <Compile Include="Feedbacks\IFeedbackService.cs" />
@@ -239,6 +240,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Comments\Impls\" />
+    <Folder Include="Common\Services\Cookies\Impls\" />
     <Folder Include="Payment\Enums\" />
   </ItemGroup>
   <ItemGroup>

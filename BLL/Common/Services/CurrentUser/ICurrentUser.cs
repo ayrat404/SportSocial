@@ -13,5 +13,6 @@ namespace BLL.Common.Services.CurrentUser
         bool IsAdmin { get; }
         bool IsInRole(string role);
         int UnreadedNews { get; }
+        void ReadAllNews();
     }
 }

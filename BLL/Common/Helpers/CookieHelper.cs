@@ -15,7 +15,9 @@ namespace BLL.Common.Helpers
 
         public static void SetValue(string key, string value)
         {
-            throw new NotImplementedException();
+            HttpCookie cookie = new HttpCookie(key, value);
+            HttpContext.Current.Response.Cookies.Set(cookie);
+            HttpContext.Current.Request.Cookies.Set(cookie);
         }
     }
 }

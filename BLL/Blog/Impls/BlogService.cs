@@ -283,7 +283,7 @@ namespace BLL.Blog.Impls
                 .AsNoTracking()
                 .MapEachTo<PostPreviewModel>()
                 .ToList();
-            SessionStateHelper.SetReadedNews(ApplicationStateHelper.NewsCount);
+            _currentUser.ReadAllNews();
             return postListVm;
         }
 

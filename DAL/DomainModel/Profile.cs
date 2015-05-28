@@ -16,5 +16,6 @@ namespace DAL.DomainModel
         public virtual AppUser AppUser { get; set; }
 
         public bool IsPaid { get; set; }
+        public int ReadedNews { get; set; }
     }
 }

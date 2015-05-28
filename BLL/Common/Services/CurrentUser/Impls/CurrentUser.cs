@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Web;
 using BLL.Common.Helpers;
-using BLL.Infrastructure.IdentityConfig;
+using BLL.Common.Services.Cookies;
 using DAL.DomainModel;
 using DAL.Repository.Interfaces;
 using Microsoft.AspNet.Identity;
@@ -12,12 +12,14 @@ namespace BLL.Common.Services.CurrentUser.Impls
     public class CurrentUser: ICurrentUser
     {
         private readonly IRepository _repository;
+        private readonly ICookiesService _cookiesService;
 
-        public CurrentUser(IRepository repository)
+        public CurrentUser(IRepository repository, ICookiesService cookiesService)
         {
             _repository = repository;
+            _cookiesService = cookiesService;
             int userId = HttpContext.Current.User.Identity.GetUserId<int>();
-            User = _repository
+            User = repository
                 .Queryable<AppUser>()
                 .Include(u => u.Profile)
                 .SingleOrDefault(u => u.Id == userId);
@@ -82,7 +84,27 @@ namespace BLL.Common.Services.CurrentUser.Impls
 
         public int UnreadedNews
         {
-            get { return ApplicationStateHelper.NewsCount - SessionStateHelper.GetReadedNews(); }
+            get
+            {
+                if (!IsAnonimous)
+                    return ApplicationStateHelper.NewsCount - User.Profile.ReadedNews;
+                if (_cookiesService.ExistReadedNews())
+                    return ApplicationStateHelper.NewsCount - _cookiesService.GetReadedNews();
+                _cookiesService.SetReadedNews(ApplicationStateHelper.NewsCount - 1);
+                return 1;
+            }
         }
+
+        public void ReadAllNews()
+        {
+            if (!IsAnonimous)
+                User.Profile.ReadedNews = ApplicationStateHelper.NewsCount;
+            else
+            {
+                _cookiesService.SetReadedNews(ApplicationStateHelper.NewsCount);
+            }
+            _repository.SaveChanges();
+        }
+
     }
 }
