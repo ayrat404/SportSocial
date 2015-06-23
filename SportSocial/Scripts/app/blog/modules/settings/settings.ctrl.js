@@ -114,7 +114,7 @@ function ($scope, settingsRqst, utilsSrvc, $window, $timeout) {
     // ---------------
     $scope.removeAvatar = function () {
         $scope.avatar = {};
-        settingsRqst.removeAvatar()
+        settingsRqst.removeAvatar(utilsSrvc.token.get())
             .then(function(res) {
                 if (res.data.success) {
                     $scope.avatar.url = res.data.url;

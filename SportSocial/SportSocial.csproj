@@ -412,11 +412,14 @@
     <Content Include="Scripts\app\shared\filters\formatWord.fltr.js" />
     <Content Include="Scripts\app\shared\services\serializeObj.srvc.js" />
     <Content Include="Scripts\app\shared\services\utils.srvc.js" />
+    <Content Include="Scripts\app\social\app.js" />
     <Content Include="Scripts\libs\angucomplete\angucomplete-alt.css" />
     <Content Include="Scripts\libs\angucomplete\angucomplete-alt.js" />
     <Content Include="Scripts\libs\angucomplete\angucomplete-alt.min.js" />
     <Content Include="Scripts\libs\angular-file-upload\angular-file-upload.js" />
     <Content Include="Scripts\libs\angular-file-upload\angular-file-upload.min.js" />
+    <Content Include="Scripts\libs\angular-ui-router\angular-ui-router.js" />
+    <Content Include="Scripts\libs\angular-ui-router\angular-ui-router.min.js" />
     <Content Include="Scripts\libs\angular\angular-animate.js" />
     <Content Include="Scripts\libs\angular\angular-animate.min.js" />
     <Content Include="Scripts\libs\angular\angular-aria.js" />
