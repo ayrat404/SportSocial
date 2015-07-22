@@ -16,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{1D3CDA
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Social", "Social\Social.csproj", "{EEDDCAFD-9CAA-4780-BBA6-DC90421016AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,16 @@ Global
 		{9A42FA4B-8BD7-44B9-B4FC-5F9DB0E96404}.Publish - Test|Any CPU.Build.0 = Release|Any CPU
 		{9A42FA4B-8BD7-44B9-B4FC-5F9DB0E96404}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A42FA4B-8BD7-44B9-B4FC-5F9DB0E96404}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEDDCAFD-9CAA-4780-BBA6-DC90421016AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEDDCAFD-9CAA-4780-BBA6-DC90421016AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEDDCAFD-9CAA-4780-BBA6-DC90421016AD}.Publish - Beta|Any CPU.ActiveCfg = Release|Any CPU
+		{EEDDCAFD-9CAA-4780-BBA6-DC90421016AD}.Publish - Beta|Any CPU.Build.0 = Release|Any CPU
+		{EEDDCAFD-9CAA-4780-BBA6-DC90421016AD}.Publish - Production|Any CPU.ActiveCfg = Release|Any CPU
+		{EEDDCAFD-9CAA-4780-BBA6-DC90421016AD}.Publish - Production|Any CPU.Build.0 = Release|Any CPU
+		{EEDDCAFD-9CAA-4780-BBA6-DC90421016AD}.Publish - Test|Any CPU.ActiveCfg = Release|Any CPU
+		{EEDDCAFD-9CAA-4780-BBA6-DC90421016AD}.Publish - Test|Any CPU.Build.0 = Release|Any CPU
+		{EEDDCAFD-9CAA-4780-BBA6-DC90421016AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEDDCAFD-9CAA-4780-BBA6-DC90421016AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
