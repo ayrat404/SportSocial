@@ -1,28 +1,53 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
+using BundleTransformer.Core.Orderers;
+using BundleTransformer.Core.Transformers;
 
 namespace Social
 {
     public class BundleConfig
     {
-        // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
 
-            // Use the development version of Modernizr to develop with and learn from. Then, when you're
-            // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
-            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
+            // assets
+            // ---------------
+            bundles.Add(new ScriptBundle("~/bundles/social/assets")
+                .Include(
+                    "~/Scripts/libs/jquery/jquery-2.0.3.js",
+                    "~/Scripts/libs/nprogress/nprogress.js",
+                    "~/Scripts/libs/angular/angular.js",
+                    "~/Scripts/libs/angular/angular-mocks.js",
+                    "~/Scripts/libs/angular/angular-cookies.js",
+                    "~/Scripts/libs/angular-ui-router/angular-ui-router.js",
+                    "~/Scripts/libs/bootstrap/modal.js",
+                    "~/Scripts/libs/bootstrap/collapse.js",
+                    "~/Scripts/libs/bootstrap/transition.js",
+                    "~/Scripts/libs/bootstrap/tab.js",
+                    "~/Scripts/libs/bootstrap/tooltip.js",
+                    "~/Scripts/libs/bootbox/bootbox.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+            // social
+            // ---------------
+            bundles.Add(new ScriptBundle("~/bundles/social/scripts")
+                // include shared
+                // ---------------
+                .IncludeDirectory("~/Scripts/app/shared", "*.js", true)
+                // include appServices
+                // ---------------
+                .IncludeDirectory("~/Scripts/app/appServices", "*.js", true)
+                // include socialApp
+                // ---------------
+                .IncludeDirectory("~/Scripts/app/socialApp", "*.js", true)
+                // include main app
+                // ---------------
+                .Include("~/Scripts/app/app.js")
+                );
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+            // optimization
+            // ---------------
+#if !DEBUG
+                BundleTable.EnableOptimizations = true;
+#endif
         }
     }
 }

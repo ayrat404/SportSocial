@@ -78,17 +78,6 @@ namespace SportSocial
             );
 
             // панель управления
-            //bundles.Add(new ScriptBundle("~/bundles/social/scripts")
-            //        .Include(
-            //            "~/Scripts/libs/angular/angular-ui-router.js",
-            //            "~/Scripts/libs/angular/angular-resource.js",
-            //            "~/Scripts/app/social/app.js"
-            //        )
-            //        .IncludeDirectory(
-            //            "~/Scripts/app/social", "*.js", true
-            //        )
-            //);
-
             bundles.Add(new ScriptBundle("~/bundles/admin/scripts")
                     .Include(
                         "~/Scripts/libs/angular/angular-route.min.js",
