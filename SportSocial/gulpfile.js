@@ -27,7 +27,9 @@ function lessCompile(minify) {
 	       .pipe(rename(pkg.style))
 	       .pipe(filesize())
            .pipe(minifyCSS())
-	       .pipe(gulp.dest(pkg.output));
+	       .pipe(gulp.dest(pkg.output))
+
+           .pipe(gulp.dest('../Social/Content/styles/compile/'));
 }
 
 gulp.task('sprite', function() {
@@ -41,6 +43,9 @@ gulp.task('sprite', function() {
 	                 }));
 	spriteData.img.pipe(gulp.dest('Content/images/icons/'));
 	spriteData.css.pipe(gulp.dest('Content/styles/base/'));
+
+	spriteData.img.pipe(gulp.dest('../Social/Content/images/icons/'));
+	spriteData.css.pipe(gulp.dest('../Social/Content/styles/base/'));
 });
 
 gulp.task('sprite-admin', function () {
