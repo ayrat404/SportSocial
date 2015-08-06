@@ -1,3 +1,3 @@
 ﻿'use strict';
 
-angular.module('commonServices', []);
+angular.module('shared', []);
