@@ -1,14 +1,32 @@
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace DAL.DomainModel.Interfaces
 {
-    public interface ICommentEntity<TCommentedEntity>: IEntity, IAuditable 
-        where TCommentedEntity: class
+    public abstract class CommentEntityBase: IEntity, IAuditable, IDeletable
     {
-        string Text { get; set; }
-        bool ByFortress { get; set; }
-        int UserId { get; set; }
-        int? CommentForId { get; set; }
-        int CommentedEntityId { get; set; }
-        TCommentedEntity CommentedEntity { get; set; }
-        AppUser User { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+        public string Text { get; set; }
+        public bool ByFortress { get; set; }
+        public int UserId { get; set; }
+        public int? CommentForId { get; set; }
+        public int CommentedEntityId { get; set; }
+        public DateTime Created  { get; set; }
+        public DateTime Modified { get; set; }
+        public bool Deleted { get; set; }
+
+        [ForeignKey("UserId")]
+        public AppUser User { get; set; }
+    }
+
+    public abstract class CommentEntity<TCommentFor> : CommentEntityBase
+        where TCommentFor: CommentEntityBase
+    {
+
+        [ForeignKey("CommentForId")]
+        public TCommentFor CommentFor { get; set; }
     }
 }

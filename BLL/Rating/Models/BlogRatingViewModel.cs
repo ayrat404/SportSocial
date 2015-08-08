@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using BLL.Blog.Enums;
 using BLL.Rating.Enums;
 using DAL.DomainModel.EnumProperties;
 

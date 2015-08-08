@@ -13,6 +13,12 @@ namespace SportSocial.Controllers
     [Authorize]
     public class CommentsController: SportSocialControllerBase
     {
+        private ICommentService _commentService;
+
+        public CommentsController(ICommentService commentService)
+        {
+            _commentService = commentService;
+        }
 
         [HttpPost]
         [CustomAntiForgeryValidator]
@@ -20,7 +26,7 @@ namespace SportSocial.Controllers
         {
             if (ModelState.IsValid)
             {
-                var comment = CreateGenericService(createComment.ItemType).AddComment(createComment);
+                var comment = _commentService.AddComment(createComment);
                 return Json(new { Success = true, Comment = comment });
             }
             return Json(new {Success = false});
@@ -30,44 +36,8 @@ namespace SportSocial.Controllers
         [AllowAnonymous]
         public JsonResult LoadComments(int id, CommentItemType itemType)
         {
-            var comments = CreateGenericService(itemType).LoadComments(id, itemType);
+            var comments = _commentService.LoadComments(id, itemType);
             return Json(comments, JsonRequestBehavior.AllowGet);
         }
-
-        private ICommentServiceMethods CreateGenericService(CommentItemType type)
-        {
-            Type ratingServiseType = typeof (ICommentService<,>)
-                .MakeGenericType(GetComentedEntityByType(type), GetCommentEntityByType(type));
-            return (ICommentServiceMethods)DependencyResolver.Current.GetService(ratingServiseType);
-        }
-
-        private Type GetComentedEntityByType(CommentItemType type)
-        {
-            switch (type)
-            {
-                case CommentItemType.Article:
-                    return typeof (Post);
-                case CommentItemType.Conference:
-                    return typeof (Conference);
-                case CommentItemType.Feedback:
-                    return typeof (Feedback);
-            }
-            return null;
-        }
-
-        private Type GetCommentEntityByType(CommentItemType type)
-        {
-            switch (type)
-            {
-                case CommentItemType.Article:
-                    return typeof (BlogComment);
-                case CommentItemType.Conference:
-                    return typeof(ConferenceComment);
-                case CommentItemType.Feedback:
-                    return typeof (FeedbackComment);
-            }
-            return null;
-        }
-
     }
 }

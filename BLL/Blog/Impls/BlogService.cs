@@ -170,9 +170,8 @@ namespace BLL.Blog.Impls
                 .Take(take)
                 .Skip(skip)
                 .AsNoTracking()
-                //.ToList()
-                .MapEachTo<PostPreviewModel>()
-                .ToList();
+                .ToList()
+                .MapEachTo<PostPreviewModel>();
             return postListVM;
         }
 
