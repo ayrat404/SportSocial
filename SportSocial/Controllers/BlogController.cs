@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using BLL.Blog;
 using BLL.Blog.ViewModels;
@@ -22,14 +23,15 @@ namespace SportSocial.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public ActionResult Index(int page = 1, PostSortType sort = PostSortType.Last, int rubric = 0)
+        public async Task<ActionResult> Index(int page = 1, PostSortType sort = PostSortType.Last, int rubric = 0)
         {
             ViewBag.HidePromo = Request.QueryString.Count > 0;
             ViewBag.Sort = sort;
             ViewBag.Rubric = rubric;
-            var currentRubric = _blogService.GetRubrics().SingleOrDefault(r => r.Id == rubric);
+            var rubrics = await _blogService.GetRubricsAsync();
+            var currentRubric = rubrics.SingleOrDefault(r => r.Id == rubric);
             ViewBag.RubricName = currentRubric != null ? currentRubric.Name : "";
-            var posts = _blogService.GetPosts(PageSize, sort, rubric, page);
+            var posts = await _blogService.GetPosts(PageSize, sort, rubric, page);
             //posts.PostPreview.ForEach(p => p.Text = Regex.Replace(p.Text, @"<[^>]+>|&nbsp;", "").Trim());
             var pageList = new StaticPagedList<PostPreviewModel>(posts.PostPreview, page, PageSize,
                 posts.PageInfo.Count);

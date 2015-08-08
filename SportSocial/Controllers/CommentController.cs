@@ -13,7 +13,7 @@ namespace SportSocial.Controllers
     [Authorize]
     public class CommentsController: SportSocialControllerBase
     {
-        private ICommentService _commentService;
+        private readonly ICommentService _commentService;
 
         public CommentsController(ICommentService commentService)
         {

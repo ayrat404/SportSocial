@@ -8,7 +8,7 @@ namespace SportSocial.Controllers
     [Authorize]
     public class RatingController: SportSocialControllerBase
     {
-        private IRatingService _ratingService;
+        private readonly IRatingService _ratingService;
 
         public RatingController(IRatingService ratingService)
         {
