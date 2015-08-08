@@ -40,7 +40,7 @@ namespace Social
                 .IncludeDirectory("~/Scripts/app/socialApp", "*.js", true)
                 // include main app
                 // ---------------
-                .Include("~/Scripts/app/app.js")
+                .Include("~/Scripts/app.js")
                 );
 
             // optimization

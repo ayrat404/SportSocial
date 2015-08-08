@@ -19,6 +19,9 @@ BLL/obj/
 BLL/bin/
 DAL/obj/
 DAL/bin/
+Social/obj/
+Social/bin/
+Social/node_modules/
 SportSocial/obj/
 SportSocial/bin/
 SportSocial/node_modules/

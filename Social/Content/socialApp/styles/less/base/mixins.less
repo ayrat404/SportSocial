@@ -1,0 +1,31 @@
+/* Custom mixins
+---------------------------------------------------------------------------------- */
+
+.disabled {
+    opacity: .5;
+    pointer-events: none;
+    user-select: none;
+}
+
+.no-float {
+    &:after {
+        display: block;
+        line-height: 0;
+        content: '';
+        clear: both;
+    }
+}
+
+.no-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.inline-block(@align: middle) {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* /Custom mixins
+---------------------------------------------------------------------------------- */

@@ -38,18 +38,15 @@ angular.module('shared')
                 }
             })();
 
-            // Format module TODO: переделать, не работает для количества от 10 до 20
+            // Format module
             // ---------------
             var formatCtrl = (function() {
                 // Склонение слов
                 // ---------------
                 function formatWord(count, words) {
-                    var cnt = count.toString().substring(count.toString().length - 1, count.toString().length);
-                    if (cnt == 1) {
-                        return words[0];
-                    } else if (cnt > 1 && cnt < 5) {
-                        return words[1];
-                    } else return words[2];
+                    if (count % 10 === 1 && count % 100 !== 11) return words[0];
+                    if (count % 10 >= 2 && count % 10 <= 4 && (count % 100 < 10 || count % 100 >= 20)) return words[1];
+                    return words[2];
                 }
 
                 return {

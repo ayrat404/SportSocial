@@ -1,0 +1,348 @@
+/*
+LESS variables are information about icon's compiled state, stored under its original file name
+
+.icon-home {
+  width: @icon-home-width;
+}
+
+The large array-like variables contain all information about a single icon
+@icon-home: x y offset_x offset_y width height total_width total_height image_path name;
+
+At the bottom of this section, we provide information about the spritesheet itself
+@spritesheet: width height image @spritesheet-sprites;
+*/
+@block-xs-name: block-xs;
+@block-xs-x: 377px;
+@block-xs-y: 221px;
+@block-xs-offset-x: -377px;
+@block-xs-offset-y: -221px;
+@block-xs-width: 30px;
+@block-xs-height: 26px;
+@block-xs-total-width: 432px;
+@block-xs-total-height: 346px;
+@block-xs-image: '../../img/icons/icons-set.png';
+@block-xs: 377px 221px -377px -221px 30px 26px 432px 346px '../../img/icons/icons-set.png' block-xs;
+@brain-active-name: brain-active;
+@brain-active-x: 282px;
+@brain-active-y: 104px;
+@brain-active-offset-x: -282px;
+@brain-active-offset-y: -104px;
+@brain-active-width: 85px;
+@brain-active-height: 94px;
+@brain-active-total-width: 432px;
+@brain-active-total-height: 346px;
+@brain-active-image: '../../img/icons/icons-set.png';
+@brain-active: 282px 104px -282px -104px 85px 94px 432px 346px '../../img/icons/icons-set.png' brain-active;
+@brain-name: brain;
+@brain-x: 282px;
+@brain-y: 0px;
+@brain-offset-x: -282px;
+@brain-offset-y: 0px;
+@brain-width: 85px;
+@brain-height: 94px;
+@brain-total-width: 432px;
+@brain-total-height: 346px;
+@brain-image: '../../img/icons/icons-set.png';
+@brain: 282px 0px -282px 0px 85px 94px 432px 346px '../../img/icons/icons-set.png' brain;
+@close-hover-name: close-hover;
+@close-hover-x: 288px;
+@close-hover-y: 305px;
+@close-hover-offset-x: -288px;
+@close-hover-offset-y: -305px;
+@close-hover-width: 23px;
+@close-hover-height: 23px;
+@close-hover-total-width: 432px;
+@close-hover-total-height: 346px;
+@close-hover-image: '../../img/icons/icons-set.png';
+@close-hover: 288px 305px -288px -305px 23px 23px 432px 346px '../../img/icons/icons-set.png' close-hover;
+@close-name: close;
+@close-x: 236px;
+@close-y: 164px;
+@close-offset-x: -236px;
+@close-offset-y: -164px;
+@close-width: 23px;
+@close-height: 23px;
+@close-total-width: 432px;
+@close-total-height: 346px;
+@close-image: '../../img/icons/icons-set.png';
+@close: 236px 164px -236px -164px 23px 23px 432px 346px '../../img/icons/icons-set.png' close;
+@design-active-name: design-active;
+@design-active-x: 0px;
+@design-active-y: 122px;
+@design-active-offset-x: 0px;
+@design-active-offset-y: -122px;
+@design-active-width: 108px;
+@design-active-height: 108px;
+@design-active-total-width: 432px;
+@design-active-total-height: 346px;
+@design-active-image: '../../img/icons/icons-set.png';
+@design-active: 0px 122px 0px -122px 108px 108px 432px 346px '../../img/icons/icons-set.png' design-active;
+@design-name: design;
+@design-x: 118px;
+@design-y: 122px;
+@design-offset-x: -118px;
+@design-offset-y: -122px;
+@design-width: 108px;
+@design-height: 108px;
+@design-total-width: 432px;
+@design-total-height: 346px;
+@design-image: '../../img/icons/icons-set.png';
+@design: 118px 122px -118px -122px 108px 108px 432px 346px '../../img/icons/icons-set.png' design;
+@develop-active-name: develop-active;
+@develop-active-x: 0px;
+@develop-active-y: 0px;
+@develop-active-offset-x: 0px;
+@develop-active-offset-y: 0px;
+@develop-active-width: 131px;
+@develop-active-height: 112px;
+@develop-active-total-width: 432px;
+@develop-active-total-height: 346px;
+@develop-active-image: '../../img/icons/icons-set.png';
+@develop-active: 0px 0px 0px 0px 131px 112px 432px 346px '../../img/icons/icons-set.png' develop-active;
+@develop-name: develop;
+@develop-x: 141px;
+@develop-y: 0px;
+@develop-offset-x: -141px;
+@develop-offset-y: 0px;
+@develop-width: 131px;
+@develop-height: 112px;
+@develop-total-width: 432px;
+@develop-total-height: 346px;
+@develop-image: '../../img/icons/icons-set.png';
+@develop: 141px 0px -141px 0px 131px 112px 432px 346px '../../img/icons/icons-set.png' develop;
+@idea-active-name: idea-active;
+@idea-active-x: 160px;
+@idea-active-y: 240px;
+@idea-active-offset-x: -160px;
+@idea-active-offset-y: -240px;
+@idea-active-width: 54px;
+@idea-active-height: 93px;
+@idea-active-total-width: 432px;
+@idea-active-total-height: 346px;
+@idea-active-image: '../../img/icons/icons-set.png';
+@idea-active: 160px 240px -160px -240px 54px 93px 432px 346px '../../img/icons/icons-set.png' idea-active;
+@idea-name: idea;
+@idea-x: 224px;
+@idea-y: 240px;
+@idea-offset-x: -224px;
+@idea-offset-y: -240px;
+@idea-width: 54px;
+@idea-height: 93px;
+@idea-total-width: 432px;
+@idea-total-height: 346px;
+@idea-image: '../../img/icons/icons-set.png';
+@idea: 224px 240px -224px -240px 54px 93px 432px 346px '../../img/icons/icons-set.png' idea;
+@logo-hover-name: logo-hover;
+@logo-hover-x: 377px;
+@logo-hover-y: 0px;
+@logo-hover-offset-x: -377px;
+@logo-hover-offset-y: 0px;
+@logo-hover-width: 55px;
+@logo-hover-height: 55px;
+@logo-hover-total-width: 432px;
+@logo-hover-total-height: 346px;
+@logo-hover-image: '../../img/icons/icons-set.png';
+@logo-hover: 377px 0px -377px 0px 55px 55px 432px 346px '../../img/icons/icons-set.png' logo-hover;
+@logo-name: logo;
+@logo-x: 377px;
+@logo-y: 65px;
+@logo-offset-x: -377px;
+@logo-offset-y: -65px;
+@logo-width: 55px;
+@logo-height: 55px;
+@logo-total-width: 432px;
+@logo-total-height: 346px;
+@logo-image: '../../img/icons/icons-set.png';
+@logo: 377px 65px -377px -65px 55px 55px 432px 346px '../../img/icons/icons-set.png' logo;
+@men-xs-name: men-xs;
+@men-xs-x: 377px;
+@men-xs-y: 257px;
+@men-xs-offset-x: -377px;
+@men-xs-offset-y: -257px;
+@men-xs-width: 24px;
+@men-xs-height: 25px;
+@men-xs-total-width: 432px;
+@men-xs-total-height: 346px;
+@men-xs-image: '../../img/icons/icons-set.png';
+@men-xs: 377px 257px -377px -257px 24px 25px 432px 346px '../../img/icons/icons-set.png' men-xs;
+@modal-close-name: modal-close;
+@modal-close-x: 236px;
+@modal-close-y: 197px;
+@modal-close-offset-x: -236px;
+@modal-close-offset-y: -197px;
+@modal-close-width: 23px;
+@modal-close-height: 23px;
+@modal-close-total-width: 432px;
+@modal-close-total-height: 346px;
+@modal-close-image: '../../img/icons/icons-set.png';
+@modal-close: 236px 197px -236px -197px 23px 23px 432px 346px '../../img/icons/icons-set.png' modal-close;
+@next-stage-name: next-stage;
+@next-stage-x: 377px;
+@next-stage-y: 292px;
+@next-stage-offset-x: -377px;
+@next-stage-offset-y: -292px;
+@next-stage-width: 24px;
+@next-stage-height: 24px;
+@next-stage-total-width: 432px;
+@next-stage-total-height: 346px;
+@next-stage-image: '../../img/icons/icons-set.png';
+@next-stage: 377px 292px -377px -292px 24px 24px 432px 346px '../../img/icons/icons-set.png' next-stage;
+@phone-name: phone;
+@phone-x: 411px;
+@phone-y: 257px;
+@phone-offset-x: -411px;
+@phone-offset-y: -257px;
+@phone-width: 20px;
+@phone-height: 20px;
+@phone-total-width: 432px;
+@phone-total-height: 346px;
+@phone-image: '../../img/icons/icons-set.png';
+@phone: 411px 257px -411px -257px 20px 20px 432px 346px '../../img/icons/icons-set.png' phone;
+@rocket-name: rocket;
+@rocket-x: 377px;
+@rocket-y: 130px;
+@rocket-offset-x: -377px;
+@rocket-offset-y: -130px;
+@rocket-width: 42px;
+@rocket-height: 42px;
+@rocket-total-width: 432px;
+@rocket-total-height: 346px;
+@rocket-image: '../../img/icons/icons-set.png';
+@rocket: 377px 130px -377px -130px 42px 42px 432px 346px '../../img/icons/icons-set.png' rocket;
+@rub-name: rub;
+@rub-x: 288px;
+@rub-y: 240px;
+@rub-offset-x: -288px;
+@rub-offset-y: -240px;
+@rub-width: 55px;
+@rub-height: 55px;
+@rub-total-width: 432px;
+@rub-total-height: 346px;
+@rub-image: '../../img/icons/icons-set.png';
+@rub: 288px 240px -288px -240px 55px 55px 432px 346px '../../img/icons/icons-set.png' rub;
+@target-xs-name: target-xs;
+@target-xs-x: 377px;
+@target-xs-y: 182px;
+@target-xs-offset-x: -377px;
+@target-xs-offset-y: -182px;
+@target-xs-width: 29px;
+@target-xs-height: 29px;
+@target-xs-total-width: 432px;
+@target-xs-total-height: 346px;
+@target-xs-image: '../../img/icons/icons-set.png';
+@target-xs: 377px 182px -377px -182px 29px 29px 432px 346px '../../img/icons/icons-set.png' target-xs;
+@toggle-down-hover-name: toggle-down-hover;
+@toggle-down-hover-x: 377px;
+@toggle-down-hover-y: 326px;
+@toggle-down-hover-offset-x: -377px;
+@toggle-down-hover-offset-y: -326px;
+@toggle-down-hover-width: 22px;
+@toggle-down-hover-height: 12px;
+@toggle-down-hover-total-width: 432px;
+@toggle-down-hover-total-height: 346px;
+@toggle-down-hover-image: '../../img/icons/icons-set.png';
+@toggle-down-hover: 377px 326px -377px -326px 22px 12px 432px 346px '../../img/icons/icons-set.png' toggle-down-hover;
+@toggle-down-name: toggle-down;
+@toggle-down-x: 409px;
+@toggle-down-y: 326px;
+@toggle-down-offset-x: -409px;
+@toggle-down-offset-y: -326px;
+@toggle-down-width: 22px;
+@toggle-down-height: 12px;
+@toggle-down-total-width: 432px;
+@toggle-down-total-height: 346px;
+@toggle-down-image: '../../img/icons/icons-set.png';
+@toggle-down: 409px 326px -409px -326px 22px 12px 432px 346px '../../img/icons/icons-set.png' toggle-down;
+@touch-xs-name: touch-xs;
+@touch-xs-x: 236px;
+@touch-xs-y: 122px;
+@touch-xs-offset-x: -236px;
+@touch-xs-offset-y: -122px;
+@touch-xs-width: 17px;
+@touch-xs-height: 32px;
+@touch-xs-total-width: 432px;
+@touch-xs-total-height: 346px;
+@touch-xs-image: '../../img/icons/icons-set.png';
+@touch-xs: 236px 122px -236px -122px 17px 32px 432px 346px '../../img/icons/icons-set.png' touch-xs;
+@ui-active-name: ui-active;
+@ui-active-x: 80px;
+@ui-active-y: 240px;
+@ui-active-offset-x: -80px;
+@ui-active-offset-y: -240px;
+@ui-active-width: 70px;
+@ui-active-height: 106px;
+@ui-active-total-width: 432px;
+@ui-active-total-height: 346px;
+@ui-active-image: '../../img/icons/icons-set.png';
+@ui-active: 80px 240px -80px -240px 70px 106px 432px 346px '../../img/icons/icons-set.png' ui-active;
+@ui-name: ui;
+@ui-x: 0px;
+@ui-y: 240px;
+@ui-offset-x: 0px;
+@ui-offset-y: -240px;
+@ui-width: 70px;
+@ui-height: 106px;
+@ui-total-width: 432px;
+@ui-total-height: 346px;
+@ui-image: '../../img/icons/icons-set.png';
+@ui: 0px 240px 0px -240px 70px 106px 432px 346px '../../img/icons/icons-set.png' ui;
+@spritesheet-width: 432px;
+@spritesheet-height: 346px;
+@spritesheet-image: '../../img/icons/icons-set.png';
+@spritesheet-sprites: @block-xs @brain-active @brain @close-hover @close @design-active @design @develop-active @develop @idea-active @idea @logo-hover @logo @men-xs @modal-close @next-stage @phone @rocket @rub @target-xs @toggle-down-hover @toggle-down @touch-xs @ui-active @ui;
+@spritesheet: 432px 346px '../../img/icons/icons-set.png' @spritesheet-sprites;
+
+/*
+The provided classes are intended to be used with the array-like variables
+
+.icon-home {
+  .sprite-width(@icon-home);
+}
+.icon-email {
+  .sprite(@icon-email);
+}
+*/
+.sprite-width(@sprite) {
+  width: extract(@sprite, 5);
+}
+
+.sprite-height(@sprite) {
+  height: extract(@sprite, 6);
+}
+
+.sprite-position(@sprite) {
+  @sprite-offset-x: extract(@sprite, 3);
+  @sprite-offset-y: extract(@sprite, 4);
+  background-position: @sprite-offset-x @sprite-offset-y;
+}
+
+.sprite-image(@sprite) {
+  @sprite-image: extract(@sprite, 9);
+  @sprite-image-bare: ~`"@{sprite-image}".slice(1, -1)`;
+  background-image: url(@sprite-image-bare);
+}
+
+.sprite(@sprite) {
+  .sprite-image(@sprite);
+  .sprite-position(@sprite);
+  .sprite-width(@sprite);
+  .sprite-height(@sprite);
+}
+
+/*
+The `.sprites` mixin generates identical output to the CSS template
+  but can be overridden inside of LESS
+
+This must be run when you have at least 2 sprites.
+  If run with a single sprite, then there will be reference errors.
+
+.sprites(@spritesheet-sprites);
+*/
+.sprites(@sprites, @i: 1) when (@i <= length(@sprites)) {
+  @sprite: extract(@sprites, @i);
+  @sprite-name: extract(@sprite, 10);
+  .@{sprite-name} {
+    .sprite(@sprite);
+  }
+  .sprites(@sprites, @i + 1);
+}

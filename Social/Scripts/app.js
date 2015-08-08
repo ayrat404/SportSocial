@@ -29,17 +29,17 @@ angular
 
             // routes
             // ---------------
-            //$stateProvider
-            //    .state('home', {
-            //        url: '/',
-            //        templateUrl: tmplView('home/index'),
-            //        controller: 'LandingCtrl'
-            //    })
-            //    .state('otherwise', {
-            //        url: '*path',
-            //        templateUrl: tmplView('home/404'),
-            //        controller: 'Error404Ctrl'
-            //    });
+            $stateProvider
+                .state('landing', {
+                    url: '/',
+                    templateUrl: tmplView('landing/index'),
+                    controller: 'LandingCtrl'
+                });
+                //.state('otherwise', {
+                //    url: '*path',
+                //    templateUrl: tmplView('home/404'),
+                //    controller: 'Error404Ctrl'
+                //});
 
             $locationProvider.html5Mode({
                 enabled: true,
