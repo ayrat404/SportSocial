@@ -8,26 +8,6 @@ namespace SportSocial
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
-            //стили
-            //=======================================================
-            var cssTransformer = new CssTransformer();
-            var cssMinify = new CssMinify();
-            var cssBundle = new StyleBundle("~/content/stylesCss1").Include(
-                "~/Scripts/libs/datepicker/jquery.datetimepicker.css",
-                "~/Content/styles/other/font-awesome.css",
-                "~/Content/styles/other/animate.css",
-                "~/Scripts/libs/jquery-noui/jquery.nouislider.min.css",
-                "~/Scripts/libs/jquery-noui/jquery.nouislider.pips.min.css"
-                );
-            //cssBundle.Transforms.Add(cssTransformer);
-            //cssBundle.Transforms.Add(cssMinify);
-            bundles.Add(cssBundle);
-            //var lessBundle = new Bundle("~/content/stylesLess").Include(
-            //    "~/Content/styles/style.less"
-            //    );
-            //lessBundle.Transforms.Add(cssTransformer);
-            //lessBundle.Transforms.Add(cssMinify);
-            //bundles.Add(lessBundle);
 
             // библиотеки
             bundles.Add(new ScriptBundle("~/bundles/assets/scripts")
@@ -41,7 +21,6 @@ namespace SportSocial
                         
                         "~/Scripts/libs/bootstrap/tooltip.js",
                         "~/Scripts/libs/bootstrap/modal.js",
-                        //"~/Scripts/libs/bootstrap/dropdown.js",
                         "~/Scripts/libs/bootbox/bootbox.js",
                         "~/Scripts/libs/videojs/video.js",
                         //"~/Scripts/libs/signalR/jquery.signalR-2.0.3.min.js",
@@ -55,7 +34,6 @@ namespace SportSocial
                     )
                     .Include(
                         "~/Scripts/libs/angular/angular.min.js",
-                        //"~/Scripts/libs/angular/angular-mocks.js",
                         "~/Scripts/libs/angular/angular-touch.min.js",
                         "~/Scripts/libs/text-angular/textAngular-sanitize.min.js",
                         "~/Scripts/libs/text-angular/textAngular.min.js",

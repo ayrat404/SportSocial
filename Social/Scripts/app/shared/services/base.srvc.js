@@ -202,15 +202,15 @@ angular.module('shared')
 
             })();
 
-            // Delay module
+            // Delay constructor
             // ---------------
-            var delayCtrl = (function () {
+            var delayConstructor = function () {
                 var timer = 0;
                 return function (callback, ms) {
                     clearTimeout(timer);
                     timer = setTimeout(callback, ms);
                 };
-            })();
+            };
 
             // check is Array
             // ---------------
@@ -239,7 +239,7 @@ angular.module('shared')
                     hideAll: noticesCtrl.hideAll
                 },
                 isArray: isArray,
-                delay: delayCtrl
+                delayConstructor: delayConstructor
             }
         }
     ]);
