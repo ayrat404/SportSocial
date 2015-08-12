@@ -17,14 +17,6 @@ var banner = '/*!\n' +
 
 var apps = [
     {
-        "name": "landing",
-        "style": "fortress.landing.min.css",
-        "compileStylesPath": "Content/landing/styles/compile/",
-        "baseStylesPath": "Content/landing/styles/less/",
-        "spriteIn": "Content/landing/images/sprites/*.png",
-        "spriteOut": "Content/landing/images/icons-set/"
-    },
-    {
         "name": "socialApp",
         "style": "fortress.social.min.css",
         "compileStylesPath": "Content/socialApp/styles/compile/",
