@@ -1,17 +1,10 @@
 ﻿using BLL.Common.Objects;
-using DAL.DomainModel.EnumProperties;
-using DAL.DomainModel.Interfaces;
+using BLL.Rating.Models;
 
 namespace BLL.Rating
 {
-    public interface IGRatingService<TEntity, TRatingEntity>
-        where TEntity: class, IHasRating<TRatingEntity>
-        where TRatingEntity: class, IRatingEntity<TEntity>
+    public interface IRatingService
     {
-    }
-
-    public interface IRatingServiceImpl
-    {
-        ServiceResult Rate(int entityId, RatingType ratingType);
+        ServiceResult Rate(RatingModel rateModel);
     }
 }

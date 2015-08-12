@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 using BLL.Blog.ViewModels;
 using BLL.Comments.Objects;
 using BLL.Common.Helpers;
@@ -62,7 +63,12 @@ namespace BLL.Blog.Impls
 
         public IEnumerable<Rubric> GetRubrics()
         {
-            return _repository.GetAll<Rubric>();
+            return _repository.Queryable<Rubric>().ToList();
+        }
+
+        public async Task<IEnumerable<Rubric>> GetRubricsAsync()
+        {
+            return await _repository.Queryable<Rubric>().ToListAsync();
         }
 
         public ServiceResult ChangeStatus(int id, int status)
@@ -109,6 +115,8 @@ namespace BLL.Blog.Impls
                 .Where(p => p.Id == id && !p.Deleted)
                 .Include(p => p.User)
                 .Include(p => p.Comments)
+                //.Include(p => p.Comments.Select(c => c.CommentFor))
+                //.Include(p => p.Comments.Select(c => c.User))
                 .Include(p => p.RatingEntites)
                 .Include(p => p.Rubric)
                 .Single();
@@ -124,7 +132,7 @@ namespace BLL.Blog.Impls
             return postVm;
         }
 
-        public PostListModel GetPosts(int pageSize, PostSortType sortType, int rubricId = 0, int page = 1)
+        public async Task<PostListModel> GetPosts(int pageSize, PostSortType sortType, int rubricId = 0, int page = 1)
         {
             int take = page * pageSize;
             int skip = take - pageSize;
@@ -166,13 +174,12 @@ namespace BLL.Blog.Impls
                     break;
             }
             postListVM.PageInfo.Count = postCount;
-            postListVM.PostPreview = postQuery
+            var resultPosts = await postQuery
                 .Take(take)
                 .Skip(skip)
                 .AsNoTracking()
-                //.ToList()
-                .MapEachTo<PostPreviewModel>()
-                .ToList();
+                .ToListAsync();
+            postListVM.PostPreview = resultPosts.MapEachTo<PostPreviewModel>();
             return postListVM;
         }
 

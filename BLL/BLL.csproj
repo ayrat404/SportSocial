@@ -32,11 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper">
-      <HintPath>..\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.dll</HintPath>
-    </Reference>
-    <Reference Include="AutoMapper.Net4">
-      <HintPath>..\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+    <Reference Include="AutoMapper, Version=4.0.4.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\AutoMapper.4.0.4\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
@@ -148,6 +146,8 @@
     <Compile Include="Bonus\IBonusService.cs" />
     <Compile Include="Bonus\Impls\BonusService.cs" />
     <Compile Include="Bonus\Objects\BonusVideoModel.cs" />
+    <Compile Include="Comments\Impls\CommentService.cs" />
+    <Compile Include="Comments\Impls\UniversalCommentService.cs" />
     <Compile Include="Comments\MapProfiles\ConferenceCommentsProfile.cs" />
     <Compile Include="Comments\MapProfiles\CProfile.cs" />
     <Compile Include="Comments\MapProfiles\BlogCommentsProfile.cs" />
@@ -195,8 +195,10 @@
     <Compile Include="Feedbacks\Objects\FeedbackPreviewModel.cs" />
     <Compile Include="Feedbacks\Objects\FeedbackSortType.cs" />
     <Compile Include="Rating\Enums\RatingEntityType.cs" />
+    <Compile Include="Rating\Impls\RatingServiceWork.cs" />
+    <Compile Include="Rating\Impls\UniversalRatingService.cs" />
     <Compile Include="Rating\Models\BlogRatingViewModel.cs" />
-    <Compile Include="Rating\RatingService.cs" />
+    <Compile Include="Rating\Objects\RateResult.cs" />
     <Compile Include="Rating\IRatingService.cs" />
     <Compile Include="Infrastructure\IdentityConfig\AppRoleManager.cs" />
     <Compile Include="Infrastructure\IdentityConfig\AppRoleStore.cs" />
@@ -239,7 +241,6 @@
     <Compile Include="Storage\ViewModels\UploadImageModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Comments\Impls\" />
     <Folder Include="Common\Services\Cookies\Impls\" />
     <Folder Include="Payment\Enums\" />
   </ItemGroup>
@@ -260,7 +261,6 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\AutoMapper.3.2.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.2.1\tools\AutoMapper.targets')" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

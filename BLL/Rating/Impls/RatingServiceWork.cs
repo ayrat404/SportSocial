@@ -1,35 +1,37 @@
-﻿using System;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using BLL.Common.Objects;
 using BLL.Common.Services.CurrentUser;
+using BLL.Rating.Models;
+using BLL.Rating.Objects;
 using DAL.DomainModel.EnumProperties;
 using DAL.DomainModel.Interfaces;
 using DAL.Repository.Interfaces;
 
-namespace BLL.Rating
+namespace BLL.Rating.Impls
 {
-    public class RatingService<TEntity, TRatingEntity> : IRatingServiceImpl, IGRatingService<TEntity, TRatingEntity>
+    internal class RatingServiceWork<TEntity, TRatingEntity> : IRatingService
         where TEntity: class, IHasRating<TRatingEntity>
         where TRatingEntity: class, IRatingEntity<TEntity>
     {
         private readonly IRepository _repository;
         private readonly ICurrentUser _currentUser;
 
-        public RatingService(IRepository repository, ICurrentUser currentUser)
+        public RatingServiceWork(IRepository repository, ICurrentUser currentUser)
         {
             _repository = repository;
             _currentUser = currentUser;
         }
 
-        public ServiceResult Rate(int entityId, RatingType ratingType)
+        public ServiceResult Rate(RatingModel rateModel)
             //where TEntity : class, IHasRating<TEntity>
             //where TRatingEntity : class, IRatingEntity<TEntity>
         {
             var result = new RateResult() {Success = true};
             var entity = _repository.Queryable<TEntity>()
                 .Include(e => e.RatingEntites)
-                .SingleOrDefault(e => e.Id == entityId);
+                .SingleOrDefault(e => e.Id == rateModel.Id);
             if (entity != null)
             {
                 var ratingEntity = entity.RatingEntites.SingleOrDefault(r => r.UserId == _currentUser.UserId);
@@ -39,14 +41,14 @@ namespace BLL.Rating
                     _repository.Delete(ratingEntity);
                     //result.
                 }
-                if (ratingEntity == null || ratingEntity.RatingType != ratingType)
+                if (ratingEntity == null || ratingEntity.RatingType != rateModel.ActionType)
                 {
 
                     ratingEntity = Activator.CreateInstance<TRatingEntity>();
                     ratingEntity.RatedEntity = entity;
-                    ratingEntity.RatingType = ratingType;
+                    ratingEntity.RatingType = rateModel.ActionType;
                     ratingEntity.UserId = _currentUser.UserId;
-                    entity.TotalRating += (int)ratingType;
+                    entity.TotalRating += (int)rateModel.ActionType;
                     _repository.Add(ratingEntity);
                     _repository.Update(entity);
                 }
@@ -59,11 +61,5 @@ namespace BLL.Rating
             }
             return new ServiceResult() {Success = false};
         }
-    }
-
-    public class RateResult : ServiceResult
-    {
-        public int LikesCount { get; set; }
-        public int DislikesCount { get; set; }
     }
 }

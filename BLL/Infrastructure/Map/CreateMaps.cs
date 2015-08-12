@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using AutoMapper;
+using AutoMapper.Internal;
 
 namespace BLL.Infrastructure.Map
 {

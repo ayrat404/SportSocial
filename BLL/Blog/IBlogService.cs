@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.Threading.Tasks;
 using BLL.Blog.ViewModels;
 using BLL.Comments.Objects;
 using BLL.Common.Objects;
@@ -12,13 +13,14 @@ namespace BLL.Blog
     {
         ServiceResult CreatePost(PostCreateModel createPostModel);
         IEnumerable<Rubric> GetRubrics();
+        Task<IEnumerable<Rubric>> GetRubricsAsync();
         ServiceResult ChangeStatus(int id, int status);
         IEnumerable<PostForAdminModel> GetPostsForAdmin(BlogPostStatus? status, string query);
         //ServiceResult RaitBlog(BlogRatingViewModel model);
         Comment AddComment(CreateCommentViewModel createCommentViewModelModel);
         IEnumerable<Comment> LoadComments(int postId);
         PostDisplayModel GetPost(int id);
-        PostListModel GetPosts(int pageSize, PostSortType sortType, int rubricId = 0, int page = 1);
+        Task<PostListModel> GetPosts(int pageSize, PostSortType sortType, int rubricId = 0, int page = 1);
         IEnumerable<PostPreviewModel> OnMainPosts();
         PostEditModel GetEditModel(int id);
         ServiceResult EditPost(PostEditModel model);

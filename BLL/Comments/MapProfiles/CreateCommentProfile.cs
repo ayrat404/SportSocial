@@ -11,7 +11,7 @@ namespace BLL.Comments.MapProfiles
     {
         protected override void Configure()
         {
-            CreateMap<CreateCommentViewModel, ICommentEntity<object>>()
+            CreateMap<CreateCommentViewModel, CommentEntityBase>()
                 .ForMember(dest => dest.CommentedEntityId, opts => opts.MapFrom(src => src.ItemId))
                 .ForMember(dest => dest.CommentForId, opts => opts.MapFrom(src => src.CommentForId))
                 .ForMember(dest => dest.Text, opts => opts.MapFrom(src => src.Text))
