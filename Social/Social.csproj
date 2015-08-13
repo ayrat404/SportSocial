@@ -173,6 +173,7 @@
     <Content Include="Scripts\app\shared\services\mixpanel.srvc.js" />
     <Content Include="Scripts\app\shared\services\remote-template.srvc.js" />
     <Content Include="Scripts\app\socialApp\app.js" />
+    <Content Include="Scripts\app\socialApp\landing\landing.drct.js" />
     <Content Include="Scripts\app\socialApp\landing\landing.ctrl.js" />
     <Content Include="Scripts\app\socialApp\registration\registration.ctrl.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
