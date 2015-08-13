@@ -79,83 +79,29 @@ button {
 
 /* Custom Buttons
 -------------------------------------------------- */
+
+.btn-fill(@fill){
+    text-shadow: 1px 1px 2px rgba(0,0,0,.4);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+    .custom__button-variant(#fff, @fill, darken(@fill, 5%), lighten(@fill, 10%), @fill);
+    .button-size(0, 17px, 0.786em, 25px, 50px);
+}
+
 .btn {
-    font-family: 'F1 Bold';
-    text-transform: uppercase;
+    font-family: 'F1 Regular';
     transition: all 200ms linear;
-    .button-size(4px, 40px, 0.786em, 40px, 50px);
 }
 
-.btn--icon {
-    padding: 3px 40px 3px 3px;
+.btn-fill-green {
+    .btn-fill(@brand-green);
 }
 
-.btn--icon__icon {
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 15px;
-}
+/*.btn-fill-blue {
+    .btn-fill(@brand-blue);
+}*/
 
-.btn--icon__text {
-}
-
-.btn-tr-white {
-    .custom__button-variant(#fff, transparent, #fff, #fff, #fff, @brand-red);
-}
-
-.btn-tr-red {
-    .custom__button-variant(@brand-red, transparent, @brand-red, @brand-red, @brand-red, #fff);
-}
-
-.btn-tr-gray {
-    .custom__button-variant(#9aa5be, transparent, #9aa5be, @brand-red, @brand-red, #fff);
-}
-
-.btn-fill-red {
-    .custom__button-variant(#fff, @brand-red, @brand-red, @brand-red-light);
-}
-
-.btn-fill-white {
-    .custom__button-variant(@brand-red, #fff, #fff, transparent, #fff, #fff);
-}
-
-.btn-xs {
-    .button-size(3px, 10px, 0.785em, 10px, 50px);
-}
-
-.counter {
-    .no-float();
-}
-
-.counter__btn {
-    float: left;
-    padding: 11px 0;
-    font-size: 40px;
-    line-height: 30px;
-    background: @brand-dark;
-    border: 1px solid #dedede;
-    border-radius: 0;
-    color: #fff;
-    width: 59px;
-    height: 56px;
-    text-align: center;
-    transition: all 100ms linear;
-    box-sizing: border-box;
-
-    &:hover {
-        background: @brand-red;
-    }
-}
-
-.counter__input {
-    float: left;
-    border: 1px solid #dedede;
-    border-radius: 0;
-    color: @brand-dark;
-    height: 56px;
-    line-height: 56px;
-    font-size: 1.714em;
-    text-align: center;
+.btn-link-white {
+    .custom__button-variant(#fff, transparent, transparent, @brand-gray, @brand-gray, @text-color);
 }
 
 /* /Custom Buttons */

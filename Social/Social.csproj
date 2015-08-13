@@ -119,13 +119,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\landing\" />
-    <Folder Include="Content\socialApp\fonts\" />
     <Folder Include="Content\socialApp\images\common\" />
     <Folder Include="Content\socialApp\images\icons-set\" />
     <Folder Include="Content\socialApp\images\sprites\" />
-    <Folder Include="Content\socialApp\images\views\" />
-    <Folder Include="Content\socialApp\styles\compile\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -156,6 +152,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Content\socialApp\images\views\landing\bg-left.jpg" />
+    <Content Include="Content\socialApp\styles\compile\fortress.social.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -2411,6 +2409,7 @@
     <Content Include="Scripts\libs\bootstrap\tab.js" />
     <Content Include="Scripts\libs\bootstrap\tooltip.js" />
     <Content Include="Scripts\libs\bootstrap\transition.js" />
+    <Content Include="Scripts\libs\fotorama\fotorama.js" />
     <Content Include="Scripts\libs\jquery.mask\jquery.mask.js" />
     <Content Include="package.json" />
     <Content Include="Content\socialApp\styles\less\base\core.less" />
@@ -2495,6 +2494,40 @@
     <Content Include="Content\socialApp\styles\less\libs\bootstrap\wells.less" />
     <Content Include="Content\socialApp\styles\less\style.less" />
     <Content Include="Content\socialApp\styles\less\views\landing.less" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansBoldItalic\OpenSansBoldItalic.eot" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansBoldItalic\OpenSansBoldItalic.ttf" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansBoldItalic\OpenSansBoldItalic.woff" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansBold\OpenSansBold.eot" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansBold\OpenSansBold.ttf" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansBold\OpenSansBold.woff" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansExtraBoldItalic\OpenSansExtraBoldItalic.eot" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansExtraBoldItalic\OpenSansExtraBoldItalic.ttf" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansExtraBoldItalic\OpenSansExtraBoldItalic.woff" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansExtraBold\OpenSansExtraBold.eot" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansExtraBold\OpenSansExtraBold.ttf" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansExtraBold\OpenSansExtraBold.woff" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansItalic\OpenSansItalic.eot" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansItalic\OpenSansItalic.ttf" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansItalic\OpenSansItalic.woff" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansLightItalic\OpenSansLightItalic.eot" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansLightItalic\OpenSansLightItalic.ttf" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansLightItalic\OpenSansLightItalic.woff" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansLight\OpenSansLight.eot" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansLight\OpenSansLight.ttf" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansLight\OpenSansLight.woff" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansRegularItalic\OpenSansRegularItalic.eot" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansRegularItalic\OpenSansRegularItalic.ttf" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansRegularItalic\OpenSansRegularItalic.woff" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansRegular\OpenSansRegular.eot" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansRegular\OpenSansRegular.ttf" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansRegular\OpenSansRegular.woff" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansSemiBoldItalic\OpenSansSemiBoldItalic.eot" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansSemiBoldItalic\OpenSansSemiBoldItalic.ttf" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansSemiBoldItalic\OpenSansSemiBoldItalic.woff" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansSemiBold\OpenSansSemiBold.eot" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansSemiBold\OpenSansSemiBold.ttf" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansSemiBold\OpenSansSemiBold.woff" />
+    <Content Include="Content\socialApp\styles\less\libs\fotorama\fotorama.less" />
     <None Include="Scripts\libs\jquery\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.min.js" />
