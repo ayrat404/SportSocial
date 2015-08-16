@@ -13,8 +13,6 @@ angular.module('socialApp.controllers')
             $scope.$root.title = 'Fortress | Добро пожаловать';
             $scope.loading = false;
 
-
-
             // mixpanel tracking
             // ----------------
             $scope.$on('$viewContentLoaded', function () {

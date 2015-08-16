@@ -1,27 +1,47 @@
-﻿<div class="landing">
+﻿<div data-landing-scripts class="landing">
     <div class="landing__left">
         <div class="brand">
             <div class="logo"></div>
             <h1>Fortress</h1>
         </div>
-        <div class="middle">
+        <div class="middle js-slider-left-wrap">
+
             <div class="slide__left-it">
-                <div>
+                <div class="sl__title">
                     <span class="sl__icon sl__icon--journal"></span>
                     <span class="sl__title">Дневник</span>
                 </div>
                 <p class="sl__desc">Фиксируй свои тренировки в on-line дневнике и следи за тем, как тренируются другие</p>
             </div>
-            <div class="slide__controls">
-                <div class="sc__it sc__it--bottom"></div>
-                <div class="sc__it sc__it--top"></div>
+
+            <div class="slide__left-it hidden">
+                <div class="sl__title">
+                    <span class="sl__icon sl__icon--journal"></span>
+                    <span class="sl__title">Дневник2</span>
+                </div>
+                <p class="sl__desc">2Фиксируй свои тренировки в on-line дневнике и следи за тем, как тренируются другие</p>
             </div>
+            <div class="slide__left-it hidden">
+                <div class="sl__title">
+                    <span class="sl__icon sl__icon--journal"></span>
+                    <span class="sl__title">Дневник3</span>
+                </div>
+                <p class="sl__desc">3Фиксируй свои тренировки в on-line дневнике и следи за тем, как тренируются другие</p>
+            </div>
+
+            <div class="slide__left-it hidden">
+                <div class="sl__title">
+                    <span class="sl__icon sl__icon--journal"></span>
+                    <span class="sl__title">Дневник4</span>
+                </div>
+                <p class="sl__desc">4Фиксируй свои тренировки в on-line дневнике и следи за тем, как тренируются другие</p>
+            </div>
+
         </div>
         <div class="social">
             <p>Расскажите друзьям:</p>
             соц шаринг
         </div>
-        <div class="slide__nav"></div>
     </div>
     <div class="landing__right">
         <header class="landing__header">
@@ -55,16 +75,24 @@
             </div>
         </header>
         <h6 class="slide__short-desc">Online-дневник тренировок с фотографиями и видео</h6>
-        <div class="slide__img-wrap">
-            
+        <h6 class="slide__short-desc hidden">Online-дневник тренировок с фотографиями и видео</h6>
+        <h6 class="slide__short-desc hidden">Online-дневник тренировок с фотографиями и видео</h6>
+        <h6 class="slide__short-desc hidden">Online-дневник тренировок с фотографиями и видео</h6>
+        <div class="slider-mac-wrap">
+            <div class="slider-mac-body">
+                <img src="../../../Content/socialApp/images/views/landing/macbook.png" class="slider-mac__item" />
+                <img src="../../../Content/socialApp/images/views/landing/macbook.png" class="slider-mac__item" />
+                <img src="../../../Content/socialApp/images/views/landing/macbook.png" class="slider-mac__item" />
+                <img src="../../../Content/socialApp/images/views/landing/macbook.png" class="slider-mac__item" />
+            </div>
         </div>
         <footer class="landing__footer">
             <ul class="list-links list-links--hor">
                 <li>
-                    <a href="#">Политика конфиденциальности</a>
+                    <span data-modal-click="policy" class="link">Политика конфиденциальности</span>
                 </li>
                 <li>
-                    <a href="#">Техническая поддержка</a>
+                    <span data-modal-click="support" class="link">Техническая поддержка</span>
                 </li>
             </ul>
         </footer>

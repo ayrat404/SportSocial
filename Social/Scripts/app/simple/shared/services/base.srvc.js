@@ -202,6 +202,21 @@ angular.module('shared')
 
             })();
 
+            // Animation module
+            // ---------------
+            var animationCtrl = (function () {
+                return {
+                    add: function ($el, x, callback) {
+                        $el.addClass(x + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+                            $(this).removeClass(x + ' animated');
+                            if (callback != undefined) {
+                                callback();
+                            }
+                        });
+                    }
+                }
+            })();
+
             // Delay constructor
             // ---------------
             var delayConstructor = function () {
@@ -237,6 +252,9 @@ angular.module('shared')
                     show: noticesCtrl.show,
                     hide: noticesCtrl.hide,
                     hideAll: noticesCtrl.hideAll
+                },
+                animation: {
+                    add: animationCtrl.add
                 },
                 isArray: isArray,
                 delayConstructor: delayConstructor
