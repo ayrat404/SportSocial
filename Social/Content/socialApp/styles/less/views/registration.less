@@ -1,0 +1,75 @@
+/* Registration
+---------------------------------------------------------------------------------- */
+
+.registration {
+    min-height: 100%;
+    background: url('../../images/views/registration/registration-bg.jpg') no-repeat;
+    background-position: center;
+    background-size: cover;
+    color: #fff;
+}
+
+.registration__inner {
+    max-width: 480px;
+    margin: auto;
+    padding-bottom: 30px;
+
+    h1 {
+        font-size: 30px;
+        font-family: 'F1 ExtraBold';
+        line-height: 30px;
+        text-align: center;
+        padding-top: 30px;
+        margin-top: 0;
+    }
+
+    .reg__step {
+        font-size: 18px;
+        font-family: 'F1 ExtraBold';
+        text-align: center;
+    }
+
+    .reg__form {
+        max-width: 350px;
+        margin: 35px auto 0;
+
+        input, textarea, select {
+            font-size: 1.286em;
+        }
+    }
+
+    .reg__img-wrap {
+        height: 200px;
+        width: 200px;
+        margin: 0 auto 20px;
+        position: relative;
+        border-radius: 50%;
+        border: 7px solid @brand-green;
+        background-color: #fff;
+        overflow: hidden;
+        display: table;
+        cursor: pointer;
+        user-select: none;
+    }
+
+    .reg__img {
+        height: 100%;
+        width: 100%;
+    }
+
+    .reg__img__empty {
+        display: table-cell;
+        vertical-align: middle;
+        color: @brand-green;
+        text-align: center;
+
+        .avatar-icon {
+            display: block;
+            margin: 0 auto 10px;
+            .sprite(@registration-avatar-upload);
+        }
+    }
+}
+
+/* /Registration
+---------------------------------------------------------------------------------- */

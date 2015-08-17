@@ -1,16 +1,39 @@
 ﻿'use strict';
 
 angular.module('socialApp.controllers')
-    .controller('SupportModalCtrl', [
+    // submit modal
+    // ---------------
+    .controller('SupportSubmitModalCtrl', [
         '$scope',
-        'mixpanel',
-        function (
+        '$modalInstance',
+        'supportSrvc',
+        'modalSrvc',
+        function(
             $scope,
-            mixpanel) {
+            $modalInstance,
+            supportSrvc,
+            modalSrvc) {
 
             $scope.submit = function() {
-                
+                supportSrvc.send($scope.support).then(function(res) {
+                    $modalInstance.dismiss();
+                    modalSrvc.show({ name: 'supportSuccess' });
+                });
             }
+        }
+    ])
 
+    // success modal
+    // ---------------
+    .controller('SupportSuccessModalCtrl', [
+        '$scope',
+        '$modalInstance',
+        function(
+            $scope,
+            $modalInstance) {
+
+            $scope.close = function() {
+                $modalInstance.dismiss();
+            }
         }
     ]);

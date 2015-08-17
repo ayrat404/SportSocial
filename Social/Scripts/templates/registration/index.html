@@ -1,0 +1,76 @@
+﻿<div class="registration">
+    <div class="registration__inner" ng-cloack>
+        <h1>Как же долго мы Вас ждали!</h1>
+        <div ng-show="step == 1">
+            <div class="reg__step">Регистрация. Шаг 1 из 2</div>
+            <form name="RegStepOneForm" class="reg__form" ng-submit="sendFirst()">
+                <div class="reg__img-wrap">
+                    <img src="#" class="reg__img hidden" />
+                    <div class="reg__img__empty">
+                        <span class="avatar-icon"></span>
+                        <span>Добавить фото</span>
+                    </div>
+                </div>
+                <div class="fs-form__row">
+                    <input type="text" ng-model="first.name" autofocus required placeholder="Имя" class="fs-input" />
+                </div>
+                <div class="fs-form__row">
+                    <input type="text" ng-model="first.sername" required placeholder="Фамилия" class="fs-input" />
+                </div>
+                <div class="fs-form__row row">
+                    <div class="col-xs-7">
+                        <select required ng-model="first.birthday" class="fs-input">
+                            <option>Дата рождения</option>
+                        </select>
+                    </div>
+                    <div class="col-xs-5">
+                        <select required ng-model="first.gender" class="fs-input">
+                            <option>Пол</option>
+                            <option>Муж.</option>
+                            <option>Жен.</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="fs-form__row row">
+                    <div class="col-xs-4">
+                        <span class="label18">В спорте уже:</span>
+                    </div>
+                    <div class="col-xs-8">
+                        <select ng-model="first.sportTime" class="fs-input">
+                            <option>Менее 1 года</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="fs-form__row">
+                    <input type="text" ng-model="first.phone" required placeholder="Номер телефона без +" class="fs-input" />
+                </div>
+                <div class="fs-form__submit text-center">
+                    <button type="submit" class="btn btn-fill-green btn-xl">Далее</button>
+                    <p>Уже зарегистрированы? <span class="link link--green" data-modal-click="loginSubmit">Войти</span></p>
+                </div>
+            </form>
+        </div>
+        <div ng-show="step == 2">
+            <div class="reg__step">Регистрация. Шаг 2 из 2</div>
+            <form name="RegStepTwoForm" class="reg__form"
+                  ng-submit="sendTwo()"
+                  ng-class="{ 'show-valid': form2.showValid==true }">
+                <div class="field-error" ng-show="two.password != two.passwordRepeat && (form2.showValid || form2.passOut)">Пароли не совпадают</div>
+                <div class="fs-form__row">
+                    <input type="password" ng-model="two.password" required placeholder="Придумайте пароль" class="fs-input" />
+                </div>
+                <div class="fs-form__row">
+                    <input type="password" ng-model="two.passwordRepeat" ng-blur="form2.passOut=true" required placeholder="Повторите пароль" class="fs-input" />
+                </div>
+                <p class="text-center">Вам отправлено СМС с кодом подтверждения</p>
+                <div class="fs-form__row">
+                    <input type="text" ng-model="two.code" required placeholder="Код подтверждения из СМС" class="fs-input" />
+                </div>
+                <div class="fs-form__submit text-center">
+                    <span class="link link--white" ng-click="step = 1">Назад</span>
+                    <button type="submit" class="btn btn-fill-green btn-xl" ng-click="form2.showValid=true">Далее</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

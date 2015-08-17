@@ -7,10 +7,10 @@ angular.module('shared')
         '$timeout',
         '$window',
         function ($timeout, $window) {
-            
+
             // Token module
             // ---------------
-            var tokenCtrl = (function() {
+            var tokenCtrl = (function () {
                 var tokenName = 'csrfmiddlewaretoken',
                     tokenEl = angular.element('input[type="hidden"][name=' + tokenName + ']'),
                     tokenVal = tokenEl.length ? tokenEl.val() : null,
@@ -40,7 +40,7 @@ angular.module('shared')
 
             // Format module
             // ---------------
-            var formatCtrl = (function() {
+            var formatCtrl = (function () {
                 // Склонение слов
                 // ---------------
                 function formatWord(count, words) {
@@ -56,7 +56,7 @@ angular.module('shared')
 
             // Errors module
             // ---------------
-            var errorCtrl = (function() {
+            var errorCtrl = (function () {
                 var $template = $('<div>', { 'class': 'form--error' });
 
                 // array = [ { field: 'domain', message: 'Сайт уже существует' } ]
@@ -67,15 +67,15 @@ angular.module('shared')
                                 $fields = $('[name="' + _this.field + '"]').length ? $('[name="' + _this.field + '"]') : false;
                             if ($fields !== false && !$fields.siblings('form--error').length) {
                                 var $error = $template.clone().text(_this.error).insertAfter($fields.eq(0));
-                                window.setTimeout(function() {
-                                    $error.fadeOut('slow', function() {
+                                window.setTimeout(function () {
+                                    $error.fadeOut('slow', function () {
                                         $error.remove();
                                     });
                                 }, 5000);
                             } else {
                                 console.log('error module: field isn\'t found');
                             }
-                        }    
+                        }
                     }
                 }
 
@@ -86,7 +86,7 @@ angular.module('shared')
 
             // Notices module
             // ---------------
-            var noticesCtrl = (function() {
+            var noticesCtrl = (function () {
 
                 var $body = angular.element('body'),
                     defaults = {
@@ -126,7 +126,7 @@ angular.module('shared')
                             hide($tmpl.id);
                         }, options.delay);
                     }
-                        
+
                     return {
                         $el: $tmpl,
                         id: $tmpl.id
@@ -168,7 +168,7 @@ angular.module('shared')
                     var offset = bottomOffset;
                     if (notices[i] != undefined) {
                         if (notices[i - 1] != undefined) {
-                            for (var j = 0; j <= notices.indexOf(notices[i - 1]); j++) {
+                            for (var j = 0; j <= notices.indexOf(notices[i - 1]) ; j++) {
                                 offset += notices[j].outerHeight() + margin;
                             }
                         }
@@ -193,11 +193,25 @@ angular.module('shared')
                     return angular.extend({}, defaults, opts);
                 }
 
+                // notice for server response
+                // ----------
+                function response(data) {
+                    var noticeClass = data.success ? 'success' : 'warning';
+                    if (data.msg &&
+                        data.msg.length) {
+                        show({
+                            text: data.msg,
+                            type: noticeClass
+                        });
+                    }
+                }
+
                 // ----------
                 return {
                     show: show,
                     hide: hide,
-                    hideAll: hideAll
+                    hideAll: hideAll,
+                    response: response
                 }
 
             })();
@@ -216,6 +230,17 @@ angular.module('shared')
                     }
                 }
             })();
+            
+            // Simple validation module
+            // ---------------
+            var validateCtrl = (function () {
+                return {
+                    email: function (email) {
+                        var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+                        return re.test(email);
+                    }
+                }
+            })();
 
             // Delay constructor
             // ---------------
@@ -230,7 +255,7 @@ angular.module('shared')
             // check is Array
             // ---------------
             function isArray(array) {
-                if( Object.prototype.toString.call(array) === '[object Array]' ) {
+                if (Object.prototype.toString.call(array) === '[object Array]') {
                     return true;
                 }
                 return false;
@@ -255,6 +280,9 @@ angular.module('shared')
                 },
                 animation: {
                     add: animationCtrl.add
+                },
+                validate: {
+                    email: validateCtrl.email
                 },
                 isArray: isArray,
                 delayConstructor: delayConstructor

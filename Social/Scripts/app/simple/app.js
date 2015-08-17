@@ -35,6 +35,12 @@ angular
                     url: '/',
                     templateUrl: tmplView('landing/index'),
                     controller: 'LandingCtrl'
+                })
+                .state('registration', {
+                    url: '/registration',
+                    templateUrl: tmplView('registration/index'),
+                    controller: 'RegistrationCtrl',
+                    fullHeight: true
                 });
                 //.state('otherwise', {
                 //    url: '*path',
@@ -56,6 +62,7 @@ angular
         '$rootScope',
         '$state',
         '$stateParams',
+        //'$modalInstance',
         function (
             $templateCache,
             $rootScope,
@@ -75,17 +82,18 @@ angular
 
             // global scripts init
             // ---------------
-            //NProgress.configure({ minimum: 0.3 });
+            NProgress.configure({ minimum: 0.3 });
 
             // ---------------
             $rootScope.$on('$stateChangeStart', function (event, toState) {
                 $rootScope.loading = true;
-                //NProgress.start();
+                NProgress.start();
             });
 
             // ---------------
             $rootScope.$on('$stateChangeSuccess', function (event, toState) {
                 $rootScope.loading = false;
-                //NProgress.done();
+                $rootScope.fullHeight = toState.fullHeight;
+                NProgress.done();
             });
         }]);

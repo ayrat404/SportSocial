@@ -185,9 +185,9 @@
     <Content Include="Scripts\app\simple\shared\services\mixpanel.srvc.js" />
     <Content Include="Scripts\app\simple\shared\services\remote-template.srvc.js" />
     <Content Include="Scripts\app\simple\socialApp\app.js" />
-    <Content Include="Scripts\app\simple\socialApp\landing\test.js" />
     <Content Include="Scripts\app\simple\socialApp\landing\landing.drct.js" />
     <Content Include="Scripts\app\simple\socialApp\landing\landing.ctrl.js" />
+    <Content Include="Scripts\app\simple\socialApp\modals\support.ctrl.js" />
     <Content Include="Scripts\app\simple\socialApp\registration\registration.ctrl.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
     <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
@@ -2547,6 +2547,7 @@
     <Content Include="Scripts\app\coffee\app.coffee" />
     <Content Include="Content\socialApp\styles\less\components\mac-slider.less" />
     <Content Include="Content\socialApp\styles\less\elements\links.less" />
+    <Content Include="Content\socialApp\styles\less\elements\form.less" />
     <None Include="Scripts\app\coffee\appServices\auth\loginSrvc.coffee" />
     <Content Include="Scripts\app\coffee\appServices\auth\registrationSrvc.coffee" />
     <Content Include="Scripts\app\coffee\appServices\auth\statusSrvc.coffee" />
@@ -2565,6 +2566,7 @@
     <Content Include="Scripts\libs\wow\wow.min.js" />
     <Content Include="Scripts\templates\errors\404.html" />
     <Content Include="Scripts\templates\landing\index.html" />
+    <Content Include="Scripts\templates\modals\support.html" />
     <Content Include="Scripts\templates\modals\policy.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
