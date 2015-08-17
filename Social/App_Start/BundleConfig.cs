@@ -24,23 +24,25 @@ namespace Social
                     "~/Scripts/libs/bootstrap/transition.js",
                     "~/Scripts/libs/bootstrap/tab.js",
                     "~/Scripts/libs/bootstrap/tooltip.js",
-                    "~/Scripts/libs/bootbox/bootbox.js"));
+                    "~/Scripts/libs/angular-ui-bootstrap/ui-bootstrap-tpls-0.13.3.js",
+                    //"~/Scripts/libs/bootbox/bootbox.js",
+                    "~/Scripts/libs/fotorama/fotorama.js"));
 
             // social
             // ---------------
             bundles.Add(new ScriptBundle("~/bundles/social/scripts")
                 // include shared
                 // ---------------
-                .IncludeDirectory("~/Scripts/app/shared", "*.js", true)
+                .IncludeDirectory("~/Scripts/app/simple/shared", "*.js", true)
                 // include appServices
                 // ---------------
-                .IncludeDirectory("~/Scripts/app/appServices", "*.js", true)
+                .IncludeDirectory("~/Scripts/app/simple/appServices", "*.js", true)
                 // include socialApp
                 // ---------------
-                .IncludeDirectory("~/Scripts/app/socialApp", "*.js", true)
+                .IncludeDirectory("~/Scripts/app/simple/socialApp", "*.js", true)
                 // include main app
                 // ---------------
-                .Include("~/Scripts/app.js")
+                .Include("~/Scripts/app/simple/app.js")
                 );
 
             // optimization

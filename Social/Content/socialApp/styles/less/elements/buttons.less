@@ -1,0 +1,111 @@
+/* Buttons
+---------------------------------------------------------------------------------- */
+
+/* Mixins
+-------------------------------------------------- */
+@line-height-base: 1.428571429; // 20/14
+
+.button-size(@padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius) {
+    padding: @padding-vertical @padding-horizontal;
+    font-size: @font-size;
+    line-height: @line-height;
+    border-radius: @border-radius;
+}
+
+
+.custom__button-variant(@color, @bg-color, @border-color, @bg-color-hover: @bg-color, @border-color-hover: @border-color, @color-hover: @color) {
+    color: @color;
+    background-color: @bg-color;
+    border: 1px solid @border-color;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+
+    &:focus,
+    &.focus {
+        color: @color;
+        background-color: @bg-color;
+        border: 1px solid @border-color;
+    }
+
+    &:hover,
+    //&:focus,
+    //&.focus,
+    &:active,
+    &.active,
+    .open > .dropdown-toggle& {
+        color: @color-hover;
+        background-color: @bg-color-hover;
+        border-color: @border-color-hover;
+    }
+
+    &:active,
+    &.active,
+    .open > .dropdown-toggle& {
+        background-image: none;
+    }
+
+    &.disabled,
+    &[disabled],
+    fieldset[disabled] & {
+        &,
+        &:hover,
+        &:focus,
+        &.focus,
+        &:active,
+        &.active {
+            background-color: @bg-color;
+        }
+    }
+
+    .badge {
+        color: @bg-color;
+        background-color: @color;
+    }
+}
+
+button {
+    &:focus {
+        outline: none;
+    }
+}
+
+.btn {
+    &:focus {
+        outline: none !important;
+    }
+}
+/* /Mixins */
+
+/* Custom Buttons
+-------------------------------------------------- */
+
+.btn-fill(@fill) {
+    text-shadow: 1px 1px 2px rgba(0,0,0,.4);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+    .custom__button-variant(#fff, @fill, darken(@fill, 5%), lighten(@fill, 10%), @fill);
+    .button-size(0, 17px, 0.786em, 25px, 50px);
+}
+
+.btn {
+    font-family: 'F1 Regular';
+    transition: all 200ms linear;
+}
+
+.btn-fill-green {
+    .btn-fill(@brand-green);
+}
+
+.btn-link-white {
+    .custom__button-variant(#fff, transparent, transparent, @brand-gray, @brand-gray, @text-color);
+}
+
+/* /Custom Buttons */
+
+.btn-xl {
+    .button-size(15px, 42px, 1em, 14px, 50px);
+}
+
+
+/* /Buttons
+---------------------------------------------------------------------------------- */

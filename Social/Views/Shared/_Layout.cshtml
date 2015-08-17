@@ -6,6 +6,7 @@
     <title ng-bind="title">@(PageData["title"] ?? "Fortress. Социальная сеть")</title>
     <meta name="description" content="@PageData["description"]">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link type="text/css" rel="stylesheet" media="all" href="~/Content/socialApp/styles/compile/fortress.social.min.css">
 </head>
 <body>
     <div id="ui-view" class="ui-content" ng-cloak ui-view data-tmpl-url="@Request.RequestContext.RouteData.DataTokens["templateUrl"]">

@@ -9,11 +9,15 @@
   "devDependencies": {
     "gulp": "latest",
     "gulp-autoprefixer": "latest",
+    "gulp-coffee": "latest",
     "gulp-filesize": "latest",
     "gulp-header": "latest",
     "gulp-less": "latest",
     "gulp-minify-css": "^1.0.0",
+    "gulp-ngmin": "^0.3.0",
     "gulp-rename": "latest",
+    "gulp-util": "^3.0.6",
+    "gulp-wrap": "^0.11.0",
     "gulp.spritesmith": "latest"
   }
 }

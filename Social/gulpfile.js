@@ -9,6 +9,10 @@ var gulp = require('gulp'),
     spritesmith = require('gulp.spritesmith'),
     header = require('gulp-header'),
     minifyCSS = require('gulp-minify-css'),
+    coffee = require('gulp-coffee'),
+    ngmin = require('gulp-ngmin'),
+    ngClassify = require('gulp-ng-classify'),
+    wrap = require('gulp-wrap'),
     pkg = require('./package.json');
 
 var banner = '/*!\n' +
@@ -17,20 +21,15 @@ var banner = '/*!\n' +
 
 var apps = [
     {
-        "name": "landing",
-        "style": "fortress.landing.min.css",
-        "compileStylesPath": "Content/landing/styles/compile/",
-        "baseStylesPath": "Content/landing/styles/less/",
-        "spriteIn": "Content/landing/images/sprites/*.png",
-        "spriteOut": "Content/landing/images/icons-set/"
-    },
-    {
         "name": "socialApp",
         "style": "fortress.social.min.css",
         "compileStylesPath": "Content/socialApp/styles/compile/",
         "baseStylesPath": "Content/socialApp/styles/less/",
         "spriteIn": "Content/socialApp/images/sprites/*.png",
-        "spriteOut": "Content/socialApp/images/icons-set/"
+        "spriteOut": "Content/socialApp/images/icons-set/",
+        "baseCoffeePath": "Scripts/app/coffee/",
+        "coffeeIn": "Scripts/app/coffee/**/*.coffee",
+        "coffeeOut": "Scripts/app/javascript/"
     }
 ];
 
@@ -49,12 +48,29 @@ function compileCss(project, compress) {
 }
 
 // ---------------
+function compileCoffee(project) {
+    return gulp.src(project.coffeeIn)
+        .pipe(ngClassify())
+        .pipe(coffee({ bare: true }).on('error', console.log))
+        .pipe(ngmin())
+        .pipe(wrap('(function(){\n<%= contents %>\n}).call(this);'))
+        .pipe(gulp.dest(project.coffeeOut));
+}
+
+
+// ---------------
 function declareTasks(project) {
 
     // compile less
     // ---------------
     gulp.task(project.name + '-css', function () {
         return compileCss(project, true);
+    });
+
+    // compile coffee
+    // ---------------
+    gulp.task(project.name + '-coffee', function () {
+        return compileCoffee(project);
     });
 
     // generate sprite
@@ -74,16 +90,25 @@ function declareTasks(project) {
     // watcher
     // ---------------
     gulp.task(project.name + '-watch', function () {
-        var watcher = gulp.watch([
+        var cssWatcher = gulp.watch([
             project.baseStylesPath + '*.less',
             project.baseStylesPath + '**/*.less'
         ], function () {
             return compileCss(project, false);
         });
-
-        watcher.on('change', function (event) {
+        cssWatcher.on('change', function (event) {
             console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
         });
+
+        //var coffeeWatcher = gulp.watch([
+        //    project.baseCoffeePath + '*.coffee',
+        //    project.baseCoffeePath + '**/*.coffee'
+        //], function() {
+        //    return compileCoffee(project);
+        //});
+        //coffeeWatcher.on('change', function (event) {
+        //    console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+        //});
     });
 }
 
@@ -98,7 +123,7 @@ gulp.task('default', function () {
     for (var i = 0; i < apps.length; i++) {
         var name = apps[i].name;
         console.log('-----------------------------------------------------');
-        console.log(name + '-sprite | ' + name + '-css | ' + name + '-watch');
+        console.log(name + '-sprite | ' + name + '-css | ' + name + '-watch | ' + name + '-coffee');
         console.log('-----------------------------------------------------');
     }
     console.log('-----------------------------------------------------');
