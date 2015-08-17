@@ -80,7 +80,7 @@ button {
 /* Custom Buttons
 -------------------------------------------------- */
 
-.btn-fill(@fill){
+.btn-fill(@fill) {
     text-shadow: 1px 1px 2px rgba(0,0,0,.4);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
     .custom__button-variant(#fff, @fill, darken(@fill, 5%), lighten(@fill, 10%), @fill);
@@ -96,16 +96,15 @@ button {
     .btn-fill(@brand-green);
 }
 
-/*.btn-fill-blue {
-    .btn-fill(@brand-blue);
-}*/
-
 .btn-link-white {
     .custom__button-variant(#fff, transparent, transparent, @brand-gray, @brand-gray, @text-color);
 }
 
 /* /Custom Buttons */
 
+.btn-xl {
+    .button-size(15px, 42px, 1em, 14px, 50px);
+}
 
 
 /* /Buttons

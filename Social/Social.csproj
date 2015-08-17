@@ -153,6 +153,7 @@
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\socialApp\images\views\landing\bg-left.jpg" />
+    <Content Include="Content\socialApp\images\views\landing\macbook.png" />
     <Content Include="Content\socialApp\styles\compile\fortress.social.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -173,15 +174,18 @@
     <Content Include="Scripts\app\javascript\socialApp\landing\landingDrct.js" />
     <Content Include="Scripts\app\javascript\socialApp\registration\registrationCtrl.js" />
     <Content Include="Scripts\app\simple\shared\app.js" />
+    <Content Include="Scripts\app\simple\shared\directives\modal-click.drct.js" />
     <Content Include="Scripts\app\simple\shared\directives\loader.drct.js" />
     <Content Include="Scripts\app\simple\shared\directives\mixpanel.drct.js" />
     <Content Include="Scripts\app\simple\shared\directives\scroll-to.drct.js" />
     <Content Include="Scripts\app\simple\shared\filters\format-word.fltr.js" />
     <Content Include="Scripts\app\simple\shared\services\base.srvc.js" />
     <Content Include="Scripts\app\simple\shared\services\error-handler.srvc.js" />
+    <Content Include="Scripts\app\simple\shared\services\modal.srvc.js" />
     <Content Include="Scripts\app\simple\shared\services\mixpanel.srvc.js" />
     <Content Include="Scripts\app\simple\shared\services\remote-template.srvc.js" />
     <Content Include="Scripts\app\simple\socialApp\app.js" />
+    <Content Include="Scripts\app\simple\socialApp\landing\test.js" />
     <Content Include="Scripts\app\simple\socialApp\landing\landing.drct.js" />
     <Content Include="Scripts\app\simple\socialApp\landing\landing.ctrl.js" />
     <Content Include="Scripts\app\simple\socialApp\registration\registration.ctrl.js" />
@@ -196,6 +200,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Scripts\libs\angular-ui-bootstrap\ui-bootstrap-0.13.3.js" />
     <Content Include="Scripts\libs\angular-ui-router\angular-ui-router.js" />
     <Content Include="Scripts\libs\angular-ui-router\angular-ui-router.min.js" />
     <Content Include="Scripts\libs\angular\angular-animate.js" />
@@ -2427,7 +2432,7 @@
     <Content Include="Content\socialApp\styles\less\base\fonts.less" />
     <Content Include="Content\socialApp\styles\less\base\icons-set.less" />
     <Content Include="Content\socialApp\styles\less\base\mixins.less" />
-    <Content Include="Content\socialApp\styles\less\components\buttons.less" />
+    <Content Include="Content\socialApp\styles\less\elements\buttons.less" />
     <Content Include="Content\socialApp\styles\less\components\modal.less" />
     <Content Include="Content\socialApp\styles\less\libs\bootstrap-select\bootstrap-select.less" />
     <Content Include="Content\socialApp\styles\less\libs\bootstrap\.csscomb.json" />
@@ -2540,6 +2545,8 @@
     <Content Include="Content\socialApp\styles\less\libs\fotorama\fotorama.less" />
     <Content Include="Scripts\app\coffee\appServices\app.coffee" />
     <Content Include="Scripts\app\coffee\app.coffee" />
+    <Content Include="Content\socialApp\styles\less\components\mac-slider.less" />
+    <Content Include="Content\socialApp\styles\less\elements\links.less" />
     <None Include="Scripts\app\coffee\appServices\auth\loginSrvc.coffee" />
     <Content Include="Scripts\app\coffee\appServices\auth\registrationSrvc.coffee" />
     <Content Include="Scripts\app\coffee\appServices\auth\statusSrvc.coffee" />
@@ -2558,6 +2565,7 @@
     <Content Include="Scripts\libs\wow\wow.min.js" />
     <Content Include="Scripts\templates\errors\404.html" />
     <Content Include="Scripts\templates\landing\index.html" />
+    <Content Include="Scripts\templates\modals\policy.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2788,7 +2796,7 @@
     <Content Include="Scripts\libs\angular\version.json" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.min.map" />
     <Content Include="Scripts\libs\nprogress\nprogress.less" />
-    <Content Include="Scripts\libs\wow\animate.less" />
+    <Content Include="Content\socialApp\styles\less\libs\animate\animate.less" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

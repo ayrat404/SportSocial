@@ -9744,9 +9744,6 @@ fieldset[disabled] .btn-fill-green.active {
   color: #1fba2a;
   background-color: #ffffff;
 }
-/*.btn-fill-blue {
-    .btn-fill(@brand-blue);
-}*/
 .btn-link-white {
   color: #ffffff;
   background-color: transparent;
@@ -9799,6 +9796,12 @@ fieldset[disabled] .btn-link-white.active {
   background-color: #ffffff;
 }
 /* /Custom Buttons */
+.btn-xl {
+  padding: 15px 42px;
+  font-size: 1em;
+  line-height: 14px;
+  border-radius: 50px;
+}
 /* /Buttons
 ---------------------------------------------------------------------------------- */
 /* Links
@@ -9812,55 +9815,89 @@ fieldset[disabled] .btn-link-white.active {
 }
 /* /Links
 ---------------------------------------------------------------------------------- */
+/* Form
+---------------------------------------------------------------------------------- */
+.fs-input {
+  font-family: 'F1 Light';
+  background-color: #fff;
+  outline: none;
+  border: 1px solid #fff;
+  color: #1f282e;
+  padding: 12px 20px;
+  width: 100%;
+}
+.fs-input ::-webkit-input-placeholder {
+  color: #575757;
+}
+.fs-input ::-moz-placeholder {
+  color: #575757;
+}
+.fs-input :-moz-placeholder {
+  color: #575757;
+}
+.fs-input :-ms-input-placeholder {
+  color: #575757;
+}
+.fs-form__row {
+  margin-bottom: 10px;
+}
+.fs-form__row:last-child {
+  margin-bottom: 0;
+}
+/* /Form
+---------------------------------------------------------------------------------- */
 /* /Elements */
 /* Components
 -------------------------------------------------- */
 /* Modal
 ---------------------------------------------------------------------------------- */
+.modal-dialog {
+  z-index: 1041;
+}
+.modal-backdrop {
+  background: rgba(21, 29, 33, 0.95);
+}
+.modal-backdrop.in {
+  opacity: 1;
+}
 /* Common
 -------------------------------------------------- */
-.gl-modal .close {
-  text-indent: -9999em;
-  margin-top: -6px;
-  margin-right: 7px;
+.fs-modal .modal-close {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  cursor: pointer;
+  opacity: .8;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-image: url(../../images/icons-set/icons-set.png);
+  background-position: -129px -49px;
+  width: 21px;
+  height: 21px;
+}
+.fs-modal .modal-close:hover {
+  opacity: 1;
 }
 /* /Common */
-/* Modal Callback
+/* Modal transparent
 -------------------------------------------------- */
-.gl-modal--callback .modal-dialog {
-  max-width: 400px;
+.fs-modal--transparent .modal-content {
+  background-color: transparent;
 }
-.gl-modal--callback .modal-body {
-  padding: 15px 0;
-  overflow-x: hidden;
-}
-.gl-modal--callback .modal-footer {
-  text-align: center;
-}
-.gl-modal--callback .alert {
-  margin-top: 20px;
-  text-align: center;
-}
-.callback__img {
-  max-width: 100%;
-}
-.callback__text {
-  margin: 40px auto 0;
-  max-width: 290px;
-  text-align: center;
-  font-size: 1.286em;
-}
-.callback__phone {
-  height: 50px;
-  font-size: 2.143em;
-  background-color: #797b7f;
+.fs-modal--transparent .fs-modal__title {
+  font-size: 18px;
   color: #fff;
-  margin: 17px auto 0;
-  max-width: 360px;
-  display: block;
-  letter-spacing: 4.6px;
+  font-family: 'F1 ExtraBold';
+  text-align: center;
+  margin-bottom: 30px;
 }
-/* /Modal Callback */
+.fs-modal--transparent .fs-modal__submit {
+  margin-top: 10px;
+  text-align: center;
+}
+/* /Modal transparent */
 /* /Modal
 ---------------------------------------------------------------------------------- */
 /* Macbook slider
@@ -10131,25 +10168,25 @@ fieldset[disabled] .btn-link-white.active {
 }
 .auth-social .as__icon--tw {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -35px -84px;
+  background-position: -65px -84px;
   width: 20px;
   height: 20px;
 }
 .auth-social .as__icon--fb {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -129px -49px;
+  background-position: -80px -49px;
   width: 20px;
   height: 20px;
 }
 .auth-social .as__icon--gp {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -80px -49px;
+  background-position: -35px -84px;
   width: 20px;
   height: 20px;
 }
 .auth-social .as__icon--vk {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -65px -84px;
+  background-position: -95px -84px;
   width: 20px;
   height: 20px;
 }

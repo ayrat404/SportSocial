@@ -3,23 +3,23 @@
 angular.module('shared')
     .factory('remoteTemplateSrvc', [
         '$http',
-        function ($http) {
+        '$q',
+        function ($http, $q) {
 
-            var baseUrl = '/static/templates/common/';
+            var baseUrl = '/Scripts/templates/common/';
 
             return {
                 get: function (template) {
-                    var defer = $.Deferred();
-                    $http({
-                        method: 'GET',
-                        url: baseUrl + template + '.html'
-                    }).success(function (res) {
-                        defer.resolve(res);
-                    }).error(function(res) {
-                        defer.reject();
+                    return $q(function(resolve, reject) {
+                        $http({
+                            method: 'GET',
+                            url: baseUrl + template + '.html'
+                        }).success(function (res) {
+                            resolve(res);
+                        }).error(function () {
+                            reject();
+                        });
                     });
-
-                    return defer.promise();
                 }
             }
         }

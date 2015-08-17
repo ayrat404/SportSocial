@@ -24,7 +24,8 @@ namespace Social
                     "~/Scripts/libs/bootstrap/transition.js",
                     "~/Scripts/libs/bootstrap/tab.js",
                     "~/Scripts/libs/bootstrap/tooltip.js",
-                    "~/Scripts/libs/bootbox/bootbox.js",
+                    "~/Scripts/libs/angular-ui-bootstrap/ui-bootstrap-tpls-0.13.3.js",
+                    //"~/Scripts/libs/bootbox/bootbox.js",
                     "~/Scripts/libs/fotorama/fotorama.js"));
 
             // social

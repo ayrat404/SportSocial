@@ -3,44 +3,46 @@
 // mixpanel
 // ---------------
 angular.module('shared')
-    .factory('modalSrvc',[
+    .factory('modalSrvc', [
         '$q',
         '$http',
-        function ($q, $http) {
+        '$compile',
+        '$modal',
+        function ($q, $http, $compile, $modal) {
             var baseUrl = 'Scripts/templates/modals/';
 
-            var preset = {
-                policy: {
-                    classname: 'fs-modal--fill'
+            var modals = {
+                support: {
+                    controller: 'SupportModalCtrl',
+                    classname: 'fs-modal--transparent'
                 }
             }
 
             // show preset modals
             // ---------------
             function show(prop) {
-                if (preset[prop.name] != undefined) {
-                    // todo create loader
-                    getRemoteModal(prop.name).then(function (res) {
-                        return bootbox.dialog(angular.extend({
-                            message: res,
-                            className: '.fs-modal ' + preset[prop.name].classname
-                            }, prop));
-                    }).finally(function() {
-                        // todo remove loader
+                // todo loader
+                getRemoteModal(prop.name).then(function (res) {
+                    var modalInstance = $modal.open({
+                        template: res,
+                        controller: modals[prop.name] != undefined ? modals[prop.name].controller : null,
+                        windowClass: ['fs-modal', modals[prop.name] != undefined ? modals[prop.name].classname : null].join(' ')
                     });
-                }
+                }).finally(function () {
+                    // todo loader
+                });
             }
 
             // get remote modal content
             // ---------------
             function getRemoteModal(name) {
-                return $q(function(resolve, reject) {
+                return $q(function (resolve, reject) {
                     $http({
                         method: 'GET',
                         url: baseUrl + name + '.html'
                     }).success(function (res) {
                         resolve(res);
-                    }).error(function(res) {
+                    }).error(function (res) {
                         reject();
                     });
                 });
