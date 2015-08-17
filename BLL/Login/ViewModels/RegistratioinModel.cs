@@ -1,4 +1,6 @@
+using System;
 using System.ComponentModel.DataAnnotations;
+using DAL.DomainModel.EnumProperties;
 using Knoema.Localization;
 
 namespace BLL.Login.ViewModels

@@ -1,4 +1,6 @@
+using System;
 using System.ComponentModel.DataAnnotations;
+using DAL.DomainModel.EnumProperties;
 using Knoema.Localization;
 
 namespace BLL.Login.ViewModels
@@ -20,5 +22,20 @@ namespace BLL.Login.ViewModels
 
         //[Required]
         public string Phone { get; set; }
+
+        [Required(ErrorMessage = "Не введено имя")]
+        public string Name { get; set; }
+
+        [Required(ErrorMessage = "Не введена фамилия")]
+        public string LastName { get; set; }
+
+        [Required(ErrorMessage = "Не введена дата рождения")]
+        public DateTime BirthDate { get; set; }
+
+        [Required(ErrorMessage = "Не введен пол")]
+        public Sex Sex { get; set; }
+
+        [Required(ErrorMessage = "Не выбран стаж")]
+        public SportExperience Experience { get; set; }
     }
 }
