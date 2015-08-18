@@ -6,6 +6,7 @@ angular
         'ui.router',
         'ui.bootstrap',
         'ngCookies',
+        'flow',
         'shared',
         'appSrvc',
         'socialApp'

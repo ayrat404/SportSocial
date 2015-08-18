@@ -43,21 +43,56 @@
         width: 200px;
         margin: 0 auto 20px;
         position: relative;
-        border-radius: 50%;
         border: 7px solid @brand-green;
         background-color: #fff;
-        overflow: hidden;
         display: table;
-        cursor: pointer;
         user-select: none;
+        border-radius: 50%;
+    }
+
+    .reg__img-container {
+        position: relative;
+        height: 186px;
+        width: 186px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    .reg__img-wrap__close {
+        cursor: pointer;
+        position: absolute;
+        right: 0;
+        top: 0;
+        color: #fff;
+        font-size: 34px;
+        line-height: 7px;
+        opacity: .8;
+        z-index: 10;
+
+        &:hover {
+            opacity: 1;
+        }
     }
 
     .reg__img {
-        height: 100%;
-        width: 100%;
+        min-height: 100%;
+        min-width: 100%;
+        max-height: 100%;
+        position: absolute;
+        margin-left: -50%;
+
+        &.reg__img--vertical {
+            max-width: 100%;
+            margin-left: auto;
+            max-height: initial;
+            margin-top: -50%;
+            top: -50%;
+        }
     }
 
+
     .reg__img__empty {
+        cursor: pointer;
         display: table-cell;
         vertical-align: middle;
         color: @brand-green;

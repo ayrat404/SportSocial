@@ -154,6 +154,7 @@
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\socialApp\images\views\landing\bg-left.jpg" />
     <Content Include="Content\socialApp\images\views\landing\macbook.png" />
+    <Content Include="Content\socialApp\images\views\registration\registration-bg.jpg" />
     <Content Include="Content\socialApp\styles\compile\fortress.social.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -161,9 +162,10 @@
     <Content Include="gulpfile.js" />
     <Content Include="Scripts\app\simple\app.js" />
     <Content Include="Scripts\app\simple\appServices\app.js" />
-    <Content Include="Scripts\app\simple\appServices\auth\loginSrvc.js" />
-    <Content Include="Scripts\app\simple\appServices\auth\registrationSrvc.js" />
-    <Content Include="Scripts\app\simple\appServices\auth\statusSrvc.js" />
+    <Content Include="Scripts\app\simple\appServices\auth\restorePassword.srvc.js" />
+    <Content Include="Scripts\app\simple\appServices\auth\login.srvc.js" />
+    <Content Include="Scripts\app\simple\appServices\auth\registration.srvc.js" />
+    <Content Include="Scripts\app\simple\appServices\auth\status.srvc.js" />
     <Content Include="Scripts\app\javascript\app.js" />
     <Content Include="Scripts\app\javascript\appServices\app.js" />
     <Content Include="Scripts\app\javascript\appServices\auth\loginSrvc.js" />
@@ -173,6 +175,7 @@
     <Content Include="Scripts\app\javascript\socialApp\landing\landingCtrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\landing\landingDrct.js" />
     <Content Include="Scripts\app\javascript\socialApp\registration\registrationCtrl.js" />
+    <Content Include="Scripts\app\simple\appServices\support\support.srvc.js" />
     <Content Include="Scripts\app\simple\shared\app.js" />
     <Content Include="Scripts\app\simple\shared\directives\modal-click.drct.js" />
     <Content Include="Scripts\app\simple\shared\directives\loader.drct.js" />
@@ -187,6 +190,8 @@
     <Content Include="Scripts\app\simple\socialApp\app.js" />
     <Content Include="Scripts\app\simple\socialApp\landing\landing.drct.js" />
     <Content Include="Scripts\app\simple\socialApp\landing\landing.ctrl.js" />
+    <Content Include="Scripts\app\simple\socialApp\modals\restorePassword.ctrl.js" />
+    <Content Include="Scripts\app\simple\socialApp\modals\login.ctrl.js" />
     <Content Include="Scripts\app\simple\socialApp\modals\support.ctrl.js" />
     <Content Include="Scripts\app\simple\socialApp\registration\registration.ctrl.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -200,7 +205,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <Content Include="Scripts\libs\angular-ui-bootstrap\ui-bootstrap-0.13.3.js" />
+    <Content Include="Scripts\libs\angular-ui-bootstrap\ui-bootstrap-tpls-0.13.3.js" />
     <Content Include="Scripts\libs\angular-ui-router\angular-ui-router.js" />
     <Content Include="Scripts\libs\angular-ui-router\angular-ui-router.min.js" />
     <Content Include="Scripts\libs\angular\angular-animate.js" />
@@ -2548,6 +2553,9 @@
     <Content Include="Content\socialApp\styles\less\components\mac-slider.less" />
     <Content Include="Content\socialApp\styles\less\elements\links.less" />
     <Content Include="Content\socialApp\styles\less\elements\form.less" />
+    <Content Include="Content\socialApp\styles\less\components\notices.less" />
+    <Content Include="Content\socialApp\styles\less\elements\field-validate.less" />
+    <Content Include="Content\socialApp\styles\less\views\registration.less" />
     <None Include="Scripts\app\coffee\appServices\auth\loginSrvc.coffee" />
     <Content Include="Scripts\app\coffee\appServices\auth\registrationSrvc.coffee" />
     <Content Include="Scripts\app\coffee\appServices\auth\statusSrvc.coffee" />
@@ -2559,6 +2567,7 @@
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.min.js" />
     <Content Include="Scripts\libs\masonry\masonry.pkgd.min.js" />
+    <Content Include="Scripts\libs\ng-flow\ng-flow-standalone.js" />
     <Content Include="Scripts\libs\ng-mask\ngMask.js" />
     <Content Include="Scripts\libs\ng-mask\ngMask.min.js" />
     <Content Include="Scripts\libs\nprogress\nprogress.js" />
@@ -2566,8 +2575,13 @@
     <Content Include="Scripts\libs\wow\wow.min.js" />
     <Content Include="Scripts\templates\errors\404.html" />
     <Content Include="Scripts\templates\landing\index.html" />
-    <Content Include="Scripts\templates\modals\support.html" />
+    <Content Include="Scripts\templates\modals\auth\restore-password-submit-new-data.html" />
+    <Content Include="Scripts\templates\modals\auth\restore-password-submit-phone.html" />
+    <Content Include="Scripts\templates\modals\auth\login-submit.html" />
+    <Content Include="Scripts\templates\modals\support\support-success.html" />
+    <Content Include="Scripts\templates\modals\support\support-submit.html" />
     <Content Include="Scripts\templates\modals\policy.html" />
+    <Content Include="Scripts\templates\registration\index.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2797,7 +2811,7 @@
     <Content Include="Scripts\libs\angular\errors.json" />
     <Content Include="Scripts\libs\angular\version.json" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.min.map" />
-    <Content Include="Scripts\libs\nprogress\nprogress.less" />
+    <Content Include="Content\socialApp\styles\less\libs\nprogress\nprogress.less" />
     <Content Include="Content\socialApp\styles\less\libs\animate\animate.less" />
   </ItemGroup>
   <ItemGroup />

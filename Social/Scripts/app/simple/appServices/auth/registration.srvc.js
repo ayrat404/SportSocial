@@ -29,7 +29,7 @@ angular.module('appSrvc').service('registrationSrvc', [
                   title: $rootScope.title
               };
           return $q(function (resolve, reject) {
-              if (data && !isSending) {
+              if (data && data.imgId && !isSending) {
                   isSending = true;
                   mixpanel.api('track', 'Registration__1-step__send', evTrackProp);
                   $http.post(url, data).then(function (res) {

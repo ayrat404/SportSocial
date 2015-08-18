@@ -3,10 +3,19 @@
         <h1>Как же долго мы Вас ждали!</h1>
         <div ng-show="step == 1">
             <div class="reg__step">Регистрация. Шаг 1 из 2</div>
-            <form name="RegStepOneForm" class="reg__form" ng-submit="sendFirst()">
+            <form name="RegStepOneForm" class="reg__form"
+                  ng-submit="sendFirst($flow)"
+                  flow-name="flowObj.flow"
+                  flow-init="{target: '/api/upload', fileParameterName: 'Avatar', singleFile: true, testChunks:false}"
+                  flow-files-added="processImage($files)">
                 <div class="reg__img-wrap">
-                    <img src="#" class="reg__img hidden" />
-                    <div class="reg__img__empty">
+                    <div class="reg__img-wrap__close" ng-show="$flow.files.length" ng-click="$flow.cancel()">&times;</div>
+                    <div class="reg__img-container" ng-show="$flow.files.length">
+                        <img flow-img="$flow.files[0]"
+                             ng-class="{ 'reg__img--vertical': imgProp.vertical }"
+                             class="reg__img" />
+                    </div>
+                    <div class="reg__img__empty" flow-btn ng-show="!$flow.files.length">
                         <span class="avatar-icon"></span>
                         <span>Добавить фото</span>
                     </div>
@@ -19,9 +28,7 @@
                 </div>
                 <div class="fs-form__row row">
                     <div class="col-xs-7">
-                        <select required ng-model="first.birthday" class="fs-input">
-                            <option>Дата рождения</option>
-                        </select>
+                        <input ng-model="first.birthday" type="text" class="fs-input" datepicker-popup="dd-MM-yyyy" is-open="open" ng-click="open=true" />
                     </div>
                     <div class="col-xs-5">
                         <select required ng-model="first.gender" class="fs-input">
@@ -45,7 +52,10 @@
                     <input type="text" ng-model="first.phone" required placeholder="Номер телефона без +" class="fs-input" />
                 </div>
                 <div class="fs-form__submit text-center">
-                    <button type="submit" class="btn btn-fill-green btn-xl">Далее</button>
+                    <button type="submit" class="btn btn-fill-green btn-xl"
+                            ng-disabled="!flowObj.flow.files.length">
+                        Далее
+                    </button>
                     <p>Уже зарегистрированы? <span class="link link--green" data-modal-click="loginSubmit">Войти</span></p>
                 </div>
             </form>
@@ -68,7 +78,8 @@
                 </div>
                 <div class="fs-form__submit text-center">
                     <span class="link link--white" ng-click="step = 1">Назад</span>
-                    <button type="submit" class="btn btn-fill-green btn-xl" ng-click="form2.showValid=true">Далее</button>
+                    <button type="submit" class="btn btn-fill-green btn-xl"
+                            ng-click="form2.showValid=true">Далее</button>
                 </div>
             </form>
         </div>

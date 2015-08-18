@@ -9995,9 +9995,9 @@ fieldset[disabled] .btn-link-white.active {
 /* Common
 -------------------------------------------------- */
 .fs-modal .modal-close {
-  position: absolute;
+  position: fixed;
   top: 20px;
-  right: 40px;
+  right: 60px;
   cursor: pointer;
   opacity: .8;
   -webkit-user-select: none;
@@ -10411,22 +10411,52 @@ fieldset[disabled] .btn-link-white.active {
   width: 200px;
   margin: 0 auto 20px;
   position: relative;
-  border-radius: 50%;
   border: 7px solid #1fba2a;
   background-color: #fff;
-  overflow: hidden;
   display: table;
-  cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  border-radius: 50%;
+}
+.registration__inner .reg__img-container {
+  position: relative;
+  height: 186px;
+  width: 186px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.registration__inner .reg__img-wrap__close {
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: #fff;
+  font-size: 34px;
+  line-height: 7px;
+  opacity: .8;
+  z-index: 10;
+}
+.registration__inner .reg__img-wrap__close:hover {
+  opacity: 1;
 }
 .registration__inner .reg__img {
-  height: 100%;
-  width: 100%;
+  min-height: 100%;
+  min-width: 100%;
+  max-height: 100%;
+  position: absolute;
+  margin-left: -50%;
+}
+.registration__inner .reg__img.reg__img--vertical {
+  max-width: 100%;
+  margin-left: auto;
+  max-height: initial;
+  margin-top: -50%;
+  top: -50%;
 }
 .registration__inner .reg__img__empty {
+  cursor: pointer;
   display: table-cell;
   vertical-align: middle;
   color: #1fba2a;
