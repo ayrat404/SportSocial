@@ -19,6 +19,7 @@ namespace SportSocial
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
                 LoginPath = new PathString("/"),
+                CookieDomain = ".fortress.club"
             });
         }
     }
