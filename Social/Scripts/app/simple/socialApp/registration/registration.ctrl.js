@@ -55,7 +55,9 @@ angular.module('socialApp.controllers')
             // ---------------
             $scope.flowObj = {};
             $scope.imgProp = {
-                vertical: false
+                vertical: false,
+                width: null,
+                height: null
             }
             $scope.processImage = function (files) {
                 $scope.imgProp.vertical = false;
@@ -66,8 +68,16 @@ angular.module('socialApp.controllers')
                         var uri = event.target.result;
                         image.src = uri;
                         image.onload = function () {
-                            if (this.height > this.width)
-                                $scope.imgProp.vertical = true;
+                            $scope.$apply(function () {
+                                if (image.height > image.width) {
+                                    $scope.imgProp.vertical = true;
+                                    $scope.imgProp.width = 186;
+                                    $scope.imgProp.height = Math.round(image.height / (image.width / 186));
+                                } else {
+                                    $scope.imgProp.height = 186;
+                                    $scope.imgProp.width = Math.round(image.width / (image.height / 186));
+                                }
+                            });
                         };
                     };
                     fileReader.readAsDataURL(flow.file);
