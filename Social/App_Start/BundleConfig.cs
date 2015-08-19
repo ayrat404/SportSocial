@@ -16,6 +16,7 @@ namespace Social
                     "~/Scripts/libs/jquery/jquery-2.0.3.js",
                     "~/Scripts/libs/nprogress/nprogress.js",
                     "~/Scripts/libs/angular/angular.js",
+                    "~/Scripts/libs/angular/i18n/angular-locale_ru-ru.js",
                     "~/Scripts/libs/angular/angular-mocks.js",
                     "~/Scripts/libs/angular/angular-cookies.js",
                     "~/Scripts/libs/angular-ui-router/angular-ui-router.js",

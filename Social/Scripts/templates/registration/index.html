@@ -28,11 +28,17 @@
                 </div>
                 <div class="fs-form__row row">
                     <div class="col-xs-7">
-                        <input ng-model="first.birthday" type="text" class="fs-input" datepicker-popup="dd-MM-yyyy" is-open="open" ng-click="open=true" />
+                        <input ng-model="first.birthday" type="text" class="fs-input"
+                               datepicker-popup="dd MMM yyyy"
+                               datepicker-options="datepickerOptions"
+                               show-button-bar="false"
+                               is-open="open"
+                               ng-click="open=true"
+                               placeholder="День рождения" />
                     </div>
                     <div class="col-xs-5">
                         <select required ng-model="first.gender" class="fs-input">
-                            <option>Пол</option>
+                            <option value="" disabled selected>Пол</option>
                             <option>Муж.</option>
                             <option>Жен.</option>
                         </select>

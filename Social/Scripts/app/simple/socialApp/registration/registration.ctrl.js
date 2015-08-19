@@ -15,6 +15,11 @@ angular.module('socialApp.controllers')
 
             $scope.step = 1;
 
+            $scope.datepickerOptions = {
+                maxDate: Date.now(),
+                initDate: new Date(1992, 0, 1)
+            }
+
             // send first data
             // ---------------
             $scope.sendImg = function ($flow) {
