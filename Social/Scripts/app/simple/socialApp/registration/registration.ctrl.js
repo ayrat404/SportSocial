@@ -12,7 +12,7 @@ angular.module('socialApp.controllers')
 
             $scope.$root.title = 'Fortress | Регистрация';
             $scope.loading = false;
-
+            $scope.first = {};
             $scope.step = 1;
 
             $scope.datepickerOptions = {

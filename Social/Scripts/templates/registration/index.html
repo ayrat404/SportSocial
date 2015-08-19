@@ -4,7 +4,7 @@
         <div ng-show="step == 1">
             <div class="reg__step">Регистрация. Шаг 1 из 2</div>
             <form name="RegStepOneForm" class="reg__form"
-                  ng-submit="sendFirst($flow)"
+                  ng-submit="sendImg($flow)"
                   flow-name="flowObj.flow"
                   flow-init="{target: '/api/upload', fileParameterName: 'Avatar', singleFile: true, testChunks:false}"
                   flow-files-added="processImage($files)">
@@ -39,8 +39,8 @@
                     <div class="col-xs-5">
                         <select required ng-model="first.gender" class="fs-input">
                             <option value="" disabled selected>Пол</option>
-                            <option>Муж.</option>
-                            <option>Жен.</option>
+                            <option value="male">Муж.</option>
+                            <option value="female">Жен.</option>
                         </select>
                     </div>
                 </div>
@@ -50,7 +50,15 @@
                     </div>
                     <div class="col-xs-8">
                         <select ng-model="first.sportTime" class="fs-input">
-                            <option>Менее 1 года</option>
+                            <option value="" disabled selected>Выберите период</option>
+                            <option value="0">менее года</option>
+                            <option value="1">1 год</option>
+                            <option value="2">2 года</option>
+                            <option value="3">3 года</option>
+                            <option value="4">4 года</option>
+                            <option value="5">5 - 7 лет</option>
+                            <option value="10">7 - 10 лет</option>
+                            <option value="11">более 10 лет</option>
                         </select>
                     </div>
                 </div>
