@@ -56,8 +56,7 @@ angular.module('socialApp.controllers')
             $scope.flowObj = {};
             $scope.imgProp = {
                 vertical: false,
-                width: null,
-                height: null
+                style: {}
             }
             $scope.processImage = function (files) {
                 $scope.imgProp.vertical = false;
@@ -71,11 +70,13 @@ angular.module('socialApp.controllers')
                             $scope.$apply(function () {
                                 if (image.height > image.width) {
                                     $scope.imgProp.vertical = true;
-                                    $scope.imgProp.width = 186;
-                                    $scope.imgProp.height = Math.round(image.height / (image.width / 186));
+                                    $scope.imgProp.style.width = 186;
+                                    $scope.imgProp.style.height = Math.round(image.height / (image.width / 186));
+                                    $scope.imgProp.style.margin = (98 - $scope.imgProp.style.height / 2) + 'px 0 0 0';
                                 } else {
-                                    $scope.imgProp.height = 186;
-                                    $scope.imgProp.width = Math.round(image.width / (image.height / 186));
+                                    $scope.imgProp.style.height = 186;
+                                    $scope.imgProp.style.width = Math.round(image.width / (image.height / 186));
+                                    $scope.imgProp.style.margin = '0 0 0 ' + (98 - $scope.imgProp.style.width / 2) + 'px';
                                 }
                             });
                         };

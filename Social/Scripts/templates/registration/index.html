@@ -13,7 +13,7 @@
                     <div class="reg__img-container" ng-show="$flow.files.length">
                         <img flow-img="$flow.files[0]"
                              ng-class="{ 'reg__img--vertical': imgProp.vertical }"
-                             style="width: {{imgProp.width}}px; height: {{imgProp.height}}px"
+                             ng-style="imgProp.style"
                              class="reg__img" />
                     </div>
                     <div class="reg__img__empty" flow-btn ng-show="!$flow.files.length">
