@@ -7,7 +7,7 @@
                   ng-submit="sendImg($flow)"
                   flow-name="flowObj.flow"
                   flow-init="{target: '/api/upload', fileParameterName: 'Avatar', singleFile: true, testChunks:false}"
-                  flow-files-added="processImage($files)">
+                  flow-files-added="processImage($files, $flow)">
                 <div class="reg__img-wrap">
                     <div class="reg__img-wrap__close" ng-show="$flow.files.length" ng-click="$flow.cancel()">&times;</div>
                     <div class="reg__img-container" ng-show="$flow.files.length">
@@ -21,6 +21,7 @@
                         <span>Добавить фото</span>
                     </div>
                 </div>
+                <div class="field-error" ng-show="imgProp.sizeError">Минимальный размер изображения 200 x 200 пикселей</div>
                 <div class="fs-form__row">
                     <input type="text" required ng-model="first.name" autofocus required placeholder="Имя" class="fs-input" />
                 </div>

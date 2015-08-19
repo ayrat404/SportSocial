@@ -56,10 +56,12 @@ angular.module('socialApp.controllers')
             $scope.flowObj = {};
             $scope.imgProp = {
                 vertical: false,
+                sizeError: false,
                 style: {}
             }
             $scope.processImage = function (files) {
                 $scope.imgProp.vertical = false;
+                $scope.imgProp.sizeError = false;
                 angular.forEach(files, function (flow) {
                     var fileReader = new FileReader(),
                         image = new Image();
@@ -68,15 +70,20 @@ angular.module('socialApp.controllers')
                         image.src = uri;
                         image.onload = function () {
                             $scope.$apply(function () {
-                                if (image.height > image.width) {
-                                    $scope.imgProp.vertical = true;
-                                    $scope.imgProp.style.width = 186;
-                                    $scope.imgProp.style.height = Math.round(image.height / (image.width / 186));
-                                    $scope.imgProp.style.margin = (98 - $scope.imgProp.style.height / 2) + 'px 0 0 0';
+                                if (image.width < 200 || image.height < 200) {
+                                    $scope.flowObj.flow.cancel();
+                                    $scope.imgProp.sizeError = true;
                                 } else {
-                                    $scope.imgProp.style.height = 186;
-                                    $scope.imgProp.style.width = Math.round(image.width / (image.height / 186));
-                                    $scope.imgProp.style.margin = '0 0 0 ' + (98 - $scope.imgProp.style.width / 2) + 'px';
+                                    if (image.height > image.width) {
+                                        $scope.imgProp.vertical = true;
+                                        $scope.imgProp.style.width = 186;
+                                        $scope.imgProp.style.height = Math.round(image.height / (image.width / 186));
+                                        $scope.imgProp.style.margin = (98 - $scope.imgProp.style.height / 2) + 'px 0 0 0';
+                                    } else {
+                                        $scope.imgProp.style.height = 186;
+                                        $scope.imgProp.style.width = Math.round(image.width / (image.height / 186));
+                                        $scope.imgProp.style.margin = '0 0 0 ' + (98 - $scope.imgProp.style.width / 2) + 'px';
+                                    }
                                 }
                             });
                         };
