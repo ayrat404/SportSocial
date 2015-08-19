@@ -59,6 +59,12 @@ namespace DAL
                     m.ToTable("BlogComments");
                 });
 
+            modelBuilder.Entity<UserAvatarPhoto>()
+                .Map(m =>
+                {
+                    m.MapInheritedProperties();
+                    m.ToTable("UserAvatarPhotoes");
+                });
             //    .HasRequired(t => t.User)
             //    .WithMany()
             //    .HasForeignKey(t => t.UserId)

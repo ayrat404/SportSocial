@@ -85,6 +85,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DomainModel\Base\ImageBase.cs" />
     <Compile Include="DomainModel\EnumProperties\Sex.cs" />
     <Compile Include="DomainModel\EnumProperties\SportExperience.cs" />
     <Compile Include="DomainModel\EnumProperties\UserStatus.cs" />
@@ -165,6 +166,10 @@
     <Compile Include="Migrations\201508080017160_Deleted_FeedbackComment.Designer.cs">
       <DependentUpon>201508080017160_Deleted_FeedbackComment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508191957260_ProfileInfo_UserAvatar.cs" />
+    <Compile Include="Migrations\201508191957260_ProfileInfo_UserAvatar.Designer.cs">
+      <DependentUpon>201508191957260_ProfileInfo_UserAvatar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AccountRepository.cs" />
@@ -210,6 +215,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201508080017160_Deleted_FeedbackComment.resx">
       <DependentUpon>201508080017160_Deleted_FeedbackComment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508191957260_ProfileInfo_UserAvatar.resx">
+      <DependentUpon>201508191957260_ProfileInfo_UserAvatar.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

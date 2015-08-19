@@ -237,8 +237,12 @@
     <Compile Include="Sms\ISmsService.cs" />
     <Compile Include="Sms\Objects\SmsPilotSendModel.cs" />
     <Compile Include="Storage\IFIleService.cs" />
+    <Compile Include="Storage\IImageSaver.cs" />
+    <Compile Include="Storage\IImageService.cs" />
     <Compile Include="Storage\Impls\Enums\UploadType.cs" />
     <Compile Include="Storage\Impls\FileService.cs" />
+    <Compile Include="Storage\Impls\ImageSaver.cs" />
+    <Compile Include="Storage\Impls\UniversalImageService.cs" />
     <Compile Include="Storage\ViewModels\UploadImageModel.cs" />
   </ItemGroup>
   <ItemGroup>
