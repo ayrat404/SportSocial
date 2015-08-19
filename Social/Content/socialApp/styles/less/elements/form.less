@@ -8,7 +8,7 @@
     font-family: 'F1 Light';
     background-color: #fff;
     outline: none;
-    border: 1px solid #fff;
+    border: 2px solid #fff;
     color: @text-color;
     padding: 12px 20px;
     width: 100%;
@@ -39,6 +39,33 @@
     &:last-child {
         margin-bottom: 0;
     }
+    &.row {
+        margin-left: -5px;
+        margin-right: -5px;
+        & > div {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+    }
+}
+
+.fs-form__submit {
+    margin: 18px 0;
+    .link--white {
+        line-height: 46px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 15px;
+    }
+    p {
+        margin-top: 12px;
+    }
+}
+
+.label18 {
+    margin-top: 15px;
+    display: inline-block;
+    font-size: 14px;
 }
 
 /* /Form

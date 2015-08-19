@@ -47,13 +47,13 @@
         <header class="landing__header">
             <ul class="list-links list-links--hor">
                 <li>
-                    <a href="#">
+                    <span class="link" data-modal-click="loginSubmit">
                         <span class="dot dot--green"></span>
                         <span>Войти</span>
-                    </a>
+                    </span>
                 </li>
                 <li>
-                    <a href="#" class="btn btn-fill-green">Регистрация</a>
+                    <a ui-sref="registration" class="btn btn-fill-green">Регистрация</a>
                 </li>
             </ul>
             <div class="auth-social">
@@ -92,7 +92,7 @@
                     <span data-modal-click="policy" class="link">Политика конфиденциальности</span>
                 </li>
                 <li>
-                    <span data-modal-click="support" class="link">Техническая поддержка</span>
+                    <span data-modal-click="supportSubmit" class="link">Техническая поддержка</span>
                 </li>
             </ul>
         </footer>

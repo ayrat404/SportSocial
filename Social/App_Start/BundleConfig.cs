@@ -16,6 +16,7 @@ namespace Social
                     "~/Scripts/libs/jquery/jquery-2.0.3.js",
                     "~/Scripts/libs/nprogress/nprogress.js",
                     "~/Scripts/libs/angular/angular.js",
+                    "~/Scripts/libs/angular/i18n/angular-locale_ru-ru.js",
                     "~/Scripts/libs/angular/angular-mocks.js",
                     "~/Scripts/libs/angular/angular-cookies.js",
                     "~/Scripts/libs/angular-ui-router/angular-ui-router.js",
@@ -25,8 +26,8 @@ namespace Social
                     "~/Scripts/libs/bootstrap/tab.js",
                     "~/Scripts/libs/bootstrap/tooltip.js",
                     "~/Scripts/libs/angular-ui-bootstrap/ui-bootstrap-tpls-0.13.3.js",
-                    //"~/Scripts/libs/bootbox/bootbox.js",
-                    "~/Scripts/libs/fotorama/fotorama.js"));
+                    "~/Scripts/libs/fotorama/fotorama.js",
+                    "~/Scripts/libs/ng-flow/ng-flow-standalone.js"));
 
             // social
             // ---------------

@@ -5,8 +5,7 @@
 //== Colors
 //
 // was
-@brand-red:             #c13b32;
-@brand-red-light:       #e64338;
+@brand-red:             #de3233;
 @brand-gray:            #ebebeb;
 @brand-dark:            #20232a;
 
@@ -21,14 +20,15 @@
 
 //** Global textual link color.
 @link-color:            #1f7eba;
-@link-hover-color:      @text-color;
+@link-hover-color:      lighten(@link-color, 15%);
+
+@link-color2:            @brand-green;
+@link-hover-color2:      lighten(@link-color2, 15%);
 
 //@border-radius-base:        2px;
 //== Typography
 //
 @font-size-base:        14px;
-
-@grid-float-breakpoint:     @screen-md-min;
 
 
 /* /Custom variables based on bootstrap & override them
