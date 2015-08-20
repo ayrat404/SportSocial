@@ -53,7 +53,10 @@ angular.module('shared')
                         var modalInstance = $modal.open({
                             template: res,
                             controller: modals[prop.name] != undefined ? modals[prop.name].controller : null,
-                            windowClass: ['fs-modal', modals[prop.name] != undefined ? modals[prop.name].classname : null].join(' ')
+                            windowClass: ['fs-modal', modals[prop.name] != undefined ? modals[prop.name].classname : null].join(' '),
+                            resolve: {
+                                modalData: function () { return prop.data; }
+                            }
                         });
                     }).finally(function() {
                         // todo loader

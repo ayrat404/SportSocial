@@ -14,10 +14,14 @@ angular.module('socialApp.controllers')
             supportSrvc,
             modalSrvc) {
 
+            $scope.serverValidation = {};
+
             $scope.submit = function() {
                 supportSrvc.send($scope.support).then(function(res) {
                     $modalInstance.dismiss();
                     modalSrvc.show({ name: 'supportSuccess' });
+                }, function(res) {
+                    $scope.serverValidation = res.errors;
                 });
             }
         }

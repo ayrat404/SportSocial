@@ -18,7 +18,8 @@ angular.module('appSrvc').service('restorePasswordSrvc', [
       servicesDefault) {
 
       var url = servicesDefault.baseServiceUrl + '/restorePassword',
-          isSending = false;
+          isPhoneSending = false,
+          isNewPassSending = false;
 
       // ({ phone: x })
       // ---------------
@@ -31,8 +32,8 @@ angular.module('appSrvc').service('restorePasswordSrvc', [
           return $q(function (resolve, reject) {
               if (data &&
                   data.phone &&
-                  !isSending) {
-                  isSending = true;
+                  !isPhoneSending) {
+                  isPhoneSending = true;
                   mixpanel.api('track', 'RestorePassword__phone-send', evTrackProp);
                   send('phone', data).then(function(res) {
                       if (res.success) {
@@ -50,7 +51,7 @@ angular.module('appSrvc').service('restorePasswordSrvc', [
                               type: 'danger'
                           });
                   }).finally(function() {
-                      isSending = false;
+                      isPhoneSending = false;
                   });
               } else {
                   if (opts.showNotice)
@@ -75,8 +76,8 @@ angular.module('appSrvc').service('restorePasswordSrvc', [
               if (data &&
                   data.phone &&
                   data.password &&
-                  !isSending) {
-                  isSending = true;
+                  !isNewPassSending) {
+                  isNewPassSending = true;
                   mixpanel.api('track', 'RestorePassword__new-password-send', evTrackProp);
                   send('new', data).then(function (res) {
                       if (res.success) {
@@ -94,7 +95,7 @@ angular.module('appSrvc').service('restorePasswordSrvc', [
                               type: 'danger'
                           });
                   }).finally(function () {
-                      isSending = false;
+                      isNewPassSending = false;
                   });
               } else {
                   if (opts.showNotice)

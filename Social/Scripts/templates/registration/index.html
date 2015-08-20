@@ -3,101 +3,112 @@
         <h1>Как же долго мы Вас ждали!</h1>
         <div ng-show="step == 1">
             <div class="reg__step">Регистрация. Шаг 1 из 2</div>
-            <form name="RegStepOneForm" class="reg__form"
-                  ng-submit="sendImg($flow)"
-                  flow-name="flowObj.flow"
-                  flow-init="{target: '/api/upload', fileParameterName: 'Avatar', singleFile: true, testChunks:false}"
-                  flow-files-added="processImage($files, $flow)">
-                <div class="reg__img-wrap">
-                    <div class="reg__img-wrap__close" ng-show="$flow.files.length" ng-click="$flow.cancel()">&times;</div>
-                    <div class="reg__img-container" ng-show="$flow.files.length">
-                        <img flow-img="$flow.files[0]"
-                             ng-class="{ 'reg__img--vertical': imgProp.vertical }"
-                             ng-style="imgProp.style"
-                             class="reg__img" />
+            <div data-server-validation="firstStepValidation">
+                <form name="RegStepOneForm" class="reg__form"
+                      ng-submit="sendImg($flow)"
+                      flow-name="flowObj.flow"
+                      flow-init="{target: '/api/upload', fileParameterName: 'Avatar', singleFile: true, testChunks:false}"
+                      flow-files-added="processImage($files, $flow)">
+                    <div class="reg__img-wrap">
+                        <div class="reg__img-wrap__close" ng-show="$flow.files.length" ng-click="$flow.cancel()">&times;</div>
+                        <div class="reg__img-container" ng-show="$flow.files.length">
+                            <img flow-img="$flow.files[0]"
+                                 ng-class="{ 'reg__img--vertical': imgProp.vertical }"
+                                 ng-style="imgProp.style"
+                                 class="reg__img" />
+                        </div>
+                        <div class="reg__img__empty" flow-btn ng-show="!$flow.files.length">
+                            <span class="avatar-icon"></span>
+                            <span>Добавить фото</span>
+                        </div>
                     </div>
-                    <div class="reg__img__empty" flow-btn ng-show="!$flow.files.length">
-                        <span class="avatar-icon"></span>
-                        <span>Добавить фото</span>
+                    <div name="imgId" class="field-error" ng-show="imgProp.sizeError">Минимальный размер изображения 200 x 200 пикселей</div>
+                    <div class="fs-form__row">
+                        <input type="text" name="Name" required ng-model="first.name" autofocus required placeholder="Имя" class="fs-input" />
                     </div>
-                </div>
-                <div class="field-error" ng-show="imgProp.sizeError">Минимальный размер изображения 200 x 200 пикселей</div>
-                <div class="fs-form__row">
-                    <input type="text" required ng-model="first.name" autofocus required placeholder="Имя" class="fs-input" />
-                </div>
-                <div class="fs-form__row">
-                    <input type="text" required ng-model="first.sername" required placeholder="Фамилия" class="fs-input" />
-                </div>
-                <div class="fs-form__row row">
-                    <div class="col-xs-7">
-                        <input ng-model="first.birthday" type="text" class="fs-input"
-                               datepicker-popup="dd MMM yyyy"
-                               datepicker-options="datepickerOptions"
-                               show-button-bar="false"
-                               is-open="open"
-                               ng-click="open=true"
-                               placeholder="День рождения" />
+                    <div class="fs-form__row">
+                        <input type="text" name="Sername" required ng-model="first.sername" required placeholder="Фамилия" class="fs-input" />
                     </div>
-                    <div class="col-xs-5">
-                        <select required ng-model="first.gender" class="fs-input">
-                            <option value="" disabled selected>Пол</option>
-                            <option value="male">Муж.</option>
-                            <option value="female">Жен.</option>
-                        </select>
+                    <div class="fs-form__row row">
+                        <div class="col-xs-7">
+                            <input ng-model="first.birthday" type="text" class="fs-input"
+                                   datepicker-popup="dd MMM yyyy"
+                                   datepicker-options="datepickerOptions"
+                                   show-button-bar="false"
+                                   is-open="open"
+                                   ng-click="open=true"
+                                   placeholder="День рождения" />
+                        </div>
+                        <div class="col-xs-5">
+                            <select required ng-model="first.gender" class="fs-input">
+                                <option value="" disabled selected>Пол</option>
+                                <option value="male">Муж.</option>
+                                <option value="female">Жен.</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="fs-form__row row">
-                    <div class="col-xs-4">
-                        <span class="label18">В спорте уже:</span>
+                    <div class="fs-form__row row">
+                        <div class="col-xs-4">
+                            <span class="label18">В спорте уже:</span>
+                        </div>
+                        <div class="col-xs-8">
+                            <select required ng-model="first.sportTime" class="fs-input">
+                                <option value="" disabled selected>Выберите период</option>
+                                <option value="0">менее года</option>
+                                <option value="1">1 год</option>
+                                <option value="2">2 года</option>
+                                <option value="3">3 года</option>
+                                <option value="4">4 года</option>
+                                <option value="5">5 - 7 лет</option>
+                                <option value="10">7 - 10 лет</option>
+                                <option value="11">более 10 лет</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="col-xs-8">
-                        <select required ng-model="first.sportTime" class="fs-input">
-                            <option value="" disabled selected>Выберите период</option>
-                            <option value="0">менее года</option>
-                            <option value="1">1 год</option>
-                            <option value="2">2 года</option>
-                            <option value="3">3 года</option>
-                            <option value="4">4 года</option>
-                            <option value="5">5 - 7 лет</option>
-                            <option value="10">7 - 10 лет</option>
-                            <option value="11">более 10 лет</option>
-                        </select>
+                    <div class="fs-form__row">
+                        <input type="text" required ng-model="first.phone" required placeholder="Номер телефона без +" class="fs-input" />
                     </div>
-                </div>
-                <div class="fs-form__row">
-                    <input type="text" required ng-model="first.phone" required placeholder="Номер телефона без +" class="fs-input" />
-                </div>
-                <div class="fs-form__submit text-center">
-                    <button type="submit" class="btn btn-fill-green btn-xl"
-                            ng-disabled="!flowObj.flow.files.length || !RegStepOneForm.$valid">
-                        Далее
-                    </button>
-                    <p>Уже зарегистрированы? <span class="link link--green" data-modal-click="loginSubmit">Войти</span></p>
-                </div>
-            </form>
+                    <div class="fs-form__submit text-center">
+                        <button type="submit" class="btn btn-fill-green btn-xl"
+                                ng-disabled="!flowObj.flow.files.length || !RegStepOneForm.$valid">
+                            Далее
+                        </button>
+                        <p>Уже зарегистрированы? <span class="link link--green" data-modal-click="loginSubmit">Войти</span></p>
+                    </div>
+                </form>
+            </div>
         </div>
         <div ng-show="step == 2">
             <div class="reg__step">Регистрация. Шаг 2 из 2</div>
-            <form name="RegStepTwoForm" class="reg__form"
-                  ng-submit="sendTwo()"
-                  ng-class="{ 'show-valid': form2.showValid==true }">
-                <div class="field-error" ng-show="two.password != two.passwordRepeat && (form2.showValid || form2.passOut)">Пароли не совпадают</div>
-                <div class="fs-form__row">
-                    <input type="password" ng-model="two.password" required placeholder="Придумайте пароль" class="fs-input" />
-                </div>
-                <div class="fs-form__row">
-                    <input type="password" ng-model="two.passwordRepeat" ng-blur="form2.passOut=true" required placeholder="Повторите пароль" class="fs-input" />
-                </div>
-                <p class="text-center">Вам отправлено СМС с кодом подтверждения</p>
-                <div class="fs-form__row">
-                    <input type="text" ng-model="two.code" required placeholder="Код подтверждения из СМС" class="fs-input" />
-                </div>
-                <div class="fs-form__submit text-center">
-                    <span class="link link--white" ng-click="step = 1">Назад</span>
-                    <button type="submit" class="btn btn-fill-green btn-xl"
-                            ng-click="form2.showValid=true">Далее</button>
-                </div>
-            </form>
+            <div data-server-validation="twoStepValidation">
+                <form name="RegStepTwoForm" class="reg__form"
+                      ng-submit="sendTwo()"
+                      ng-class="{ 'show-valid': form2.showValid==true }">
+
+                    <div class="field-error" ng-show="two.password != two.passwordRepeat && (form2.showValid || form2.passOut)">Пароли не совпадают</div>
+
+                    <div class="fs-form__row">
+                        <input type="password" ng-model="two.password" required placeholder="Придумайте пароль" class="fs-input" />
+                    </div>
+                    <div class="fs-form__row">
+                        <input type="password" ng-model="two.passwordRepeat" ng-blur="form2.passOut=true" required placeholder="Повторите пароль" class="fs-input" />
+                    </div>
+                    <p class="text-center">Вам отправлено СМС с кодом подтверждения</p>
+                    <div class="fs-form__row">
+                        <input type="text"
+                               ng-model="two.code"
+                               ng-minlength="4" required placeholder="Код подтверждения из СМС" class="fs-input" />
+                    </div>
+                    <div class="fs-form__submit text-center">
+                        <span class="link link--white" ng-click="step = 1">Назад</span>
+                        <button type="submit" class="btn btn-fill-green btn-xl"
+                                ng-disabled="!RegStepOneForm.$valid && two.password != two.passwordRepeat"
+                                ng-click="form2.showValid=true">
+                            Далее
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
