@@ -47,7 +47,7 @@ namespace BLL.Login.Impls
                 Success = true,
                 ReturnUrl = returnUrl
             };
-            var user = _appUserManager.Find(signInModel.Phone, signInModel.Pass);
+            var user = _appUserManager.Find(signInModel.Phone, signInModel.Password);
             if (user == null)
             {
                 result.Success = false;
@@ -137,9 +137,9 @@ namespace BLL.Login.Impls
                         ReadedNews = _cookiesService.GetReadedNews(),
                         FirstName = confirmModel.Name,
                         LastName = confirmModel.LastName,
-                        Sex = confirmModel.Sex,
-                        Experience = confirmModel.Experience,
-                        BirthDate = confirmModel.BirthDate
+                        Sex = confirmModel.Gender,
+                        Experience = confirmModel.SportTime,
+                        BirthDate = confirmModel.BirthDay
                     };
                     _repository.Add(profile);
                     _repository.SaveChanges();

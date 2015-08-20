@@ -20,7 +20,7 @@ namespace BLL.Login.ViewModels
         [System.Web.Mvc.Compare("Password", ErrorMessage = "Пароли не совпадают")]
         public string ConfirmPassword { get; set; }
 
-        //[Required]
+        [Required]
         public string Phone { get; set; }
 
         [Required(ErrorMessage = "Не введено имя")]
@@ -30,12 +30,12 @@ namespace BLL.Login.ViewModels
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "Не введена дата рождения")]
-        public DateTime BirthDate { get; set; }
+        public DateTime BirthDay { get; set; }
 
         [Required(ErrorMessage = "Не введен пол")]
-        public Sex Sex { get; set; }
+        public Sex Gender { get; set; }
 
         [Required(ErrorMessage = "Не выбран стаж")]
-        public SportExperience Experience { get; set; }
+        public SportExperience SportTime { get; set; }
     }
 }

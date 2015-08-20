@@ -10,6 +10,6 @@ namespace BLL.Login.ViewModels
         public string Phone { get; set; }
 
         [Required(ErrorMessage = "Не введен пароль")]
-        public string Pass { get; set; }
+        public string Password { get; set; }
     }
 }
