@@ -177,6 +177,7 @@
     <Content Include="Scripts\app\javascript\socialApp\registration\registrationCtrl.js" />
     <Content Include="Scripts\app\simple\appServices\support\support.srvc.js" />
     <Content Include="Scripts\app\simple\shared\app.js" />
+    <Content Include="Scripts\app\simple\shared\directives\server-validation.drct.js" />
     <Content Include="Scripts\app\simple\shared\directives\modal-click.drct.js" />
     <Content Include="Scripts\app\simple\shared\directives\loader.drct.js" />
     <Content Include="Scripts\app\simple\shared\directives\mixpanel.drct.js" />
