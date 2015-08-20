@@ -58,8 +58,18 @@ namespace Social.Controllers
         }
     }
 
-    public class ApiResult
+    public class ApiResult : ApiResultBase
+    {
+    }
+
+    public class ApiResultBase
     {
         public bool Success { get; set; }
+    }
+
+    public class ApiResult<T>: ApiResultBase
+        where T : class
+    {
+        public T Result { get; set; }
     }
 }
