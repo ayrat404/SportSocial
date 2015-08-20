@@ -14,12 +14,13 @@ angular.module('socialApp.controllers')
             restorePasswordSrvc,
             modalSrvc) {
 
+            $scope.serverValidation = {};
             $scope.submit = function() {
                 restorePasswordSrvc.sendPhone({ phone: $scope.phone }).then(function (res) {
                     $modalInstance.close();
-                    modalSrvc.show({ name: 'restorePasswordSubmitNewData' });
+                    modalSrvc.show({ name: 'restorePasswordSubmitNewData', data: { phone: $scope.phone } });
                 }, function (res) {
-                    if (res.msg) $scope.restoreParamsError = true;
+                    $scope.serverValidation = res.errors;
                 });
             }
         }
@@ -31,20 +32,22 @@ angular.module('socialApp.controllers')
         '$modalInstance',
         'loginSrvc',
         'modalSrvc',
+        'modalData',
         function(
             $scope,
             $modalInstance,
             restorePasswordSrvc,
-            modalSrvc) {
+            modalSrvc,
+            modalData) {
 
+            $scope.serverValidation = {};
+            $scope.restore.phone = modalData.phone;     // pass phone from prev modal
             $scope.submit = function () {
-                $scope.serverErrorMsg = false;
-                restorePasswordSrvc.sendNewPassword({ phone: $scope.phone }).then(function (res) {
+                restorePasswordSrvc.sendNewPassword($scope.restore).then(function (res) {
                     $modalInstance.close();
                     modalSrvc.show({ name: 'loginSubmit' });
                 }, function(res) {
-                    if (res.msg)
-                        $scope.serverErrorMsg = res.msg;
+                    $scope.serverValidation = res.errors;
                 });
             }
         }

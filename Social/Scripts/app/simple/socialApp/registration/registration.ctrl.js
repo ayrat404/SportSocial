@@ -5,16 +5,24 @@ angular.module('socialApp.controllers')
         '$scope',
         'mixpanel',
         'registrationSrvc',
+        'base',
         function (
             $scope,
             mixpanel,
-            registrationSrvc) {
+            registrationSrvc,
+            base) {
 
+            // $scope data
+            // ---------------
             $scope.$root.title = 'Fortress | Регистрация';
             $scope.loading = false;
-            $scope.first = {};
-            $scope.step = 1;
+            $scope.first = {};              // first step data model
+            $scope.firstStepValidation = {};    // first step validation server object
+            $scope.twoStepValidation = {};      // two step validation server object
+            $scope.two = {};                // two step data model
+            $scope.step = 1;                // active step
 
+            // datepicker opts
             $scope.datepickerOptions = {
                 maxDate: Date.now(),
                 initDate: new Date(1992, 0, 1)
@@ -24,8 +32,13 @@ angular.module('socialApp.controllers')
             // ---------------
             $scope.sendImg = function ($flow) {
                 $flow.upload();
-            }
 
+                // common error with error fields example
+                //$scope.firstStepValidation = { common: { error: 'Common error', fields: ['Name', 'Sername'] } };
+
+                // fields errors example
+                //$scope.firstStepValidation = { common: { error: 'Common error' }, fields: [{ name: 'Name', error: 'Name error' }] };
+            }
             // send all data after image server upload
             // ---------------
             $scope.sendFirstStepData = function (imgResponse) {
@@ -35,7 +48,7 @@ angular.module('socialApp.controllers')
                     .then(function (res) {
                         $scope.step = 2;
                     }, function (res) {
-
+                        $scope.firstValidation = res.errors;
                     });
                 }
             }
@@ -43,12 +56,13 @@ angular.module('socialApp.controllers')
             // send two data
             // ---------------
             $scope.sendTwo = function () {
-                registrationSrvc.registerTwo($scope.two)
+                var fullData = angular.extend($scope.first, $scope.two);
+                registrationSrvc.registerTwo(fullData)
                     .then(function (res) {
-
+                        // todo success redirect to profile
                     }, function (res) {
-
-                    });
+                        $scope.twoStepValidation = res.errors;
+                });
             }
 
             // proccess image

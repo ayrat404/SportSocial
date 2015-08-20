@@ -14,6 +14,8 @@ angular.module('socialApp.controllers')
             $modalInstance,
             loginSrvc) {
 
+            $scope.serverValidation = {};
+
             // login
             // ---------------
             $scope.submit = function() {
@@ -21,7 +23,7 @@ angular.module('socialApp.controllers')
                     $modalInstance.dismiss();
                     // todo after login success
                 }, function (res) {
-                    if (res.success === false) $scope.loginParamsError = true;
+                    $scope.serverValidation = res.errors;
                 });
             }
 

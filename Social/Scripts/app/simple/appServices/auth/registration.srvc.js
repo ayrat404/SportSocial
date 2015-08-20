@@ -36,7 +36,7 @@ angular.module('appSrvc').service('registrationSrvc', [
                       if (res.success) {
                           resolve(res);
                       } else {
-                          reject();
+                          reject(res);
                       }
                       base.notice.response(res);
                   }, function (res) {

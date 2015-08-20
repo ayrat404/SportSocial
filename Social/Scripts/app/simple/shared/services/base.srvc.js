@@ -54,36 +54,6 @@ angular.module('shared')
                 }
             })();
 
-            // Errors module
-            // ---------------
-            var errorCtrl = (function () {
-                var $template = $('<div>', { 'class': 'form--error' });
-
-                // array = [ { field: 'domain', message: 'Сайт уже существует' } ]
-                function showErrors(array) {
-                    if (isArray(array)) {
-                        for (var i = 0; i <= array.length; i++) {
-                            var _this = array[i],
-                                $fields = $('[name="' + _this.field + '"]').length ? $('[name="' + _this.field + '"]') : false;
-                            if ($fields !== false && !$fields.siblings('form--error').length) {
-                                var $error = $template.clone().text(_this.error).insertAfter($fields.eq(0));
-                                window.setTimeout(function () {
-                                    $error.fadeOut('slow', function () {
-                                        $error.remove();
-                                    });
-                                }, 5000);
-                            } else {
-                                console.log('error module: field isn\'t found');
-                            }
-                        }
-                    }
-                }
-
-                return {
-                    showErrors: showErrors
-                }
-            })();
-
             // Notices module
             // ---------------
             var noticesCtrl = (function () {
@@ -197,10 +167,10 @@ angular.module('shared')
                 // ----------
                 function response(data) {
                     var noticeClass = data.success ? 'success' : 'warning';
-                    if (data.msg &&
-                        data.msg.length) {
+                    if (data.message &&
+                        data.message.length) {
                         show({
-                            text: data.msg,
+                            text: data.message,
                             type: noticeClass
                         });
                     }
@@ -269,9 +239,6 @@ angular.module('shared')
                 },
                 format: {
                     word: formatCtrl.formatWord
-                },
-                errors: {
-                    show: errorCtrl.showErrors
                 },
                 notice: {
                     show: noticesCtrl.show,
