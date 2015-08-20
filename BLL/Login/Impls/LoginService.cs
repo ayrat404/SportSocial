@@ -106,7 +106,10 @@ namespace BLL.Login.Impls
             }
             var smsResult = _smsService.GenerateAndSendCode(user.Id, regModel.Phone);
             if (!smsResult.Success)
+            {
+                result.Success = false;
                 result.ErrorMessage = smsResult.ErrorMessage;
+            }
             return result;
         }
 
@@ -131,7 +134,12 @@ namespace BLL.Login.Impls
                         Id = user.Id,
                         Lang = LanguageHelper.GetCurrentCulture(),
                         Avatar = DefaultAvatarUrl,
-                        ReadedNews = _cookiesService.GetReadedNews()
+                        ReadedNews = _cookiesService.GetReadedNews(),
+                        FirstName = confirmModel.Name,
+                        LastName = confirmModel.LastName,
+                        Sex = confirmModel.Sex,
+                        Experience = confirmModel.Experience,
+                        BirthDate = confirmModel.BirthDate
                     };
                     _repository.Add(profile);
                     _repository.SaveChanges();
