@@ -1,16 +1,14 @@
 ﻿'use strict';
 
-// mixpanel
+// modal service
 // ---------------
 angular.module('shared')
     .factory('modalSrvc', [
-        '$q',
         '$http',
-        '$compile',
         '$modal',
         'base',
         'servicesDefault',
-        function ($q, $http, $compile, $modal, base, servicesDefault) {
+        function ($http, $modal, base, servicesDefault) {
             var baseUrl = 'Scripts/templates/modals/';
 
             var modals = {
@@ -50,7 +48,7 @@ angular.module('shared')
                 // todo loader
                 if (modals[prop.name] != undefined) {
                     getRemoteModal(modals[prop.name].tplName).then(function(res) {
-                        var modalInstance = $modal.open({
+                        $modal.open({
                             template: res,
                             controller: modals[prop.name] != undefined ? modals[prop.name].controller : null,
                             windowClass: ['fs-modal', modals[prop.name] != undefined ? modals[prop.name].classname : null].join(' '),
@@ -69,15 +67,9 @@ angular.module('shared')
             // get remote modal content
             // ---------------
             function getRemoteModal(name) {
-                return $q(function (resolve, reject) {
-                    $http({
-                        method: 'GET',
-                        url: baseUrl + name + '.html'
-                    }).success(function (res) {
-                        resolve(res);
-                    }).error(function (res) {
-                        reject();
-                    });
+                return $http({
+                    method: 'GET',
+                    url: baseUrl + name + '.html'
                 });
             }
 

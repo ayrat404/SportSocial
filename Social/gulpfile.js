@@ -52,8 +52,8 @@ function compileCoffee(project) {
     return gulp.src(project.coffeeIn)
         .pipe(ngClassify())
         .pipe(coffee({ bare: true }).on('error', console.log))
-        .pipe(ngmin())
-        .pipe(wrap('(function(){\n<%= contents %>\n}).call(this);'))
+        //.pipe(ngmin()) bad utf 8
+        .pipe(wrap('(function(){\n<%= contents %>\n})();'))
         .pipe(gulp.dest(project.coffeeOut));
 }
 
@@ -100,15 +100,15 @@ function declareTasks(project) {
             console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
         });
 
-        //var coffeeWatcher = gulp.watch([
-        //    project.baseCoffeePath + '*.coffee',
-        //    project.baseCoffeePath + '**/*.coffee'
-        //], function() {
-        //    return compileCoffee(project);
-        //});
-        //coffeeWatcher.on('change', function (event) {
-        //    console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
-        //});
+        var coffeeWatcher = gulp.watch([
+            project.baseCoffeePath + '*.coffee',
+            project.baseCoffeePath + '**/*.coffee'
+        ], function() {
+            return compileCoffee(project);
+        });
+        coffeeWatcher.on('change', function (event) {
+            console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+        });
     });
 }
 

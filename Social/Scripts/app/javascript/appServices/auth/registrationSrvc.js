@@ -1,23 +1,23 @@
 (function(){
 var registration;
-registration = function () {
+
+registration = (function() {
   function registration($state, $location, $q, $rootScope, base, mixpanel) {
     var defaults, register, url;
-    defaults = { showNotices: true };
-    url = '/test/registration';
-    register = function (data) {
+    defaults = {
+      showNotices: true
     };
-    return { register: register };
+    url = '/test/registration';
+    register = function(data) {};
+    return {
+      register: register
+    };
   }
+
   return registration;
-}();
-angular.module('appSrvc').service('registrationService', [
-  '$state',
-  '$location',
-  '$q',
-  '$rootScope',
-  'base',
-  'mixpanel',
-  registration
-]);
-}).call(this);
+
+})();
+
+angular.module('appSrvc').service('registrationService', ['$state', '$location', '$q', '$rootScope', 'base', 'mixpanel', registration]);
+
+})();

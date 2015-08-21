@@ -1,10 +1,15 @@
 (function(){
 var status;
-status = function () {
+
+status = (function() {
   function status() {
     return {};
   }
+
   return status;
-}();
+
+})();
+
 angular.module('appSrvc').service('statusService', [status]);
-}).call(this);
+
+})();

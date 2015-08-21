@@ -29,6 +29,23 @@ namespace Social
                     "~/Scripts/libs/fotorama/fotorama.js",
                     "~/Scripts/libs/ng-flow/ng-flow-standalone.js"));
 
+            // social with coffee
+            // ---------------
+            //bundles.Add(new ScriptBundle("~/bundles/social/scripts")
+            //    // include shared
+            //    // ---------------
+            //    .IncludeDirectory("~/Scripts/app/coffee/javascript/shared", "*.js", true)
+            //    // include appServices
+            //    // ---------------
+            //    .IncludeDirectory("~/Scripts/app/coffee/javascript/appServices", "*.js", true)
+            //    // include socialApp
+            //    // ---------------
+            //    .IncludeDirectory("~/Scripts/app/coffee/javascript/socialApp", "*.js", true)
+            //    // include main app
+            //    // ---------------
+            //    .Include("~/Scripts/app/coffee/javascript/app.js")
+            //    );
+
             // social
             // ---------------
             bundles.Add(new ScriptBundle("~/bundles/social/scripts")
