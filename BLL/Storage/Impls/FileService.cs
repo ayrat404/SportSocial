@@ -90,7 +90,7 @@ namespace BLL.Storage.Impls
                         url = string.Concat(virtualPath, serverFileName);
                         var avatarImage = new UserAvatarPhoto()
                         {
-                            UserId = _currentUser.UserId,
+                            EntityId = _currentUser.UserId,
                             Url = url,
                         };
                         _repository.Add(avatarImage);

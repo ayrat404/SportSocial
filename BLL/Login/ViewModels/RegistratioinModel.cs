@@ -14,5 +14,17 @@ namespace BLL.Login.ViewModels
 
         [Required(ErrorMessage = "Не введено имя")]
         public string Name { get; set; }
+
+        [Required(ErrorMessage = "Не введена фамилия")]
+        public string LastName { get; set; }
+
+        [Required(ErrorMessage = "Не введена дата рождения")]
+        public DateTime BirthDay { get; set; }
+
+        [Required(ErrorMessage = "Не введен пол")]
+        public Sex Gender { get; set; }
+
+        [Required(ErrorMessage = "Не выбран стаж")]
+        public SportExperience SportTime { get; set; }
     }
 }

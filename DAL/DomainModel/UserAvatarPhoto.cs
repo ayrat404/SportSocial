@@ -1,15 +1,9 @@
-﻿using DAL.DomainModel.Interfaces;
+﻿using DAL.DomainModel.Base;
+using DAL.DomainModel.Interfaces;
 
 namespace DAL.DomainModel
 {
-    public class UserAvatarPhoto: IEntity
+    public class UserAvatarPhoto: ImageBase<AppUser>
     {
-        public int Id { get; set; }
-
-        public string Url { get; set; }
-
-        public int UserId { get; set; }
-
-        public AppUser User { get; set; }
     }
 }
