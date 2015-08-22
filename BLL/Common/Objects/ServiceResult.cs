@@ -6,4 +6,9 @@
 
         public string ErrorMessage { get; set; }
     }
+
+    public class ServiceResult<T>: ServiceResult
+    {
+        public T Result { get; set; }
+    }
 }

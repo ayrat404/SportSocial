@@ -250,16 +250,19 @@ namespace BLL.Login.Impls
             return result;
         }
 
-        public ImageUploadResult RemoveAvatar()
+        public ServiceResult<ImageUploadResult> RemoveAvatar()
         {
             //var userProfile = _repository.Find<Profile>(_currentUser.UserId);
             //userProfile.Avatar = DefaultAvatarUrl;
             _currentUser.User.Profile.Avatar = DefaultAvatarUrl;
             _repository.SaveChanges();
-            return new ImageUploadResult
+            return new ServiceResult<ImageUploadResult>
             {
                 Success = true,
-                Url = DefaultAvatarUrl,
+                Result = new ImageUploadResult
+                {
+                    Url = DefaultAvatarUrl
+                }
             };
         }
 

@@ -9,6 +9,7 @@ using System.Web.Http;
 using BLL.Storage;
 using BLL.Storage.Impls.Enums;
 using BLL.Storage.ViewModels;
+using Social.Models;
 
 namespace Social.Controllers
 {
@@ -30,7 +31,7 @@ namespace Social.Controllers
             var uploadType = (UploadType)Enum.Parse(typeof (UploadType), key);
             var file = HttpContext.Current.Request.Files[key];
             var result = _imageService.Save(file.InputStream, file.FileName, uploadType);
-            return new ApiResult<ImageUploadResult>() {Result = result};
+            return ApiResult(result);
         }
     }
 }

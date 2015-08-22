@@ -1,10 +1,11 @@
 using System.IO;
+using BLL.Common.Objects;
 using BLL.Storage.Impls.Enums;
 
 namespace BLL.Storage
 {
     public interface IImageService
     {
-        ImageUploadResult Save(Stream inputStream, string fileName, UploadType uploadType);
+        ServiceResult<ImageUploadResult> Save(Stream inputStream, string fileName, UploadType uploadType);
     }
 }

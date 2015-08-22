@@ -2,6 +2,7 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.Web;
+using BLL.Common.Objects;
 using BLL.Common.Services.CurrentUser;
 using DAL.DomainModel.Base;
 using DAL.DomainModel.Interfaces;
@@ -23,9 +24,9 @@ namespace BLL.Storage.Impls
             _repository = repository;
         }
 
-        public ImageUploadResult Save(Stream inputStream, string savePath, string fileName)
+        public ServiceResult<ImageUploadResult> Save(Stream inputStream, string savePath, string fileName)
         {
-            var result = new ImageUploadResult()
+            var result = new ServiceResult<ImageUploadResult>
             {
                 Success = true,
             };
@@ -42,8 +43,9 @@ namespace BLL.Storage.Impls
             imageEntity.Url = url;
             _repository.Add(imageEntity);
             _repository.SaveChanges();
-            result.Url = VirtualPathUtility.ToAbsolute(url);
-            result.Id = imageEntity.Id;
+            result.Result = new ImageUploadResult();
+            result.Result.Url = VirtualPathUtility.ToAbsolute(url);
+            result.Result.Id = imageEntity.Id;
             return result;
         }
 

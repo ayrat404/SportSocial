@@ -50,9 +50,9 @@ namespace BLL.Storage.Impls
             return true;
         }
 
-        public ImageUploadResult UploadImage(Stream inputStream, string fileName, UploadType uploadType)
+        public ServiceResult<ImageUploadResult> UploadImage(Stream inputStream, string fileName, UploadType uploadType)
         {
-            var result = new ImageUploadResult()
+            var result = new ServiceResult<ImageUploadResult>
             {
                 Success = true,
             };
@@ -103,8 +103,9 @@ namespace BLL.Storage.Impls
                         return result;
                 }
                 SaveFile(inputStream, url);
-                result.Url = VirtualPathUtility.ToAbsolute(url);
-                result.Id = id;
+                result.Result = new ImageUploadResult();
+                result.Result.Url = VirtualPathUtility.ToAbsolute(url);
+                result.Result.Id = id;
                 return result;
             }
         }
@@ -129,9 +130,9 @@ namespace BLL.Storage.Impls
             }
         }
 
-        public ImageUploadResult YoutubeImage(string youtubeUrl)
+        public ServiceResult<ImageUploadResult> YoutubeImage(string youtubeUrl)
         {
-            var result = new ImageUploadResult {Success = true};
+            var result = new ServiceResult<ImageUploadResult>{Success = true};
             if (!YoutubeUrlHelper.UrlIsValid(youtubeUrl))
             {
                 result.Success = false;

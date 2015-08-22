@@ -26,6 +26,6 @@ namespace BLL.Login
 
         ServiceResult LogOut();
 
-        ImageUploadResult RemoveAvatar();
+        ServiceResult<ImageUploadResult> RemoveAvatar();
     }
 }

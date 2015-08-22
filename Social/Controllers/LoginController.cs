@@ -2,6 +2,7 @@
 using BLL.Common.Objects;
 using BLL.Login;
 using BLL.Login.ViewModels;
+using Social.Models;
 
 namespace Social.Controllers
 {
@@ -16,7 +17,7 @@ namespace Social.Controllers
         }
 
 
-        [HttpPost]
+        [HttpGet]
         [Route("")]
         public ApiResult SignIn(SignInModel model)
         {
@@ -58,18 +59,4 @@ namespace Social.Controllers
         }
     }
 
-    public class ApiResult : ApiResultBase
-    {
-    }
-
-    public class ApiResultBase
-    {
-        public bool Success { get; set; }
-    }
-
-    public class ApiResult<T>: ApiResultBase
-        where T : class
-    {
-        public T Result { get; set; }
-    }
 }
