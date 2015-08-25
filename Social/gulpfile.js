@@ -13,6 +13,7 @@ var gulp = require('gulp'),
     ngmin = require('gulp-ngmin'),
     ngClassify = require('gulp-ng-classify'),
     wrap = require('gulp-wrap'),
+    gutil = require('gulp-util'),
     pkg = require('./package.json');
 
 var banner = '/*!\n' +
@@ -51,8 +52,7 @@ function compileCss(project, compress) {
 function compileCoffee(project) {
     return gulp.src(project.coffeeIn)
         .pipe(ngClassify())
-        .pipe(coffee({ bare: true }).on('error', console.log))
-        //.pipe(ngmin()) bad utf 8
+        .pipe(coffee({ bare: true }).on('error', gutil.log))
         .pipe(wrap('(function(){\n<%= contents %>\n})();'))
         .pipe(gulp.dest(project.coffeeOut));
 }

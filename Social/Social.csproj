@@ -173,6 +173,7 @@
     <Folder Include="Content\socialApp\images\icons-set\" />
     <Folder Include="Content\socialApp\images\sprites\" />
     <Folder Include="Models\" />
+    <Folder Include="Scripts\app\coffee\shared\directives\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -216,6 +217,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="gulpfile.js" />
+    <Content Include="Scripts\app\javascript\shared\app.js" />
+    <Content Include="Scripts\app\javascript\shared\directives\loaderDrct.js" />
     <Content Include="Scripts\app\simple\app.js" />
     <Content Include="Scripts\app\simple\appServices\app.js" />
     <Content Include="Scripts\app\simple\appServices\auth\restorePassword.srvc.js" />
@@ -2620,6 +2623,7 @@
     <Content Include="Scripts\app\coffee\socialApp\landing\landingCtrl.coffee" />
     <Content Include="Scripts\app\coffee\socialApp\landing\landingDrct.coffee" />
     <Content Include="Scripts\app\coffee\socialApp\registration\registrationCtrl.coffee" />
+    <Content Include="Scripts\app\coffee\shared\app.coffee" />
     <None Include="Scripts\libs\jquery\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.min.js" />

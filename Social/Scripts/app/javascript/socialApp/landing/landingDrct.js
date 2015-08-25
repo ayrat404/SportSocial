@@ -67,22 +67,6 @@ landingScripts = (function() {
             autoplay: 6000,
             transition: 'dissolve'
           });
-          sliderApi = $sliderImgWrap.data('fotorama');
-          $sliderControlsContainer.append(sliderCtrlTpl.controls.init());
-          $sliderControlsContainer.append(sliderCtrlTpl.nav.init(4));
-          changeContentBySlide(sliderApi.activeFrame.i - 1);
-          $sliderImgWrap.on('fotorama:readry fotorama:show', function(e, fotorama, extra) {
-            return changeContentBySlide(fotorama.activeFrame.i - 1);
-          });
-          sliderCtrlTpl.controls.$bottom.on('click', function() {
-            return sliderApi.show('>');
-          });
-          sliderCtrlTpl.controls.$top.on('click', function() {
-            return sliderApi.show('<');
-          });
-          sliderCtrlTpl.nav.$wrap.on('click', '.slide__nav__it', function() {
-            return sliderApi.show(sliderCtrlTpl.nav.$wrap.find('.slide__nav__it').index(this));
-          });
           changeContentBySlide = function(slideIndex) {
             var $aLeft, $aRight;
             $aLeft = dynContent.$leftWrap.eq(slideIndex);
@@ -96,6 +80,22 @@ landingScripts = (function() {
             sliderCtrlTpl.nav.$wrap.find('.slide__nav__it').removeClass('active');
             return sliderCtrlTpl.nav.$wrap.find('.slide__nav__it').eq(slideIndex).addClass('active');
           };
+          sliderApi = $sliderImgWrap.data('fotorama');
+          $sliderControlsContainer.append(sliderCtrlTpl.controls.init());
+          $sliderControlsContainer.append(sliderCtrlTpl.nav.init(4));
+          changeContentBySlide(sliderApi.activeFrame.i - 1);
+          $sliderImgWrap.on('fotorama:readry fotorama:show', function(e, fotorama, extra) {
+            return changeContentBySlide(fotorama.activeFrame.i - 1);
+          });
+          sliderCtrlTpl.controls.$bottom.on('click', function() {
+            return sliderApi.show('>');
+          });
+          sliderCtrlTpl.controls.$top.on('click', function() {
+            return sliderApi.show('<');
+          });
+          return sliderCtrlTpl.nav.$wrap.on('click', '.slide__nav__it', function() {
+            return sliderApi.show(sliderCtrlTpl.nav.$wrap.find('.slide__nav__it').index(this));
+          });
         })();
       }
     };

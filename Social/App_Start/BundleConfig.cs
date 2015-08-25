@@ -31,40 +31,41 @@ namespace Social
 
             // social with coffee
             // ---------------
-            //bundles.Add(new ScriptBundle("~/bundles/social/scripts")
-            //    // include shared
-            //    // ---------------
-            //    .IncludeDirectory("~/Scripts/app/coffee/javascript/shared", "*.js", true)
-            //    // include appServices
-            //    // ---------------
-            //    .IncludeDirectory("~/Scripts/app/coffee/javascript/appServices", "*.js", true)
-            //    // include socialApp
-            //    // ---------------
-            //    .IncludeDirectory("~/Scripts/app/coffee/javascript/socialApp", "*.js", true)
-            //    // include main app
-            //    // ---------------
-            //    .Include("~/Scripts/app/coffee/javascript/app.js")
-            //    );
-
-            // social
-            // ---------------
             bundles.Add(new ScriptBundle("~/bundles/social/scripts")
                 // include shared
                 // ---------------
-                .IncludeDirectory("~/Scripts/app/simple/shared", "*.js", true)
+                .IncludeDirectory("~/Scripts/app/javascript/shared", "*.js", true)
                 // include appServices
                 // ---------------
-                .IncludeDirectory("~/Scripts/app/simple/appServices", "*.js", true)
+                .IncludeDirectory("~/Scripts/app/javascript/appServices", "*.js", true)
                 // include socialApp
                 // ---------------
-                .IncludeDirectory("~/Scripts/app/simple/socialApp", "*.js", true)
+                .IncludeDirectory("~/Scripts/app/javascript/socialApp", "*.js", true)
                 // include main app
                 // ---------------
-                .Include("~/Scripts/app/simple/app.js")
+                .Include("~/Scripts/app/javascript/app.js")
                 );
+
+            // social
+            // ---------------
+            //bundles.Add(new ScriptBundle("~/bundles/social/scripts")
+            //    // include shared
+            //    // ---------------
+            //    .IncludeDirectory("~/Scripts/app/simple/shared", "*.js", true)
+            //    // include appServices
+            //    // ---------------
+            //    .IncludeDirectory("~/Scripts/app/simple/appServices", "*.js", true)
+            //    // include socialApp
+            //    // ---------------
+            //    .IncludeDirectory("~/Scripts/app/simple/socialApp", "*.js", true)
+            //    // include main app
+            //    // ---------------
+            //    .Include("~/Scripts/app/simple/app.js")
+            //    );
 
             // optimization
             // ---------------
+
 #if !DEBUG
                 BundleTable.EnableOptimizations = true;
 #endif

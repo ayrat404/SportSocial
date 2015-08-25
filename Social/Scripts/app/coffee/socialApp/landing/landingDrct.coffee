@@ -7,10 +7,10 @@ class landingScripts extends Directive('socialApp.directives')
                 $window = $(window)
                 wHeight = $window.height()
                 $landing = angular.element(element)
-                
+
                 # content height
                 # ---------------
-                (()->
+                do ->
                     $window.resize(()->
                         wHeight = $window.height()
                         $landing.css('height', '')
@@ -20,11 +20,10 @@ class landingScripts extends Directive('socialApp.directives')
                             $landing.css('height', $landing.outerHeight())
                     )
                     $window.trigger('resize')
-                )()
                 
                 # slider
                 # ---------------
-                (()->
+                do ->
                     $sliderImgWrap = $landing.find('.slider-mac-body')
                     $sliderControlsContainer = $landing.find('.js-slider-left-wrap')
                     sliderCtrlTpl = 
@@ -53,6 +52,30 @@ class landingScripts extends Directive('socialApp.directives')
                         autoplay: 6000
                         transition: 'dissolve'
                     })
+
+
+                    # change content by slide index
+                    # ----------
+                    changeContentBySlide = (slideIndex)->
+                        $aLeft = dynContent.$leftWrap.eq(slideIndex)
+                        $aRight = dynContent.$rightTitle.eq(slideIndex)
+
+                        # change left
+                        # -----
+                        dynContent.$leftWrap.addClass('hidden')
+                        $aLeft.removeClass('hidden')
+                        base.animation.add($aLeft, 'fadeIn')
+
+                        # change right
+                        # -----
+                        dynContent.$rightTitle.addClass('hidden')
+                        $aRight.removeClass('hidden')
+                        base.animation.add($aRight, 'fadeInLeft')
+
+                        # change nav dots
+                        # -----
+                        sliderCtrlTpl.nav.$wrap.find('.slide__nav__it').removeClass('active')
+                        sliderCtrlTpl.nav.$wrap.find('.slide__nav__it').eq(slideIndex).addClass('active')
                     
                     # get api
                     # ----------
@@ -81,30 +104,6 @@ class landingScripts extends Directive('socialApp.directives')
                     sliderCtrlTpl.nav.$wrap.on('click', '.slide__nav__it', ()->
                         sliderApi.show(sliderCtrlTpl.nav.$wrap.find('.slide__nav__it').index(this)))
 
-                    # change content by slide index
-                    # ----------
-                    changeContentBySlide = (slideIndex)->
-                        $aLeft = dynContent.$leftWrap.eq(slideIndex)
-                        $aRight = dynContent.$rightTitle.eq(slideIndex)
-
-                        # change left
-                        # -----
-                        dynContent.$leftWrap.addClass('hidden')
-                        $aLeft.removeClass('hidden')
-                        base.animation.add($aLeft, 'fadeIn')
-
-                        # change right
-                        # -----
-                        dynContent.$rightTitle.addClass('hidden')
-                        $aRight.removeClass('hidden')
-                        base.animation.add($aRight, 'fadeInLeft')
-
-                        # change nav dots
-                        # -----
-                        sliderCtrlTpl.nav.$wrap.find('.slide__nav__it').removeClass('active')
-                        sliderCtrlTpl.nav.$wrap.find('.slide__nav__it').eq(slideIndex).addClass('active')
-                    return
-                )()
                 
                 return
         }

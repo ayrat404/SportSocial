@@ -2,7 +2,7 @@
 var Landing;
 
 Landing = (function() {
-  function Landing($scope, mixpanel, registrationService) {
+  function Landing($scope, mixpanel) {
     $scope.$root.title = 'Fortress | Добро пожаловать';
     $scope.loading = false;
     $scope.$on('$viewContentLoaded', function() {
@@ -14,6 +14,6 @@ Landing = (function() {
 
 })();
 
-angular.module('socialApp.controllers').controller('landingController', ['$scope', 'mixpanel', 'registrationService', Landing]);
+angular.module('socialApp.controllers').controller('landingController', ['$scope', 'mixpanel', Landing]);
 
 })();

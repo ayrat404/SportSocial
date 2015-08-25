@@ -1,2 +1,5 @@
 ﻿# CoffeeScript
-app = angular.module 'appSrvc', []
+app = angular.module('appSrvc', [])
+    .constant 'servicesDefault',
+        showNotice: true
+        baseServiceUrl: '/api'

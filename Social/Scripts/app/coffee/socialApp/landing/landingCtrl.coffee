@@ -1,6 +1,6 @@
 # CoffeeScript
 class Landing extends Controller('socialApp.controllers')
-    constructor: ($scope, mixpanel, registrationService)->
+    constructor: ($scope, mixpanel)->
         $scope.$root.title = 'Fortress | Добро пожаловать'
         $scope.loading = false
         

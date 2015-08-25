@@ -1,12 +1,12 @@
 (function(){
-var login;
+var support;
 
-login = (function() {
-  function login($state, $location, $q, $rootScope, base, mixpanel, servicesDefault) {
-    var isSending, logIn, url;
-    url = servicesDefault.baseServiceUrl + '/login';
+support = (function() {
+  function support($state, $location, $q, $rootScope, $http, base, mixpanel, servicesDefault) {
+    var isSending, sendQuestion, url;
+    url = servicesDefault.baseServiceUrl + '/support';
     isSending = false;
-    logIn = function(data, prop) {
+    sendQuestion = function(data, prop) {
       var evTrackProp, opts;
       opts = angular.extend(servicesDefault, prop);
       evTrackProp = {
@@ -14,8 +14,9 @@ login = (function() {
         title: $rootScope.title
       };
       return $q(function(resolve, reject) {
-        if (data && data.phone && data.password && !isSending) {
-          mixpanel.api('track', 'Login__send', evTrackProp);
+        if (data && base.validate.email(data.email) && data.name && data.problem && !isSending) {
+          mixpanel.api('track', 'Support__send', evTrackProp);
+          isSending = true;
           return $http.post(url, data).then(function(res) {
             if (res.success) {
               resolve(res);
@@ -29,7 +30,7 @@ login = (function() {
             reject(res);
             if (opts.showNotice) {
               return base.notice.show({
-                text: 'Login server error',
+                text: 'Support server error',
                 type: 'danger'
               });
             }
@@ -40,7 +41,7 @@ login = (function() {
           reject();
           if (opts.showNotice) {
             return base.notice.show({
-              text: 'Login validation error',
+              text: 'Support validation error',
               type: 'danger'
             });
           }
@@ -48,14 +49,14 @@ login = (function() {
       });
     };
     return {
-      logIn: logIn
+      send: sendQuestion
     };
   }
 
-  return login;
+  return support;
 
 })();
 
-angular.module('appSrvc').service('loginService', ['$state', '$location', '$q', '$rootScope', 'base', 'mixpanel', 'servicesDefault', login]);
+angular.module('appSrvc').service('supportService', ['$state', '$location', '$q', '$rootScope', '$http', 'base', 'mixpanel', 'servicesDefault', support]);
 
 })();
