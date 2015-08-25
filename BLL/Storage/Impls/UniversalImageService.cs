@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using BLL.Comments.Impls;
+using BLL.Common.Objects;
 using BLL.Common.Services.CurrentUser;
 using BLL.Storage.Impls.Enums;
 using DAL.DomainModel;
@@ -23,7 +24,7 @@ namespace BLL.Storage.Impls
             _repository = repository;
         }
 
-        public ImageUploadResult Save(Stream inputStream, string fileName, UploadType uploadType)
+        public ServiceResult<ImageUploadResult> Save(Stream inputStream, string fileName, UploadType uploadType)
         {
             return CreateGenericService(uploadType).Save(inputStream, GetPath(uploadType), fileName);
         }
