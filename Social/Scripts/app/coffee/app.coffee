@@ -14,18 +14,31 @@ angular.module('app', [
     ($stateProvider,
      $locationProvider,
      $httpProvider)->
-        tmplUrl = '/Scripts/templates/'
+
         tmplView = (viewUrl) ->
-            tmplUrl + viewUrl + '.html'
+            '/Scripts/templates/' + viewUrl + '.html'
 
         # routes
         # ---------------
         $stateProvider
-        .state('landing',
+        .state('main',
             url: '/'
+            views:
+                '@':
+                    templateUrl: tmplView('main/_layout')
+                    controller: 'mainSocialController'
+        )
+        .state('main.profile',
+            url: 'id:userId'
+            views:
+                'socialContent@main':
+                    templateUrl: tmplView('profile/index')
+                    controller: 'profileViewController')
+        .state('landing',
+            url: '/landing'
             templateUrl: tmplView('landing/index')
             controller: 'landingController')
-        .state('registration'
+        .state('registration',
             url: '/registration'
             templateUrl: tmplView('registration/index')
             controller: 'registrationController'

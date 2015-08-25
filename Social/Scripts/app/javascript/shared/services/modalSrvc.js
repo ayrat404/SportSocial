@@ -31,6 +31,11 @@ modal = (function() {
         controller: 'restorePasswordSubmitNewModalController',
         classname: 'fs-modal--transparent fs-modal--xs-content'
       },
+      aboutAchievement: {
+        tplName: 'achievement/about',
+        controller: 'aboutAchievementModalController',
+        classname: 'fs-modal--transparent'
+      },
       policy: {
         tplName: 'policy'
       }
