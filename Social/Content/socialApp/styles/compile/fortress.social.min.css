@@ -10669,6 +10669,12 @@ fieldset[disabled] .btn-link-white.active {
   bottom: 20px;
   left: 20px;
 }
+.dev__api__content b {
+  display: block;
+}
+.dev__api__row {
+  margin-bottom: 20px;
+}
 /* /API modal
 ---------------------------------------------------------------------------------- */
 /* /DEV */

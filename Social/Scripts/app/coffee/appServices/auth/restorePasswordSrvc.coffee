@@ -9,15 +9,10 @@ class restorePassword extends Service('appSrvc')
         mixpanel,
         servicesDefault)->
 
-        url = servicesDefault.baseServiceUrl + '/restorePassword'
+        urlOne = servicesDefault.baseServiceUrl + '/restore_password_one'
+        urlTwo = servicesDefault.baseServiceUrl + '/restore_password_two'
         isPhoneSending = false
         isNewPassSending = false
-
-
-        # send func
-        # ---------------
-        send = (action, data)->
-            $http.post([url, action].join('/'), data)
 
         # send phone ({ phone: x })
         # ---------------
@@ -31,7 +26,7 @@ class restorePassword extends Service('appSrvc')
                 if data && data.phone && !isPhoneSending
                     isPhoneSending = true
                     mixpanel.api('track', 'RestorePassword__phone-send', evTrackProp)
-                    send('phone', data).then((res)->
+                    $http(urlOne, data).then((res)->
                         if res.success
                             resolve(res)
                         else
@@ -68,7 +63,7 @@ class restorePassword extends Service('appSrvc')
                 if data && data.phone && data.password && !isNewPassSending
                     isNewPassSending = true
                     mixpanel.api('track', 'RestorePassword__new-password-send', evTrackProp)
-                    send('new', data).then((res)->
+                    $http(urlTwo, data).then((res)->
                         if res.success
                             resolve(res)
                         else

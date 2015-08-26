@@ -3,13 +3,11 @@ var restorePassword;
 
 restorePassword = (function() {
   function restorePassword($state, $location, $q, $rootScope, $http, base, mixpanel, servicesDefault) {
-    var isNewPassSending, isPhoneSending, send, sendNewPassword, sendPhone, url;
-    url = servicesDefault.baseServiceUrl + '/restorePassword';
+    var isNewPassSending, isPhoneSending, sendNewPassword, sendPhone, urlOne, urlTwo;
+    urlOne = servicesDefault.baseServiceUrl + '/restore_password_one';
+    urlTwo = servicesDefault.baseServiceUrl + '/restore_password_two';
     isPhoneSending = false;
     isNewPassSending = false;
-    send = function(action, data) {
-      return $http.post([url, action].join('/'), data);
-    };
     sendPhone = function(data, prop) {
       var evTrackProp, opts;
       opts = angular.extend(servicesDefault, prop);
@@ -21,7 +19,7 @@ restorePassword = (function() {
         if (data && data.phone && !isPhoneSending) {
           isPhoneSending = true;
           mixpanel.api('track', 'RestorePassword__phone-send', evTrackProp);
-          return send('phone', data).then(function(res) {
+          return $http(urlOne, data).then(function(res) {
             if (res.success) {
               resolve(res);
             } else {
@@ -63,7 +61,7 @@ restorePassword = (function() {
         if (data && data.phone && data.password && !isNewPassSending) {
           isNewPassSending = true;
           mixpanel.api('track', 'RestorePassword__new-password-send', evTrackProp);
-          return send('new', data).then(function(res) {
+          return $http(urlTwo, data).then(function(res) {
             if (res.success) {
               resolve(res);
             } else {
