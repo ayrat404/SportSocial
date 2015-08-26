@@ -3,7 +3,7 @@ var MainSocial;
 
 MainSocial = (function() {
   function MainSocial($state) {
-    $state.go('main.profile', {
+    $state.go('landing', {
       userId: 666
     });
   }

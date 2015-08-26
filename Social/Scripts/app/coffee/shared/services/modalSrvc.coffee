@@ -32,6 +32,8 @@ class modal extends Service('shared')
                 tplName: 'achievement/about'
                 controller: 'aboutAchievementModalController'
                 classname: 'fs-modal--transparent'
+            apiModal:
+                tplName: 'dev/api'
             policy:
                 tplName: 'policy'
 
@@ -61,7 +63,7 @@ class modal extends Service('shared')
                     # todo loader
             else if servicesDefault.showNotice
                 base.notice.show(
-                    text: 'Modal "' + prop.name + ' not exist'
+                    text: 'Modal "' + prop.name + '" not exist'
                     type: 'danger'
                 )
 

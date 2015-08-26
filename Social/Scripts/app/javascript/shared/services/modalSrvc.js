@@ -36,6 +36,9 @@ modal = (function() {
         controller: 'aboutAchievementModalController',
         classname: 'fs-modal--transparent'
       },
+      apiModal: {
+        tplName: 'dev/api'
+      },
       policy: {
         tplName: 'policy'
       }
@@ -62,7 +65,7 @@ modal = (function() {
         })["finally"](function() {});
       } else if (servicesDefault.showNotice) {
         return base.notice.show({
-          text: 'Modal "' + prop.name + ' not exist',
+          text: 'Modal "' + prop.name + '" not exist',
           type: 'danger'
         });
       }

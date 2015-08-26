@@ -13,6 +13,11 @@
         @RenderBody()
     </div>
 
+    @if (HttpContext.Current.IsDebuggingEnabled)
+    {
+        <button class="btn btn-fill-green dev__api" type="button" data-modal-click="apiModal">API</button>
+    }
+
     @Scripts.Render("~/bundles/social/assets")
     @Scripts.Render("~/bundles/social/scripts")
 </body>
