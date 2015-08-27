@@ -15,6 +15,7 @@ namespace DAL.Repository
         public Repository(EntityDbContext context)
         {
             _context = context;
+            _context.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
         }
 
         public IEnumerable<TEntity> GetAll<TEntity>() where TEntity: class

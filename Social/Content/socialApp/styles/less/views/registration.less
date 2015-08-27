@@ -1,0 +1,113 @@
+/* Registration
+---------------------------------------------------------------------------------- */
+
+.registration {
+    min-height: 100%;
+    background: url('../../images/views/registration/registration-bg.jpg') no-repeat;
+    background-position: center;
+    background-size: cover;
+    color: #fff;
+}
+
+.registration__inner {
+    max-width: 480px;
+    margin: auto;
+    padding-bottom: 30px;
+
+    h1 {
+        font-size: 30px;
+        font-family: 'F1 ExtraBold';
+        line-height: 30px;
+        text-align: center;
+        padding-top: 30px;
+        margin-top: 0;
+    }
+
+    .reg__step {
+        font-size: 18px;
+        font-family: 'F1 ExtraBold';
+        text-align: center;
+    }
+
+    .reg__form {
+        max-width: 350px;
+        margin: 35px auto 0;
+
+        input, textarea, select {
+            font-size: 1.286em;
+        }
+    }
+
+    .reg__img-wrap {
+        height: 200px;
+        width: 200px;
+        margin: 0 auto 20px;
+        position: relative;
+        border: 7px solid @brand-green;
+        background-color: #fff;
+        display: table;
+        user-select: none;
+        border-radius: 50%;
+    }
+
+    .reg__img-container {
+        position: relative;
+        height: 186px;
+        width: 186px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    .reg__img-wrap__close {
+        cursor: pointer;
+        position: absolute;
+        right: 0;
+        top: 0;
+        color: #fff;
+        font-size: 34px;
+        line-height: 7px;
+        opacity: .8;
+        z-index: 10;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    .reg__img {
+        max-height: 100%;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+
+        &.reg__img--vertical {
+            max-width: 100%;
+            max-height: initial;
+        }
+    }
+
+
+    .reg__img__empty {
+        cursor: pointer;
+        display: table-cell;
+        vertical-align: middle;
+        color: @brand-green;
+        text-align: center;
+
+        .avatar-icon {
+            display: block;
+            margin: 0 auto 10px;
+            .sprite(@registration-avatar-upload);
+        }
+    }
+
+    .dropdown-menu {
+        color: @text-color;
+    }
+}
+
+/* /Registration
+---------------------------------------------------------------------------------- */

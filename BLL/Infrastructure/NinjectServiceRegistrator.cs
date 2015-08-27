@@ -1,8 +1,6 @@
-﻿using BLL.Comments;
-using BLL.Common.Services.CurrentUser;
+﻿using BLL.Common.Services.CurrentUser;
 using BLL.Common.Services.CurrentUser.Impls;
 using BLL.Infrastructure.IdentityConfig;
-using BLL.Rating;
 using BLL.Sms;
 using BLL.Sms.Impls;
 using DAL;
@@ -44,9 +42,6 @@ namespace BLL.Infrastructure
             kernel.Bind<ISmsService>().To<SmsPilotSmsService>().InRequestScope();
             #endif
             kernel.Bind<ICurrentUser>().To<CurrentUser>().InRequestScope();
-            kernel.Bind(typeof(IGRatingService<,>)).To(typeof(RatingService<,>)).InRequestScope();
-            kernel.Bind(typeof(ICommentService<,>)).To(typeof(CommentService<,>)).InRequestScope();
-
         }
     }
 }

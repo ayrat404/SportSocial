@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using DAL.DomainModel;
 using DAL.DomainModel.BlogEntities;
@@ -45,6 +46,35 @@ namespace DAL
         public static EntityDbContext Create(IContext context)
         {
             return new EntityDbContext();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<BlogComment>()
+                .Map(m =>
+                {
+                    m.MapInheritedProperties();
+                    m.ToTable("BlogComments");
+                });
+
+            modelBuilder.Entity<UserAvatarPhoto>()
+                .Map(m =>
+                {
+                    m.MapInheritedProperties();
+                    m.ToTable("UserAvatarPhotoes");
+                });
+            //    .HasRequired(t => t.User)
+            //    .WithMany()
+            //    .HasForeignKey(t => t.UserId)
+            //    .WillCascadeOnDelete();
+
+            modelBuilder.Entity<BlogComment>()
+                .HasOptional<BlogComment>(t => t.CommentFor)
+                .WithMany()
+                .HasForeignKey(comment => comment.CommentForId);
+
         }
 
         protected override void Dispose(bool disposing)

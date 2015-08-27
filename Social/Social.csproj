@@ -45,7 +45,54 @@
     <Reference Include="BundleTransformer.Core">
       <HintPath>..\packages\BundleTransformer.Core.1.9.69\lib\net40\BundleTransformer.Core.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Ninject.Web.Common.3.2.3.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common.OwinHost">
+      <HintPath>..\packages\Ninject.Web.Common.OwinHost.3.2.3.0\lib\net45-full\Ninject.Web.Common.OwinHost.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.WebApi">
+      <HintPath>..\packages\Ninject.Web.WebApi.3.2.4.0\lib\net45-full\Ninject.Web.WebApi.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -108,6 +155,9 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="WebActivatorEx">
+      <HintPath>..\packages\WebActivatorEx.2.0.6\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -119,12 +169,17 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\" />
+    <Folder Include="Content\socialApp\images\common\" />
+    <Folder Include="Content\socialApp\images\icons-set\" />
+    <Folder Include="Content\socialApp\images\sprites\" />
     <Folder Include="Models\" />
+    <Folder Include="Scripts\app\coffee\shared\directives\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\ConfigureAuth.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
@@ -141,35 +196,69 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ApiError.cs" />
+    <Compile Include="Models\ApiResult.cs" />
+    <Compile Include="Models\ApiResultBase.cs" />
+    <Compile Include="Models\FieldError.cs" />
+    <Compile Include="Models\SummaryError.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Content\socialApp\images\views\landing\bg-left.jpg" />
+    <Content Include="Content\socialApp\images\views\landing\macbook.png" />
+    <Content Include="Content\socialApp\images\views\registration\registration-bg.jpg" />
+    <Content Include="Content\socialApp\styles\compile\fortress.social.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\app.js" />
-    <Content Include="Scripts\app\appServices\app.js" />
-    <Content Include="Scripts\app\appServices\auth\login.js" />
-    <Content Include="Scripts\app\appServices\auth\registration.js" />
-    <Content Include="Scripts\app\appServices\auth\status.js" />
-    <Content Include="Scripts\app\shared\app.js" />
-    <Content Include="Scripts\app\shared\directives\loader.js" />
-    <Content Include="Scripts\app\shared\directives\mixpanel.js" />
-    <Content Include="Scripts\app\shared\directives\scroll-to.js" />
-    <Content Include="Scripts\app\shared\filters\formatWord.fltr.js" />
-    <Content Include="Scripts\app\shared\services\base.js" />
-    <Content Include="Scripts\app\shared\services\error-handler.js" />
-    <Content Include="Scripts\app\shared\services\mixpanel.js" />
-    <Content Include="Scripts\app\shared\services\remote-template.js" />
-    <Content Include="Scripts\app\socialApp\app.js" />
-    <Content Include="Scripts\app\socialApp\landing\landingCtrl.js" />
-    <Content Include="Scripts\app\socialApp\registration\registrationCtrl.js" />
+    <Content Include="gulpfile.js" />
+    <Content Include="Scripts\app\javascript\shared\app.js" />
+    <Content Include="Scripts\app\javascript\shared\directives\loaderDrct.js" />
+    <Content Include="Scripts\app\simple\app.js" />
+    <Content Include="Scripts\app\simple\appServices\app.js" />
+    <Content Include="Scripts\app\simple\appServices\auth\restorePassword.srvc.js" />
+    <Content Include="Scripts\app\simple\appServices\auth\login.srvc.js" />
+    <Content Include="Scripts\app\simple\appServices\auth\registration.srvc.js" />
+    <Content Include="Scripts\app\simple\appServices\auth\status.srvc.js" />
+    <Content Include="Scripts\app\javascript\app.js" />
+    <Content Include="Scripts\app\javascript\appServices\app.js" />
+    <Content Include="Scripts\app\javascript\appServices\auth\loginSrvc.js" />
+    <Content Include="Scripts\app\javascript\appServices\auth\registrationSrvc.js" />
+    <Content Include="Scripts\app\javascript\appServices\auth\statusSrvc.js" />
+    <Content Include="Scripts\app\javascript\socialApp\app.js" />
+    <Content Include="Scripts\app\javascript\socialApp\landing\landingCtrl.js" />
+    <Content Include="Scripts\app\javascript\socialApp\landing\landingDrct.js" />
+    <Content Include="Scripts\app\javascript\socialApp\registration\registrationCtrl.js" />
+    <Content Include="Scripts\app\simple\appServices\support\support.srvc.js" />
+    <Content Include="Scripts\app\simple\shared\app.js" />
+    <Content Include="Scripts\app\simple\shared\directives\server-validation.drct.js" />
+    <Content Include="Scripts\app\simple\shared\directives\modal-click.drct.js" />
+    <Content Include="Scripts\app\simple\shared\directives\loader.drct.js" />
+    <Content Include="Scripts\app\simple\shared\directives\mixpanel.drct.js" />
+    <Content Include="Scripts\app\simple\shared\directives\scroll-to.drct.js" />
+    <Content Include="Scripts\app\simple\shared\filters\format-word.fltr.js" />
+    <Content Include="Scripts\app\simple\shared\services\base.srvc.js" />
+    <Content Include="Scripts\app\simple\shared\services\error-handler.srvc.js" />
+    <Content Include="Scripts\app\simple\shared\services\modal.srvc.js" />
+    <Content Include="Scripts\app\simple\shared\services\mixpanel.srvc.js" />
+    <Content Include="Scripts\app\simple\shared\services\remote-template.srvc.js" />
+    <Content Include="Scripts\app\simple\socialApp\app.js" />
+    <Content Include="Scripts\app\simple\socialApp\landing\landing.drct.js" />
+    <Content Include="Scripts\app\simple\socialApp\landing\landing.ctrl.js" />
+    <Content Include="Scripts\app\simple\socialApp\modals\restorePassword.ctrl.js" />
+    <Content Include="Scripts\app\simple\socialApp\modals\login.ctrl.js" />
+    <Content Include="Scripts\app\simple\socialApp\modals\support.ctrl.js" />
+    <Content Include="Scripts\app\simple\socialApp\registration\registration.ctrl.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
     <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Index.cshtml" />
@@ -181,6 +270,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Scripts\libs\angular-ui-bootstrap\ui-bootstrap-tpls-0.13.3.js" />
     <Content Include="Scripts\libs\angular-ui-router\angular-ui-router.js" />
     <Content Include="Scripts\libs\angular-ui-router\angular-ui-router.min.js" />
     <Content Include="Scripts\libs\angular\angular-animate.js" />
@@ -2404,11 +2494,146 @@
     <Content Include="Scripts\libs\bootstrap\tab.js" />
     <Content Include="Scripts\libs\bootstrap\tooltip.js" />
     <Content Include="Scripts\libs\bootstrap\transition.js" />
+    <Content Include="Scripts\libs\fotorama\fotorama.js" />
     <Content Include="Scripts\libs\jquery.mask\jquery.mask.js" />
+    <Content Include="package.json" />
+    <Content Include="Content\socialApp\styles\less\base\core.less" />
+    <Content Include="Content\socialApp\styles\less\base\custom-variables.less" />
+    <Content Include="Content\socialApp\styles\less\base\fonts.less" />
+    <Content Include="Content\socialApp\styles\less\base\icons-set.less" />
+    <Content Include="Content\socialApp\styles\less\base\mixins.less" />
+    <Content Include="Content\socialApp\styles\less\elements\buttons.less" />
+    <Content Include="Content\socialApp\styles\less\components\modal.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap-select\bootstrap-select.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\.csscomb.json" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\.csslintrc" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\alerts.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\badges.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\bootstrap.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\breadcrumbs.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\button-groups.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\buttons.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\carousel.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\close.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\code.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\component-animations.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\dropdowns.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\forms.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\glyphicons.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\grid.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\input-groups.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\jumbotron.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\labels.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\list-group.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\media.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\mixins.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\mixins\alerts.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\mixins\background-variant.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\mixins\border-radius.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\mixins\buttons.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\mixins\center-block.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\mixins\clearfix.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\mixins\forms.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\mixins\gradients.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\mixins\grid-framework.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\mixins\grid.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\mixins\hide-text.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\mixins\image.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\mixins\labels.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\mixins\list-group.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\mixins\nav-divider.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\mixins\nav-vertical-align.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\mixins\opacity.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\mixins\pagination.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\mixins\panels.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\mixins\progress-bar.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\mixins\reset-filter.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\mixins\resize.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\mixins\responsive-visibility.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\mixins\size.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\mixins\tab-focus.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\mixins\table-row.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\mixins\text-emphasis.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\mixins\text-overflow.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\mixins\vendor-prefixes.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\modals.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\navbar.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\navs.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\normalize.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\pager.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\pagination.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\panels.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\popovers.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\print.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\progress-bars.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\responsive-embed.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\responsive-utilities.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\scaffolding.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\tables.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\theme.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\thumbnails.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\tooltip.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\type.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\utilities.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\variables.less" />
+    <Content Include="Content\socialApp\styles\less\libs\bootstrap\wells.less" />
+    <Content Include="Content\socialApp\styles\less\style.less" />
+    <Content Include="Content\socialApp\styles\less\views\landing.less" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansBoldItalic\OpenSansBoldItalic.eot" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansBoldItalic\OpenSansBoldItalic.ttf" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansBoldItalic\OpenSansBoldItalic.woff" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansBold\OpenSansBold.eot" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansBold\OpenSansBold.ttf" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansBold\OpenSansBold.woff" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansExtraBoldItalic\OpenSansExtraBoldItalic.eot" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansExtraBoldItalic\OpenSansExtraBoldItalic.ttf" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansExtraBoldItalic\OpenSansExtraBoldItalic.woff" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansExtraBold\OpenSansExtraBold.eot" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansExtraBold\OpenSansExtraBold.ttf" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansExtraBold\OpenSansExtraBold.woff" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansItalic\OpenSansItalic.eot" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansItalic\OpenSansItalic.ttf" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansItalic\OpenSansItalic.woff" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansLightItalic\OpenSansLightItalic.eot" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansLightItalic\OpenSansLightItalic.ttf" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansLightItalic\OpenSansLightItalic.woff" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansLight\OpenSansLight.eot" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansLight\OpenSansLight.ttf" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansLight\OpenSansLight.woff" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansRegularItalic\OpenSansRegularItalic.eot" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansRegularItalic\OpenSansRegularItalic.ttf" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansRegularItalic\OpenSansRegularItalic.woff" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansRegular\OpenSansRegular.eot" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansRegular\OpenSansRegular.ttf" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansRegular\OpenSansRegular.woff" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansSemiBoldItalic\OpenSansSemiBoldItalic.eot" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansSemiBoldItalic\OpenSansSemiBoldItalic.ttf" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansSemiBoldItalic\OpenSansSemiBoldItalic.woff" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansSemiBold\OpenSansSemiBold.eot" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansSemiBold\OpenSansSemiBold.ttf" />
+    <Content Include="Content\socialApp\fonts\OpenSans\OpenSansSemiBold\OpenSansSemiBold.woff" />
+    <Content Include="Content\socialApp\styles\less\libs\fotorama\fotorama.less" />
+    <Content Include="Scripts\app\coffee\appServices\app.coffee" />
+    <Content Include="Scripts\app\coffee\app.coffee" />
+    <Content Include="Content\socialApp\styles\less\components\mac-slider.less" />
+    <Content Include="Content\socialApp\styles\less\elements\links.less" />
+    <Content Include="Content\socialApp\styles\less\elements\form.less" />
+    <Content Include="Content\socialApp\styles\less\components\notices.less" />
+    <Content Include="Content\socialApp\styles\less\elements\field-validate.less" />
+    <Content Include="Content\socialApp\styles\less\views\registration.less" />
+    <None Include="Scripts\app\coffee\appServices\auth\loginSrvc.coffee" />
+    <Content Include="Scripts\app\coffee\appServices\auth\registrationSrvc.coffee" />
+    <Content Include="Scripts\app\coffee\appServices\auth\statusSrvc.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\app.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\landing\landingCtrl.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\landing\landingDrct.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\registration\registrationCtrl.coffee" />
+    <Content Include="Scripts\app\coffee\shared\app.coffee" />
     <None Include="Scripts\libs\jquery\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.min.js" />
     <Content Include="Scripts\libs\masonry\masonry.pkgd.min.js" />
+    <Content Include="Scripts\libs\ng-flow\ng-flow-standalone.js" />
     <Content Include="Scripts\libs\ng-mask\ngMask.js" />
     <Content Include="Scripts\libs\ng-mask\ngMask.min.js" />
     <Content Include="Scripts\libs\nprogress\nprogress.js" />
@@ -2416,6 +2641,13 @@
     <Content Include="Scripts\libs\wow\wow.min.js" />
     <Content Include="Scripts\templates\errors\404.html" />
     <Content Include="Scripts\templates\landing\index.html" />
+    <Content Include="Scripts\templates\modals\auth\restore-password-submit-new-data.html" />
+    <Content Include="Scripts\templates\modals\auth\restore-password-submit-phone.html" />
+    <Content Include="Scripts\templates\modals\auth\login-submit.html" />
+    <Content Include="Scripts\templates\modals\support\support-success.html" />
+    <Content Include="Scripts\templates\modals\support\support-submit.html" />
+    <Content Include="Scripts\templates\modals\policy.html" />
+    <Content Include="Scripts\templates\registration\index.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2645,10 +2877,19 @@
     <Content Include="Scripts\libs\angular\errors.json" />
     <Content Include="Scripts\libs\angular\version.json" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.min.map" />
-    <Content Include="Scripts\libs\nprogress\nprogress.less" />
-    <Content Include="Scripts\libs\wow\animate.less" />
+    <Content Include="Content\socialApp\styles\less\libs\nprogress\nprogress.less" />
+    <Content Include="Content\socialApp\styles\less\libs\animate\animate.less" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{3B2F6C52-6AAD-464A-A954-60C6A1F22220}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{9a42fa4b-8bd7-44b9-b4fc-5f9db0e96404}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

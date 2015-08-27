@@ -16,6 +16,7 @@ namespace Social
                     "~/Scripts/libs/jquery/jquery-2.0.3.js",
                     "~/Scripts/libs/nprogress/nprogress.js",
                     "~/Scripts/libs/angular/angular.js",
+                    "~/Scripts/libs/angular/i18n/angular-locale_ru-ru.js",
                     "~/Scripts/libs/angular/angular-mocks.js",
                     "~/Scripts/libs/angular/angular-cookies.js",
                     "~/Scripts/libs/angular-ui-router/angular-ui-router.js",
@@ -24,27 +25,47 @@ namespace Social
                     "~/Scripts/libs/bootstrap/transition.js",
                     "~/Scripts/libs/bootstrap/tab.js",
                     "~/Scripts/libs/bootstrap/tooltip.js",
-                    "~/Scripts/libs/bootbox/bootbox.js"));
+                    "~/Scripts/libs/angular-ui-bootstrap/ui-bootstrap-tpls-0.13.3.js",
+                    "~/Scripts/libs/fotorama/fotorama.js",
+                    "~/Scripts/libs/ng-flow/ng-flow-standalone.js"));
 
-            // social
+            // social with coffee
             // ---------------
             bundles.Add(new ScriptBundle("~/bundles/social/scripts")
                 // include shared
                 // ---------------
-                .IncludeDirectory("~/Scripts/app/shared", "*.js", true)
+                .IncludeDirectory("~/Scripts/app/javascript/shared", "*.js", true)
                 // include appServices
                 // ---------------
-                .IncludeDirectory("~/Scripts/app/appServices", "*.js", true)
+                .IncludeDirectory("~/Scripts/app/javascript/appServices", "*.js", true)
                 // include socialApp
                 // ---------------
-                .IncludeDirectory("~/Scripts/app/socialApp", "*.js", true)
+                .IncludeDirectory("~/Scripts/app/javascript/socialApp", "*.js", true)
                 // include main app
                 // ---------------
-                .Include("~/Scripts/app/app.js")
+                .Include("~/Scripts/app/javascript/app.js")
                 );
+
+            // social
+            // ---------------
+            //bundles.Add(new ScriptBundle("~/bundles/social/scripts")
+            //    // include shared
+            //    // ---------------
+            //    .IncludeDirectory("~/Scripts/app/simple/shared", "*.js", true)
+            //    // include appServices
+            //    // ---------------
+            //    .IncludeDirectory("~/Scripts/app/simple/appServices", "*.js", true)
+            //    // include socialApp
+            //    // ---------------
+            //    .IncludeDirectory("~/Scripts/app/simple/socialApp", "*.js", true)
+            //    // include main app
+            //    // ---------------
+            //    .Include("~/Scripts/app/simple/app.js")
+            //    );
 
             // optimization
             // ---------------
+
 #if !DEBUG
                 BundleTable.EnableOptimizations = true;
 #endif

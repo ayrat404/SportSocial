@@ -1,0 +1,33 @@
+/* Core styles html,body, etc.
+---------------------------------------------------------------------------------- */
+
+html {
+    &.full-height {
+        height: 100%;
+        body,
+        .ui-content {
+            height: 100%;
+        }
+    }
+}
+
+html,
+body {
+    font-family: 'F1 Regular';
+    overflow-x: hidden;
+}
+
+body {
+    opacity: 0;
+    transition: opacity 200ms linear;
+}
+
+a {
+    &:hover,
+    &:focus {
+        text-decoration: none;
+    }
+}
+
+/* /Core styles html,body, etc.
+---------------------------------------------------------------------------------- */

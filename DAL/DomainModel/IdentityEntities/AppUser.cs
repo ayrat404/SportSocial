@@ -9,7 +9,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace DAL.DomainModel
 {
-    public class AppUser: IdentityUser<int, AppUserLogin, AppUserRole, AppUserClaim>, IAuditable
+    public class AppUser: IdentityUser<int, AppUserLogin, AppUserRole, AppUserClaim>, IAuditable, IEntity
     {
         public string Name { get; set; }
 

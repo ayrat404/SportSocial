@@ -1,0 +1,51 @@
+/* Profile
+---------------------------------------------------------------------------------- */
+
+.profile {
+    .icon-question {
+        display: inline-block;
+        vertical-align: middle;
+        .sprite(@question-small);
+    }
+}
+.profile__info {
+    background-color: #fff;
+    .pi__row {
+        padding: 17px 15px;
+        border-bottom: 1px solid #d7d9db;
+        .no-float();
+    }
+    .pi__row__title {
+        font-size: 1.286em;
+        .link {
+            float: right;
+            margin-top: 10px;
+            font-size: 0.667em;
+        }
+        &:not(:first-child) {
+            margin-top: 30px;
+        }
+    }
+    .pi__question {
+        font-size: 0.857em;
+        span {
+            vertical-align: middle;
+            display: inline-block;
+        }
+    }
+}
+.profile__journal {
+    padding-top: 40px;
+    background-color: #1f282d;
+}
+
+
+/* In other files
+-------------------------------------------------- */
+
+
+
+/* /In other files */
+
+/* /Profile
+---------------------------------------------------------------------------------- */

@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using DAL.DomainModel.EnumProperties;
 using DAL.DomainModel.Interfaces;
 
 namespace DAL.DomainModel
@@ -12,6 +14,16 @@ namespace DAL.DomainModel
         public string Lang { get; set; }
 
         public string Avatar { get; set; }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public DateTime BirthDate { get; set; }
+
+        public Sex Sex { get; set; }
+
+        public SportExperience Experience { get; set; }
 
         public virtual AppUser AppUser { get; set; }
 

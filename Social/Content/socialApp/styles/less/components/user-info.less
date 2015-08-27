@@ -1,0 +1,63 @@
+/* User info
+---------------------------------------------------------------------------------- */
+
+.user-info {
+  position: relative;
+  border-bottom: 1px solid #d7d9db;
+  .no-float();
+}
+
+.user-info__avatar {
+  margin: 0 -100% 0 0;
+  border-right: 1px solid #d7d9db;
+  position: relative;
+  height: 230px;
+  width: 230px;
+  float: left;
+  background-color: #f5f5f5;
+
+  .ui__avatar-upload {
+    height: 100%;
+    cursor: pointer;
+    user-select: none;
+    text-align: center;
+    .icon-upload {
+      margin-top: 22%;
+      display: inline-block;
+      vertical-align: middle;
+      .sprite(@photo-upload-medium);
+    }
+    .link {
+      margin-top: 15px;
+      font-size: 0.857em;
+    }
+  }
+}
+
+.user-info__about {
+  padding: 17px 17px 27px 0;
+  margin-left: 250px;
+  .ui__name {
+    font-family: 'F1 Bold';
+    font-size: 1.571em;
+  }
+  .ui__age {
+  }
+  .ui__location {
+    &:before {
+      content: '';
+      display: inline-block;
+      margin-right: 7px;
+      .sprite(@typ-location);
+    }
+  }
+  .ui__edit {
+    font-size: 0.857em;
+    position: absolute;
+    left: 250px;
+    bottom: 17px;
+  }
+}
+
+/* /User info
+---------------------------------------------------------------------------------- */

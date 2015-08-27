@@ -47,7 +47,7 @@ namespace BLL.Login.Impls
                 Success = true,
                 ReturnUrl = returnUrl
             };
-            var user = _appUserManager.Find(signInModel.Phone, signInModel.Pass);
+            var user = _appUserManager.Find(signInModel.Phone, signInModel.Password);
             if (user == null)
             {
                 result.Success = false;
@@ -106,7 +106,10 @@ namespace BLL.Login.Impls
             }
             var smsResult = _smsService.GenerateAndSendCode(user.Id, regModel.Phone);
             if (!smsResult.Success)
+            {
+                result.Success = false;
                 result.ErrorMessage = smsResult.ErrorMessage;
+            }
             return result;
         }
 
@@ -131,7 +134,12 @@ namespace BLL.Login.Impls
                         Id = user.Id,
                         Lang = LanguageHelper.GetCurrentCulture(),
                         Avatar = DefaultAvatarUrl,
-                        ReadedNews = _cookiesService.GetReadedNews()
+                        ReadedNews = _cookiesService.GetReadedNews(),
+                        FirstName = confirmModel.Name,
+                        LastName = confirmModel.LastName,
+                        Sex = confirmModel.Gender,
+                        Experience = confirmModel.SportTime,
+                        BirthDate = confirmModel.BirthDay
                     };
                     _repository.Add(profile);
                     _repository.SaveChanges();
@@ -242,16 +250,19 @@ namespace BLL.Login.Impls
             return result;
         }
 
-        public ImageUploadResult RemoveAvatar()
+        public ServiceResult<ImageUploadResult> RemoveAvatar()
         {
             //var userProfile = _repository.Find<Profile>(_currentUser.UserId);
             //userProfile.Avatar = DefaultAvatarUrl;
             _currentUser.User.Profile.Avatar = DefaultAvatarUrl;
             _repository.SaveChanges();
-            return new ImageUploadResult
+            return new ServiceResult<ImageUploadResult>
             {
                 Success = true,
-                Url = DefaultAvatarUrl,
+                Result = new ImageUploadResult
+                {
+                    Url = DefaultAvatarUrl
+                }
             };
         }
 
