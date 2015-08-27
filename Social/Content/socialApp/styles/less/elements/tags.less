@@ -1,0 +1,42 @@
+/* Tags
+---------------------------------------------------------------------------------- */
+
+.tag-list {
+  padding: 0;
+  list-style-type: none;
+  margin: 0;
+  .tl__item {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 8px 5px 0;
+    background-color: @brand-blue;
+    border-radius: 20px;
+    padding: 3px 15px;
+    cursor: pointer;
+    user-select: none;
+    &:hover {
+      .tl__remove {
+        opacity: 1;
+      }
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  .tl__text {
+    display: inline-block;
+    vertical-align: middle;
+    color: #fff;
+  }
+  .tl__remove {
+    opacity: .6;
+    display: inline-block;
+    vertical-align: middle;
+    transition: opacity 100ms linear;
+    .sprite(@close-tag);
+    margin-left: 8px;
+  }
+}
+
+/* /Tags
+---------------------------------------------------------------------------------- */

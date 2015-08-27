@@ -9887,6 +9887,8 @@ fieldset[disabled] .btn-link-white.active {
 .link {
   cursor: pointer;
   color: #1f7eba;
+  background: transparent;
+  border: none;
 }
 .link:hover {
   color: #45a4e0;
@@ -9918,16 +9920,16 @@ fieldset[disabled] .btn-link-white.active {
   padding: 12px 20px;
   width: 100%;
 }
-.fs-input ::-webkit-input-placeholder {
+.fs-input::-webkit-input-placeholder {
   color: #575757;
 }
-.fs-input ::-moz-placeholder {
+.fs-input::-moz-placeholder {
   color: #575757;
 }
-.fs-input :-moz-placeholder {
+.fs-input:-moz-placeholder {
   color: #575757;
 }
-.fs-input :-ms-input-placeholder {
+.fs-input:-ms-input-placeholder {
   color: #575757;
 }
 .fs-input--error {
@@ -9984,6 +9986,51 @@ fieldset[disabled] .btn-link-white.active {
 .pa0 {
   padding: 0 !important;
 }
+/* Tags
+---------------------------------------------------------------------------------- */
+.tag-list {
+  padding: 0;
+  list-style-type: none;
+  margin: 0;
+}
+.tag-list .tl__item {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 8px 5px 0;
+  background-color: #1f7eba;
+  border-radius: 20px;
+  padding: 3px 15px;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.tag-list .tl__item:hover .tl__remove {
+  opacity: 1;
+}
+.tag-list .tl__item:last-child {
+  margin-right: 0;
+}
+.tag-list .tl__text {
+  display: inline-block;
+  vertical-align: middle;
+  color: #fff;
+}
+.tag-list .tl__remove {
+  opacity: .6;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transition: opacity 100ms linear;
+          transition: opacity 100ms linear;
+  background-image: url(../../images/icons-set/icons-set.png);
+  background-position: -282px -118px;
+  width: 11px;
+  height: 11px;
+  margin-left: 8px;
+}
+/* /Tags
+---------------------------------------------------------------------------------- */
 /* /Elements */
 /* Components
 -------------------------------------------------- */
@@ -10120,7 +10167,7 @@ fieldset[disabled] .btn-link-white.active {
   float: left;
   margin: 35px 40px 0 0;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -303px -87px;
+  background-position: -212px -118px;
   width: 16px;
   height: 16px;
 }
@@ -10226,7 +10273,7 @@ fieldset[disabled] .btn-link-white.active {
   display: inline-block;
   margin-right: 7px;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -212px -118px;
+  background-position: -238px -118px;
   width: 12px;
   height: 13px;
 }
@@ -10237,6 +10284,62 @@ fieldset[disabled] .btn-link-white.active {
   bottom: 17px;
 }
 /* /User info
+---------------------------------------------------------------------------------- */
+/* Journal form
+---------------------------------------------------------------------------------- */
+.journal-submit {
+  max-width: 500px;
+  margin: 0 auto;
+}
+.journal-submit .jos__avatar {
+  float: left;
+  margin: 0 -100% 0 0;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+}
+.journal-submit .jos__media-actions {
+  margin-top: 10px;
+  font-size: 0.857em;
+}
+.journal-submit .jos__media-actions i {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+.journal-submit .jos__media-actions i.photo {
+  background-image: url(../../images/icons-set/icons-set.png);
+  background-position: -303px -87px;
+  width: 18px;
+  height: 15px;
+}
+.journal-submit .jos__media-actions i.video {
+  background-image: url(../../images/icons-set/icons-set.png);
+  background-position: -182px -148px;
+  width: 15px;
+  height: 17px;
+}
+.journal-submit .jos__media-actions .link {
+  margin-right: 40px;
+}
+.journal-submit .jos__media-actions .link:last-child {
+  margin-right: 0;
+}
+.journal-submit .form {
+  margin-left: 70px;
+}
+.journal-submit .fs-form__submit {
+  border-top: 1px solid #363e42;
+  padding-top: 20px;
+  text-align: right;
+}
+.journal-submit .fs-form__row {
+  margin-bottom: 25px;
+}
+.journal-submit .tag-list {
+  margin-top: 9px;
+}
+/* /Journal form
 ---------------------------------------------------------------------------------- */
 /* /Components */
 /* Views
@@ -10481,25 +10584,25 @@ fieldset[disabled] .btn-link-white.active {
 }
 .auth-social .as__icon--tw {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -273px -87px;
+  background-position: -243px -87px;
   width: 20px;
   height: 20px;
 }
 .auth-social .as__icon--fb {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -213px -87px;
+  background-position: -182px -118px;
   width: 20px;
   height: 20px;
 }
 .auth-social .as__icon--gp {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -243px -87px;
+  background-position: -273px -87px;
   width: 20px;
   height: 20px;
 }
 .auth-social .as__icon--vk {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -182px -118px;
+  background-position: -213px -87px;
   width: 20px;
   height: 20px;
 }
@@ -10616,7 +10719,7 @@ fieldset[disabled] .btn-link-white.active {
   display: inline-block;
   vertical-align: middle;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -234px -118px;
+  background-position: -260px -118px;
   width: 12px;
   height: 12px;
 }
@@ -10652,6 +10755,7 @@ fieldset[disabled] .btn-link-white.active {
   display: inline-block;
 }
 .profile__journal {
+  padding-top: 40px;
   background-color: #1f282d;
 }
 /* In other files
