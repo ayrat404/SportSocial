@@ -1,5 +1,4 @@
-﻿using System.Data.Entity.Migrations;
-using System.Web;
+﻿using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -29,9 +28,9 @@ namespace Social
             settings.Formatting = Formatting.Indented;
             settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             
-            var conf = new Configuration();
-            DbMigrator migrator = new DbMigrator(conf);
-            migrator.Update();
+            //var conf = new Configuration();
+            //DbMigrator migrator = new DbMigrator(conf);
+            //migrator.Update();
         }
     }
 }

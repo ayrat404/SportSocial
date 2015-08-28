@@ -1,0 +1,23 @@
+﻿<div class="fs-modal__title">Техническая поддеркжа</div>
+<div class="fs-modal__body">
+    <div data-server-validation="serverValidation">
+        <form name="SupportForm"
+              ng-submit="submit()">
+            <div class="fs-form__row">
+                <input name="name" type="text" ng-model="support.name" required placeholder="Ваше имя" class="fs-input" />
+            </div>
+            <div class="fs-form__row">
+                <input name="email" type="email" ng-model="support.email" required placeholder="Ваш email" class="fs-input" />
+            </div>
+            <div class="fs-form__row">
+                <textarea name="problem" ng-model="support.problem" required placeholder="Опишите вашу проблему" rows="7" class="fs-input"></textarea>
+            </div>
+            <div class="fs-modal__submit">
+                <button ng-disabled="!SupportForm.$valid"
+                        class="btn btn-fill-green btn-xl" type="submit">
+                    Отправить
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

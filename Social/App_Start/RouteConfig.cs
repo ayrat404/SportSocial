@@ -14,8 +14,14 @@ namespace Social
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Templates",
+                url: "template/{*path}",
+                defaults: new { controller = "Template", action = "Index" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
+                url: "{*route}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }

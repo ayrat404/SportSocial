@@ -1,0 +1,63 @@
+﻿<div class="journal-submit">
+    <img src="#" class="jos__avatar">
+    <form class="form">
+        <div class="fs-form__row">
+            <textarea class="fs-input"></textarea>
+            <div class="jos__media-actions">
+                <span class="link">
+                    <i class="photo"></i>
+                    Добавить фотографию
+                </span>
+                <span class="link">
+                    <i class="video"></i>
+                    Добавить видео
+                </span>
+            </div>
+        </div>
+        <div class="fs-form__row">
+
+            <pre>Model: {{j.tags}}</pre>
+            <input ng-model="j.tags"
+                   typeahead="address for address in getThemes($viewValue)"
+                   typeahead-append-to-body="true"
+                   typeahead-loading="loadingLocations"
+                   typeahead-no-results="noResults"
+                   typeahead-on-select="format($item, $model, $label)"
+                   class="fs-input" type="text" placeholder="Выберите тематику" />
+
+            <ul class="tag-list">
+                <li class="tl__item">
+                    <span class="tl__text">ЗОЖ</span>
+                    <span class="tl__remove"></span>
+                </li>
+                <li class="tl__item">
+                    <span class="tl__text">питание</span>
+                    <span class="tl__remove"></span>
+                </li>
+                <li class="tl__item">
+                    <span class="tl__text">брусья</span>
+                    <span class="tl__remove"></span>
+                </li>
+                <li class="tl__item">
+                    <span class="tl__text">брусья</span>
+                    <span class="tl__remove"></span>
+                </li>
+                <li class="tl__item">
+                    <span class="tl__text">брусья</span>
+                    <span class="tl__remove"></span>
+                </li>
+                <li class="tl__item">
+                    <span class="tl__text">брусья</span>
+                    <span class="tl__remove"></span>
+                </li>
+            </ul>
+        </div>
+        <!--<div class="jos__social">
+            social sharing
+        </div>-->
+        <div class="fs-form__submit">
+            <button type="reset" class="link link--white">Отмена</button>
+            <button type="submit" class="btn btn-fill-green btn-xl">Отправить</button>
+        </div>
+    </form>
+</div>
