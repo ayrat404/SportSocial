@@ -105,4 +105,7 @@ class registration extends Service('appSrvc')
 
         # public methods
         # ---------------
-        return registerFirst: registerFirst
+        return {
+            registerFirst: registerFirst
+            registerTwo: registerTwo
+        }

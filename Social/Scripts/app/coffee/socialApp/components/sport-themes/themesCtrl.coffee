@@ -1,19 +1,39 @@
-class JournalSubmit extends Controller('socialApp.controllers')
+class ThemesAutocomplete extends Controller('socialApp.controllers')
     constructor: (
         $scope
-        journalSubmitService)->
+        sportThemesService
+        base)->
 
-        # get remote themes
+        if !base.isArray($scope.themes)
+            $scope.themes = []
+
+        # get remote tags
         # ---------------
         $scope.getThemes = (search)->
-            return journalSubmitService.get(search).then((res)->
-                if res.length
-                    return res
-                else
-                    return search
+            return sportThemesService.get(search).then((res)->
+                # if find themes
+                return res
+            , ->
+                # if themes aren't found
+                return [search]
             )
 
-        # select theme
+        # select tag
         # ---------------
         $scope.format = ($item, $model, $label)->
-            debugger;
+            if $scope.themes.indexOf($item) != -1
+                base.notice.show(
+                    text: 'Theme "' + $item + '" is already selected'
+                    type: 'warning'
+                )
+            else
+                $scope.search = ''
+                $scope.themes.push($item)
+            return
+
+        # remove tag
+        # ---------------
+        $scope.removeTag = (tag)->
+            index = $scope.themes.indexOf(tag)
+            if index != -1
+                $scope.themes.splice(index, 1)

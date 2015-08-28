@@ -8,6 +8,8 @@
         <li><a href="#api_register">Регистрация</a></li>
         <li><a href="#api_imageupload">Загрузка изображения</a></li>
         <li><a href="#api_restore_password">Восстановление пароля</a></li>
+        <li><a href="#api_themes">Загрузка спортивных тем</a></li>
+        <li><a href="#api_video">Загрузка видео с ютуба</a></li>
     </ul>
     <ul class="dev__api__content">
 
@@ -200,6 +202,58 @@
 {
     success: true,
     data: null,
+    errors: null
+}
+                    </pre>
+            </b>
+
+        </li>
+
+        <li id="api_themes" class="dev__api__row">
+            <p>запрос существующих спортивных тегов. для автокомплита</p>
+            <code>GET: /api/sport_themes</code>
+            <b>
+                send data:
+                    <pre>
+{
+    query: xxx
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                    <pre>
+{
+    success: true,
+    data: ['турник', 'брусья'],
+    errors: null
+}
+                    </pre>
+            </b>
+
+        </li>
+
+        <li id="api_video" class="dev__api__row">
+            <p>загрузка видео с ютуб. отправляется ссылка на видео youtube, в базе создается запись с собственным id, с remoteId этого видео (айдишник видео на ютубе) и картинкой. Эти же данные возвращаются при "загрузке видео"</p>
+            <code>GET: /api/youtube</code>
+            <b>
+                send data:
+                    <pre>
+{
+    link: xxx
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                    <pre>
+{
+    success: true,
+    data: [
+        id: xxx,
+        remoteId: xxx,
+        img: xxx
+    ],
     errors: null
 }
                     </pre>

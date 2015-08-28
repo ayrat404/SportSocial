@@ -2,14 +2,54 @@ class JournalSubmit extends Controller('socialApp.controllers')
     constructor: (
         $scope
         journalSubmitService)->
-        journalSubmitService.test()
-        console.log('journal submit ctrl')
 
-        # tags
-        # -----------------
+        # journal model
+        # ---------------
         $scope.j =
-            tags: []
-        $scope.getThemes = (search)->
-            return null #[search + '123', search + '321']
-        $scope.format = ($item, $model, $label)->
-            debugger;
+            text: ''
+            themes: []
+            media: []
+
+        # take watcher form
+        takeWatcher = ->
+            textWatcher = $scope.$watch('j.text', (oldVal, newVal)->
+                if newVal && newVal.length > 3 && oldVal != newVal
+                    $scope.open = true
+                    textWatcher()
+            )
+            
+        # open journal form
+        # ---------------
+        $scope.open = false
+        takeWatcher()
+
+        # close journal form
+        $scope.closeForm = ->
+            $scope.open = false
+            $scope.resetForm()
+            takeWatcher()
+
+
+        # remove item from media array
+        # ---------------
+        $scope.removeMedia = (item)->
+            index = $scope.j.media.indexOf(item)
+            if index != -1
+                $scope.j.media.splice(index, 1)
+
+        # reset form
+        # ---------------
+        $scope.resetForm = ->
+            $scope.j.text = ''
+            $scope.j.themes = []
+            $scope.j.media = []
+
+        # submit form
+        # ---------------
+        $scope.submit = ->
+            journalSubmitService.submit($scope.j).then((res)->
+                $scope.closeForm()
+                # todo past new data in wall
+            , (res)->
+
+            )

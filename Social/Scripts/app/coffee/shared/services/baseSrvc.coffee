@@ -65,11 +65,16 @@ noticeCtrl = do ->
     # notice for server responses
     # ---------------
     response = (data)->
-        noticeClass = data.success ? 'success': 'warning'
+        noticeClass = if data.success == true then 'success' else 'warning'
         if data.message &&
           data.message.length
             show(
                 text: data.message
+                type: noticeClass
+            )
+        if data.statusText
+            show(
+                text: data.status + ': ' + data.statusText
                 type: noticeClass
             )
 
@@ -79,7 +84,7 @@ noticeCtrl = do ->
         offset = bottomOffset
         if notices[i] != undefined
             if notices[i - 1] != undefined
-                for i in [0...notices.indexOf(notices[i - 1])]
+                for j in [0..notices.indexOf(notices[i - 1])]
                     offset += notices[j].outerHeight() + margin
             notices[i].css('bottom', offset)
 
@@ -147,5 +152,9 @@ angular.module('shared').factory('base', [->
             return true
         false
     delayConstructor: delay
+    GUID: ->
+        s4 = ->
+          Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1)
+        return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4()
     }
 ])

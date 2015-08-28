@@ -75,23 +75,27 @@ noticeCtrl = (function() {
     return notices = [];
   };
   response = function(data) {
-    var noticeClass, ref;
-    noticeClass = (ref = data.success) != null ? ref : {
-      'success': 'warning'
-    };
+    var noticeClass;
+    noticeClass = data.success === true ? 'success' : 'warning';
     if (data.message && data.message.length) {
-      return show({
+      show({
         text: data.message,
+        type: noticeClass
+      });
+    }
+    if (data.statusText) {
+      return show({
+        text: data.status + ': ' + data.statusText,
         type: noticeClass
       });
     }
   };
   setBottomOffset = function(i) {
-    var k, offset, ref;
+    var j, k, offset, ref;
     offset = bottomOffset;
     if (notices[i] !== void 0) {
       if (notices[i - 1] !== void 0) {
-        for (i = k = 0, ref = notices.indexOf(notices[i - 1]); 0 <= ref ? k < ref : k > ref; i = 0 <= ref ? ++k : --k) {
+        for (j = k = 0, ref = notices.indexOf(notices[i - 1]); 0 <= ref ? k <= ref : k >= ref; j = 0 <= ref ? ++k : --k) {
           offset += notices[j].outerHeight() + margin;
         }
       }
@@ -162,7 +166,14 @@ angular.module('shared').factory('base', [
         }
         return false;
       },
-      delayConstructor: delay
+      delayConstructor: delay,
+      GUID: function() {
+        var s4;
+        s4 = function() {
+          return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+        };
+        return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+      }
     };
   }
 ]);

@@ -91,7 +91,8 @@ registration = (function() {
       });
     };
     return {
-      registerFirst: registerFirst
+      registerFirst: registerFirst,
+      registerTwo: registerTwo
     };
   }
 

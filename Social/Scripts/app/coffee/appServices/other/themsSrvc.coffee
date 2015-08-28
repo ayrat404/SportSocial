@@ -1,24 +1,27 @@
-class JournalSubmit extends Service('appSrvc')
+class SportThemes extends Service('appSrvc')
     constructor: (
         $http
         $q
         servicesDefault
         base)->
 
-        url = servicesDefault + '/sport_themes'
+        url = servicesDefault.baseServiceUrl + '/sport_themes'
 
         get = (search)->
             $q (resolve, reject)->
                 if search && search.length
-                    $http.get(url, search: search).then((res)->
-                        resolve(res)
+                    $http.get(url, query: search).then((res)->
+                        if res.success
+                            resolve(res.data)
+                        else
+                            reject(res)
                     , (res)->
-                        reject()
                         base.notice.show(text: 'Search theme server error', type: 'danger') if servicesDefault.showNotice
+                        reject(res)
                     )
                 else
-                    reject()
                     base.notice.show(text: 'Search theme string error', type: 'danger') if servicesDefault.showNotice
+                    reject()
 
         return {
             get: get

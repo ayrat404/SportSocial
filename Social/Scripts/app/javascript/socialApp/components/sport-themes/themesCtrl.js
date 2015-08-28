@@ -1,26 +1,42 @@
 (function(){
-var JournalSubmit;
+var ThemesAutocomplete;
 
-JournalSubmit = (function() {
-  function JournalSubmit($scope, journalSubmitService) {
+ThemesAutocomplete = (function() {
+  function ThemesAutocomplete($scope, sportThemesService, base) {
+    if (!base.isArray($scope.themes)) {
+      $scope.themes = [];
+    }
     $scope.getThemes = function(search) {
-      return journalSubmitService.get(search).then(function(res) {
-        if (res.length) {
-          return res;
-        } else {
-          return search;
-        }
+      return sportThemesService.get(search).then(function(res) {
+        return res;
+      }, function() {
+        return [search];
       });
     };
     $scope.format = function($item, $model, $label) {
-      debugger;
+      if ($scope.themes.indexOf($item) !== -1) {
+        base.notice.show({
+          text: 'Theme "' + $item + '" is already selected',
+          type: 'warning'
+        });
+      } else {
+        $scope.search = '';
+        $scope.themes.push($item);
+      }
+    };
+    $scope.removeTag = function(tag) {
+      var index;
+      index = $scope.themes.indexOf(tag);
+      if (index !== -1) {
+        return $scope.themes.splice(index, 1);
+      }
     };
   }
 
-  return JournalSubmit;
+  return ThemesAutocomplete;
 
 })();
 
-angular.module('socialApp.controllers').controller('journalSubmitController', ['$scope', 'journalSubmitService', JournalSubmit]);
+angular.module('socialApp.controllers').controller('themesAutocompleteController', ['$scope', 'sportThemesService', 'base', ThemesAutocomplete]);
 
 })();

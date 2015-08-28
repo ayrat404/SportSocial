@@ -1,34 +1,38 @@
 (function(){
-var JournalSubmit;
+var SportThemes;
 
-JournalSubmit = (function() {
-  function JournalSubmit($http, $q, servicesDefault, base) {
+SportThemes = (function() {
+  function SportThemes($http, $q, servicesDefault, base) {
     var get, url;
-    url = servicesDefault + '/sport_themes';
+    url = servicesDefault.baseServiceUrl + '/sport_themes';
     get = function(search) {
       return $q(function(resolve, reject) {
         if (search && search.length) {
           return $http.get(url, {
-            search: search
+            query: search
           }).then(function(res) {
-            return resolve(res);
+            if (res.success) {
+              return resolve(res.data);
+            } else {
+              return reject(res);
+            }
           }, function(res) {
-            reject();
             if (servicesDefault.showNotice) {
-              return base.notice.show({
+              base.notice.show({
                 text: 'Search theme server error',
                 type: 'danger'
               });
             }
+            return reject(res);
           });
         } else {
-          reject();
           if (servicesDefault.showNotice) {
-            return base.notice.show({
+            base.notice.show({
               text: 'Search theme string error',
               type: 'danger'
             });
           }
+          return reject();
         }
       });
     };
@@ -37,10 +41,10 @@ JournalSubmit = (function() {
     };
   }
 
-  return JournalSubmit;
+  return SportThemes;
 
 })();
 
-angular.module('appSrvc').service('journalSubmitService', ['$http', '$q', 'servicesDefault', 'base', JournalSubmit]);
+angular.module('appSrvc').service('sportThemesService', ['$http', '$q', 'servicesDefault', 'base', SportThemes]);
 
 })();

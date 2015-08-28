@@ -1,0 +1,121 @@
+/* Media upload
+---------------------------------------------------------------------------------- */
+
+/* Image preview
+-------------------------------------------------- */
+.media-preview {
+  .no-float();
+  .mp__item {
+    width: 45px;
+    float: left;
+    position: relative;
+  }
+  .mp__item__video__overlay {
+    background-color: rgba(21,29,33,.7);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    .play {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      margin: auto;
+      .sprite(@media-play);
+    }
+  }
+  .mp__img {
+    width: 45px;
+    height: 45px;
+  }
+  .mp__close {
+    cursor: pointer;
+    user-select: none;
+    top: 0;
+    right: 0;
+    padding: 4px;
+    position: absolute;
+    z-index: 2;
+    background-color: @brand-dark;
+    line-height: 1;
+    font-size: 0;
+    &:hover {
+      .remove {
+        opacity: 1;
+      }
+    }
+    .remove {
+      display: inline-block;
+      opacity: .8;
+      .sprite(@media-remove);
+    }
+  }
+}
+/* /Image preview */
+
+/* Controls
+-------------------------------------------------- */
+.media-upload-controls {
+  .muc__row {
+    margin-bottom: 10px;
+    .no-float();
+  }
+
+  .muc__row__input-wrap {
+    float: left;
+    width: 65%;
+    margin-right: 3%;
+  }
+  .muc__row__actions-wrap {
+    float: left;
+    width: 32%;
+  }
+
+
+  .muc__btn {
+    margin-top: 8px;
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+  .muc__input {
+  }
+  .muc__close {
+    vertical-align: middle;
+    margin-top: 10px;
+    display: inline-block;
+    cursor: pointer;
+    user-select: none;
+    opacity: .7;
+    transition: opacity 100ms linear;
+    .sprite(@close-media-row);
+    &:hover {
+      opacity: 1;
+    }
+  }
+  .muc__action {
+    font-size: 0.857em;
+    margin-right: 40px;
+    &:last-child {
+      margin-right: 0;
+    }
+    i {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 5px;
+      &.photo {
+        .sprite(@photo-blue-xs);
+      }
+      &.video {
+        .sprite(@video-blue-xs);
+      }
+    }
+  }
+}
+/* /Controls */
+
+/* /Media upload
+---------------------------------------------------------------------------------- */
