@@ -3,7 +3,7 @@ angular.module('app', ['ui.router', 'ui.bootstrap', 'ngCookies', 'flow', 'shared
   '$stateProvider', '$locationProvider', '$httpProvider', function($stateProvider, $locationProvider, $httpProvider) {
     var tmplView;
     tmplView = function(viewUrl) {
-      return '/template/' + viewUrl;
+      return '/Scripts/templates/' + viewUrl + '.html';
     };
     $stateProvider.state('main', {
       url: '/',

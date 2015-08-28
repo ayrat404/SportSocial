@@ -17,7 +17,7 @@ class JournalSubmit extends Controller('socialApp.controllers')
                     $scope.open = true
                     textWatcher()
             )
-            
+
         # open journal form
         # ---------------
         $scope.open = false

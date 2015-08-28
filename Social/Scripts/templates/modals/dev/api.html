@@ -10,6 +10,7 @@
         <li><a href="#api_restore_password">Восстановление пароля</a></li>
         <li><a href="#api_themes">Загрузка спортивных тем</a></li>
         <li><a href="#api_video">Загрузка видео с ютуба</a></li>
+        <li><a href="#api_journal_add">Создание записи в дневнике</a></li>
     </ul>
     <ul class="dev__api__content">
 
@@ -255,6 +256,33 @@
         img: xxx
     ],
     errors: null
+}
+                    </pre>
+            </b>
+
+        </li>
+
+        <li id="api_journal_add" class="dev__api__row">
+            <p>Добавление записи в дневник</p>
+            <code>GET: /api/journal__add</code>
+            <b>
+                send data:
+                    <pre>
+{
+    text: xxx,
+    media: [
+        { id: xxx, type: 'video', img: xxx },
+        { id: xxx, type: 'image', img: xxx }
+    ],
+    themes: [ 'xxx', 'xxx' ]
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                    <pre>
+{
+    *json model
 }
                     </pre>
             </b>
