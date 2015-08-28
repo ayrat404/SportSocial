@@ -1,8 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Knoema.Localization;
 
-namespace SportSocial.Knoema
+namespace BLL.Infrastructure.Localization
 {
 	public class LocalizedObject: ILocalizedObject
 	{

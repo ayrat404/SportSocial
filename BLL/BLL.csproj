@@ -195,6 +195,9 @@
     <Compile Include="Feedbacks\Objects\FeedbackListModel.cs" />
     <Compile Include="Feedbacks\Objects\FeedbackPreviewModel.cs" />
     <Compile Include="Feedbacks\Objects\FeedbackSortType.cs" />
+    <Compile Include="Infrastructure\Localization\LocalizationConfig.cs" />
+    <Compile Include="Infrastructure\Localization\LocalizationRepository.cs" />
+    <Compile Include="Infrastructure\Localization\LocalizedObject.cs" />
     <Compile Include="Rating\Enums\RatingEntityType.cs" />
     <Compile Include="Rating\Impls\RatingServiceWork.cs" />
     <Compile Include="Rating\Impls\UniversalRatingService.cs" />

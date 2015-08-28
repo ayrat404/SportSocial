@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using BLL.Common.Helpers;
 using BLL.Common.Services.CurrentUser;
 using Knoema.Localization;
+using SportSocial.Infrastructure;
 
 namespace SportSocial.Controllers.Base
 {

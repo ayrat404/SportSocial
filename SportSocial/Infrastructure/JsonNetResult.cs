@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace SportSocial
+namespace SportSocial.Infrastructure
 {
     public class JsonNetResult : JsonResult
     {
