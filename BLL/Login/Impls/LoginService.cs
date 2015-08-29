@@ -186,7 +186,7 @@ namespace BLL.Login.Impls
             return _smsService.GenerateAndSendCode(user.Id, user.UserName);
         }
 
-        public ServiceResult RestorePasswordConfirm(ConfirmSmsCode confirmModel)
+        public ServiceResult RestorePasswordConfirm(RestorePasswordInfo confirmModel)
         {
             var result = new ServiceResult {Success = false};
             var user = _appUserManager.FindByName(confirmModel.Phone);

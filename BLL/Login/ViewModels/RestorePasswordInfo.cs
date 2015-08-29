@@ -1,12 +1,8 @@
-using System;
 using System.ComponentModel.DataAnnotations;
-using DAL.DomainModel.EnumProperties;
-using Knoema.Localization;
 
 namespace BLL.Login.ViewModels
 {
-    [Localized]
-    public class ConfirmSmsCode
+    public class RestorePasswordInfo
     {
         [Required(ErrorMessage = "Необходимо ввести код")]
         [StringLength(4, MinimumLength = 4, ErrorMessage = "Код должен содержать 4 символа")]
@@ -22,20 +18,5 @@ namespace BLL.Login.ViewModels
 
         [Required]
         public string Phone { get; set; }
-
-        [Required(ErrorMessage = "Не введено имя")]
-        public string Name { get; set; }
-
-        [Required(ErrorMessage = "Не введена фамилия")]
-        public string LastName { get; set; }
-
-        [Required(ErrorMessage = "Не введена дата рождения")]
-        public DateTime BirthDay { get; set; }
-
-        [Required(ErrorMessage = "Не введен пол")]
-        public Sex Gender { get; set; }
-
-        [Required(ErrorMessage = "Не выбран стаж")]
-        public SportExperience SportTime { get; set; }
     }
 }

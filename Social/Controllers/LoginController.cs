@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Web.Http;
 using BLL.Common.Objects;
 using BLL.Login;
 using BLL.Login.ViewModels;
@@ -53,9 +54,20 @@ namespace Social.Controllers
         }
 
         [HttpPost]
-        public ServiceResult ResendCode(string phone)
+        public ApiResult ResendCode(string phone)
         {
-            return _loginService.ResendSmsCode(phone);
+            return ApiResult(_loginService.ResendSmsCode(phone));
+        }
+
+        [HttpPost]
+        public ApiResult RestorePassword(string phone)
+        {
+            return ApiResult(_loginService.RestorePassword(phone));
+        }
+
+        public ApiResult RestorePasswordConfirm(RestorePasswordInfo restoreInfo)
+        {
+            return ApiResult(_loginService.RestorePasswordConfirm(restoreInfo));
         }
     }
 

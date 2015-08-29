@@ -134,7 +134,6 @@ namespace SportSocial.Controllers
                     errors[key] = new List<string>();
                     ModelState[key].Errors.ForEach(f => errors[key].Add(f.ErrorMessage));
                 }
-                    
             }
             return null;
         }
