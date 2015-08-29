@@ -53,6 +53,7 @@ namespace Social.Controllers
             return ModelStateErrors();
         }
 
+        [Route("~/api/resendCode")]
         [HttpPost]
         public ApiResult ResendCode(string phone)
         {
@@ -60,11 +61,14 @@ namespace Social.Controllers
         }
 
         [HttpPost]
+        [Route("~/api/restorePassword")]
         public ApiResult RestorePassword(string phone)
         {
             return ApiResult(_loginService.RestorePassword(phone));
         }
 
+        [HttpPost]
+        [Route("~/api/restorePassword/confirm")]
         public ApiResult RestorePasswordConfirm(RestorePasswordInfo restoreInfo)
         {
             return ApiResult(_loginService.RestorePasswordConfirm(restoreInfo));
