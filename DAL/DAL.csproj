@@ -117,6 +117,12 @@
     <Compile Include="DomainModel\Interfaces\IHasComments.cs" />
     <Compile Include="DomainModel\Interfaces\IHasRating.cs" />
     <Compile Include="DomainModel\Interfaces\IRatingEntity.cs" />
+    <Compile Include="DomainModel\JournalEntities\Journal.cs" />
+    <Compile Include="DomainModel\JournalEntities\JournalComment.cs" />
+    <Compile Include="DomainModel\JournalEntities\JournalCommentRating.cs" />
+    <Compile Include="DomainModel\JournalEntities\JournalImage.cs" />
+    <Compile Include="DomainModel\JournalEntities\JournalRating.cs" />
+    <Compile Include="DomainModel\JournalEntities\JournalVideo.cs" />
     <Compile Include="DomainModel\Pay.cs" />
     <Compile Include="DomainModel\BlogEntities\Post.cs" />
     <Compile Include="DomainModel\Products.cs" />
