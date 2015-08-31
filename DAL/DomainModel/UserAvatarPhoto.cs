@@ -3,7 +3,8 @@ using DAL.DomainModel.Interfaces;
 
 namespace DAL.DomainModel
 {
-    public class UserAvatarPhoto: ImageBase<AppUser>
+    public class UserAvatarPhoto: MediaBase<AppUser>
     {
+
     }
 }

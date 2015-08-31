@@ -13,7 +13,7 @@ namespace BLL.Storage.Impls
 {
     public class ImageSaver<TEntity, TImageEntity> : IImageSaver
         where TEntity : IEntity 
-        where TImageEntity : ImageBase<TEntity>
+        where TImageEntity : MediaBase<TEntity>
     {
         private readonly ICurrentUser _currentUser;
         private readonly IRepository _repository;

@@ -248,7 +248,9 @@
     <Compile Include="Storage\Impls\ImageSaver.cs" />
     <Compile Include="Storage\Impls\UniversalImageService.cs" />
     <Compile Include="Storage\IVideoService.cs" />
-    <Compile Include="Storage\ViewModels\UploadImageModel.cs" />
+    <Compile Include="Storage\Objects\MediaType.cs" />
+    <Compile Include="Storage\Objects\UploadImageModel.cs" />
+    <Compile Include="Storage\Objects\VideoProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\Services\Cookies\Impls\" />

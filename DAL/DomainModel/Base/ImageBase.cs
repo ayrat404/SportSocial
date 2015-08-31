@@ -5,13 +5,17 @@ using DAL.DomainModel.Interfaces;
 
 namespace DAL.DomainModel.Base
 {
-    public class ImageBase<TEnity>: IEntity, IAuditable where TEnity: IEntity
+    public class MediaBase<TEnity>: IEntity, IAuditable where TEnity: IEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         public string Url { get; set; }
+
+        public int Type { get; set; }
+
+        public int? VideoProvider { get; set; }
 
         [Column("EntityId")]
         [ForeignKey("Enity")]

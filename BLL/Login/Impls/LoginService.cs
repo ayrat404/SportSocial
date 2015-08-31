@@ -8,7 +8,6 @@ using BLL.Infrastructure.IdentityConfig;
 using BLL.Login.ViewModels;
 using BLL.Sms;
 using BLL.Storage;
-using BLL.Storage.ViewModels;
 using DAL.DomainModel;
 using DAL.DomainModel.EnumProperties;
 using DAL.Repository.Interfaces;

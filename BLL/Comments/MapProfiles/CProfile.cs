@@ -6,6 +6,7 @@ using DAL.DomainModel.BlogEntities;
 using DAL.DomainModel.ConferenceEntities;
 using DAL.DomainModel.FeedBackEntities;
 using DAL.DomainModel.Interfaces;
+using DAL.DomainModel.JournalEntities;
 
 namespace BLL.Comments.MapProfiles
 {
@@ -31,9 +32,15 @@ namespace BLL.Comments.MapProfiles
             CreateMap<ConferenceComment, Comment>()
                 .IncludeBase<CommentEntityBase, Comment>()
                 .ForMember(dest => dest.CommentFor, opt => opt.MapFrom(src => MapCommentFor(src)));
+
+            CreateMap<JournalComment, Comment>()
+                .IncludeBase<CommentEntityBase, Comment>();
+            //.ForMember(dest => dest.CommentFor, opt => opt.MapFrom(src => MapCommentFor(src)));
         }
 
-        public CommentFor MapCommentFor<T>(CommentEntity<T> src) where T: CommentEntityBase
+        private CommentFor MapCommentFor<TComment, TEntity>(CommentEntity<TComment, TEntity> src) 
+            where TComment : CommentEntityBase
+            where TEntity: class
         {
             if (src.CommentForId.HasValue)
             {

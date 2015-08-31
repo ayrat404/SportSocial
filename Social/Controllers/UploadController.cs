@@ -8,7 +8,6 @@ using System.Web;
 using System.Web.Http;
 using BLL.Storage;
 using BLL.Storage.Impls.Enums;
-using BLL.Storage.ViewModels;
 using Social.Models;
 
 namespace Social.Controllers

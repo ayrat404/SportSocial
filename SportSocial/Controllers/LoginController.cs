@@ -110,7 +110,7 @@ namespace SportSocial.Controllers
         [HttpPost]
         [AllowAnonymous]
         [CustomAntiForgeryValidator]
-        public ActionResult RestorePasswordConfirm(ConfirmSmsCode confirmModel)
+        public ActionResult RestorePasswordConfirm(RestorePasswordInfo confirmModel)
         {
             if (ModelState.IsValid)
                 return Json(_loginService.RestorePasswordConfirm(confirmModel));

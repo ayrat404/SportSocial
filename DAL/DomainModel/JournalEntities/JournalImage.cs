@@ -2,7 +2,7 @@
 
 namespace DAL.DomainModel.JournalEntities
 {
-    public class JournalImage: ImageBase<Journal>
+    public class JournalMedia: MediaBase<Journal>
     {
          
     }

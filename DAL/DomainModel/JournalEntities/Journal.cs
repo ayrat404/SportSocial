@@ -8,14 +8,18 @@ namespace DAL.DomainModel.JournalEntities
     {
         public int Id { get; set; }
         public int TotalRating { get; set; }
+        public string Text { get; set; }
+
+        public int UserId { get; set; }
 
         public DateTime Created { get; set; }
         public DateTime Modified { get; set; }
         public bool Deleted { get; set; }
 
+        public AppUser User { get; set; }
         public ICollection<JournalComment> Comments { get; set; }
         public ICollection<JournalRating> RatingEntites { get; set; }
-        public ICollection<JournalImage> Images { get; set; }
-        public ICollection<JournalVideo> Videos { get; set; }
+        public ICollection<JournalMedia> Media { get; set; }
+        public ICollection<JournalTag> Tags { get; set; }
     }
 }
