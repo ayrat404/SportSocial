@@ -1,4 +1,4 @@
-var animationCtrl, delay, noticeCtrl, validationCtrl;
+var animationCtrl, delay, imageCtrl, noticeCtrl, validationCtrl;
 
 noticeCtrl = (function() {
   var $body, bottomOffset, boxClass, checkColumnHeight, defaults, hide, hideAll, margin, mergeOpts, notices, response, setBottomOffset, show;
@@ -153,12 +153,23 @@ delay = function(callback, ms) {
   return timer = setTimeout(callback, ms);
 };
 
+imageCtrl = (function() {
+  var resize;
+  resize = function(imgUrl, params) {
+    return [imgUrl, '?w=', params.w, '&h=', params.h, '&mode=', params.mode].join('');
+  };
+  return {
+    resize: resize
+  };
+})();
+
 angular.module('shared').factory('base', [
   function() {
     return {
       notice: noticeCtrl,
       animation: animationCtrl,
       validate: validationCtrl,
+      image: imageCtrl,
       isArray: function(array) {
         if (Object.prototype.toString.call(array) === '[object Array]') {
           return true;

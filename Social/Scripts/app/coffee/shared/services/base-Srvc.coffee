@@ -1,4 +1,4 @@
-# Notices Class
+# Notices module
 # ---------------
 noticeCtrl = do ->
     $body = angular.element('body')
@@ -112,7 +112,7 @@ noticeCtrl = do ->
         response: response
     }
 
-# Animation Class
+# Animation module
 # ---------------
 animationCtrl = do ->
     return {
@@ -123,7 +123,7 @@ animationCtrl = do ->
             callback()
     }
 
-# Validation Class
+# Validation module
 # ---------------
 validationCtrl = do ->
     return {
@@ -132,13 +132,21 @@ validationCtrl = do ->
         return re.test(email)
     }
 
-# Delay Class
+# Delay module
 # ---------------
 delay = (callback, ms)->
     timer = 0
     clearTimeout(timer)
     timer = setTimeout(callback, ms)
 
+# Img resize module
+# ---------------
+imageCtrl = do ->
+    resize = (imgUrl, params)->
+        [imgUrl, '?w=', params.w, '&h=', params.h, '&mode=', params.mode].join('')
+    return {
+        resize: resize
+    }
 
 # service
 # ---------------
@@ -147,6 +155,7 @@ angular.module('shared').factory('base', [->
     notice: noticeCtrl
     animation: animationCtrl
     validate: validationCtrl
+    image: imageCtrl
     isArray: (array)->
         if Object.prototype.toString.call(array) == '[object Array]'
             return true

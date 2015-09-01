@@ -5,7 +5,7 @@ loader = (function() {
     var containerClass, delay, loaderWrap, timer;
     containerClass = 'loader-container';
     loaderWrap = 'loader-wrap';
-    delay = 600;
+    delay = 300;
     timer = null;
     return {
       restrict: 'A',
