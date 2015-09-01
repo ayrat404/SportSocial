@@ -23,9 +23,9 @@ angular
             $locationProvider,
             $httpProvider) {
 
-            var tmplUrl = '/Scripts/templates/',
+            var tmplUrl = '/template/',
                 tmplView = function (viewUrl) {
-                    return tmplUrl + viewUrl + '.html';
+                    return tmplUrl + viewUrl;
                 };
 
 

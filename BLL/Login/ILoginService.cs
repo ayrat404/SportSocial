@@ -18,7 +18,7 @@ namespace BLL.Login
 
         ServiceResult RestorePassword(string phone);
 
-        ServiceResult RestorePasswordConfirm(ConfirmSmsCode confirmModel);
+        ServiceResult RestorePasswordConfirm(RestorePasswordInfo confirmModel);
 
         ServiceResult ChangePhone(string phone);
 

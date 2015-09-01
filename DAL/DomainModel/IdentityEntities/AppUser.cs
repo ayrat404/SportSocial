@@ -5,6 +5,7 @@ using DAL.DomainModel.BlogEntities;
 using DAL.DomainModel.ConferenceEntities;
 using DAL.DomainModel.EnumProperties;
 using DAL.DomainModel.Interfaces;
+using DAL.DomainModel.JournalEntities;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace DAL.DomainModel
@@ -30,6 +31,10 @@ namespace DAL.DomainModel
         public virtual ICollection<UserAvatarPhoto> UserAvatarPhotos { get; set; }
 
         public virtual ICollection<Pay> Pays { get; set; }
+
+        public virtual ICollection<Journal> Journals { get; set; }
+
+        public virtual ICollection<JournalComment> JournalComments { get; set; }
 
         [Column(TypeName = "datetime2")]
         public DateTime Created { get; set; }

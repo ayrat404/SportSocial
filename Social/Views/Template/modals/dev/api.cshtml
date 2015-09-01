@@ -1,0 +1,296 @@
+﻿<div class="modal-header">
+    <h4 class="modal-title">API</h4>
+</div>
+<div class="modal-body">
+    <ul>
+        <li><a href="#api_error">Ошибка валидации с сервера</a></li>
+        <li><a href="#api_login">Авторизация</a></li>
+        <li><a href="#api_register">Регистрация</a></li>
+        <li><a href="#api_imageupload">Загрузка изображения</a></li>
+        <li><a href="#api_restore_password">Восстановление пароля</a></li>
+        <li><a href="#api_themes">Загрузка спортивных тем</a></li>
+        <li><a href="#api_video">Загрузка видео с ютуба</a></li>
+        <li><a href="#api_journal_add">Создание записи в дневнике</a></li>
+    </ul>
+    <ul class="dev__api__content">
+
+        <li id="api_error" class="dev__api__row">
+            <p>пример отправки общей ошибки с сервера и ошибок для каждого поля</p>
+            <code>POST: /api/xxx</code>
+            <b>
+                send data:
+                    <pre>
+{
+    phone: x,
+    password: x
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                    <pre>
+{
+    success: false,
+    data: null,
+    errors: {
+        common: {
+            error: 'Неверные телефон/пароль',
+            fields: ['phone', 'password']
+        },
+        fields: [
+            {
+                name: 'phone',
+                error: 'Неверный номер телефона'
+            },
+            {
+                name: 'email',
+                error: 'Такая почта уже зарегистрирована'
+            }
+        ]
+    }
+}
+                    </pre>
+            </b>
+        </li>
+
+
+
+        <li id="api_login" class="dev__api__row">
+            <p>авторизация пользователя</p>
+            <code>POST: /api/login</code>
+            <b>
+                send data:
+                    <pre>
+{
+    phone: x,
+    password: x
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                    <pre>
+{
+    success: true,
+    data: null,
+    errors: null
+}
+                    </pre>
+            </b>
+        </li>
+
+        <li id="api_register" class="dev__api__row">
+            <p>первый шаг регистрации. нужно только проверить правильность данных на сервере, отравить проверочный код на телефонный номер и в случае чего вернуть ошибки валидации</p>
+            <code>POST: /api/register_one</code>
+            <b>
+                send data:
+                    <pre>
+{
+    imgId: x,
+    name: x,
+    sername: x,
+    birthday: x (dd MMM yyyy),
+    sportTime: x (0->7),
+    phone: x,
+    gender: x (male, female)
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                    <pre>
+{
+    success: true,
+    data: null,
+    errors: null
+}
+                    </pre>
+            </b>
+
+            <p>второй и заключительный шаг регистрации.</p>
+            <code>POST: /api/register_two</code>
+            <b>
+                send data:
+                    <pre>
+{
+    imgId: x,
+    name: x,
+    sername: x,
+    birthday: x (dd MMM yyyy),
+    sportTime: x (0->7),
+    phone: x,
+    gender: x (male, female)
+    password: x,
+    passwordRepeat: x,
+    code: x
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                    <pre>
+{
+    success: true,
+    data: null,
+    errors: null
+}
+                    </pre>
+            </b>
+        </li>
+
+        <li id="api_imageupload" class="dev__api__row">
+            <p>загрузка изображения</p>
+            <code>POST: /api/image_upload</code>
+            <b>
+                send data:
+                    <pre>
+{
+    imageFormData
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                    <pre>
+{
+    success: true,
+    data: {
+        id: x,
+        url: x
+    },
+    errors: null
+}
+                    </pre>
+            </b>
+
+        </li>
+
+        <li id="api_restore_password" class="dev__api__row">
+            <p>восстановление пароля. отправляется номер телефона желающего восстановить пароль</p>
+            <code>POST: /api/restore_password_one</code>
+            <b>
+                send data:
+                    <pre>
+{
+    phone: x
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                    <pre>
+{
+    success: true,
+    data: null,
+    errors: null
+}
+                    </pre>
+            </b>
+            <p>восстановление пароля. отправляется номер телефона и проверочный код</p>
+            <code>POST: /api/restore_password_two</code>
+            <b>
+                send data:
+                    <pre>
+{
+    phone: x,
+    code: x,
+    password: x,
+    passwordRepeat: x
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                    <pre>
+{
+    success: true,
+    data: null,
+    errors: null
+}
+                    </pre>
+            </b>
+
+        </li>
+
+        <li id="api_themes" class="dev__api__row">
+            <p>запрос существующих спортивных тегов. для автокомплита</p>
+            <code>GET: /api/sport_themes</code>
+            <b>
+                send data:
+                    <pre>
+{
+    query: xxx
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                    <pre>
+{
+    success: true,
+    data: ['турник', 'брусья'],
+    errors: null
+}
+                    </pre>
+            </b>
+
+        </li>
+
+        <li id="api_video" class="dev__api__row">
+            <p>загрузка видео с ютуб. отправляется ссылка на видео youtube, в базе создается запись с собственным id, с remoteId этого видео (айдишник видео на ютубе), embeddedUrl урл для вставки, и картинкой. Эти же данные возвращаются при "загрузке видео"</p>
+            <code>POST: /api/youtube</code>
+            <b>
+                send data:
+                    <pre>
+{
+    link: xxx
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                    <pre>
+{
+    success: true,
+    data: [
+        id: xxx,
+        remoteId: xxx,
+        img: xxx,
+        embeddedUrl: xxx
+    ],
+    errors: null
+}
+                    </pre>
+            </b>
+
+        </li>
+
+        <li id="api_journal_add" class="dev__api__row">
+            <p>Добавление записи в дневник</p>
+            <code>GET: /api/journal__add</code>
+            <b>
+                send data:
+                    <pre>
+{
+    text: xxx,
+    media: [
+        { id: xxx, type: 'video', img: xxx },
+        { id: xxx, type: 'image', img: xxx }
+    ],
+    themes: [ 'xxx', 'xxx' ]
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                    <pre>
+{
+    *json model
+}
+                    </pre>
+            </b>
+
+        </li>
+
+    </ul>
+</div>

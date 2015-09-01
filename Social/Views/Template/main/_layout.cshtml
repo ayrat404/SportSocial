@@ -1,0 +1,31 @@
+﻿<div class="social">
+    <div class="social__header">
+        <nav class="nav">
+            <div class="container-fluid">
+                <div class="nav__brand"></div>
+                <div class="user-notice"></div>
+                <ul class="nav__list">
+                    <li class="nav__list__it">
+                        <a ui-sref-active="active" href="#" class="nav__list__link">@R("Лента")</a>
+                    </li>
+                    <li class="nav__list__it">
+                        <a ui-sref-active="active" href="#" class="nav__list__link">@R("Мой дневник")</a>
+                    </li>
+                    <li class="nav__list__it">
+                        <a ui-sref-active="active" href="#" class="nav__list__link">@R("Атлеты")</a>
+                    </li>
+                    <li class="nav__list__it">
+                        <a ui-sref-active="active" href="#" class="nav__list__link">@R("Заявки на достижения")</a>
+                    </li>
+                </ul>
+                <div class="nav__right">
+                    <button class="nav__journal btn btn-fill-green" type="button" data-modal-click="journalSubmit">+ @R("Запись в дневник")</button>
+                    <button class="nav__photo" type="button">+</button>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="social__content">
+        <div ui-view="socialContent"></div>
+    </div>
+</div>

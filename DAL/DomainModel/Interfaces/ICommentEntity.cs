@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using DAL.DomainModel.FeedBackEntities;
 
 namespace DAL.DomainModel.Interfaces
 {
@@ -28,5 +29,16 @@ namespace DAL.DomainModel.Interfaces
 
         [ForeignKey("CommentForId")]
         public TCommentFor CommentFor { get; set; }
+    }
+
+    public abstract class CommentEntity<TCommentFor, TCommentedEntity> : CommentEntityBase
+        where TCommentFor: CommentEntityBase
+        where TCommentedEntity: class
+    {
+        [ForeignKey("CommentForId")]
+        public TCommentFor CommentFor { get; set; }
+
+        [ForeignKey("CommentedEntityId")]
+        public virtual TCommentedEntity CommentedEntity { get; set; }
     }
 }

@@ -52,6 +52,14 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Knoema.Localization.Core, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Knoema.Localization.Core.0.1.66\lib\net40\Knoema.Localization.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Knoema.Localization.Mvc">
+      <HintPath>..\packages\Knoema.Localization.Mvc.0.1.66\lib\net40\Knoema.Localization.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
       <Private>True</Private>
@@ -172,8 +180,6 @@
     <Folder Include="Content\socialApp\images\common\" />
     <Folder Include="Content\socialApp\images\icons-set\" />
     <Folder Include="Content\socialApp\images\sprites\" />
-    <Folder Include="Models\" />
-    <Folder Include="Scripts\app\coffee\shared\directives\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -199,6 +205,8 @@
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\TagsController.cs" />
+    <Compile Include="Controllers\TemplateController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -222,8 +230,31 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="gulpfile.js" />
+    <Content Include="Scripts\app\javascript\appServices\auth\restorePasswordSrvc.js" />
+    <Content Include="Scripts\app\javascript\appServices\journal\submitSrvc.js" />
+    <Content Include="Scripts\app\javascript\appServices\other\themsSrvc.js" />
+    <Content Include="Scripts\app\javascript\appServices\support\supportSrvc.js" />
     <Content Include="Scripts\app\javascript\shared\app.js" />
+    <Content Include="Scripts\app\javascript\shared\directives\content-height.js" />
     <Content Include="Scripts\app\javascript\shared\directives\loaderDrct.js" />
+    <Content Include="Scripts\app\javascript\shared\directives\mixpanelDrct.js" />
+    <Content Include="Scripts\app\javascript\shared\directives\modal-clickDrct.js" />
+    <Content Include="Scripts\app\javascript\shared\directives\scroll-toDrct.js" />
+    <Content Include="Scripts\app\javascript\shared\directives\server-validationDrct.js" />
+    <Content Include="Scripts\app\javascript\shared\filters\format-wordDrct.js" />
+    <Content Include="Scripts\app\javascript\shared\services\baseSrvc.js" />
+    <Content Include="Scripts\app\javascript\shared\services\mixpanelSrvc.js" />
+    <Content Include="Scripts\app\javascript\shared\services\modalSrvc.js" />
+    <Content Include="Scripts\app\javascript\shared\services\remote-templateSrvc.js" />
+    <Content Include="Scripts\app\javascript\socialApp\components\sport-themes\themesCtrl.js" />
+    <Content Include="Scripts\app\javascript\socialApp\journal\submitCtrl.js" />
+    <Content Include="Scripts\app\javascript\socialApp\journal\submitDrct.js" />
+    <Content Include="Scripts\app\javascript\socialApp\main\main-socialCtrl.js" />
+    <Content Include="Scripts\app\javascript\socialApp\main\profile\profile-viewCtrl.js" />
+    <Content Include="Scripts\app\javascript\socialApp\modals\achievement.js" />
+    <Content Include="Scripts\app\javascript\socialApp\modals\loginCtrl.js" />
+    <Content Include="Scripts\app\javascript\socialApp\modals\restore-passwordCtrl.js" />
+    <Content Include="Scripts\app\javascript\socialApp\modals\supportCtrl.js" />
     <Content Include="Scripts\app\simple\app.js" />
     <Content Include="Scripts\app\simple\appServices\app.js" />
     <Content Include="Scripts\app\simple\appServices\auth\restorePassword.srvc.js" />
@@ -2629,6 +2660,34 @@
     <Content Include="Scripts\app\coffee\socialApp\landing\landingDrct.coffee" />
     <Content Include="Scripts\app\coffee\socialApp\registration\registrationCtrl.coffee" />
     <Content Include="Scripts\app\coffee\shared\app.coffee" />
+    <Content Include="Scripts\app\coffee\appServices\journal\submitSrvc.coffee" />
+    <Content Include="Scripts\app\coffee\appServices\other\themsSrvc.coffee" />
+    <Content Include="Scripts\app\coffee\appServices\support\supportSrvc.coffee" />
+    <Content Include="Scripts\app\coffee\appServices\auth\restorePasswordSrvc.coffee" />
+    <Content Include="Scripts\app\coffee\shared\directives\content-height.coffee" />
+    <Content Include="Scripts\app\coffee\shared\directives\loaderDrct.coffee" />
+    <Content Include="Scripts\app\coffee\shared\directives\mixpanelDrct.coffee" />
+    <Content Include="Scripts\app\coffee\shared\directives\modal-clickDrct.coffee" />
+    <Content Include="Scripts\app\coffee\shared\directives\scroll-toDrct.coffee" />
+    <Content Include="Scripts\app\coffee\shared\directives\server-validationDrct.coffee" />
+    <Content Include="Scripts\app\coffee\shared\filters\format-wordDrct.coffee" />
+    <Content Include="Scripts\app\coffee\shared\services\baseSrvc.coffee" />
+    <Content Include="Scripts\app\coffee\shared\services\mixpanelSrvc.coffee" />
+    <Content Include="Scripts\app\coffee\shared\services\modalSrvc.coffee" />
+    <Content Include="Scripts\app\coffee\shared\services\remote-templateSrvc.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\components\sport-themes\themesCtrl.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\journal\submitCtrl.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\journal\submitDrct.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\main\main-socialCtrl.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\main\profile\profile-viewCtrl.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\modals\achievement.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\modals\loginCtrl.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\modals\restore-passwordCtrl.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\modals\supportCtrl.coffee" />
+    <Content Include="Scripts\app\coffee\appServices\other\youtube-videoSrvc.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\components\media-upload\mediaUploadCtrl.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\components\media-upload\mediaUploadDrct.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\components\sport-themes\themesDrct.coffee" />
     <None Include="Scripts\libs\jquery\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.min.js" />
@@ -2637,17 +2696,25 @@
     <Content Include="Scripts\libs\ng-mask\ngMask.js" />
     <Content Include="Scripts\libs\ng-mask\ngMask.min.js" />
     <Content Include="Scripts\libs\nprogress\nprogress.js" />
+    <Content Include="Scripts\libs\select\select.js" />
     <Content Include="Scripts\libs\wow\wow.js" />
     <Content Include="Scripts\libs\wow\wow.min.js" />
-    <Content Include="Scripts\templates\errors\404.html" />
-    <Content Include="Scripts\templates\landing\index.html" />
-    <Content Include="Scripts\templates\modals\auth\restore-password-submit-new-data.html" />
-    <Content Include="Scripts\templates\modals\auth\restore-password-submit-phone.html" />
-    <Content Include="Scripts\templates\modals\auth\login-submit.html" />
-    <Content Include="Scripts\templates\modals\support\support-success.html" />
-    <Content Include="Scripts\templates\modals\support\support-submit.html" />
-    <Content Include="Scripts\templates\modals\policy.html" />
-    <Content Include="Scripts\templates\registration\index.html" />
+    <None Include="Views\Template\components\media-uploadTpl.cshtml" />
+    <None Include="Views\Template\components\sport-themesTpl.cshtml" />
+    <None Include="Views\Template\errors\404.cshtml" />
+    <None Include="Views\Template\journal\submit.cshtml" />
+    <None Include="Views\Template\landing\index.cshtml" />
+    <None Include="Views\Template\main\_layout.cshtml" />
+    <None Include="Views\Template\modals\achievement\about.cshtml" />
+    <None Include="Views\Template\modals\auth\login-submit.cshtml" />
+    <None Include="Views\Template\modals\auth\restore-password-submit-new-data.cshtml" />
+    <None Include="Views\Template\modals\auth\restore-password-submit-phone.cshtml" />
+    <None Include="Views\Template\modals\dev\api.cshtml" />
+    <None Include="Views\Template\modals\policy.cshtml" />
+    <None Include="Views\Template\modals\support\support-submit.cshtml" />
+    <None Include="Views\Template\modals\support\support-success.cshtml" />
+    <None Include="Views\Template\profile\index.cshtml" />
+    <None Include="Views\Template\registration\index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

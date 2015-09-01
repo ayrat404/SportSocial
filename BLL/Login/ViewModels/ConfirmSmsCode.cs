@@ -18,7 +18,7 @@ namespace BLL.Login.ViewModels
 
         [Required(ErrorMessage = "Необходимо ввести подтверждение пароля")]
         [System.Web.Mvc.Compare("Password", ErrorMessage = "Пароли не совпадают")]
-        public string ConfirmPassword { get; set; }
+        public string PasswordRepeat { get; set; }
 
         [Required]
         public string Phone { get; set; }

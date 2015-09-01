@@ -4,6 +4,11 @@ namespace DAL.DomainModel.EnumProperties
     {
         LessOne,
         One,
-        Two
+        Two,
+        Three,
+        Four,
+        FiveSeven,
+        SevenTen,
+        MoreTen
     }
 }

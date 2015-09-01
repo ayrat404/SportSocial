@@ -8,7 +8,6 @@ using BLL.Infrastructure.IdentityConfig;
 using BLL.Login.ViewModels;
 using BLL.Sms;
 using BLL.Storage;
-using BLL.Storage.ViewModels;
 using DAL.DomainModel;
 using DAL.DomainModel.EnumProperties;
 using DAL.Repository.Interfaces;
@@ -186,7 +185,7 @@ namespace BLL.Login.Impls
             return _smsService.GenerateAndSendCode(user.Id, user.UserName);
         }
 
-        public ServiceResult RestorePasswordConfirm(ConfirmSmsCode confirmModel)
+        public ServiceResult RestorePasswordConfirm(RestorePasswordInfo confirmModel)
         {
             var result = new ServiceResult {Success = false};
             var user = _appUserManager.FindByName(confirmModel.Phone);

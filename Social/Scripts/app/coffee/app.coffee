@@ -1,5 +1,5 @@
 ﻿# CoffeeScript
-angular.module('app', [
+app = angular.module('app', [
     'ui.router',
     'ui.bootstrap',
     'ngCookies',
@@ -11,38 +11,49 @@ angular.module('app', [
     '$stateProvider',
     '$locationProvider',
     '$httpProvider',
+    '$urlRouterProvider',
+    'templateUrl',
     ($stateProvider,
      $locationProvider,
-     $httpProvider)->
+     $httpProvider,
+     $urlRouterProvider
+     templateUrl)->
 
-        tmplView = (viewUrl) ->
-            '/Scripts/templates/' + viewUrl + '.html'
+        tmplView = (viewPath) ->
+            templateUrl + '/' + viewPath
 
         # routes
         # ---------------
         $stateProvider
-        .state('main',
-            url: '/'
+        .state 'main',
+            abstract: true
+            #url: '/'
             views:
                 '@':
                     templateUrl: tmplView('main/_layout')
-                    controller: 'mainSocialController'
-        )
-        .state('main.profile',
-            url: 'id:userId'
+                    controller: 'mainSocialController as social'
+        .state 'main.profile',
+            url: '/id:userId'
             views:
                 'socialContent@main':
                     templateUrl: tmplView('profile/index')
-                    controller: 'profileViewController')
-        .state('landing',
-            url: '/landing'
+                    controller: 'profileViewController as profile'
+        .state 'landing',
+            url: '/'
             templateUrl: tmplView('landing/index')
-            controller: 'landingController')
-        .state('registration',
+            controller: 'landingController'
+        .state '404',
+            url: '/404'
+            templateUrl: tmplView('errors/404')
+        .state 'registration',
             url: '/registration'
             templateUrl: tmplView('registration/index')
             controller: 'registrationController'
-            fullHeight: true)
+            fullHeight: true
+
+        $urlRouterProvider.otherwise '/404'
+
+        $httpProvider.interceptors.push('apiInterseptorProvider')
 
         $locationProvider.html5Mode({
             enabled: true
@@ -83,3 +94,6 @@ angular.module('app', [
 
         return
 ])
+
+app
+.constant('templateUrl', '/template')

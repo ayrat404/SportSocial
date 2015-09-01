@@ -1034,10 +1034,7 @@
     <Compile Include="App_Start\ConfigureAuth.cs" />
     <Compile Include="App_Start\CustomAntiForgeryValidator.cs" />
     <Compile Include="App_Start\ErrorHandlerAttr.cs" />
-    <Compile Include="App_Start\Json.cs" />
     <Compile Include="App_Start\Knoema\LocalizationConfig.cs" />
-    <Compile Include="App_Start\Knoema\LocalizationRepository.cs" />
-    <Compile Include="App_Start\Knoema\LocalizedObject.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -1062,6 +1059,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\JsonNetResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

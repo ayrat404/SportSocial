@@ -5,11 +5,9 @@ using DAL.DomainModel.Interfaces;
 
 namespace DAL.DomainModel.ConferenceEntities
 {
-    public class ConferenceComment: CommentEntity<ConferenceComment>, IHasRating<ConferenceCommentRating>
+    public class ConferenceComment: CommentEntity<ConferenceComment, Conference>, IHasRating<ConferenceCommentRating>
     {
         public int TotalRating { get; set; }
-        [ForeignKey("CommentedEntityId")]
-        public virtual Conference CommentedEntity { get; set; }
         public ICollection<ConferenceCommentRating> RatingEntites { get; set; }
     }
 }
