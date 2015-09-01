@@ -17,13 +17,16 @@ namespace Social.Controllers
     public class UploadController : BaseApiController
     {
         private readonly IImageService _imageService;
+        private readonly IVideoService _videoService;
 
-        public UploadController(IImageService imageService)
+        public UploadController(IImageService imageService, IVideoService videoService)
         {
             _imageService = imageService;
+            _videoService = videoService;
         }
 
         [Route("")]
+        [HttpPost]
         public ApiResultBase Upload()
         {
             string key = HttpContext.Current.Request.Files.AllKeys.First();
@@ -31,6 +34,15 @@ namespace Social.Controllers
             var file = HttpContext.Current.Request.Files[key];
             var result = _imageService.Save(file.InputStream, file.FileName, uploadType);
             return ApiResult(result);
+        }
+
+        [Route("~/api/youtube")]
+        [HttpPost]
+        public ApiResultBase AddYoutubeVideo(string link)
+        {
+            var result = _videoService.AddVideo(link);
+            var result2 =  ApiResult(result);
+            return result2;
         }
     }
 }

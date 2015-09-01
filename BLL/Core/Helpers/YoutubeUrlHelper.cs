@@ -63,5 +63,11 @@ namespace BLL.Common.Helpers
             string videoId = url.Host.Contains("youtu.be") ? url.Segments[1] : HttpUtility.ParseQueryString(url.Query)["v"];
             return string.Format("{0}/{1}/{2}", ImageUrlStart, videoId, LowImageName);
         }
+
+        public static string VideoId(string youtubeUrl)
+        {
+            var url = new Uri(youtubeUrl);
+            return url.Host.Contains("youtu.be") ? url.Segments[1] : HttpUtility.ParseQueryString(url.Query)["v"];
+        }
     }
 }
