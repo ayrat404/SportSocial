@@ -4,6 +4,7 @@ namespace BLL.Storage.Impls.Enums
     {
         Avatar,
         Article,
-        Album
+        Album,
+        Journal
     }
 }

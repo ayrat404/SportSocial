@@ -6,13 +6,15 @@ using BLL.Common.Services.CurrentUser;
 using BLL.Storage.Impls.Enums;
 using DAL.DomainModel;
 using DAL.DomainModel.BlogEntities;
+using DAL.DomainModel.JournalEntities;
 using DAL.Repository.Interfaces;
 
 namespace BLL.Storage.Impls
 {
     public class UniversalImageService: IImageService
     {
-        private const string VirtualBlogImagePath = "/Storage/Images/"; //TODO â AppSettings
+        private const string VirtualBlogImagePath = "/Storage/Images/Blog/"; //TODO â AppSettings
+        private const string VirtualJournslImagePath = "/Storage/Images/Journal/"; //TODO â AppSettings
         private const string VirtualAvatarImagePath = "/Storage/User/Avatars/"; //TODO â AppSettings
 
         private readonly ICurrentUser _currentUser;
@@ -44,6 +46,8 @@ namespace BLL.Storage.Impls
                     return typeof (UserAvatarPhoto);
                 case UploadType.Article:
                     return typeof (BlogImage);
+                case UploadType.Journal:
+                    return typeof (JournalMedia);
             }
             throw new NotSupportedException();
         }
@@ -56,6 +60,8 @@ namespace BLL.Storage.Impls
                     return typeof (AppUser);
                 case UploadType.Article:
                     return typeof (Post);
+                case UploadType.Journal:
+                    return typeof (Journal);
             }
             throw new NotSupportedException();
         }
@@ -68,6 +74,8 @@ namespace BLL.Storage.Impls
                     return VirtualAvatarImagePath;
                 case UploadType.Article:
                     return VirtualBlogImagePath;
+                case UploadType.Journal:
+                    return VirtualJournslImagePath;
             }
             throw new NotSupportedException();
         }
