@@ -180,8 +180,6 @@
     <Folder Include="Content\socialApp\images\common\" />
     <Folder Include="Content\socialApp\images\icons-set\" />
     <Folder Include="Content\socialApp\images\sprites\" />
-    <Folder Include="Views\Template\modals\achievement\" />
-    <Folder Include="Views\Template\modals\dev\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -232,7 +230,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="gulpfile.js" />
-    <Content Include="Scripts\app\coffee\socialApp\components\sport-themes\themesTpl.html" />
     <Content Include="Scripts\app\javascript\appServices\auth\restorePasswordSrvc.js" />
     <Content Include="Scripts\app\javascript\appServices\journal\submitSrvc.js" />
     <Content Include="Scripts\app\javascript\appServices\other\themsSrvc.js" />
@@ -2687,6 +2684,10 @@
     <Content Include="Scripts\app\coffee\socialApp\modals\loginCtrl.coffee" />
     <Content Include="Scripts\app\coffee\socialApp\modals\restore-passwordCtrl.coffee" />
     <Content Include="Scripts\app\coffee\socialApp\modals\supportCtrl.coffee" />
+    <Content Include="Scripts\app\coffee\appServices\other\youtube-videoSrvc.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\components\media-upload\mediaUploadCtrl.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\components\media-upload\mediaUploadDrct.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\components\sport-themes\themesDrct.coffee" />
     <None Include="Scripts\libs\jquery\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.min.js" />
@@ -2698,30 +2699,22 @@
     <Content Include="Scripts\libs\select\select.js" />
     <Content Include="Scripts\libs\wow\wow.js" />
     <Content Include="Scripts\libs\wow\wow.min.js" />
-    <Content Include="Scripts\templates\errors\404.html" />
-    <Content Include="Scripts\templates\journal\submit.html" />
-    <Content Include="Scripts\templates\landing\index.html" />
-    <Content Include="Scripts\templates\main\_layout.html" />
-    <Content Include="Scripts\templates\modals\auth\restore-password-submit-new-data.html" />
-    <Content Include="Scripts\templates\modals\auth\restore-password-submit-phone.html" />
-    <Content Include="Scripts\templates\modals\auth\login-submit.html" />
-    <Content Include="Scripts\templates\modals\support\support-success.html" />
-    <Content Include="Scripts\templates\modals\support\support-submit.html" />
-    <Content Include="Scripts\templates\modals\policy.html" />
-    <Content Include="Scripts\templates\profile\index.html" />
-    <Content Include="Scripts\templates\registration\index.html" />
+    <None Include="Views\Template\components\media-uploadTpl.cshtml" />
+    <None Include="Views\Template\components\sport-themesTpl.cshtml" />
     <None Include="Views\Template\errors\404.cshtml" />
+    <None Include="Views\Template\journal\submit.cshtml" />
     <None Include="Views\Template\landing\index.cshtml" />
+    <None Include="Views\Template\main\_layout.cshtml" />
+    <None Include="Views\Template\modals\achievement\about.cshtml" />
     <None Include="Views\Template\modals\auth\login-submit.cshtml" />
     <None Include="Views\Template\modals\auth\restore-password-submit-new-data.cshtml" />
     <None Include="Views\Template\modals\auth\restore-password-submit-phone.cshtml" />
+    <None Include="Views\Template\modals\dev\api.cshtml" />
     <None Include="Views\Template\modals\policy.cshtml" />
     <None Include="Views\Template\modals\support\support-submit.cshtml" />
     <None Include="Views\Template\modals\support\support-success.cshtml" />
-    <None Include="Views\Template\registration\index.cshtml" />
-    <None Include="Views\Template\journal\submit.cshtml" />
-    <None Include="Views\Template\main\_layout.cshtml" />
     <None Include="Views\Template\profile\index.cshtml" />
+    <None Include="Views\Template\registration\index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

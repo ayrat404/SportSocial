@@ -9,8 +9,10 @@
     <link type="text/css" rel="stylesheet" media="all" href="~/Content/socialApp/styles/compile/fortress.social.min.css">
 </head>
 <body>
-    <div id="ui-view" class="ui-content" ng-cloak ui-view data-tmpl-url="@Request.RequestContext.RouteData.DataTokens["templateUrl"]">
-        @RenderBody()
+    <div data-loader="loader">
+        <div id="ui-view" class="ui-content" ng-cloak ui-view data-tmpl-url="@Request.RequestContext.RouteData.DataTokens["templateUrl"]">
+            @RenderBody()
+        </div>
     </div>
 
     @if (HttpContext.Current.IsDebuggingEnabled)

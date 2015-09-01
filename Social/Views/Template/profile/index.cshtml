@@ -7,36 +7,36 @@
                         <div class="user-info__avatar">
                             <div class="ui__avatar-upload">
                                 <i class="icon-upload"></i>
-                                <p class="link">+ Загрузить аватар</p>
+                                <p class="link">+ @R("Загрузить аватар")</p>
                             </div>
                         </div>
                         <div class="user-info__about">
-                            <p class="ui__name">Павел козловский</p>
+                            <p class="ui__name">Павел козловский {{social.testTitle}}</p>
                             <p class="ui__age">25 лет / 3 года в спорте</p>
                             <p class="ui__location">Москва, Россия</p>
-                            <a href="#" class="ui__edit">Редактировать профиль</a>
+                            <a href="#" class="ui__edit">@R("Редактировать профиль")</a>
                         </div>
                     </div>
                     <div class="pi__row">
-                        <p class="pi__row__title">Достижения (0) <span class="link" data-modal-click="aboutAchievement">Что это?</span></p>
-                        <button class="btn btn-fill-green" type="button">Подать заявку на достижение</button>
+                        <p class="pi__row__title">@R("Достижения") (0) <span class="link" data-modal-click="aboutAchievement">@R("Что это?")</span></p>
+                        <button class="btn btn-fill-green" type="button">@R("Подать заявку на достижение")</button>
                     </div>
                     <div class="pi__row">
-                        <p class="pi__row__title">Подписки (0)</p>
-                        <button class="btn btn-fill-green" type="button">Посмотреть всех атлетов</button>
-                        <p class="pi__row__title">Подписчики (0)</p>
+                        <p class="pi__row__title">@R("Подписки") (0)</p>
+                        <button class="btn btn-fill-green" type="button">@R("Посмотреть всех атлетов")</button>
+                        <p class="pi__row__title">@R("Подписчики") (0)</p>
                     </div>
                     <div class="pi__row">
                         <span class="link pi__question" data-modal-click="supportSubmit">
                             <i class="icon-question"></i>
-                            <span>Техническая поддержка</span>
+                            <span>@R("Техническая поддержка")</span>
                         </span>
                     </div>
                 </div>
             </div>
             <div class="col-sm-7 pa0">
                 <div class="profile__journal" data-content-height>
-                    <journal-submit></journal-submit>
+                    <journal-profile-submit></journal-profile-submit>
                 </div>
             </div>
         </div>
