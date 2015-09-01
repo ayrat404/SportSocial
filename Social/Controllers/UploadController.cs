@@ -38,11 +38,16 @@ namespace Social.Controllers
 
         [Route("~/api/youtube")]
         [HttpPost]
-        public ApiResultBase AddYoutubeVideo(string link)
+        public ApiResultBase AddYoutubeVideo(VideoLink link)
         {
-            var result = _videoService.AddVideo(link);
+            var result = _videoService.AddVideo(link.Link);
             var result2 =  ApiResult(result);
             return result2;
         }
+    }
+
+    public class VideoLink
+    {
+        public string Link { get; set; }
     }
 }
