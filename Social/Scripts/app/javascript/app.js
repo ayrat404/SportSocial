@@ -1,36 +1,42 @@
-(function(){
-angular.module('app', ['ui.router', 'ui.bootstrap', 'ngCookies', 'flow', 'shared', 'appSrvc', 'socialApp']).config([
-  '$stateProvider', '$locationProvider', '$httpProvider', function($stateProvider, $locationProvider, $httpProvider) {
+var app;
+
+app = angular.module('app', ['ui.router', 'ui.bootstrap', 'ngCookies', 'flow', 'shared', 'appSrvc', 'socialApp']).config([
+  '$stateProvider', '$locationProvider', '$httpProvider', '$urlRouterProvider', 'templateUrl', function($stateProvider, $locationProvider, $httpProvider, $urlRouterProvider, templateUrl) {
     var tmplView;
-    tmplView = function(viewUrl) {
-      return '/Scripts/templates/' + viewUrl + '.html';
+    tmplView = function(viewPath) {
+      return templateUrl + '/' + viewPath;
     };
     $stateProvider.state('main', {
-      url: '/',
+      abstract: true,
       views: {
         '@': {
           templateUrl: tmplView('main/_layout'),
-          controller: 'mainSocialController'
+          controller: 'mainSocialController as social'
         }
       }
     }).state('main.profile', {
-      url: 'id:userId',
+      url: '/id:userId',
       views: {
         'socialContent@main': {
           templateUrl: tmplView('profile/index'),
-          controller: 'profileViewController'
+          controller: 'profileViewController as profile'
         }
       }
     }).state('landing', {
-      url: '/landing',
+      url: '/',
       templateUrl: tmplView('landing/index'),
       controller: 'landingController'
+    }).state('404', {
+      url: '/404',
+      templateUrl: tmplView('errors/404')
     }).state('registration', {
       url: '/registration',
       templateUrl: tmplView('registration/index'),
       controller: 'registrationController',
       fullHeight: true
     });
+    $urlRouterProvider.otherwise('/404');
+    $httpProvider.interceptors.push('apiInterseptorProvider');
     $locationProvider.html5Mode({
       enabled: true,
       requireBase: false
@@ -58,4 +64,4 @@ angular.module('app', ['ui.router', 'ui.bootstrap', 'ngCookies', 'flow', 'shared
   }
 ]);
 
-})();
+app.constant('templateUrl', '/template');

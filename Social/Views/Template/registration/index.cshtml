@@ -1,14 +1,14 @@
 ﻿<div class="registration">
     <div class="registration__inner" ng-cloack>
-        <h1>Как же долго мы Вас ждали!</h1>
+        <h1>@R("Как же долго мы Вас ждали!")</h1>
         <div ng-show="step == 1">
-            <div class="reg__step">Регистрация. Шаг 1 из 2</div>
+            <div class="reg__step">@R("Регистрация. Шаг 1 из 2")</div>
             <div data-server-validation="firstStepValidation">
                 <form name="RegStepOneForm" class="reg__form"
                       ng-submit="sendImg($flow)"
                       flow-name="flowObj.flow"
                       flow-file-success="sendFirstStepData($message)"
-                      flow-init="{target: '/api/upload', fileParameterName: 'Avatar', singleFile: true, testChunks:false}"
+                      flow-init="{target: '/api/image_upload', fileParameterName: 'Avatar', singleFile: true, testChunks:false}"
                       flow-files-added="processImage($files, $flow)">
                     <div class="reg__img-wrap">
                         <div class="reg__img-wrap__close" ng-show="$flow.files.length" ng-click="$flow.cancel()">&times;</div>
@@ -20,15 +20,15 @@
                         </div>
                         <div class="reg__img__empty" flow-btn ng-show="!$flow.files.length">
                             <span class="avatar-icon"></span>
-                            <span>Добавить фото</span>
+                            <span>@R("Добавить фото")</span>
                         </div>
                     </div>
-                    <div name="imgId" class="field-error" ng-show="imgProp.sizeError">Минимальный размер изображения 200 x 200 пикселей</div>
+                    <div name="imgId" class="field-error" ng-show="imgProp.sizeError">@R("Минимальный размер изображения 200 x 200 пикселей")</div>
                     <div class="fs-form__row">
-                        <input type="text" name="name" required ng-model="first.name" autofocus required placeholder="Имя" class="fs-input" />
+                        <input type="text" name="name" required ng-model="first.name" autofocus required placeholder="@R("Имя")" class="fs-input" />
                     </div>
                     <div class="fs-form__row">
-                        <input type="text" name="sername" required ng-model="first.sername" required placeholder="Фамилия" class="fs-input" />
+                        <input type="text" name="sername" required ng-model="first.sername" required placeholder="@R("Фамилия")" class="fs-input" />
                     </div>
                     <div class="fs-form__row row">
                         <div class="col-xs-7">
@@ -41,74 +41,74 @@
                                    show-button-bar="false"
                                    is-open="open"
                                    ng-click="open=true"
-                                   placeholder="День рождения" />
+                                   placeholder="@R("День рождения")" />
                         </div>
                         <div class="col-xs-5">
                             <select name="gender" required ng-model="first.gender" class="fs-input">
-                                <option value="" disabled selected>Пол</option>
-                                <option value="male">Муж.</option>
-                                <option value="female">Жен.</option>
+                                <option value="" disabled selected>@R("Пол")</option>
+                                <option value="male">@R("Муж.")</option>
+                                <option value="female">@R("Жен.")</option>
                             </select>
                         </div>
                     </div>
                     <div class="fs-form__row row">
                         <div class="col-xs-4">
-                            <span class="label18">В спорте уже:</span>
+                            <span class="label18">@R("В спорте уже"):</span>
                         </div>
                         <div class="col-xs-8">
                             <select name="sportTime" required ng-model="first.sportTime" class="fs-input">
-                                <option value="" disabled selected>Выберите период</option>
-                                <option value="0">менее года</option>
-                                <option value="1">1 год</option>
-                                <option value="2">2 года</option>
-                                <option value="3">3 года</option>
-                                <option value="4">4 года</option>
-                                <option value="5">5 - 7 лет</option>
-                                <option value="6">7 - 10 лет</option>
-                                <option value="7">более 10 лет</option>
+                                <option value="" disabled selected>@R("Выберите период")</option>
+                                <option value="0">@R("менее года")</option>
+                                <option value="1">@R("1 год")</option>
+                                <option value="2">@R("2 года")</option>
+                                <option value="3">@R("3 года")</option>
+                                <option value="4">@R("4 года")</option>
+                                <option value="5">@R("5 - 7 лет")</option>
+                                <option value="6">@R("7 - 10 лет")</option>
+                                <option value="7">@R("более 10 лет")</option>
                             </select>
                         </div>
                     </div>
                     <div class="fs-form__row">
-                        <input name="phone" type="text" required ng-model="first.phone" required placeholder="Номер телефона без +" class="fs-input" />
+                        <input name="phone" type="text" required ng-model="first.phone" required placeholder="@R("Номер телефона без +")" class="fs-input" />
                     </div>
                     <div class="fs-form__submit text-center">
                         <button type="submit" class="btn btn-fill-green btn-xl"
                                 ng-disabled="!flowObj.flow.files.length || !RegStepOneForm.$valid">
-                            Далее
+                            @R("Далее")
                         </button>
-                        <p>Уже зарегистрированы? <span class="link link--green" data-modal-click="loginSubmit">Войти</span></p>
+                        <p>@R("Уже зарегистрированы?") <span class="link link--green" data-modal-click="loginSubmit">@R("Войти")</span></p>
                     </div>
                 </form>
             </div>
         </div>
         <div ng-show="step == 2">
-            <div class="reg__step">Регистрация. Шаг 2 из 2</div>
+            <div class="reg__step">@R("Регистрация. Шаг 2 из 2")</div>
             <div data-server-validation="twoStepValidation">
                 <form name="RegStepTwoForm" class="reg__form"
                       ng-submit="sendTwo()"
                       ng-class="{ 'show-valid': form2.showValid==true }">
 
-                    <div class="field-error" ng-show="two.password != two.passwordRepeat && (form2.showValid || form2.passOut)">Пароли не совпадают</div>
+                    <div class="field-error" ng-show="two.password != two.passwordRepeat && (form2.showValid || form2.passOut)">@R("Пароли не совпадают")</div>
 
                     <div class="fs-form__row">
-                        <input type="password" ng-model="two.password" required placeholder="Придумайте пароль" class="fs-input" />
-                    </div>
+                        <input type="password" ng-model="two.password" required placeholder="@R("Придумайте пароль")" class="fs-input" />
+                    ></div>
                     <div class="fs-form__row">
-                        <input type="password" ng-model="two.passwordRepeat" ng-blur="form2.passOut=true" required placeholder="Повторите пароль" class="fs-input" />
-                    </div>
-                    <p class="text-center">Вам отправлено СМС с кодом подтверждения</p>
+                        <input type="password" ng-model="two.passwordRepeat" ng-blur="form2.passOut=true" required placeholder="@R("Повторите пароль")" class="fs-input" />
+                    ></div>
+                    <p class="text-center">@R("Вам отправлено СМС с кодом подтверждения")</p>
                     <div class="fs-form__row">
                         <input type="text"
                                ng-model="two.code"
-                               ng-minlength="4" required placeholder="Код подтверждения из СМС" class="fs-input" />
-                    </div>
+                               ng-minlength="4" required placeholder="@R("Код подтверждения из СМС")" class="fs-input" />
+                    ></div>
                     <div class="fs-form__submit text-center">
-                        <span class="link link--white" ng-click="step = 1">Назад</span>
+                        <span class="link link--white" ng-click="step = 1">@R("Назад")</span>
                         <button type="submit" class="btn btn-fill-green btn-xl"
                                 ng-disabled="!RegStepOneForm.$valid && two.password != two.passwordRepeat"
                                 ng-click="form2.showValid=true">
-                            Далее
+                            @R("Далее")
                         </button>
                     </div>
                 </form>
