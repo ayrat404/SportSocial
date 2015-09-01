@@ -6,7 +6,7 @@ YoutubeVideo = (function() {
     getVideoInfo = function(link, prop) {
       if (link && typeof link === 'string' && link.length > 0) {
         return $q(function(resolve, reject) {
-          return $http.get(servicesDefault.baseServiceUrl + '/youtube', {
+          return $http.post(servicesDefault.baseServiceUrl + '/youtube', {
             link: link
           }).then(function(res) {
             if (res.success) {

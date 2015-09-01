@@ -8,7 +8,9 @@ SportThemes = (function() {
       return $q(function(resolve, reject) {
         if (search && search.length) {
           return $http.get(url, {
-            query: search
+            params: {
+              query: search
+            }
           }).then(function(res) {
             if (res.success) {
               return resolve(res.data);

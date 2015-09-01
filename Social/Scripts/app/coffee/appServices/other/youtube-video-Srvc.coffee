@@ -12,7 +12,7 @@ class YoutubeVideo extends Service('appSrvc')
               typeof link == 'string' &&
               link.length > 0
                 $q (resolve, reject)->
-                    $http.get(servicesDefault.baseServiceUrl + '/youtube', { link: link }).then((res)->
+                    $http.post(servicesDefault.baseServiceUrl + '/youtube', { link: link }).then((res)->
                         if res.success
                             resolve(res)
                         else

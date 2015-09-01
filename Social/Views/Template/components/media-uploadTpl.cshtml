@@ -3,7 +3,7 @@
         <div class="muc__row__input-wrap">
             <input ng-model="youtubeLink"
                    type="text" placeholder="@R("Вставьте ссылку из youtube")" class="fs-input muc__input">
-        ></div>
+        </div>
         <div class="muc__row__actions-wrap">
             <button ng-disabled="!youtubeLink.length"
                     ng-click="sendVideoLink(youtubeLink)"
@@ -11,7 +11,7 @@
             <span class="muc__close" ng-click="isVideoRowShow=false; youtubeLink=''"></span>
         </div>
     </div>
-    <span flow-init="{ target: '/api/upload', testChunks:false }"
+    <span flow-init="{ target: '/api/upload', testChunks:false, fileParameterName: 'Journal' }"
           flow-file-success="imgResponse($message)"
           flow-files-submitted="$flow.upload()"
           flow-btn

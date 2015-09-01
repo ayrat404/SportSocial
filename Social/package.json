@@ -18,6 +18,7 @@
     "gulp-rename": "latest",
     "gulp-util": "^3.0.6",
     "gulp-wrap": "^0.11.0",
-    "gulp.spritesmith": "latest"
+    "gulp.spritesmith": "latest",
+    "gulp-ng-classify": "latest"
   }
 }
