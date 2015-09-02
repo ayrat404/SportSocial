@@ -45,9 +45,4 @@ namespace Social.Controllers
             return result2;
         }
     }
-
-    public class VideoLink
-    {
-        public string Link { get; set; }
-    }
 }
