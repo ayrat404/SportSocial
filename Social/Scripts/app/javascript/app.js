@@ -8,10 +8,14 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'ngCookies', 'flow', '
     };
     $stateProvider.state('main', {
       abstract: true,
+      data: {
+        requireLogin: true
+      },
       views: {
         '@': {
           templateUrl: tmplView('main/_layout'),
-          controller: 'mainSocialController as social'
+          controller: 'mainSocialController',
+          controllerAs: 'social'
         }
       }
     }).state('main.profile', {
@@ -19,7 +23,8 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'ngCookies', 'flow', '
       views: {
         'socialContent@main': {
           templateUrl: tmplView('profile/index'),
-          controller: 'profileViewController as profile'
+          controller: 'profileViewController',
+          controllerAs: 'profile'
         }
       }
     }).state('landing', {
@@ -43,7 +48,7 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'ngCookies', 'flow', '
     });
   }
 ]).run([
-  '$templateCache', '$rootScope', '$state', '$stateParams', function($templateCache, $rootScope, $state, $stateParams) {
+  '$templateCache', '$rootScope', '$state', '$stateParams', 'modalService', 'base', function($templateCache, $rootScope, $state, $stateParams, modalService, base) {
     var view;
     view = angular.element('#ui-view');
     $templateCache.put(view.data('tmpl-url'), view.html());
@@ -52,9 +57,37 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'ngCookies', 'flow', '
     NProgress.configure({
       minimum: 0.3
     });
-    $rootScope.$on('$stateChangeStart', function(event, toState) {
-      $rootScope.loading = true;
-      return NProgress.start();
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams) {
+      var isUserLogin, requireLogin;
+      if (toState.data !== void 0) {
+        requireLogin = toState.data.requireLogin;
+      }
+      isUserLogin = false;
+      if (requireLogin && !isUserLogin) {
+        event.preventDefault();
+        base.notice.show({
+          text: 'The page you requested is available only to registered users',
+          type: 'warning'
+        });
+        return modalService.show({
+          name: 'loginSubmit',
+          data: {
+            success: function(res) {
+              return $state.go(toState.name, toParams);
+            },
+            cancel: function(res) {
+              $state.go('registration');
+              return base.notice.show({
+                text: 'Please register if you do not have an Fortress account ',
+                type: 'info'
+              });
+            }
+          }
+        });
+      } else {
+        $rootScope.loading = true;
+        return NProgress.start();
+      }
     });
     $rootScope.$on('$stateChangeSuccess', function(event, toState) {
       $rootScope.loading = false;

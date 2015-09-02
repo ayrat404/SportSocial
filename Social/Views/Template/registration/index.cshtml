@@ -8,7 +8,7 @@
                       ng-submit="sendImg($flow)"
                       flow-name="flowObj.flow"
                       flow-file-success="sendFirstStepData($message)"
-                      flow-init="{target: '/api/image_upload', fileParameterName: 'Avatar', singleFile: true, testChunks:false}"
+                      flow-init="{target: '/api/upload', fileParameterName: 'Avatar', singleFile: true, testChunks:false}"
                       flow-files-added="processImage($files, $flow)">
                     <div class="reg__img-wrap">
                         <div class="reg__img-wrap__close" ng-show="$flow.files.length" ng-click="$flow.cancel()">&times;</div>

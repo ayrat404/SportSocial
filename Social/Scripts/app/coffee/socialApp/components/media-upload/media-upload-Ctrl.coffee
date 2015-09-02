@@ -4,31 +4,33 @@ class MediaUpload extends Controller('socialApp.controllers')
         youtubeVideoService
         base)->
 
+        size =
+            w: 45
+            h: 45
+            mode: 'crop'
+
         if base.isArray($scope.media)
             $scope.media = []
 
         # send youtube link & get video params
         # ---------------
         $scope.sendVideoLink = (link)->
-            # video object params
-            videoProp =
-                size:
-                    w: 45
-                    h: 45
-            youtubeVideoService.getVideoInfo(link, videoProp).then((res)->
+            youtubeVideoService.getVideoInfo(link).then((res)->
                 # {red.data = { id: xxx, remoteId: xxx, img: xxx }}
+                $scope.youtubeLink = ''
                 $scope.media.push(
                     id: res.data.id
                     type: 'video'
-                    img: res.data.img
+                    img: base.image.resize(res.data.img, size)
                 ))
 
         # image upload
         # ---------------
-        $scope.imgResponse = (res)->
-            if res.success
+        $scope.imgResponse = (stringData)->
+            obj = angular.fromJson(stringData);
+            if obj.success
                 $scope.media.push(
-                    id: res.data.id
+                    id: obj.data.id
                     type: 'image'
-                    img: res.data.url
+                    img: base.image.resize(obj.data.url, size)
                 )

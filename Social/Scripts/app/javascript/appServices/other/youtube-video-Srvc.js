@@ -9,10 +9,10 @@ YoutubeVideo = (function() {
           return $http.post(servicesDefault.baseServiceUrl + '/youtube', {
             link: link
           }).then(function(res) {
-            if (res.success) {
-              return resolve(res);
+            if (res.data.success) {
+              return resolve(res.data);
             } else {
-              return reject(res);
+              return reject(res.data);
             }
           }, function(res) {
             return reject(res);

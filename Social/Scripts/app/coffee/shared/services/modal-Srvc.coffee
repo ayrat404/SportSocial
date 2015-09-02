@@ -55,7 +55,7 @@ class modal extends Service('shared')
                         controller: if modals[prop.name] != undefined then modals[prop.name].controller else null
                         windowClass: ['fs-modal', if modals[prop.name] != undefined then modals[prop.name].classname else null].join(' ')
                         resolve:
-                            modalData: ()-> prop.data
+                            modalData: -> prop.data
                     )
                     return
                 .finally ->
