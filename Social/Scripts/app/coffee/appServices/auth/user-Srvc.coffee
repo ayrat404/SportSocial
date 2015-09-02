@@ -1,6 +1,8 @@
 ﻿# CoffeeScript
-class status extends Service('appSrvc')
+class user extends Service('appSrvc')
     constructor: ()->
-    
+
+        
+
         # ---------------
         return {}

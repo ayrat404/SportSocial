@@ -27,17 +27,20 @@ app = angular.module('app', [
         $stateProvider
         .state 'main',
             abstract: true
-            #url: '/'
+            data:
+                requireLogin: true
             views:
                 '@':
                     templateUrl: tmplView('main/_layout')
-                    controller: 'mainSocialController as social'
+                    controller: 'mainSocialController'
+                    controllerAs: 'social'
         .state 'main.profile',
             url: '/id:userId'
             views:
                 'socialContent@main':
                     templateUrl: tmplView('profile/index')
-                    controller: 'profileViewController as profile'
+                    controller: 'profileViewController'
+                    controllerAs: 'profile'
         .state 'landing',
             url: '/'
             templateUrl: tmplView('landing/index')
@@ -62,14 +65,18 @@ app = angular.module('app', [
 
         return
 ]).run([
-    '$templateCache',
-    '$rootScope',
-    '$state',
-    '$stateParams',
-    ($templateCache,
-     $rootScope,
-     $state,
-     $stateParams)->
+    '$templateCache'
+    '$rootScope'
+    '$state'
+    '$stateParams'
+    'modalService'
+    'base'
+    ($templateCache
+     $rootScope
+     $state
+     $stateParams
+     modalService
+     base)->
 
         view = angular.element '#ui-view'
         $templateCache.put(view.data('tmpl-url'), view.html())
@@ -82,9 +89,26 @@ app = angular.module('app', [
         NProgress.configure({ minimum: 0.3 })
 
         # ---------------
-        $rootScope.$on '$stateChangeStart', (event, toState) ->
-            $rootScope.loading = true
-            NProgress.start()
+        $rootScope.$on '$stateChangeStart', (event, toState, toParams) ->
+            if toState.data != undefined
+                requireLogin = toState.data.requireLogin
+            # todo IS USER LOGIN
+            isUserLogin = false
+            if requireLogin && !isUserLogin
+                event.preventDefault()
+                base.notice.show(text: 'The page you requested is available only to registered users', type: 'warning')
+                modalService.show(
+                  name: 'loginSubmit'
+                  data:
+                      success: (res)->
+                          $state.go(toState.name, toParams)
+                      cancel: (res)->
+                          $state.go 'registration'
+                          base.notice.show(text: 'Please register if you do not have an Fortress account ', type: 'info')
+                )
+            else
+                $rootScope.loading = true
+                NProgress.start()
 
         # ---------------
         $rootScope.$on '$stateChangeSuccess', (event, toState) ->
