@@ -93,16 +93,16 @@
 
                     <div class="fs-form__row">
                         <input type="password" ng-model="two.password" required placeholder="@R("Придумайте пароль")" class="fs-input" />
-                    ></div>
+                    </div>
                     <div class="fs-form__row">
                         <input type="password" ng-model="two.passwordRepeat" ng-blur="form2.passOut=true" required placeholder="@R("Повторите пароль")" class="fs-input" />
-                    ></div>
+                    </div>
                     <p class="text-center">@R("Вам отправлено СМС с кодом подтверждения")</p>
                     <div class="fs-form__row">
                         <input type="text"
                                ng-model="two.code"
                                ng-minlength="4" required placeholder="@R("Код подтверждения из СМС")" class="fs-input" />
-                    ></div>
+                    </div>
                     <div class="fs-form__submit text-center">
                         <span class="link link--white" ng-click="step = 1">@R("Назад")</span>
                         <button type="submit" class="btn btn-fill-green btn-xl"

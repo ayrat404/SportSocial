@@ -23,7 +23,6 @@ class registration extends Service('appSrvc')
                 title: $rootScope.title
 
             $q((resolve, reject)->
-                debugger
                 if data &&
                   data.imgId &&
                   data.name &&
@@ -64,14 +63,14 @@ class registration extends Service('appSrvc')
                 if data &&
                   data.imgId &&
                   data.name &&
-                  data.sername &&
+                  data.lastName &&
                   data.birthday &&
-                  data.sprotTime &&
+                  data.sportTime &&
                   data.phone &&
                   data.gender &&
                   data.password &&
-                  data.repeatPassword &&
-                  data.password == data.repeatPassword &&
+                  data.passwordRepeat &&
+                  data.password == data.passwordRepeat &&
                   data.code &&
                   !isSending
                     mixpanel.api('track', 'Registration__2-step__send', evTrackProp)
