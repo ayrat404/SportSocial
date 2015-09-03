@@ -18,10 +18,10 @@ registration = (function() {
           isSending = true;
           mixpanel.api('track', 'Registration__1-step__send', evTrackProp);
           return $http.post(urlFirst, data).then(function(res) {
-            if (res.success) {
-              resolve(res);
+            if (res.data.success) {
+              resolve(res.data);
             } else {
-              reject(res);
+              reject(res.data);
             }
             if (opts.noticeShow.errors) {
               return base.notice.response(res);
@@ -53,10 +53,10 @@ registration = (function() {
         if (data && data.imgId && data.name && data.sername && data.birthday && data.sprotTime && data.phone && data.gender && data.password && data.repeatPassword && data.password === data.repeatPassword && data.code && !isSending) {
           mixpanel.api('track', 'Registration__2-step__send', evTrackProp);
           return $http.post(urlTwo, data).then(function(res) {
-            if (res.success) {
-              return resolve(res);
+            if (res.data.success) {
+              return resolve(res.data);
             } else {
-              reject(res);
+              reject(res.data);
               if (opts.noticeShow.errors) {
                 return base.notice.response(res);
               }

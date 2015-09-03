@@ -1,6 +1,6 @@
 var app;
 
-app = angular.module('app', ['ui.router', 'ui.bootstrap', 'ngCookies', 'flow', 'shared', 'appSrvc', 'socialApp']).config([
+app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'flow', 'shared', 'appSrvc', 'socialApp']).config([
   '$stateProvider', '$locationProvider', '$httpProvider', '$urlRouterProvider', 'templateUrl', function($stateProvider, $locationProvider, $httpProvider, $urlRouterProvider, templateUrl) {
     var tmplView;
     tmplView = function(viewPath) {
@@ -48,7 +48,7 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'ngCookies', 'flow', '
     });
   }
 ]).run([
-  '$templateCache', '$rootScope', '$state', '$stateParams', 'modalService', 'base', function($templateCache, $rootScope, $state, $stateParams, modalService, base) {
+  '$templateCache', '$rootScope', '$state', '$stateParams', 'modalService', 'base', 'userService', function($templateCache, $rootScope, $state, $stateParams, modalService, base, userService) {
     var view;
     view = angular.element('#ui-view');
     $templateCache.put(view.data('tmpl-url'), view.html());
@@ -58,12 +58,11 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'ngCookies', 'flow', '
       minimum: 0.3
     });
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams) {
-      var isUserLogin, requireLogin;
+      var requireLogin;
       if (toState.data !== void 0) {
         requireLogin = toState.data.requireLogin;
       }
-      isUserLogin = false;
-      if (requireLogin && !isUserLogin) {
+      if (requireLogin && userService.get().id === void 0) {
         event.preventDefault();
         base.notice.show({
           text: 'The page you requested is available only to registered users',

@@ -12,10 +12,10 @@ SportThemes = (function() {
               query: search
             }
           }).then(function(res) {
-            if (res.success) {
+            if (res.data.success) {
               return resolve(res.data);
             } else {
-              return reject(res);
+              return reject(res.data);
             }
           }, function(res) {
             return reject(res);

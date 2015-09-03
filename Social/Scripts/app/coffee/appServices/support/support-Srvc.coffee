@@ -29,10 +29,10 @@ class support extends Service('appSrvc')
                     mixpanel.api 'track', 'Support__send', evTrackProp
                     isSending = true
                     $http.post(url, data).then((res)->
-                        if res.success
-                            resolve(res)
+                        if res.data.success
+                            resolve(res.data)
                         else
-                            reject(res)
+                            reject(res.data)
                             base.notice.response(res) if opts.noticeShow.errors
                     , (res)->
                         reject(res)

@@ -2,7 +2,7 @@
 app = angular.module('app', [
     'ui.router',
     'ui.bootstrap',
-    'ngCookies',
+    'angular-storage'
     'flow',
     'shared',
     'appSrvc',
@@ -71,12 +71,14 @@ app = angular.module('app', [
     '$stateParams'
     'modalService'
     'base'
+    'userService'
     ($templateCache
      $rootScope
      $state
      $stateParams
      modalService
-     base)->
+     base
+     userService)->
 
         view = angular.element '#ui-view'
         $templateCache.put(view.data('tmpl-url'), view.html())
@@ -92,9 +94,7 @@ app = angular.module('app', [
         $rootScope.$on '$stateChangeStart', (event, toState, toParams) ->
             if toState.data != undefined
                 requireLogin = toState.data.requireLogin
-            # todo IS USER LOGIN
-            isUserLogin = false
-            if requireLogin && !isUserLogin
+            if requireLogin && userService.get().id == undefined
                 event.preventDefault()
                 base.notice.show(text: 'The page you requested is available only to registered users', type: 'warning')
                 modalService.show(

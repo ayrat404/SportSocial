@@ -19,10 +19,10 @@ restorePassword = (function() {
           isPhoneSending = true;
           mixpanel.api('track', 'RestorePassword__phone-send', evTrackProp);
           return $http(urlOne, data).then(function(res) {
-            if (res.success) {
-              resolve(res);
+            if (res.data.success) {
+              resolve(res.data);
             } else {
-              reject(res);
+              reject(res.data);
             }
             if (opts.noticeShow.errors) {
               return base.notice.response(res);

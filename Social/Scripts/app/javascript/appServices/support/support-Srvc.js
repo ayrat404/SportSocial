@@ -17,10 +17,10 @@ support = (function() {
           mixpanel.api('track', 'Support__send', evTrackProp);
           isSending = true;
           return $http.post(url, data).then(function(res) {
-            if (res.success) {
-              return resolve(res);
+            if (res.data.success) {
+              return resolve(res.data);
             } else {
-              reject(res);
+              reject(res.data);
               if (opts.noticeShow.errors) {
                 return base.notice.response(res);
               }

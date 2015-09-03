@@ -1,7 +1,7 @@
 var login;
 
 login = (function() {
-  function login($state, $location, $q, $rootScope, base, mixpanel, servicesDefault) {
+  function login($state, $location, $q, $rootScope, base, mixpanel, servicesDefault, userService) {
     var isSending, logIn, url;
     url = servicesDefault.baseServiceUrl + '/login';
     isSending = false;
@@ -17,7 +17,8 @@ login = (function() {
           mixpanel.api('track', 'Login__send', evTrackProp);
           return $http.post(url, data).then(function(res) {
             if (res.success) {
-              return resolve(res);
+              userService.set(res.data.data);
+              return resolve(res.data);
             } else {
               reject(res);
               if (opts.noticeShow.errors) {
@@ -49,4 +50,4 @@ login = (function() {
 
 })();
 
-angular.module('appSrvc').service('loginService', ['$state', '$location', '$q', '$rootScope', 'base', 'mixpanel', 'servicesDefault', login]);
+angular.module('appSrvc').service('loginService', ['$state', '$location', '$q', '$rootScope', 'base', 'mixpanel', 'servicesDefault', 'userService', login]);

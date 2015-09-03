@@ -8,9 +8,13 @@ LoginSubmitModal = (function() {
         $modalInstance.dismiss();
         if (typeof modalData.success === 'function') {
           return modalData.success(res);
+        } else {
+          return $state.go('main.profile', {
+            userId: res.data.id
+          });
         }
       }, function(res) {
-        return $scope.serverValidation = res.errors;
+        return $scope.serverValidation = res.data.errors;
       });
     };
     $scope.toRegistration = function() {

@@ -34,10 +34,10 @@ class registration extends Service('appSrvc')
                     isSending = true
                     mixpanel.api('track', 'Registration__1-step__send', evTrackProp)
                     $http.post(urlFirst, data).then((res)->
-                        if res.success
-                            resolve(res)
+                        if res.data.success
+                            resolve(res.data)
                         else
-                            reject(res)
+                            reject(res.data)
                         base.notice.response(res) if opts.noticeShow.errors
                     , (res)->
                         reject(res)
@@ -74,10 +74,10 @@ class registration extends Service('appSrvc')
                   !isSending
                     mixpanel.api('track', 'Registration__2-step__send', evTrackProp)
                     $http.post(urlTwo, data).then((res)->
-                        if res.success
-                            resolve(res)
+                        if res.data.success
+                            resolve(res.data)
                         else
-                            reject(res)
+                            reject(res.data)
                             base.notice.response(res) if opts.noticeShow.errors
                     , (res)->
                         reject(res)

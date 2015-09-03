@@ -1,10 +1,12 @@
 var MainSocial;
 
 MainSocial = (function() {
-  function MainSocial($state, $rootScope, userService) {}
+  function MainSocial($rootScope, userService) {
+    $rootScope.user = userService.get();
+  }
 
   return MainSocial;
 
 })();
 
-angular.module('socialApp.controllers').controller('mainSocialController', ['$state', '$rootScope', 'userService', MainSocial]);
+angular.module('socialApp.controllers').controller('mainSocialController', ['$rootScope', 'userService', MainSocial]);

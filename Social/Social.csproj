@@ -309,6 +309,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Scripts\libs\angular-storage\angular-storage.js" />
     <Content Include="Scripts\libs\angular-ui-bootstrap\ui-bootstrap-tpls-0.13.3.js" />
     <Content Include="Scripts\libs\angular-ui-router\angular-ui-router.js" />
     <Content Include="Scripts\libs\angular-ui-router\angular-ui-router.min.js" />

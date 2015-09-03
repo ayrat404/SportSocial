@@ -7,7 +7,8 @@ class login extends Service('appSrvc')
         $rootScope
         base
         mixpanel
-        servicesDefault) ->
+        servicesDefault
+        userService) ->
 
         url = servicesDefault.baseServiceUrl + '/login'
         isSending = false
@@ -25,7 +26,8 @@ class login extends Service('appSrvc')
                     mixpanel.api('track', 'Login__send', evTrackProp)
                     $http.post(url, data).then((res)->
                         if res.success
-                            resolve(res)
+                            userService.set(res.data.data)
+                            resolve(res.data)
                         else
                             reject(res)
                             base.notice.response(res) if opts.noticeShow.errors

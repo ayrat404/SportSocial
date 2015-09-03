@@ -19,7 +19,7 @@
             <code>POST: /api/xxx</code>
             <b>
                 send data:
-                    <pre>
+                <pre>
 {
     phone: x,
     password: x
@@ -28,7 +28,7 @@
             </b>
             <b>
                 accept data:
-                    <pre>
+                <pre>
 {
     success: false,
     data: null,
@@ -56,11 +56,11 @@
 
 
         <li id="api_login" class="dev__api__row">
-            <p>авторизация пользователя</p>
+            <p>авторизация пользователя. возможно необходимо будет добавить какой то токен в ответ, который будет в дальнейшем использоваться в заголовках запросов</p>
             <code>POST: /api/login</code>
             <b>
                 send data:
-                    <pre>
+                <pre>
 {
     phone: x,
     password: x
@@ -69,10 +69,14 @@
             </b>
             <b>
                 accept data:
-                    <pre>
+                <pre>
 {
     success: true,
-    data: null,
+    data: {
+        id: x,
+        avatar: x,
+        fullName: x
+    },
     errors: null
 }
                     </pre>
@@ -84,7 +88,7 @@
             <code>POST: /api/register_one</code>
             <b>
                 send data:
-                    <pre>
+                <pre>
 {
     imgId: x,
     name: x,
@@ -98,7 +102,7 @@
             </b>
             <b>
                 accept data:
-                    <pre>
+                <pre>
 {
     success: true,
     data: null,
@@ -111,7 +115,7 @@
             <code>POST: /api/register_two</code>
             <b>
                 send data:
-                    <pre>
+                <pre>
 {
     imgId: x,
     name: x,
@@ -128,7 +132,7 @@
             </b>
             <b>
                 accept data:
-                    <pre>
+                <pre>
 {
     success: true,
     data: null,
@@ -143,7 +147,7 @@
             <code>POST: /api/upload</code>
             <b>
                 send data:
-                    <pre>
+                <pre>
 {
     imageFormData
 }
@@ -151,7 +155,7 @@
             </b>
             <b>
                 accept data:
-                    <pre>
+                <pre>
 {
     success: true,
     data: {
@@ -170,7 +174,7 @@
             <code>POST: /api/restore_password_one</code>
             <b>
                 send data:
-                    <pre>
+                <pre>
 {
     phone: x
 }
@@ -178,7 +182,7 @@
             </b>
             <b>
                 accept data:
-                    <pre>
+                <pre>
 {
     success: true,
     data: null,
@@ -190,7 +194,7 @@
             <code>POST: /api/restore_password_two</code>
             <b>
                 send data:
-                    <pre>
+                <pre>
 {
     phone: x,
     code: x,
@@ -201,7 +205,7 @@
             </b>
             <b>
                 accept data:
-                    <pre>
+                <pre>
 {
     success: true,
     data: null,
@@ -217,7 +221,7 @@
             <code>GET: /api/sport_themes</code>
             <b>
                 send data:
-                    <pre>
+                <pre>
 {
     query: xxx
 }
@@ -225,7 +229,7 @@
             </b>
             <b>
                 accept data:
-                    <pre>
+                <pre>
 {
     success: true,
     data: ['турник', 'брусья'],
@@ -241,7 +245,7 @@
             <code>POST: /api/youtube</code>
             <b>
                 send data:
-                    <pre>
+                <pre>
 {
     link: xxx
 }
@@ -249,7 +253,7 @@
             </b>
             <b>
                 accept data:
-                    <pre>
+                <pre>
 {
     success: true,
     data: [
@@ -270,7 +274,7 @@
             <code>GET: /api/journal__add</code>
             <b>
                 send data:
-                    <pre>
+                <pre>
 {
     text: xxx,
     media: [
@@ -283,7 +287,7 @@
             </b>
             <b>
                 accept data:
-                    <pre>
+                <pre>
 {
     *json model
 }
