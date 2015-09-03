@@ -85,7 +85,7 @@
 
         <li id="api_register" class="dev__api__row">
             <p>первый шаг регистрации. нужно только проверить правильность данных на сервере, отравить проверочный код на телефонный номер и в случае чего вернуть ошибки валидации</p>
-            <code>POST: /api/register_one</code>
+            <code>POST: /api/register/step1</code>
             <b>
                 send data:
                 <pre>
@@ -112,14 +112,14 @@
             </b>
 
             <p>второй и заключительный шаг регистрации.</p>
-            <code>POST: /api/register_two</code>
+            <code>POST: /api/register/step1</code>
             <b>
                 send data:
                 <pre>
 {
     imgId: x,
     name: x,
-    sername: x,
+    lastName: x,
     birthday: x (dd MMM yyyy),
     sportTime: x (0->7),
     phone: x,
