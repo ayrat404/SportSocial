@@ -218,6 +218,7 @@
     <Compile Include="Models\ApiResultBase.cs" />
     <Compile Include="Models\FieldError.cs" />
     <Compile Include="Models\SummaryError.cs" />
+    <Compile Include="Models\VideoLink.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
