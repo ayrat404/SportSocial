@@ -27,7 +27,7 @@ class registration extends Service('appSrvc')
                 if data &&
                   data.imgId &&
                   data.name &&
-                  data.sername &&
+                  data.lastName &&
                   data.birthday &&
                   data.sportTime &&
                   data.phone &&

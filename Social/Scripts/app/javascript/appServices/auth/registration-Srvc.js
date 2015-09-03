@@ -15,7 +15,7 @@ registration = (function() {
       };
       return $q(function(resolve, reject) {
         debugger;
-        if (data && data.imgId && data.name && data.sername && data.birthday && data.sportTime && data.phone && data.gender && !isSending) {
+        if (data && data.imgId && data.name && data.lastName && data.birthday && data.sportTime && data.phone && data.gender && !isSending) {
           isSending = true;
           mixpanel.api('track', 'Registration__1-step__send', evTrackProp);
           return $http.post(urlFirst, data).then(function(res) {
