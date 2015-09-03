@@ -1,12 +1,13 @@
 ﻿# CoffeeScript
 class registration extends Service('appSrvc')
     constructor: (
-        $state,
-        $location,
-        $q,
-        $rootScope,
-        base,
-        mixpanel,
+        $state
+        $location
+        $q
+        $rootScope
+        $http
+        base
+        mixpanel
         servicesDefault) ->
 
         urlFirst = servicesDefault.baseServiceUrl + '/register_one'
@@ -22,12 +23,13 @@ class registration extends Service('appSrvc')
                 title: $rootScope.title
 
             $q((resolve, reject)->
+                debugger
                 if data &&
                   data.imgId &&
                   data.name &&
                   data.sername &&
                   data.birthday &&
-                  data.sprotTime &&
+                  data.sportTime &&
                   data.phone &&
                   data.gender &&
                   !isSending

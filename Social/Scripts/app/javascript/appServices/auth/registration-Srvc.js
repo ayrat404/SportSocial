@@ -1,7 +1,7 @@
 var registration;
 
 registration = (function() {
-  function registration($state, $location, $q, $rootScope, base, mixpanel, servicesDefault) {
+  function registration($state, $location, $q, $rootScope, $http, base, mixpanel, servicesDefault) {
     var isSending, registerFirst, registerTwo, urlFirst, urlTwo;
     urlFirst = servicesDefault.baseServiceUrl + '/register_one';
     urlTwo = servicesDefault.baseServiceUrl + '/register_two';
@@ -14,7 +14,8 @@ registration = (function() {
         title: $rootScope.title
       };
       return $q(function(resolve, reject) {
-        if (data && data.imgId && data.name && data.sername && data.birthday && data.sprotTime && data.phone && data.gender && !isSending) {
+        debugger;
+        if (data && data.imgId && data.name && data.sername && data.birthday && data.sportTime && data.phone && data.gender && !isSending) {
           isSending = true;
           mixpanel.api('track', 'Registration__1-step__send', evTrackProp);
           return $http.post(urlFirst, data).then(function(res) {
@@ -87,4 +88,4 @@ registration = (function() {
 
 })();
 
-angular.module('appSrvc').service('registrationService', ['$state', '$location', '$q', '$rootScope', 'base', 'mixpanel', 'servicesDefault', registration]);
+angular.module('appSrvc').service('registrationService', ['$state', '$location', '$q', '$rootScope', '$http', 'base', 'mixpanel', 'servicesDefault', registration]);

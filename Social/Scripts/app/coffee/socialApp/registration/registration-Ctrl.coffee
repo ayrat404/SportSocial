@@ -25,9 +25,10 @@ class Registration extends Controller('socialApp.controllers')
 
         # send all data after image server upload
         # ---------------
-        $scope.sendFirstStepData = (imgResponse)->
-            if imgResponse.success
-                $scope.first.imgId = imgResponse.data.id
+        $scope.sendFirstStepData = (stringResponse)->
+            obj = angular.fromJson stringResponse
+            if obj.success
+                $scope.first.imgId = obj.data.id
                 registrationService.registerFirst($scope.first).then((res)->
                     $scope.step = 2
                 , (res)->
