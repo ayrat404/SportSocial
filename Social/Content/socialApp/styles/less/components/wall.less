@@ -1,0 +1,195 @@
+﻿/* Wall
+---------------------------------------------------------------------------------- */
+
+
+.wall {
+}
+
+.wall__bar {
+    width: 2px;
+    position: relative;
+    min-height: 700px;
+    background-color: @brand-dark2;
+    margin: 0 auto;
+}
+
+.wall__it {
+    position: relative;
+    height: 360px;
+    width: 250px;
+    background-color: @brand-dark2;
+}
+
+.wall__it__inner {
+    height: 360px;
+    width: 250px;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+}
+
+.wall__it--left {
+    float: left;
+    right: 290px;
+    margin-bottom: 40px;
+
+    .wall__it__btn {
+        right: -50px;
+    }
+
+    .wall__it__triangle {
+        border-color: transparent transparent transparent @brand-dark2;
+        right: -8px;
+        border-width: 7.5px 0 7.5px 8px;
+    }
+}
+
+.wall__it--right {
+    margin-bottom: 40px;
+    top: 55px;
+    left: 40px;
+
+    .wall__it__btn {
+        left: -48px;
+    }
+
+    .wall__it__triangle {
+        border-color: transparent @brand-dark2 transparent transparent;
+        left: -8px;
+    border-width: 7.5px 8px 7.5px 0;
+    }
+}
+
+.wall__it__triangle {
+    position: absolute;
+    top: 22px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+.wall__it__btn {
+    cursor: pointer;
+    top: 20px;
+    position: absolute;
+    .sprite(@wall-point)
+}
+
+.wall__it__header {
+    height: 60px;
+    display: table;
+    width: 100%;
+
+    i {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        margin: auto;
+    }
+
+    .wi__date,
+    .wi__share,
+    .wi__comment {
+        position: relative;
+        vertical-align: middle;
+        display: table-cell;
+    }
+
+    .wi__date {
+        text-align: center;
+        font-family: 'F1 Bold';
+        width: 50%;
+        color: #fff;
+    }
+
+    .wi__share {
+        width: 25%;
+        cursor: pointer;
+
+        i {
+            .sprite(@share-sm);
+        }
+    }
+
+    .wi__comment {
+        width: 25%;
+        cursor: pointer;
+
+        i {
+            .sprite(@comment-sm);
+        }
+    }
+}
+
+.wall__it__content {
+    height: 250px;
+    overflow: hidden;
+
+    .wi__text {
+        background-color: #fff;
+        padding: 10px 15px;
+    }
+}
+
+.wall__it--editing {
+    .wall__it__btn {
+        .sprite(@wall-point-active);
+    }
+}
+
+@wall-it-likes-size: 50px;
+
+.wall__it__likes {
+    height: @wall-it-likes-size;
+    position: relative;
+    .no-float();
+
+    .wil__btn,
+    .wil__user {
+        height: @wall-it-likes-size;
+        width: @wall-it-likes-size;
+        float: left;
+    }
+
+    .wil__btn {
+        background-color: @brand-gray2;
+        position: relative;
+        cursor: pointer;
+
+        i {
+            .sprite(@like-sm);
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            margin: auto;
+        }
+    }
+
+    .wil__user {
+        img {
+            height: @wall-it-likes-size;
+            width: @wall-it-likes-size;
+        }
+    }
+
+    .wil__more {
+        height: @wall-it-likes-size;
+        width: @wall-it-likes-size;
+        line-height: @wall-it-likes-size;
+        text-align: center;
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: #fff;
+        font-family: 'F1 Bold';
+        background: rgba(4,7,9,.8);
+    }
+}
+
+
+/* /Wall
+---------------------------------------------------------------------------------- */

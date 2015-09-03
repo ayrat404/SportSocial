@@ -20,7 +20,18 @@
                 </ul>
                 <div class="nav__right">
                     <button class="nav__journal btn btn-fill-green" type="button" data-modal-click="journalSubmit">+ @R("Запись в дневник")</button>
-                    <button class="nav__photo" type="button">+</button>
+                    <div class="btn-group nav__dropdown" dropdown is-open="isOpen">
+                        <div class="nav__dropdown__btn" dropdown-toggle>
+                            <img class="nav__dropdown__photo" src="https://c1.staticflickr.com/1/673/20451789093_1fa519588b.jpg" alt="#"/>
+                            <span class="caret"></span>
+                        </div>
+                        <ul class="dropdown-menu" role="menu">
+                            <li role="menuitem"><a href="#">@R("Мой профиль")</a></li>
+                            <li role="menuitem"><a href="#">@R("Настройка профиля")</a></li>
+                            <li class="divider"></li>
+                            <li role="menuitem"><a href="#">@R("Выход")</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>

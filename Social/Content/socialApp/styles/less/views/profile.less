@@ -2,6 +2,7 @@
 ---------------------------------------------------------------------------------- */
 
 .profile {
+    background-color: @text-color;
     .icon-question {
         display: inline-block;
         vertical-align: middle;
@@ -19,7 +20,7 @@
         font-size: 1.286em;
         .link {
             float: right;
-            margin-top: 10px;
+            margin-top: 7px;
             font-size: 0.667em;
         }
         &:not(:first-child) {
@@ -33,10 +34,14 @@
             display: inline-block;
         }
     }
+    .users-list--grid {
+        margin: 5px -5px;
+    }
 }
 .profile__journal {
     padding-top: 40px;
-    background-color: #1f282d;
+    padding-bottom: 40px;
+    background-color: @text-color;
 
     .journal-submit {
         .jos__text-wrap {

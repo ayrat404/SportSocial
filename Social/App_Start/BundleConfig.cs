@@ -66,7 +66,6 @@ namespace Social
 
             // optimization
             // ---------------
-
 #if !DEBUG
                 BundleTable.EnableOptimizations = true;
 #endif
