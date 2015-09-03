@@ -10,8 +10,8 @@ class registration extends Service('appSrvc')
         mixpanel
         servicesDefault) ->
 
-        urlFirst = servicesDefault.baseServiceUrl + '/register_one'
-        urlTwo = servicesDefault.baseServiceUrl + '/register_two'
+        urlFirst = servicesDefault.baseServiceUrl + '/register/step1'
+        urlTwo = servicesDefault.baseServiceUrl + '/register/step2'
         isSending = false
 
         # (data: { name: x, sername: x, birthday: x, gender: x, sportTime: x  }, opts: {...})

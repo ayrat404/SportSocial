@@ -3,8 +3,8 @@ var registration;
 registration = (function() {
   function registration($state, $location, $q, $rootScope, $http, base, mixpanel, servicesDefault) {
     var isSending, registerFirst, registerTwo, urlFirst, urlTwo;
-    urlFirst = servicesDefault.baseServiceUrl + '/register_one';
-    urlTwo = servicesDefault.baseServiceUrl + '/register_two';
+    urlFirst = servicesDefault.baseServiceUrl + '/register/step1';
+    urlTwo = servicesDefault.baseServiceUrl + '/register/step2';
     isSending = false;
     registerFirst = function(data, prop) {
       var evTrackProp, opts;
