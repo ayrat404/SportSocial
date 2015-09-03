@@ -216,6 +216,7 @@
     <Compile Include="Models\ApiError.cs" />
     <Compile Include="Models\ApiResult.cs" />
     <Compile Include="Models\ApiResultBase.cs" />
+    <Compile Include="Models\Class1.cs" />
     <Compile Include="Models\FieldError.cs" />
     <Compile Include="Models\SummaryError.cs" />
     <Compile Include="Models\VideoLink.cs" />

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.ModelBinding;
@@ -27,14 +28,18 @@ namespace Social.Controllers
             for (int i = 0; i < fields.Count; i++)
             {
                 var error = values[i].Errors.First().ErrorMessage;
+                int dotIndex = fields[i].IndexOf(".");
+                var fieldName = fields[i].Substring(dotIndex + 1, fields[i].Length - dotIndex - 1);
+                string fieldNameCamelCase = fieldName.Substring(0, 1).ToLower() +
+                                            fieldName.Substring(1, fieldName.Length - 1);
                 var fieldError = new FieldError
                 {
-                    Name = fields[i],
+                    Name = fieldNameCamelCase,
                     Error = error
                 };
                 result.Errors.Fields.Add(fieldError);
             }
-            return new ApiResult();
+            return result;
         }
 
         protected ApiResult ApiResult(ServiceResult serviceResult)

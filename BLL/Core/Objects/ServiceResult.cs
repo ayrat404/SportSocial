@@ -13,7 +13,6 @@
                 Success = true
             };
         }
-
         public static ServiceResult ErrorResult(string errorMsg)
         {
             return new ServiceResult()
@@ -22,13 +21,16 @@
                 ErrorMessage = errorMsg
             };
         }
-    }
 
-    public class ServiceResult<T>: ServiceResult
-    {
-        public T Result { get; set; }
-
-        public static ServiceResult<T> SuccessResult(T result)
+        public static ServiceResult<T> ErrorResult<T>(string errorMsg)
+        {
+            return new ServiceResult<T>
+            {
+                Success = false,
+                ErrorMessage = errorMsg
+            };
+        }
+        public static ServiceResult<T> SuccessResult<T>(T result)
         {
             return new ServiceResult<T>
             {
@@ -36,5 +38,10 @@
                 Result = result
             };
         }
+    }
+
+    public class ServiceResult<T>: ServiceResult
+    {
+        public T Result { get; set; }
     }
 }

@@ -27,7 +27,7 @@ namespace Social.Controllers
 
         [Route("")]
         [HttpPost]
-        public ApiResultBase Upload()
+        public ApiResult Upload()
         {
             string key = HttpContext.Current.Request.Files.AllKeys.First();
             var uploadType = (UploadType)Enum.Parse(typeof (UploadType), key);
@@ -38,7 +38,7 @@ namespace Social.Controllers
 
         [Route("~/api/youtube")]
         [HttpPost]
-        public ApiResultBase AddYoutubeVideo(VideoLink link)
+        public ApiResult AddYoutubeVideo(VideoLink link)
         {
             var result = _videoService.AddVideo(link.Link);
             var result2 =  ApiResult(result);

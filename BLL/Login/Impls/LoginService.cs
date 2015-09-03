@@ -39,12 +39,12 @@ namespace BLL.Login.Impls
             _cookiesService = cookiesService;
         }
 
-        public ServiceResult SignIn(SignInModel signInModel, string returnUrl)
+        public ServiceResult<SingInResult> SignIn(SignInModel signInModel, string returnUrl)
         {
             var user = _appUserManager.Find(signInModel.Phone, signInModel.Password);
             if (user == null)
             {
-                return ServiceResult.ErrorResult("Не верный логин или пароль".Resource(this));
+                return ServiceResult.ErrorResult<SingInResult>("Не верный логин или пароль".Resource(this));
             }
             else
             {
@@ -57,7 +57,7 @@ namespace BLL.Login.Impls
                     Name = user.Profile.FirstName + " " + user.Profile.LastName,
                     Avatar = user.Profile.Avatar
                 };
-                return ServiceResult<SingInResult>.SuccessResult(result);
+                return ServiceResult.SuccessResult(result);
             }
         }
 
@@ -125,6 +125,7 @@ namespace BLL.Login.Impls
                 {
                     user.PhoneNumberConfirmed = true;
                     _appUserManager.AddPassword(user.Id, confirmModel.Password);
+                    user.Name = confirmModel.Name;
                     _appUserManager.Update(user);
                     
                     var profile = new Profile
