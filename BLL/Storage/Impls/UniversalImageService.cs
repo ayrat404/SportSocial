@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using BLL.Comments.Impls;
 using BLL.Common.Objects;
 using BLL.Common.Services.CurrentUser;
+using BLL.Social.Journals.Objects;
 using BLL.Storage.Impls.Enums;
 using DAL.DomainModel;
 using DAL.DomainModel.BlogEntities;
@@ -29,6 +31,11 @@ namespace BLL.Storage.Impls
         public ServiceResult<ImageUploadResult> Save(Stream inputStream, string fileName, UploadType uploadType)
         {
             return CreateGenericService(uploadType).Save(inputStream, GetPath(uploadType), fileName);
+        }
+
+        public void AttachImagesToEntity(List<MediaVm> medias, int entityId, UploadType type)
+        {
+            CreateGenericService(type).AttachImagesToEntity(medias, entityId);
         }
 
         private IImageSaver CreateGenericService(UploadType type)

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using BLL.Tags;
+using BLL.Social.Tags;
 using Social.Models;
 
 namespace Social.Controllers
