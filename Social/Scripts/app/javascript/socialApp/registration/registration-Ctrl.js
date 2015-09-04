@@ -16,9 +16,11 @@ Registration = (function() {
     $scope.sendImg = function($flow) {
       return $flow.upload();
     };
-    $scope.sendFirstStepData = function(imgResponse) {
-      if (imgResponse.success) {
-        $scope.first.imgId = imgResponse.data.id;
+    $scope.sendFirstStepData = function(stringResponse) {
+      var obj;
+      obj = angular.fromJson(stringResponse);
+      if (obj.success) {
+        $scope.first.imgId = obj.data.id;
         return registrationService.registerFirst($scope.first).then(function(res) {
           return $scope.step = 2;
         }, function(res) {

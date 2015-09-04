@@ -1,16 +1,17 @@
 ﻿# CoffeeScript
 class registration extends Service('appSrvc')
     constructor: (
-        $state,
-        $location,
-        $q,
-        $rootScope,
-        base,
-        mixpanel,
+        $state
+        $location
+        $q
+        $rootScope
+        $http
+        base
+        mixpanel
         servicesDefault) ->
 
-        urlFirst = servicesDefault.baseServiceUrl + '/register_one'
-        urlTwo = servicesDefault.baseServiceUrl + '/register_two'
+        urlFirst = servicesDefault.baseServiceUrl + '/register/step1'
+        urlTwo = servicesDefault.baseServiceUrl + '/register/step2'
         isSending = false
 
         # (data: { name: x, sername: x, birthday: x, gender: x, sportTime: x  }, opts: {...})
@@ -25,9 +26,9 @@ class registration extends Service('appSrvc')
                 if data &&
                   data.imgId &&
                   data.name &&
-                  data.sername &&
+                  data.lastName &&
                   data.birthday &&
-                  data.sprotTime &&
+                  data.sportTime &&
                   data.phone &&
                   data.gender &&
                   !isSending
@@ -62,14 +63,14 @@ class registration extends Service('appSrvc')
                 if data &&
                   data.imgId &&
                   data.name &&
-                  data.sername &&
+                  data.lastName &&
                   data.birthday &&
-                  data.sprotTime &&
+                  data.sportTime &&
                   data.phone &&
                   data.gender &&
                   data.password &&
-                  data.repeatPassword &&
-                  data.password == data.repeatPassword &&
+                  data.passwordRepeat &&
+                  data.password == data.passwordRepeat &&
                   data.code &&
                   !isSending
                     mixpanel.api('track', 'Registration__2-step__send', evTrackProp)

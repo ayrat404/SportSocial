@@ -39,27 +39,26 @@ namespace BLL.Login.Impls
             _cookiesService = cookiesService;
         }
 
-        public LoginServiceResult SignIn(SignInModel signInModel, string returnUrl)
+        public ServiceResult<SingInResult> SignIn(SignInModel signInModel, string returnUrl)
         {
-            var result = new LoginServiceResult
-            {
-                Success = true,
-                ReturnUrl = returnUrl
-            };
             var user = _appUserManager.Find(signInModel.Phone, signInModel.Password);
             if (user == null)
             {
-                result.Success = false;
-                result.ErrorMessage = "Не верный логин или пароль".Resource(this);
+                return ServiceResult.ErrorResult<SingInResult>("Не верный логин или пароль".Resource(this));
             }
             else
             {
                 var ident = _appUserManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
                 _authManager.SignOut();
                 _authManager.SignIn(new AuthenticationProperties { IsPersistent = true }, ident);
-                result.ReturnUrl = ""; //TODO return url
+                var result = new SingInResult()
+                {
+                    Id = user.Id,
+                    Name = user.Profile.FirstName + " " + user.Profile.LastName,
+                    Avatar = user.Profile.Avatar
+                };
+                return ServiceResult.SuccessResult(result);
             }
-            return result;
         }
 
         public LoginServiceResult PreRegister(RegistratioinModel regModel, string url)
@@ -126,6 +125,7 @@ namespace BLL.Login.Impls
                 {
                     user.PhoneNumberConfirmed = true;
                     _appUserManager.AddPassword(user.Id, confirmModel.Password);
+                    user.Name = confirmModel.Name;
                     _appUserManager.Update(user);
                     
                     var profile = new Profile
@@ -289,5 +289,14 @@ namespace BLL.Login.Impls
             }
             return true;
         }
+    }
+
+    public class SingInResult
+    {
+        public int Id { get; set; } 
+
+        public string Avatar { get; set; } 
+
+        public string Name { get; set; } 
     }
 }

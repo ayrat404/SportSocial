@@ -1,4 +1,5 @@
 ﻿using BLL.Common.Objects;
+using BLL.Login.Impls;
 using BLL.Login.ViewModels;
 using BLL.Storage;
 
@@ -6,7 +7,7 @@ namespace BLL.Login
 {
     public interface ILoginService
     {
-        LoginServiceResult SignIn(SignInModel signInModel, string returnUrl);
+        ServiceResult<SingInResult> SignIn(SignInModel signInModel, string returnUrl);
 
         LoginServiceResult PreRegister(RegistratioinModel regModel, string url);
 
