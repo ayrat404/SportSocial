@@ -1,5 +1,6 @@
 ﻿using System.Web;
 using System.Web.Http;
+using System.Web.Http.Validation;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -10,6 +11,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Ninject.Web.WebApi;
 using Social.App_Start;
+using Social.Models;
 
 namespace Social
 {
@@ -24,6 +26,11 @@ namespace Social
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
+            var services = GlobalConfiguration.Configuration.Services;
+
+            var bodyValidator = services.GetBodyModelValidator();
+            //services.Replace(typeof(IBodyModelValidator), new PrefixlessBodyModelValidator(GlobalConfiguration.Configuration.Services.GetBodyModelValidator())); 
+            services.Replace(typeof(System.Web.Http.Validation.IBodyModelValidator), new PrefixlessBodyModelValidator());
             LocalizationManager.Repository = new LocalizationRepository();
 
             var formatters = GlobalConfiguration.Configuration.Formatters;

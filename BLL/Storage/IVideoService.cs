@@ -1,5 +1,8 @@
-﻿using BLL.Common.Helpers;
+﻿using System.Collections.Generic;
+using System.Linq;
+using BLL.Common.Helpers;
 using BLL.Common.Objects;
+using BLL.Social.Journals.Objects;
 using BLL.Storage.Objects;
 using DAL.DomainModel.Base;
 using DAL.DomainModel.JournalEntities;
@@ -11,6 +14,8 @@ namespace BLL.Storage
     public interface IVideoService
     {
         ServiceResult<VideoUploadResult> AddVideo(string url);
+
+        void AddVideosToJournal(List<MediaVm> vids, int entityId);
     }
 
     public class VideoService : IVideoService
@@ -51,6 +56,19 @@ namespace BLL.Storage
                     Id = media.Id
                 }
             };
+        }
+
+        public void AddVideosToJournal(List<MediaVm> vids, int entityId)
+        {
+            var mediaIds = vids.Select(v => v.Id);
+            var medias = _repository.Queryable<JournalMedia>()
+                .Where(m => mediaIds.Contains(m.Id))
+                .ToList();
+            foreach (var media in medias)
+            {
+                media.EntityId = entityId;
+            }
+            _repository.SaveChanges();
         }
     }
 }

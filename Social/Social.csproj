@@ -205,6 +205,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JournalController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Controllers\TemplateController.cs" />
@@ -216,6 +217,7 @@
     <Compile Include="Models\ApiError.cs" />
     <Compile Include="Models\ApiResult.cs" />
     <Compile Include="Models\ApiResultBase.cs" />
+    <Compile Include="Models\Class1.cs" />
     <Compile Include="Models\FieldError.cs" />
     <Compile Include="Models\SummaryError.cs" />
     <Compile Include="Models\VideoLink.cs" />

@@ -240,6 +240,10 @@
     <Compile Include="Sms\Impls\SmsPilotSmsService.cs" />
     <Compile Include="Sms\ISmsService.cs" />
     <Compile Include="Sms\Objects\SmsPilotSendModel.cs" />
+    <Compile Include="Social\Journals\IJournalService.cs" />
+    <Compile Include="Social\Journals\JournalService.cs" />
+    <Compile Include="Social\Journals\Objects\JournalVm.cs" />
+    <Compile Include="Social\Journals\Objects\MediaVm.cs" />
     <Compile Include="Storage\IFIleService.cs" />
     <Compile Include="Storage\IImageSaver.cs" />
     <Compile Include="Storage\IImageService.cs" />
@@ -252,13 +256,12 @@
     <Compile Include="Storage\Objects\UploadImageModel.cs" />
     <Compile Include="Storage\Objects\VideoProvider.cs" />
     <Compile Include="Storage\Objects\VideoUploadResult.cs" />
-    <Compile Include="Tags\Impls\TagService.cs" />
-    <Compile Include="Tags\ITagService.cs" />
+    <Compile Include="Social\Tags\Impls\TagService.cs" />
+    <Compile Include="Social\Tags\ITagService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\Services\Cookies\Impls\" />
     <Folder Include="Payment\Enums\" />
-    <Folder Include="Social\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

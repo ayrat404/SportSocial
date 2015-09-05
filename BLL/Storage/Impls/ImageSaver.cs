@@ -1,11 +1,15 @@
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Web;
 using BLL.Common.Objects;
 using BLL.Common.Services.CurrentUser;
+using BLL.Social.Journals.Objects;
 using DAL.DomainModel.Base;
 using DAL.DomainModel.Interfaces;
+using DAL.DomainModel.JournalEntities;
 using DAL.Repository.Interfaces;
 using Knoema.Localization;
 
@@ -47,6 +51,19 @@ namespace BLL.Storage.Impls
             result.Result.Url = VirtualPathUtility.ToAbsolute(url);
             result.Result.Id = imageEntity.Id;
             return result;
+        }
+
+        public void AttachImagesToEntity(List<MediaVm> addedMedias, int entityId)
+        {
+            var mediaIds = addedMedias.Select(v => v.Id);
+            var medias = _repository.Queryable<TImageEntity>()
+                .Where(m => mediaIds.Contains(m.Id))
+                .ToList();
+            foreach (var media in medias)
+            {
+                media.EntityId = entityId;
+            }
+            _repository.SaveChanges();
         }
 
         private bool IsImage(Stream inputStream)

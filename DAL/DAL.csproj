@@ -187,6 +187,7 @@
     <Compile Include="Repository\Interfaces\IAccountRepository.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Repository\Interfaces\IJournalRepository.cs" />
     <Compile Include="Repository\Interfaces\IPaymentRepository.cs" />
     <Compile Include="Repository\Interfaces\IRepository.cs" />
     <Compile Include="Repository\PaymentRepository.cs" />
