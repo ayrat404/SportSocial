@@ -4,7 +4,7 @@ noticeCtrl = do ->
     $body = angular.element('body')
     defaults =
         type: 'info'
-        delay: 6000
+        delay: 9000
         autohide: true
     boxClass = 'float-notice alert alert-'
     bottomOffset = 20

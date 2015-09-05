@@ -6,8 +6,8 @@ Profile = (function() {
     url = servicesDefault.baseServiceUrl + '/profile';
     getInfo = function(userId) {
       return $q(function(resolve, reject) {
-        if (userId && typeof userId === 'number') {
-          return $http.get(url + userId, {
+        if (userId) {
+          return $http.get(url, {
             params: {
               id: userId
             }

@@ -140,6 +140,16 @@
     .wall__it__header {
         background-color: @brand-red;
     }
+    &.wall__it--right {
+        .wall__it__triangle {
+            border-color: transparent @brand-red transparent transparent;
+        }
+    }
+    &.wall__it--left {
+        .wall__it__triangle {
+            border-color: transparent transparent transparent @brand-red;
+        }
+    }
 }
 
 @wall-it-likes-size: 50px;

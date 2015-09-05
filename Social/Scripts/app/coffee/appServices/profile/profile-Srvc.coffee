@@ -13,8 +13,8 @@ class Profile extends Service('appSrvc')
     # ---------------
     getInfo = (userId)->
       $q (resolve, reject)->
-        if userId && typeof userId == 'number'
-          $http.get(url + userId, { params: {id: userId}}).then((res)->
+        if userId
+          $http.get(url, { params: {id: userId}}).then((res)->
             if res.data.success
               resolve res.data
             else
