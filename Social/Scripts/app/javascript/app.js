@@ -37,8 +37,7 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'fl
     }).state('registration', {
       url: '/registration',
       templateUrl: tmplView('registration/index'),
-      controller: 'registrationController',
-      fullHeight: true
+      controller: 'registrationController'
     });
     $urlRouterProvider.otherwise('/404');
     $httpProvider.interceptors.push('apiInterseptorProvider');

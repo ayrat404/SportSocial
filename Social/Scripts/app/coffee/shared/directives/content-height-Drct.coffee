@@ -24,7 +24,7 @@ class contentHeight extends Directive('shared')
             link: (scope, element, attrs)->
                 $el = angular.element element
                 elHeight($el, attrs.contentHeight)
-                angular.element($window).resize(->
-                    elHeight($el, attrs.contentHeight)
-                )
+                if attrs.onresize != false
+                    angular.element($window).resize ->
+                        elHeight($el, attrs.contentHeight)
         }

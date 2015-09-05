@@ -5,16 +5,18 @@
                 <div class="profile__info" data-content-height>
                     <div class="user-info">
                         <div class="user-info__avatar">
-                            <div class="ui__avatar-upload">
+                            <img ng-src="profile.user.avatar | imageResize:{w: 230, h: 230}" class="user-infor__avatar__img"/>
+                            @*TODO пока аватар менять нельзя, а при регистрации он обязателен*@
+                            <div ng-if="!profile.user.avatar.length" class="ui__avatar-upload">
                                 <i class="icon-upload"></i>
                                 <p class="link">+ @R("Загрузить аватар")</p>
                             </div>
                         </div>
-                        <div class="user-info__about">
-                            <p class="ui__name">Павел козловский {{social.testTitle}}</p>
-                            <p class="ui__age">25 лет / 3 года в спорте</p>
-                            <p class="ui__location">Москва, Россия</p>
-                            <a href="#" class="ui__edit">@R("Редактировать профиль")</a>
+                        <div ng-if="profile.user.loaded" class="user-info__about">
+                            <p class="ui__name">{{profile.user.fullName}}</p>
+                            <p class="ui__age">{{profile.user.age | formatWord:['@R("год")', '@R("года")', '@R("лет")']:true}} / {{profile.user.sportTime | formatWord:['@R("год")', '@R("года")', '@R("лет")']:true}} @R("в спорте")</p>
+                            <p ng-show="profile.user.location.length" class="ui__location">{{profile.user.location}}</p>
+                            <a ng-if="profile.user.isOwner" href="#" class="ui__edit">@R("Редактировать профиль")</a>
                         </div>
                     </div>
                     <div class="pi__row">

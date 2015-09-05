@@ -1,7 +1,7 @@
 class JournalProfileSubmit extends Controller('socialApp.controllers')
     constructor: (
         $scope
-        journalSubmitService)->
+        journalService)->
 
         # journal model
         # ---------------
@@ -47,7 +47,7 @@ class JournalProfileSubmit extends Controller('socialApp.controllers')
         # submit form
         # ---------------
         $scope.submit = ->
-            journalSubmitService.submit($scope.j).then((res)->
+            journalService.submit($scope.j).then((res)->
                 $scope.closeForm()
                 # todo past new data in wall
             , (res)->

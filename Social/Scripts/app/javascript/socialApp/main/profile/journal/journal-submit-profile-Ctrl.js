@@ -1,7 +1,7 @@
 var JournalProfileSubmit;
 
 JournalProfileSubmit = (function() {
-  function JournalProfileSubmit($scope, journalSubmitService) {
+  function JournalProfileSubmit($scope, journalService) {
     var takeWatcher;
     $scope.j = {
       text: '',
@@ -37,7 +37,7 @@ JournalProfileSubmit = (function() {
       return $scope.j.media = [];
     };
     $scope.submit = function() {
-      return journalSubmitService.submit($scope.j).then(function(res) {
+      return journalService.submit($scope.j).then(function(res) {
         return $scope.closeForm();
       }, function(res) {});
     };
@@ -47,4 +47,4 @@ JournalProfileSubmit = (function() {
 
 })();
 
-angular.module('socialApp.controllers').controller('journalProfileSubmitController', ['$scope', 'journalSubmitService', JournalProfileSubmit]);
+angular.module('socialApp.controllers').controller('journalProfileSubmitController', ['$scope', 'journalService', JournalProfileSubmit]);

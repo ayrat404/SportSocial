@@ -1,7 +1,7 @@
 var JournalModalSubmit;
 
 JournalModalSubmit = (function() {
-  function JournalModalSubmit($scope, $modalInstance, journalSubmitService) {
+  function JournalModalSubmit($scope, $modalInstance, journalService) {
     $scope.j = {
       text: '',
       themes: [],
@@ -16,9 +16,9 @@ JournalModalSubmit = (function() {
     };
     $scope.submit = function() {
       debugger;
-      return journalSubmitService.submit($scope.j).then(function(res) {
+      return journalService.submit($scope.j).then(function(res) {
         return $modalInstance.close();
-      }, function(res) {});
+      });
     };
   }
 
@@ -26,4 +26,4 @@ JournalModalSubmit = (function() {
 
 })();
 
-angular.module('socialApp.controllers').controller('journalModalSubmitController', ['$scope', '$modalInstance', 'journalSubmitService', JournalModalSubmit]);
+angular.module('socialApp.controllers').controller('journalModalSubmitController', ['$scope', '$modalInstance', 'journalService', JournalModalSubmit]);

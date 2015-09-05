@@ -11,6 +11,9 @@
         <li><a href="#api_themes">Загрузка спортивных тем</a></li>
         <li><a href="#api_video">Загрузка видео с ютуба</a></li>
         <li><a href="#api_journal_add">Создание записи в дневнике</a></li>
+        <li><a href="#api_journal_delete">Удаление записи в дневнике</a></li>
+        <li><a href="#api_journal_edit">Редактирование записи в дневнике</a></li>
+        <li><a href="#api_profile_view">Получить данные о профиле</a></li>
     </ul>
     <ul class="dev__api__content">
 
@@ -271,7 +274,7 @@
 
         <li id="api_journal_add" class="dev__api__row">
             <p>Добавление записи в дневник</p>
-            <code>GET: /api/journal__add</code>
+            <code>GET: /api/journal</code>
             <b>
                 send data:
                 <pre>
@@ -290,6 +293,87 @@
                 <pre>
 {
     *json model
+}
+                    </pre>
+            </b>
+
+        </li>
+        
+        <li id="api_journal_delete" class="dev__api__row">
+            <p>Удаление записи в дневник</p>
+            <code>DELETE: /api/journal</code>
+            <b>
+                send data:
+                <pre>
+{
+    id: xxx
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true,
+    data: null,
+    errors: null
+}
+                    </pre>
+            </b>
+
+        </li>
+        
+        
+        <li id="api_journal_edit" class="dev__api__row">
+            <p>Редактирование записи в дневник</p>
+            <code>PUT: /api/journal</code>
+            <b>
+                send data:
+                <pre>
+{
+    *json model* 
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true,
+    data: null,
+    errors: null
+}
+                    </pre>
+            </b>
+
+        </li>
+        
+        
+        <li id="api_profile_view" class="dev__api__row">
+            <p>Запрос данных о профиле</p>
+            <code>GET: /api/profile</code>
+            <b>
+                send data:
+                <pre>
+{
+    id: x
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true,
+    data: {
+        avatar: x,
+        fullName: x,
+        age: x,
+        sportTime: x,
+        location: x,
+        isOwner: true/false
+    },
+    errors: null
 }
                     </pre>
             </b>

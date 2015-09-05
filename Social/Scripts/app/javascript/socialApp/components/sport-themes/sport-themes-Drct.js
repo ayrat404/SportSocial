@@ -1,7 +1,7 @@
 var ThemesAutocomplete;
 
 ThemesAutocomplete = (function() {
-  function ThemesAutocomplete(journalSubmitService) {
+  function ThemesAutocomplete() {
     return {
       restrict: 'EA',
       require: 'ngModel',
@@ -19,4 +19,4 @@ ThemesAutocomplete = (function() {
 
 })();
 
-angular.module('socialApp.directives').directive('themesAutocomplete', ['journalSubmitService', ThemesAutocomplete]);
+angular.module('socialApp.directives').directive('themesAutocomplete', [ThemesAutocomplete]);

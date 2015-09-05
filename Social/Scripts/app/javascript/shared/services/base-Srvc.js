@@ -1,4 +1,4 @@
-var animationCtrl, delay, imageCtrl, noticeCtrl, validationCtrl;
+var animationCtrl, delay, formatCtrl, imageCtrl, noticeCtrl, validationCtrl;
 
 noticeCtrl = (function() {
   var $body, bottomOffset, boxClass, checkColumnHeight, defaults, hide, hideAll, margin, mergeOpts, notices, response, setBottomOffset, show;
@@ -146,6 +146,27 @@ validationCtrl = (function() {
   };
 })();
 
+formatCtrl = (function() {
+  var word;
+  word = function(count, words) {
+    var cnt;
+    cnt = +count.toString().substring(count.toString().length - 1, count.toString().length);
+    if (count > 4 && count < 21) {
+      return words[2];
+    }
+    if (cnt === 1) {
+      return words[0];
+    } else if (cnt > 1 && cnt < 5) {
+      return words[1];
+    } else {
+      return words[2];
+    }
+  };
+  return {
+    word: word
+  };
+})();
+
 delay = function(callback, ms) {
   var timer;
   timer = 0;
@@ -169,6 +190,7 @@ angular.module('shared').factory('base', [
       notice: noticeCtrl,
       animation: animationCtrl,
       validate: validationCtrl,
+      format: formatCtrl,
       image: imageCtrl,
       isArray: function(array) {
         if (Object.prototype.toString.call(array) === '[object Array]') {

@@ -52,7 +52,6 @@ app = angular.module('app', [
             url: '/registration'
             templateUrl: tmplView('registration/index')
             controller: 'registrationController'
-            fullHeight: true
 
         $urlRouterProvider.otherwise '/404'
 

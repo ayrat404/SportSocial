@@ -1,6 +1,5 @@
 class ThemesAutocomplete extends Directive('socialApp.directives')
-    constructor: (journalSubmitService)->
-
+    constructor: ->
         return {
             restrict: 'EA'
             require: 'ngModel'

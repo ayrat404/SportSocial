@@ -32,9 +32,11 @@ contentHeight = (function() {
         var $el;
         $el = angular.element(element);
         elHeight($el, attrs.contentHeight);
-        return angular.element($window).resize(function() {
-          return elHeight($el, attrs.contentHeight);
-        });
+        if (attrs.onresize !== false) {
+          return angular.element($window).resize(function() {
+            return elHeight($el, attrs.contentHeight);
+          });
+        }
       }
     };
   }

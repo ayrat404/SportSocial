@@ -132,6 +132,22 @@ validationCtrl = do ->
         return re.test(email)
     }
 
+# Format module
+# ---------------
+formatCtrl = do ->
+    word = (count, words)->
+        cnt =  +count.toString().substring(count.toString().length - 1, count.toString().length)
+        if count > 4 && count < 21
+            return words[2]
+        if cnt == 1
+            return words[0]
+        else if cnt > 1 && cnt < 5
+            return words[1]
+        else return words[2]
+    return {
+        word: word
+    }
+
 # Delay module
 # ---------------
 delay = (callback, ms)->
@@ -155,6 +171,7 @@ angular.module('shared').factory('base', [->
     notice: noticeCtrl
     animation: animationCtrl
     validate: validationCtrl
+    format: formatCtrl
     image: imageCtrl
     isArray: (array)->
         if Object.prototype.toString.call(array) == '[object Array]'

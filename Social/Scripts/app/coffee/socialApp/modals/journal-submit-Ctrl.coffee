@@ -2,7 +2,7 @@ class JournalModalSubmit extends Controller('socialApp.controllers')
     constructor: (
         $scope
         $modalInstance
-        journalSubmitService)->
+        journalService)->
 
         # journal model
         # ---------------
@@ -14,7 +14,7 @@ class JournalModalSubmit extends Controller('socialApp.controllers')
         # remove item from media array
         # ---------------
         $scope.removeMedia = (item)->
-            index = $scope.j.media.indexOf(item)
+            index = $scope.j.media.indexOf item
             if index != -1
                 $scope.j.media.splice(index, 1)
 
@@ -22,8 +22,5 @@ class JournalModalSubmit extends Controller('socialApp.controllers')
         # ---------------
         $scope.submit = ->
             debugger
-            journalSubmitService.submit($scope.j).then((res)->
+            journalService.submit($scope.j).then (res)->
                 $modalInstance.close()
-            , (res)->
-
-            )
