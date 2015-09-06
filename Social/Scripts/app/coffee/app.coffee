@@ -89,16 +89,14 @@ app = angular.module('app', [
         # ---------------
         NProgress.configure({ minimum: 0.3 })
 
-        # todo remove
-        # user model
-
+        # current user model
         $rootScope.user = {}
 
         # ---------------
         $rootScope.$on '$stateChangeStart', (event, toState, toParams) ->
             if toState.data != undefined
                 requireLogin = toState.data.requireLogin
-            if requireLogin && userService.get().id == undefined
+            if requireLogin && userService.get() == undefined
                 event.preventDefault()
                 base.notice.show(text: 'The page you requested is available only to registered users', type: 'warning')
                 modalService.show(
