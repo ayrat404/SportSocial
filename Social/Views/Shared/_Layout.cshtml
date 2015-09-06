@@ -8,7 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link type="text/css" rel="stylesheet" media="all" href="~/Content/socialApp/styles/compile/fortress.social.min.css">
 </head>
-<body>
+@{
+  var userObj = "{}";
+  if (!CurrentUser.IsAnonimous)
+  {
+    userObj = string.Format("{{ id: {0}, fullName: \"{1}\", avatar: \"{2}\" }}", CurrentUser.UserId, CurrentUser.User.FullName(), CurrentUser.User.Profile.Avatar);
+  }
+}
+<body ng-init="$root.user = @userObj">
     <div data-loader="loader" class="global-loader-container">
         <div id="ui-view" class="ui-content" ng-cloak ui-view data-tmpl-url="@Request.RequestContext.RouteData.DataTokens["templateUrl"]">
             @RenderBody()

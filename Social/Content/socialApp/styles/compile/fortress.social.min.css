@@ -9682,6 +9682,9 @@ This must be run when you have at least 2 sprites.
 */
 /* Core styles html,body, etc.
 ---------------------------------------------------------------------------------- */
+html {
+  height: 100%;
+}
 html.full-height {
   height: 100%;
 }
@@ -9702,6 +9705,9 @@ body {
   opacity: 0;
   -webkit-transition: opacity 200ms linear;
           transition: opacity 200ms linear;
+}
+body.modal-open {
+  height: 100%;
 }
 a:hover,
 a:focus {
@@ -10171,6 +10177,7 @@ fieldset[disabled] .btn-link-white.active {
 /* Common
 -------------------------------------------------- */
 .fs-modal .modal-close {
+  z-index: 10001;
   position: fixed;
   top: 20px;
   right: 60px;
@@ -10336,9 +10343,15 @@ fieldset[disabled] .btn-link-white.active {
   margin-right: 75px;
 }
 .nav__dropdown .dropdown-menu {
+  padding: 0;
+  font-size: 0.857em;
   left: auto;
   right: 0;
   border-radius: 0;
+  min-width: 140px;
+}
+.nav__dropdown .dropdown-menu li a {
+  padding: 9px 20px;
 }
 .nav__dropdown__btn {
   cursor: pointer;
@@ -10764,11 +10777,11 @@ fieldset[disabled] .btn-link-white.active {
   height: 20px;
 }
 .wall__it__content {
+  background-color: #fff;
   height: 250px;
   overflow: hidden;
 }
 .wall__it__content .wi__text {
-  background-color: #fff;
   padding: 10px 15px;
 }
 .wall__it--editing .wall__it__btn {

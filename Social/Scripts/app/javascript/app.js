@@ -56,13 +56,12 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'fl
     NProgress.configure({
       minimum: 0.3
     });
-    $rootScope.user = {};
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams) {
       var requireLogin;
       if (toState.data !== void 0) {
         requireLogin = toState.data.requireLogin;
       }
-      if (requireLogin && userService.get() === void 0) {
+      if (requireLogin && false) {
         event.preventDefault();
         base.notice.show({
           text: 'The page you requested is available only to registered users',

@@ -58,8 +58,35 @@
                     
                     <div class="wall">
                         <div class="wall__bar">
+                            
+                            <div ng-repeat="it in profile.wall"
+                                 ng-class="{
+                                 'wall__it--right': false,
+                                 'wall__it--left': true,
+                                 }"
+                                 class="wall__it">
+                                <div class="wall__it__triangle"></div>
+                                <div class="wall__it__btn"></div>
+                                <div class="wall__it__inner">
+                                    <header class="wall__it__header">
+                                        <span class="wi__date">{{it.date}} {{$index}}</span>
+                                        <div class="wi__share"><i></i></div>
+                                        <div class="wi__comment"><i></i></div>
+                                    </header>
+                                    <section class="wall__it__content">
+                                        <p class="wi__text">{{it.text}}</p>
+                                    </section>
+                                    <footer ng-if="it.likes.list.length" class="wall__it__likes">
+                                        <div class="wil__btn"><i></i></div>
+                                        <a ng-repeat="like in it.likes.list" ui-sref="main.profile({userId: like.id})" class="wil__user">
+                                            <img ui-src="like.img | imageResize:{w: 50, h: 50}" alt="{{like.fullName}}" />
+                                        </a>
+                                        <a ng-show="it.likes.count > 4" href="#" class="wil__more">+{{it.likes.count-4}}</a>
+                                    </footer>
+                                </div>
+                            </div>
 
-                            <div class="wall__it wall__it--left wall__it--editing">
+                            @*<div class="wall__it wall__it--left wall__it--editing">
                                 <div class="wall__it__triangle"></div>
                                 <div class="wall__it__btn"></div>
                                 <div class="wall__it__inner">
@@ -367,7 +394,7 @@
                                         <a href="#" class="wil__more">+21</a>
                                     </footer>
                                 </div>
-                            </div>
+                            </div>*@
 
                         </div>
                     </div>
