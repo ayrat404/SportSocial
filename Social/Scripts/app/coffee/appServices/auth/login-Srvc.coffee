@@ -5,6 +5,7 @@ class login extends Service('appSrvc')
         $location
         $q
         $rootScope
+        $http
         base
         mixpanel
         servicesDefault

@@ -1,7 +1,7 @@
 var login;
 
 login = (function() {
-  function login($state, $location, $q, $rootScope, base, mixpanel, servicesDefault, userService) {
+  function login($state, $location, $q, $rootScope, $http, base, mixpanel, servicesDefault, userService) {
     var isSending, logIn, url;
     url = servicesDefault.baseServiceUrl + '/login';
     isSending = false;
@@ -51,4 +51,4 @@ login = (function() {
 
 })();
 
-angular.module('appSrvc').service('loginService', ['$state', '$location', '$q', '$rootScope', 'base', 'mixpanel', 'servicesDefault', 'userService', login]);
+angular.module('appSrvc').service('loginService', ['$state', '$location', '$q', '$rootScope', '$http', 'base', 'mixpanel', 'servicesDefault', 'userService', login]);
