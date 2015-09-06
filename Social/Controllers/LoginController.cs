@@ -18,7 +18,7 @@ namespace Social.Controllers
         }
 
 
-        [HttpGet]
+        [HttpPost]
         [Route("")]
         public ApiResult SignIn(SignInModel model)
         {

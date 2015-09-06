@@ -9,7 +9,7 @@ namespace BLL.Login
     {
         ServiceResult<SignInResult> SignIn(SignInModel signInModel, string returnUrl);
 
-        LoginServiceResult PreRegister(RegistratioinModel regModel, string url);
+        ServiceResult PreRegister(RegistratioinModel regModel, string url);
 
         ServiceResult<SignInResult> ConfirmSmsCode(ConfirmSmsCode regModel);
 

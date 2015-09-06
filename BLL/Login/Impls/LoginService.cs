@@ -61,12 +61,11 @@ namespace BLL.Login.Impls
             }
         }
 
-        public LoginServiceResult PreRegister(RegistratioinModel regModel, string url)
+        public ServiceResult PreRegister(RegistratioinModel regModel, string url)
         {
-            var result = new LoginServiceResult
+            var result = new ServiceResult
             {
                 Success = true,
-                ReturnUrl = url,
             };
             if (!IsValidPhone(regModel.Phone))
             {
