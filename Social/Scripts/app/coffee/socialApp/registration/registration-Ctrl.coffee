@@ -24,19 +24,27 @@ class Registration extends Controller('socialApp.controllers')
         # send first data
         # ---------------
         $scope.sendImg = ($flow)->
-            $flow.upload()
+            if $scope.first.imgId != null && $scope.first.imgId != undefined
+                $scope.sendFirstStepData('', true)
+            else
+                $flow.upload()
+
+        $scope.removeImg = ($flow)->
+            $flow.cancel()
+            $scope.first.imgId = null
 
         # send all data after image server upload
         # ---------------
-        $scope.sendFirstStepData = (stringResponse)->
-            obj = angular.fromJson stringResponse
-            if obj.success
-                $scope.first.imgId = obj.data.id
-                registrationService.registerFirst($scope.first).then((res)->
-                    $scope.step = 2
-                , (res)->
-                    $scope.firstValidation = res.errors
-                )
+        $scope.sendFirstStepData = (stringResponse, isRepeat)->
+            if !isRepeat
+                obj = angular.fromJson stringResponse
+                if obj.success
+                    $scope.first.imgId = obj.data.id
+            registrationService.registerFirst($scope.first).then((res)->
+                $scope.step = 2
+            , (res)->
+                $scope.firstStepValidation = res.errors
+            )
 
         # send tow step data
         # ---------------

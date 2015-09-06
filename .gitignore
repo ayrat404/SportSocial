@@ -22,6 +22,7 @@ DAL/bin/
 Social/obj/
 Social/bin/
 Social/node_modules/
+Social/Storage/
 Social/.idea/
 SportSocial/obj/
 SportSocial/bin/
@@ -175,3 +176,4 @@ $RECYCLE.BIN/
 SportSocial/Storage/
 SportSocial/imagecache/
 SportSocial/videos/
+/Social/Storage

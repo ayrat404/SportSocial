@@ -22,8 +22,8 @@ class serverValidation extends Directive('shared')
         showError = ($el, error)->
             name = $el.attr 'name'
             $error = template error, name
-            if $el.parent().find('.field-error[data-target="' + name + '"]').length
-                $el.before $error
+            if !$el.parent().find('.field-error[data-target="' + name + '"]').length
+                $el.after $error
                 $timeout(->
                     $error.hide('slow', ->
                         $error.remove()

@@ -13,7 +13,7 @@
                       flow-init="{target: '/api/upload', fileParameterName: 'Avatar', singleFile: true, testChunks:false}"
                       flow-files-added="processImage($files, $flow)">
                     <div class="reg__img-wrap">
-                        <div class="reg__img-wrap__close" ng-show="$flow.files.length" ng-click="$flow.cancel()">&times;</div>
+                        <div class="reg__img-wrap__close" ng-show="$flow.files.length" ng-click="removeImg($flow)">&times;</div>
                         <div class="reg__img-container" ng-show="$flow.files.length">
                             <img flow-img="$flow.files[0]"
                                  ng-class="{ 'reg__img--vertical': imgProp.vertical }"

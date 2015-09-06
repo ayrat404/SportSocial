@@ -22,8 +22,8 @@ serverValidation = (function() {
       var $error, name;
       name = $el.attr('name');
       $error = template(error, name);
-      if ($el.parent().find('.field-error[data-target="' + name + '"]').length) {
-        $el.before($error);
+      if (!$el.parent().find('.field-error[data-target="' + name + '"]').length) {
+        $el.after($error);
         return $timeout(function() {
           return $error.hide('slow', function() {
             return $error.remove();

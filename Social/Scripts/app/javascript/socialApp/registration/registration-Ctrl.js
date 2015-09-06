@@ -14,19 +14,29 @@ Registration = (function() {
       initDate: new Date(1992, 0, 1)
     };
     $scope.sendImg = function($flow) {
-      return $flow.upload();
-    };
-    $scope.sendFirstStepData = function(stringResponse) {
-      var obj;
-      obj = angular.fromJson(stringResponse);
-      if (obj.success) {
-        $scope.first.imgId = obj.data.id;
-        return registrationService.registerFirst($scope.first).then(function(res) {
-          return $scope.step = 2;
-        }, function(res) {
-          return $scope.firstValidation = res.errors;
-        });
+      if ($scope.first.imgId !== null && $scope.first.imgId !== void 0) {
+        return $scope.sendFirstStepData('', true);
+      } else {
+        return $flow.upload();
       }
+    };
+    $scope.removeImg = function($flow) {
+      $flow.cancel();
+      return $scope.first.imgId = null;
+    };
+    $scope.sendFirstStepData = function(stringResponse, isRepeat) {
+      var obj;
+      if (!isRepeat) {
+        obj = angular.fromJson(stringResponse);
+        if (obj.success) {
+          $scope.first.imgId = obj.data.id;
+        }
+      }
+      return registrationService.registerFirst($scope.first).then(function(res) {
+        return $scope.step = 2;
+      }, function(res) {
+        return $scope.firstStepValidation = res.errors;
+      });
     };
     $scope.sendTwo = function() {
       var fullData;
