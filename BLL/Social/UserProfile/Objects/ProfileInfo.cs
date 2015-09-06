@@ -17,5 +17,7 @@ namespace BLL.Social.UserProfile.Objects
     public class ProfileFull : ProfileInfo
     {
         public IEnumerable<JournalPreviewVm> Journals { get; set; }
+
+        //public IEnumerable<>  
     }
 }
