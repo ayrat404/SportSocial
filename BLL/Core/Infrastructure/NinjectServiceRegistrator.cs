@@ -5,6 +5,7 @@ using BLL.Sms;
 using BLL.Sms.Impls;
 using DAL;
 using DAL.DomainModel;
+using DAL.Repository;
 using DAL.Repository.Interfaces;
 using Microsoft.AspNet.Identity;
 using Ninject;
@@ -29,11 +30,15 @@ namespace BLL.Infrastructure
                 .BindDefaultInterfaces()
                 .Configure(c => c.InRequestScope()));
 
-            kernel.Bind(x => x
-                .FromAssemblyContaining(typeof(IRepository))
-                .Select(t => t.Name.EndsWith("Repository"))
-                .BindDefaultInterfaces()
-                .Configure(c => c.InRequestScope()));
+
+            kernel.Bind<IRepository>().To<Repository>().InRequestScope();
+            kernel.Bind<IJournalRepository>().To<JournalRepository>().InRequestScope();
+
+            //kernel.Bind(x => x
+            //    .FromAssemblyContaining(typeof(IRepository))
+            //    .Select(t => t.Name.EndsWith("Repository"))
+            //    .BindDefaultInterfaces()
+            //    .Configure(c => c.InRequestScope()));
 
             #if DEBUG
             kernel.Bind<ISmsService>().To<SmsServiceBase>().InRequestScope();

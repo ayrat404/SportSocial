@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using BLL.Infrastructure.Localization;
+using BLL.Infrastructure.Map;
 using DAL.Migrations;
 using Knoema.Localization;
 using Newtonsoft.Json;
@@ -38,6 +39,7 @@ namespace Social
             var settings = jsonFormatter.SerializerSettings;
             settings.Formatting = Formatting.Indented;
             settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            CreateMaps.Register();
             
             //var conf = new Configuration();
             //DbMigrator migrator = new DbMigrator(conf);

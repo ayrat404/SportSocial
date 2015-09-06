@@ -17,6 +17,7 @@ namespace Social.Controllers
         public JournalController(IJournalService journalService)
         {
             _journalService = journalService;
+            //var resolver = System.Web.Http.Dependencies
         }
 
         public ApiResult Create(JournalVm journal)
@@ -25,6 +26,7 @@ namespace Social.Controllers
             {
                 _journalService.CreateJournal(journal);
             }
+
             return ModelStateErrors();
         }
     }

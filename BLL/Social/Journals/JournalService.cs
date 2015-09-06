@@ -1,8 +1,13 @@
+using System.Collections.Generic;
+using System.Linq;
 using BLL.Common.Objects;
 using BLL.Common.Services.CurrentUser;
+using BLL.Infrastructure.Map;
 using BLL.Social.Journals.Objects;
 using BLL.Social.Tags;
 using BLL.Storage;
+using BLL.Storage.Impls.Enums;
+using BLL.Storage.Objects;
 using DAL.DomainModel.JournalEntities;
 using DAL.Repository.Interfaces;
 
@@ -35,8 +40,15 @@ namespace BLL.Social.Journals
             _repository.Add(journal);
             _repository.SaveChanges();
             _tagService.AddTags(journal.Id, journalModel.Themes);
-            //_imageService.AttachImagesToEntity();
+            _imageService.AttachImagesToEntity(journalModel.Media.Where(m => m.Type == MediaType.Image).ToList(), journal.Id, UploadType.Journal);
+            _videoService.AttachVideosToJournal(journalModel.Media.Where(m => m.Type == MediaType.Video).ToList(), journal.Id);
             return ServiceResult.SuccessResult();
+        }
+
+        public IEnumerable<JournalPreviewVm> GetJournals(int userId)
+        {
+            var journals = _repository.GetJournals(userId);
+            return journals.MapEachTo<JournalPreviewVm>();
         }
     }
 }

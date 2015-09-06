@@ -57,7 +57,7 @@ namespace BLL.Storage.Impls
         {
             var mediaIds = addedMedias.Select(v => v.Id);
             var medias = _repository.Queryable<TImageEntity>()
-                .Where(m => mediaIds.Contains(m.Id))
+                .Where(m => mediaIds.Contains(m.Id) && m.EntityId == null)
                 .ToList();
             foreach (var media in medias)
             {

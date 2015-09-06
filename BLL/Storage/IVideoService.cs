@@ -15,7 +15,7 @@ namespace BLL.Storage
     {
         ServiceResult<VideoUploadResult> AddVideo(string url);
 
-        void AddVideosToJournal(List<MediaVm> vids, int entityId);
+        void AttachVideosToJournal(List<MediaVm> vids, int entityId);
     }
 
     public class VideoService : IVideoService
@@ -58,11 +58,11 @@ namespace BLL.Storage
             };
         }
 
-        public void AddVideosToJournal(List<MediaVm> vids, int entityId)
+        public void AttachVideosToJournal(List<MediaVm> vids, int entityId)
         {
             var mediaIds = vids.Select(v => v.Id);
             var medias = _repository.Queryable<JournalMedia>()
-                .Where(m => mediaIds.Contains(m.Id))
+                .Where(m => mediaIds.Contains(m.Id) && m.EntityId == null)
                 .ToList();
             foreach (var media in medias)
             {
