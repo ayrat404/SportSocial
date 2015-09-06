@@ -242,6 +242,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Content\Images\default-avatar.png" />
     <Content Include="Content\socialApp\images\views\landing\bg-left.jpg" />
     <Content Include="Content\socialApp\images\views\landing\macbook.png" />
     <Content Include="Content\socialApp\images\views\registration\registration-bg.jpg" />

@@ -68,5 +68,14 @@ namespace Social.Controllers
             };
             return resG;
         }
+
+        protected ApiResult<T> ApiResult<T>(T result) where T: class
+        {
+            return new ApiResult<T>
+            {
+                Success = true,
+                Data = result
+            };
+        }
     }
 }

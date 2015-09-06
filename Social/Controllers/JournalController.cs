@@ -20,6 +20,8 @@ namespace Social.Controllers
             //var resolver = System.Web.Http.Dependencies
         }
 
+
+        [Authorize]
         [HttpPost]
         public ApiResult Create(JournalVm journal)
         {

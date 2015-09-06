@@ -30,7 +30,7 @@ namespace BLL.Social.Journals
             _videoService = videoService;
         }
 
-        public ServiceResult CreateJournal(JournalVm journalModel)
+        public ServiceResult<JournalDisplayVm> CreateJournal(JournalVm journalModel)
         {
             var journal = new Journal
             {
@@ -42,7 +42,7 @@ namespace BLL.Social.Journals
             _tagService.AddTags(journal.Id, journalModel.Themes);
             _imageService.AttachImagesToEntity(journalModel.Media.Where(m => m.Type == MediaType.Image).ToList(), journal.Id, UploadType.Journal);
             _videoService.AttachVideosToJournal(journalModel.Media.Where(m => m.Type == MediaType.Video).ToList(), journal.Id);
-            return ServiceResult.SuccessResult();
+            return ServiceResult.SuccessResult(journal.MapTo<JournalDisplayVm>());
         }
 
         public IEnumerable<JournalPreviewVm> GetJournals(int userId)
