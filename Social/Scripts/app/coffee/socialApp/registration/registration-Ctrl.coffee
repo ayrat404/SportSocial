@@ -1,8 +1,11 @@
 class Registration extends Controller('socialApp.controllers')
     constructor: (
         $scope
+        $rootScope
+        $state
         mixpanel
         registrationService
+        userService
         base)->
         $scope.$root.title = 'Fortress | Регистрация'
         $scope.loading = false
@@ -40,7 +43,9 @@ class Registration extends Controller('socialApp.controllers')
         $scope.sendTwo = ->
             fullData = angular.extend($scope.first, $scope.two)
             registrationService.registerTwo(fullData).then((res)->
-                console.log('todo success redirect to profile')
+                userService.set res.data.id
+                $rootScope.user = res.data
+                $state.go('main.profile', {userId: res.data.id})
             , (res)->
                 $scope.twoStepValidation = res.errors
             )

@@ -1,7 +1,7 @@
 var Registration;
 
 Registration = (function() {
-  function Registration($scope, mixpanel, registrationService, base) {
+  function Registration($scope, $rootScope, $state, mixpanel, registrationService, userService, base) {
     $scope.$root.title = 'Fortress | Регистрация';
     $scope.loading = false;
     $scope.first = {};
@@ -32,7 +32,11 @@ Registration = (function() {
       var fullData;
       fullData = angular.extend($scope.first, $scope.two);
       return registrationService.registerTwo(fullData).then(function(res) {
-        return console.log('todo success redirect to profile');
+        userService.set(res.data.id);
+        $rootScope.user = res.data;
+        return $state.go('main.profile', {
+          userId: res.data.id
+        });
       }, function(res) {
         return $scope.twoStepValidation = res.errors;
       });
@@ -86,4 +90,4 @@ Registration = (function() {
 
 })();
 
-angular.module('socialApp.controllers').controller('registrationController', ['$scope', 'mixpanel', 'registrationService', 'base', Registration]);
+angular.module('socialApp.controllers').controller('registrationController', ['$scope', '$rootScope', '$state', 'mixpanel', 'registrationService', 'userService', 'base', Registration]);
