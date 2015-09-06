@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System.Data.Entity.Migrations;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Validation;
 using System.Web.Mvc;
@@ -28,6 +29,7 @@ namespace Social
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             var services = GlobalConfiguration.Configuration.Services;
+            GlobalConfiguration.Configuration.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
 
             var bodyValidator = services.GetBodyModelValidator();
             //services.Replace(typeof(IBodyModelValidator), new PrefixlessBodyModelValidator(GlobalConfiguration.Configuration.Services.GetBodyModelValidator())); 
@@ -40,10 +42,10 @@ namespace Social
             settings.Formatting = Formatting.Indented;
             settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             CreateMaps.Register();
-            
-            //var conf = new Configuration();
-            //DbMigrator migrator = new DbMigrator(conf);
-            //migrator.Update();
+
+            var conf = new Configuration();
+            DbMigrator migrator = new DbMigrator(conf);
+            migrator.Update();
         }
     }
 }

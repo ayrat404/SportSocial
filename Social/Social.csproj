@@ -99,6 +99,10 @@
     <Reference Include="Microsoft.Owin.Security.OAuth">
       <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
@@ -137,9 +141,6 @@
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http">
     </Reference>
@@ -193,13 +194,14 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\socialApp\images\common\" />
-    <Folder Include="Content\socialApp\images\icons-set\" />
     <Folder Include="Content\socialApp\images\sprites\" />
     <Folder Include="Scripts\app\coffee\socialApp\journal\" />
+    <Folder Include="Scripts\app\javascript\socialApp\journal\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\ConfigureAuth.cs" />
+    <Compile Include="App_Start\CustomVirtualPathProvider.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -244,6 +246,9 @@
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\Images\default-avatar.png" />
+    <Content Include="Content\socialApp\fonts\glyphicons\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\socialApp\images\groups\achievements\achievement-horizontal.png" />
+    <Content Include="Content\socialApp\images\icons-set\icons-set.png" />
     <Content Include="Content\socialApp\images\views\landing\bg-left.jpg" />
     <Content Include="Content\socialApp\images\views\landing\macbook.png" />
     <Content Include="Content\socialApp\images\views\registration\registration-bg.jpg" />
@@ -257,19 +262,22 @@
     <Content Include="Scripts\app\javascript\appServices\auth\login-Srvc.js" />
     <Content Include="Scripts\app\javascript\appServices\auth\registration-Srvc.js" />
     <Content Include="Scripts\app\javascript\appServices\auth\restore-password-Srvc.js" />
-    <Content Include="Scripts\app\javascript\appServices\auth\status-Srvc.js" />
-    <Content Include="Scripts\app\javascript\appServices\journal\journal-submit-Srvc.js" />
+    <Content Include="Scripts\app\javascript\appServices\auth\user-Srvc.js" />
+    <Content Include="Scripts\app\javascript\appServices\journal\journal-Srvc.js" />
     <Content Include="Scripts\app\javascript\appServices\other\sport-themes-Srvc.js" />
     <Content Include="Scripts\app\javascript\appServices\other\youtube-video-Srvc.js" />
+    <Content Include="Scripts\app\javascript\appServices\profile\profile-Srvc.js" />
     <Content Include="Scripts\app\javascript\appServices\support\support-Srvc.js" />
     <Content Include="Scripts\app\javascript\shared\app.js" />
     <Content Include="Scripts\app\javascript\shared\directives\content-height-Drct.js" />
+    <Content Include="Scripts\app\javascript\shared\directives\format-words-Drct.js" />
     <Content Include="Scripts\app\javascript\shared\directives\loader-Drct.js" />
     <Content Include="Scripts\app\javascript\shared\directives\mixpanel-Drct.js" />
     <Content Include="Scripts\app\javascript\shared\directives\modal-click-Drct.js" />
     <Content Include="Scripts\app\javascript\shared\directives\scroll-to-Drct.js" />
     <Content Include="Scripts\app\javascript\shared\directives\server-validation-Drct.js" />
     <Content Include="Scripts\app\javascript\shared\filters\format-word-Drct.js" />
+    <Content Include="Scripts\app\javascript\shared\filters\image-resize-Fltr.js" />
     <Content Include="Scripts\app\javascript\shared\services\APIInterseptorProvider.js" />
     <Content Include="Scripts\app\javascript\shared\services\base-Srvc.js" />
     <Content Include="Scripts\app\javascript\shared\services\global-loader-Srvc.js" />
@@ -281,6 +289,7 @@
     <Content Include="Scripts\app\javascript\socialApp\components\media-upload\media-upload-Drct.js" />
     <Content Include="Scripts\app\javascript\socialApp\components\sport-themes\sport-themes-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\components\sport-themes\sport-themes-Drct.js" />
+    <Content Include="Scripts\app\javascript\socialApp\components\wall\wall-Drct.js" />
     <Content Include="Scripts\app\javascript\socialApp\landing\landing-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\landing\landing-Drct.js" />
     <Content Include="Scripts\app\javascript\socialApp\main\main-social-Ctrl.js" />
@@ -2687,8 +2696,6 @@
     <Content Include="Scripts\app\coffee\appServices\auth\login-Srvc.coffee" />
     <Content Include="Scripts\app\coffee\appServices\auth\registration-Srvc.coffee" />
     <Content Include="Scripts\app\coffee\appServices\auth\restore-password-Srvc.coffee" />
-    <Content Include="Scripts\app\coffee\appServices\auth\status-Srvc.coffee" />
-    <Content Include="Scripts\app\coffee\appServices\journal\journal-submit-Srvc.coffee" />
     <Content Include="Scripts\app\coffee\appServices\other\sport-themes-Srvc.coffee" />
     <Content Include="Scripts\app\coffee\appServices\other\youtube-video-Srvc.coffee" />
     <Content Include="Scripts\app\coffee\appServices\support\support-Srvc.coffee" />
@@ -2721,6 +2728,17 @@
     <Content Include="Scripts\app\coffee\socialApp\registration\registration-Ctrl.coffee" />
     <Content Include="Scripts\app\coffee\shared\services\APIInterseptorProvider.coffee" />
     <Content Include="Scripts\app\coffee\shared\services\global-loader-Srvc.coffee" />
+    <Content Include="Scripts\app\coffee\appServices\profile\profile-Srvc.coffee" />
+    <Content Include="Scripts\app\coffee\appServices\auth\user-Srvc.coffee" />
+    <Content Include="Scripts\app\coffee\appServices\journal\journal-Srvc.coffee" />
+    <Content Include="Content\socialApp\fonts\glyphicons\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\socialApp\fonts\glyphicons\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\socialApp\fonts\glyphicons\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\socialApp\fonts\glyphicons\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\socialApp\styles\less\dev\api.less" />
+    <None Include="Properties\PublishProfiles\Social.pubxml" />
+    <Content Include="Scripts\app\coffee\socialApp\components\wall\wall-Drct.coffee" />
+    <Content Include="Scripts\app\coffee\shared\filters\image-resize-Fltr.coffee" />
     <None Include="Scripts\libs\jquery\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.min.js" />
@@ -2732,22 +2750,22 @@
     <Content Include="Scripts\libs\select\select.js" />
     <Content Include="Scripts\libs\wow\wow.js" />
     <Content Include="Scripts\libs\wow\wow.min.js" />
-    <None Include="Views\Template\components\media-uploadTpl.cshtml" />
-    <None Include="Views\Template\components\sport-themesTpl.cshtml" />
-    <None Include="Views\Template\errors\404.cshtml" />
-    <None Include="Views\Template\journal\submit.cshtml" />
-    <None Include="Views\Template\landing\index.cshtml" />
-    <None Include="Views\Template\main\_layout.cshtml" />
-    <None Include="Views\Template\modals\achievement\about.cshtml" />
-    <None Include="Views\Template\modals\auth\login-submit.cshtml" />
-    <None Include="Views\Template\modals\auth\restore-password-submit-new-data.cshtml" />
-    <None Include="Views\Template\modals\auth\restore-password-submit-phone.cshtml" />
-    <None Include="Views\Template\modals\dev\api.cshtml" />
-    <None Include="Views\Template\modals\policy.cshtml" />
-    <None Include="Views\Template\modals\support\support-submit.cshtml" />
-    <None Include="Views\Template\modals\support\support-success.cshtml" />
-    <None Include="Views\Template\profile\index.cshtml" />
-    <None Include="Views\Template\registration\index.cshtml" />
+    <Content Include="Views\Template\components\media-uploadTpl.cshtml" />
+    <Content Include="Views\Template\components\sport-themesTpl.cshtml" />
+    <Content Include="Views\Template\errors\404.cshtml" />
+    <Content Include="Views\Template\journal\submit.cshtml" />
+    <Content Include="Views\Template\landing\index.cshtml" />
+    <Content Include="Views\Template\main\_layout.cshtml" />
+    <Content Include="Views\Template\modals\achievement\about.cshtml" />
+    <Content Include="Views\Template\modals\auth\login-submit.cshtml" />
+    <Content Include="Views\Template\modals\auth\restore-password-submit-new-data.cshtml" />
+    <Content Include="Views\Template\modals\auth\restore-password-submit-phone.cshtml" />
+    <Content Include="Views\Template\modals\dev\api.cshtml" />
+    <Content Include="Views\Template\modals\policy.cshtml" />
+    <Content Include="Views\Template\modals\support\support-submit.cshtml" />
+    <Content Include="Views\Template\modals\support\support-success.cshtml" />
+    <Content Include="Views\Template\profile\index.cshtml" />
+    <Content Include="Views\Template\registration\index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

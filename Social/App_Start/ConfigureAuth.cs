@@ -15,13 +15,16 @@ namespace Social
         {
             app.CreatePerOwinContext(GetUserManager);
             app.CreatePerOwinContext(GetRoleManager);
-
-            app.UseCookieAuthentication(new CookieAuthenticationOptions()
+            var cookieOptions = new CookieAuthenticationOptions()
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
                 LoginPath = new PathString("/"),
-                CookieDomain = ".fortress.club"
-            });
+                //CookieDomain = ".fortress.club",
+            };
+            #if !DEBUG
+            cookieOptions.CookieDomain = ".fortress.club";
+            #endif
+            app.UseCookieAuthentication(cookieOptions);
         }
 
         private AppUserManager GetUserManager()
