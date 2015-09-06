@@ -3,12 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title ng-bind="title">Fortress. Социальная сеть</title>
+    <title ng-bind="title">@(PageData["title"] ?? "Fortress. Социальная сеть")</title>
     <meta name="description" content="@PageData["description"]">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link type="text/css" rel="stylesheet" media="all" href="~/Content/socialApp/styles/compile/fortress.social.min.css">
 </head>
-<body ng-init="$root.user = { id: @CurrentUser.UserId, fullName: @CurrentUser.User.FullName(), avatar: @CurrentUser.User.Profile.Avatar }">
+<body>
     <div data-loader="loader" class="global-loader-container">
         <div id="ui-view" class="ui-content" ng-cloak ui-view data-tmpl-url="@Request.RequestContext.RouteData.DataTokens["templateUrl"]">
             @RenderBody()
