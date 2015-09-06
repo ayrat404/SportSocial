@@ -16,8 +16,8 @@ class ProfileView extends Controller('socialApp.controllers')
         # get user profile info
         # ---------------
         profileService.getInfo($stateParams.userId).then((res)->
-            _this.user.loaded = true
             _this.user = res.data
+            _this.user.loaded = true
         )
 
 #        _this.user =

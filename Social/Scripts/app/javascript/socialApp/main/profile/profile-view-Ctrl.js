@@ -8,8 +8,8 @@ ProfileView = (function() {
       loaded: false
     };
     profileService.getInfo($stateParams.userId).then(function(res) {
-      _this.user.loaded = true;
-      return _this.user = res.data;
+      _this.user = res.data;
+      return _this.user.loaded = true;
     });
   }
 
