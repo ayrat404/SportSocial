@@ -25,7 +25,9 @@ namespace BLL.Infrastructure
         {
             get
             {
-                return DependencyResolver.Current.GetService<ICurrentUser>();
+                return DependencyResolver.Current.GetService<ICurrentUser>() ??
+                       (ICurrentUser)
+                           GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof (ICurrentUser));
             }
         }
     }
