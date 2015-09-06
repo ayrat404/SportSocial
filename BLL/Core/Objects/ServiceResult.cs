@@ -8,7 +8,7 @@
 
         public static ServiceResult SuccessResult()
         {
-            return new ServiceResult()
+            return new ServiceResult
             {
                 Success = true
             };
