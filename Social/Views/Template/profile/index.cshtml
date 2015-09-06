@@ -5,7 +5,7 @@
                 <div class="profile__info">
                     <div class="user-info">
                         <div class="user-info__avatar">
-                            <img ng-src="profile.user.avatar | imageResize:{w: 230, h: 230}" class="user-infor__avatar__img"/>
+                            <img ng-src="{{ profile.user.avatar | imageResize:{w: 230, h: 230} }}" class="user-infor__avatar__img"/>
                             @*TODO пока аватар менять нельзя, а при регистрации он обязателен*@
                             <div ng-if="!profile.user.avatar.length" class="ui__avatar-upload">
                                 <i class="icon-upload"></i>
@@ -28,7 +28,7 @@
                         <ul ng-if="profile.user.subscribe.list.length" class="users-list users-list--grid">
                             <li ng-repeat="subscriber in profile.user.subscribe.list" class="ul__it">
                                 <a ui-sref="main.profile({userId: subscriber.id})">
-                                    <img ng-src="subscriber.avatar | imageResize:{w: 90, h:90}" alt="{{subscriber.fullName}}" class="ul__it__img" />
+                                    <img ng-src="{{ subscriber.avatar | imageResize:{w: 90, h:90} }}" alt="{{subscriber.fullName}}" class="ul__it__img" />
                                     <span class="ul__it__name">{{subscriber.fullName}}</span>
                                 </a>
                             </li>
@@ -38,7 +38,7 @@
                         <ul ng-if="profile.user.followers.list.length" class="users-list users-list--grid">
                             <li ng-repeat="user in profile.user.followers.list" class="ul__it">
                                 <a ui-sref="main.profile({ userId: user.id })">
-                                    <img ng-src="user.avatar | imageResize:{w: 90, h:90}" alt="{{user.fullName}}" class="ul__it__img" />
+                                    <img ng-src="{{ user.avatar | imageResize:{w: 90, h:90} }}" alt="{{user.fullName}}" class="ul__it__img" />
                                     <span class="ul__it__name">{{user.fullName}}</span>
                                 </a>
                             </li>
@@ -56,7 +56,7 @@
                 <div class="profile__journal">
                     <journal-profile-submit></journal-profile-submit>
                     
-                    <div class="wall" data-wall-vertical>
+                    <div class="wall">
                         <div class="wall__bar">
 
                             <div class="wall__it wall__it--left wall__it--editing">

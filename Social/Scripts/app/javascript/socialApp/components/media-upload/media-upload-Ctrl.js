@@ -2,12 +2,6 @@ var MediaUpload;
 
 MediaUpload = (function() {
   function MediaUpload($scope, youtubeVideoService, base) {
-    var size;
-    size = {
-      w: 45,
-      h: 45,
-      mode: 'crop'
-    };
     if (base.isArray($scope.media)) {
       $scope.media = [];
     }
@@ -17,7 +11,7 @@ MediaUpload = (function() {
         return $scope.media.push({
           id: res.data.id,
           type: 'video',
-          img: base.image.resize(res.data.img, size)
+          img: res.data.img
         });
       });
     };
@@ -28,7 +22,7 @@ MediaUpload = (function() {
         return $scope.media.push({
           id: obj.data.id,
           type: 'image',
-          img: base.image.resize(obj.data.url, size)
+          img: obj.data.url
         });
       }
     };

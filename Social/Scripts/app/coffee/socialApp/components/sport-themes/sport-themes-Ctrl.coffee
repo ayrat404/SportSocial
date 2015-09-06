@@ -12,7 +12,7 @@ class ThemesAutocomplete extends Controller('socialApp.controllers')
         $scope.getThemes = (search)->
             return sportThemesService.get(search).then((res)->
                 # if find themes
-                return res
+                return res.data
             , ->
                 # if themes aren't found
                 return [search]

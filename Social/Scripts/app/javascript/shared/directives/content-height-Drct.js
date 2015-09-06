@@ -1,7 +1,7 @@
 var contentHeight;
 
 contentHeight = (function() {
-  function contentHeight($window) {
+  function contentHeight($window, $timeout) {
     var defaults, elHeight;
     defaults = {
       offsetEl: '.social__header'
@@ -29,14 +29,16 @@ contentHeight = (function() {
     return {
       restrict: 'A',
       link: function(scope, element, attrs) {
-        var $el;
-        $el = angular.element(element);
-        elHeight($el, attrs.contentHeight);
-        if (attrs.onresize !== false) {
-          return angular.element($window).resize(function() {
-            return elHeight($el, attrs.contentHeight);
-          });
-        }
+        return $timeout(function() {
+          var $el;
+          $el = angular.element(element);
+          elHeight($el, attrs.contentHeight);
+          if (attrs.onresize !== 'false') {
+            return angular.element($window).resize(function() {
+              return elHeight($el, attrs.contentHeight);
+            });
+          }
+        }, 300);
       }
     };
   }
@@ -45,4 +47,4 @@ contentHeight = (function() {
 
 })();
 
-angular.module('shared').directive('contentHeight', ['$window', contentHeight]);
+angular.module('shared').directive('contentHeight', ['$window', '$timeout', contentHeight]);

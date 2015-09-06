@@ -11,7 +11,7 @@ class SportThemes extends Service('appSrvc')
             $q (resolve, reject)->
                 if search && search.length
                     $http.get(url, { params: {query: search}}).then((res)->
-                        if res.data.success
+                        if res.data.success && res.data.data.length
                             resolve(res.data)
                         else
                             reject(res.data)

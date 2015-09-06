@@ -7,7 +7,7 @@ ThemesAutocomplete = (function() {
     }
     $scope.getThemes = function(search) {
       return sportThemesService.get(search).then(function(res) {
-        return res;
+        return res.data;
       }, function() {
         return [search];
       });

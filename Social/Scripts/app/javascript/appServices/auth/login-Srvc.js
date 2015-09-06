@@ -17,7 +17,8 @@ login = (function() {
           mixpanel.api('track', 'Login__send', evTrackProp);
           return $http.post(url, data).then(function(res) {
             if (res.success) {
-              userService.set(res.data.data);
+              userService.set(res.data.data.id);
+              $rootScope.user = res.data.data;
               return resolve(res.data);
             } else {
               reject(res);

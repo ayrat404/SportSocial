@@ -1,9 +1,7 @@
 var MainSocial;
 
 MainSocial = (function() {
-  function MainSocial($rootScope, userService) {
-    $rootScope.user = userService.get();
-  }
+  function MainSocial($rootScope, userService) {}
 
   return MainSocial;
 
