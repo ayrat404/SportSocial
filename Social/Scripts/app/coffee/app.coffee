@@ -89,6 +89,11 @@ app = angular.module('app', [
         # ---------------
         NProgress.configure({ minimum: 0.3 })
 
+        # todo remove
+        # user model
+
+        $rootScope.user = {}
+
         # ---------------
         $rootScope.$on '$stateChangeStart', (event, toState, toParams) ->
             if toState.data != undefined

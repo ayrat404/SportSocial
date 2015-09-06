@@ -56,6 +56,7 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'fl
     NProgress.configure({
       minimum: 0.3
     });
+    $rootScope.user = {};
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams) {
       var requireLogin;
       if (toState.data !== void 0) {

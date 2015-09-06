@@ -259,12 +259,12 @@
                 <pre>
 {
     success: true,
-    data: [
+    data: {
         id: xxx,
         remoteId: xxx,
         img: xxx,
         embeddedUrl: xxx
-    ],
+    },
     errors: null
 }
                     </pre>
@@ -274,7 +274,7 @@
 
         <li id="api_journal_add" class="dev__api__row">
             <p>Добавление записи в дневник</p>
-            <code>GET: /api/journal</code>
+            <code>POST: /api/journal</code>
             <b>
                 send data:
                 <pre>
@@ -292,7 +292,18 @@
                 accept data:
                 <pre>
 {
-    *json model
+    success: true,
+    data: {
+        id: x,
+        date: xxx, (dd/MM/YYYY)
+        text: xxx,
+        media: [
+            { id: xxx, type: 'video', img: xxx },
+            { id: xxx, type: 'image', img: xxx }
+        ],
+        themes: [ 'xxx', 'xxx' ]
+    }
+    errors: null
 }
                     </pre>
             </b>

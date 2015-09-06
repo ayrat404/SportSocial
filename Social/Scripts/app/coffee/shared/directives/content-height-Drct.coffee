@@ -1,5 +1,5 @@
 class contentHeight extends Directive('shared')
-    constructor: ($window)->
+    constructor: ($window, $timeout)->
 
         defaults =
             offsetEl: '.social__header'
@@ -22,9 +22,12 @@ class contentHeight extends Directive('shared')
         return {
             restrict: 'A'
             link: (scope, element, attrs)->
-                $el = angular.element element
-                elHeight($el, attrs.contentHeight)
-                if attrs.onresize != false
-                    angular.element($window).resize ->
-                        elHeight($el, attrs.contentHeight)
+                $timeout(->
+                  $el = angular.element element
+                  elHeight($el, attrs.contentHeight)
+                  debugger
+                  if attrs.onresize != 'false'
+                      angular.element($window).resize ->
+                          elHeight($el, attrs.contentHeight)
+                , 300)
         }

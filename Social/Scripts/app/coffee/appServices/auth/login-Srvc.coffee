@@ -26,13 +26,14 @@ class login extends Service('appSrvc')
                     mixpanel.api('track', 'Login__send', evTrackProp)
                     $http.post(url, data).then((res)->
                         if res.success
-                            userService.set(res.data.data)
-                            resolve(res.data)
+                            userService.set res.data.data.id
+                            $rootScope.user = res.data.data
+                            resolve res.data
                         else
-                            reject(res)
-                            base.notice.response(res) if opts.noticeShow.errors
+                            reject res
+                            base.notice.response res if opts.noticeShow.errors
                     , (res)->
-                        reject(res)
+                        reject res
                     ).finally(->
                         isSending = false
                     )

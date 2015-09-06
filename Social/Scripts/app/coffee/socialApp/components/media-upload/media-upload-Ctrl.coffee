@@ -4,11 +4,6 @@ class MediaUpload extends Controller('socialApp.controllers')
         youtubeVideoService
         base)->
 
-        size =
-            w: 45
-            h: 45
-            mode: 'crop'
-
         if base.isArray($scope.media)
             $scope.media = []
 
@@ -21,7 +16,7 @@ class MediaUpload extends Controller('socialApp.controllers')
                 $scope.media.push(
                     id: res.data.id
                     type: 'video'
-                    img: base.image.resize(res.data.img, size)
+                    img: res.data.img
                 ))
 
         # image upload
@@ -32,5 +27,5 @@ class MediaUpload extends Controller('socialApp.controllers')
                 $scope.media.push(
                     id: obj.data.id
                     type: 'image'
-                    img: base.image.resize(obj.data.url, size)
+                    img: obj.data.url
                 )
