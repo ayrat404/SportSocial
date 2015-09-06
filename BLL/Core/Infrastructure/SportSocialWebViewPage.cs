@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System.Web.Http;
+using System.Web.Http.Dependencies;
+using System.Web.Mvc;
 using BLL.Common.Services.CurrentUser;
 using Knoema.Localization.Mvc;
 
@@ -10,7 +12,9 @@ namespace BLL.Infrastructure
         {
             get
             {
-                return DependencyResolver.Current.GetService<ICurrentUser>();
+                return DependencyResolver.Current.GetService<ICurrentUser>() ??
+                       (ICurrentUser)
+                           GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof (ICurrentUser));
             }
         }
     }
