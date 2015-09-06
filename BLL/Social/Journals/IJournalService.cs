@@ -8,5 +8,6 @@ namespace BLL.Social.Journals
     {
         ServiceResult CreateJournal(JournalVm journal);
         IEnumerable<JournalPreviewVm> GetJournals(int userId);
+        JournalDisplayVm GetJournal(int journalId);
     }
 }

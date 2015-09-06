@@ -6,6 +6,7 @@ using BLL.Common.Services.CurrentUser;
 using DAL.DomainModel.BlogEntities;
 using DAL.DomainModel.ConferenceEntities;
 using DAL.DomainModel.FeedBackEntities;
+using DAL.DomainModel.JournalEntities;
 using DAL.Repository.Interfaces;
 
 namespace BLL.Comments.Impls
@@ -48,6 +49,8 @@ namespace BLL.Comments.Impls
                     return typeof (Conference);
                 case CommentItemType.Feedback:
                     return typeof (Feedback);
+                case CommentItemType.Journal:
+                    return typeof (Journal);
             }
             return null;
         }
@@ -62,6 +65,8 @@ namespace BLL.Comments.Impls
                     return typeof(ConferenceComment);
                 case CommentItemType.Feedback:
                     return typeof (FeedbackComment);
+                case CommentItemType.Journal:
+                    return typeof (JournalComment);
             }
             return null;
         }

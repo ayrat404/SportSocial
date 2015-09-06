@@ -50,5 +50,11 @@ namespace BLL.Social.Journals
             var journals = _repository.GetJournals(userId);
             return journals.MapEachTo<JournalPreviewVm>();
         }
+
+        public JournalDisplayVm GetJournal(int journalId)
+        {
+            var journal = _repository.GetJournal(journalId);
+            return journal.MapTo<JournalDisplayVm>();
+        }
     }
 }
