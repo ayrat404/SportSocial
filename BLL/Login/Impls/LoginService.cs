@@ -39,19 +39,19 @@ namespace BLL.Login.Impls
             _cookiesService = cookiesService;
         }
 
-        public ServiceResult<SingInResult> SignIn(SignInModel signInModel, string returnUrl)
+        public ServiceResult<SignInResult> SignIn(SignInModel signInModel, string returnUrl)
         {
             var user = _appUserManager.Find(signInModel.Phone, signInModel.Password);
             if (user == null)
             {
-                return ServiceResult.ErrorResult<SingInResult>("Не верный логин или пароль".Resource(this));
+                return ServiceResult.ErrorResult<SignInResult>("Не верный логин или пароль".Resource(this));
             }
             else
             {
                 var ident = _appUserManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
                 _authManager.SignOut();
                 _authManager.SignIn(new AuthenticationProperties { IsPersistent = true }, ident);
-                var result = new SingInResult()
+                var result = new SignInResult()
                 {
                     Id = user.Id,
                     Name = user.Profile.FirstName + " " + user.Profile.LastName,
@@ -111,17 +111,13 @@ namespace BLL.Login.Impls
             return result;
         }
 
-        public ServiceResult ConfirmSmsCode(ConfirmSmsCode confirmModel)
+        public ServiceResult<SignInResult> ConfirmSmsCode(ConfirmSmsCode confirmModel)
         {
-            var result = new ServiceResult
-            {
-                Success = true
-            };
             var user = _appUserManager.FindByName(confirmModel.Phone);
             if (user != null && !user.PhoneNumberConfirmed)
             {
-                result = _smsService.VerifyCode(user.Id, confirmModel.Code);
-                if (result.Success)
+                var smsResult = _smsService.VerifyCode(user.Id, confirmModel.Code);
+                if (smsResult.Success)
                 {
                     user.PhoneNumberConfirmed = true;
                     _appUserManager.AddPassword(user.Id, confirmModel.Password);
@@ -146,13 +142,22 @@ namespace BLL.Login.Impls
                     _authManager.SignOut();
                     _authManager.SignIn(new AuthenticationProperties { IsPersistent = true }, ident);
                 }
+                else
+                {
+                    return ServiceResult.ErrorResult<SignInResult>(smsResult.ErrorMessage);
+                }
             }
             else
             {
-                result.Success = false;
-                result.ErrorMessage = "Не найден пользователь".Resource(this);
+                return ServiceResult.ErrorResult<SignInResult>("Не найден пользователь".Resource(this));
             }
-            return result;
+            var signInModel = new SignInResult
+            {
+                Id = user.Id,
+                Avatar = user.Profile.Avatar,
+                Name = user.FullName()
+            };
+            return ServiceResult.SuccessResult(signInModel);
         }
 
         public ServiceResult ChangePassword(ChangePaswdModel changePaswdModel)
@@ -291,7 +296,7 @@ namespace BLL.Login.Impls
         }
     }
 
-    public class SingInResult
+    public class SignInResult
     {
         public int Id { get; set; } 
 

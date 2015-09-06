@@ -7,11 +7,11 @@ namespace BLL.Login
 {
     public interface ILoginService
     {
-        ServiceResult<SingInResult> SignIn(SignInModel signInModel, string returnUrl);
+        ServiceResult<SignInResult> SignIn(SignInModel signInModel, string returnUrl);
 
         LoginServiceResult PreRegister(RegistratioinModel regModel, string url);
 
-        ServiceResult ConfirmSmsCode(ConfirmSmsCode regModel);
+        ServiceResult<SignInResult> ConfirmSmsCode(ConfirmSmsCode regModel);
 
         ServiceResult ResendSmsCode(string phone);
 
