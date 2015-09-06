@@ -34,8 +34,8 @@ namespace BLL.Comments.MapProfiles
                 .ForMember(dest => dest.CommentFor, opt => opt.MapFrom(src => MapCommentFor(src)));
 
             CreateMap<JournalComment, Comment>()
-                .IncludeBase<CommentEntityBase, Comment>();
-            //.ForMember(dest => dest.CommentFor, opt => opt.MapFrom(src => MapCommentFor(src)));
+                .IncludeBase<CommentEntityBase, Comment>()
+                .ForMember(dest => dest.CommentFor, opt => opt.MapFrom(src => MapCommentFor(src)));
         }
 
         private CommentFor MapCommentFor<TComment, TEntity>(CommentEntity<TComment, TEntity> src) 

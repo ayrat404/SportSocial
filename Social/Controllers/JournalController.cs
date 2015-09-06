@@ -20,6 +20,9 @@ namespace Social.Controllers
             //var resolver = System.Web.Http.Dependencies
         }
 
+
+        [Authorize]
+        [HttpPost]
         public ApiResult Create(JournalVm journal)
         {
             if (ModelState.IsValid)
@@ -28,6 +31,14 @@ namespace Social.Controllers
             }
 
             return ModelStateErrors();
+        }
+
+        [Route("{id:int}")]
+        [HttpGet]
+        public JournalDisplayVm GetJournal(int id)
+        {
+            var journal = _journalService.GetJournal(id);
+            return journal;
         }
     }
 }

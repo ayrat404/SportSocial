@@ -14,6 +14,7 @@ namespace BLL.Common.Objects
     {
         Article,
         Conference,
-        Feedback
+        Feedback,
+        Journal
     }
 }

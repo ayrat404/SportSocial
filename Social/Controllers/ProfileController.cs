@@ -15,9 +15,9 @@ namespace Social.Controllers
             _profileService = profileService;
         }
 
-        public ProfileFull GetProfile(int id)
+        public ApiResult GetProfile(int id)
         {
-            return _profileService.GetProfileFull(id);
+            return ApiResult(_profileService.GetProfileFull(id));
         }
     }
 }

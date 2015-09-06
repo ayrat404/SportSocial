@@ -30,6 +30,8 @@ namespace BLL.Social.UserProfile
                 IsOwner = user.Id == _currentUser.UserId,
             };
             profileFull.Journals = _journalService.GetJournals(id);
+            profileFull.Subscribe = new UserInfos();
+            profileFull.Followers = new UserInfos();
             return profileFull;
         }
     }

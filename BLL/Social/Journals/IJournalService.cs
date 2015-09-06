@@ -6,7 +6,8 @@ namespace BLL.Social.Journals
 {
     public interface IJournalService
     {
-        ServiceResult CreateJournal(JournalVm journal);
+        ServiceResult<JournalDisplayVm> CreateJournal(JournalVm journal);
         IEnumerable<JournalPreviewVm> GetJournals(int userId);
+        JournalDisplayVm GetJournal(int journalId);
     }
 }
