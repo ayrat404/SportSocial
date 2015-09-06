@@ -1,3 +1,4 @@
+using System;
 using BLL.Common.Services.CurrentUser;
 using BLL.Social.Journals;
 using BLL.Social.UserProfile.Objects;
@@ -28,6 +29,7 @@ namespace BLL.Social.UserProfile
                 Avatar = user.Profile.Avatar,
                 SportTime = user.Profile.Experience,
                 IsOwner = user.Id == _currentUser.UserId,
+                Age = new DateTime((DateTime.Now - user.Profile.BirthDate).Ticks).Year
             };
             profileFull.Journals = _journalService.GetJournals(id);
             profileFull.Subscribe = new UserInfos();
