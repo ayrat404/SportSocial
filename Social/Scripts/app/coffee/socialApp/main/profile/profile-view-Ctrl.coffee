@@ -28,3 +28,18 @@ class ProfileView extends Controller('socialApp.controllers')
             location: 'Заинск, Россия'
             isOwner: true
             loaded: true
+            followers:
+                list: [
+                    {id: 1, fullName: 'Александр Русаков', avatar: '#'}
+                    {id: 2, fullName: 'Александр Русаков', avatar: '#'}
+                    {id: 3, fullName: 'Александр Русаков', avatar: '#'}
+                ]
+                count: 3
+            subscribe:
+                list: [
+                    {id: 5, fullName: 'Александр Русаков', avatar: '#'}
+                    {id: 6, fullName: 'Александр Русаков', avatar: '#'}
+                    {id: 7, fullName: 'Александр Русаков', avatar: '#'}
+                    {id: 8, fullName: 'Александр Русаков', avatar: '#'}
+                ]
+                count: 120
