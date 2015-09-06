@@ -33,7 +33,6 @@ contentHeight = (function() {
           var $el;
           $el = angular.element(element);
           elHeight($el, attrs.contentHeight);
-          debugger;
           if (attrs.onresize !== 'false') {
             return angular.element($window).resize(function() {
               return elHeight($el, attrs.contentHeight);
