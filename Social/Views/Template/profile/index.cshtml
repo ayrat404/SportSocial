@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-5 pa0">
-                <div class="profile__info" data-content-height>
+                <div class="profile__info">
                     <div class="user-info">
                         <div class="user-info__avatar">
                             <img ng-src="profile.user.avatar | imageResize:{w: 230, h: 230}" class="user-infor__avatar__img"/>
@@ -24,58 +24,22 @@
                         <button class="btn btn-fill-green" type="button">@R("Подать заявку на достижение")</button>
                     </div>
                     <div class="pi__row">
-                        <p class="pi__row__title">@R("Подписки") (0) <a href="#" class="link">@R("Показать всех")</a></p>
-                        <ul class="users-list users-list--grid">
-                            <li class="ul__it">
-                                <a href="#">
-                                    <img src="#" alt="#" class="ul__it__img"/>
-                                    <span class="ul__it__name">Александр Русаков</span>
-                                </a>
-                            </li>
-                            <li class="ul__it">
-                                <a href="#">
-                                    <img src="#" alt="#" class="ul__it__img" />
-                                    <span class="ul__it__name">Александр Русаков</span>
-                                </a>
-                            </li>
-                            <li class="ul__it">
-                                <a href="#">
-                                    <img src="#" alt="#" class="ul__it__img" />
-                                    <span class="ul__it__name">Александр Русаков</span>
-                                </a>
-                            </li>
-                            <li class="ul__it">
-                                <a href="#">
-                                    <img src="#" alt="#" class="ul__it__img" />
-                                    <span class="ul__it__name">Александр Русаков</span>
+                        <p class="pi__row__title">@R("Подписки") ({{profile.user.subscribe.count}}) <a href="#" ng-if="profile.user.subscribe.count > 4" class="link">@R("Показать всех")</a></p>
+                        <ul ng-if="profile.user.subscribe.list.length" class="users-list users-list--grid">
+                            <li ng-repeat="subscriber in profile.user.subscribe.list" class="ul__it">
+                                <a ui-sref="main.profile({userId: subscriber.id})">
+                                    <img ng-src="subscriber.avatar | imageResize:{w: 90, h:90}" alt="{{subscriber.fullName}}" class="ul__it__img" />
+                                    <span class="ul__it__name">{{subscriber.fullName}}</span>
                                 </a>
                             </li>
                         </ul>
-                        <button class="btn btn-fill-green" type="button">@R("Посмотреть всех атлетов")</button>
-                        <p class="pi__row__title">@R("Подписчики") (0) <a href="#" class="link">@R("Показать всех")</a></p>
-                        <ul class="users-list users-list--grid">
-                            <li class="ul__it">
-                                <a href="#">
-                                    <img src="#" alt="#" class="ul__it__img" />
-                                    <span class="ul__it__name">Александр Русаков</span>
-                                </a>
-                            </li>
-                            <li class="ul__it">
-                                <a href="#">
-                                    <img src="#" alt="#" class="ul__it__img" />
-                                    <span class="ul__it__name">Александр Русаков</span>
-                                </a>
-                            </li>
-                            <li class="ul__it">
-                                <a href="#">
-                                    <img src="#" alt="#" class="ul__it__img" />
-                                    <span class="ul__it__name">Александр Русаков</span>
-                                </a>
-                            </li>
-                            <li class="ul__it">
-                                <a href="#">
-                                    <img src="#" alt="#" class="ul__it__img" />
-                                    <span class="ul__it__name">Александр Русаков</span>
+                        <a href="#" ng-if="!profile.user.subscribe.list" class="btn btn-fill-green" type="button">@R("Посмотреть всех атлетов")</a>
+                        <p class="pi__row__title">@R("Подписчики") ({{profile.user.followers.count}}) <a href="#" ng-if="profile.user.followers.count > 4" class="link">@R("Показать всех")</a></p>
+                        <ul ng-if="profile.user.followers.list.length" class="users-list users-list--grid">
+                            <li ng-repeat="user in profile.user.followers.list" class="ul__it">
+                                <a ui-sref="main.profile({ userId: user.id })">
+                                    <img ng-src="user.avatar | imageResize:{w: 90, h:90}" alt="{{user.fullName}}" class="ul__it__img" />
+                                    <span class="ul__it__name">{{user.fullName}}</span>
                                 </a>
                             </li>
                         </ul>
