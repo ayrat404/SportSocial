@@ -22,11 +22,7 @@ class Journal extends Service('appSrvc')
 
         # submit new journal item
         # ---------------
-        submit = (data, prop)->
-            opts = angular.extend(servicesDefault, prop)
-            evTrackProp =
-                url: $location.path()
-                title: $rootScope.title
+        submit = (data)->
             $q (resolve, reject)->
                 if validate data
                     $http.post(url, data).then((res)->
@@ -34,7 +30,7 @@ class Journal extends Service('appSrvc')
                             resolve(res.data)
                         else
                             reject(res.data)
-                        base.notice.response(res) if servicesDefault.noticeShow.errors
+                            base.notice.response(res) if servicesDefault.noticeShow.errors
                     , (res)->
                         reject(res)
                     )
@@ -47,11 +43,7 @@ class Journal extends Service('appSrvc')
                         )
         # save exists journal item
         # ---------------
-        save = (data, prop)->
-            opts = angular.extend(servicesDefault, prop)
-            evTrackProp =
-                url: $location.path()
-                title: $rootScope.title
+        save = (data)->
             $q (resolve, reject)->
                 if validate data
                     $http.put(url, data).then((res)->
@@ -59,7 +51,7 @@ class Journal extends Service('appSrvc')
                             resolve(res.data)
                         else
                             reject(res.data)
-                        base.notice.response(res) if servicesDefault.noticeShow.errors
+                            base.notice.response(res) if servicesDefault.noticeShow.errors
                     , (res)->
                         reject(res)
                     )
@@ -73,11 +65,7 @@ class Journal extends Service('appSrvc')
 
         # remove journal item
         # ---------------
-        remove = (itemId, prop)->
-            opts = angular.extend(servicesDefault, prop)
-            evTrackProp =
-                url: $location.path()
-                title: $rootScope.title
+        remove = (itemId)->
             $q (resolve, reject)->
                 if itemId && typeof itemId == 'number'
                     $http.delete(url, { params: { id: itemId } }).then((res)->
@@ -85,7 +73,7 @@ class Journal extends Service('appSrvc')
                             resolve(res.data)
                         else
                             reject(res.data)
-                        base.notice.response(res) if servicesDefault.noticeShow.errors
+                            base.notice.response(res) if servicesDefault.noticeShow.errors
                     , (res)->
                         reject(res)
                     )
@@ -97,8 +85,31 @@ class Journal extends Service('appSrvc')
                             type: 'danger'
                         )
 
+        # get journal item (single record)
+        # ---------------
+        getById = (itemId)->
+            $q (resolve, reject)->
+                if itemId
+                    $http.get(url + '/' + itemId).then((res)->
+                        if res.data.success
+                            resolve res.data
+                        else
+                            reject res.data
+                            base.notice.response(res) if servicesDefault.noticeShow.errors
+                    , (res)->
+                        reject res
+                    )
+                else
+                    reject()
+                    if servicesDefault.noticeShow.errors
+                        base.notice.show(
+                            text: 'Journal item get: itemId variable error'
+                            type: 'danger'
+                        )
+
         return {
         submit: submit
         save: save
         remove: remove
+        getById: getById
         }

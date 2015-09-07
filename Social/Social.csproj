@@ -2735,6 +2735,14 @@
     <Content Include="Content\socialApp\fonts\glyphicons\glyphicons-halflings-regular.woff" />
     <Content Include="Content\socialApp\fonts\glyphicons\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\socialApp\styles\less\dev\api.less" />
+    <Content Include="Content\socialApp\styles\less\components\journal-form.less" />
+    <Content Include="Content\socialApp\styles\less\components\layout-social.less" />
+    <Content Include="Content\socialApp\styles\less\components\lists\users-grid.less" />
+    <Content Include="Content\socialApp\styles\less\components\media-upload.less" />
+    <Content Include="Content\socialApp\styles\less\components\nav.less" />
+    <Content Include="Content\socialApp\styles\less\components\user-info.less" />
+    <Content Include="Content\socialApp\styles\less\components\user-notice-small.less" />
+    <Content Include="Content\socialApp\styles\less\components\wall.less" />
     <None Include="Properties\PublishProfiles\Social.pubxml" />
     <Content Include="Scripts\app\coffee\socialApp\components\wall\wall-Drct.coffee" />
     <Content Include="Scripts\app\coffee\shared\filters\image-resize-Fltr.coffee" />

@@ -56,32 +56,48 @@
                 <div class="profile__journal">
                     <journal-profile-submit></journal-profile-submit>
                     
-                    <div class="wall">
+                    <div class="wall" wall-vertical>
                         <div class="wall__bar">
                             
                             <div ng-repeat="it in profile.wall"
                                  ng-class="{
-                                 'wall__it--right': false,
-                                 'wall__it--left': true,
+                                 'wall__it--right': $index % 2 != 0,
+                                 'wall__it--left': $index % 2 == 0,
+                                 'wall__it--edit': it.editing,
                                  }"
                                  class="wall__it">
                                 <div class="wall__it__triangle"></div>
-                                <div class="wall__it__btn"></div>
+                                <div ng-init="it.editing=false" ng-click="it.editing=!it.editing;" class="wall__it__btn"></div>
                                 <div class="wall__it__inner">
-                                    <header class="wall__it__header">
-                                        <span class="wi__date">{{it.date}} {{$index}}</span>
+                                    <header class="wall__it__header-info">
+                                        <span class="wi__date">{{it.date}}</span>
                                         <div class="wi__share"><i></i></div>
                                         <div class="wi__comment"><i></i></div>
                                     </header>
+                                    <header class="wall__it__header-edit">
+                                        <div class="wi__edit"><i></i></div>
+                                        <div class="wi__remove"><i></i></div>
+                                    </header>
                                     <section class="wall__it__content">
+                                        <div ng-if="it.media.length"
+                                             ng-class="{
+                                             'video': it.media[0].type=='video',
+                                             'image': it.media[0].type=='image'
+                                             }"
+                                             class="wi__media-wrap">
+                                            <img ng-src="{{ it.media[0].img | imageResize:{w: 250, h: 170 } }}" class="wi__media__img" />
+                                            <div class="wi__media__icon">
+                                                <i></i>
+                                            </div>
+                                        </div>
                                         <p class="wi__text">{{it.text}}</p>
                                     </section>
-                                    <footer ng-if="it.likes.list.length" class="wall__it__likes">
-                                        <div class="wil__btn"><i></i></div>
-                                        <a ng-repeat="like in it.likes.list" ui-sref="main.profile({userId: like.id})" class="wil__user">
-                                            <img ui-src="like.img | imageResize:{w: 50, h: 50}" alt="{{like.fullName}}" />
+                                    <footer ng-if="it.likes.list.length" class="likes-row">
+                                        <div class="lr__btn"><i></i></div>
+                                        <a ng-repeat="like in it.likes.list" ui-sref="main.profile({userId: like.id})" class="lr__user">
+                                            <img ng-src="like.img | imageResize:{w: 50, h: 50}" alt="{{like.fullName}}" />
                                         </a>
-                                        <a ng-show="it.likes.count > 4" href="#" class="wil__more">+{{it.likes.count-4}}</a>
+                                        <a ng-show="it.likes.count > 4" href="#" class="lr__more">+{{it.likes.count-4}}</a>
                                     </footer>
                                 </div>
                             </div>

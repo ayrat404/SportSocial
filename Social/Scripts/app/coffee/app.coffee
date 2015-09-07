@@ -31,26 +31,33 @@ app = angular.module('app', [
                 requireLogin: true
             views:
                 '@':
-                    templateUrl: tmplView('main/_layout')
+                    templateUrl: tmplView 'main/_layout'
                     controller: 'mainSocialController'
                     controllerAs: 'social'
         .state 'main.profile',
             url: '/id:userId'
             views:
                 'socialContent@main':
-                    templateUrl: tmplView('profile/index')
+                    templateUrl: tmplView 'profile/index'
                     controller: 'profileViewController'
                     controllerAs: 'profile'
+        .state 'main.journalIt',
+            url: '/record/:id'
+            views:
+                'socialContent@main':
+                    templateUrl: tmplView 'journal/view'
+                    controller: 'recordViewController'
+                    controllerAs: 'record'
         .state 'landing',
             url: '/'
-            templateUrl: tmplView('landing/index')
+            templateUrl: tmplView 'landing/index'
             controller: 'landingController'
         .state '404',
             url: '/404'
-            templateUrl: tmplView('errors/404')
+            templateUrl: tmplView 'errors/404'
         .state 'registration',
             url: '/registration'
-            templateUrl: tmplView('registration/index')
+            templateUrl: tmplView 'registration/index'
             controller: 'registrationController'
 
         $urlRouterProvider.otherwise '/404'

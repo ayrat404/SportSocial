@@ -10034,7 +10034,7 @@ fieldset[disabled] .btn-link-white.active {
   -webkit-transition: opacity 100ms linear;
           transition: opacity 100ms linear;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -127px -110px;
+  background-position: -192px -222px;
   width: 11px;
   height: 11px;
   margin-left: 8px;
@@ -10188,7 +10188,7 @@ fieldset[disabled] .btn-link-white.active {
       -ms-user-select: none;
           user-select: none;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -274px -87px;
+  background-position: -97px -182px;
   width: 21px;
   height: 21px;
 }
@@ -10303,7 +10303,7 @@ fieldset[disabled] .btn-link-white.active {
   float: left;
   margin: 35px 40px 0 0;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -102px -84px;
+  background-position: -306px -134px;
   width: 16px;
   height: 16px;
 }
@@ -10439,7 +10439,7 @@ fieldset[disabled] .btn-link-white.active {
   display: inline-block;
   margin-right: 7px;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -128px -84px;
+  background-position: -308px -182px;
   width: 12px;
   height: 13px;
 }
@@ -10523,7 +10523,7 @@ fieldset[disabled] .btn-link-white.active {
   left: 0;
   margin: auto;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -210px -150px;
+  background-position: -28px -222px;
   width: 18px;
   height: 18px;
 }
@@ -10553,7 +10553,7 @@ fieldset[disabled] .btn-link-white.active {
   display: inline-block;
   opacity: .8;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -315px -38px;
+  background-position: -151px -117px;
   width: 6px;
   height: 6px;
 }
@@ -10596,7 +10596,7 @@ fieldset[disabled] .btn-link-white.active {
   -webkit-transition: opacity 100ms linear;
           transition: opacity 100ms linear;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -212px -87px;
+  background-position: -66px -182px;
   width: 21px;
   height: 21px;
 }
@@ -10617,13 +10617,13 @@ fieldset[disabled] .btn-link-white.active {
 }
 .media-upload-controls .muc__action i.photo {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -296px -150px;
+  background-position: -142px -222px;
   width: 18px;
   height: 15px;
 }
 .media-upload-controls .muc__action i.video {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -102px -110px;
+  background-position: 0px -278px;
   width: 15px;
   height: 17px;
 }
@@ -10725,17 +10725,29 @@ fieldset[disabled] .btn-link-white.active {
   cursor: pointer;
   top: 20px;
   position: absolute;
+  opacity: .7;
+  -webkit-transition: opacity 100ms linear;
+          transition: opacity 100ms linear;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -238px -150px;
+  background-position: -56px -222px;
   width: 18px;
   height: 18px;
 }
-.wall__it__header {
+.wall__it__btn:hover {
+  opacity: 1;
+}
+.wall__it__header-info,
+.wall__it__header-edit {
   height: 60px;
   display: table;
   width: 100%;
 }
-.wall__it__header i {
+.wall__it__header-info i,
+.wall__it__header-edit i {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -10743,37 +10755,91 @@ fieldset[disabled] .btn-link-white.active {
   left: 0;
   margin: auto;
 }
-.wall__it__header .wi__date,
-.wall__it__header .wi__share,
-.wall__it__header .wi__comment {
+.wall__it__header-edit {
+  background-color: #d13f3f;
+  display: none;
+}
+.wall__it__header-edit .wi__edit,
+.wall__it__header-edit .wi__remove {
+  position: relative;
+  vertical-align: middle;
+  display: table-cell;
+  width: 50%;
+  cursor: pointer;
+}
+.wall__it__header-edit .wi__edit {
+  border-right: 1px solid #1f282e;
+}
+.wall__it__header-edit .wi__edit i {
+  background-image: url(../../images/icons-set/icons-set.png);
+  background-position: -35px -182px;
+  width: 21px;
+  height: 21px;
+}
+.wall__it__header-edit .wi__edit:hover i {
+  background-image: url(../../images/icons-set/icons-set.png);
+  background-position: -128px -182px;
+  width: 21px;
+  height: 21px;
+}
+.wall__it__header-edit .wi__remove {
+  border-left: 1px solid #1f282e;
+}
+.wall__it__header-edit .wi__remove i {
+  background-image: url(../../images/icons-set/icons-set.png);
+  background-position: -151px -133px;
+  width: 20px;
+  height: 23px;
+}
+.wall__it__header-edit .wi__remove:hover i {
+  background-image: url(../../images/icons-set/icons-set.png);
+  background-position: -151px -84px;
+  width: 20px;
+  height: 23px;
+}
+.wall__it__header-info .wi__date,
+.wall__it__header-info .wi__share,
+.wall__it__header-info .wi__comment {
   position: relative;
   vertical-align: middle;
   display: table-cell;
 }
-.wall__it__header .wi__date {
+.wall__it__header-info .wi__date {
   text-align: center;
   font-family: 'F1 Bold';
   width: 50%;
   color: #fff;
 }
-.wall__it__header .wi__share {
+.wall__it__header-info .wi__share {
   width: 25%;
   cursor: pointer;
 }
-.wall__it__header .wi__share i {
+.wall__it__header-info .wi__share i {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -305px -87px;
+  background-position: -306px -108px;
   width: 16px;
   height: 16px;
 }
-.wall__it__header .wi__comment {
+.wall__it__header-info .wi__share:hover i {
+  background-image: url(../../images/icons-set/icons-set.png);
+  background-position: 0px -252px;
+  width: 16px;
+  height: 16px;
+}
+.wall__it__header-info .wi__comment {
   width: 25%;
   cursor: pointer;
 }
-.wall__it__header .wi__comment i {
+.wall__it__header-info .wi__comment i {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -302px -120px;
+  background-position: 0px -222px;
   width: 18px;
+  height: 20px;
+}
+.wall__it__header-info .wi__comment:hover i {
+  background-image: url(../../images/icons-set/icons-set.png);
+  background-position: -279px -182px;
+  width: 19px;
   height: 20px;
 }
 .wall__it__content {
@@ -10784,45 +10850,155 @@ fieldset[disabled] .btn-link-white.active {
 .wall__it__content .wi__text {
   padding: 10px 15px;
 }
-.wall__it--editing .wall__it__btn {
+.wall__it__content .wi__media-wrap {
+  position: relative;
+  height: 170px;
+  cursor: pointer;
+}
+.wall__it__content .wi__media-wrap.video i {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -182px -150px;
+  background-position: -252px -38px;
+  width: 60px;
+  height: 60px;
+}
+.wall__it__content .wi__media-wrap.video:hover i {
+  background-image: url(../../images/icons-set/icons-set.png);
+  background-position: -182px -38px;
+  width: 60px;
+  height: 60px;
+}
+.wall__it__content .wi__media-wrap.image i {
+  background-image: url(../../images/icons-set/icons-set.png);
+  background-position: -244px -108px;
+  width: 52px;
+  height: 52px;
+}
+.wall__it__content .wi__media-wrap.image:hover i {
+  background-image: url(../../images/icons-set/icons-set.png);
+  background-position: -182px -108px;
+  width: 52px;
+  height: 52px;
+}
+.wall__it__content .wi__media-wrap:hover .wi__media__icon {
+  background: rgba(4, 7, 9, 0.8);
+}
+.wall__it__content .wi__media__img {
+  width: 100%;
+  height: 100%;
+}
+.wall__it__content .wi__media__icon {
+  background: rgba(4, 7, 9, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transition: background 100ms linear;
+          transition: background 100ms linear;
+}
+.wall__it__content .wi__media__icon i {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+.wall__it--edit .wall__it__btn {
+  background-image: url(../../images/icons-set/icons-set.png);
+  background-position: -84px -222px;
   width: 18px;
   height: 18px;
 }
-.wall__it--editing .wall__it__header {
-  background-color: #de3233;
+.wall__it--edit .wall__it__header-info {
+  display: none;
 }
-.wall__it--editing.wall__it--right .wall__it__triangle {
-  border-color: transparent #de3233 transparent transparent;
+.wall__it--edit .wall__it__header-edit {
+  display: table;
 }
-.wall__it--editing.wall__it--left .wall__it__triangle {
-  border-color: transparent transparent transparent #de3233;
+.wall__it--edit.wall__it--right .wall__it__triangle {
+  border-color: transparent #d13f3f transparent transparent;
 }
-.wall__it__likes {
-  height: 50px;
-  position: relative;
+.wall__it--edit.wall__it--left .wall__it__triangle {
+  border-color: transparent transparent transparent #d13f3f;
 }
-.wall__it__likes:after {
+/* /Wall
+---------------------------------------------------------------------------------- */
+/* Breadcrumb
+---------------------------------------------------------------------------------- */
+.bread {
+  width: 100%;
+  height: 85px;
+  font-size: 12px;
+  color: #fff;
+  font-family: 'F1 Bold';
+}
+.bread:after {
   display: block;
   line-height: 0;
   content: '';
   clear: both;
 }
-.wall__it__likes .wil__btn,
-.wall__it__likes .wil__user {
+.bread__back {
+  text-align: center;
+  color: #fff;
+  height: 85px;
+  width: 170px;
+  padding-top: 33px;
+  background-color: #354349;
+  float: left;
+  margin: 0 -100% 0 0;
+}
+.bread__back__icon {
+  margin-right: 9px;
+  display: inline-block;
+  vertical-align: middle;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 4.5px 6px 4.5px 0;
+  border-color: transparent #ffffff transparent transparent;
+}
+.bread__back__text {
+  display: inline-block;
+  vertical-align: middle;
+}
+.bread__title {
+  margin-left: 170px;
+  width: 95%;
+  height: 85px;
+  padding: 35px 0 0 20px;
+  background-color: #45565e;
+  float: left;
+}
+/* /Breadcrumb
+---------------------------------------------------------------------------------- */
+/* Likes row
+---------------------------------------------------------------------------------- */
+.likes-row {
+  height: 50px;
+  position: relative;
+}
+.likes-row:after {
+  display: block;
+  line-height: 0;
+  content: '';
+  clear: both;
+}
+.likes-row .lr__btn,
+.likes-row .lr__user {
   height: 50px;
   width: 50px;
   float: left;
 }
-.wall__it__likes .wil__btn {
+.likes-row .lr__btn {
   background-color: #354349;
   position: relative;
   cursor: pointer;
 }
-.wall__it__likes .wil__btn i {
+.likes-row .lr__btn i {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -266px -150px;
+  background-position: -112px -222px;
   width: 20px;
   height: 16px;
   position: absolute;
@@ -10832,11 +11008,18 @@ fieldset[disabled] .btn-link-white.active {
   left: 0;
   margin: auto;
 }
-.wall__it__likes .wil__user img {
+.likes-row .lr__btn:hover {
+  background-color: #1fba2a;
+}
+.likes-row .lr__btn:active {
+  background-color: #26de33;
+  box-shadow: inset 10px 10px 9px -11px #000000;
+}
+.likes-row .lr__user img {
   height: 50px;
   width: 50px;
 }
-.wall__it__likes .wil__more {
+.likes-row .lr__more {
   height: 50px;
   width: 50px;
   line-height: 50px;
@@ -10848,7 +11031,7 @@ fieldset[disabled] .btn-link-white.active {
   font-family: 'F1 Bold';
   background: rgba(4, 7, 9, 0.8);
 }
-/* /Wall
+/* /Likes row
 ---------------------------------------------------------------------------------- */
 /* /Components */
 /* Views
@@ -10910,7 +11093,7 @@ fieldset[disabled] .btn-link-white.active {
 }
 .landing__left .slide__left-it .sl__icon--journal {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -280px -38px;
+  background-position: 0px -182px;
   width: 25px;
   height: 30px;
 }
@@ -10938,13 +11121,13 @@ fieldset[disabled] .btn-link-white.active {
 }
 .landing__left .slide__controls .sc__it--bottom {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -231px -38px;
+  background-position: -102px -84px;
   width: 39px;
   height: 39px;
 }
 .landing__left .slide__controls .sc__it--top {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -182px -38px;
+  background-position: -102px -133px;
   width: 39px;
   height: 39px;
 }
@@ -11093,25 +11276,25 @@ fieldset[disabled] .btn-link-white.active {
 }
 .auth-social .as__icon--tw {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -212px -120px;
+  background-position: -189px -182px;
   width: 20px;
   height: 20px;
 }
 .auth-social .as__icon--fb {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -272px -120px;
+  background-position: -249px -182px;
   width: 20px;
   height: 20px;
 }
 .auth-social .as__icon--gp {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -242px -120px;
+  background-position: -219px -182px;
   width: 20px;
   height: 20px;
 }
 .auth-social .as__icon--vk {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -182px -120px;
+  background-position: -159px -182px;
   width: 20px;
   height: 20px;
 }
@@ -11231,7 +11414,7 @@ fieldset[disabled] .btn-link-white.active {
   display: inline-block;
   vertical-align: middle;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -150px -84px;
+  background-position: -170px -222px;
   width: 12px;
   height: 12px;
 }
@@ -11294,6 +11477,20 @@ fieldset[disabled] .btn-link-white.active {
 -------------------------------------------------- */
 /* /In other files */
 /* /Profile
+---------------------------------------------------------------------------------- */
+/* Record
+---------------------------------------------------------------------------------- */
+.record__wrap {
+  padding-top: 30px;
+  background-color: #1f282e;
+}
+.record__text {
+  background: #fff;
+  font-family: 'F1 Light';
+  padding: 25px;
+  color: #000;
+}
+/* /Record
 ---------------------------------------------------------------------------------- */
 /* /Views */
 /* DEV

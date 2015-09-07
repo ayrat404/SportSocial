@@ -56,7 +56,7 @@
     .wall__it__triangle {
         border-color: transparent @brand-dark2 transparent transparent;
         left: -8px;
-    border-width: 7.5px 8px 7.5px 0;
+        border-width: 7.5px 8px 7.5px 0;
     }
 }
 
@@ -72,10 +72,19 @@
     cursor: pointer;
     top: 20px;
     position: absolute;
+    opacity: .7;
+    transition: opacity 100ms linear;
+    user-select: none;
+
+    &:hover {
+        opacity: 1;
+    }
+
     .sprite(@wall-point)
 }
 
-.wall__it__header {
+.wall__it__header-info,
+.wall__it__header-edit {
     height: 60px;
     display: table;
     width: 100%;
@@ -88,7 +97,51 @@
         left: 0;
         margin: auto;
     }
+}
 
+.wall__it__header-edit {
+    background-color: @brand-red2;
+    display: none;
+
+    .wi__edit,
+    .wi__remove {
+        position: relative;
+        vertical-align: middle;
+        display: table-cell;
+        width: 50%;
+        cursor: pointer;
+    }
+
+    .wi__edit {
+        border-right: 1px solid @text-color;
+
+        i {
+            .sprite(@edit-sm);
+        }
+
+        &:hover {
+            i {
+                .sprite(@edit-sm-hover);
+            }
+        }
+    }
+
+    .wi__remove {
+        border-left: 1px solid @text-color;
+
+        i {
+            .sprite(@remove-sm);
+        }
+
+        &:hover {
+            i {
+                .sprite(@remove-sm-hover);
+            }
+        }
+    }
+}
+
+.wall__it__header-info {
     .wi__date,
     .wi__share,
     .wi__comment {
@@ -111,6 +164,12 @@
         i {
             .sprite(@share-sm);
         }
+
+        &:hover {
+            i {
+                .sprite(@share-sm-hover);
+            }
+        }
     }
 
     .wi__comment {
@@ -119,6 +178,12 @@
 
         i {
             .sprite(@comment-sm);
+        }
+
+        &:hover {
+            i {
+                .sprite(@comment-sm-hover);
+            }
         }
     }
 }
@@ -131,75 +196,91 @@
     .wi__text {
         padding: 10px 15px;
     }
-}
 
-.wall__it--editing {
-    .wall__it__btn {
-        .sprite(@wall-point-active);
-    }
-    .wall__it__header {
-        background-color: @brand-red;
-    }
-    &.wall__it--right {
-        .wall__it__triangle {
-            border-color: transparent @brand-red transparent transparent;
-        }
-    }
-    &.wall__it--left {
-        .wall__it__triangle {
-            border-color: transparent transparent transparent @brand-red;
-        }
-    }
-}
-
-@wall-it-likes-size: 50px;
-
-.wall__it__likes {
-    height: @wall-it-likes-size;
-    position: relative;
-    .no-float();
-
-    .wil__btn,
-    .wil__user {
-        height: @wall-it-likes-size;
-        width: @wall-it-likes-size;
-        float: left;
-    }
-
-    .wil__btn {
-        background-color: @brand-gray2;
+    .wi__media-wrap {
         position: relative;
+        height: 170px;
         cursor: pointer;
 
+        &.video {
+            i {
+                .sprite(@play);
+            }
+
+            &:hover {
+                i {
+                    .sprite(@play-hover);
+                }
+            }
+        }
+
+        &.image {
+            i {
+                .sprite(@zoom);
+            }
+
+            &:hover {
+                i {
+                    .sprite(@zoom-hover);
+                }
+            }
+        }
+
+        &:hover {
+            .wi__media__icon {
+                background: rgba(4,7,9, .8);
+            }
+        }
+    }
+
+    .wi__media__img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .wi__media__icon {
+        background: rgba(4,7,9, .4);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transition: background 100ms linear;
+
         i {
-            .sprite(@like-sm);
             position: absolute;
             top: 0;
-            bottom: 0;
-            right: 0;
             left: 0;
+            right: 0;
+            bottom: 0;
             margin: auto;
         }
     }
+}
 
-    .wil__user {
-        img {
-            height: @wall-it-likes-size;
-            width: @wall-it-likes-size;
+.wall__it--edit {
+    .wall__it__btn {
+        .sprite(@wall-point-active);
+    }
+
+    .wall__it__header-info {
+        display: none;
+    }
+
+    .wall__it__header-edit {
+        display: table;
+    }
+
+    &.wall__it--right {
+        .wall__it__triangle {
+            border-color: transparent @brand-red2 transparent transparent;
         }
     }
 
-    .wil__more {
-        height: @wall-it-likes-size;
-        width: @wall-it-likes-size;
-        line-height: @wall-it-likes-size;
-        text-align: center;
-        position: absolute;
-        top: 0;
-        right: 0;
-        color: #fff;
-        font-family: 'F1 Bold';
-        background: rgba(4,7,9,.8);
+    &.wall__it--left {
+        .wall__it__triangle {
+            border-color: transparent transparent transparent @brand-red2;
+        }
     }
 }
 

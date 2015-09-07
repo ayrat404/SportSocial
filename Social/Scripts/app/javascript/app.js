@@ -27,6 +27,15 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'fl
           controllerAs: 'profile'
         }
       }
+    }).state('main.journalIt', {
+      url: '/record/:id',
+      views: {
+        'socialContent@main': {
+          templateUrl: tmplView('journal/view'),
+          controller: 'recordViewController',
+          controllerAs: 'record'
+        }
+      }
     }).state('landing', {
       url: '/',
       templateUrl: tmplView('landing/index'),

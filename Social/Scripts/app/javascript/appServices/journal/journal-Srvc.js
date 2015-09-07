@@ -2,7 +2,7 @@ var Journal;
 
 Journal = (function() {
   function Journal($q, $http, $location, $rootScope, base, servicesDefault) {
-    var remove, save, submit, url, valid, validate;
+    var getById, remove, save, submit, url, valid, validate;
     url = servicesDefault.baseServiceUrl + '/journal';
     valid = {
       minText: 50
@@ -13,23 +13,17 @@ Journal = (function() {
       }
       return false;
     };
-    submit = function(data, prop) {
-      var evTrackProp, opts;
-      opts = angular.extend(servicesDefault, prop);
-      evTrackProp = {
-        url: $location.path(),
-        title: $rootScope.title
-      };
+    submit = function(data) {
       return $q(function(resolve, reject) {
         if (validate(data)) {
           return $http.post(url, data).then(function(res) {
             if (res.data.success) {
-              resolve(res.data);
+              return resolve(res.data);
             } else {
               reject(res.data);
-            }
-            if (servicesDefault.noticeShow.errors) {
-              return base.notice.response(res);
+              if (servicesDefault.noticeShow.errors) {
+                return base.notice.response(res);
+              }
             }
           }, function(res) {
             return reject(res);
@@ -45,23 +39,17 @@ Journal = (function() {
         }
       });
     };
-    save = function(data, prop) {
-      var evTrackProp, opts;
-      opts = angular.extend(servicesDefault, prop);
-      evTrackProp = {
-        url: $location.path(),
-        title: $rootScope.title
-      };
+    save = function(data) {
       return $q(function(resolve, reject) {
         if (validate(data)) {
           return $http.put(url, data).then(function(res) {
             if (res.data.success) {
-              resolve(res.data);
+              return resolve(res.data);
             } else {
               reject(res.data);
-            }
-            if (servicesDefault.noticeShow.errors) {
-              return base.notice.response(res);
+              if (servicesDefault.noticeShow.errors) {
+                return base.notice.response(res);
+              }
             }
           }, function(res) {
             return reject(res);
@@ -77,13 +65,7 @@ Journal = (function() {
         }
       });
     };
-    remove = function(itemId, prop) {
-      var evTrackProp, opts;
-      opts = angular.extend(servicesDefault, prop);
-      evTrackProp = {
-        url: $location.path(),
-        title: $rootScope.title
-      };
+    remove = function(itemId) {
       return $q(function(resolve, reject) {
         if (itemId && typeof itemId === 'number') {
           return $http["delete"](url, {
@@ -92,12 +74,12 @@ Journal = (function() {
             }
           }).then(function(res) {
             if (res.data.success) {
-              resolve(res.data);
+              return resolve(res.data);
             } else {
               reject(res.data);
-            }
-            if (servicesDefault.noticeShow.errors) {
-              return base.notice.response(res);
+              if (servicesDefault.noticeShow.errors) {
+                return base.notice.response(res);
+              }
             }
           }, function(res) {
             return reject(res);
@@ -113,10 +95,37 @@ Journal = (function() {
         }
       });
     };
+    getById = function(itemId) {
+      return $q(function(resolve, reject) {
+        if (itemId) {
+          return $http.get(url + '/' + itemId).then(function(res) {
+            if (res.data.success) {
+              return resolve(res.data);
+            } else {
+              reject(res.data);
+              if (servicesDefault.noticeShow.errors) {
+                return base.notice.response(res);
+              }
+            }
+          }, function(res) {
+            return reject(res);
+          });
+        } else {
+          reject();
+          if (servicesDefault.noticeShow.errors) {
+            return base.notice.show({
+              text: 'Journal item get: itemId variable error',
+              type: 'danger'
+            });
+          }
+        }
+      });
+    };
     return {
       submit: submit,
       save: save,
-      remove: remove
+      remove: remove,
+      getById: getById
     };
   }
 

@@ -3,6 +3,7 @@ class ProfileView extends Controller('socialApp.controllers')
     constructor: (
         $scope
         $stateParams
+        $rootScope
         mixpanel
         profileService)->
 
@@ -17,6 +18,10 @@ class ProfileView extends Controller('socialApp.controllers')
         # ---------------
         profileService.getInfo($stateParams.userId).then((res)->
             _this.user = res.data
+            if $rootScope.user.id == +$stateParams.userId
+                _this.user.isOwner = true
+            else
+                _this.user.isOwner = false
             _this.user.loaded = true
         )
 
@@ -24,6 +29,26 @@ class ProfileView extends Controller('socialApp.controllers')
         _this.wall = [
             {
                 id: 1,
+                text: 'asdasdasdasdasd',
+                date: '09/05/2015'
+                media: [
+                    { id: 1, type: 'video', img: 'srctest1' },
+                    { id: 2, type: 'image', img: 'srctest2' },
+                    { id: 3, type: 'video', img: 'srctest3' },
+                    { id: 4, type: 'image', img: 'srctest4' }
+                ],
+                likes: {
+                    list: [
+                        { id: 1, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+                        { id: 2, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+                        { id: 3, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+                        { id: 4, fullName: 'Владимир Владимирович', avatar: 'avatartest1' }
+                    ]
+                    count: 23
+                }
+            },
+            {
+                id: 2,
                 text: 'asdasdasdasdasd',
                 date: '09/05/2015'
                 media: [
@@ -43,15 +68,10 @@ class ProfileView extends Controller('socialApp.controllers')
                 }
             },
             {
-                id: 1,
+                id: 3,
                 text: 'asdasdasdasdasd',
                 date: '09/05/2015'
-                media: [
-                    { id: 1, type: 'image', img: 'srctest1' },
-                    { id: 2, type: 'image', img: 'srctest2' },
-                    { id: 3, type: 'video', img: 'srctest3' },
-                    { id: 4, type: 'image', img: 'srctest4' }
-                ],
+                media: [],
                 likes: {
                     list: [
                         { id: 1, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
@@ -63,27 +83,3 @@ class ProfileView extends Controller('socialApp.controllers')
                 }
             }
         ]
-
-#        _this.user =
-#            avatar: '123123'
-#            fullName: 'Kaka Lakovich'
-#            age: 25
-#            sportTime: 21
-#            location: 'Заинск, Россия'
-#            isOwner: true
-#            loaded: true
-#            followers:
-#                list: [
-#                    {id: 1, fullName: 'Александр Русаков', avatar: '#'}
-#                    {id: 2, fullName: 'Александр Русаков', avatar: '#'}
-#                    {id: 3, fullName: 'Александр Русаков', avatar: '#'}
-#                ]
-#                count: 3
-#            subscribe:
-#                list: [
-#                    {id: 5, fullName: 'Александр Русаков', avatar: '#'}
-#                    {id: 6, fullName: 'Александр Русаков', avatar: '#'}
-#                    {id: 7, fullName: 'Александр Русаков', avatar: '#'}
-#                    {id: 8, fullName: 'Александр Русаков', avatar: '#'}
-#                ]
-#                count: 120
