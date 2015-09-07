@@ -21,15 +21,15 @@ namespace Social.Controllers
         }
 
 
+        //[CustomAuthorizeAttribute]
         [Authorize]
         [HttpPost]
         public ApiResult Create(JournalVm journal)
         {
             if (ModelState.IsValid)
             {
-                _journalService.CreateJournal(journal);
+                return ApiResult(_journalService.CreateJournal(journal));
             }
-
             return ModelStateErrors();
         }
 
