@@ -9,6 +9,6 @@ namespace BLL.Social.Journals.Objects
 
         public List<string> Themes { get; set; }
 
-        public List<CommentSocial> Comments { get; set; }
+        public List<Comment> Comments { get; set; }
     }
 }
