@@ -18,7 +18,6 @@ namespace Social
             var cookieOptions = new CookieAuthenticationOptions()
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/"),
                 //CookieDomain = ".fortress.club",
             };
             #if !DEBUG

@@ -21,7 +21,8 @@ namespace Social.Controllers
         }
 
 
-        [CustomAuthorizeAttribute]
+        //[CustomAuthorizeAttribute]
+        [Authorize]
         [HttpPost]
         public ApiResult Create(JournalVm journal)
         {
