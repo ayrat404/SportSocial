@@ -216,6 +216,7 @@
     <Compile Include="Rating\Enums\RatingEntityType.cs" />
     <Compile Include="Rating\Impls\RatingServiceWork.cs" />
     <Compile Include="Rating\Impls\UniversalRatingService.cs" />
+    <Compile Include="Rating\IRatingMapper.cs" />
     <Compile Include="Rating\Models\BlogRatingViewModel.cs" />
     <Compile Include="Rating\Objects\RateResult.cs" />
     <Compile Include="Rating\IRatingService.cs" />

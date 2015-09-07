@@ -2,6 +2,7 @@
 using AutoMapper;
 using BLL.Comments.Objects;
 using BLL.Login.Impls;
+using BLL.Rating;
 using DAL.DomainModel.BlogEntities;
 using DAL.DomainModel.ConferenceEntities;
 using DAL.DomainModel.FeedBackEntities;
@@ -35,7 +36,8 @@ namespace BLL.Comments.MapProfiles
 
             CreateMap<JournalComment, Comment>()
                 .IncludeBase<CommentEntityBase, Comment>()
-                .ForMember(dest => dest.CommentFor, opt => opt.MapFrom(src => MapCommentFor(src)));
+                .ForMember(dest => dest.CommentFor, opt => opt.MapFrom(src => MapCommentFor(src)))
+                .ForMember(dest => dest.Rating, opt => opt.MapFrom(src => RatingMapper.MapRating(src)));
         }
 
         private CommentFor MapCommentFor<TComment, TEntity>(CommentEntity<TComment, TEntity> src) 
