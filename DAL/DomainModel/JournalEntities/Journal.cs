@@ -6,6 +6,13 @@ namespace DAL.DomainModel.JournalEntities
 {
     public class Journal: IEntity, IAuditable, IDeletable, IHasComments<JournalComment>, IHasRating<JournalRating>
     {
+        public Journal()
+        {
+            Comments = new List<JournalComment>();
+            RatingEntites = new List<JournalRating>();
+            Media = new List<JournalMedia>();
+            Tags = new List<JournalTag>();
+        }
         public int Id { get; set; }
         public int TotalRating { get; set; }
         public string Text { get; set; }

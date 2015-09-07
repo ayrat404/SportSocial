@@ -27,9 +27,8 @@ namespace Social.Controllers
         {
             if (ModelState.IsValid)
             {
-                _journalService.CreateJournal(journal);
+                return ApiResult(_journalService.CreateJournal(journal));
             }
-
             return ModelStateErrors();
         }
 
