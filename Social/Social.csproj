@@ -282,7 +282,6 @@
     <Content Include="Scripts\app\javascript\appServices\support\support-Srvc.js" />
     <Content Include="Scripts\app\javascript\shared\app.js" />
     <Content Include="Scripts\app\javascript\shared\directives\content-height-Drct.js" />
-    <Content Include="Scripts\app\javascript\shared\directives\format-words-Drct.js" />
     <Content Include="Scripts\app\javascript\shared\directives\loader-Drct.js" />
     <Content Include="Scripts\app\javascript\shared\directives\mixpanel-Drct.js" />
     <Content Include="Scripts\app\javascript\shared\directives\modal-click-Drct.js" />
@@ -297,6 +296,8 @@
     <Content Include="Scripts\app\javascript\shared\services\modal-Srvc.js" />
     <Content Include="Scripts\app\javascript\shared\services\remote-template-Srvc.js" />
     <Content Include="Scripts\app\javascript\socialApp\app.js" />
+    <Content Include="Scripts\app\javascript\socialApp\components\likes-row\likes-row-Ctrl.js" />
+    <Content Include="Scripts\app\javascript\socialApp\components\likes-row\likes-row-Drct.js" />
     <Content Include="Scripts\app\javascript\socialApp\components\media-upload\media-upload-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\components\media-upload\media-upload-Drct.js" />
     <Content Include="Scripts\app\javascript\socialApp\components\sport-themes\sport-themes-Ctrl.js" />
@@ -308,6 +309,7 @@
     <Content Include="Scripts\app\javascript\socialApp\main\profile\journal\journal-submit-profile-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\main\profile\journal\journal-submit-profile-Drct.js" />
     <Content Include="Scripts\app\javascript\socialApp\main\profile\profile-view-Ctrl.js" />
+    <Content Include="Scripts\app\javascript\socialApp\main\record\record-view-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\modals\achievement-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\modals\journal-submit-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\modals\login-Ctrl.js" />

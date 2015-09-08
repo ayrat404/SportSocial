@@ -17,11 +17,9 @@ namespace Social.Controllers
         public JournalController(IJournalService journalService)
         {
             _journalService = journalService;
-            //var resolver = System.Web.Http.Dependencies
         }
 
 
-        //[CustomAuthorizeAttribute]
         [Authorize]
         [HttpPost]
         public ApiResult Create(JournalVm journal)
