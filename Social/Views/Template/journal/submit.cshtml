@@ -1,6 +1,6 @@
 ﻿<div class="journal-submit"
         ng-class="{ 'open': open }">
-    <img src="#" class="jos__avatar">
+    <img ng-src="{{$root.user.avatar | imageResize:{w: 46, h: 46} }}" class="jos__avatar">
     <form class="form">
         <div class="fs-form__row">
             <div class="jos__text-wrap">

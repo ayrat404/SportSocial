@@ -39,6 +39,10 @@ class modal extends Service('shared')
                 tplName: templateUrl + '/journal/submit'
                 controller: 'journalModalSubmitController'
                 classname: 'fs-modal--transparent'
+            journalRemove:
+                tplName: modalBaseUrl 'journal/remove'
+                controller: 'journalModalRemoveController'
+                classname: 'fs-modal--transparent'
             apiModal:
                 tplName: modalBaseUrl 'dev/api'
             policy:

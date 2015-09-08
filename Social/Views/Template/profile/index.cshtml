@@ -22,6 +22,8 @@
                     <div class="pi__row">
                         <p class="pi__row__title">@R("Достижения") (0) <span class="link" data-modal-click="aboutAchievement">@R("Что это?")</span></p>
                         <button class="btn btn-fill-green" type="button">@R("Подать заявку на достижение")</button>
+                        <button class="btn btn-fill-green" type="button" ng-click="profile.test()">Изменить параметры (тест)</button>
+                        <button class="btn btn-fill-green" type="button" ng-click="profile.test2()">Очистить (тест)</button>
                     </div>
                     <div class="pi__row">
                         <p class="pi__row__title">@R("Подписки") ({{profile.user.subscribe.count}}) <a href="#" ng-if="profile.user.subscribe.count > 4" class="link">@R("Показать всех")</a></p>
@@ -78,7 +80,7 @@
                                     </header>
                                     <header class="wall__it__header-edit">
                                         <div class="wi__edit"><i></i></div>
-                                        <div class="wi__remove"><i></i></div>
+                                        <div class="wi__remove" ng-click="wall.remove(it.id)"><i></i></div>
                                     </header>
                                     <section class="wall__it__content">
                                         <div ng-if="it.media.length"

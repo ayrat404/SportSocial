@@ -1,11 +1,27 @@
 var ProfileView;
 
 ProfileView = (function() {
-  function ProfileView($scope, $stateParams, $rootScope, mixpanel, profileService) {
+  function ProfileView($scope, $state, $stateParams, $rootScope, mixpanel, profileService) {
     var _this;
     _this = this;
     _this.user = {
       loaded: false
+    };
+    _this.test = function() {
+      var params;
+      params = $state.params;
+      params.media = 378;
+      return $state.transitionTo($state.current, params, {
+        notify: false
+      });
+    };
+    _this.test2 = function() {
+      var params;
+      params = $state.params;
+      params.media = null;
+      return $state.transitionTo($state.current, params, {
+        notify: false
+      });
     };
     profileService.getInfo($stateParams.userId).then(function(res) {
       _this.user = res.data;
@@ -142,4 +158,4 @@ ProfileView = (function() {
 
 })();
 
-angular.module('socialApp.controllers').controller('profileViewController', ['$scope', '$stateParams', '$rootScope', 'mixpanel', 'profileService', ProfileView]);
+angular.module('socialApp.controllers').controller('profileViewController', ['$scope', '$state', '$stateParams', '$rootScope', 'mixpanel', 'profileService', ProfileView]);

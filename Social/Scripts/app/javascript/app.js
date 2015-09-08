@@ -19,7 +19,7 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'fl
         }
       }
     }).state('main.profile', {
-      url: '/id:userId',
+      url: '/id:userId?media',
       views: {
         'socialContent@main': {
           templateUrl: tmplView('profile/index'),
@@ -28,7 +28,7 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'fl
         }
       }
     }).state('main.journalIt', {
-      url: '/record/:id',
+      url: '/record/:id?media',
       views: {
         'socialContent@main': {
           templateUrl: tmplView('journal/view'),
@@ -56,7 +56,7 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'fl
     });
   }
 ]).run([
-  '$templateCache', '$rootScope', '$state', '$stateParams', 'modalService', 'base', 'userService', function($templateCache, $rootScope, $state, $stateParams, modalService, base, userService) {
+  '$templateCache', '$rootScope', '$state', '$stateParams', 'modalService', 'base', 'queryParamsService', function($templateCache, $rootScope, $state, $stateParams, modalService, base, queryParamsService) {
     var view;
     view = angular.element('#ui-view');
     $templateCache.put(view.data('tmpl-url'), view.html());
@@ -96,7 +96,7 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'fl
         return NProgress.start();
       }
     });
-    $rootScope.$on('$stateChangeSuccess', function(event, toState) {
+    $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
       $rootScope.loading = false;
       $rootScope.fullHeight = toState.fullHeight;
       return NProgress.done();
