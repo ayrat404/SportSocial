@@ -1,6 +1,6 @@
-using System;
 using BLL.Blog.ViewModels;
 using BLL.Common.Objects;
+using BLL.Rating.Objects;
 
 namespace BLL.Comments.Objects
 {

@@ -7,8 +7,8 @@ namespace BLL.Social.Journals.Objects
     {
         public List<MediaVm> Media { get; set; }
 
-        public List<string> Themes { get; set; }
+        public List<string> Tags { get; set; }
 
-        public List<Comment> Comments { get; set; }
+        public CommentsVm Comments { get; set; }
     }
 }
