@@ -21,9 +21,9 @@ contentHeight = (function() {
       }
       $el.css('height', '');
       if ($el.outerHeight() < wHeight) {
-        return $el.css('height', wHeight - offsetHeight);
+        return $el.css('min-height', wHeight - offsetHeight);
       } else {
-        return $el.css('height', $el.outerHeight());
+        return $el.css('min-height', $el.outerHeight());
       }
     };
     return {

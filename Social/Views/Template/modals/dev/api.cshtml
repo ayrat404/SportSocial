@@ -14,6 +14,7 @@
         <li><a href="#api_journal_delete">Удаление записи в дневнике</a></li>
         <li><a href="#api_journal_edit">Редактирование записи в дневнике</a></li>
         <li><a href="#api_profile_view">Получить данные о профиле</a></li>
+        <li><a href="#api_record_view">Страница просмотра записи</a></li>
     </ul>
     <ul class="dev__api__content">
 
@@ -403,6 +404,57 @@
         ]
     },
     errors: null
+}
+                    </pre>
+            </b>
+
+        </li>
+        
+        <li id="api_record_view" class="dev__api__row">
+            <p>Страница просмотра записи. <div class="alert alert-danger">!!! Модель пока что без комментариев</div></p>
+            <code>GET: /api/journal/:id</code>
+            <b>
+                send data:
+                <pre>
+{
+    *none*
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true,
+    data: {
+            id: 123
+            text: 'Текст записи'
+            author: {
+                id: 12
+                avatar: 'avatar'
+                fullName: 'Павел Козловский'
+            }
+            date: '19 июля 2015 | 15:08'
+            likes: {
+                list: [
+                    { id: 1, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+                    { id: 2, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+                    { id: 3, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+                    { id: 4, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+                    { id: 5, fullName: 'Владимир Владимирович', avatar: 'avatartest1' }
+                ]
+                count: 23
+            }
+            media: [
+                { id: 1, type: 'image', img: 'srctest1' },
+                { id: 2, type: 'image', img: 'srctest2' },
+                { id: 3, type: 'video', img: 'srctest3' },
+                { id: 4, type: 'image', img: 'srctest4' }
+            ]
+            tags: ['Питание', 'Программа тренировок']
+    },
+    errors: null,
+    message: null
 }
                     </pre>
             </b>

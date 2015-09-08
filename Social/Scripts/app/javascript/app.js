@@ -70,7 +70,7 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'fl
       if (toState.data !== void 0) {
         requireLogin = toState.data.requireLogin;
       }
-      if (requireLogin && false) {
+      if (requireLogin && $rootScope.user.id === void 0) {
         event.preventDefault();
         base.notice.show({
           text: 'The page you requested is available only to registered users',

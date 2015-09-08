@@ -11,7 +11,7 @@ class loader extends Directive('shared')
             loader: '='
         link: (scope, element, attrs)->
             scope.$watch('loader', (newVal, oldVal)->
-                if newVal != oldVal
+                if newVal != undefined
                     $el = angular.element(element)
                     if newVal == true
                         timer = setTimeout(->

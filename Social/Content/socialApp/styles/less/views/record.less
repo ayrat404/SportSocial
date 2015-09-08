@@ -4,9 +4,16 @@
 .record {
 }
 
+.record__inner {
+    background-color: @text-color;
+}
+
 .record__wrap {
     padding-top: 30px;
-    background-color: @text-color;
+
+    .tag-list {
+        margin-top: 20px;
+    }
 }
 
 .record__text {
@@ -14,47 +21,114 @@
     font-family: 'F1 Light';
     padding: 25px;
     color: #000;
+    margin: 0;
 }
 
 .record__bottom {
+    background-color: @brand-dark2;
+    color: #fff;
+    padding: 15px 20px;
+    .no-float();
+
     .rcd__author-wrap {
+        float: left;
     }
 
     .rcd__author__img {
+        display: inline-block;
+        vertical-align: middle;
+        height: 45px;
+        width: 45px;
+        border-radius: 50%;
     }
 
     .rcd__author {
+        display: inline-block;
+        vertical-align: middle;
     }
 
     .rcd__author__name {
+        font-family: 'F1 Bold';
+        margin-bottom: 1px;
     }
 
     .rcd__date {
+        font-size: 0.714em;
+        margin-bottom: 0;
     }
 
     .likes-row {
+        float: right;
     }
 
     .rcd__controls {
+        float: right;
+        margin-top: 12px;
     }
 
-    .rcd__edit {
+    .rcd__control {
+        display: inline-block;
+        cursor: pointer;
+        margin-left: 20px;
+        user-select: none;
     }
 
-    .rcd__remove {
+    .rcd__control--edit {
+        .sprite(@edit-sm);
+    }
+
+    .rcd__control--remove {
+        .sprite(@remove-sm);
+    }
+
+    .btn {
+        float: right;
+        margin: 12px 20px 0 20px;
     }
 }
 
 .record__media {
-}
+    .no-float();
 
-.record__tags {
+    .rm__it {
+        float: left;
+        width: 75px;
+        height: 75px;
+        position: relative;
+        cursor: pointer;
+        user-select: none;
+    }
+
+    .rm__it__img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .rm__it__overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background: rgba(21,29,33,.7);
+
+        .icon-play {
+            .sprite(@play-xs);
+            margin: auto;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+    }
 }
 
 .record__form {
 }
 
 .record__comments {
+    background: #fff;
 }
 
 /* /Record

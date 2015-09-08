@@ -5,12 +5,23 @@ RecordView = (function() {
     var _this;
     _this = this;
     _this.it = {
-      loaded: false
+      loader: true
     };
     journalService.getById(+$stateParams.id).then(function(res) {
       _this.it = res.data;
-      return _this.it.loaded = true;
+      _this.it.loader = false;
+      if ($rootScope.user.id === _this.it.author.id) {
+        return _this.it.isOwner = true;
+      } else {
+        return _this.it.isOwner = false;
+      }
     });
+    _this.edit = function() {
+      return console.log('edit');
+    };
+    _this.remove = function() {
+      return console.log('remove');
+    };
   }
 
   return RecordView;

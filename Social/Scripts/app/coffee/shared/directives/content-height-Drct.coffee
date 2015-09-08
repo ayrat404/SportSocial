@@ -15,18 +15,18 @@ class contentHeight extends Directive('shared')
                 offsetHeight += angular.element(defaults.offsetEl).outerHeight()
             $el.css('height', '')
             if $el.outerHeight() < wHeight
-                $el.css('height', wHeight - offsetHeight)
+                $el.css('min-height', wHeight - offsetHeight)
             else
-                $el.css('height', $el.outerHeight())
+                $el.css('min-height', $el.outerHeight())
 
         return {
             restrict: 'A'
             link: (scope, element, attrs)->
                 $timeout(->
-                  $el = angular.element element
-                  elHeight($el, attrs.contentHeight)
-                  if attrs.onresize != 'false'
-                      angular.element($window).resize ->
-                          elHeight($el, attrs.contentHeight)
+                    $el = angular.element element
+                    elHeight($el, attrs.contentHeight)
+                    if attrs.onresize != 'false'
+                        angular.element($window).resize ->
+                            elHeight($el, attrs.contentHeight)
                 , 300)
         }

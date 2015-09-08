@@ -5,7 +5,7 @@ LoginSubmitModal = (function() {
     $scope.serverValidation = {};
     $scope.submit = function() {
       return loginService.logIn($scope.login).then(function(res) {
-        $modalInstance.dismiss();
+        $modalInstance.close();
         if (typeof modalData.success === 'function') {
           return modalData.success(res);
         } else {

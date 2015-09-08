@@ -26,7 +26,7 @@ class login extends Service('appSrvc')
                 if data && data.phone && data.password && !isSending
                     mixpanel.api('track', 'Login__send', evTrackProp)
                     $http.post(url, data).then((res)->
-                        if res.success
+                        if res.data.success
                             userService.set res.data.data.id
                             $rootScope.user = res.data.data
                             resolve res.data

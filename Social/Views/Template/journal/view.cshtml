@@ -8,41 +8,44 @@
             @R("Запись в дневнике")
         </div>
     </div>
-    <div class="record__wrap">
-        <div class="container">
-            <p class="record__text">
-                Таким образом начало повседневной работы по формированию позиции обеспечивает широкому кругу (специалистов) участие в формировании направлений прогрессивного развития. Разнообразный и богатый опыт консультация с широким активом позволяет выполнять важные задания по разработке позиций, занимаемых участниками в отношении поставленных задач. Таким образом начало повседневной работы по формированию позиции представляет собой интересный эксперимент проверки системы обучения кадров, соответствует насущным потребностям.
-                Повседневная практика показывает, что начало повседневной работы по формированию позиции играет важную роль в формировании системы обучения кадров, соответствует насущным потребностям. Идейные соображения высшего порядка, а также постоянный количественный рост и сфера нашей активности обеспечивает широкому кругу (специалистов) участие в формировании системы обучения кадров, соответствует насущным потребностям. Таким образом укрепление и развитие структуры представляет собой интересный эксперимент проверки направлений прогрессивного развития. Товарищи! укрепление и развитие структуры обеспечивает широкому кругу (специалистов) участие в формировании направлений прогрессивного развития. Разнообразный и богатый опыт рамки и место обучения кадров в значительной степени обуславливает создание направлений прогрессивного развития. Задача организации, в особенности же укрепление и развитие структуры позволяет оценить значение существенных финансовых и административных условий.
-            </p>
-            <div class="record__bottom">
-                <div class="rcd__author-wrap">
-                    <img src="#" class="rcd__author__img" />
-                    <div class="rcd__author">
-                        <p class="rcd__author__name">Павел Козловский</p>
-                        <p class="rcd__date">19 июля 2015 | 15:08</p>
+    <div class="record__inner" content-height=".bread" onresize="false" data-loader="record.it.loader">
+        <div ng-if="!record.it.loader" class="record__wrap">
+            <div class="container">
+                <p class="record__text">
+                    {{record.it.text}}
+                </p>
+                <div class="record__bottom">
+                    <div class="rcd__author-wrap">
+                        <img ng-src="{{ record.it.author.avatar | imageResize:{w: 45, h: 45} }}" class="rcd__author__img" />
+                        <div class="rcd__author">
+                            <p class="rcd__author__name">{{record.it.author.fullName}}</p>
+                            <p class="rcd__date">{{record.it.date}}</p>
+                        </div>
+                    </div>
+                    <div ng-if="record.it.isOwner" class="rcd__controls">
+                        <div class="rcd__control rcd__control--edit" ng-click="record.edit()"></div>
+                        <div class="rcd__control rcd__control--remove" ng-click="record.remove()"></div>
+                    </div>
+                    <likes-in-row ng-model="record.it.likes" data-id="{{::record.it.id}}" data-type="record"></likes-in-row>
+                    <div class="btn btn-fill-green">@R("Поделиться")</div>
+                </div>
+                <div ng-if="record.it.media.length" class="record__media">
+                    <div ng-repeat="m in record.it.media" class="rm__it">
+                        <img ng-src="{{ m.img | imageResize:{w: 75, h: 75} }}" class="rm__it__img" />
+                        <div class="rm__it__overlay" ng-if="m.type=='video'"><i class="icon-play"></i></div>
+                        {{m.type}}
                     </div>
                 </div>
-                <div class="btn btn-fill-green">@R("Поделиться")</div>
-                <div class="likes-row">
-                    <div class="lr__btn"><i></i></div>
-                    <a ui-sref="#" class="lr__user">
-                        <img ng-src="#" />
-                    </a>
-                    <a href="#" class="lr__more">+23</a>
-                </div>
-                <div class="rcd__controls">
-                    <div class="rcd__edit"></div>
-                    <div class="rcd__remove"></div>
-                </div>
+                <ul ng-if="record.it.tags.length" class="tag-list">
+                    <li ng-repeat="tag in record.it.tags" class="tl__item">
+                        <span class="tl__text">{{tag}}</span>
+                    </li>
+                </ul>
+                <div class="record__form"></div>
             </div>
-            <div class="record__media"></div>
-            <div class="record__tags">
-
-            </div>
-            <div class="record__form"></div>
         </div>
-    </div>
-    <div class="record__comments">
+        <div class="record__comments">
 
+        </div>
     </div>
 </section>

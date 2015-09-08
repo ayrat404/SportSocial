@@ -15,7 +15,7 @@ loader = (function() {
       link: function(scope, element, attrs) {
         return scope.$watch('loader', function(newVal, oldVal) {
           var $el, $loader;
-          if (newVal !== oldVal) {
+          if (newVal !== void 0) {
             $el = angular.element(element);
             if (newVal === true) {
               return timer = setTimeout(function() {
