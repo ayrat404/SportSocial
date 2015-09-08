@@ -161,15 +161,14 @@
     <Compile Include="Bonus\Objects\BonusVideoModel.cs" />
     <Compile Include="Comments\Impls\CommentService.cs" />
     <Compile Include="Comments\Impls\UniversalCommentService.cs" />
-    <Compile Include="Comments\MapProfiles\ConferenceCommentsProfile.cs" />
-    <Compile Include="Comments\MapProfiles\CProfile.cs" />
-    <Compile Include="Comments\MapProfiles\BlogCommentsProfile.cs" />
+    <Compile Include="Comments\MapProfiles\CommentsProfile.cs" />
+    <Compile Include="Comments\MapProfiles\CommentsVmMapper.cs" />
     <Compile Include="Comments\MapProfiles\CreateCommentProfile.cs" />
     <Compile Include="Blog\MapProfiles\PostForAdminProfile.cs" />
     <Compile Include="Blog\ViewModels\PostDisplayModel.cs" />
-    <Compile Include="Comments\MapProfiles\FeedbackCommentsProfile.cs" />
     <Compile Include="Comments\Objects\Comment.cs" />
     <Compile Include="Comments\Objects\CommentFor.cs" />
+    <Compile Include="Comments\Objects\CommentSocial.cs" />
     <Compile Include="Comments\Objects\CreateComment.cs" />
     <Compile Include="Blog\ViewModels\PostForAdminModel.cs" />
     <Compile Include="Core\Enums\LangType.cs" />
@@ -251,6 +250,7 @@
     <Compile Include="Payment\ViewModels\RobocassaResultModel.cs" />
     <Compile Include="Payment\ViewModels\RobokassaViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rating\Objects\RatingInfo.cs" />
     <Compile Include="Sms\SmsServcieBase.cs" />
     <Compile Include="Sms\Impls\SmsPilotSmsService.cs" />
     <Compile Include="Sms\ISmsService.cs" />
@@ -258,6 +258,7 @@
     <Compile Include="Social\Journals\IJournalService.cs" />
     <Compile Include="Social\Journals\JournalService.cs" />
     <Compile Include="Social\Journals\MapProfiles\JournalPreviewProfile.cs" />
+    <Compile Include="Social\Journals\Objects\AuthorVm.cs" />
     <Compile Include="Social\Journals\Objects\JournalDisplayVm.cs" />
     <Compile Include="Social\Journals\Objects\JournalPreviewVm.cs" />
     <Compile Include="Social\Journals\Objects\JournalVm.cs" />
@@ -281,8 +282,10 @@
     <Compile Include="Social\Tags\ITagService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Core\Mappings\" />
     <Folder Include="Core\Services\Cookies\Impls\" />
     <Folder Include="Payment\Enums\" />
+    <Folder Include="Storage\MapProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

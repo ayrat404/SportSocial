@@ -451,7 +451,20 @@
                 { id: 3, type: 'video', img: 'srctest3' },
                 { id: 4, type: 'image', img: 'srctest4' }
             ]
-            tags: ['Питание', 'Программа тренировок']
+            tags: ['Питание', 'Программа тренировок'],
+            comments {
+                list: [
+                    { 
+                        id: 1, 
+                        text: 'wwwwww wwwwww' ,
+                        author {id: 5, fullName: 'Владимир Владимирович', avatar: 'avatartest1'},
+                        likes { list: [...], count: 5 },
+                        Date: "",
+                        CommentFor { id: 5, name: "" } //изменить как удобнее будет
+                    },
+                ]
+                count: 23
+            }
     },
     errors: null,
     message: null

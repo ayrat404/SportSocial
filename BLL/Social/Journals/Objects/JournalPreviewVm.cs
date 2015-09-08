@@ -1,5 +1,6 @@
 using System;
 using BLL.Blog.ViewModels;
+using BLL.Rating.Objects;
 
 namespace BLL.Social.Journals.Objects
 {
@@ -9,7 +10,9 @@ namespace BLL.Social.Journals.Objects
 
         public string Text { get; set; }
 
-        public RatingInfo Rating { get; set; }
+        public AuthorVm Author { get; set; }
+
+        public RatingInfo Likes { get; set; }
         
         public DateTime Created { get; set; }
     }
