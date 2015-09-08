@@ -7,23 +7,17 @@ class QueryParams extends Service('shared')
         queryServices =
             # media modal show
             # ----------
-            media: (id)->
-                debugger
-                modalService.show(
+            media: (params)->
+                modalService.show
                     name: 'mediaShow'
-                    data: {
-                        id: id
-                    }
-                )
-
-        # todo параметры могут совмещаться
+                    data: params
 
         # check func
         # ---------------
         check = (params)->
             for k,v of params
-                if queryServices[k] != undefined
-                    queryServices[k](v)
+                if queryServices[k] != undefined && v != undefined
+                    queryServices[k](params)
 
         # ---------------
         return {

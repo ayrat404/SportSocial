@@ -35,14 +35,14 @@ app = angular.module('app', [
                     controller: 'mainSocialController'
                     controllerAs: 'social'
         .state 'main.profile',
-            url: '/id:userId?media'
+            url: '/id:userId?media&index'
             views:
                 'socialContent@main':
                     templateUrl: tmplView 'profile/index'
                     controller: 'profileViewController'
                     controllerAs: 'profile'
         .state 'main.journalIt',
-            url: '/record/:id?media'
+            url: '/record/:id?media&index'
             views:
                 'socialContent@main':
                     templateUrl: tmplView 'journal/view'
@@ -118,9 +118,10 @@ app = angular.module('app', [
 
         # ---------------
         $rootScope.$on '$stateChangeSuccess', (event, toState, toParams, fromState, fromParams) ->
+            modalService.closeAll()
             $rootScope.loading = false
             $rootScope.fullHeight = toState.fullHeight
-            #queryParamsService.check(toParams)
+            queryParamsService.check(toParams)
             NProgress.done()
 
         return

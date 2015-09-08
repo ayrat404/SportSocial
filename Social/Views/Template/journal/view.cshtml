@@ -14,12 +14,12 @@
                 <p class="record__text">
                     {{record.it.text}}
                 </p>
-                <div class="record__bottom">
-                    <div class="rcd__author-wrap">
-                        <img ng-src="{{ record.it.author.avatar | imageResize:{w: 45, h: 45} }}" class="rcd__author__img" />
-                        <div class="rcd__author">
-                            <p class="rcd__author__name">{{record.it.author.fullName}}</p>
-                            <p class="rcd__date">{{record.it.date}}</p>
+                <div class="item-bottom record__bottom">
+                    <div class="item-author">
+                        <img ng-src="{{ record.it.author.avatar | imageResize:{w: 45, h: 45} }}" class="ia__img" />
+                        <div class="ia__info">
+                            <p class="ia__name">{{record.it.author.fullName}}</p>
+                            <p class="ia__date">{{record.it.date}}</p>
                         </div>
                     </div>
                     <div ng-if="record.it.isOwner" class="rcd__controls">

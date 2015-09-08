@@ -2,6 +2,25 @@
 ---------------------------------------------------------------------------------- */
 
 .record {
+    .rcd__controls {
+        float: right;
+        margin-top: 12px;
+    }
+
+    .rcd__control {
+        display: inline-block;
+        cursor: pointer;
+        margin-left: 20px;
+        user-select: none;
+    }
+
+    .rcd__control--edit {
+        .sprite(@edit-sm);
+    }
+
+    .rcd__control--remove {
+        .sprite(@remove-sm);
+    }
 }
 
 .record__inner {
@@ -22,69 +41,6 @@
     padding: 25px;
     color: #000;
     margin: 0;
-}
-
-.record__bottom {
-    background-color: @brand-dark2;
-    color: #fff;
-    padding: 15px 20px;
-    .no-float();
-
-    .rcd__author-wrap {
-        float: left;
-    }
-
-    .rcd__author__img {
-        display: inline-block;
-        vertical-align: middle;
-        height: 45px;
-        width: 45px;
-        border-radius: 50%;
-    }
-
-    .rcd__author {
-        display: inline-block;
-        vertical-align: middle;
-    }
-
-    .rcd__author__name {
-        font-family: 'F1 Bold';
-        margin-bottom: 1px;
-    }
-
-    .rcd__date {
-        font-size: 0.714em;
-        margin-bottom: 0;
-    }
-
-    .likes-row {
-        float: right;
-    }
-
-    .rcd__controls {
-        float: right;
-        margin-top: 12px;
-    }
-
-    .rcd__control {
-        display: inline-block;
-        cursor: pointer;
-        margin-left: 20px;
-        user-select: none;
-    }
-
-    .rcd__control--edit {
-        .sprite(@edit-sm);
-    }
-
-    .rcd__control--remove {
-        .sprite(@remove-sm);
-    }
-
-    .btn {
-        float: right;
-        margin: 12px 20px 0 20px;
-    }
 }
 
 .record__media {

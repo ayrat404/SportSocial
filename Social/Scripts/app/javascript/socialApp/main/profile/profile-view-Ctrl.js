@@ -1,26 +1,20 @@
 var ProfileView;
 
 ProfileView = (function() {
-  function ProfileView($scope, $state, $stateParams, $rootScope, mixpanel, profileService) {
+  function ProfileView($scope, $state, $stateParams, $rootScope, mixpanel, profileService, modalService) {
     var _this;
+    $scope.$root.title = ['Fortress | ', $rootScope.user.fullName].join('');
     _this = this;
     _this.user = {
       loaded: false
     };
     _this.test = function() {
-      var params;
-      params = $state.params;
-      params.media = 378;
-      return $state.transitionTo($state.current, params, {
-        notify: false
-      });
-    };
-    _this.test2 = function() {
-      var params;
-      params = $state.params;
-      params.media = null;
-      return $state.transitionTo($state.current, params, {
-        notify: false
+      return modalService.show({
+        name: 'mediaShow',
+        data: {
+          media: 666,
+          index: 4
+        }
       });
     };
     profileService.getInfo($stateParams.userId).then(function(res) {
@@ -158,4 +152,4 @@ ProfileView = (function() {
 
 })();
 
-angular.module('socialApp.controllers').controller('profileViewController', ['$scope', '$state', '$stateParams', '$rootScope', 'mixpanel', 'profileService', ProfileView]);
+angular.module('socialApp.controllers').controller('profileViewController', ['$scope', '$state', '$stateParams', '$rootScope', 'mixpanel', 'profileService', 'modalService', ProfileView]);

@@ -1,0 +1,23 @@
+﻿<div class="media-container">
+    <div class="media__watch-wrap">
+        <div ng-click="before()" class="media-control left"><span class="icon"></span></div>
+        <div ng-click="next()" class="media-control right"><span class="icon"></span></div>
+        <div class="media-index">{{currentIndex}}/{{itemsCount}}</div>
+        <img class="media__watch__img" ng-src="{{ current.img | imageResize:{h: 480, w: 740} }}"/>
+    </div>
+    <div class="item-bottom">
+        <div class="item-author">
+            <img ng-src="{{ it.author.avatar | imageResize:{w: 45, h: 45} }}" class="ia__img" />
+            <div class="ia__info">
+                <p class="ia__name">{{it.author.fullName}}</p>
+                <p class="ia__date">{{it.date}}</p>
+            </div>
+        </div>
+        <likes-in-row ng-model="current.likes" data-id="{{current.id}}" data-type="media"></likes-in-row>
+        <div class="btn btn-fill-green">@R("Поделиться")</div>
+    </div>
+    <p class="media__text">
+        {{it.text | limitTo:maxText}}
+        <a ng-if="it.text.length > maxText" ui-sref="main.journalIt({id: it.id})">@R("Читать далее")</a>
+    </p>
+</div>

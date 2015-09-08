@@ -3,6 +3,7 @@ var RecordView;
 RecordView = (function() {
   function RecordView($scope, $stateParams, $rootScope, journalService, mixpanel) {
     var _this;
+    $scope.$root.title = 'Fortress | Запись в дневнике';
     _this = this;
     _this.it = {
       loader: true

@@ -19,7 +19,7 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'fl
         }
       }
     }).state('main.profile', {
-      url: '/id:userId?media',
+      url: '/id:userId?media&index',
       views: {
         'socialContent@main': {
           templateUrl: tmplView('profile/index'),
@@ -28,7 +28,7 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'fl
         }
       }
     }).state('main.journalIt', {
-      url: '/record/:id?media',
+      url: '/record/:id?media&index',
       views: {
         'socialContent@main': {
           templateUrl: tmplView('journal/view'),
@@ -97,8 +97,10 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'fl
       }
     });
     $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+      modalService.closeAll();
       $rootScope.loading = false;
       $rootScope.fullHeight = toState.fullHeight;
+      queryParamsService.check(toParams);
       return NProgress.done();
     });
   }

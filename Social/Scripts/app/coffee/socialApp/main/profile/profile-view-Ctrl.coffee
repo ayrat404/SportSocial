@@ -6,7 +6,10 @@ class ProfileView extends Controller('socialApp.controllers')
         $stateParams
         $rootScope
         mixpanel
-        profileService)->
+        profileService
+        modalService)->
+
+        $scope.$root.title = ['Fortress | ', $rootScope.user.fullName].join('')
 
         _this = this
 
@@ -16,14 +19,11 @@ class ProfileView extends Controller('socialApp.controllers')
         }
 
         _this.test = ->
-            params = $state.params
-            params.media = 378
-            $state.transitionTo($state.current, params, { notify: false });
-
-        _this.test2 = ->
-            params = $state.params
-            params.media = null
-            $state.transitionTo($state.current, params, { notify: false });
+            modalService.show
+                name: 'mediaShow'
+                data:
+                    media: 666
+                    index: 4
 
         # get user profile info
         # ---------------

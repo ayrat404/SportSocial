@@ -2,6 +2,7 @@ class modal extends Service('shared')
     constructor:(
         $http
         $modal
+        $modalStack
         base
         globalLoaderService
         servicesDefault
@@ -43,10 +44,19 @@ class modal extends Service('shared')
                 tplName: modalBaseUrl 'journal/remove'
                 controller: 'journalModalRemoveController'
                 classname: 'fs-modal--transparent'
+            mediaShow:
+                tplName: modalBaseUrl 'media/show'
+                controller: 'mediaModalShowController'
+                classname: 'fs-modal--transparent fs-modal--lg-content'
             apiModal:
                 tplName: modalBaseUrl 'dev/api'
             policy:
                 tplName: modalBaseUrl 'policy'
+
+        # close all modals
+        # ---------------
+        closeAll = (reason)->
+            $modalStack.dismissAll reason
 
         # show preset modals
         # ---------------
@@ -72,4 +82,5 @@ class modal extends Service('shared')
 
         return {
             show: show
+            closeAll: closeAll
         }

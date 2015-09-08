@@ -1,8 +1,8 @@
 var modal;
 
 modal = (function() {
-  function modal($http, $modal, base, globalLoaderService, servicesDefault, templateUrl) {
-    var modalBaseUrl, modals, show;
+  function modal($http, $modal, $modalStack, base, globalLoaderService, servicesDefault, templateUrl) {
+    var closeAll, modalBaseUrl, modals, show;
     modalBaseUrl = function(path) {
       return templateUrl + '/modals/' + path;
     };
@@ -47,12 +47,20 @@ modal = (function() {
         controller: 'journalModalRemoveController',
         classname: 'fs-modal--transparent'
       },
+      mediaShow: {
+        tplName: modalBaseUrl('media/show'),
+        controller: 'mediaModalShowController',
+        classname: 'fs-modal--transparent fs-modal--lg-content'
+      },
       apiModal: {
         tplName: modalBaseUrl('dev/api')
       },
       policy: {
         tplName: modalBaseUrl('policy')
       }
+    };
+    closeAll = function(reason) {
+      return $modalStack.dismissAll(reason);
     };
     show = function(prop) {
       globalLoaderService.add('load-modal');
@@ -79,7 +87,8 @@ modal = (function() {
       }
     };
     return {
-      show: show
+      show: show,
+      closeAll: closeAll
     };
   }
 
@@ -87,4 +96,4 @@ modal = (function() {
 
 })();
 
-angular.module('shared').service('modalService', ['$http', '$modal', 'base', 'globalLoaderService', 'servicesDefault', 'templateUrl', modal]);
+angular.module('shared').service('modalService', ['$http', '$modal', '$modalStack', 'base', 'globalLoaderService', 'servicesDefault', 'templateUrl', modal]);

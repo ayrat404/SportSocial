@@ -6,6 +6,8 @@ class RecordView extends Controller('socialApp.controllers')
         journalService
         mixpanel)->
 
+        $scope.$root.title = 'Fortress | Запись в дневнике'
+
         _this = this
         _this.it =
             loader: true
