@@ -2,6 +2,7 @@
 class ProfileView extends Controller('socialApp.controllers')
     constructor: (
         $scope
+        $state
         $stateParams
         $rootScope
         mixpanel
@@ -13,6 +14,16 @@ class ProfileView extends Controller('socialApp.controllers')
         _this.user = {
             loaded: false
         }
+
+        _this.test = ->
+            params = $state.params
+            params.media = 378
+            $state.transitionTo($state.current, params, { notify: false });
+
+        _this.test2 = ->
+            params = $state.params
+            params.media = null
+            $state.transitionTo($state.current, params, { notify: false });
 
         # get user profile info
         # ---------------

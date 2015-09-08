@@ -9832,6 +9832,63 @@ fieldset[disabled] .btn-fill-green.active {
   color: #1fba2a;
   background-color: #ffffff;
 }
+.btn-fill-red {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+  color: #ffffff;
+  background-color: #d13f3f;
+  border: 1px solid #c73030;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  padding: 0 17px;
+  font-size: 0.786em;
+  line-height: 25px;
+  border-radius: 50px;
+}
+.btn-fill-red:focus,
+.btn-fill-red.focus {
+  color: #ffffff;
+  background-color: #d13f3f;
+  border: 1px solid #c73030;
+}
+.btn-fill-red:hover,
+.btn-fill-red:active,
+.btn-fill-red.active,
+.open > .dropdown-toggle.btn-fill-red {
+  color: #ffffff;
+  background-color: #db6868;
+  border-color: #d13f3f;
+}
+.btn-fill-red:active,
+.btn-fill-red.active,
+.open > .dropdown-toggle.btn-fill-red {
+  background-image: none;
+}
+.btn-fill-red.disabled,
+.btn-fill-red[disabled],
+fieldset[disabled] .btn-fill-red,
+.btn-fill-red.disabled:hover,
+.btn-fill-red[disabled]:hover,
+fieldset[disabled] .btn-fill-red:hover,
+.btn-fill-red.disabled:focus,
+.btn-fill-red[disabled]:focus,
+fieldset[disabled] .btn-fill-red:focus,
+.btn-fill-red.disabled.focus,
+.btn-fill-red[disabled].focus,
+fieldset[disabled] .btn-fill-red.focus,
+.btn-fill-red.disabled:active,
+.btn-fill-red[disabled]:active,
+fieldset[disabled] .btn-fill-red:active,
+.btn-fill-red.disabled.active,
+.btn-fill-red[disabled].active,
+fieldset[disabled] .btn-fill-red.active {
+  background-color: #d13f3f;
+}
+.btn-fill-red .badge {
+  color: #d13f3f;
+  background-color: #ffffff;
+}
 .btn-link-white {
   color: #ffffff;
   background-color: transparent;
@@ -10222,6 +10279,9 @@ fieldset[disabled] .btn-link-white.active {
 .fs-modal--transparent .fs-modal__submit {
   margin-top: 10px;
   text-align: center;
+}
+.fs-modal--transparent .fs-modal__submit > * {
+  margin: 0 10px;
 }
 .fs-modal--xs-content .fs-modal__body {
   max-width: 424px;
