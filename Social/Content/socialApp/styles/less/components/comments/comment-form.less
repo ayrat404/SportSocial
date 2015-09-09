@@ -1,0 +1,39 @@
+﻿/* Comment form
+---------------------------------------------------------------------------------- */
+
+.comment-form {
+    .form {
+        margin-left: 70px;
+        .fs-input {
+            min-height: 46px;
+            overflow-y: hidden;
+            height: 46px;
+            transition: all 200ms linear;
+        }
+    }
+    .fs-form__submit {
+        text-align: right;
+        display: none;
+    }
+    &.comment-form--active {
+        .fs-form__submit {
+            display: block;
+        }
+        .fs-input {
+            height: auto;
+            overflow-y: inherit;
+            min-height: 130px;
+        }
+    }
+}
+
+.comment-form__avatar {
+    float: left;
+    margin: 0 -100% 0 0;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+}
+
+/* /Comment form
+---------------------------------------------------------------------------------- */

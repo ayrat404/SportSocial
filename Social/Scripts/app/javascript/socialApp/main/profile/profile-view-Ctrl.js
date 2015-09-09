@@ -11,6 +11,29 @@ ProfileView = (function() {
     _this.newRecord = function(res) {
       return _this.user.journals.unshift(res.data);
     };
+    _this.remove = function(id) {
+      return modalService.show({
+        name: 'journalRemove',
+        data: {
+          id: id,
+          success: function(res) {
+            var i, j, k, len, ref, results;
+            ref = _this.user.journals;
+            results = [];
+            for (i = k = 0, len = ref.length; k < len; i = ++k) {
+              j = ref[i];
+              if (j.id === id) {
+                _this.user.journals.splice(i, 1);
+                break;
+              } else {
+                results.push(void 0);
+              }
+            }
+            return results;
+          }
+        }
+      });
+    };
     profileService.getInfo($stateParams.userId).then(function(res) {
       _this.user = res.data;
       if ($rootScope.user.id === +$stateParams.userId) {

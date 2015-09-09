@@ -1,0 +1,22 @@
+﻿<div class="comment-list">
+    <div class="cl__row" ng-repeat="c in comments.list | limitTo:commentsLimit">
+        <a ui-sref="main.profile({userId: c.author.id})" class="cl__avatar-wrap">
+            <img ng-src="{{ c.author.avatar | imageResize:{w: 50, h: 50} }}" class="cl__avatar" />
+        </a>
+        <div class="cl__body">
+            <a ui-sref="main.profile({userId: c.author.id})" class="cl__author-name">{{c.author.fullName}}</a>
+            <p class="cl__text">{{c.text}}</p>
+            <div class="cl__bottom">
+                <div class="cl__date">{{c.date}}</div>
+                <span class="cl__answer link" ng-click="answer(c)">@R("Ответить")</span>
+                <span ng-if="c.commentFor" class="cl__for">
+                    @R("Ответ для ")
+                    <span class="link">{{c.commentFor.name}}</span>
+                </span>
+                <div class="cl__like">like</div>
+            </div>
+        </div>
+    </div>
+    <div ng-show="comments.list.length > commentsLimit" ng-click="showMore()" class="cl__more">@R("Показать остальные комментарии")</div>
+    <div ng-show="!comments.list.length" class="items-negative">@R("Комментариев нет")</div>
+</div>

@@ -15,13 +15,13 @@
                     {{record.it.text}}
                 </p>
                 <div class="item-bottom record__bottom">
-                    <div class="item-author">
+                    <a ui-sref="main.profile({userId: record.it.author.id})" class="item-author">
                         <img ng-src="{{ record.it.author.avatar | imageResize:{w: 45, h: 45} }}" class="ia__img" />
                         <div class="ia__info">
                             <p class="ia__name">{{record.it.author.fullName}}</p>
                             <p class="ia__date">{{record.it.date}}</p>
                         </div>
-                    </div>
+                    </a>
                     <div ng-if="record.it.isOwner" class="rcd__controls">
                         <div class="rcd__control rcd__control--edit" ng-click="record.edit()"></div>
                         <div class="rcd__control rcd__control--remove" ng-click="record.remove()"></div>
@@ -41,11 +41,53 @@
                         <span class="tl__text">{{tag}}</span>
                     </li>
                 </ul>
-                <div class="record__form"></div>
+                
+                <comment-form ng-model="record.it.comments"
+                              data-id="{{::record.it.id}}" 
+                              data-entity-type="record"></comment-form>
+
             </div>
         </div>
         <div class="record__comments">
+            <div class="container">
+                <div class="record__comments__count">{{record.it.comments.count | formatWord:['комментарий', 'комментария', 'комментариев']:true}}</div>    
+                
+                <comment-list ng-model="record.it.comments"
+                              data-id="{{::record.it.id}}"
+                              data-entity-type="record"></comment-list>
 
+                @*<div class="comment-list">
+                    <div class="cl__row">
+                        <a href="#" class="cl__avatar-wrap">
+                            <img src="#" class="cl__avatar" />
+                        </a>
+                        <div class="cl__body">
+                            <a href="#" class="cl__author-name">Александр Русаков</a>
+                            <p class="cl__text">Таким образом начало повседневной работы по формированию позиции обеспечивает широкому кругу (специалистов) участие в формировании направлений прогрессивного развития.</p>
+                            <div class="cl__bottom">
+                                <div class="cl__date">19 июня 2015 | 15:08</div>
+                                <span class="link">@R("Ответить")</span>
+                                <div class="cl__like">like</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cl__row">
+                        <a href="#" class="cl__avatar-wrap">
+                            <img src="#" class="cl__avatar" />
+                        </a>
+                        <div class="cl__body">
+                            <a href="#" class="cl__author-name">Александр Русаков</a>
+                            <p class="cl__text">Таким образом начало повседневной работы по формированию позиции обеспечивает широкому кругу (специалистов) участие в формировании направлений прогрессивного развития.</p>
+                            <div class="cl__bottom">
+                                <div class="cl__date">19 июня 2015 | 15:08</div>
+                                <span class="link">@R("Ответить")</span>
+                                <div class="cl__like">like</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+
+            </div>
         </div>
     </div>
 </section>

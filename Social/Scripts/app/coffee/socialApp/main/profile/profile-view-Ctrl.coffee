@@ -23,6 +23,19 @@ class ProfileView extends Controller('socialApp.controllers')
         _this.newRecord = (res)->
             _this.user.journals.unshift res.data
 
+        # remove item from
+        # ---------------
+        _this.remove = (id)->
+            modalService.show
+                name: 'journalRemove'
+                data:
+                    id: id
+                    success: (res)->
+                        for j, i in _this.user.journals
+                            if j.id == id
+                                _this.user.journals.splice i, 1
+                                break
+
         # get user profile info
         # ---------------
         profileService.getInfo($stateParams.userId).then((res)->

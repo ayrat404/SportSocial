@@ -8,11 +8,10 @@ class JournalModalRemove extends Controller('socialApp.controllers')
         # remove journal item
         # ---------------
         $scope.remove = ->
-            journalService.remove(modalData.id).then((res)->
+            journalService.remove(modalData.id).then (res)->
                 $modalInstance.close()
                 if typeof modalData.success == 'function'
                     modalData.success res
-            )
 
         $scope.close = ->
             $modalInstance.close()

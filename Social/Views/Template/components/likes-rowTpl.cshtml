@@ -2,8 +2,8 @@
     <div ng-click="like()"
          ng-class="{ 'lr__btn--liked': likes.isLiked }"
          class="lr__btn"><i></i></div>
-    <a ng-repeat="l in likes.list | limitTo:o.rowCount" ui-sref="main.profile({userId: l.id})" class="lr__user">
+    <a ng-if="likes.list.length" ng-repeat="l in likes.list | limitTo:o.rowCount" ui-sref="main.profile({userId: l.id})" class="lr__user">
         <img ng-src="{{ l.img | imageResize:{w: o.imageSize, h: o.imageSize} }}" alt="{{l.fullName}}" />
     </a>
-    <a ng-show="likes.count > o.rowCount && o.showLink" href="#" class="lr__more">+{{likes.count-o.rowCount}}</a>
+    <span ng-show="likes.count > o.rowCount && o.showLink" class="lr__more">+{{likes.count-o.rowCount}}</span>
 </div>

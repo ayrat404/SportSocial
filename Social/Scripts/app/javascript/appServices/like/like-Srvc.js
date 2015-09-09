@@ -6,8 +6,8 @@ Like = (function() {
     url = servicesDefault.baseServiceUrl + '/like';
     set = function(data) {
       return $q(function(resolve, reject) {
-        if (data && data.type && data.id && typeof data.current === 'boolean') {
-          data.action = data.current ? 'dislike' : 'like';
+        if (data && data.entityType && data.id && typeof data.current === 'boolean') {
+          data.actionType = data.current ? 'dislike' : 'like';
           return $http.post(url, data).then(function(res) {
             if (res.data.success) {
               return resolve(res.data, !data.current);

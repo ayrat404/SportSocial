@@ -59,7 +59,6 @@
                     </div>
                     
                     <div ng-if="profile.user.journals.length"
-                         wall-vertical
                          class="wall">
                         <div class="wall__bar">
 
@@ -99,8 +98,7 @@
                                         </div>
                                         <p class="wi__text">{{it.text}}</p>
                                     </section>
-                                    <likes-in-row ng-if="it.likes.list.length"
-                                                  ng-model="it.likes"
+                                    <likes-in-row ng-model="it.likes"
                                                   data-id="{{::it.id}}"
                                                   data-type="record"></likes-in-row>
                                 </div>
