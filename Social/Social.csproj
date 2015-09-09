@@ -276,16 +276,20 @@
     <Content Include="Scripts\app\javascript\appServices\auth\registration-Srvc.js" />
     <Content Include="Scripts\app\javascript\appServices\auth\restore-password-Srvc.js" />
     <Content Include="Scripts\app\javascript\appServices\auth\user-Srvc.js" />
+    <Content Include="Scripts\app\javascript\appServices\comments\comments-Srvc.js" />
     <Content Include="Scripts\app\javascript\appServices\journal\journal-Srvc.js" />
+    <Content Include="Scripts\app\javascript\appServices\like\like-Srvc.js" />
     <Content Include="Scripts\app\javascript\appServices\other\sport-themes-Srvc.js" />
     <Content Include="Scripts\app\javascript\appServices\other\youtube-video-Srvc.js" />
     <Content Include="Scripts\app\javascript\appServices\profile\profile-Srvc.js" />
     <Content Include="Scripts\app\javascript\appServices\support\support-Srvc.js" />
     <Content Include="Scripts\app\javascript\shared\app.js" />
+    <Content Include="Scripts\app\javascript\shared\directives\autofocus-Drct.js" />
     <Content Include="Scripts\app\javascript\shared\directives\content-height-Drct.js" />
     <Content Include="Scripts\app\javascript\shared\directives\loader-Drct.js" />
     <Content Include="Scripts\app\javascript\shared\directives\mixpanel-Drct.js" />
     <Content Include="Scripts\app\javascript\shared\directives\modal-click-Drct.js" />
+    <Content Include="Scripts\app\javascript\shared\directives\scroll-to-current-pos-Drct.js" />
     <Content Include="Scripts\app\javascript\shared\directives\scroll-to-Drct.js" />
     <Content Include="Scripts\app\javascript\shared\directives\server-validation-Drct.js" />
     <Content Include="Scripts\app\javascript\shared\filters\format-word-Drct.js" />
@@ -354,6 +358,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Scripts\libs\angular-social-share\angular-socialshare.js" />
     <Content Include="Scripts\libs\angular-storage\angular-storage.js" />
     <Content Include="Scripts\libs\angular-ui-bootstrap\ui-bootstrap-tpls-0.13.3.js" />
     <Content Include="Scripts\libs\angular-ui-router\angular-ui-router.js" />
@@ -2775,6 +2780,21 @@
     <None Include="Properties\PublishProfiles\Social.pubxml" />
     <Content Include="Scripts\app\coffee\socialApp\components\wall\wall-Drct.coffee" />
     <Content Include="Scripts\app\coffee\shared\filters\image-resize-Fltr.coffee" />
+    <Content Include="Scripts\app\coffee\appServices\comments\comments-Srvc.coffee" />
+    <Content Include="Scripts\app\coffee\appServices\like\like-Srvc.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\components\comments\comment-form-Drct.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\components\comments\comment-list-Drct.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\components\likes-row\likes-row-Ctrl.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\components\likes-row\likes-row-Drct.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\components\media-show-modal\media-show-modal-Drct.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\components\social-share\social-share-Drct.coffee" />
+    <Content Include="Scripts\app\coffee\shared\directives\autofocus-Drct.coffee" />
+    <Content Include="Scripts\app\coffee\shared\directives\scroll-to-current-pos-Drct.coffee" />
+    <Content Include="Scripts\app\coffee\shared\filters\cut-Fltr.coffee" />
+    <Content Include="Scripts\app\coffee\shared\services\query-params-Srvc.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\main\record\record-view-Ctrl.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\modals\journal-remove-Ctrl.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\modals\media-show-Ctrl.coffee" />
     <None Include="Scripts\libs\jquery\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.min.js" />
@@ -3039,6 +3059,8 @@
     <Content Include="Views\Template\modals\media\show.cshtml" />
     <Content Include="Views\Template\components\social-shareTpl.cshtml" />
     <Content Include="Views\Template\modals\social-share\share.cshtml" />
+    <Content Include="Views\Template\components\comments\comment-formTpl.cshtml" />
+    <Content Include="Views\Template\components\comments\comment-listTpl.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">
