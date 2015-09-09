@@ -5,12 +5,16 @@ modalClick = (function() {
     return {
       restrict: 'A',
       link: function(scope, element, attrs) {
-        var modalItem;
+        var listener, modalItem;
         modalItem = attrs.modalClick;
-        element.on('click', function() {
+        listener = function() {
           return modalService.show({
             name: modalItem
           });
+        };
+        element.on('click', listener);
+        return scope.$on('$destroy', function() {
+          return element.off('click', listener);
         });
       }
     };

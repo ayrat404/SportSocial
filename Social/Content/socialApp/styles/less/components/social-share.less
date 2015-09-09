@@ -1,0 +1,56 @@
+/* Social share
+---------------------------------------------------------------------------------- */
+
+.social-share {
+    text-align: center;
+    .ss__it{
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 5px;
+        cursor: pointer;
+        user-select: none;
+        opacity: .8;
+        transition: opacity 100ms linear;
+        &:hover {
+            opacity: 1;
+        }
+    }
+    .ss__count {
+        font-size: 10px;
+        font-family: 'F1 Semibold';
+        color: #182a34;
+        background-color: #fff;
+        padding: 2px 7px;
+        border-radius: 20px;
+        position: relative;
+        margin-left: 3px;
+        &:before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 7px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 2px 6px 2px 0;
+            border-color: transparent #ffffff transparent transparent;
+        }
+    }
+    .icon {
+        display: inline-block;
+        vertical-align: middle;
+        .sprite(@soc-gp);
+    }
+    .icon--vk {
+        .sprite(@soc-vk);
+    }
+    .icon--facebook {
+        .sprite(@soc-fb);
+    }
+    .icon--twitter {
+        .sprite(@soc-tw);
+    }
+}
+
+/* /Social share
+---------------------------------------------------------------------------------- */

@@ -1,15 +1,20 @@
-class modalClick extends Directive('shared')
+class mediaShowModal extends Directive('shared')
     constructor: (modalService)->
         return {
             restrict: 'A'
+            scope:
+                media: '@id'
+                index: '@'
             link: (scope, element, attrs)->
-
-                modalItem = attrs.modalClick
 
                 # listener
                 # ---------------
                 listener = ->
-                    modalService.show name: modalItem
+                    modalService.show
+                        name: 'mediaShow'
+                        data:
+                            media: scope.media
+                            index: scope.index + 1
 
                 # ---------------
                 element.on 'click', listener
@@ -17,4 +22,6 @@ class modalClick extends Directive('shared')
                 # ---------------
                 scope.$on '$destroy', ->
                     element.off 'click', listener
+
+
         }

@@ -3026,6 +3026,9 @@
     <Content Include="Content\socialApp\styles\less\libs\nprogress\nprogress.less" />
     <Content Include="Content\socialApp\styles\less\libs\animate\animate.less" />
     <Content Include="Views\Template\journal\view.cshtml" />
+    <Content Include="Views\Template\components\likes-rowTpl.cshtml" />
+    <Content Include="Views\Template\modals\journal\remove.cshtml" />
+    <Content Include="Views\Template\modals\media\show.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">

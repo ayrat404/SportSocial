@@ -17,18 +17,12 @@ namespace Social
                     "~/Scripts/libs/nprogress/nprogress.js",
                     "~/Scripts/libs/angular/angular.js",
                     "~/Scripts/libs/angular/i18n/angular-locale_ru-ru.js",
-                    //"~/Scripts/libs/angular/angular-mocks.js",
-                    //"~/Scripts/libs/angular/angular-cookies.js",
                     "~/Scripts/libs/angular-ui-router/angular-ui-router.js",
-                    //"~/Scripts/libs/bootstrap/modal.js",
-                    //"~/Scripts/libs/bootstrap/collapse.js",
-                    //"~/Scripts/libs/bootstrap/transition.js",
-                    //"~/Scripts/libs/bootstrap/tab.js",
-                    //"~/Scripts/libs/bootstrap/tooltip.js",
                     "~/Scripts/libs/angular-ui-bootstrap/ui-bootstrap-tpls-0.13.3.js",
                     "~/Scripts/libs/fotorama/fotorama.js",
                     "~/Scripts/libs/ng-flow/ng-flow-standalone.js",
-                    "~/Scripts/libs/angular-storage/angular-storage.js"));
+                    "~/Scripts/libs/angular-storage/angular-storage.js",
+                    "~/Scripts/libs/angular-social-share/angular-socialshare.js"));
 
             // social with coffee
             // ---------------

@@ -1,5 +1,7 @@
 ﻿<div class="likes-row">
-    <div class="lr__btn" ng-click="like()"><i></i></div>
+    <div ng-click="like()"
+         ng-class="{ 'lr__btn--liked': likes.isLiked }"
+         class="lr__btn"><i></i></div>
     <a ng-repeat="l in likes.list | limitTo:o.rowCount" ui-sref="main.profile({userId: l.id})" class="lr__user">
         <img ng-src="{{ l.img | imageResize:{w: o.imageSize, h: o.imageSize} }}" alt="{{l.fullName}}" />
     </a>

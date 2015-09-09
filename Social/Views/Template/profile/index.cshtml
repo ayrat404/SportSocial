@@ -22,7 +22,6 @@
                     <div class="pi__row">
                         <p class="pi__row__title">@R("Достижения") (0) <span class="link" data-modal-click="aboutAchievement">@R("Что это?")</span></p>
                         <button class="btn btn-fill-green" type="button">@R("Подать заявку на достижение")</button>
-                        <button class="btn btn-fill-green" type="button" ng-click="profile.test()">Изменить параметры (тест)</button>
                     </div>
                     <div class="pi__row">
                         <p class="pi__row__title">@R("Подписки") ({{profile.user.subscribe.count}}) <a href="#" ng-if="profile.user.subscribe.count > 4" class="link">@R("Показать всех")</a></p>
@@ -56,13 +55,15 @@
             <div class="col-sm-7 pa0">
                 <div class="profile__journal">
                     <div ng-if="profile.user.isOwner">
-                        <journal-profile-submit></journal-profile-submit>
+                        <journal-profile-submit success="profile.newRecord($res)"></journal-profile-submit>
                     </div>
                     
-                    <div class="wall" wall-vertical>
+                    <div ng-if="profile.user.journals.length"
+                         wall-vertical
+                         class="wall">
                         <div class="wall__bar">
-                            
-                            <div ng-repeat="it in profile.wall"
+
+                            <div ng-repeat="it in profile.user.journals"
                                  ng-class="{
                                  'wall__it--right': $index % 2 != 0,
                                  'wall__it--left': $index % 2 == 0,
@@ -75,7 +76,7 @@
                                     <header class="wall__it__header-info">
                                         <span class="wi__date">{{it.date}}</span>
                                         <div class="wi__share"><i></i></div>
-                                        <div class="wi__comment"><i></i></div>
+                                        <a ui-sref="main.journalIt({id: it.id})" class="wi__comment"><i></i></a>
                                     </header>
                                     <header class="wall__it__header-edit">
                                         <div class="wi__edit"><i></i></div>
@@ -87,8 +88,11 @@
                                              'video': it.media[0].type=='video',
                                              'image': it.media[0].type=='image'
                                              }"
+                                             media-show-modal
+                                             data-id="{{::it.id}}"
+                                             data-index="0"
                                              class="wi__media-wrap">
-                                            <img ng-src="{{ it.media[0].img | imageResize:{w: 250, h: 170 } }}" class="wi__media__img" />
+                                            <img ng-src="{{ it.media[0].url | imageResize:{w: 250, h: 170 } }}" class="wi__media__img" />
                                             <div class="wi__media__icon">
                                                 <i></i>
                                             </div>
@@ -104,6 +108,8 @@
 
                         </div>
                     </div>
+                    
+                    <div ng-if="!profile.user.journals.length" class="items-negative">@R("Нет ни одной записи")</div>
 
                 </div>
             </div>

@@ -9683,6 +9683,7 @@ This must be run when you have at least 2 sprites.
 /* Core styles html,body, etc.
 ---------------------------------------------------------------------------------- */
 html {
+  background-color: #1f282e;
   height: 100%;
 }
 html.full-height {
@@ -10265,6 +10266,14 @@ fieldset[disabled] .btn-link-white.active {
   margin: 12px 20px 0 20px;
 }
 /* /Item bottom
+---------------------------------------------------------------------------------- */
+/* Items negative
+---------------------------------------------------------------------------------- */
+.items-negative {
+  color: #fff;
+  text-align: center;
+}
+/* /Items negative
 ---------------------------------------------------------------------------------- */
 /* /Elements */
 /* Components
@@ -11224,6 +11233,76 @@ fieldset[disabled] .btn-link-white.active {
   font-family: 'F1 SemiBold';
 }
 /* /Media show
+---------------------------------------------------------------------------------- */
+/* Social share
+---------------------------------------------------------------------------------- */
+.social-share {
+  text-align: center;
+}
+.social-share .ss__it {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 5px;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  opacity: .8;
+  -webkit-transition: opacity 100ms linear;
+          transition: opacity 100ms linear;
+}
+.social-share .ss__it:hover {
+  opacity: 1;
+}
+.social-share .ss__count {
+  font-size: 10px;
+  font-family: 'F1 Semibold';
+  color: #182a34;
+  background-color: #fff;
+  padding: 2px 7px;
+  border-radius: 20px;
+  position: relative;
+  margin-left: 3px;
+}
+.social-share .ss__count:before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 7px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 2px 6px 2px 0;
+  border-color: transparent #ffffff transparent transparent;
+}
+.social-share .icon {
+  display: inline-block;
+  vertical-align: middle;
+  background-image: url(../../images/icons-set/icons-set.png);
+  background-position: -283px -182px;
+  width: 20px;
+  height: 20px;
+}
+.social-share .icon--vk {
+  background-image: url(../../images/icons-set/icons-set.png);
+  background-position: -223px -182px;
+  width: 20px;
+  height: 20px;
+}
+.social-share .icon--facebook {
+  background-image: url(../../images/icons-set/icons-set.png);
+  background-position: -193px -182px;
+  width: 20px;
+  height: 20px;
+}
+.social-share .icon--twitter {
+  background-image: url(../../images/icons-set/icons-set.png);
+  background-position: -253px -182px;
+  width: 20px;
+  height: 20px;
+}
+/* /Social share
 ---------------------------------------------------------------------------------- */
 /* /Components */
 /* Views
