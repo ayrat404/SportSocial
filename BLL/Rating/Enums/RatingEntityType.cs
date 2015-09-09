@@ -6,7 +6,7 @@ namespace BLL.Rating.Enums
         ArticleComment,
         Feedback,
         FeedbackComment,
-        Journal,
-        JournalComment,
+        Record,
+        RecordComment,
     }
 }

@@ -5,6 +5,7 @@ using BLL.Rating.Enums;
 using BLL.Rating.Models;
 using DAL.DomainModel.BlogEntities;
 using DAL.DomainModel.FeedBackEntities;
+using DAL.DomainModel.JournalEntities;
 using DAL.Repository.Interfaces;
 
 namespace BLL.Rating.Impls
@@ -40,6 +41,10 @@ namespace BLL.Rating.Impls
                     return typeof (Feedback);
                 case RatingEntityType.FeedbackComment:
                     return typeof (FeedbackComment);
+                case RatingEntityType.Record:
+                    return typeof (Journal);
+                case RatingEntityType.RecordComment:
+                    return typeof (JournalComment);
             }
             return null;
         }
@@ -56,6 +61,10 @@ namespace BLL.Rating.Impls
                     return typeof (FeedbackRating);
                 case RatingEntityType.FeedbackComment:
                     return typeof (FeedbackCommentRating);
+                case RatingEntityType.Record:
+                    return typeof (JournalRating);
+                case RatingEntityType.RecordComment:
+                    return typeof (JournalCommentRating);
             }
             return null;
         }
