@@ -10,6 +10,7 @@ using BLL.Infrastructure.Map;
 using DAL.Migrations;
 using Knoema.Localization;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using Ninject.Web.WebApi;
 using Social.App_Start;
@@ -41,6 +42,9 @@ namespace Social
             var settings = jsonFormatter.SerializerSettings;
             settings.Formatting = Formatting.Indented;
             settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+
+            formatters.JsonFormatter.SerializerSettings.Converters.Add(new StringEnumConverter {CamelCaseText = true});
+
             CreateMaps.Register();
 
             var conf = new Configuration();
