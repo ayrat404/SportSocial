@@ -4,6 +4,8 @@ class journalProfileSubmit extends Directive('socialApp.directives')
             restrict: 'AE'
             replace: true
             templateUrl: '/template/journal/submit'
+            scope:
+                success: '&'
             controller: 'journalProfileSubmitController'
             link: (scope, element, JournalCtrl)->
                 console.log('journal submit directive')

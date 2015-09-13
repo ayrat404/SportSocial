@@ -9,7 +9,7 @@ using Social.Models;
 
 namespace Social.Controllers
 {
-    [RoutePrefix("api/journals")]
+    [RoutePrefix("api/journal")]
     public class JournalController : BaseApiController
     {
         private readonly IJournalService _journalService;
@@ -33,10 +33,10 @@ namespace Social.Controllers
 
         [Route("{id:int}")]
         [HttpGet]
-        public JournalDisplayVm GetJournal(int id)
+        public ApiResult GetJournal(int id)
         {
             var journal = _journalService.GetJournal(id);
-            return journal;
+            return ApiResult(journal);
         }
     }
 }

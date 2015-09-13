@@ -3,9 +3,18 @@ class modalClick extends Directive('shared')
         return {
             restrict: 'A'
             link: (scope, element, attrs)->
+
                 modalItem = attrs.modalClick
-                element.on('click', ->
-                    modalService.show(name: modalItem)
-                )
-                return
+
+                # listener
+                # ---------------
+                listener = ->
+                    modalService.show name: modalItem
+
+                # ---------------
+                element.on 'click', listener
+
+                # ---------------
+                scope.$on '$destroy', ->
+                    element.off 'click', listener
         }

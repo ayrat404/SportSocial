@@ -11,7 +11,8 @@ WallVertical = (function() {
           return modalService.show({
             name: 'journalRemove',
             data: {
-              id: id
+              id: id,
+              success: function(res) {}
             }
           });
         };

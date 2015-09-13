@@ -15,6 +15,7 @@
         <li><a href="#api_journal_edit">Редактирование записи в дневнике</a></li>
         <li><a href="#api_profile_view">Получить данные о профиле</a></li>
         <li><a href="#api_record_view">Страница просмотра записи</a></li>
+        <li><a href="#api_like">Лайк/дизлайк</a></li>
     </ul>
     <ul class="dev__api__content">
 
@@ -436,6 +437,7 @@
             }
             date: '19 июля 2015 | 15:08'
             likes: {
+                isLiked: true
                 list: [
                     { id: 1, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
                     { id: 2, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
@@ -451,6 +453,7 @@
                     type: 'image',
                     img: 'srctest1',
                     likes: {
+                        isLiked: true
                         list: [
                             { id: 1, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
                             { id: 2, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
@@ -466,6 +469,7 @@
                     type: 'image',
                     img: 'srctest2',
                     likes: {
+                        isLiked: true
                         list: [
                             { id: 1, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
                             { id: 2, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
@@ -481,6 +485,7 @@
                     type: 'video',
                     img: 'srctest3',
                     likes: {
+                        isLiked: true
                         list: [
                             { id: 1, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
                             { id: 2, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
@@ -496,6 +501,7 @@
                     type: 'image',
                     img: 'srctest4',
                     likes: {
+                        isLiked: false
                         list: [
                             { id: 1, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
                             { id: 2, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
@@ -514,7 +520,7 @@
                         id: 1, 
                         text: 'wwwwww wwwwww' ,
                         author {id: 5, fullName: 'Владимир Владимирович', avatar: 'avatartest1'},
-                        likes { list: [...], count: 5 },
+                        likes { list: [...], count: 5, isLiked: false },
                         Date: "",
                         CommentFor { id: 5, name: "" } //изменить как удобнее будет
                     },
@@ -523,6 +529,34 @@
             }
         }
     },
+    errors: null,
+    message: null
+}
+                    </pre>
+            </b>
+
+        </li>
+        
+        
+        <li id="api_like" class="dev__api__row">
+            <p>Лайк дизлайк</p>
+            <code>POST: /api/like</code>
+            <b>
+                send data:
+                <pre>
+{
+    id: x,
+    type: record/media
+    action: like/dislike
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true,
+    data: null,
     errors: null,
     message: null
 }

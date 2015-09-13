@@ -8,12 +8,29 @@ ProfileView = (function() {
     _this.user = {
       loaded: false
     };
-    _this.test = function() {
+    _this.newRecord = function(res) {
+      return _this.user.journals.unshift(res.data);
+    };
+    _this.remove = function(id) {
       return modalService.show({
-        name: 'mediaShow',
+        name: 'journalRemove',
         data: {
-          media: 666,
-          index: 4
+          id: id,
+          success: function(res) {
+            var i, j, k, len, ref, results;
+            ref = _this.user.journals;
+            results = [];
+            for (i = k = 0, len = ref.length; k < len; i = ++k) {
+              j = ref[i];
+              if (j.id === id) {
+                _this.user.journals.splice(i, 1);
+                break;
+              } else {
+                results.push(void 0);
+              }
+            }
+            return results;
+          }
         }
       });
     };
@@ -26,126 +43,6 @@ ProfileView = (function() {
       }
       return _this.user.loaded = true;
     });
-    _this.wall = [
-      {
-        id: 1,
-        text: 'asdasdasdasdasd',
-        date: '09/05/2015',
-        media: [
-          {
-            id: 1,
-            type: 'video',
-            img: 'srctest1'
-          }, {
-            id: 2,
-            type: 'image',
-            img: 'srctest2'
-          }, {
-            id: 3,
-            type: 'video',
-            img: 'srctest3'
-          }, {
-            id: 4,
-            type: 'image',
-            img: 'srctest4'
-          }
-        ],
-        likes: {
-          list: [
-            {
-              id: 1,
-              fullName: 'Владимир Владимирович',
-              avatar: 'avatartest1'
-            }, {
-              id: 2,
-              fullName: 'Владимир Владимирович',
-              avatar: 'avatartest1'
-            }, {
-              id: 3,
-              fullName: 'Владимир Владимирович',
-              avatar: 'avatartest1'
-            }, {
-              id: 4,
-              fullName: 'Владимир Владимирович',
-              avatar: 'avatartest1'
-            }
-          ],
-          count: 23
-        }
-      }, {
-        id: 2,
-        text: 'asdasdasdasdasd',
-        date: '09/05/2015',
-        media: [
-          {
-            id: 1,
-            type: 'image',
-            img: 'srctest1'
-          }, {
-            id: 2,
-            type: 'image',
-            img: 'srctest2'
-          }, {
-            id: 3,
-            type: 'video',
-            img: 'srctest3'
-          }, {
-            id: 4,
-            type: 'image',
-            img: 'srctest4'
-          }
-        ],
-        likes: {
-          list: [
-            {
-              id: 1,
-              fullName: 'Владимир Владимирович',
-              avatar: 'avatartest1'
-            }, {
-              id: 2,
-              fullName: 'Владимир Владимирович',
-              avatar: 'avatartest1'
-            }, {
-              id: 3,
-              fullName: 'Владимир Владимирович',
-              avatar: 'avatartest1'
-            }, {
-              id: 4,
-              fullName: 'Владимир Владимирович',
-              avatar: 'avatartest1'
-            }
-          ],
-          count: 23
-        }
-      }, {
-        id: 3,
-        text: 'asdasdasdasdasd',
-        date: '09/05/2015',
-        media: [],
-        likes: {
-          list: [
-            {
-              id: 1,
-              fullName: 'Владимир Владимирович',
-              avatar: 'avatartest1'
-            }, {
-              id: 2,
-              fullName: 'Владимир Владимирович',
-              avatar: 'avatartest1'
-            }, {
-              id: 3,
-              fullName: 'Владимир Владимирович',
-              avatar: 'avatartest1'
-            }, {
-              id: 4,
-              fullName: 'Владимир Владимирович',
-              avatar: 'avatartest1'
-            }
-          ],
-          count: 23
-        }
-      }
-    ];
   }
 
   return ProfileView;

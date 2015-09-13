@@ -1,0 +1,13 @@
+﻿<div class="social-share">
+    <a ng-repeat="s in list" class="ss__it"
+       socialshare
+       socialshare-title="{{::prop.title}}"
+       socialshare-text="{{::prop.text}}"
+       socialshare-description="{{::prop.text}}"
+       socialshare-url="{{::prop.url}}"
+       socialshare-provider="{{::s}}"
+       socialshare-hashtags="fortress, sport, fitness">
+        <span class="icon icon--{{::s}}"></span>
+        <span ng-show="counters=='true'" class="ss__count">120</span>
+    </a>
+</div>

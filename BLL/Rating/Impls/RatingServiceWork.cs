@@ -13,7 +13,7 @@ namespace BLL.Rating.Impls
 {
     internal class RatingServiceWork<TEntity, TRatingEntity> : IRatingService
         where TEntity: class, IHasRating<TRatingEntity>
-        where TRatingEntity: class, IRatingEntity<TEntity>
+        where TRatingEntity : RatingEntity<TEntity>
     {
         private readonly IRepository _repository;
         private readonly ICurrentUser _currentUser;

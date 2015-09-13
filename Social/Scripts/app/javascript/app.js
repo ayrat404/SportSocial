@@ -1,6 +1,6 @@
 var app;
 
-app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'flow', 'shared', 'appSrvc', 'socialApp']).config([
+app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'flow', '720kb.socialshare', 'shared', 'appSrvc', 'socialApp']).config([
   '$stateProvider', '$locationProvider', '$httpProvider', '$urlRouterProvider', 'templateUrl', function($stateProvider, $locationProvider, $httpProvider, $urlRouterProvider, templateUrl) {
     var tmplView;
     tmplView = function(viewPath) {

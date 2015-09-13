@@ -1,0 +1,15 @@
+﻿<div ng-class="{ 'comment-form--active': open }"
+     class="comment-form">
+    <img ng-src="{{$root.user.avatar | imageResize:{w: 46, h: 46} }}" class="comment-form__avatar" />
+    <form class="form">
+        <div class="fs-form__row">
+            <textarea ng-autofocus="{{comments.form.focus}}"
+                      scroll-to-cur-pos="{{comments.form.focus}}"
+                      ng-model="comments.form.text" class="fs-input" placeholder="@R("Комментировать")"></textarea>
+        </div>
+        <div class="fs-form__submit">
+            <button type="button" class="link link--white" ng-click="cancel()">@R("Отмена")</button>
+            <button type="button" class="btn btn-fill-green btn-xl" ng-click="submit()">@R("Отправить")</button>
+        </div>
+    </form>
+</div>

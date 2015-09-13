@@ -4,6 +4,7 @@ app = angular.module('app', [
     'ui.bootstrap',
     'angular-storage'
     'flow',
+    '720kb.socialshare'
     'shared',
     'appSrvc',
     'socialApp'

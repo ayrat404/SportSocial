@@ -38,7 +38,10 @@ JournalProfileSubmit = (function() {
     };
     $scope.submit = function() {
       return journalService.submit($scope.j).then(function(res) {
-        return $scope.closeForm();
+        $scope.closeForm();
+        return $scope.success({
+          $res: res
+        });
       }, function(res) {});
     };
   }
