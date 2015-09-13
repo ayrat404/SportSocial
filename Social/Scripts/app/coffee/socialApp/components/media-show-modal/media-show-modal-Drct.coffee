@@ -14,7 +14,7 @@ class mediaShowModal extends Directive('shared')
                         name: 'mediaShow'
                         data:
                             media: scope.media
-                            index: scope.index + 1
+                            index: +scope.index + 1
 
                 # ---------------
                 element.on 'click', listener

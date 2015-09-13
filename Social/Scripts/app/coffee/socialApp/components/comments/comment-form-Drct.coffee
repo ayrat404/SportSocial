@@ -1,4 +1,4 @@
-class commentForm extends Directive('socialApp.controllers')
+class commentForm extends Directive('socialApp.directives')
     constructor: (commentsService)->
         return {
             restrict: 'E'
@@ -13,16 +13,12 @@ class commentForm extends Directive('socialApp.controllers')
                   $scope.comments.form == null
                     $scope.comments.form = {}
 
-                # close comment form
+                # close & clear comment form
                 # ---------------
                 closeForm = ->
                     $scope.open = false
-                    takeWatcher()
-
-                # clear comment form
-                # ---------------
-                clearForm = ->
                     $scope.comments.form.text = ''
+                    takeWatcher()
 
                 # take watcher form
                 # ---------------
@@ -37,18 +33,24 @@ class commentForm extends Directive('socialApp.controllers')
                 # submit comment
                 # ---------------
                 $scope.submit = ()->
-                    commentsService.submit(text: $scope.comments.form.text, entityType: $scope.entityType, id: $scope.id).then (res)->
+                    data =
+                        entityType: $scope.entityType
+                        entityId: $scope.id
+                    if $scope.comments.form.isAnswer
+                        data.commentType = 'answer'
+                        data.commentForId = $scope.comments.commentModel.id
+                        data.text = $scope.comments.form.text.substr($scope.comments.commentModel.author.fullName.length + 2, $scope.comments.form.text.length - 1)
+                    else
+                        data.commentType = 'comment'
+                        data.text = $scope.comments.form.text
+                    commentsService.submit(data).then (res)->
                         $scope.comments.list.unshift res.data
-                        clearForm()
                         closeForm()
 
                 # cancel form
                 # ---------------
                 $scope.cancel = ->
-                    clearForm()
                     closeForm()
-
-            #controller: 'commentFormController'
             templateUrl: '/template/components/comments/comment-formTpl'
             link: (scope, element, attrs, ngModel)->
 

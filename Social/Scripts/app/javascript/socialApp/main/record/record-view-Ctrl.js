@@ -1,7 +1,7 @@
 var RecordView;
 
 RecordView = (function() {
-  function RecordView($scope, $stateParams, $rootScope, journalService, mixpanel) {
+  function RecordView($scope, $stateParams, $rootScope, journalService, modalService) {
     var _this;
     $scope.$root.title = 'Fortress | Запись в дневнике';
     _this = this;
@@ -12,10 +12,11 @@ RecordView = (function() {
       _this.it = res.data;
       _this.it.loader = false;
       if ($rootScope.user.id === _this.it.author.id) {
-        return _this.it.isOwner = true;
+        _this.it.isOwner = true;
       } else {
-        return _this.it.isOwner = false;
+        _this.it.isOwner = false;
       }
+      return _this.it.comments.form = {};
     });
     _this.edit = function() {
       return console.log('edit');
@@ -33,135 +34,19 @@ RecordView = (function() {
         }
       });
     };
-    _this.it = {
-      isOwner: true,
-      loader: false,
-      id: 123,
-      text: '123123123',
-      author: {
-        id: 12,
-        avatar: 'avatar',
-        fullName: 'Павел Козловский'
-      },
-      date: '19 июля 2015 | 15:08',
-      likes: {
-        list: [
-          {
-            id: 1,
-            fullName: 'Владимир Владимирович',
-            avatar: 'avatartest1'
-          }, {
-            id: 2,
-            fullName: 'Владимир Владимирович',
-            avatar: 'avatartest1'
-          }, {
-            id: 3,
-            fullName: 'Владимир Владимирович',
-            avatar: 'avatartest1'
-          }, {
-            id: 4,
-            fullName: 'Владимир Владимирович',
-            avatar: 'avatartest1'
-          }, {
-            id: 5,
-            fullName: 'Владимир Владимирович',
-            avatar: 'avatartest1'
-          }
-        ],
-        count: 23
-      },
-      media: [
-        {
-          id: 1,
-          type: 'image',
-          img: 'srctest1'
-        }, {
-          id: 2,
-          type: 'image',
-          img: 'srctest2'
-        }, {
-          id: 3,
-          type: 'video',
-          img: 'srctest3'
-        }, {
-          id: 4,
-          type: 'image',
-          img: 'srctest4'
+    _this.share = function() {
+      return modalService.show({
+        name: 'socialShare',
+        data: {
+          text: _this.it.text,
+          image: _this.it.media.length ? _this.it.media[0] : null
         }
-      ],
-      tags: ['Питание', 'Программа тренировок'],
-      comments: {
-        list: [
-          {
-            id: 1,
-            text: 'wwwwww wwwwww',
-            author: {
-              id: 5,
-              fullName: 'Владимир Владимирович',
-              avatar: 'avatartest1'
-            },
-            likes: {
-              list: [
-                {
-                  id: 1,
-                  fullName: 'Владимир Владимирович',
-                  avatar: 'avatartest1'
-                }, {
-                  id: 2,
-                  fullName: 'Владимир Владимирович',
-                  avatar: 'avatartest1'
-                }, {
-                  id: 3,
-                  fullName: 'Владимир Владимирович',
-                  avatar: 'avatartest1'
-                }
-              ],
-              count: 5,
-              isLiked: false
-            },
-            date: "19 июня 2015 | 15:08",
-            commentFor: {
-              id: 2,
-              name: "Вася"
-            }
-          }, {
-            id: 2,
-            text: 'wwwwww wwwwww',
-            author: {
-              id: 5,
-              fullName: 'Вася',
-              avatar: 'avatartest1'
-            },
-            likes: {
-              list: [
-                {
-                  id: 1,
-                  fullName: 'Владимир Владимирович',
-                  avatar: 'avatartest1'
-                }, {
-                  id: 2,
-                  fullName: 'Владимир Владимирович',
-                  avatar: 'avatartest1'
-                }, {
-                  id: 3,
-                  fullName: 'Владимир Владимирович',
-                  avatar: 'avatartest1'
-                }
-              ],
-              count: 5,
-              isLiked: false
-            },
-            date: "19 июня 2015 | 15:08"
-          }
-        ],
-        count: 23
-      }
+      });
     };
-    _this.it.comments.form = {};
   }
 
   return RecordView;
 
 })();
 
-angular.module('socialApp.controllers').controller('recordViewController', ['$scope', '$stateParams', '$rootScope', 'journalService', 'mixpanel', RecordView]);
+angular.module('socialApp.controllers').controller('recordViewController', ['$scope', '$stateParams', '$rootScope', 'journalService', 'modalService', RecordView]);

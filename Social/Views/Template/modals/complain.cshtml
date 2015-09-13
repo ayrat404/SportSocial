@@ -1,0 +1,18 @@
+﻿<div class="fs-modal__title">{{::o.title}}</div>
+<div class="fs-modal__body">
+    <div data-server-validation="serverValidation">
+        <form name="ComplainForm"
+              ng-submit="submit()">
+            <div class="fs-form__row">
+                <textarea name="problem" ng-model="text" required placeholder="@R("Опишите Вашу жалобу")" rows="7" class="fs-input"></textarea>
+            </div>
+            <div class="fs-modal__submit">
+                <button ng-disabled="!ComplainForm.$valid"
+                        class="btn btn-fill-green btn-xl" type="submit">
+                    @R("Отправить")
+                </button>
+                <button class="link link--white" type="button" ng-click="close()">@R("Отмена")</button>
+            </div>
+        </form>
+    </div>
+</div>

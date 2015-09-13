@@ -21,6 +21,5 @@ class JournalModalSubmit extends Controller('socialApp.controllers')
         # submit form
         # ---------------
         $scope.submit = ->
-            debugger
             journalService.submit($scope.j).then (res)->
                 $modalInstance.close()

@@ -114,13 +114,13 @@ app = angular.module('app', [
                           base.notice.show(text: 'Please register if you do not have an Fortress account ', type: 'info')
                 )
             else
-                $rootScope.loading = true
+                $rootScope.loader = true
                 NProgress.start()
 
         # ---------------
         $rootScope.$on '$stateChangeSuccess', (event, toState, toParams, fromState, fromParams) ->
             modalService.closeAll()
-            $rootScope.loading = false
+            $rootScope.loader = false
             $rootScope.fullHeight = toState.fullHeight
             queryParamsService.check(toParams)
             NProgress.done()

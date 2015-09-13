@@ -9,7 +9,7 @@ class modalClick extends Directive('shared')
                 # listener
                 # ---------------
                 listener = ->
-                    modalService.show name: modalItem
+                    modalService.show name: modalItem, data: eval('(' + attrs.opts + ')')
 
                 # ---------------
                 element.on 'click', listener

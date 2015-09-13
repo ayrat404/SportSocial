@@ -18,6 +18,17 @@ class ProfileView extends Controller('socialApp.controllers')
             loaded: false
         }
 
+        # complain on user
+        # ---------------
+        _this.complain = (title)->
+            modalService.show
+                name: 'complainSubmit'
+                data:
+                    userId: $rootScope.user.id
+                    entityId: _this.user.id
+                    type: 'profile'
+                    title: title
+
         # append new record
         # ---------------
         _this.newRecord = (res)->
@@ -44,6 +55,7 @@ class ProfileView extends Controller('socialApp.controllers')
                 _this.user.isOwner = true
             else
                 _this.user.isOwner = false
+            _this.user.id = $stateParams.userId
             _this.user.loaded = true
         )
 

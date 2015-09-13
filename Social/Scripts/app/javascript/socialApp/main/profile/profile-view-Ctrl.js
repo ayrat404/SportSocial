@@ -8,6 +8,17 @@ ProfileView = (function() {
     _this.user = {
       loaded: false
     };
+    _this.complain = function(title) {
+      return modalService.show({
+        name: 'complainSubmit',
+        data: {
+          userId: $rootScope.user.id,
+          entityId: _this.user.id,
+          type: 'profile',
+          title: title
+        }
+      });
+    };
     _this.newRecord = function(res) {
       return _this.user.journals.unshift(res.data);
     };
@@ -41,6 +52,7 @@ ProfileView = (function() {
       } else {
         _this.user.isOwner = false;
       }
+      _this.user.id = $stateParams.userId;
       return _this.user.loaded = true;
     });
   }

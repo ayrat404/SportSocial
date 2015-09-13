@@ -2,7 +2,7 @@ class loader extends Directive('shared')
     constructor: ->
         containerClass = 'loader-container'
         loaderWrap = 'loader-wrap'
-        delay = 300
+        delay = 0
         timer = null
 
         return {
@@ -14,7 +14,7 @@ class loader extends Directive('shared')
                 if newVal != undefined
                     $el = angular.element(element)
                     if newVal == true
-                        timer = setTimeout(->
+                        #timer = setTimeout(->
                             $loader = angular.element('<div>', class: loaderWrap).append(
                               angular.element('<div>', class: 'loader').append(
                                 angular.element '<div>', class: 'inner one'
@@ -25,9 +25,9 @@ class loader extends Directive('shared')
                             $el.addClass containerClass
                             $el.append($loader)
                             $loader.show('slow')
-                        , delay)
+                        #, delay)
                     else if newVal == false
-                        clearTimeout(timer)
+                        #clearTimeout(timer)
                         $loader = $el.children('.' + loaderWrap)
                         $el.removeClass containerClass
                         if $loader.length

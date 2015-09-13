@@ -92,13 +92,13 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'fl
           }
         });
       } else {
-        $rootScope.loading = true;
+        $rootScope.loader = true;
         return NProgress.start();
       }
     });
     $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
       modalService.closeAll();
-      $rootScope.loading = false;
+      $rootScope.loader = false;
       $rootScope.fullHeight = toState.fullHeight;
       queryParamsService.check(toParams);
       return NProgress.done();

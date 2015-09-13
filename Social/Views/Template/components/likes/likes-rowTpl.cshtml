@@ -3,7 +3,7 @@
          ng-class="{ 'lr__btn--liked': likes.isLiked }"
          class="lr__btn"><i></i></div>
     <a ng-if="likes.list.length" ng-repeat="l in likes.list | limitTo:o.rowCount" ui-sref="main.profile({userId: l.id})" class="lr__user">
-        <img ng-src="{{ l.img | imageResize:{w: o.imageSize, h: o.imageSize} }}" alt="{{l.fullName}}" />
+        <img ng-src="{{ l.avatar | imageResize:{w: o.imageSize, h: o.imageSize} }}" alt="{{l.fullName}}" />
     </a>
     <span ng-show="likes.count > o.rowCount && o.showLink" class="lr__more">+{{likes.count-o.rowCount}}</span>
 </div>

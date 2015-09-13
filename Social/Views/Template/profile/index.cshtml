@@ -44,11 +44,21 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="pi__row">
-                        <span class="link pi__question" data-modal-click="supportSubmit">
-                            <i class="icon-question"></i>
-                            <span>@R("Техническая поддержка")</span>
-                        </span>
+                    <div class="pi__row pi__row--helps">
+                        <p>
+                            <span class="link" data-modal-click="supportSubmit">
+                                <i class="icon-question"></i>
+                                <span>@R("Техническая поддержка")</span>
+                            </span>
+                        </p>
+                        <p>
+                            <span ng-if="profile.user.isOwner"
+                                  ng-click="profile.complain('@R("Жалоба на пользователя")')"
+                                  class="link">
+                                <i class="icon-cart"></i>
+                                <span>@R("Пожаловаться на профиль")</span>
+                            </span>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -79,7 +89,7 @@
                                     </header>
                                     <header class="wall__it__header-edit">
                                         <div class="wi__edit"><i></i></div>
-                                        <div class="wi__remove" ng-click="wall.remove(it.id)"><i></i></div>
+                                        <div class="wi__remove" ng-click="profile.remove(it.id)"><i></i></div>
                                     </header>
                                     <section class="wall__it__content">
                                         <div ng-if="it.media.length"

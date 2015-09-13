@@ -9,84 +9,58 @@
         </div>
     </div>
     <div class="record__inner" content-height=".bread" onresize="false" data-loader="record.it.loader">
-        <div ng-if="!record.it.loader" class="record__wrap">
-            <div class="container">
-                <p class="record__text">
-                    {{record.it.text}}
-                </p>
-                <div class="item-bottom record__bottom">
-                    <a ui-sref="main.profile({userId: record.it.author.id})" class="item-author">
-                        <img ng-src="{{ record.it.author.avatar | imageResize:{w: 45, h: 45} }}" class="ia__img" />
-                        <div class="ia__info">
-                            <p class="ia__name">{{record.it.author.fullName}}</p>
-                            <p class="ia__date">{{record.it.date}}</p>
+        <div ng-if="!record.it.loader">
+            <div class="record__wrap">
+                <div class="container">
+                    <p class="record__text">
+                        {{record.it.text}}
+                    </p>
+                    <div class="item-bottom record__bottom">
+                        <a ui-sref="main.profile({userId: record.it.author.id})" class="item-author">
+                            <img ng-src="{{ record.it.author.avatar | imageResize:{w: 45, h: 45} }}" class="ia__img" />
+                            <div class="ia__info">
+                                <p class="ia__name">{{record.it.author.fullName}}</p>
+                                <p class="ia__date">{{::(record.it.created|date:'dd MMM yyyy | HH:mm')}}</p>
+                            </div>
+                        </a>
+                        <div ng-if="record.it.isOwner" class="rcd__controls">
+                            <div class="rcd__control rcd__control--edit" ng-click="record.edit()"></div>
+                            <div class="rcd__control rcd__control--remove" ng-click="record.remove()"></div>
                         </div>
-                    </a>
-                    <div ng-if="record.it.isOwner" class="rcd__controls">
-                        <div class="rcd__control rcd__control--edit" ng-click="record.edit()"></div>
-                        <div class="rcd__control rcd__control--remove" ng-click="record.remove()"></div>
+                        <likes-in-row ng-model="record.it.likes" data-id="{{::record.it.id}}" data-type="record"></likes-in-row>
+                        <div ng-click="record.share()" class="btn btn-fill-green">@R("Поделиться")</div>
                     </div>
-                    <likes-in-row ng-model="record.it.likes" data-id="{{::record.it.id}}" data-type="record"></likes-in-row>
-                    <div class="btn btn-fill-green">@R("Поделиться")</div>
-                </div>
-                <div ng-if="record.it.media.length" class="record__media">
-                    <div ng-repeat="m in record.it.media" class="rm__it">
-                        <img ng-src="{{ m.img | imageResize:{w: 75, h: 75} }}" class="rm__it__img" />
-                        <div class="rm__it__overlay" ng-if="m.type=='video'"><i class="icon-play"></i></div>
-                        {{m.type}}
+                    <div ng-if="record.it.media.length" class="record__media">
+                        <div ng-repeat="m in record.it.media"
+                             media-show-modal
+                             data-id="{{::record.it.id}}"
+                             data-index="{{::$index}}"
+                             class="rm__it">
+                            <img ng-src="{{ m.url | imageResize:{w: 75, h: 75} }}" class="rm__it__img" />
+                            <div class="rm__it__overlay" ng-if="m.type=='video'"><i class="icon-play"></i></div>
+                        </div>
                     </div>
-                </div>
-                <ul ng-if="record.it.tags.length" class="tag-list">
-                    <li ng-repeat="tag in record.it.tags" class="tl__item">
-                        <span class="tl__text">{{tag}}</span>
-                    </li>
-                </ul>
-                
-                <comment-form ng-model="record.it.comments"
-                              data-id="{{::record.it.id}}" 
-                              data-entity-type="record"></comment-form>
+                    <ul ng-if="record.it.tags.length" class="tag-list">
+                        <li ng-repeat="tag in record.it.tags" class="tl__item">
+                            <span class="tl__text">{{tag}}</span>
+                        </li>
+                    </ul>
 
+                    <comment-form ng-model="record.it.comments"
+                                  data-id="{{::record.it.id}}"
+                                  data-entity-type="record"></comment-form>
+
+                </div>
             </div>
-        </div>
-        <div class="record__comments">
-            <div class="container">
-                <div class="record__comments__count">{{record.it.comments.count | formatWord:['комментарий', 'комментария', 'комментариев']:true}}</div>    
-                
-                <comment-list ng-model="record.it.comments"
-                              data-id="{{::record.it.id}}"
-                              data-entity-type="record"></comment-list>
+            <div class="record__comments">
+                <div class="container">
+                    <div class="record__comments__count">{{record.it.comments.count | formatWord:['@R("комментарий")', '@R("комментария")', '@R("комментариев")']:true}}</div>
 
-                @*<div class="comment-list">
-                    <div class="cl__row">
-                        <a href="#" class="cl__avatar-wrap">
-                            <img src="#" class="cl__avatar" />
-                        </a>
-                        <div class="cl__body">
-                            <a href="#" class="cl__author-name">Александр Русаков</a>
-                            <p class="cl__text">Таким образом начало повседневной работы по формированию позиции обеспечивает широкому кругу (специалистов) участие в формировании направлений прогрессивного развития.</p>
-                            <div class="cl__bottom">
-                                <div class="cl__date">19 июня 2015 | 15:08</div>
-                                <span class="link">@R("Ответить")</span>
-                                <div class="cl__like">like</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cl__row">
-                        <a href="#" class="cl__avatar-wrap">
-                            <img src="#" class="cl__avatar" />
-                        </a>
-                        <div class="cl__body">
-                            <a href="#" class="cl__author-name">Александр Русаков</a>
-                            <p class="cl__text">Таким образом начало повседневной работы по формированию позиции обеспечивает широкому кругу (специалистов) участие в формировании направлений прогрессивного развития.</p>
-                            <div class="cl__bottom">
-                                <div class="cl__date">19 июня 2015 | 15:08</div>
-                                <span class="link">@R("Ответить")</span>
-                                <div class="cl__like">like</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>*@
+                    <comment-list ng-model="record.it.comments"
+                                  data-id="{{::record.it.id}}"
+                                  data-entity-type="record"></comment-list>
 
+                </div>
             </div>
         </div>
     </div>

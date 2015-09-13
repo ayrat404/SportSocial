@@ -16,7 +16,7 @@
   }
 }
 <body ng-init="$root.user = @userObj">
-    <div data-loader="loader" class="global-loader-container">
+    <div data-loader="$root.loader" class="global-loader-container">
         <div id="ui-view" class="ui-content" ng-cloak ui-view data-tmpl-url="@Request.RequestContext.RouteData.DataTokens["templateUrl"]">
             @RenderBody()
         </div>

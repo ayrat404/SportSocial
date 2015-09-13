@@ -4,7 +4,7 @@ class RecordView extends Controller('socialApp.controllers')
         $stateParams
         $rootScope
         journalService
-        mixpanel)->
+        modalService)->
 
         $scope.$root.title = 'Fortress | Запись в дневнике'
 
@@ -17,10 +17,44 @@ class RecordView extends Controller('socialApp.controllers')
         journalService.getById(+$stateParams.id).then((res)->
             _this.it = res.data
             _this.it.loader = false
-            if $rootScope.user.id == _this.it.author.id
-                _this.it.isOwner = true
-            else
-                _this.it.isOwner = false
+            if $rootScope.user.id == _this.it.author.id then _this.it.isOwner = true else _this.it.isOwner = false
+            _this.it.comments.form = {}
+
+#            _this.it.comments =
+#                list: [
+#                    {
+#                        id: 1,
+#                        text: 'wwwwww wwwwww' ,
+#                        author: {id: 5, fullName: 'Владимир Владимирович', avatar: 'avatartest1'},
+#                        likes: {
+#                            list: [
+#                                { id: 1, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+#                                { id: 2, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+#                                { id: 3, fullName: 'Владимир Владимирович', avatar: 'avatartest1' }
+#                            ],
+#                            count: 5,
+#                            isLiked: false
+#                        },
+#                        created: "19 июня 2015 | 15:08",
+#                        commentFor: { id: 2, name: "Вася" }
+#                    },
+#                    {
+#                        id: 2,
+#                        text: 'wwwwww wwwwww' ,
+#                        author: {id: 7, fullName: 'Вася', avatar: 'avatartest1'},
+#                        likes: {
+#                            list: [
+#                                { id: 1, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+#                                { id: 2, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+#                                { id: 3, fullName: 'Владимир Владимирович', avatar: 'avatartest1' }
+#                            ],
+#                            count: 5,
+#                            isLiked: false
+#                        },
+#                        created: "19 июня 2015 | 15:08"
+#                    }
+#                ]
+#                count: 23
         )
 
         # edit record
@@ -38,75 +72,82 @@ class RecordView extends Controller('socialApp.controllers')
                     success: (res)->
                         $state.go 'main.profile', { userId: $rootScope.user.id }
 
-        #fake model
-        _this.it = {
-            isOwner: true
-            loader: false
-
-            id: 123
-            text: '123123123'
-            author: {
-                id: 12
-                avatar: 'avatar'
-                fullName: 'Павел Козловский'
-            }
-            date: '19 июля 2015 | 15:08'
-            likes: {
-                list: [
-                    { id: 1, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
-                    { id: 2, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
-                    { id: 3, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
-                    { id: 4, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
-                    { id: 5, fullName: 'Владимир Владимирович', avatar: 'avatartest1' }
-                ]
-                count: 23
-            }
-            media: [
-                { id: 1, type: 'image', img: 'srctest1' },
-                { id: 2, type: 'image', img: 'srctest2' },
-                { id: 3, type: 'video', img: 'srctest3' },
-                { id: 4, type: 'image', img: 'srctest4' }
-            ]
-            tags: ['Питание', 'Программа тренировок']
-            comments: {
-                list: [
-                    {
-                        id: 1,
-                        text: 'wwwwww wwwwww' ,
-                        author: {id: 5, fullName: 'Владимир Владимирович', avatar: 'avatartest1'},
-                        likes: {
-                            list: [
-                                { id: 1, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
-                                { id: 2, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
-                                { id: 3, fullName: 'Владимир Владимирович', avatar: 'avatartest1' }
-                            ],
-                            count: 5,
-                            isLiked: false
-                        },
-                        date: "19 июня 2015 | 15:08",
-                        commentFor: { id: 2, name: "Вася" }
-                    },
-                    {
-                        id: 2,
-                        text: 'wwwwww wwwwww' ,
-                        author: {id: 5, fullName: 'Вася', avatar: 'avatartest1'},
-                        likes: {
-                            list: [
-                                { id: 1, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
-                                { id: 2, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
-                                { id: 3, fullName: 'Владимир Владимирович', avatar: 'avatartest1' }
-                            ],
-                            count: 5,
-                            isLiked: false
-                        },
-                        date: "19 июня 2015 | 15:08"
-                    }
-                ]
-                count: 23
-            }
-        }
-
-        # comments form model
+        # social sharing
         # ---------------
-        _this.it.comments.form = {}
+        _this.share = ->
+            modalService.show
+                name: 'socialShare'
+                data:
+                    text: _this.it.text
+                    image: if _this.it.media.length then _this.it.media[0] else null
+
+        #fake model
+
+
+#        _this.it = {
+#            isOwner: true
+#            loader: false
+#
+#            id: 123
+#            text: '123123123'
+#            author: {
+#                id: 12
+#                avatar: 'avatar'
+#                fullName: 'Павел Козловский'
+#            }
+#            date: '19 июля 2015 | 15:08'
+#            likes: {
+#                list: [
+#                    { id: 1, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+#                    { id: 2, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+#                    { id: 3, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+#                    { id: 4, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+#                    { id: 5, fullName: 'Владимир Владимирович', avatar: 'avatartest1' }
+#                ]
+#                count: 23
+#            }
+#            media: [
+#                { id: 1, type: 'image', img: 'srctest1' },
+#                { id: 2, type: 'image', img: 'srctest2' },
+#                { id: 3, type: 'video', img: 'srctest3' },
+#                { id: 4, type: 'image', img: 'srctest4' }
+#            ]
+#            tags: ['Питание', 'Программа тренировок']
+#            comments: {
+#                list: [
+#                    {
+#                        id: 1,
+#                        text: 'wwwwww wwwwww' ,
+#                        author: {id: 5, fullName: 'Владимир Владимирович', avatar: 'avatartest1'},
+#                        likes: {
+#                            list: [
+#                                { id: 1, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+#                                { id: 2, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+#                                { id: 3, fullName: 'Владимир Владимирович', avatar: 'avatartest1' }
+#                            ],
+#                            count: 5,
+#                            isLiked: false
+#                        },
+#                        date: "19 июня 2015 | 15:08",
+#                        commentFor: { id: 2, name: "Вася" }
+#                    },
+#                    {
+#                        id: 2,
+#                        text: 'wwwwww wwwwww' ,
+#                        author: {id: 5, fullName: 'Вася', avatar: 'avatartest1'},
+#                        likes: {
+#                            list: [
+#                                { id: 1, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+#                                { id: 2, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+#                                { id: 3, fullName: 'Владимир Владимирович', avatar: 'avatartest1' }
+#                            ],
+#                            count: 5,
+#                            isLiked: false
+#                        },
+#                        date: "19 июня 2015 | 15:08"
+#                    }
+#                ]
+#                count: 23
+#            }
+#        }
 

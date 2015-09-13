@@ -9,7 +9,8 @@ modalClick = (function() {
         modalItem = attrs.modalClick;
         listener = function() {
           return modalService.show({
-            name: modalItem
+            name: modalItem,
+            data: eval('(' + attrs.opts + ')')
           });
         };
         element.on('click', listener);

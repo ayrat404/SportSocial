@@ -1,7 +1,7 @@
 var MediaModalShow;
 
 MediaModalShow = (function() {
-  function MediaModalShow($scope, $state, $modalInstance, journalService, modalData) {
+  function MediaModalShow($scope, $state, $modalInstance, $rootScope, journalService, modalData) {
     var setByIndex;
     $scope.maxText = 40;
     if (modalData.media !== void 0) {
@@ -11,174 +11,15 @@ MediaModalShow = (function() {
         $scope.it = res.data;
         $scope.it.loader = false;
         if ($rootScope.user.id === $scope.it.author.id) {
-          return $scope.it.isOwner = true;
+          $scope.it.isOwner = true;
         } else {
-          return $scope.it.isOwner = false;
+          $scope.it.isOwner = false;
         }
-      }, function(res) {});
-      $scope.it = {
-        isOwner: true,
-        loader: false,
-        id: 123,
-        text: '1231231asdasddasdasd asd asd as dasasdsdasdasdasd asd asd  asd asdasdas dasdas das das 23',
-        author: {
-          id: 12,
-          avatar: 'avatar',
-          fullName: 'Павел Козловский'
-        },
-        date: '19 июля 2015 | 15:08',
-        likes: {
-          list: [
-            {
-              id: 1,
-              fullName: 'Владимир Владимирович',
-              avatar: 'avatartest1'
-            }, {
-              id: 2,
-              fullName: 'Владимир Владимирович',
-              avatar: 'avatartest1'
-            }, {
-              id: 3,
-              fullName: 'Владимир Владимирович',
-              avatar: 'avatartest1'
-            }, {
-              id: 4,
-              fullName: 'Владимир Владимирович',
-              avatar: 'avatartest1'
-            }, {
-              id: 5,
-              fullName: 'Владимир Владимирович',
-              avatar: 'avatartest1'
-            }
-          ],
-          count: 23
-        },
-        media: [
-          {
-            id: 1,
-            type: 'image',
-            img: 'srctest1',
-            likes: {
-              list: [
-                {
-                  id: 1,
-                  fullName: 'Владимир Владимирович',
-                  avatar: 'avatartest1'
-                }, {
-                  id: 2,
-                  fullName: 'Владимир Владимирович',
-                  avatar: 'avatartest1'
-                }, {
-                  id: 3,
-                  fullName: 'Владимир Владимирович',
-                  avatar: 'avatartest1'
-                }, {
-                  id: 4,
-                  fullName: 'Владимир Владимирович',
-                  avatar: 'avatartest1'
-                }, {
-                  id: 5,
-                  fullName: 'Владимир Владимирович',
-                  avatar: 'avatartest1'
-                }
-              ],
-              count: 23
-            }
-          }, {
-            id: 2,
-            type: 'image',
-            img: 'srctest2',
-            likes: {
-              list: [
-                {
-                  id: 1,
-                  fullName: 'Владимир Владимирович',
-                  avatar: 'avatartest1'
-                }, {
-                  id: 2,
-                  fullName: 'Владимир Владимирович',
-                  avatar: 'avatartest1'
-                }, {
-                  id: 3,
-                  fullName: 'Владимир Владимирович',
-                  avatar: 'avatartest1'
-                }, {
-                  id: 4,
-                  fullName: 'Владимир Владимирович',
-                  avatar: 'avatartest1'
-                }, {
-                  id: 5,
-                  fullName: 'Владимир Владимирович',
-                  avatar: 'avatartest1'
-                }
-              ],
-              count: 23
-            }
-          }, {
-            id: 3,
-            type: 'video',
-            img: 'srctest3',
-            likes: {
-              list: [
-                {
-                  id: 1,
-                  fullName: 'Владимир Владимирович',
-                  avatar: 'avatartest1'
-                }, {
-                  id: 2,
-                  fullName: 'Владимир Владимирович',
-                  avatar: 'avatartest1'
-                }, {
-                  id: 3,
-                  fullName: 'Владимир Владимирович',
-                  avatar: 'avatartest1'
-                }, {
-                  id: 4,
-                  fullName: 'Владимир Владимирович',
-                  avatar: 'avatartest1'
-                }, {
-                  id: 5,
-                  fullName: 'Владимир Владимирович',
-                  avatar: 'avatartest1'
-                }
-              ],
-              count: 23
-            }
-          }, {
-            id: 4,
-            type: 'image',
-            img: 'srctest4',
-            likes: {
-              list: [
-                {
-                  id: 1,
-                  fullName: 'Владимир Владимирович',
-                  avatar: 'avatartest1'
-                }, {
-                  id: 2,
-                  fullName: 'Владимир Владимирович',
-                  avatar: 'avatartest1'
-                }, {
-                  id: 3,
-                  fullName: 'Владимир Владимирович',
-                  avatar: 'avatartest1'
-                }, {
-                  id: 4,
-                  fullName: 'Владимир Владимирович',
-                  avatar: 'avatartest1'
-                }, {
-                  id: 5,
-                  fullName: 'Владимир Владимирович',
-                  avatar: 'avatartest1'
-                }
-              ],
-              count: 23
-            }
-          }
-        ],
-        tags: ['Питание', 'Программа тренировок']
-      };
-      $scope.itemsCount = $scope.it.media.length;
+        $scope.itemsCount = $scope.it.media.length;
+        return setByIndex($scope.currentIndex);
+      }, function(res) {
+        return $modalInstance.dismiss();
+      });
       setByIndex = function(index) {
         var i;
         i = index - 1;
@@ -190,7 +31,6 @@ MediaModalShow = (function() {
           notify: false
         });
       };
-      setByIndex($scope.currentIndex);
       $scope.before = function() {
         if ($scope.currentIndex === 1) {
           $scope.currentIndex = $scope.itemsCount;
@@ -223,4 +63,4 @@ MediaModalShow = (function() {
 
 })();
 
-angular.module('socialApp.controllers').controller('mediaModalShowController', ['$scope', '$state', '$modalInstance', 'journalService', 'modalData', MediaModalShow]);
+angular.module('socialApp.controllers').controller('mediaModalShowController', ['$scope', '$state', '$modalInstance', '$rootScope', 'journalService', 'modalData', MediaModalShow]);

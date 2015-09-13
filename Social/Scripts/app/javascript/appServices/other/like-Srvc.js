@@ -10,7 +10,7 @@ Like = (function() {
           data.actionType = data.current ? 'dislike' : 'like';
           return $http.post(url, data).then(function(res) {
             if (res.data.success) {
-              return resolve(res.data, !data.current);
+              return resolve(!data.current);
             } else {
               reject(res.data);
               if (servicesDefault.noticeShow.errors) {

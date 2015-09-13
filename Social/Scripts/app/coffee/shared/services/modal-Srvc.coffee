@@ -48,6 +48,14 @@ class modal extends Service('shared')
                 tplName: modalBaseUrl 'media/show'
                 controller: 'mediaModalShowController'
                 classname: 'fs-modal--transparent fs-modal--lg-content'
+            complainSubmit:
+                tplName: modalBaseUrl 'complain'
+                controller: 'complainSubmitModalController'
+                classname: 'fs-modal--transparent'
+            socialShare:
+                tplName: modalBaseUrl 'social-share'
+                controller: 'socialShareModalController'
+                classname: 'fs-modal--transparent'
             apiModal:
                 tplName: modalBaseUrl 'dev/api'
             policy:

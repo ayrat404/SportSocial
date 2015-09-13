@@ -16,6 +16,7 @@
         <li><a href="#api_profile_view">Получить данные о профиле</a></li>
         <li><a href="#api_record_view">Страница просмотра записи</a></li>
         <li><a href="#api_like">Лайк/дизлайк</a></li>
+        <li><a href="#api_complain">Жалоба на пользователя</a></li>
     </ul>
     <ul class="dev__api__content">
 
@@ -311,7 +312,7 @@
             </b>
 
         </li>
-        
+
         <li id="api_journal_delete" class="dev__api__row">
             <p>Удаление записи в дневник</p>
             <code>DELETE: /api/journal</code>
@@ -335,8 +336,8 @@
             </b>
 
         </li>
-        
-        
+
+
         <li id="api_journal_edit" class="dev__api__row">
             <p>Редактирование записи в дневник</p>
             <code>PUT: /api/journal</code>
@@ -360,8 +361,8 @@
             </b>
 
         </li>
-        
-        
+
+
         <li id="api_profile_view" class="dev__api__row">
             <p>Запрос данных о профиле</p>
             <code>GET: /api/profile</code>
@@ -410,7 +411,7 @@
             </b>
 
         </li>
-        
+
         <li id="api_record_view" class="dev__api__row">
             <p>Страница просмотра записи. <div class="alert alert-danger">!!! Модель пока что без комментариев</div></p>
             <code>GET: /api/journal/:id</code>
@@ -536,8 +537,8 @@
             </b>
 
         </li>
-        
-        
+
+
         <li id="api_like" class="dev__api__row">
             <p>Лайк дизлайк</p>
             <code>POST: /api/like</code>
@@ -557,6 +558,79 @@
 {
     success: true,
     data: null,
+    errors: null,
+    message: null
+}
+                    </pre>
+            </b>
+
+        </li>
+
+        <li id="api_complain" class="dev__api__row">
+            <p>Жалоба на пользователя</p>
+            <code>POST: /api/complain</code>
+            <b>
+                send data:
+                <pre>
+{
+    entityId: x,
+    userId: x,
+    text: x,
+    type: profile/comment
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true,
+    data: null,
+    errors: null,
+    message: null
+}
+                    </pre>
+            </b>
+
+        </li>
+
+
+        <li id="api_comment" class="dev__api__row">
+            <p>Комментарий</p>
+            <code>POST: /api/comment</code>
+            <b>
+                send data:
+                <pre>
+{
+    commentForId: x,
+    commentType: answer/comment,
+    entityId: x,
+    entityType: record/...,
+    text: xxx
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true,
+    data: {
+        id: 1,
+        text: 'wwwwww wwwwww' ,
+        author: {id: 5, fullName: 'Владимир Владимирович', avatar: 'avatartest1'},
+        likes: {
+            list: [
+                { id: 1, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+                { id: 2, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+                { id: 3, fullName: 'Владимир Владимирович', avatar: 'avatartest1' }
+            ],
+            count: 5,
+            isLiked: false
+        },
+        created: xxx,
+        commentFor: { id: 2, name: "Вася" }
+    },
     errors: null,
     message: null
 }

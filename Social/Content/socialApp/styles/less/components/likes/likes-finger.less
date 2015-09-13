@@ -1,0 +1,29 @@
+﻿/* Likes finger
+---------------------------------------------------------------------------------- */
+
+.likes-finger {
+    font-size: 12px;
+    color: #a4b9c2;
+    font-family: 'F1 SemiBold';
+    cursor: pointer;
+    user-select: none;
+}
+.likes-finger--liked {
+    color: @brand-green;
+    .likes-finger__icon {
+        .sprite(@like-finger-active);
+    }
+}
+.likes-finger__count {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 4px;
+}
+.likes-finger__icon {
+    display: inline-block;
+    vertical-align: top;
+    .sprite(@like-finger);
+}
+
+/* /Likes finger
+---------------------------------------------------------------------------------- */

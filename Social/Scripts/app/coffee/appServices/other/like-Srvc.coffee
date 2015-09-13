@@ -17,7 +17,7 @@ class Like extends Service('appSrvc')
                     data.actionType = if data.current then 'dislike' else 'like'
                     $http.post(url, data).then((res)->
                         if res.data.success
-                            resolve(res.data, !data.current)
+                            resolve(!data.current)
                         else
                             reject(res.data)
                             base.notice.response(res) if servicesDefault.noticeShow.errors

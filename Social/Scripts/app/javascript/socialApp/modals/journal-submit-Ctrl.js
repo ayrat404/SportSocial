@@ -15,7 +15,6 @@ JournalModalSubmit = (function() {
       }
     };
     $scope.submit = function() {
-      debugger;
       return journalService.submit($scope.j).then(function(res) {
         return $modalInstance.close();
       });

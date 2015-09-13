@@ -15,20 +15,21 @@ socialShare = (function() {
         var attributeName, k, propDefaults, properties, v;
         properties = {};
         propDefaults = {
-          'url': '',
+          'url': $location.absUrl(),
           'counters': '',
           'socials': '',
           'text': '',
-          'title': ''
+          'title': 'Fortress. Sport Social.',
+          'tags': 'fortress, sport, fitness, putin'
         };
         for (k in propDefaults) {
           v = propDefaults[k];
           if (propDefaults.hasOwnProperty(k)) {
             attributeName = 'ss' + k.substring(0, 1).toUpperCase() + k.substring(1);
-            if (properties[k] === void 0) {
+            if (properties[k] === void 0 || (properties[k] !== void 0 && !properties[k].length)) {
               properties[k] = propDefaults[k];
             }
-            if (attr[attributeName] !== void 0) {
+            if (attr[attributeName] !== void 0 && properties[k].length) {
               properties[k] = attr[attributeName];
             }
           }

@@ -15,7 +15,7 @@ mediaShowModal = (function() {
             name: 'mediaShow',
             data: {
               media: scope.media,
-              index: scope.index + 1
+              index: +scope.index + 1
             }
           });
         };
