@@ -2762,6 +2762,11 @@
     <Content Include="Content\socialApp\styles\less\components\likes-row.less" />
     <Content Include="Content\socialApp\styles\less\views\profile.less" />
     <Content Include="Content\socialApp\styles\less\views\record.less" />
+    <Content Include="Content\socialApp\styles\less\elements\loader.less" />
+    <Content Include="Content\socialApp\styles\less\elements\short.less" />
+    <Content Include="Content\socialApp\styles\less\elements\tags.less" />
+    <Content Include="Content\socialApp\styles\less\elements\item-bottom.less" />
+    <Content Include="Content\socialApp\styles\less\components\media-show.less" />
     <None Include="Properties\PublishProfiles\fortress-club %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\fortress-club.pubxml" />
     <None Include="Properties\PublishProfiles\Social.pubxml" />
@@ -3026,6 +3031,8 @@
     <Content Include="Content\socialApp\styles\less\libs\nprogress\nprogress.less" />
     <Content Include="Content\socialApp\styles\less\libs\animate\animate.less" />
     <Content Include="Views\Template\journal\view.cshtml" />
+    <Content Include="Views\Template\modals\journal\remove.cshtml" />
+    <Content Include="Views\Template\modals\media\show.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">

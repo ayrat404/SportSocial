@@ -28,5 +28,5 @@ class contentHeight extends Directive('shared')
                     if attrs.onresize != 'false'
                         angular.element($window).resize ->
                             elHeight($el, attrs.contentHeight)
-                , 300)
+                , 50)
         }

@@ -38,7 +38,7 @@ contentHeight = (function() {
               return elHeight($el, attrs.contentHeight);
             });
           }
-        }, 300);
+        }, 50);
       }
     };
   }
