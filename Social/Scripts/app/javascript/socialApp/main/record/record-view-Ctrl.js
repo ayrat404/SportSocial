@@ -39,7 +39,8 @@ RecordView = (function() {
         name: 'socialShare',
         data: {
           text: _this.it.text,
-          image: _this.it.media.length ? _this.it.media[0] : null
+          media: _this.it.media,
+          hashtags: _this.it.tags
         }
       });
     };

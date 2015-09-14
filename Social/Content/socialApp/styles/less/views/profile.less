@@ -13,9 +13,19 @@
         vertical-align: middle;
         .sprite(@cart-small);
     }
+    .items-negative {
+        margin: 15px 0;
+    }
 }
 .profile__info {
     background-color: #fff;
+    position: fixed;
+    width: 461px;
+    top: 0;
+    bottom: 0;
+    overflow-y: hidden;
+    padding-top: 85px;
+    z-index: 2;
     .pi__row {
         padding: 17px 15px;
         border-bottom: 1px solid #d7d9db;
@@ -41,11 +51,17 @@
     .users-list--grid {
         margin: 5px -5px;
     }
+    .btn--subscribe {
+        position: absolute;
+        bottom: 5px;
+        left: 250px;
+    }
 }
 .profile__journal {
     padding-top: 40px;
     padding-bottom: 40px;
     background-color: @text-color;
+    margin-left: 461px;
 
     .journal-submit {
         .jos__text-wrap {
@@ -73,6 +89,70 @@
     }
 }
 
+
+
+@media(max-width: 1079px) and (min-width: 832px){
+    .profile {
+        .wall__bar{
+            padding-top: 22px;
+            margin-top: 60px;
+        }
+        .wall {
+            .wall__it--left {
+                float: none;
+                right: 124px;
+                margin-bottom: 80px;
+            }
+            .wall__it--right {
+                top: 0;
+                left: -124px;
+                margin-bottom: 80px;
+            }
+            .wall__it__btn {
+                top: -35px;
+                right: 116px;
+                left: auto;
+            }
+            .wall__it__triangle {
+                top: -8px;
+                left: 118px;
+                right: auto;
+                border-width: 0 7px 8px 7px;
+                border-color: transparent transparent @brand-dark2 transparent;
+            }
+            .wall__it--edit {
+                .wall__it__triangle {
+                    border-color: transparent transparent @brand-red2 transparent;
+                }
+            }
+        }
+        .journal-submit {
+            padding: 0 10px;
+        }
+    }
+}
+
+@media(max-width: 956px) and (min-width: 832px){
+    .journal-submit {
+        .muc__row__input-wrap {
+            width: 50%;
+        }
+        .muc__row__actions-wrap {
+            width: 47%;
+        }
+    }
+}
+
+@media(max-width: 832px){
+    .profile__info {
+        position: relative;
+        width: 100%;
+        padding-top: 0;
+    }
+    .profile__journal {
+        margin-left: 0;
+    }
+}
 
 /* In other files
 -------------------------------------------------- */

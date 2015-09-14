@@ -12,7 +12,7 @@ class ProfileView extends Controller('socialApp.controllers')
         $scope.$root.title = ['Fortress | ', $rootScope.user.fullName].join('')
 
         _this = this
-
+        _this.unknown = false
         # user info model
         _this.user = {
             loaded: false
@@ -33,6 +33,21 @@ class ProfileView extends Controller('socialApp.controllers')
         # ---------------
         _this.newRecord = (res)->
             _this.user.journals.unshift res.data
+
+        # social share record
+        # ---------------
+        _this.shareRecord = (obj)->
+            modalService.show
+                name: 'socialShare'
+                data:
+                    text: obj.text
+                    media: obj.media
+                    hashtags: obj.tags
+
+        # show media item
+        # ---------------
+        _this.showMedia = (obj)->
+
 
         # remove item from
         # ---------------
@@ -57,66 +72,19 @@ class ProfileView extends Controller('socialApp.controllers')
                 _this.user.isOwner = false
             _this.user.id = $stateParams.userId
             _this.user.loaded = true
-        )
 
-        # journal list fake model
-#        _this.wall = [
-#            {
-#                id: 1,
-#                text: 'asdasdasdasdasd',
-#                date: '09/05/2015'
-#                media: [
-#                    { id: 1, type: 'video', img: 'srctest1' },
-#                    { id: 2, type: 'image', img: 'srctest2' },
-#                    { id: 3, type: 'video', img: 'srctest3' },
-#                    { id: 4, type: 'image', img: 'srctest4' }
-#                ],
-#                likes: {
-#                    isLiked: true
-#                    list: [
-#                        { id: 1, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
-#                        { id: 2, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
-#                        { id: 3, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
-#                        { id: 4, fullName: 'Владимир Владимирович', avatar: 'avatartest1' }
-#                    ]
-#                    count: 23
-#                }
-#            },
-#            {
-#                id: 2,
-#                text: 'asdasdasdasdasd',
-#                date: '09/05/2015'
-#                media: [
-#                    { id: 1, type: 'image', img: 'srctest1' },
-#                    { id: 2, type: 'image', img: 'srctest2' },
-#                    { id: 3, type: 'video', img: 'srctest3' },
-#                    { id: 4, type: 'image', img: 'srctest4' }
-#                ],
-#                likes: {
-#                    isLiked: false
-#                    list: [
-#                        { id: 1, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
-#                        { id: 2, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
-#                        { id: 3, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
-#                        { id: 4, fullName: 'Владимир Владимирович', avatar: 'avatartest1' }
-#                    ]
-#                    count: 23
-#                }
-#            },
-#            {
-#                id: 3,
-#                text: 'asdasdasdasdasd',
-#                date: '09/05/2015'
-#                media: [],
-#                likes: {
-#                    isLiked: true
-#                    list: [
-#                        { id: 1, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
-#                        { id: 2, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
-#                        { id: 3, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
-#                        { id: 4, fullName: 'Владимир Владимирович', avatar: 'avatartest1' }
-#                    ]
-#                    count: 23
-#                }
-#            }
-#        ]
+            # profile fake model
+#            _this.user.media = [
+#              { recordId: 1, index: 1, url: 'asdasd1', type: 'image' }
+#              { recordId: 2, index: 2, url: 'asdasd2', type: 'image' }
+#              { recordId: 3, index: 3, url: 'asdasd3', type: 'video' }
+#              { recordId: 4, index: 4, url: 'asdasd4', type: 'image' }
+#              { recordId: 5, index: 5, url: 'asdasd5', type: 'image' }
+#              { recordId: 6, index: 6, url: 'asdasd6', type: 'video' }
+#              { recordId: 7, index: 7, url: 'asdasd7', type: 'video' }
+#              { recordId: 8, index: 8, url: 'asdasd8', type: 'image' }
+#              { recordId: 9, index: 9, url: 'asdasd9', type: 'image' }
+#            ]
+        , (res)->
+            _this.unknown = true
+        )

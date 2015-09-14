@@ -60,7 +60,7 @@ modal = (function() {
       socialShare: {
         tplName: modalBaseUrl('social-share'),
         controller: 'socialShareModalController',
-        classname: 'fs-modal--transparent'
+        classname: 'fs-modal--transparent sharing-modal'
       },
       apiModal: {
         tplName: modalBaseUrl('dev/api')

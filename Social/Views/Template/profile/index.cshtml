@@ -1,23 +1,48 @@
 ﻿<section class="profile">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-5 pa0">
-                <div class="profile__info">
-                    <div class="user-info">
+            <div ng-if="!profile.unknown && profile.user.loaded">
+                <div class="profile__info"
+                     data-mousewheel-scroller>
+                    <div class="user-info"
+                         ng-class="{ 'user-info--media': profile.user.media.length }">
+
+                        @*-----User info avatar-----*@
                         <div class="user-info__avatar">
-                            <img ng-src="{{ profile.user.avatar | imageResize:{w: 230, h: 230} }}" class="user-infor__avatar__img"/>
+                            <img ng-src="{{ profile.user.avatar | imageResize:{w: 230, h: 230} }}" class="user-infor__avatar__img" />
                             @*TODO пока аватар менять нельзя, а при регистрации он обязателен*@
                             <div ng-if="!profile.user.avatar.length" class="ui__avatar-upload">
                                 <i class="icon-upload"></i>
                                 <p class="link">+ @R("Загрузить аватар")</p>
                             </div>
                         </div>
-                        <div ng-if="profile.user.loaded" class="user-info__about">
+                        @*-----User info avatar-----*@
+
+                        @*-----User info media block-----*@
+                        <div class="user-info__media">
+                            <div ng-repeat="media in profile.user.media"
+                                 media-show-modal
+                                 data-id="{{::media.recordId}}"
+                                 data-index="{{::media.index}}"
+                                 class="ui-m__it">
+                                <img ng-src="{{ ::(media.url|imageResize:{w:77, h:77}) }}" class="ui-m__it__img" />
+                                <div ng-show="media.type == 'video'" class="ui-m__it__overlay">
+                                    <span class="ui-m__it__play"></span>
+                                </div>
+                            </div>
+                        </div>
+                        @*-----User info media block-----*@
+
+                        @*-----User info about user-----*@
+                        <div class="user-info__about">
                             <p class="ui__name">{{profile.user.fullName}}</p>
                             <p class="ui__age">{{profile.user.age | formatWord:['@R("год")', '@R("года")', '@R("лет")']:true}} / {{profile.user.sportTime | formatWord:['@R("год")', '@R("года")', '@R("лет")']:true}} @R("в спорте")</p>
                             <p ng-show="profile.user.location.length" class="ui__location">{{profile.user.location}}</p>
                             <a ng-if="profile.user.isOwner" href="#" class="ui__edit">@R("Редактировать профиль")</a>
+                            <button ng-if="!profile.user.isOwner" class="btn btn--subscribe"><i class="icon"></i></button>
                         </div>
+                        @*-----User info about user-----*@
+
                     </div>
                     <div class="pi__row">
                         <p class="pi__row__title">@R("Достижения") (0) <span class="link" data-modal-click="aboutAchievement">@R("Что это?")</span></p>
@@ -61,13 +86,11 @@
                         </p>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-7 pa0">
                 <div class="profile__journal">
                     <div ng-if="profile.user.isOwner">
                         <journal-profile-submit success="profile.newRecord($res)"></journal-profile-submit>
                     </div>
-                    
+
                     <div ng-if="profile.user.journals.length"
                          class="wall">
                         <div class="wall__bar">
@@ -84,7 +107,7 @@
                                 <div class="wall__it__inner">
                                     <header class="wall__it__header-info">
                                         <span class="wi__date">{{it.date}}</span>
-                                        <div class="wi__share"><i></i></div>
+                                        <div ng-click="profile.shareRecord(it)" class="wi__share"><i></i></div>
                                         <a ui-sref="main.journalIt({id: it.id})" class="wi__comment"><i></i></a>
                                     </header>
                                     <header class="wall__it__header-edit">
@@ -116,9 +139,14 @@
 
                         </div>
                     </div>
-                    
+
                     <div ng-if="!profile.user.journals.length" class="items-negative">@R("Нет ни одной записи")</div>
 
+                </div>
+            </div>
+            <div ng-if="profile.unknown">
+                <div class="items-negative">
+                    @R("Профиль пользователя не найден")
                 </div>
             </div>
         </div>

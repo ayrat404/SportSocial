@@ -79,7 +79,8 @@ class RecordView extends Controller('socialApp.controllers')
                 name: 'socialShare'
                 data:
                     text: _this.it.text
-                    image: if _this.it.media.length then _this.it.media[0] else null
+                    media: _this.it.media
+                    hashtags: _this.it.tags
 
         #fake model
 

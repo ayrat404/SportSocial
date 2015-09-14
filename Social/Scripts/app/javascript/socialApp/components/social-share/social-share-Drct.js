@@ -10,32 +10,38 @@ socialShare = (function() {
     return {
       restrict: 'E',
       replace: true,
+      scope: {
+        prop: '='
+      },
       templateUrl: '/template/components/social-shareTpl',
       link: function(scope, element, attr) {
-        var attributeName, k, propDefaults, properties, v;
-        properties = {};
+        var k, propDefaults, properties, v;
         propDefaults = {
-          'url': $location.absUrl(),
-          'counters': '',
-          'socials': '',
-          'text': '',
-          'title': 'Fortress. Sport Social.',
-          'tags': 'fortress, sport, fitness, putin'
+          url: $location.absUrl(),
+          title: 'Fortress. Sport social network.',
+          text: 'Test text test text test text',
+          media: '~/Content/socialApp/images/common/logo-big.png',
+          hashtags: 'fortress, sport, fitness'
         };
+        properties = {};
+        if (scope.prop.media && scope.prop.media.length && typeof scope.prop.media !== 'string') {
+          scope.prop.media = scope.prop.media[0].url;
+        }
+        if (scope.prop.hashtags && scope.prop.hashtags.length) {
+          scope.prop.hashtags = scope.prop.hashtags.join(', ');
+        }
         for (k in propDefaults) {
           v = propDefaults[k];
           if (propDefaults.hasOwnProperty(k)) {
-            attributeName = 'ss' + k.substring(0, 1).toUpperCase() + k.substring(1);
-            if (properties[k] === void 0 || (properties[k] !== void 0 && !properties[k].length)) {
+            if (scope.prop[k]) {
+              properties[k] = scope.prop[k];
+            } else {
               properties[k] = propDefaults[k];
-            }
-            if (attr[attributeName] !== void 0 && properties[k].length) {
-              properties[k] = attr[attributeName];
             }
           }
         }
         scope.prop = properties;
-        return scope.list = defaults.socials;
+        return scope.providerList = defaults.socials;
       }
     };
   }

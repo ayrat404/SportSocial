@@ -205,7 +205,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\socialApp\images\common\" />
     <Folder Include="Content\socialApp\images\sprites\" />
     <Folder Include="Scripts\app\coffee\socialApp\journal\" />
     <Folder Include="Scripts\app\javascript\socialApp\journal\" />
@@ -260,6 +259,7 @@
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\Images\default-avatar.png" />
     <Content Include="Content\socialApp\fonts\glyphicons\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\socialApp\images\common\logo-big.png" />
     <Content Include="Content\socialApp\images\groups\achievements\achievement-horizontal.png" />
     <Content Include="Content\socialApp\images\icons-set\icons-set.png" />
     <Content Include="Content\socialApp\images\views\landing\bg-left.jpg" />
@@ -2718,7 +2718,6 @@
     <Content Include="Scripts\app\coffee\appServices\auth\restore-password-Srvc.coffee" />
     <Content Include="Scripts\app\coffee\appServices\other\sport-themes-Srvc.coffee" />
     <Content Include="Scripts\app\coffee\appServices\other\youtube-video-Srvc.coffee" />
-    <Content Include="Scripts\app\coffee\appServices\support\support-Srvc.coffee" />
     <Content Include="Scripts\app\coffee\shared\directives\content-height-Drct.coffee" />
     <Content Include="Scripts\app\coffee\shared\directives\loader-Drct.coffee" />
     <Content Include="Scripts\app\coffee\shared\directives\mixpanel-Drct.coffee" />
@@ -2748,9 +2747,7 @@
     <Content Include="Scripts\app\coffee\socialApp\registration\registration-Ctrl.coffee" />
     <Content Include="Scripts\app\coffee\shared\services\APIInterseptorProvider.coffee" />
     <Content Include="Scripts\app\coffee\shared\services\global-loader-Srvc.coffee" />
-    <Content Include="Scripts\app\coffee\appServices\profile\profile-Srvc.coffee" />
     <Content Include="Scripts\app\coffee\appServices\auth\user-Srvc.coffee" />
-    <Content Include="Scripts\app\coffee\appServices\journal\journal-Srvc.coffee" />
     <Content Include="Content\socialApp\fonts\glyphicons\glyphicons-halflings-regular.eot" />
     <Content Include="Content\socialApp\fonts\glyphicons\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\socialApp\fonts\glyphicons\glyphicons-halflings-regular.woff" />
@@ -2765,7 +2762,6 @@
     <Content Include="Content\socialApp\styles\less\components\user-notice-small.less" />
     <Content Include="Content\socialApp\styles\less\components\wall.less" />
     <Content Include="Content\socialApp\styles\less\components\breadcrumb.less" />
-    <Content Include="Content\socialApp\styles\less\components\likes-row.less" />
     <Content Include="Content\socialApp\styles\less\views\profile.less" />
     <Content Include="Content\socialApp\styles\less\views\record.less" />
     <Content Include="Content\socialApp\styles\less\elements\loader.less" />
@@ -2781,17 +2777,15 @@
     <Content Include="Content\socialApp\styles\less\elements\items-negative.less" />
     <Content Include="Content\socialApp\styles\less\components\comments\comment-form.less" />
     <Content Include="Content\socialApp\styles\less\components\comments\comment-list.less" />
+    <Content Include="Content\socialApp\styles\less\components\likes\likes-finger.less" />
+    <Content Include="Content\socialApp\styles\less\components\likes\likes-row.less" />
     <None Include="Properties\PublishProfiles\fortress-club %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\fortress-club.pubxml" />
     <None Include="Properties\PublishProfiles\Social.pubxml" />
     <Content Include="Scripts\app\coffee\socialApp\components\wall\wall-Drct.coffee" />
     <Content Include="Scripts\app\coffee\shared\filters\image-resize-Fltr.coffee" />
-    <Content Include="Scripts\app\coffee\appServices\comments\comments-Srvc.coffee" />
-    <Content Include="Scripts\app\coffee\appServices\like\like-Srvc.coffee" />
     <Content Include="Scripts\app\coffee\socialApp\components\comments\comment-form-Drct.coffee" />
     <Content Include="Scripts\app\coffee\socialApp\components\comments\comment-list-Drct.coffee" />
-    <Content Include="Scripts\app\coffee\socialApp\components\likes-row\likes-row-Ctrl.coffee" />
-    <Content Include="Scripts\app\coffee\socialApp\components\likes-row\likes-row-Drct.coffee" />
     <Content Include="Scripts\app\coffee\socialApp\components\media-show-modal\media-show-modal-Drct.coffee" />
     <Content Include="Scripts\app\coffee\socialApp\components\social-share\social-share-Drct.coffee" />
     <Content Include="Scripts\app\coffee\shared\directives\autofocus-Drct.coffee" />
@@ -2801,6 +2795,16 @@
     <Content Include="Scripts\app\coffee\socialApp\main\record\record-view-Ctrl.coffee" />
     <Content Include="Scripts\app\coffee\socialApp\modals\journal-remove-Ctrl.coffee" />
     <Content Include="Scripts\app\coffee\socialApp\modals\media-show-Ctrl.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\modals\complain-submit-Ctrl.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\modals\social-share-Ctrl.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\components\likes\likes-finger-Drct.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\components\likes\likes-row-Drct.coffee" />
+    <Content Include="Scripts\app\coffee\appServices\other\comments-Srvc.coffee" />
+    <Content Include="Scripts\app\coffee\appServices\other\complain-Srvc.coffee" />
+    <Content Include="Scripts\app\coffee\appServices\other\journal-Srvc.coffee" />
+    <Content Include="Scripts\app\coffee\appServices\other\like-Srvc.coffee" />
+    <Content Include="Scripts\app\coffee\appServices\other\profile-Srvc.coffee" />
+    <Content Include="Scripts\app\coffee\appServices\other\support-Srvc.coffee" />
     <None Include="Scripts\libs\jquery\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.min.js" />
@@ -3062,12 +3066,16 @@
     <Content Include="Views\Template\journal\view.cshtml" />
     <Content Include="Views\Template\modals\journal\remove.cshtml" />
     <Content Include="Views\Template\modals\media\show.cshtml" />
-    <Content Include="Views\Template\components\likes-rowTpl.cshtml" />
+    <Content Include="Views\Template\components\likes\likes-rowTpl.cshtml" />
     <Content Include="Views\Template\modals\journal\remove.cshtml" />
     <Content Include="Views\Template\components\social-shareTpl.cshtml" />
-    <Content Include="Views\Template\modals\social-share\share.cshtml" />
     <Content Include="Views\Template\components\comments\comment-formTpl.cshtml" />
     <Content Include="Views\Template\components\comments\comment-listTpl.cshtml" />
+    <Content Include="Views\Template\modals\complain.cshtml" />
+    <Content Include="Views\Template\components\likes\likes-fingerTpl.cshtml" />
+    <Content Include="Views\Template\modals\social-share.cshtml">
+      <SubType>Code</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">

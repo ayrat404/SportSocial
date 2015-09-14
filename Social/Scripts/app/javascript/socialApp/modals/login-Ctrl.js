@@ -6,7 +6,7 @@ LoginSubmitModal = (function() {
     $scope.submit = function() {
       return loginService.logIn($scope.login).then(function(res) {
         $modalInstance.close();
-        if (typeof modalData.success === 'function') {
+        if (modalData && typeof modalData.success === 'function') {
           return modalData.success(res);
         } else {
           return $state.go('main.profile', {
