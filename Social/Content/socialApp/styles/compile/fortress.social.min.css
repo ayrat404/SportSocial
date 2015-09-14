@@ -10062,6 +10062,14 @@ fieldset[disabled] .btn--subscribe.active {
   color: #fff;
   text-decoration: none;
 }
+.link--blue {
+  color: #1f7eba;
+  text-decoration: underline;
+}
+.link--blue:hover {
+  color: #1f7eba;
+  text-decoration: none;
+}
 /* /Links
 ---------------------------------------------------------------------------------- */
 /* Form
@@ -11639,6 +11647,52 @@ fieldset[disabled] .btn--subscribe.active {
           user-select: none;
 }
 /* /Comment list
+---------------------------------------------------------------------------------- */
+/* Achievement submit
+---------------------------------------------------------------------------------- */
+.achievement-submit .as__steps {
+  background-color: #45565e;
+}
+.achievement-submit .as__steps__it {
+  height: 85px;
+  padding: 32px 0 0 20px;
+  width: 33.33333333%;
+  text-align: center;
+  color: #fff;
+  float: left;
+}
+.achievement-submit .as__steps__it.active {
+  background: #354349;
+}
+.achievement-submit .as__header {
+  text-align: right;
+  margin: 30px 0;
+}
+.achievement-submit .as__header .link {
+  margin-right: 15px;
+}
+/* /Achievement submit
+---------------------------------------------------------------------------------- */
+/* Achievement select list
+---------------------------------------------------------------------------------- */
+.achievement-select-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.achievement-select-list .asl__it {
+  display: inline-block;
+  width: 236px;
+  height: 346px;
+  border: 5px solid #fff;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  margin: 9px;
+}
+.achievement-select-list .asl__it__img {
+  height: 100%;
+  width: 100%;
+}
+/* /Achievement select list
 ---------------------------------------------------------------------------------- */
 /* /Components */
 /* Views

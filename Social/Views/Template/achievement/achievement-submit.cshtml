@@ -1,0 +1,46 @@
+﻿<section class="achievement-submit">
+    <div class="as__steps">
+        <div class="container">
+            <div ng-class="{'active': achSubmit.steps.current == 0}"
+                 class="as__steps__it">
+                <span>@R("1. Выберите достижение")</span>
+            </div>
+            <div ng-class="{'active': achSubmit.steps.current == 1}"
+                 class="as__steps__it">
+                <span>@R("2. Приложите видео")</span>
+            </div>
+            <div ng-class="{'active': achSubmit.steps.current == 2}"
+                 class="as__steps__it">
+                <span>@R("3. Проголосуйте за других")</span>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="as__header">
+            <span ng-click="achSubmit.prevStep()">
+                <span class="link link--blue" ng-if="achSubmit.steps.current == 0">@R("Отмена")</span>
+                <span class="link link--blue" ng-if="achSubmit.steps.current != 0">@R("Назад")</span>
+            </span>
+            <button ng-click="achSubmit.nextStep()" class="btn btn-fill-green btn-xl">@R("Следующий шаг")</button>
+        </div>
+        <div ng-show="achSubmit.steps.current == 0"
+             class="as__step">
+            <ul class="achievement-select-list">
+                <li class="asl__it">
+                    <img src="#" class="asl__it__img" />
+                </li>
+                <li class="asl__it">
+                    <img src="#" class="asl__it__img" />
+                </li>
+            </ul>
+        </div>
+        <div ng-show="achSubmit.steps.current == 1"
+             class="as__step">
+            2
+        </div>
+        <div ng-show="achSubmit.steps.current == 2"
+             class="as__step">
+            3
+        </div>
+    </div>
+</section>
