@@ -1,13 +1,12 @@
 ﻿<div class="social-share">
-    <a ng-repeat="s in list" class="ss__it"
-       socialshare
-       socialshare-title="{{::prop.title}}"
-       socialshare-text="{{::prop.text}}"
-       socialshare-description="{{::prop.text}}"
-       socialshare-url="{{::prop.url}}"
-       socialshare-provider="{{::s}}"
-       socialshare-hashtags="{{::prop.tags}}">
-        <span class="icon icon--{{::s}}"></span>
-        <span ng-show="counters=='true'" class="ss__count">120</span>
-    </a>
+    <span ng-repeat="provider in providerList"
+          socialshare
+          socialshare-url="{{::prop.url}}"
+          socialshare-text="{{::prop.text}}"
+          socialshare-media="{{::prop.media}}"
+          socialshare-hashtags="{{::prop.hashtags}}"
+          socialshare-provider="{{::provider}}"
+          class="ss__it">
+        <span class="icon icon--{{::provider}}"></span>
+    </span>
 </div>

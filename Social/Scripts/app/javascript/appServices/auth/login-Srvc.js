@@ -21,10 +21,7 @@ login = (function() {
               $rootScope.user = res.data.data;
               return resolve(res.data);
             } else {
-              reject(res);
-              if (opts.noticeShow.errors) {
-                return base.notice.response(res);
-              }
+              return reject(res);
             }
           }, function(res) {
             return reject(res);

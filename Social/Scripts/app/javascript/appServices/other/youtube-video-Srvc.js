@@ -2,11 +2,12 @@ var YoutubeVideo;
 
 YoutubeVideo = (function() {
   function YoutubeVideo($http, $q, servicesDefault, base) {
-    var getVideoInfo;
+    var getVideoInfo, url;
+    url = servicesDefault.baseServiceUrl + '/youtube';
     getVideoInfo = function(link, prop) {
-      if (link && typeof link === 'string' && link.length > 0) {
-        return $q(function(resolve, reject) {
-          return $http.post(servicesDefault.baseServiceUrl + '/youtube', {
+      return $q(function(resolve, reject) {
+        if (link && typeof link === 'string' && link.length > 0) {
+          return $http.post(url, {
             link: link
           }).then(function(res) {
             if (res.data.success) {
@@ -17,10 +18,10 @@ YoutubeVideo = (function() {
           }, function(res) {
             return reject(res);
           });
-        });
-      } else {
-        return reject();
-      }
+        } else {
+          return reject();
+        }
+      });
     };
     return {
       getVideoInfo: getVideoInfo

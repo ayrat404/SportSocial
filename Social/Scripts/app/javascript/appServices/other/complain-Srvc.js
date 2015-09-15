@@ -11,10 +11,7 @@ Complain = (function() {
             if (res.data.success) {
               return resolve(res.data);
             } else {
-              reject(res.data);
-              if (servicesDefault.noticeShow.errors) {
-                return base.notice.response(res);
-              }
+              return reject(res.data);
             }
           }, function(res) {
             return reject(res);

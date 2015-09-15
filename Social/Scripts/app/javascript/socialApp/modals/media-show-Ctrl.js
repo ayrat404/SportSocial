@@ -1,7 +1,7 @@
 var MediaModalShow;
 
 MediaModalShow = (function() {
-  function MediaModalShow($scope, $state, $modalInstance, $rootScope, journalService, modalData) {
+  function MediaModalShow($scope, $state, $modalInstance, $rootScope, base, journalService, modalService, modalData) {
     var setByIndex;
     $scope.maxText = 40;
     if (modalData.media !== void 0) {
@@ -16,9 +16,16 @@ MediaModalShow = (function() {
           $scope.it.isOwner = false;
         }
         $scope.itemsCount = $scope.it.media.length;
+        if ($scope.currentIndex > $scope.itemsCount) {
+          $scope.currentIndex = 1;
+        }
         return setByIndex($scope.currentIndex);
       }, function(res) {
-        return $modalInstance.dismiss();
+        $modalInstance.dismiss();
+        return base.notice.show({
+          text: 'Record with id=' + modalData.media + ' is not defined.',
+          type: 'warning'
+        });
       });
       setByIndex = function(index) {
         var i;
@@ -38,6 +45,16 @@ MediaModalShow = (function() {
           --$scope.currentIndex;
         }
         return setByIndex($scope.currentIndex);
+      };
+      $scope.socialShare = function() {
+        return modalService.show({
+          name: 'socialShare',
+          data: {
+            text: $scope.it.text,
+            media: $scope.current.url,
+            hashtags: $scope.it.tags
+          }
+        });
       };
       $scope.next = function() {
         if ($scope.currentIndex === $scope.itemsCount) {
@@ -63,4 +80,4 @@ MediaModalShow = (function() {
 
 })();
 
-angular.module('socialApp.controllers').controller('mediaModalShowController', ['$scope', '$state', '$modalInstance', '$rootScope', 'journalService', 'modalData', MediaModalShow]);
+angular.module('socialApp.controllers').controller('mediaModalShowController', ['$scope', '$state', '$modalInstance', '$rootScope', 'base', 'journalService', 'modalService', 'modalData', MediaModalShow]);

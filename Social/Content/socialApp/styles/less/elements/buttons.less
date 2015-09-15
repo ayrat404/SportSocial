@@ -107,7 +107,33 @@ button {
 /* /Custom Buttons */
 
 .btn-xl {
+    .button-size(15px, 25px, 1em, 14px, 50px);
+}
+.btn-xxl {
     .button-size(15px, 42px, 1em, 14px, 50px);
+}
+
+.btn--subscribe {
+    .icon {
+        .sprite(@subscribe);
+    }
+    .btn--round();
+    .btn-fill-green();
+}
+
+.btn--round {
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    position: relative;
+    .icon {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+    }
 }
 
 

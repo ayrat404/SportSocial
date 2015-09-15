@@ -22,7 +22,8 @@ namespace Social
                     "~/Scripts/libs/fotorama/fotorama.js",
                     "~/Scripts/libs/ng-flow/ng-flow-standalone.js",
                     "~/Scripts/libs/angular-storage/angular-storage.js",
-                    "~/Scripts/libs/angular-social-share/angular-socialshare.js"));
+                    "~/Scripts/libs/angular-social-share/angular-socialshare.js",
+                    "~/Scripts/libs/angular-youtube-embed/angular-youtube-embed.js"));
 
             // social with coffee
             // ---------------

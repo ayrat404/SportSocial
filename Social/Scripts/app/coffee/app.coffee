@@ -5,6 +5,7 @@ app = angular.module('app', [
     'angular-storage'
     'flow',
     '720kb.socialshare'
+    'youtube-embed'
     'shared',
     'appSrvc',
     'socialApp'
@@ -49,6 +50,13 @@ app = angular.module('app', [
                     templateUrl: tmplView 'journal/view'
                     controller: 'recordViewController'
                     controllerAs: 'record'
+        .state 'main.achievementAdd',
+            url: '/achievement/add'
+            views:
+                'socialContent@main':
+                    templateUrl: tmplView 'achievement/achievement-submit'
+                    controller: 'achievementSubmitController'
+                    controllerAs: 'ach'
         .state 'landing',
             url: '/'
             templateUrl: tmplView 'landing/index'
@@ -120,6 +128,7 @@ app = angular.module('app', [
         # ---------------
         $rootScope.$on '$stateChangeSuccess', (event, toState, toParams, fromState, fromParams) ->
             modalService.closeAll()
+            $rootScope.$previousState = fromState;
             $rootScope.loader = false
             $rootScope.fullHeight = toState.fullHeight
             queryParamsService.check(toParams)

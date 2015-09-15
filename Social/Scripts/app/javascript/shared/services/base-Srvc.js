@@ -1,7 +1,7 @@
 var animationCtrl, delay, formatCtrl, imageCtrl, noticeCtrl, validationCtrl;
 
 noticeCtrl = (function() {
-  var $body, bottomOffset, boxClass, checkColumnHeight, defaults, hide, hideAll, margin, mergeOpts, notices, response, setBottomOffset, show;
+  var $body, bottomOffset, boxClass, checkColumnHeight, defaults, hide, hideAll, margin, mergeOpts, notices, setBottomOffset, show;
   $body = angular.element('body');
   defaults = {
     type: 'info',
@@ -73,22 +73,6 @@ noticeCtrl = (function() {
     }
     return notices = [];
   };
-  response = function(data) {
-    var noticeClass;
-    noticeClass = data.success === true ? 'success' : 'warning';
-    if (data.message && data.message.length) {
-      show({
-        text: data.message,
-        type: noticeClass
-      });
-    }
-    if (data.statusText) {
-      return show({
-        text: data.status + ': ' + data.statusText,
-        type: noticeClass
-      });
-    }
-  };
   setBottomOffset = function(i) {
     var j, k, offset, ref;
     offset = bottomOffset;
@@ -119,8 +103,7 @@ noticeCtrl = (function() {
   return {
     hide: hide,
     hideAll: hideAll,
-    show: show,
-    response: response
+    show: show
   };
 })();
 

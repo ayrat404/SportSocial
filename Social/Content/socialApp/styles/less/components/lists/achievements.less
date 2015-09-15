@@ -1,0 +1,117 @@
+﻿/* Achievement list row
+---------------------------------------------------------------------------------- */
+
+
+/* Common
+-------------------------------------------------- */
+.achievement-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+/* /Common */
+
+
+/* Grid
+-------------------------------------------------- */
+@ach-row-height: 100px;
+
+.achievement-list--row {
+
+    .al__it {
+        .no-float();
+        width: 100%;
+        height: @ach-row-height;
+        margin-bottom: 20px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .al__it__media {
+        width: @ach-row-height * 2;
+        float: left;
+        margin: 0 -100% 0 0;
+    }
+
+    .al__it__media__it {
+        width: @ach-row-height;
+        height: @ach-row-height;
+        float: left;
+        position: relative;
+        text-align: center;
+        .image-ach {
+            height: 75px;
+            width: 75px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+        .image-user {
+            height: @ach-row-height;
+            width: @ach-row-height;
+        }
+    }
+
+    .al__it__info {
+        margin-left: 215px;
+        padding: 15px 15px 15px 0;
+    }
+
+    .al__it__title {
+        font-size: 1.286em;
+        margin-bottom: 1px;
+    }
+
+    .al__it__bottom {
+        margin-top: 10px;
+        color: @brand-gray5;
+
+        .icon-ok {
+            display: inline-block;
+            vertical-align: middle;
+            .sprite(@ok-xs);
+        }
+
+        .icon-fail {
+            display: inline-block;
+            vertical-align: middle;
+            .sprite(@stop-xs);
+        }
+    }
+
+
+    .al__it__stat {
+        display: inline-block;
+        margin-right: 15px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    .al__it__stat__count {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 0.857em;
+    }
+
+    .al__it__user {
+        color: @brand-gray5;
+        font-size: 0.857em;
+    }
+
+    .al__it__time-left {
+        float: right;
+    }
+}
+/* /Grid */
+
+
+/* /Achievement list row
+---------------------------------------------------------------------------------- */

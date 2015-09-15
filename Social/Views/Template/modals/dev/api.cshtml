@@ -385,7 +385,7 @@
         age: x,
         sportTime: x,
         location: x,
-        isOwner: true/false
+        isOwner: true/false,
         followers: [
             list: [
                 { id: 1, fullName: xxx, avatar: xxx },
@@ -394,7 +394,7 @@
                 { id: 4, fullName: xxx, avatar: xxx }
             ]
             count: 120
-        ]
+        ],
         subscribe: [
             list: [
                 { id: 1, fullName: xxx, avatar: xxx },
@@ -403,6 +403,28 @@
                 { id: 4, fullName: xxx, avatar: xxx }
             ]
             count: 120
+        ],     
+        media: [ *Это девять рандомных медиа файлов из записей* index - порядок картинки в массиве картинок к этой записи начиная с нуля
+            { recordId: 1, index: 1, url: 'imageUrl', type: 'image' },
+            { recordId: 2, index: 0, url: 'imageUrl', type: 'video' }
+        ],   
+        journals: [
+            {
+                id: 1,
+                author: { id: 1, avatar: xxx, fullName: xxx },
+                created: x,
+                likes: {
+                    list: [
+                        { id: 1, avatar: xxx, fullName: xxx },
+                        { id: 2, avatar: xxx, fullName: xxx }
+                    ],
+                    isLiked: true/false
+                    count: 23
+                },
+                text: x,
+                media: [],
+                tags: ['fortress', 'sport']
+            }
         ]
     },
     errors: null

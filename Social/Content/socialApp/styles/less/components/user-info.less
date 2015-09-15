@@ -7,6 +7,23 @@
   .no-float();
 }
 
+.user-info--media {
+  .user-info__media {
+    display: block;
+  }
+  .user-info__about {
+    padding: 0;
+    margin: 25px 15px;
+    position: relative;
+    .ui__edit {
+      bottom: auto;
+      top: 9px;
+      right: 0;
+      text-align: right;
+    }
+  }
+}
+
 .user-info__avatar {
   margin: 0 -100% 0 0;
   border-right: 1px solid #d7d9db;
@@ -61,6 +78,40 @@
     position: absolute;
     left: 250px;
     bottom: 17px;
+  }
+}
+
+.user-info__media {
+  display: none;
+  margin-left: 230px;
+  position: relative;
+  .no-float();
+  .ui-m__it__img {
+    height: 77px;
+    width: 77px;
+  }
+  .ui-m__it {
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    float: left;
+  }
+  .ui-m__it__overlay {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(21,29,33,.7);
+    position: absolute;
+  }
+  .ui-m__it__play {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    .sprite(@media-play);
   }
 }
 

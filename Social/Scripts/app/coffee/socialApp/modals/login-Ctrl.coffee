@@ -13,7 +13,8 @@ class LoginSubmitModal extends Controller('socialApp.controllers')
         $scope.submit = ()->
             loginService.logIn($scope.login).then((res)->
                 $modalInstance.close()
-                if typeof modalData.success == 'function'
+                if modalData &&
+                  typeof modalData.success == 'function'
                     modalData.success(res)
                 else
                     $state.go 'main.profile', userId: res.data.id

@@ -19,12 +19,9 @@ registration = (function() {
           mixpanel.api('track', 'Registration__1-step__send', evTrackProp);
           return $http.post(urlFirst, data).then(function(res) {
             if (res.data.success) {
-              resolve(res.data);
+              return resolve(res.data);
             } else {
-              reject(res.data);
-            }
-            if (opts.noticeShow.errors) {
-              return base.notice.response(res);
+              return reject(res.data);
             }
           }, function(res) {
             return reject(res);

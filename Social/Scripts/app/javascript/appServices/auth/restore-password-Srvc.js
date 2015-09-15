@@ -20,12 +20,9 @@ restorePassword = (function() {
           mixpanel.api('track', 'RestorePassword__phone-send', evTrackProp);
           return $http(urlOne, data).then(function(res) {
             if (res.data.success) {
-              resolve(res.data);
+              return resolve(res.data);
             } else {
-              reject(res.data);
-            }
-            if (opts.noticeShow.errors) {
-              return base.notice.response(res);
+              return reject(res.data);
             }
           }, function(res) {
             return reject(res);
@@ -58,10 +55,7 @@ restorePassword = (function() {
             if (res.success) {
               return resolve(res);
             } else {
-              reject(res);
-              if (opts.noticeShow.errors) {
-                return base.notice.response(res);
-              }
+              return reject(res);
             }
           }, function(res) {
             return reject(res);

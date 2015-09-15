@@ -5,6 +5,7 @@ ProfileView = (function() {
     var _this;
     $scope.$root.title = ['Fortress | ', $rootScope.user.fullName].join('');
     _this = this;
+    _this.unknown = false;
     _this.user = {
       loaded: false
     };
@@ -22,6 +23,17 @@ ProfileView = (function() {
     _this.newRecord = function(res) {
       return _this.user.journals.unshift(res.data);
     };
+    _this.shareRecord = function(obj) {
+      return modalService.show({
+        name: 'socialShare',
+        data: {
+          text: obj.text,
+          media: obj.media,
+          hashtags: obj.tags
+        }
+      });
+    };
+    _this.showMedia = function(obj) {};
     _this.remove = function(id) {
       return modalService.show({
         name: 'journalRemove',
@@ -54,6 +66,8 @@ ProfileView = (function() {
       }
       _this.user.id = $stateParams.userId;
       return _this.user.loaded = true;
+    }, function(res) {
+      return _this.unknown = true;
     });
   }
 

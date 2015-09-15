@@ -1,9 +1,9 @@
 ﻿<div class="media-container">
-    <div class="media__watch-wrap">
+    <div ng-show="itemsCount>0" class="media__watch-wrap">
         <div ng-show="it.media.length > 1" ng-click="before()" class="media-control left"><span class="icon"></span></div>
         <div ng-show="it.media.length > 1" ng-click="next()" class="media-control right"><span class="icon"></span></div>
         <div class="media-index">{{currentIndex}}/{{itemsCount}}</div>
-        <img class="media__watch__img" ng-src="{{ current.url | imageResize:{h: 480, w: 740} }}"/>
+        <img class="media__watch__img" ng-src="{{ current.url | imageResize:{h: 480, w: 740} }}" />
     </div>
     <div class="item-bottom">
         <div class="item-author">
@@ -14,7 +14,7 @@
             </div>
         </div>
         <likes-in-row ng-model="current.likes" data-id="{{current.id}}" data-type="media"></likes-in-row>
-        <div class="btn btn-fill-green">@R("Поделиться")</div>
+        <div ng-click="socialShare()" class="btn btn-fill-green">@R("Поделиться")</div>
     </div>
     <p class="media__text">
         {{it.text|limitTo:maxText}}
