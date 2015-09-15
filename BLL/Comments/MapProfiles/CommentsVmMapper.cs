@@ -12,7 +12,7 @@ namespace BLL.Comments.MapProfiles
             return new CommentsVm
             {
                 Count = entity.Comments.Count,
-                List = entity.Comments.MapEachTo<CommentSocial>()
+                List = entity.Comments.MapEachTo<Comment>()
             };
         }
     }

@@ -24,6 +24,8 @@ namespace DAL.Repository.Interfaces
                 .Include(j => j.RatingEntites)
                 .Include(j => j.RatingEntites.Select(r => r.User))
                 .Include(j => j.User)
+                .Include(j => j.Media)
+                .Include(j => j.Media.Select(m => m.RatingEntites))
                 .ToList();
         }
 
@@ -33,6 +35,7 @@ namespace DAL.Repository.Interfaces
                 .Where(j => j.Id == journalId)
                 .Include(j => j.RatingEntites)
                 .Include(j => j.Media)
+                .Include(j => j.Media.Select(m => m.RatingEntites))
                 .Include(j => j.Comments)
                 .Include(j => j.Tags)
                 .Include(j => j.Tags.Select(t => t.Tag))

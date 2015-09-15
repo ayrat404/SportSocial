@@ -12,7 +12,7 @@ namespace BLL.Comments.MapProfiles
         protected override void Configure()
         {
             CreateMap<CreateCommentViewModel, CommentEntityBase>()
-                .ForMember(dest => dest.CommentedEntityId, opts => opts.MapFrom(src => src.ItemId))
+                .ForMember(dest => dest.CommentedEntityId, opts => opts.MapFrom(src => src.EntityId))
                 .ForMember(dest => dest.CommentForId, opts => opts.MapFrom(src => src.CommentForId))
                 .ForMember(dest => dest.Text, opts => opts.MapFrom(src => src.Text))
                 .ForMember(dest => dest.UserId, opts => opts.MapFrom(src => 

@@ -24,7 +24,7 @@ namespace BLL.Comments.Impls
 
         public Comment AddComment(CreateCommentViewModel createCommentViewModel)
         {
-            return CreateGenericService(createCommentViewModel.ItemType).AddComment(createCommentViewModel);
+            return CreateGenericService(createCommentViewModel.EntityType).AddComment(createCommentViewModel);
         }
 
         public IEnumerable<Comment> LoadComments(int itemId, CommentItemType itemType)
@@ -49,7 +49,7 @@ namespace BLL.Comments.Impls
                     return typeof (Conference);
                 case CommentItemType.Feedback:
                     return typeof (Feedback);
-                case CommentItemType.Journal:
+                case CommentItemType.Record:
                     return typeof (Journal);
             }
             return null;
@@ -65,7 +65,7 @@ namespace BLL.Comments.Impls
                     return typeof(ConferenceComment);
                 case CommentItemType.Feedback:
                     return typeof (FeedbackComment);
-                case CommentItemType.Journal:
+                case CommentItemType.Record:
                     return typeof (JournalComment);
             }
             return null;

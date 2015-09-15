@@ -10,6 +10,7 @@ namespace BLL.Storage
         ServiceResult<ImageUploadResult> UploadImage(Stream inputStream, string fileName, UploadType uploadType);
         ServiceResult UploadAvatar(Stream inputStream, string filePath);
         ServiceResult<ImageUploadResult> YoutubeImage(string youtubeUrl);
+        void SaveFile(Stream fileStream, string filePath);
     }
 
     public class ImageUploadResult

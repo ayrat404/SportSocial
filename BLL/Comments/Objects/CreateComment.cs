@@ -12,10 +12,10 @@ namespace BLL.Comments.Objects
         public string Text { get; set; }
 
         //[Required]
-        public CommentItemType ItemType { get; set; }
+        public CommentItemType EntityType { get; set; }
 
         [Required]
-        public int ItemId { get; set; }
+        public int EntityId { get; set; }
 
         public int? CommentForId { get; set; }
 

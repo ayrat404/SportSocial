@@ -27,7 +27,7 @@ namespace BLL.Social.UserProfile
             {
                 FullName = user.FullName(),
                 Avatar = user.Profile.Avatar,
-                SportTime = user.Profile.Experience,
+                SportTime = (int)user.Profile.Experience,
                 IsOwner = user.Id == _currentUser.UserId,
                 Age = new DateTime((DateTime.Now - user.Profile.BirthDate).Ticks).Year
             };

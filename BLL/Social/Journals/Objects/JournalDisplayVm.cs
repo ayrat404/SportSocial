@@ -5,7 +5,6 @@ namespace BLL.Social.Journals.Objects
 {
     public class JournalDisplayVm: JournalPreviewVm
     {
-        public List<MediaVm> Media { get; set; }
 
         public List<string> Tags { get; set; }
 

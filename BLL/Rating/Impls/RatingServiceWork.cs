@@ -43,7 +43,6 @@ namespace BLL.Rating.Impls
                 }
                 if (ratingEntity == null || ratingEntity.RatingType != rateModel.ActionType)
                 {
-
                     ratingEntity = Activator.CreateInstance<TRatingEntity>();
                     ratingEntity.RatedEntity = entity;
                     ratingEntity.RatingType = rateModel.ActionType;

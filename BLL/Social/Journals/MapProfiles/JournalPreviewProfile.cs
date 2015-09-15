@@ -24,11 +24,11 @@ namespace BLL.Social.Journals.MapProfiles
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Author, opt => opt.MapFrom(src => src.User))
                 .ForMember(dest => dest.Likes, opt => opt.MapFrom(src => RatingMapper.MapRating(src)))
+                .ForMember(dest => dest.Media, opt => opt.MapFrom(src => src.Media))
                 .ForMember(dest => dest.Created, opt => opt.MapFrom(src => src.Created));
 
             CreateMap<Journal, JournalDisplayVm>()
                 .IncludeBase<Journal, JournalPreviewVm>()
-                .ForMember(dest => dest.Media, opt => opt.MapFrom(src => src.Media))
                 .ForMember(dest => dest.Tags, opt => opt.MapFrom(src => src.Tags))
                 .ForMember(dest => dest.Comments, opt => opt.MapFrom(src => CommentsVmMapper.Map(src)));
 
@@ -37,6 +37,7 @@ namespace BLL.Social.Journals.MapProfiles
             CreateMap<JournalMedia, MediaVm>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Type, opt => opt.MapFrom(src => (MediaType)src.Type))
+                .ForMember(dest => dest.Likes, opt => opt.MapFrom(src => RatingMapper.MapRating(src)))
                 .ForMember(dest => dest.Url, opt => opt.MapFrom(src => src.Url));
         }
     }

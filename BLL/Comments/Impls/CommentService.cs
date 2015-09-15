@@ -23,12 +23,12 @@ namespace BLL.Comments.Impls
 
         public Comment AddComment(CreateCommentViewModel createCommentViewModel)
         {
-            var entity = _repository.Find<TEntity>(createCommentViewModel.ItemId);
+            var entity = _repository.Find<TEntity>(createCommentViewModel.EntityId);
             if (entity != null)
             {
                 var comment = _repository.Create<TCommentEntity>();
                 comment.CommentForId = createCommentViewModel.CommentForId;
-                comment.CommentedEntityId = createCommentViewModel.ItemId;
+                comment.CommentedEntityId = createCommentViewModel.EntityId;
                 comment.UserId = _currentUser.UserId;
                 comment.Text = createCommentViewModel.Text;
                 comment.ByFortress = _currentUser.IsAdmin ? createCommentViewModel.ByFortress : false;

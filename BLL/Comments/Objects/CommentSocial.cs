@@ -6,25 +6,25 @@ using BLL.Social.Journals.Objects;
 
 namespace BLL.Comments.Objects
 {
-    public class CommentSocial
-    {
-        public string Text { get; set; }
+    //public class CommentSocial
+    //{
+    //    public string Text { get; set; }
 
-        public int Id { get; set; }
+    //    public int Id { get; set; }
 
-        public CommentFor CommentFor { get; set; }
+    //    public CommentFor CommentFor { get; set; }
 
-        public AuthorVm Author { get; set; }
+    //    public AuthorVm Author { get; set; }
 
-        public RatingInfo Likes { get; set; }
+    //    public RatingInfo Likes { get; set; }
 
-        public DateTime Date { get; set; }
-    }
+    //    public DateTime Date { get; set; }
+    //}
 
     public class CommentsVm
     {
         public int Count { get; set; }
 
-        public IEnumerable<CommentSocial> List { get; set; }
+        public IEnumerable<Comment> List { get; set; }
     }
 }

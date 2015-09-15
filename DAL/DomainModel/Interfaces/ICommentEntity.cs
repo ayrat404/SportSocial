@@ -26,6 +26,10 @@ namespace DAL.DomainModel.Interfaces
     public abstract class CommentEntity<TCommentFor> : CommentEntityBase
         where TCommentFor: CommentEntityBase
     {
+        protected CommentEntity()
+        {
+            CommentFor = Activator.CreateInstance<TCommentFor>();
+        }
 
         [ForeignKey("CommentForId")]
         public TCommentFor CommentFor { get; set; }

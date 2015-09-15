@@ -115,7 +115,7 @@ namespace BLL.Storage.Impls
             throw new NotImplementedException();
         }
 
-        private void SaveFile(Stream fileStream, string filePath)
+        public void SaveFile(Stream fileStream, string filePath)
         {
             using (var stream = new MemoryStream())
             {
@@ -123,7 +123,6 @@ namespace BLL.Storage.Impls
                 string dir = Path.GetDirectoryName(serverPath);
                 if (!Directory.Exists(dir))
                     Directory.CreateDirectory(dir);
-
                 fileStream.Position = 0;
                 fileStream.CopyTo(stream);
                 File.WriteAllBytes(serverPath, stream.ToArray());

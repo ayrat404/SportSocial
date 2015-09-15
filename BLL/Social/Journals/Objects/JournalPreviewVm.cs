@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using BLL.Blog.ViewModels;
 using BLL.Rating.Objects;
 
@@ -13,7 +14,9 @@ namespace BLL.Social.Journals.Objects
         public AuthorVm Author { get; set; }
 
         public RatingInfo Likes { get; set; }
-        
+
+        public List<MediaVm> Media { get; set; }
+       
         public DateTime Created { get; set; }
     }
 }
