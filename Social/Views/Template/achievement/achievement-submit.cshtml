@@ -1,46 +1,183 @@
-﻿<section class="achievement-submit">
+﻿<section class="achievement-submit"
+         data-loader="ach.loader">
     <div class="as__steps">
         <div class="container">
-            <div ng-class="{'active': achSubmit.steps.current == 0}"
+            <div ng-class="{'active': ach.currentStep == 0}"
                  class="as__steps__it">
                 <span>@R("1. Выберите достижение")</span>
             </div>
-            <div ng-class="{'active': achSubmit.steps.current == 1}"
+            <div ng-class="{'active': ach.currentStep == 1}"
                  class="as__steps__it">
                 <span>@R("2. Приложите видео")</span>
             </div>
-            <div ng-class="{'active': achSubmit.steps.current == 2}"
+            <div ng-class="{'active': ach.currentStep == 2}"
                  class="as__steps__it">
                 <span>@R("3. Проголосуйте за других")</span>
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="as__header">
-            <span ng-click="achSubmit.prevStep()">
-                <span class="link link--blue" ng-if="achSubmit.steps.current == 0">@R("Отмена")</span>
-                <span class="link link--blue" ng-if="achSubmit.steps.current != 0">@R("Назад")</span>
-            </span>
-            <button ng-click="achSubmit.nextStep()" class="btn btn-fill-green btn-xl">@R("Следующий шаг")</button>
-        </div>
-        <div ng-show="achSubmit.steps.current == 0"
+    <div ng-if="!ach.pageError"
+         class="container">
+        
+        @* ----- First step ----- *@
+        <div ng-show="ach.currentStep == 0"
              class="as__step">
+            <div class="as__header">
+                <span class="link link--blue" ng-click="ach.cancel()">@R("Отмена")</span>
+                <button ng-click="ach.nextStep()"
+                        ng-disabled="!ach.firstValid"
+                        class="btn btn-fill-green btn-xl">@R("Следующий шаг")</button>
+            </div>
             <ul class="achievement-select-list">
-                <li class="asl__it">
-                    <img src="#" class="asl__it__img" />
-                </li>
-                <li class="asl__it">
-                    <img src="#" class="asl__it__img" />
+                <li ng-repeat="c in ::ach.cards"
+                    ng-class="{ 'asl__it--focus': c.focus }"
+                    class="asl__it">
+                    <img ng-src="{{::c.img}}" class="asl__it__img" />
+                    <div ng-click="ach.cardFocus(c)"
+                         class="asl__it__focus"></div>
+                    <div class="asl__it__overlay">
+                        <div class="asl__it__overlay__in">
+                            <p class="asl__it__title">{{::c.title}}</p>
+                            <select ng-model="c.selected" ng-change="ach.checkFirstStep()" class="fs-input">
+                                <option value="">@R("Количество")</option>
+                                <option ng-repeat="option in c.values" value="{{::option}}">{{::option}}</option>
+                            </select>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>
-        <div ng-show="achSubmit.steps.current == 1"
-             class="as__step">
-            2
+        @* ----- First step ----- *@
+
+        
+        @* ----- Second step ----- *@
+        <div ng-show="ach.currentStep == 1"
+             class="as__step as__step--video">
+            <div class="as__header">
+                <span class="link link--blue" ng-click="ach.prevStep()">@R("Назад")</span>
+                <button ng-click="ach.nextStep()"
+                        ng-disabled="!ach.second.isCustomLoaded"
+                        class="btn btn-fill-green btn-xl">
+                    @R("Следующий шаг")
+                </button>
+            </div>
+            <div class="as__subtitle">
+                @R("Для того, чтобы получить достижение, познакомьтесь с условиями посмотрев видео.")
+                <span ng-click="ach.second.hideExample()">
+                    <span ng-if="ach.second.isExampleShow" class="link link--blue">@R("Скрыть")</span>
+                    <span ng-if="!ach.second.isExampleShow" class="link link--blue">@R("Показать")</span>
+                </span>
+            </div>
+            <div ng-show="ach.second.isExampleShow"
+                 class="as__example embed-responsive embed-responsive-16by9">
+                <youtube-video class="embed-responsive-item" video-url="ach.second.exampleLink" player="ach.second.ePlayer"></youtube-video>
+            </div>
+            <div class="as__divider"></div>
+            <form class="fs-form" name="VideoSelect" ng-submit="ach.second.getVideoInfo()">
+                <div class="row">
+                    <div class="col-sm-10 col-xs-7">
+                        <input ng-disabled="ach.second.isCustomLoaded"
+                               ng-model="ach.second.customLink" required class="fs-input fs-input--border" type="text" placeholder="@R("Вставьте ссылку на видео в YouTube")" />
+                    </div>
+                    <div class="col-sm-2 col-xs-5 text-right">
+                        <button ng-disabled="!VideoSelect.$valid || ach.second.isCustomLoaded"
+                                type="submit" class="btn btn-fill-green btn-xl">
+                            @R("Загрузить")
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div ng-if="ach.second.isCustomLoaded">
+                <div class="as__subtitle">
+                    @R("Ваше видео успешно загружено.")
+                    <span ng-click="ach.second.removeVideo()" class="link link--blue">
+                        @R("Удалить")
+                    </span>
+                </div>
+                <div class="as__example embed-responsive embed-responsive-16by9">
+                    <youtube-video class="embed-responsive-item" video-url="ach.second.customLink"></youtube-video>
+                </div>
+            </div>
         </div>
-        <div ng-show="achSubmit.steps.current == 2"
+        @* ----- Second step ----- *@
+        
+
+        @* ----- Third step ----- *@
+        <div ng-show="ach.currentStep == 2"
              class="as__step">
-            3
+            <div class="as__header">
+                <span class="link link--blue" ng-click="ach.prevStep()">@R("Назад")</span>
+                <button class="btn btn-fill-green btn-xl">
+                    @R("Готово")
+                </button>
+            </div>
+            <div class="as__subtitle">
+                @R("Ваща заявка сохранена. Для того, чтобы она появилась в списке всех заявок, оцените три заявки от других атлетов (Осталось: 3)")
+            </div>
+            <ul class="achievement-list achievement-list--row">
+                <li class="al__it">
+                    <div class="al__it__media">
+                        <div class="al__it__media__it">
+                            <img src="#" class="image-ach" />
+                        </div>
+                        <div class="al__it__media__it">
+                            <img src="#" class="image-user" />
+                        </div>
+                    </div>
+                    <div class="al__it__info">
+                        <p class="al__it__title">Подтягивания. 35 повторений</p>
+                        <p class="al__it__user">
+                            Максим Жернов &#183; 06 сентября 2015
+                        </p>
+                        <div class="al__it__bottom">
+                            <span class="al__it__stat">
+                                <span class="icon-ok"></span>
+                                <span class="al__it__stat__count">142</span>
+                            </span>
+                            <span class="al__it__stat">
+                                <span class="icon-fail"></span>
+                                <span class="al__it__stat__count">16</span>
+                            </span>
+                            <span class="al__it__time-left">Осталось: 6 дней</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="al__it">
+                    <div class="al__it__media">
+                        <div class="al__it__media__it">
+                            <img src="#" class="image-ach" />
+                        </div>
+                        <div class="al__it__media__it">
+                            <img src="#" class="image-user" />
+                        </div>
+                    </div>
+                    <div class="al__it__info">
+                        <p class="al__it__title">Подтягивания. 35 повторений</p>
+                        <p class="al__it__user">
+                            Максим Жернов &#183; 06 сентября 2015
+                        </p>
+                        <div class="al__it__bottom">
+                            <span class="al__it__stat">
+                                <span class="icon-ok"></span>
+                                <span class="al__it__stat__count">142</span>
+                            </span>
+                            <span class="al__it__stat">
+                                <span class="icon-fail"></span>
+                                <span class="al__it__stat__count">16</span>
+                            </span>
+                            <span class="al__it__time-left">Осталось: 6 дней</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        @* ----- Third step ----- *@
+
+    </div>
+    <div ng-if="ach.pageError"
+         class="container">
+        <div class="text-center">
+            <div class="alert alert-warning">@R("На сайте возникли проблемы с подачей заявки на достижение. Команда Fortress уже исправляет проблему.")</div>
         </div>
     </div>
 </section>

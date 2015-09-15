@@ -31,7 +31,6 @@ class restorePassword extends Service('appSrvc')
                             resolve(res.data)
                         else
                             reject(res.data)
-                        base.notice.response(res) if opts.noticeShow.errors
                     , (res)->
                         reject(res)
                     ).finally(->
@@ -63,7 +62,6 @@ class restorePassword extends Service('appSrvc')
                             resolve(res)
                         else
                             reject(res)
-                            base.notice.response(res) if opts.noticeShow.errors
                     , (res)->
                         reject(res)
                     ).finally(->

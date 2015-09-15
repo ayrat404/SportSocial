@@ -6,12 +6,54 @@
   margin: 0;
   padding: 0;
   .asl__it {
+    position: relative;
     display: inline-block;
     width: 236px;
     height: 346px;
     border: 5px solid #fff;
     box-shadow: 0 0 4px rgba(0,0,0,.3);
     margin: 9px;
+  }
+  .asl__it--focus {
+    .asl__it__overlay {
+      display: table;
+    }
+    .asl__it__focus {
+      display: none;
+    }
+  }
+  .asl__it__focus {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+    user-select: none;
+  }
+  .asl__it__overlay {
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .8);
+  }
+  .asl__it__overlay__in {
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    .fs-input {
+      max-width: 90%;
+    }
+  }
+  .asl__it__title {
+    color: #fff;
+    font-size: 18px;
   }
   .asl__it__img {
     height: 100%;

@@ -4,16 +4,31 @@ apiInterseptor = (function() {
   function apiInterseptor() {
     this.$get = [
       '$q', '$injector', '$timeout', 'base', 'servicesDefault', function($q, $injector, $timeout, base, servicesDefault) {
+        var modalService;
+        modalService = {};
+        $timeout(function() {
+          var $http, $state;
+          modalService = $injector.get('modalService');
+          $http = $injector.get('$http');
+          return $state = $injector.get('$state');
+        });
         return {
+          'response': function(res) {
+            var noticeClass;
+            if (res.data) {
+              noticeClass = res.data.success === true ? 'success' : 'warning';
+              if (res.data.message && res.data.message.length) {
+                debugger;
+                base.notice.show({
+                  text: res.data.message,
+                  type: noticeClass
+                });
+              }
+            }
+            return res;
+          },
           'responseError': function(res) {
             var deferred;
-            $timeout(function() {
-              var $http, $state, modalService;
-              modalService = $injector.get('modalService');
-              base = $injector.get('base');
-              $http = $injector.get('$http');
-              return $state = $injector.get('$state');
-            });
             if (servicesDefault.noticeShow.errors) {
               base.notice.show({
                 text: 'Error ' + res.status + ': ' + res.statusText + '<br>' + res.data.message,

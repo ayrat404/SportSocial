@@ -363,6 +363,7 @@
     <Content Include="Scripts\libs\angular-ui-bootstrap\ui-bootstrap-tpls-0.13.3.js" />
     <Content Include="Scripts\libs\angular-ui-router\angular-ui-router.js" />
     <Content Include="Scripts\libs\angular-ui-router\angular-ui-router.min.js" />
+    <Content Include="Scripts\libs\angular-youtube-embed\angular-youtube-embed.js" />
     <Content Include="Scripts\libs\angular\angular-animate.js" />
     <Content Include="Scripts\libs\angular\angular-animate.min.js" />
     <Content Include="Scripts\libs\angular\angular-aria.js" />
@@ -2755,7 +2756,7 @@
     <Content Include="Content\socialApp\styles\less\dev\api.less" />
     <Content Include="Content\socialApp\styles\less\components\journal-form.less" />
     <Content Include="Content\socialApp\styles\less\components\layout-social.less" />
-    <Content Include="Content\socialApp\styles\less\components\lists\users-grid.less" />
+    <Content Include="Content\socialApp\styles\less\components\lists\users.less" />
     <Content Include="Content\socialApp\styles\less\components\media-upload.less" />
     <Content Include="Content\socialApp\styles\less\components\nav.less" />
     <Content Include="Content\socialApp\styles\less\components\user-info.less" />
@@ -2779,6 +2780,9 @@
     <Content Include="Content\socialApp\styles\less\components\comments\comment-list.less" />
     <Content Include="Content\socialApp\styles\less\components\likes\likes-finger.less" />
     <Content Include="Content\socialApp\styles\less\components\likes\likes-row.less" />
+    <Content Include="Content\socialApp\styles\less\components\lists\achievements.less" />
+    <Content Include="Content\socialApp\styles\less\components\achievement\achievement-select-list.less" />
+    <Content Include="Content\socialApp\styles\less\components\achievement\achievement-submit.less" />
     <None Include="Properties\PublishProfiles\fortress-club %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\fortress-club.pubxml" />
     <None Include="Properties\PublishProfiles\Social.pubxml" />
@@ -2805,6 +2809,9 @@
     <Content Include="Scripts\app\coffee\appServices\other\like-Srvc.coffee" />
     <Content Include="Scripts\app\coffee\appServices\other\profile-Srvc.coffee" />
     <Content Include="Scripts\app\coffee\appServices\other\support-Srvc.coffee" />
+    <Content Include="Scripts\app\coffee\appServices\other\achievement-Srvc.coffee" />
+    <Content Include="Scripts\app\coffee\shared\directives\mousewheel-scroller-Drct.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\main\achievement\achievement-submit-Ctrl.coffee" />
     <None Include="Scripts\libs\jquery\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.min.js" />
@@ -3069,13 +3076,12 @@
     <Content Include="Views\Template\components\likes\likes-rowTpl.cshtml" />
     <Content Include="Views\Template\modals\journal\remove.cshtml" />
     <Content Include="Views\Template\components\social-shareTpl.cshtml" />
+    <Content Include="Views\Template\modals\social-share\share.cshtml" />
     <Content Include="Views\Template\components\comments\comment-formTpl.cshtml" />
     <Content Include="Views\Template\components\comments\comment-listTpl.cshtml" />
     <Content Include="Views\Template\modals\complain.cshtml" />
     <Content Include="Views\Template\components\likes\likes-fingerTpl.cshtml" />
-    <Content Include="Views\Template\modals\social-share.cshtml">
-      <SubType>Code</SubType>
-    </Content>
+    <Content Include="Views\Template\achievement\achievement-submit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">

@@ -9940,6 +9940,12 @@ fieldset[disabled] .btn-link-white.active {
 }
 /* /Custom Buttons */
 .btn-xl {
+  padding: 15px 25px;
+  font-size: 1em;
+  line-height: 14px;
+  border-radius: 50px;
+}
+.btn-xxl {
   padding: 15px 42px;
   font-size: 1em;
   line-height: 14px;
@@ -10043,7 +10049,6 @@ fieldset[disabled] .btn--subscribe.active {
   color: #1f7eba;
   background: transparent;
   border: none;
-  font-size: 0.786em;
 }
 .link:hover {
   color: #45a4e0;
@@ -10094,6 +10099,13 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .fs-input:-ms-input-placeholder {
   color: #575757;
+}
+.fs-input:disabled {
+  color: #afafaf;
+  background: #e4e4e4;
+}
+.fs-input--border {
+  border-color: #d7d9db;
 }
 .fs-input--error {
   border-color: #de3233;
@@ -10190,7 +10202,7 @@ fieldset[disabled] .btn--subscribe.active {
   -webkit-transition: opacity 100ms linear;
           transition: opacity 100ms linear;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -332px -72px;
+  background-position: -332px -96px;
   width: 11px;
   height: 11px;
   margin-left: 8px;
@@ -10402,7 +10414,7 @@ fieldset[disabled] .btn--subscribe.active {
       -ms-user-select: none;
           user-select: none;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: 0px -230px;
+  background-position: -31px -230px;
   width: 21px;
   height: 21px;
 }
@@ -10712,7 +10724,7 @@ fieldset[disabled] .btn--subscribe.active {
   display: inline-block;
   margin-right: 7px;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -332px -27px;
+  background-position: -332px -51px;
   width: 12px;
   height: 13px;
 }
@@ -10870,7 +10882,7 @@ fieldset[disabled] .btn--subscribe.active {
   display: inline-block;
   opacity: .8;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -332px -115px;
+  background-position: -332px -139px;
   width: 6px;
   height: 6px;
 }
@@ -10983,6 +10995,109 @@ fieldset[disabled] .btn--subscribe.active {
 /* /Grid */
 /* /Users lists
 ---------------------------------------------------------------------------------- */
+/* Achievement list row
+---------------------------------------------------------------------------------- */
+/* Common
+-------------------------------------------------- */
+.achievement-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+/* /Common */
+/* Grid
+-------------------------------------------------- */
+.achievement-list--row .al__it {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+.achievement-list--row .al__it:after {
+  display: block;
+  line-height: 0;
+  content: '';
+  clear: both;
+}
+.achievement-list--row .al__it:last-child {
+  margin-bottom: 0;
+}
+.achievement-list--row .al__it__media {
+  width: 200px;
+  float: left;
+  margin: 0 -100% 0 0;
+}
+.achievement-list--row .al__it__media__it {
+  width: 100px;
+  height: 100px;
+  float: left;
+  position: relative;
+  text-align: center;
+}
+.achievement-list--row .al__it__media__it .image-ach {
+  height: 75px;
+  width: 75px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.achievement-list--row .al__it__media__it .image-user {
+  height: 100px;
+  width: 100px;
+}
+.achievement-list--row .al__it__info {
+  margin-left: 215px;
+  padding: 15px 15px 15px 0;
+}
+.achievement-list--row .al__it__title {
+  font-size: 1.286em;
+  margin-bottom: 1px;
+}
+.achievement-list--row .al__it__bottom {
+  margin-top: 10px;
+  color: #71848d;
+}
+.achievement-list--row .al__it__bottom .icon-ok {
+  display: inline-block;
+  vertical-align: middle;
+  background-image: url(../../images/icons-set/icons-set.png);
+  background-position: -146px -261px;
+  width: 17px;
+  height: 14px;
+}
+.achievement-list--row .al__it__bottom .icon-fail {
+  display: inline-block;
+  vertical-align: middle;
+  background-image: url(../../images/icons-set/icons-set.png);
+  background-position: -332px -27px;
+  width: 14px;
+  height: 14px;
+}
+.achievement-list--row .al__it__stat {
+  display: inline-block;
+  margin-right: 15px;
+}
+.achievement-list--row .al__it__stat:last-child {
+  margin-right: 0;
+}
+.achievement-list--row .al__it__stat__count {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 0.857em;
+}
+.achievement-list--row .al__it__user {
+  color: #71848d;
+  font-size: 0.857em;
+}
+.achievement-list--row .al__it__time-left {
+  float: right;
+}
+/* /Grid */
+/* /Achievement list row
+---------------------------------------------------------------------------------- */
 /* Wall
 ---------------------------------------------------------------------------------- */
 .wall__bar {
@@ -11052,7 +11167,7 @@ fieldset[disabled] .btn--subscribe.active {
       -ms-user-select: none;
           user-select: none;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -270px -230px;
+  background-position: 0px -261px;
   width: 18px;
   height: 18px;
 }
@@ -11097,7 +11212,7 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .wall__it__header-edit .wi__edit:hover i {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -31px -230px;
+  background-position: 0px -230px;
   width: 21px;
   height: 21px;
 }
@@ -11226,7 +11341,7 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .wall__it--edit .wall__it__btn {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: 0px -261px;
+  background-position: -270px -230px;
   width: 18px;
   height: 18px;
 }
@@ -11322,7 +11437,7 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .likes-row .lr__btn i {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -28px -261px;
+  background-position: -58px -261px;
   width: 20px;
   height: 16px;
   position: absolute;
@@ -11374,7 +11489,7 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .likes-finger--liked .likes-finger__icon {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -58px -261px;
+  background-position: -88px -261px;
   width: 20px;
   height: 16px;
 }
@@ -11387,7 +11502,7 @@ fieldset[disabled] .btn--subscribe.active {
   display: inline-block;
   vertical-align: top;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -88px -261px;
+  background-position: -28px -261px;
   width: 20px;
   height: 16px;
 }
@@ -11650,6 +11765,9 @@ fieldset[disabled] .btn--subscribe.active {
 ---------------------------------------------------------------------------------- */
 /* Achievement submit
 ---------------------------------------------------------------------------------- */
+.achievement-submit .achievement-list {
+  margin-top: 25px;
+}
 .achievement-submit .as__steps {
   background-color: #45565e;
 }
@@ -11664,12 +11782,54 @@ fieldset[disabled] .btn--subscribe.active {
 .achievement-submit .as__steps__it.active {
   background: #354349;
 }
+.achievement-submit .as__step {
+  padding-bottom: 90px;
+}
+.achievement-submit .as__step--video .as__subtitle {
+  max-width: 490px;
+  margin: 0 auto;
+}
+.achievement-submit .as__step--video .as__example {
+  margin-top: 25px;
+}
+.achievement-submit .as__step--video .fs-form {
+  margin-bottom: 25px;
+}
 .achievement-submit .as__header {
   text-align: right;
   margin: 30px 0;
 }
 .achievement-submit .as__header .link {
   margin-right: 15px;
+}
+.achievement-submit .as__subtitle {
+  font-size: 1.286em;
+  text-align: center;
+}
+.achievement-submit .as__divider {
+  height: 1px;
+  width: 100%;
+  background: #d7d9db;
+  margin: 25px 0;
+}
+.embed-responsive {
+  position: relative;
+  display: block;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.embed-responsive.embed-responsive-16by9 {
+  padding-bottom: 56.25%;
+}
+.embed-responsive-item {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 /* /Achievement submit
 ---------------------------------------------------------------------------------- */
@@ -11681,12 +11841,55 @@ fieldset[disabled] .btn--subscribe.active {
   padding: 0;
 }
 .achievement-select-list .asl__it {
+  position: relative;
   display: inline-block;
   width: 236px;
   height: 346px;
   border: 5px solid #fff;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
   margin: 9px;
+}
+.achievement-select-list .asl__it--focus .asl__it__overlay {
+  display: table;
+}
+.achievement-select-list .asl__it--focus .asl__it__focus {
+  display: none;
+}
+.achievement-select-list .asl__it__focus {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.achievement-select-list .asl__it__overlay {
+  width: 100%;
+  height: 100%;
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+}
+.achievement-select-list .asl__it__overlay__in {
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
+.achievement-select-list .asl__it__overlay__in .fs-input {
+  max-width: 90%;
+}
+.achievement-select-list .asl__it__title {
+  color: #fff;
+  font-size: 18px;
 }
 .achievement-select-list .asl__it__img {
   height: 100%;
@@ -12075,7 +12278,7 @@ fieldset[disabled] .btn--subscribe.active {
   display: inline-block;
   vertical-align: middle;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -332px -50px;
+  background-position: -332px -74px;
   width: 12px;
   height: 12px;
 }
@@ -12083,7 +12286,7 @@ fieldset[disabled] .btn--subscribe.active {
   display: inline-block;
   vertical-align: middle;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -332px -93px;
+  background-position: -332px -117px;
   width: 10px;
   height: 12px;
 }

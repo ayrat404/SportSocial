@@ -22,7 +22,6 @@ class Comments extends Service('appSrvc')
                             resolve(res.data)
                         else
                             reject(res.data)
-                            base.notice.response(res) if servicesDefault.noticeShow.errors
                     , (res)->
                         reject(res)
                     )
@@ -45,7 +44,6 @@ class Comments extends Service('appSrvc')
                             resolve(res.data)
                         else
                             reject(res.data)
-                            base.notice.response(res) if servicesDefault.noticeShow.errors
                     , (res)->
                         reject(res)
                     )

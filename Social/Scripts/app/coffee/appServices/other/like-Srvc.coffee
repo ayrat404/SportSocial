@@ -20,7 +20,6 @@ class Like extends Service('appSrvc')
                             resolve(!data.current)
                         else
                             reject(res.data)
-                            base.notice.response(res) if servicesDefault.noticeShow.errors
                     , (res)->
                         reject(res)
                     )

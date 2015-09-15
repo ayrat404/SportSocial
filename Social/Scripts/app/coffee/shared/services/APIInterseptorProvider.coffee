@@ -11,15 +11,30 @@ class apiInterseptor extends Provider('shared')
              $timeout
              base
              servicesDefault)->
-                'responseError': (res)->
 
-                    # trick with Circular dependency found
-                    # ---------------
-                    $timeout ->
-                        modalService = $injector.get 'modalService'
-                        base = $injector.get 'base'
-                        $http = $injector.get '$http'
-                        $state = $injector.get '$state'
+                modalService = {}
+
+                # trick with Circular dependency found
+                # ---------------
+                $timeout ->
+                    modalService = $injector.get 'modalService'
+                    $http = $injector.get '$http'
+                    $state = $injector.get '$state'
+
+                'response': (res)->
+
+                    if res.data
+                        noticeClass = if res.data.success == true then 'success' else 'warning'
+
+                        if res.data.message &&
+                          res.data.message.length
+                            debugger
+                            base.notice.show
+                                text: res.data.message
+                                type: noticeClass
+                    return res
+
+                'responseError': (res)->
 
                     # show error
                     # ---------------

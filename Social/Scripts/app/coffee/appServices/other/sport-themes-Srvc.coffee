@@ -19,7 +19,10 @@ class SportThemes extends Service('appSrvc')
                         reject(res)
                     )
                 else
-                    base.notice.show(text: 'Search theme string error', type: 'danger') if servicesDefault.noticeShow.errors
+                    if servicesDefault.noticeShow.errors
+                        base.notice.show
+                            text: 'Search theme string error',
+                            type: 'danger'
                     reject()
 
         return {

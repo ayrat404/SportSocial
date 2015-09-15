@@ -62,22 +62,6 @@ noticeCtrl = do ->
             notices[i].remove()
         notices = []
 
-    # notice for server responses
-    # ---------------
-    response = (data)->
-        noticeClass = if data.success == true then 'success' else 'warning'
-        if data.message &&
-          data.message.length
-            show(
-                text: data.message
-                type: noticeClass
-            )
-        if data.statusText
-            show(
-                text: data.status + ': ' + data.statusText
-                type: noticeClass
-            )
-
     # set bottom offset for notice
     # ---------------
     setBottomOffset = (i)->
@@ -109,7 +93,6 @@ noticeCtrl = do ->
         hide: hide
         hideAll: hideAll
         show: show
-        response: response
     }
 
 # Animation module

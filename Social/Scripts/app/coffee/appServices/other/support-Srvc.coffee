@@ -33,7 +33,6 @@ class support extends Service('appSrvc')
                             resolve(res.data)
                         else
                             reject(res.data)
-                            base.notice.response(res) if opts.noticeShow.errors
                     , (res)->
                         reject(res)
                     ).finally(->
@@ -42,10 +41,9 @@ class support extends Service('appSrvc')
                 else
                     reject()
                     if opts.noticeShow.errors
-                        base.notice.show(
+                        base.notice.show
                             text: 'Support validation error'
                             type: 'danger'
-                        )
 
         return {
             send: sendQuestion

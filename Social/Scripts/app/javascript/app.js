@@ -1,6 +1,6 @@
 var app;
 
-app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'flow', '720kb.socialshare', 'shared', 'appSrvc', 'socialApp']).config([
+app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'flow', '720kb.socialshare', 'youtube-embed', 'shared', 'appSrvc', 'socialApp']).config([
   '$stateProvider', '$locationProvider', '$httpProvider', '$urlRouterProvider', 'templateUrl', function($stateProvider, $locationProvider, $httpProvider, $urlRouterProvider, templateUrl) {
     var tmplView;
     tmplView = function(viewPath) {
@@ -42,7 +42,7 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'fl
         'socialContent@main': {
           templateUrl: tmplView('achievement/achievement-submit'),
           controller: 'achievementSubmitController',
-          controllerAs: 'achSubmit'
+          controllerAs: 'ach'
         }
       }
     }).state('landing', {
@@ -107,6 +107,7 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'fl
     });
     $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
       modalService.closeAll();
+      $rootScope.$previousState = fromState;
       $rootScope.loader = false;
       $rootScope.fullHeight = toState.fullHeight;
       queryParamsService.check(toParams);
