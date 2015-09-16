@@ -727,6 +727,83 @@
                     </pre>
             </b>
 
+
+            <code>POST: /api/achievement/temp</code>
+            <p>Создание новой заявки. В случае если данные об уже созданной заявки с сервера пришли пустые</p>
+            <b>
+                send data:
+                <pre>
+{
+    type: {
+        id: 2,
+        value: 40
+    }
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true/false,
+    data: null,
+    errors: null,
+    message: null
+}
+                    </pre>
+            </b>
+
+            <code>PUT: /api/achievement/temp</code>
+            <p>Сохранение изменений в заявке.</p>
+            <b>
+                send data:
+                <pre>
+{
+    type: { *всегда присутствует*
+        id: 2,
+        value: 40
+    },
+    video: { *может не быть. Если пользователь на втором шаге удалил видео, вернулся на первый и нажал "сле. шаг"*
+        id: 23
+    }
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true/false,
+    data: null,
+    errors: null,
+    message: null
+}
+                    </pre>
+            </b>
+            
+            <code>DELETE: /api/achievement/temp</code>
+            <p>Удаление неопубликованной заявки</p>
+            <b>
+                send data:
+                <pre>
+{
+    *none*
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true/false,
+    data: null,
+    errors: null,
+    message: null
+}
+                    </pre>
+            </b>
+
+
         </li>
 
     </ul>

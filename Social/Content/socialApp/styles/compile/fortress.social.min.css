@@ -11293,7 +11293,7 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .wall__it__content .wi__text {
   word-break: break-word;
-  padding: 10px 15px;
+  padding: 16px 15px;
 }
 .wall__it__content .wi__media-wrap {
   position: relative;
@@ -11772,79 +11772,6 @@ fieldset[disabled] .btn--subscribe.active {
           user-select: none;
 }
 /* /Comment list
----------------------------------------------------------------------------------- */
-/* Achievement submit
----------------------------------------------------------------------------------- */
-.achievement-submit .achievement-list {
-  margin-top: 25px;
-}
-.achievement-submit .as__steps {
-  background-color: #45565e;
-}
-.achievement-submit .as__steps--part .as__steps__it {
-  width: 50%;
-}
-.achievement-submit .as__steps__it {
-  height: 85px;
-  padding: 32px 0 0 20px;
-  width: 33.33333333%;
-  text-align: center;
-  color: #fff;
-  float: left;
-}
-.achievement-submit .as__steps__it.active {
-  background: #354349;
-}
-.achievement-submit .as__step {
-  padding-bottom: 90px;
-}
-.achievement-submit .as__step--video .as__subtitle {
-  max-width: 490px;
-  margin: 0 auto;
-}
-.achievement-submit .as__step--video .as__example {
-  margin-top: 25px;
-}
-.achievement-submit .as__step--video .fs-form {
-  margin-bottom: 25px;
-}
-.achievement-submit .as__header {
-  text-align: right;
-  margin: 30px 0;
-}
-.achievement-submit .as__header .link {
-  margin-right: 15px;
-}
-.achievement-submit .as__subtitle {
-  font-size: 1.286em;
-  text-align: center;
-}
-.achievement-submit .as__divider {
-  height: 1px;
-  width: 100%;
-  background: #d7d9db;
-  margin: 25px 0;
-}
-.embed-responsive {
-  position: relative;
-  display: block;
-  height: 0;
-  padding: 0;
-  overflow: hidden;
-}
-.embed-responsive.embed-responsive-16by9 {
-  padding-bottom: 56.25%;
-}
-.embed-responsive-item {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-/* /Achievement submit
 ---------------------------------------------------------------------------------- */
 /* Achievement select list
 ---------------------------------------------------------------------------------- */
@@ -12523,6 +12450,79 @@ fieldset[disabled] .btn--subscribe.active {
   margin: 27px 0;
 }
 /* /Record
+---------------------------------------------------------------------------------- */
+/* Achievement submit
+---------------------------------------------------------------------------------- */
+.achievement-submit .achievement-list {
+  margin-top: 25px;
+}
+.achievement-submit .as__steps {
+  background-color: #45565e;
+}
+.achievement-submit .as__steps--part .as__steps__it {
+  width: 50%;
+}
+.achievement-submit .as__steps__it {
+  height: 85px;
+  padding: 32px 0 0 20px;
+  width: 33.33333333%;
+  text-align: center;
+  color: #fff;
+  float: left;
+}
+.achievement-submit .as__steps__it.active {
+  background: #354349;
+}
+.achievement-submit .as__step {
+  padding-bottom: 90px;
+}
+.achievement-submit .as__step--video .as__subtitle {
+  max-width: 490px;
+  margin: 0 auto;
+}
+.achievement-submit .as__step--video .as__example {
+  margin-top: 25px;
+}
+.achievement-submit .as__step--video .fs-form {
+  margin-bottom: 25px;
+}
+.achievement-submit .as__header {
+  text-align: right;
+  margin: 30px 0;
+}
+.achievement-submit .as__header .link {
+  margin-right: 15px;
+}
+.achievement-submit .as__subtitle {
+  font-size: 1.286em;
+  text-align: center;
+}
+.achievement-submit .as__divider {
+  height: 1px;
+  width: 100%;
+  background: #d7d9db;
+  margin: 25px 0;
+}
+.embed-responsive {
+  position: relative;
+  display: block;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.embed-responsive.embed-responsive-16by9 {
+  padding-bottom: 56.25%;
+}
+.embed-responsive-item {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+/* /Achievement submit
 ---------------------------------------------------------------------------------- */
 /* /Views */
 /* DEV

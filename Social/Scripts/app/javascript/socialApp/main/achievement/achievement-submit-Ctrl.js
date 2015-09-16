@@ -2,7 +2,7 @@ var AchievementSubmit;
 
 AchievementSubmit = (function() {
   function AchievementSubmit($scope, $stateParams, $rootScope, $window, achievementService, youtubeVideoService) {
-    var _this, defaultModel, prop;
+    var _this, defaultModel, fake, prop;
     $scope.$root.title = 'Fortress | Заявка на награду';
     prop = {
       stepsLength: 3
@@ -19,7 +19,7 @@ AchievementSubmit = (function() {
     this.nextStep = function() {
       _this.loader = true;
       return achievementService.saveTemp(_this.model).then(function(res) {
-        _this.model.id = res.data.id;
+        _this.model.id = 1;
         return _this.currentStep++;
       })["finally"](function(res) {
         return _this.loader = false;
@@ -80,32 +80,77 @@ AchievementSubmit = (function() {
         return _this.model.videoId = '';
       }
     };
-    _this.loader = true;
-    achievementService.getTemp().then(function(res) {
-      var i, j, ref;
-      _this.cards = res.data.cards;
-      _this.marks = res.data.marks;
-      if (res.data.model.id) {
-        _this.model = res.data.model;
-        for (i = j = 0, ref = _this.cards.length; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
-          if (_this.model.type.id === _this.cards[i].id) {
-            _this.cards[i].focus = true;
-            _this.cards[i].selected = _this.model.type.value;
-            break;
+    fake = {
+      cards: [
+        {
+          id: 1,
+          img: 'imageUrl1',
+          title: 'Подтягивания',
+          values: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+        }, {
+          id: 2,
+          img: 'imageUrl2',
+          title: 'Отжимания',
+          values: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 200, 300, 400]
+        }
+      ],
+      model: {},
+      marks: [
+        {
+          id: 1,
+          iconUrl: 'iconUrl1',
+          title: 'Подтягивания. 35 Повторений',
+          created: '06 сентября 2015',
+          timeSpent: '6',
+          voice: {
+            "for": 142,
+            against: 10
+          },
+          user: {
+            id: 1,
+            avatar: 'avatarUrl',
+            fullName: 'Mikki Mouse'
+          }
+        }, {
+          id: 2,
+          iconUrl: 'iconUrl1',
+          title: 'Подтягивания. 35 Повторений',
+          created: '06 сентября 2015',
+          timeSpent: '6',
+          voice: {
+            "for": 142,
+            against: 10
+          },
+          user: {
+            id: 1,
+            avatar: 'avatarUrl',
+            fullName: 'Mikki Mouse'
+          }
+        }, {
+          id: 3,
+          iconUrl: 'iconUrl1',
+          title: 'Подтягивания. 35 Повторений',
+          created: '06 сентября 2015',
+          timeSpent: '6',
+          voice: {
+            "for": 142,
+            against: 10
+          },
+          user: {
+            id: 1,
+            avatar: 'avatarUrl',
+            fullName: 'Mikki Mouse'
           }
         }
-      } else {
-        _this.model = defaultModel;
-      }
-      _this.currentStep = _this.model.step;
-      if (_this.currentStep >= 1) {
-        return _this.second.isExampleShow = false;
-      }
-    }, function(res) {
-      return _this.pageError = true;
-    })["finally"](function() {
-      return _this.loader = false;
-    });
+      ]
+    };
+    _this.cards = fake.cards;
+    _this.marks = fake.marks;
+    _this.model = defaultModel;
+    _this.currentStep = _this.model.step;
+    if (_this.currentStep >= 1) {
+      _this.second.isExampleShow = false;
+    }
   }
 
   return AchievementSubmit;
