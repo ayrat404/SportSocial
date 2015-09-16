@@ -41,7 +41,7 @@ namespace BLL.Rating.Impls
                     _repository.Delete(ratingEntity);
                     //result.
                 }
-                if (ratingEntity == null || ratingEntity.RatingType != rateModel.ActionType)
+                if ((ratingEntity == null || ratingEntity.RatingType != rateModel.ActionType) && rateModel.ActionType != RatingType.Remove)
                 {
                     ratingEntity = Activator.CreateInstance<TRatingEntity>();
                     ratingEntity.RatedEntity = entity;
