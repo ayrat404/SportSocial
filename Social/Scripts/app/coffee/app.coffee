@@ -57,6 +57,13 @@ app = angular.module('app', [
                     templateUrl: tmplView 'achievement/achievement-submit'
                     controller: 'achievementSubmitController'
                     controllerAs: 'ach'
+        .state 'main.achievementView',
+            url: '/achievement/:id'
+            views:
+                'socialContent@main':
+                    templateUrl: tmplView 'achievement/achievement-view'
+                    controller: 'achievementViewController'
+                    controllerAs: 'ach'
         .state 'landing',
             url: '/'
             templateUrl: tmplView 'landing/index'

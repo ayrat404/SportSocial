@@ -85,7 +85,7 @@ AchievementSubmit = (function() {
       var i, j, ref;
       _this.cards = res.data.cards;
       _this.marks = res.data.marks;
-      if (res.data.model.id) {
+      if (res.data.model !== null) {
         _this.model = res.data.model;
         for (i = j = 0, ref = _this.cards.length; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
           if (_this.model.type.id === _this.cards[i].id) {

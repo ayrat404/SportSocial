@@ -6,6 +6,7 @@ class Achievement extends Service('appSrvc')
         servicesDefault)->
 
         urlTemp = servicesDefault.baseServiceUrl + '/achievement/temp'
+        urlBase = servicesDefault.baseServiceUrl + '/achievement'
 
         # ---------- api for achievement create ----------
 
@@ -70,6 +71,24 @@ class Achievement extends Service('appSrvc')
 
         # ---------- other api ----------
 
+        getById = (id)->
+            $q (resolve, reject)->
+                if id
+                    $http.get(urlBase + '/' + id).then((res)->
+                        if res.data.success
+                            resolve res.data
+                        else
+                            reject res.data
+                    , (res)->
+                        reject res
+                    )
+                else
+                    reject()
+                    if servicesDefault.noticeShow.errors
+                        base.notice.show(
+                            text: 'Achievement item get: itemId variable error'
+                            type: 'danger'
+                        )
 
         # ---------- other api ----------
 
@@ -78,4 +97,5 @@ class Achievement extends Service('appSrvc')
             saveTemp: saveTemp
             getTemp: getTemp
             cancelTemp: cancelTemp
+            getById: getById
         }

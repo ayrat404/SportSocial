@@ -1,0 +1,82 @@
+﻿/* Achievement view
+---------------------------------------------------------------------------------- */
+
+.achievement-view {
+    .achievement-wrap {
+        .no-float();
+    }
+
+    .ach__type {
+        float: left;
+        width: 235px;
+        margin: 0 -100% 0 0;
+    }
+
+    .ach__media {
+        margin-left: 260px;
+    }
+
+    .ach__img {
+        border: 6px solid #fff;
+        width: 235px;
+        height: 345px;
+    }
+
+    .ach__time {
+        color: #fff;
+        font-family: 'F1 Bold';
+        margin-top: 20px;
+    }
+}
+
+.voice {
+    height: 45px;
+    background-color: @brand-dark2;
+    color: #fff;
+}
+
+.voice__part {
+    margin-top: 11px;
+    float: left;
+    width: 50%;
+    position: relative;
+    text-align: center;
+    .no-float();
+    .icon {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 1px;
+    }
+}
+
+.voice__part--for {
+    .icon {
+        .sprite(@voice-for);
+    }
+
+    .voice__bar {
+        background: #1b6c25;
+    }
+}
+
+.voice__part--against {
+    .icon {
+        .sprite(@voice-against);
+    }
+
+    .voice__bar {
+        background: #742e30;
+    }
+}
+
+.voice__bar {
+}
+
+.voice__text-wrap {
+}
+
+.voice__text {
+}
+
+/* /Achievement view
+---------------------------------------------------------------------------------- */

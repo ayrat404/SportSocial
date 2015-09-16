@@ -10202,7 +10202,7 @@ fieldset[disabled] .btn--subscribe.active {
   -webkit-transition: opacity 100ms linear;
           transition: opacity 100ms linear;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -332px -96px;
+  background-position: -332px -120px;
   width: 11px;
   height: 11px;
   margin-left: 8px;
@@ -10424,7 +10424,7 @@ fieldset[disabled] .btn--subscribe.active {
       -ms-user-select: none;
           user-select: none;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -31px -230px;
+  background-position: 0px -230px;
   width: 21px;
   height: 21px;
 }
@@ -10584,7 +10584,7 @@ fieldset[disabled] .btn--subscribe.active {
   float: left;
   margin: 35px 40px 0 0;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -306px -134px;
+  background-position: -306px -108px;
   width: 16px;
   height: 16px;
 }
@@ -10734,7 +10734,7 @@ fieldset[disabled] .btn--subscribe.active {
   display: inline-block;
   margin-right: 7px;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -332px -51px;
+  background-position: -332px -75px;
   width: 12px;
   height: 13px;
 }
@@ -10784,7 +10784,7 @@ fieldset[disabled] .btn--subscribe.active {
   bottom: 0;
   margin: auto;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -298px -230px;
+  background-position: -270px -230px;
   width: 18px;
   height: 18px;
 }
@@ -10862,7 +10862,7 @@ fieldset[disabled] .btn--subscribe.active {
   left: 0;
   margin: auto;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -298px -230px;
+  background-position: -270px -230px;
   width: 18px;
   height: 18px;
 }
@@ -10892,7 +10892,7 @@ fieldset[disabled] .btn--subscribe.active {
   display: inline-block;
   opacity: .8;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -332px -139px;
+  background-position: -332px -163px;
   width: 6px;
   height: 6px;
 }
@@ -11082,7 +11082,7 @@ fieldset[disabled] .btn--subscribe.active {
   display: inline-block;
   vertical-align: middle;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -332px -27px;
+  background-position: -332px -51px;
   width: 14px;
   height: 14px;
 }
@@ -11177,7 +11177,7 @@ fieldset[disabled] .btn--subscribe.active {
       -ms-user-select: none;
           user-select: none;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: 0px -261px;
+  background-position: -298px -230px;
   width: 18px;
   height: 18px;
 }
@@ -11216,13 +11216,13 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .wall__it__header-edit .wi__edit i {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -298px -182px;
+  background-position: -31px -230px;
   width: 21px;
   height: 21px;
 }
 .wall__it__header-edit .wi__edit:hover i {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: 0px -230px;
+  background-position: -298px -182px;
   width: 21px;
   height: 21px;
 }
@@ -11266,7 +11266,7 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .wall__it__header-info .wi__share:hover i {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -306px -108px;
+  background-position: -306px -134px;
   width: 16px;
   height: 16px;
 }
@@ -11314,13 +11314,13 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .wall__it__content .wi__media-wrap.image i {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -182px -108px;
+  background-position: -244px -108px;
   width: 52px;
   height: 52px;
 }
 .wall__it__content .wi__media-wrap.image:hover i {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -244px -108px;
+  background-position: -182px -108px;
   width: 52px;
   height: 52px;
 }
@@ -11351,7 +11351,7 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .wall__it--edit .wall__it__btn {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -270px -230px;
+  background-position: 0px -261px;
   width: 18px;
   height: 18px;
 }
@@ -11499,7 +11499,7 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .likes-finger--liked .likes-finger__icon {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -88px -261px;
+  background-position: -28px -261px;
   width: 20px;
   height: 16px;
 }
@@ -11512,7 +11512,7 @@ fieldset[disabled] .btn--subscribe.active {
   display: inline-block;
   vertical-align: top;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -28px -261px;
+  background-position: -88px -261px;
   width: 20px;
   height: 16px;
 }
@@ -11646,19 +11646,19 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .social-share .icon--vk {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -93px -230px;
+  background-position: -153px -230px;
   width: 20px;
   height: 20px;
 }
 .social-share .icon--facebook {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -153px -230px;
+  background-position: -123px -230px;
   width: 20px;
   height: 20px;
 }
 .social-share .icon--twitter {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -123px -230px;
+  background-position: -93px -230px;
   width: 20px;
   height: 20px;
 }
@@ -11836,6 +11836,29 @@ fieldset[disabled] .btn--subscribe.active {
   width: 100%;
 }
 /* /Achievement select list
+---------------------------------------------------------------------------------- */
+/* View base styles
+---------------------------------------------------------------------------------- */
+.view-base {
+  background-color: #1f282e;
+}
+.view-base .comment-form {
+  margin-top: 35px;
+}
+.view-base__top {
+  padding-top: 30px;
+}
+.view-base__top .tag-list {
+  margin-top: 20px;
+}
+.view-base__comments {
+  background: #fff;
+}
+.view-base__comments .vbc__count {
+  font-size: 24px;
+  margin: 27px 0;
+}
+/* /View base styles
 ---------------------------------------------------------------------------------- */
 /* /Components */
 /* Views
@@ -12080,13 +12103,13 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .auth-social .as__icon--tw {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -123px -230px;
+  background-position: -93px -230px;
   width: 20px;
   height: 20px;
 }
 .auth-social .as__icon--fb {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -153px -230px;
+  background-position: -123px -230px;
   width: 20px;
   height: 20px;
 }
@@ -12098,7 +12121,7 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .auth-social .as__icon--vk {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -93px -230px;
+  background-position: -153px -230px;
   width: 20px;
   height: 20px;
 }
@@ -12218,7 +12241,7 @@ fieldset[disabled] .btn--subscribe.active {
   display: inline-block;
   vertical-align: middle;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -332px -74px;
+  background-position: -332px -98px;
   width: 12px;
   height: 12px;
 }
@@ -12226,7 +12249,7 @@ fieldset[disabled] .btn--subscribe.active {
   display: inline-block;
   vertical-align: middle;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -332px -117px;
+  background-position: -332px -141px;
   width: 10px;
   height: 12px;
 }
@@ -12372,7 +12395,7 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .record .rcd__control--edit {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -298px -182px;
+  background-position: -31px -230px;
   width: 21px;
   height: 21px;
 }
@@ -12381,18 +12404,6 @@ fieldset[disabled] .btn--subscribe.active {
   background-position: -151px -84px;
   width: 20px;
   height: 23px;
-}
-.record .comment-form {
-  margin-top: 35px;
-}
-.record__inner {
-  background-color: #1f282e;
-}
-.record__wrap {
-  padding-top: 30px;
-}
-.record__wrap .tag-list {
-  margin-top: 20px;
 }
 .record__text {
   background: #fff;
@@ -12441,13 +12452,6 @@ fieldset[disabled] .btn--subscribe.active {
   bottom: 0;
   right: 0;
   left: 0;
-}
-.record__comments {
-  background: #fff;
-}
-.record__comments__count {
-  font-size: 24px;
-  margin: 27px 0;
 }
 /* /Record
 ---------------------------------------------------------------------------------- */
@@ -12523,6 +12527,75 @@ fieldset[disabled] .btn--subscribe.active {
   border: 0;
 }
 /* /Achievement submit
+---------------------------------------------------------------------------------- */
+/* Achievement view
+---------------------------------------------------------------------------------- */
+.achievement-view .achievement-wrap:after {
+  display: block;
+  line-height: 0;
+  content: '';
+  clear: both;
+}
+.achievement-view .ach__type {
+  float: left;
+  width: 235px;
+  margin: 0 -100% 0 0;
+}
+.achievement-view .ach__media {
+  margin-left: 260px;
+}
+.achievement-view .ach__img {
+  border: 6px solid #fff;
+  width: 235px;
+  height: 345px;
+}
+.achievement-view .ach__time {
+  color: #fff;
+  font-family: 'F1 Bold';
+  margin-top: 20px;
+}
+.voice {
+  height: 45px;
+  background-color: #161d20;
+  color: #fff;
+}
+.voice__part {
+  margin-top: 11px;
+  float: left;
+  width: 50%;
+  position: relative;
+  text-align: center;
+}
+.voice__part:after {
+  display: block;
+  line-height: 0;
+  content: '';
+  clear: both;
+}
+.voice__part .icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 1px;
+}
+.voice__part--for .icon {
+  background-image: url(../../images/icons-set/icons-set.png);
+  background-position: -173px -261px;
+  width: 17px;
+  height: 14px;
+}
+.voice__part--for .voice__bar {
+  background: #1b6c25;
+}
+.voice__part--against .icon {
+  background-image: url(../../images/icons-set/icons-set.png);
+  background-position: -332px -27px;
+  width: 14px;
+  height: 14px;
+}
+.voice__part--against .voice__bar {
+  background: #742e30;
+}
+/* /Achievement view
 ---------------------------------------------------------------------------------- */
 /* /Views */
 /* DEV

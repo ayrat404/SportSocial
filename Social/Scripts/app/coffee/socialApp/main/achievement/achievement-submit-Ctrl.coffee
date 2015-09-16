@@ -109,7 +109,7 @@ class AchievementSubmit extends Controller('socialApp.controllers')
         achievementService.getTemp().then (res)->
             _this.cards = res.data.cards
             _this.marks = res.data.marks
-            if res.data.model.id
+            if res.data.model != null
                 # on model receive
                 _this.model = res.data.model
                 for i in [0..._this.cards.length]

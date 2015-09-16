@@ -30,14 +30,16 @@ contentHeight = (function() {
       restrict: 'A',
       link: function(scope, element, attrs) {
         return $timeout(function() {
-          var $el;
+          var $el, listener;
           $el = angular.element(element);
           elHeight($el, attrs.contentHeight);
-          if (attrs.onresize !== 'false') {
-            return angular.element($window).resize(function() {
-              return elHeight($el, attrs.contentHeight);
-            });
-          }
+          listener = function() {
+            return elHeight($el, attrs.contentHeight);
+          };
+          angular.element($window).on('resize', listener);
+          return scope.$on('$destroy', function() {
+            return angular.element($window).off('resize', listener);
+          });
         }, 50);
       }
     };
