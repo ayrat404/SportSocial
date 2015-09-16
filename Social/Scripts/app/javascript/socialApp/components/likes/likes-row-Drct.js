@@ -14,36 +14,41 @@ LikesInRow = (function() {
       },
       controller: function($scope) {
         return $scope.like = function() {
-          return likeService.set({
-            id: $scope.id,
-            entityType: $scope.type,
-            current: $scope.likes.isLiked
-          }).then(function(newStatus) {
-            var i, j, l, len, ref, results;
-            $scope.likes.isLiked = newStatus;
-            if (newStatus) {
-              $scope.likes.count++;
-              return $scope.likes.list.unshift({
-                id: $rootScope.user.id,
-                fullName: $rootScope.user.fullName,
-                avatar: $rootScope.user.avatar
-              });
-            } else {
-              $scope.likes.count--;
-              ref = $scope.likes.list;
-              results = [];
-              for (i = j = 0, len = ref.length; j < len; i = ++j) {
-                l = ref[i];
-                if (l.id === $rootScope.user.id) {
-                  $scope.likes.list.splice(i, 1);
-                  break;
-                } else {
-                  results.push(void 0);
+          if (!$scope.loading) {
+            $scope.loading = true;
+            return likeService.set({
+              id: $scope.id,
+              entityType: $scope.type,
+              current: $scope.likes.isLiked
+            }).then(function(newStatus) {
+              var i, j, l, len, ref, results;
+              $scope.likes.isLiked = newStatus;
+              if (newStatus) {
+                $scope.likes.count++;
+                return $scope.likes.list.unshift({
+                  id: $rootScope.user.id,
+                  fullName: $rootScope.user.fullName,
+                  avatar: $rootScope.user.avatar
+                });
+              } else {
+                $scope.likes.count--;
+                ref = $scope.likes.list;
+                results = [];
+                for (i = j = 0, len = ref.length; j < len; i = ++j) {
+                  l = ref[i];
+                  if (l.id === $rootScope.user.id) {
+                    $scope.likes.list.splice(i, 1);
+                    break;
+                  } else {
+                    results.push(void 0);
+                  }
                 }
+                return results;
               }
-              return results;
-            }
-          });
+            })["finally"](function(res) {
+              return $scope.loading = false;
+            });
+          }
         };
       },
       templateUrl: '/template/components/likes/likes-rowTpl',

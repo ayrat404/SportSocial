@@ -88,10 +88,9 @@ class Achievement extends Service('appSrvc')
                 else
                     reject()
                     if servicesDefault.noticeShow.errors
-                        base.notice.show(
+                        base.notice.show
                             text: 'Achievement item get: itemId variable error'
                             type: 'danger'
-                        )
 
         # voice
         # ---------------
@@ -113,6 +112,18 @@ class Achievement extends Service('appSrvc')
                             type: 'danger'
                         )
 
+        # get list
+        # ---------------
+        getList = ->
+            $q (resolve, reject)->
+                $http.get(urlBase).then (res)->
+                    if res.data.success
+                        resolve res.data
+                    else
+                        reject res.data
+                , (res)->
+                    reject res
+
         # ---------- other api ----------
 
 
@@ -121,5 +132,6 @@ class Achievement extends Service('appSrvc')
             getTemp: getTemp
             cancelTemp: cancelTemp
             getById: getById
+            getList: getList
             voice: voice
         }

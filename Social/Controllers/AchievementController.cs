@@ -15,9 +15,9 @@ namespace Social.Controllers
             _achievementService = achievementService;
         }
 
-        public ApiResult Temp()
-        {
+        //public ApiResult Temp()
+        //{
             
-        }
+        //}
     }
 }

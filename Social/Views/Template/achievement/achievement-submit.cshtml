@@ -123,8 +123,8 @@
                     <div class="as__subtitle">
                         @R("Ваша заявка сохранена. Для того, чтобы она появилась в списке всех заявок, оцените заявки от других атлетов. Осталось: ") {{::ach.marks.length}}
                     </div>
-                    <ul class="achievement-list achievement-list--row">
-                        <li ng-repeat="m in ach.marks"
+                    <div class="achievement-list achievement-list--row">
+                        <a ui-sref="main.achievementView({id: m.id})" ng-repeat="m in ach.marks"
                             class="al__it">
                             <div class="al__it__media">
                                 <div class="al__it__media__it">
@@ -151,8 +151,8 @@
                                     <span class="al__it__time-left">@R("Осталось"): {{::m.timeSpent|formatWord:['@R("день")', '@R("дня")', '@R("дней")']:true}}</span>
                                 </div>
                             </div>
-                        </li>
-                    </ul>
+                        </a>
+                    </div>
                     <button ng-click="ach.cancel()" type="button" class="btn btn-xl btn-fill-red">@R("Удалить заявку")</button>
                 </div>
                 @* ----- Third step ----- *@
