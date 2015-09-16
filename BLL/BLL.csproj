@@ -255,13 +255,14 @@
     <Compile Include="Sms\Impls\SmsPilotSmsService.cs" />
     <Compile Include="Sms\ISmsService.cs" />
     <Compile Include="Sms\Objects\SmsPilotSendModel.cs" />
-    <Compile Include="Social\Achievement\IAchievementService.cs" />
-    <Compile Include="Social\Achievement\Objects\AchievementCreateVm.cs" />
-    <Compile Include="Social\Achievement\Objects\AchievementPreviewVm.cs" />
-    <Compile Include="Social\Achievement\Objects\AchievementTempVm.cs" />
-    <Compile Include="Social\Achievement\Objects\AchievementTypeVm.cs" />
-    <Compile Include="Social\Achievement\Objects\AchievmentVoice.cs" />
-    <Compile Include="Social\Achievement\Objects\ChoosedAchievmentType.cs" />
+    <Compile Include="Social\Achievements\AchievementMapProfile.cs" />
+    <Compile Include="Social\Achievements\IAchievementService.cs" />
+    <Compile Include="Social\Achievements\Objects\AchievementCreateVm.cs" />
+    <Compile Include="Social\Achievements\Objects\AchievementPreviewVm.cs" />
+    <Compile Include="Social\Achievements\Objects\AchievementTempVm.cs" />
+    <Compile Include="Social\Achievements\Objects\AchievementTypeVm.cs" />
+    <Compile Include="Social\Achievements\Objects\AchievmentVoice.cs" />
+    <Compile Include="Social\Achievements\Objects\ChoosedAchievmentType.cs" />
     <Compile Include="Social\Journals\IJournalService.cs" />
     <Compile Include="Social\Journals\JournalService.cs" />
     <Compile Include="Social\Journals\MapProfiles\JournalPreviewProfile.cs" />
@@ -281,6 +282,7 @@
     <Compile Include="Storage\Impls\ImageSaver.cs" />
     <Compile Include="Storage\Impls\UniversalImageService.cs" />
     <Compile Include="Storage\IVideoService.cs" />
+    <Compile Include="Storage\MapProfiles\MediaMapper.cs" />
     <Compile Include="Storage\Objects\MediaType.cs" />
     <Compile Include="Storage\Objects\UploadImageModel.cs" />
     <Compile Include="Storage\Objects\VideoProvider.cs" />
@@ -292,7 +294,6 @@
     <Folder Include="Core\Mappings\" />
     <Folder Include="Core\Services\Cookies\Impls\" />
     <Folder Include="Payment\Enums\" />
-    <Folder Include="Storage\MapProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

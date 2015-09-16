@@ -1,4 +1,4 @@
-namespace BLL.Social.Achievement.Objects
+namespace BLL.Social.Achievements.Objects
 {
     public class AchievmentVoice
     {

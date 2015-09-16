@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace BLL.Social.Achievement.Objects
+namespace BLL.Social.Achievements.Objects
 {
     public class AchievementTempVm
     {

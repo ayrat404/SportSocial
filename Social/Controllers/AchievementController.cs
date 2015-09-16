@@ -1,5 +1,6 @@
 ﻿using System.Web.Http;
-using BLL.Social.Achievement;
+using BLL.Social.Achievements;
+using BLL.Social.Achievements;
 using Social.Models;
 
 namespace Social.Controllers
@@ -17,7 +18,7 @@ namespace Social.Controllers
 
         public ApiResult Temp()
         {
-            
+            return null;
         }
     }
 }
