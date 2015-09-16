@@ -9,16 +9,21 @@ class RecordView extends Controller('socialApp.controllers')
         $scope.$root.title = 'Fortress | Запись в дневнике'
 
         _this = this
+        _this.pageError = false
         _this.it =
             loader: true
 
         # get single record data
         # ---------------
-        journalService.getById(+$stateParams.id).then((res)->
+        journalService.getById(+$stateParams.id).then (res)->
             _this.it = res.data
-            _this.it.loader = false
             if $rootScope.user.id == _this.it.author.id then _this.it.isOwner = true else _this.it.isOwner = false
             _this.it.comments.form = {}
+        , (res)->
+            _this.pageError = true
+        .finally (res)->
+            _this.it.loader = false
+
 
 #            _this.it.comments =
 #                list: [
@@ -55,7 +60,6 @@ class RecordView extends Controller('socialApp.controllers')
 #                    }
 #                ]
 #                count: 23
-        )
 
         # edit record
         # ---------------

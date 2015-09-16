@@ -7,10 +7,11 @@ class AchievementView extends Controller('socialApp.controllers')
         achievementService)->
 
         # ---------- COMMON ----------#
-        $scope.$root.title = 'Fortress | Заявка на награду'
+        $scope.$root.title = 'Fortress | Просмотр заявки на награду'
 
         _this = this
-        _this.loader = false
+        _this.loader = true
+        _this.pageError = false
 
         # get single achievement data
         # ---------------
@@ -21,6 +22,11 @@ class AchievementView extends Controller('socialApp.controllers')
                 _this.it.isOwner = true
             else
                 _this.it.isOwner = false
+            calcBars()
+        , (res)->
+            _this.pageError = true
+        .finally (res)->
+            _this.loader = false
 
         # remove achievement
         # ---------------
@@ -39,5 +45,89 @@ class AchievementView extends Controller('socialApp.controllers')
             modalService.show
                 name: 'socialShare'
                 data:
-                    text: _this.it.text # todo achievement title share
-                    media: _this.it.media # todo achievement type image share
+                    text: _this.it.title
+                    media: _this.it.cupImage # todo achievement type image share
+
+        # calc bar func
+        # ---------------
+        k = 0
+        calcBars = ->
+            k = 100 / (_this.it.voice.for + _this.it.voice.against)
+            _this.forBarWidth = Math.round(_this.it.voice.for * k) + 'px'
+            _this.againstBarWidth = Math.round(_this.it.voice.against * k) + 'px'
+
+        # voice
+        # ---------------
+        _this.voice = (action)->
+            if !_this.it.voice.isVoited
+                achievementService.voice(id: _this.it.id, action: action).then (res)->
+                    _this.it.voice.for = res.data.for
+                    _this.it.voice.against = res.data.against
+                    _this.it.voice.isVoited = true
+                    calcBars()
+
+
+#        _this.it =
+#            isOwner: true
+#
+#            id: 12
+#            title: 'Подтягивания. 35 Повторений'
+#            cupImage: 'typeImageUrl' # картинка кубка с упражнением
+#            author: {
+#                id: 12
+#                avatar: 'avatarImageUrl'
+#                fullName: 'Павел Козловский'
+#            }
+#            created: 'date'
+#            timestamp: '12312123' #осталось времени timestamp
+#            likes: {
+#                list: [
+#                    { id: 1, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+#                    { id: 2, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+#                    { id: 3, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+#                    { id: 4, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+#                    { id: 5, fullName: 'Владимир Владимирович', avatar: 'avatartest1' }
+#                ]
+#                count: 23
+#                isLiked: false
+#            }
+#            voice:
+#                for: 152
+#                against: 9
+#                isVoited: false
+#            comments: {
+#                list: [
+#                    {
+#                        id: 1,
+#                        text: 'wwwwww wwwwww' ,
+#                        author: {id: 5, fullName: 'Владимир Владимирович', avatar: 'avatartest1'},
+#                        likes: {
+#                            list: [
+#                                { id: 1, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+#                                { id: 2, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+#                                { id: 3, fullName: 'Владимир Владимирович', avatar: 'avatartest1' }
+#                            ],
+#                            count: 5,
+#                            isLiked: false
+#                        },
+#                        date: "19 июня 2015 | 15:08",
+#                        commentFor: { id: 2, name: "Вася" }
+#                    },
+#                    {
+#                        id: 2,
+#                        text: 'wwwwww wwwwww' ,
+#                        author: {id: 5, fullName: 'Вася', avatar: 'avatartest1'},
+#                        likes: {
+#                            list: [
+#                                { id: 1, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+#                                { id: 2, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+#                                { id: 3, fullName: 'Владимир Владимирович', avatar: 'avatartest1' }
+#                            ],
+#                            count: 5,
+#                            isLiked: false
+#                        },
+#                        date: "19 июня 2015 | 15:08"
+#                    }
+#                ]
+#                count: 23
+#            }

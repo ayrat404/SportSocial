@@ -2,18 +2,24 @@ var AchievementView;
 
 AchievementView = (function() {
   function AchievementView($scope, $stateParams, $rootScope, $window, achievementService) {
-    var _this;
-    $scope.$root.title = 'Fortress | Заявка на награду';
+    var _this, calcBars, k;
+    $scope.$root.title = 'Fortress | Просмотр заявки на награду';
     _this = this;
-    _this.loader = false;
+    _this.loader = true;
+    _this.pageError = false;
     achievementService.getById(+$stateParams.id).then(function(res) {
       _this.it = res.data;
       _this.it.comments.form = {};
       if ($rootScope.user.id === _this.it.author.id) {
-        return _this.it.isOwner = true;
+        _this.it.isOwner = true;
       } else {
-        return _this.it.isOwner = false;
+        _this.it.isOwner = false;
       }
+      return calcBars();
+    }, function(res) {
+      return _this.pageError = true;
+    })["finally"](function(res) {
+      return _this.loader = false;
     });
     _this.remove = function() {
       return modalService.show({
@@ -32,10 +38,29 @@ AchievementView = (function() {
       return modalService.show({
         name: 'socialShare',
         data: {
-          text: _this.it.text,
-          media: _this.it.media
+          text: _this.it.title,
+          media: _this.it.cupImage
         }
       });
+    };
+    k = 0;
+    calcBars = function() {
+      k = 100 / (_this.it.voice["for"] + _this.it.voice.against);
+      _this.forBarWidth = Math.round(_this.it.voice["for"] * k) + 'px';
+      return _this.againstBarWidth = Math.round(_this.it.voice.against * k) + 'px';
+    };
+    _this.voice = function(action) {
+      if (!_this.it.voice.isVoited) {
+        return achievementService.voice({
+          id: _this.it.id,
+          action: action
+        }).then(function(res) {
+          _this.it.voice["for"] = res.data["for"];
+          _this.it.voice.against = res.data.against;
+          _this.it.voice.isVoited = true;
+          return calcBars();
+        });
+      }
     };
   }
 

@@ -7,6 +7,7 @@ class Achievement extends Service('appSrvc')
 
         urlTemp = servicesDefault.baseServiceUrl + '/achievement/temp'
         urlBase = servicesDefault.baseServiceUrl + '/achievement'
+        urlVoice = servicesDefault.baseServiceUrl + '/achievement/voice'
 
         # ---------- api for achievement create ----------
 
@@ -71,6 +72,8 @@ class Achievement extends Service('appSrvc')
 
         # ---------- other api ----------
 
+        # get item by id
+        # ---------------
         getById = (id)->
             $q (resolve, reject)->
                 if id
@@ -90,6 +93,26 @@ class Achievement extends Service('appSrvc')
                             type: 'danger'
                         )
 
+        # voice
+        # ---------------
+        voice = (data)->
+            $q (resolve, reject)->
+                if data.id && data.action
+                    $http.post(urlVoice, data).then (res)->
+                        if res.data.success
+                            resolve res.data
+                        else
+                            reject res.data
+                    , (res)->
+                        reject res
+                else
+                    reject()
+                    if servicesDefault.noticeShow.errors
+                        base.notice.show(
+                            text: 'Achievement voice: validate error'
+                            type: 'danger'
+                        )
+
         # ---------- other api ----------
 
 
@@ -98,4 +121,5 @@ class Achievement extends Service('appSrvc')
             getTemp: getTemp
             cancelTemp: cancelTemp
             getById: getById
+            voice: voice
         }

@@ -11464,6 +11464,9 @@ fieldset[disabled] .btn--subscribe.active {
   background-color: #26de33;
   box-shadow: inset 10px 10px 9px -11px #000000;
 }
+.likes-row .lr__btn--liked {
+  background-color: #26de33;
+}
 .likes-row .lr__user img {
   height: 50px;
   width: 50px;
@@ -12559,8 +12562,33 @@ fieldset[disabled] .btn--subscribe.active {
   background-color: #161d20;
   color: #fff;
 }
+.voice--active .voice__val {
+  display: none;
+}
+.voice--active .voice__bar {
+  width: 100% !important;
+}
+.voice--active .voice__part--for .voice__bar {
+  background-color: #1fba2a !important;
+}
+.voice--active .voice__part--for:hover .voice__bar {
+  background-color: #23d02f !important;
+}
+.voice--active .voice__part--against .voice__bar {
+  background-color: #de3233 !important;
+}
+.voice--active .voice__part--against:hover .voice__bar {
+  background-color: #e24849 !important;
+}
+.voice--active .voice__part {
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
 .voice__part {
-  margin-top: 11px;
+  height: 100%;
   float: left;
   width: 50%;
   position: relative;
@@ -12585,6 +12613,7 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .voice__part--for .voice__bar {
   background: #1b6c25;
+  right: 0;
 }
 .voice__part--against .icon {
   background-image: url(../../images/icons-set/icons-set.png);
@@ -12594,6 +12623,23 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .voice__part--against .voice__bar {
   background: #742e30;
+  left: 0;
+}
+.voice__bar {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  z-index: 0;
+  width: 0;
+  -webkit-transition: width 200ms linear;
+          transition: width 200ms linear;
+}
+.voice__text-wrap {
+  position: absolute;
+  top: 11px;
+  right: 0;
+  left: 0;
+  z-index: 1;
 }
 /* /Achievement view
 ---------------------------------------------------------------------------------- */

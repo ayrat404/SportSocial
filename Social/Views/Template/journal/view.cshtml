@@ -1,16 +1,21 @@
 ﻿<section class="record">
     <div class="bread">
-        <a ui-sref="main.profile({userId: record.it.author.id})" class="bread__back">
+        <a ng-if="!record.pageError" ui-sref="main.profile({userId: record.it.author.id})" class="bread__back">
             <i class="bread__back__icon"></i>
             <span ng-if="!record.it.isOwner" class="bread__back__text">{{::record.it.author.fullName}}</span>
             <span ng-if="record.it.isOwner" class="bread__back__text">@R("Мой дневник")</span>
         </a>
+        <span ng-if="record.pageError"
+              ng-click="$root.back()"
+              class="bread__back link">
+            <i class="bread__back__icon"></i>
+        </span>
         <div class="bread__title">
             @R("Запись в дневнике")
         </div>
     </div>
     <div class="view-base" content-height=".bread" data-loader="record.it.loader">
-        <div ng-if="!record.it.loader">
+        <div ng-if="!record.it.loader && !record.pageError">
             <div class="view-base__top">
                 <div class="container">
                     <p class="record__text">
@@ -62,6 +67,13 @@
                                   data-entity-type="record"></comment-list>
 
                 </div>
+            </div>
+        </div>
+
+        <div ng-if="record.pageError"
+             class="server-error server-error--dark">
+            <div class="container">
+                <div class="alert alert-warning text-center">@R("Что то пошло не так. Пожалуйста вернитесь на страницу просмотра записи позже. Мы уже прилагаем все усилия чтобы устранить проблему.")</div>
             </div>
         </div>
     </div>

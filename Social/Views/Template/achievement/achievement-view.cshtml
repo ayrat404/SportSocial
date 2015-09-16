@@ -1,10 +1,15 @@
 ﻿<section class="achievement-view">
     <div class="bread">
-        <a ui-sref="main.profile({userId: ach.it.author.id})" class="bread__back">
+        <a ng-if="!ach.pageError" ui-sref="main.profile({userId: ach.it.author.id})" class="bread__back">
             <i class="bread__back__icon"></i>
             <span ng-if="!record.it.isOwner" class="bread__back__text">{{::ach.it.author.fullName}}</span>
             <span ng-if="record.it.isOwner" class="bread__back__text">@R("Мой дневник")</span>
         </a>
+        <span ng-if="ach.pageError"
+              ng-click="$root.back()"
+              class="bread__back link">
+            <i class="bread__back__icon"></i>
+        </span>
         <div class="bread__title">
             @R("Заявка на достижение")
         </div>
@@ -12,30 +17,31 @@
     <div class="view-base"
          conent-height=".bread"
          data-loader="ach.loader">
-        <div ng-if="!ach.loader">
+        <div ng-if="!ach.loader && !ach.pageError">
             <div class="view-base__top">
                 <div class="container">
                     <div class="achievement-wrap">
                         <div class="ach__type">
-                            <img src="#" class="ach__img"/>
-                            <div class="voice">
-                                <div class="voice__part voice__part--for">
-                                    <div class="voice__bar"></div>
+                            <img ng-src="{{ ::(ach.it.cupImage|imageResize:{w: 235,h: 345}) }}" class="ach__img"/>
+                            <div ng-class="{ 'voice--active': !ach.it.voice.isVoited }"
+                                 class="voice">
+                                <div ng-click="ach.voice('like')" class="voice__part voice__part--for">
+                                    <div class="voice__bar" ng-style="{ 'width': ach.forBarWidth }"></div>
                                     <div class="voice__text-wrap">
                                         <span class="icon"></span>
-                                        <span class="voice__text">@R("Зачет:") 135</span>
+                                        <span class="voice__text">@R("Зачет")<span class="voice__val">: {{ach.it.voice.for}}</span></span>
                                     </div>
                                 </div>
-                                <div class="voice__part voice__part--against">
-                                    <div class="voice__bar"></div>
+                                <div ng-click="ach.voice('dislike')" class="voice__part voice__part--against">
+                                    <div class="voice__bar" ng-style="{ 'width': ach.againstBarWidth }"></div>
                                     <div class="voice__text-wrap">
                                         <span class="icon"></span>
-                                        <span class="voice__text">@R("Незачет:") 28</span>
+                                        <span class="voice__text">@R("Незачет")<span class="voice__val">: {{ach.it.voice.against}}</span></span>
                                     </div>
                                 </div>
                             </div>
                             <div class="ach__time">
-                                @R("Осталось: ")6 дн. 10 ч. 15 мин.
+                                @R("Осталось: "){{ach.it.timestamp}} @*6 дн. 10 ч. 15 мин.*@
                             </div>
                         </div>
                         <div class="ach__media">
@@ -77,5 +83,13 @@
                 </div>
             </div>
         </div>
+        
+        <div ng-if="ach.pageError"
+             class="server-error server-error--dark">
+            <div class="container">
+                <div class="alert alert-warning text-center">@R("Что то пошло не так. Пожалуйста вернитесь на страницу просмотра достижения позже. Мы уже прилагаем все усилия чтобы устранить проблему.")</div>
+            </div>
+        </div>
+
     </div>
 </section>
