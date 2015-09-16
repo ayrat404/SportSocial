@@ -1,21 +1,27 @@
 ﻿<section class="record">
     <div class="bread">
-        <a ui-sref="main.profile({userId: $root.user.id})" class="bread__back">
+        <a ng-if="!record.pageError" ui-sref="main.profile({userId: record.it.author.id})" class="bread__back">
             <i class="bread__back__icon"></i>
-            <span class="bread__back__text">@R("Мой дневник"){{record.ownerId}}</span>
+            <span ng-if="!record.it.isOwner" class="bread__back__text">{{::record.it.author.fullName}}</span>
+            <span ng-if="record.it.isOwner" class="bread__back__text">@R("Мой дневник")</span>
         </a>
+        <span ng-if="record.pageError"
+              ng-click="$root.back()"
+              class="bread__back link">
+            <i class="bread__back__icon"></i>
+        </span>
         <div class="bread__title">
             @R("Запись в дневнике")
         </div>
     </div>
-    <div class="record__inner" content-height=".bread" onresize="false" data-loader="record.it.loader">
-        <div ng-if="!record.it.loader">
-            <div class="record__wrap">
+    <div class="view-base" content-height=".bread" data-loader="record.it.loader">
+        <div ng-if="!record.it.loader && !record.pageError">
+            <div class="view-base__top">
                 <div class="container">
                     <p class="record__text">
                         {{record.it.text}}
                     </p>
-                    <div class="item-bottom record__bottom">
+                    <div class="item-bottom">
                         <a ui-sref="main.profile({userId: record.it.author.id})" class="item-author">
                             <img ng-src="{{ record.it.author.avatar | imageResize:{w: 45, h: 45} }}" class="ia__img" />
                             <div class="ia__info">
@@ -52,15 +58,22 @@
 
                 </div>
             </div>
-            <div class="record__comments">
+            <div class="view-base__comments">
                 <div class="container">
-                    <div class="record__comments__count">{{record.it.comments.count | formatWord:['@R("комментарий")', '@R("комментария")', '@R("комментариев")']:true}}</div>
+                    <div class="vbc__count">{{record.it.comments.count | formatWord:['@R("комментарий")', '@R("комментария")', '@R("комментариев")']:true}}</div>
 
                     <comment-list ng-model="record.it.comments"
                                   data-id="{{::record.it.id}}"
                                   data-entity-type="record"></comment-list>
 
                 </div>
+            </div>
+        </div>
+
+        <div ng-if="record.pageError"
+             class="server-error server-error--dark">
+            <div class="container">
+                <div class="alert alert-warning text-center">@R("Что то пошло не так. Пожалуйста вернитесь на страницу просмотра записи позже. Мы уже прилагаем все усилия чтобы устранить проблему.")</div>
             </div>
         </div>
     </div>

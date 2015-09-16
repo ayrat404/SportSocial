@@ -57,6 +57,13 @@ app = angular.module('app', [
                     templateUrl: tmplView 'achievement/achievement-submit'
                     controller: 'achievementSubmitController'
                     controllerAs: 'ach'
+        .state 'main.achievementView',
+            url: '/achievement/:id'
+            views:
+                'socialContent@main':
+                    templateUrl: tmplView 'achievement/achievement-view'
+                    controller: 'achievementViewController'
+                    controllerAs: 'ach'
         .state 'landing',
             url: '/'
             templateUrl: tmplView 'landing/index'
@@ -101,6 +108,9 @@ app = angular.module('app', [
         $rootScope.$state = $state
         $rootScope.$stateParams = $stateParams
 
+        $rootScope.back = ->
+            window.history.back()
+
         # global scripts init
         # ---------------
         NProgress.configure({ minimum: 0.3 })
@@ -128,7 +138,6 @@ app = angular.module('app', [
         # ---------------
         $rootScope.$on '$stateChangeSuccess', (event, toState, toParams, fromState, fromParams) ->
             modalService.closeAll()
-            $rootScope.$previousState = fromState;
             $rootScope.loader = false
             $rootScope.fullHeight = toState.fullHeight
             queryParamsService.check(toParams)

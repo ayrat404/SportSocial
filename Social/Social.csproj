@@ -206,14 +206,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\socialApp\images\sprites\" />
-    <Folder Include="Scripts\app\coffee\appServices\comments\" />
-    <Folder Include="Scripts\app\coffee\appServices\journal\" />
-    <Folder Include="Scripts\app\coffee\appServices\like\" />
-    <Folder Include="Scripts\app\coffee\appServices\profile\" />
-    <Folder Include="Scripts\app\coffee\appServices\support\" />
-    <Folder Include="Scripts\app\coffee\socialApp\components\likes-row\" />
-    <Folder Include="Scripts\app\coffee\socialApp\components\wall\" />
-    <Folder Include="Scripts\app\coffee\socialApp\journal\" />
     <Folder Include="Scripts\app\javascript\appServices\comments\" />
     <Folder Include="Scripts\app\javascript\appServices\journal\" />
     <Folder Include="Scripts\app\javascript\appServices\like\" />
@@ -246,6 +238,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AchievementController.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -2798,7 +2791,6 @@
     <Content Include="Content\socialApp\styles\less\components\media-show.less" />
     <Content Include="Content\socialApp\styles\less\components\social-share.less" />
     <Content Include="Content\socialApp\styles\less\elements\item-bottom.less" />
-    <Content Include="Content\socialApp\styles\less\elements\loader.less" />
     <Content Include="Content\socialApp\styles\less\elements\short.less" />
     <Content Include="Content\socialApp\styles\less\elements\tags.less" />
     <Content Include="Content\socialApp\styles\less\elements\items-negative.less" />
@@ -2808,7 +2800,12 @@
     <Content Include="Content\socialApp\styles\less\components\likes\likes-row.less" />
     <Content Include="Content\socialApp\styles\less\components\lists\achievements.less" />
     <Content Include="Content\socialApp\styles\less\components\achievement\achievement-select-list.less" />
-    <Content Include="Content\socialApp\styles\less\components\achievement\achievement-submit.less" />
+    <Content Include="Content\socialApp\styles\less\views\achievement-submit.less" />
+    <Content Include="Content\socialApp\styles\less\elements\server-error.less" />
+    <Content Include="Content\socialApp\styles\less\components\view-base.less" />
+    <Content Include="Content\socialApp\styles\less\views\achievement-view.less" />
+    <Content Include="Content\socialApp\styles\less\components\voice.less" />
+    <Content Include="Content\socialApp\styles\less\components\video.less" />
     <None Include="Properties\PublishProfiles\fortress-club %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\fortress-club.pubxml" />
     <None Include="Properties\PublishProfiles\Social.pubxml" />
@@ -2824,6 +2821,20 @@
     <Content Include="Scripts\app\coffee\socialApp\main\record\record-view-Ctrl.coffee" />
     <Content Include="Scripts\app\coffee\socialApp\modals\journal-remove-Ctrl.coffee" />
     <Content Include="Scripts\app\coffee\socialApp\modals\media-show-Ctrl.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\modals\social-share-Ctrl.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\modals\complain-submit-Ctrl.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\main\achievement\achievement-submit-Ctrl.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\components\likes\likes-finger-Drct.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\components\likes\likes-row-Drct.coffee" />
+    <Content Include="Scripts\app\coffee\shared\directives\mousewheel-scroller-Drct.coffee" />
+    <Content Include="Scripts\app\coffee\appServices\other\achievement-Srvc.coffee" />
+    <Content Include="Scripts\app\coffee\appServices\other\comments-Srvc.coffee" />
+    <Content Include="Scripts\app\coffee\appServices\other\complain-Srvc.coffee" />
+    <Content Include="Scripts\app\coffee\appServices\other\journal-Srvc.coffee" />
+    <Content Include="Scripts\app\coffee\appServices\other\like-Srvc.coffee" />
+    <Content Include="Scripts\app\coffee\appServices\other\profile-Srvc.coffee" />
+    <Content Include="Scripts\app\coffee\appServices\other\support-Srvc.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\main\achievement\achievement-view-Ctrl.coffee" />
     <None Include="Scripts\libs\jquery\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.min.js" />
@@ -3090,6 +3101,10 @@
     <Content Include="Views\Template\components\social-shareTpl.cshtml" />
     <Content Include="Views\Template\components\comments\comment-formTpl.cshtml" />
     <Content Include="Views\Template\components\comments\comment-listTpl.cshtml" />
+    <Content Include="Views\Template\components\likes\likes-fingerTpl.cshtml" />
+    <Content Include="Views\Template\components\likes\likes-rowTpl.cshtml" />
+    <Content Include="Views\Template\achievement\achievement-submit.cshtml" />
+    <Content Include="Views\Template\achievement\achievement-view.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">

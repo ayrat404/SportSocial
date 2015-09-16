@@ -1,0 +1,110 @@
+﻿/* Voice
+---------------------------------------------------------------------------------- */
+
+
+.voice {
+    height: 45px;
+    background-color: @brand-dark2;
+    color: #fff;
+}
+
+.voice--active {
+    .voice__val {
+        display: none;
+    }
+    .voice__bar {
+        width: 100% !important;
+    }
+
+    .voice__part--for {
+        .voice__bar {
+            background-color: @brand-green !important;
+        }
+
+        &:hover {
+            .voice__bar {
+                background-color: lighten(@brand-green, 5%) !important;
+            }
+        }
+    }
+
+    .voice__part--against {
+        .voice__bar {
+            background-color: @brand-red !important;
+        }
+
+        &:hover {
+            .voice__bar {
+                background-color: lighten(@brand-red, 5%) !important;
+            }
+        }
+    }
+
+    .voice__part {
+        cursor: pointer;
+        user-select: none;
+    }
+}
+
+.voice__part {
+    height: 100%;
+    float: left;
+    width: 50%;
+    position: relative;
+    text-align: center;
+    .no-float();
+
+    .icon {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 1px;
+    }
+}
+
+.voice__part--for {
+    .icon {
+        .sprite(@voice-for);
+    }
+
+    .voice__bar {
+        background: #1b6c25;
+        right: 0;
+    }
+}
+
+.voice__part--against {
+    .icon {
+        .sprite(@voice-against);
+    }
+
+    .voice__bar {
+        background: #742e30;
+        left: 0;
+    }
+}
+
+.voice__bar {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    z-index: 0;
+    width: 0;
+    transition: width 200ms linear;
+}
+
+.voice__text-wrap {
+    position: absolute;
+    top: 11px;
+    right: 0;
+    left: 0;
+    z-index: 1;
+
+    .voice__text {
+    }
+
+    .voice__val {
+    }
+}
+
+/* /Voice
+---------------------------------------------------------------------------------- */

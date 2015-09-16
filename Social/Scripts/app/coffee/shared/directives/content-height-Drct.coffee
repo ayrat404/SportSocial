@@ -25,8 +25,16 @@ class contentHeight extends Directive('shared')
                 $timeout(->
                     $el = angular.element element
                     elHeight($el, attrs.contentHeight)
-                    if attrs.onresize != 'false'
-                        angular.element($window).resize ->
-                            elHeight($el, attrs.contentHeight)
+
+                    # ---------------
+                    listener = ->
+                        elHeight $el, attrs.contentHeight
+
+                    # ---------------
+                    angular.element($window).on 'resize', listener
+
+                    # ---------------
+                    scope.$on '$destroy', ->
+                        angular.element($window).off 'resize', listener
                 , 50)
         }

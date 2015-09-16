@@ -255,6 +255,13 @@
     <Compile Include="Sms\Impls\SmsPilotSmsService.cs" />
     <Compile Include="Sms\ISmsService.cs" />
     <Compile Include="Sms\Objects\SmsPilotSendModel.cs" />
+    <Compile Include="Social\Achievement\IAchievementService.cs" />
+    <Compile Include="Social\Achievement\Objects\AchievementCreateVm.cs" />
+    <Compile Include="Social\Achievement\Objects\AchievementPreviewVm.cs" />
+    <Compile Include="Social\Achievement\Objects\AchievementTempVm.cs" />
+    <Compile Include="Social\Achievement\Objects\AchievementTypeVm.cs" />
+    <Compile Include="Social\Achievement\Objects\AchievmentVoice.cs" />
+    <Compile Include="Social\Achievement\Objects\ChoosedAchievmentType.cs" />
     <Compile Include="Social\Journals\IJournalService.cs" />
     <Compile Include="Social\Journals\JournalService.cs" />
     <Compile Include="Social\Journals\MapProfiles\JournalPreviewProfile.cs" />

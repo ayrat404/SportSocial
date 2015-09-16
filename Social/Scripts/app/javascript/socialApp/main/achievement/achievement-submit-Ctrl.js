@@ -9,7 +9,8 @@ AchievementSubmit = (function() {
     };
     defaultModel = {
       id: -1,
-      step: 0
+      step: 0,
+      video: {}
     };
     _this = this;
     this.prevStep = function() {
@@ -18,7 +19,7 @@ AchievementSubmit = (function() {
     this.nextStep = function() {
       _this.loader = true;
       return achievementService.saveTemp(_this.model).then(function(res) {
-        _this.model.id = res.data.id;
+        _this.model.id = 1;
         return _this.currentStep++;
       })["finally"](function(res) {
         return _this.loader = false;
@@ -60,41 +61,51 @@ AchievementSubmit = (function() {
       exampleLink: 'http://www.youtube.com/watch?v=zWc41BbjlZ4',
       isExampleShow: true,
       customLink: '',
-      isCustomLoaded: false,
       hideExample: function() {
         if (_this.second.isExampleShow) {
           _this.second.ePlayer.pauseVideo();
         }
         return _this.second.isExampleShow = !_this.second.isExampleShow;
       },
-      getVideoInfo: function(link) {
-        return youtubeVideoService.getVideoInfo(_this.second.customLink).then(function(res) {
-          _this.second.isCustomLoaded = true;
-          _this.model.videoId = res.data.id;
+      getVideoInfo: function() {
+        return youtubeVideoService.getVideoInfo(_this.model.video.remoteUrl).then(function(res) {
+          _this.model.video.id = res.data.id;
           return _this.second.isExampleShow = false;
+        }, function(res) {
+          return _this.model.video.id = null;
         });
       },
       removeVideo: function() {
         _this.second.customLink = '';
-        _this.model.videoId = '';
-        return _this.second.isCustomLoaded = false;
+        return _this.model.videoId = '';
       }
     };
-    _this.cards = [
-      {
-        id: 1,
-        img: 'imageUrl1',
-        title: 'Подтягивания',
-        values: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
-      }, {
-        id: 2,
-        img: 'imageUrl2',
-        title: 'Отжимания',
-        values: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 200, 300, 400]
+    _this.loader = true;
+    achievementService.getTemp().then(function(res) {
+      var i, j, ref;
+      _this.cards = res.data.cards;
+      _this.marks = res.data.marks;
+      if (res.data.model !== null) {
+        _this.model = res.data.model;
+        for (i = j = 0, ref = _this.cards.length; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
+          if (_this.model.type.id === _this.cards[i].id) {
+            _this.cards[i].focus = true;
+            _this.cards[i].selected = _this.model.type.value;
+            break;
+          }
+        }
+      } else {
+        _this.model = defaultModel;
       }
-    ];
-    _this.model = defaultModel;
-    _this.currentStep = _this.model.step;
+      _this.currentStep = _this.model.step;
+      if (_this.currentStep >= 1) {
+        return _this.second.isExampleShow = false;
+      }
+    }, function(res) {
+      return _this.pageError = true;
+    })["finally"](function() {
+      return _this.loader = false;
+    });
   }
 
   return AchievementSubmit;

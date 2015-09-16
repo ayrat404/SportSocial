@@ -1,4 +1,4 @@
-class socialShare extends Directive('shared')
+class socialShareList extends Directive('shared')
     constructor: ($location)->
 
         defaults =

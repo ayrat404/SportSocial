@@ -10202,7 +10202,7 @@ fieldset[disabled] .btn--subscribe.active {
   -webkit-transition: opacity 100ms linear;
           transition: opacity 100ms linear;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -332px -96px;
+  background-position: -332px -120px;
   width: 11px;
   height: 11px;
   margin-left: 8px;
@@ -10386,6 +10386,16 @@ fieldset[disabled] .btn--subscribe.active {
 }
 /* /Items negative
 ---------------------------------------------------------------------------------- */
+/* Server error element
+---------------------------------------------------------------------------------- */
+.server-error {
+  padding: 50px 0;
+}
+.server-error--dark {
+  background-color: #1f282e;
+}
+/* /Server error element
+---------------------------------------------------------------------------------- */
 /* /Elements */
 /* Components
 -------------------------------------------------- */
@@ -10414,7 +10424,7 @@ fieldset[disabled] .btn--subscribe.active {
       -ms-user-select: none;
           user-select: none;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -31px -230px;
+  background-position: 0px -230px;
   width: 21px;
   height: 21px;
 }
@@ -10574,7 +10584,7 @@ fieldset[disabled] .btn--subscribe.active {
   float: left;
   margin: 35px 40px 0 0;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -306px -134px;
+  background-position: -306px -108px;
   width: 16px;
   height: 16px;
 }
@@ -10724,7 +10734,7 @@ fieldset[disabled] .btn--subscribe.active {
   display: inline-block;
   margin-right: 7px;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -332px -51px;
+  background-position: -332px -75px;
   width: 12px;
   height: 13px;
 }
@@ -10774,7 +10784,7 @@ fieldset[disabled] .btn--subscribe.active {
   bottom: 0;
   margin: auto;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -298px -230px;
+  background-position: -270px -230px;
   width: 18px;
   height: 18px;
 }
@@ -10852,7 +10862,7 @@ fieldset[disabled] .btn--subscribe.active {
   left: 0;
   margin: auto;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -298px -230px;
+  background-position: -270px -230px;
   width: 18px;
   height: 18px;
 }
@@ -10882,7 +10892,7 @@ fieldset[disabled] .btn--subscribe.active {
   display: inline-block;
   opacity: .8;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -332px -139px;
+  background-position: -332px -163px;
   width: 6px;
   height: 6px;
 }
@@ -11072,7 +11082,7 @@ fieldset[disabled] .btn--subscribe.active {
   display: inline-block;
   vertical-align: middle;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -332px -27px;
+  background-position: -332px -51px;
   width: 14px;
   height: 14px;
 }
@@ -11167,7 +11177,7 @@ fieldset[disabled] .btn--subscribe.active {
       -ms-user-select: none;
           user-select: none;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: 0px -261px;
+  background-position: -298px -230px;
   width: 18px;
   height: 18px;
 }
@@ -11206,13 +11216,13 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .wall__it__header-edit .wi__edit i {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -298px -182px;
+  background-position: -31px -230px;
   width: 21px;
   height: 21px;
 }
 .wall__it__header-edit .wi__edit:hover i {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: 0px -230px;
+  background-position: -298px -182px;
   width: 21px;
   height: 21px;
 }
@@ -11256,7 +11266,7 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .wall__it__header-info .wi__share:hover i {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -306px -108px;
+  background-position: -306px -134px;
   width: 16px;
   height: 16px;
 }
@@ -11283,7 +11293,7 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .wall__it__content .wi__text {
   word-break: break-word;
-  padding: 10px 15px;
+  padding: 16px 15px;
 }
 .wall__it__content .wi__media-wrap {
   position: relative;
@@ -11304,13 +11314,13 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .wall__it__content .wi__media-wrap.image i {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -182px -108px;
+  background-position: -244px -108px;
   width: 52px;
   height: 52px;
 }
 .wall__it__content .wi__media-wrap.image:hover i {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -244px -108px;
+  background-position: -182px -108px;
   width: 52px;
   height: 52px;
 }
@@ -11341,7 +11351,7 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .wall__it--edit .wall__it__btn {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -270px -230px;
+  background-position: 0px -261px;
   width: 18px;
   height: 18px;
 }
@@ -11454,6 +11464,9 @@ fieldset[disabled] .btn--subscribe.active {
   background-color: #26de33;
   box-shadow: inset 10px 10px 9px -11px #000000;
 }
+.likes-row .lr__btn--liked {
+  background-color: #26de33;
+}
 .likes-row .lr__user img {
   height: 50px;
   width: 50px;
@@ -11489,7 +11502,7 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .likes-finger--liked .likes-finger__icon {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -88px -261px;
+  background-position: -28px -261px;
   width: 20px;
   height: 16px;
 }
@@ -11502,7 +11515,7 @@ fieldset[disabled] .btn--subscribe.active {
   display: inline-block;
   vertical-align: top;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -28px -261px;
+  background-position: -88px -261px;
   width: 20px;
   height: 16px;
 }
@@ -11636,19 +11649,19 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .social-share .icon--vk {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -93px -230px;
+  background-position: -153px -230px;
   width: 20px;
   height: 20px;
 }
 .social-share .icon--facebook {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -153px -230px;
+  background-position: -123px -230px;
   width: 20px;
   height: 20px;
 }
 .social-share .icon--twitter {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -123px -230px;
+  background-position: -93px -230px;
   width: 20px;
   height: 20px;
 }
@@ -11763,76 +11776,6 @@ fieldset[disabled] .btn--subscribe.active {
 }
 /* /Comment list
 ---------------------------------------------------------------------------------- */
-/* Achievement submit
----------------------------------------------------------------------------------- */
-.achievement-submit .achievement-list {
-  margin-top: 25px;
-}
-.achievement-submit .as__steps {
-  background-color: #45565e;
-}
-.achievement-submit .as__steps__it {
-  height: 85px;
-  padding: 32px 0 0 20px;
-  width: 33.33333333%;
-  text-align: center;
-  color: #fff;
-  float: left;
-}
-.achievement-submit .as__steps__it.active {
-  background: #354349;
-}
-.achievement-submit .as__step {
-  padding-bottom: 90px;
-}
-.achievement-submit .as__step--video .as__subtitle {
-  max-width: 490px;
-  margin: 0 auto;
-}
-.achievement-submit .as__step--video .as__example {
-  margin-top: 25px;
-}
-.achievement-submit .as__step--video .fs-form {
-  margin-bottom: 25px;
-}
-.achievement-submit .as__header {
-  text-align: right;
-  margin: 30px 0;
-}
-.achievement-submit .as__header .link {
-  margin-right: 15px;
-}
-.achievement-submit .as__subtitle {
-  font-size: 1.286em;
-  text-align: center;
-}
-.achievement-submit .as__divider {
-  height: 1px;
-  width: 100%;
-  background: #d7d9db;
-  margin: 25px 0;
-}
-.embed-responsive {
-  position: relative;
-  display: block;
-  height: 0;
-  padding: 0;
-  overflow: hidden;
-}
-.embed-responsive.embed-responsive-16by9 {
-  padding-bottom: 56.25%;
-}
-.embed-responsive-item {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-/* /Achievement submit
----------------------------------------------------------------------------------- */
 /* Achievement select list
 ---------------------------------------------------------------------------------- */
 .achievement-select-list {
@@ -11896,6 +11839,140 @@ fieldset[disabled] .btn--subscribe.active {
   width: 100%;
 }
 /* /Achievement select list
+---------------------------------------------------------------------------------- */
+/* View base styles
+---------------------------------------------------------------------------------- */
+.view-base {
+  background-color: #1f282e;
+}
+.view-base .comment-form {
+  margin-top: 35px;
+}
+.view-base__top {
+  padding-top: 30px;
+}
+.view-base__top .tag-list {
+  margin-top: 20px;
+}
+.view-base__comments {
+  background: #fff;
+}
+.view-base__comments .vbc__count {
+  font-size: 24px;
+  margin: 27px 0;
+}
+/* /View base styles
+---------------------------------------------------------------------------------- */
+/* Video
+---------------------------------------------------------------------------------- */
+.embed-responsive {
+  position: relative;
+  display: block;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.embed-responsive.embed-responsive-16by9 {
+  padding-bottom: 56.25%;
+}
+.embed-responsive-item {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+/* /Video
+---------------------------------------------------------------------------------- */
+/* Voice
+---------------------------------------------------------------------------------- */
+.voice {
+  height: 45px;
+  background-color: #161d20;
+  color: #fff;
+}
+.voice--active .voice__val {
+  display: none;
+}
+.voice--active .voice__bar {
+  width: 100% !important;
+}
+.voice--active .voice__part--for .voice__bar {
+  background-color: #1fba2a !important;
+}
+.voice--active .voice__part--for:hover .voice__bar {
+  background-color: #23d02f !important;
+}
+.voice--active .voice__part--against .voice__bar {
+  background-color: #de3233 !important;
+}
+.voice--active .voice__part--against:hover .voice__bar {
+  background-color: #e24849 !important;
+}
+.voice--active .voice__part {
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.voice__part {
+  height: 100%;
+  float: left;
+  width: 50%;
+  position: relative;
+  text-align: center;
+}
+.voice__part:after {
+  display: block;
+  line-height: 0;
+  content: '';
+  clear: both;
+}
+.voice__part .icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 1px;
+}
+.voice__part--for .icon {
+  background-image: url(../../images/icons-set/icons-set.png);
+  background-position: -173px -261px;
+  width: 17px;
+  height: 14px;
+}
+.voice__part--for .voice__bar {
+  background: #1b6c25;
+  right: 0;
+}
+.voice__part--against .icon {
+  background-image: url(../../images/icons-set/icons-set.png);
+  background-position: -332px -27px;
+  width: 14px;
+  height: 14px;
+}
+.voice__part--against .voice__bar {
+  background: #742e30;
+  left: 0;
+}
+.voice__bar {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  z-index: 0;
+  width: 0;
+  -webkit-transition: width 200ms linear;
+          transition: width 200ms linear;
+}
+.voice__text-wrap {
+  position: absolute;
+  top: 11px;
+  right: 0;
+  left: 0;
+  z-index: 1;
+}
+/* /Voice
 ---------------------------------------------------------------------------------- */
 /* /Components */
 /* Views
@@ -12140,13 +12217,13 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .auth-social .as__icon--tw {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -123px -230px;
+  background-position: -93px -230px;
   width: 20px;
   height: 20px;
 }
 .auth-social .as__icon--fb {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -153px -230px;
+  background-position: -123px -230px;
   width: 20px;
   height: 20px;
 }
@@ -12158,7 +12235,7 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .auth-social .as__icon--vk {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -93px -230px;
+  background-position: -153px -230px;
   width: 20px;
   height: 20px;
 }
@@ -12278,7 +12355,7 @@ fieldset[disabled] .btn--subscribe.active {
   display: inline-block;
   vertical-align: middle;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -332px -74px;
+  background-position: -332px -98px;
   width: 12px;
   height: 12px;
 }
@@ -12286,7 +12363,7 @@ fieldset[disabled] .btn--subscribe.active {
   display: inline-block;
   vertical-align: middle;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -332px -117px;
+  background-position: -332px -141px;
   width: 10px;
   height: 12px;
 }
@@ -12432,7 +12509,7 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .record .rcd__control--edit {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -298px -182px;
+  background-position: -31px -230px;
   width: 21px;
   height: 21px;
 }
@@ -12441,18 +12518,6 @@ fieldset[disabled] .btn--subscribe.active {
   background-position: -151px -84px;
   width: 20px;
   height: 23px;
-}
-.record .comment-form {
-  margin-top: 35px;
-}
-.record__inner {
-  background-color: #1f282e;
-}
-.record__wrap {
-  padding-top: 30px;
-}
-.record__wrap .tag-list {
-  margin-top: 20px;
 }
 .record__text {
   background: #fff;
@@ -12502,14 +12567,89 @@ fieldset[disabled] .btn--subscribe.active {
   right: 0;
   left: 0;
 }
-.record__comments {
-  background: #fff;
-}
-.record__comments__count {
-  font-size: 24px;
-  margin: 27px 0;
-}
 /* /Record
+---------------------------------------------------------------------------------- */
+/* Achievement submit
+---------------------------------------------------------------------------------- */
+.achievement-submit .achievement-list {
+  margin-top: 25px;
+}
+.achievement-submit .as__steps {
+  background-color: #45565e;
+}
+.achievement-submit .as__steps--part .as__steps__it {
+  width: 50%;
+}
+.achievement-submit .as__steps__it {
+  height: 85px;
+  padding: 32px 0 0 20px;
+  width: 33.33333333%;
+  text-align: center;
+  color: #fff;
+  float: left;
+}
+.achievement-submit .as__steps__it.active {
+  background: #354349;
+}
+.achievement-submit .as__step {
+  padding-bottom: 90px;
+}
+.achievement-submit .as__step--video .as__subtitle {
+  max-width: 490px;
+  margin: 0 auto;
+}
+.achievement-submit .as__step--video .as__example {
+  margin-top: 25px;
+}
+.achievement-submit .as__step--video .fs-form {
+  margin-bottom: 25px;
+}
+.achievement-submit .as__header {
+  text-align: right;
+  margin: 30px 0;
+}
+.achievement-submit .as__header .link {
+  margin-right: 15px;
+}
+.achievement-submit .as__subtitle {
+  font-size: 1.286em;
+  text-align: center;
+}
+.achievement-submit .as__divider {
+  height: 1px;
+  width: 100%;
+  background: #d7d9db;
+  margin: 25px 0;
+}
+/* /Achievement submit
+---------------------------------------------------------------------------------- */
+/* Achievement view
+---------------------------------------------------------------------------------- */
+.achievement-view .achievement-wrap:after {
+  display: block;
+  line-height: 0;
+  content: '';
+  clear: both;
+}
+.achievement-view .ach__type {
+  float: left;
+  width: 235px;
+  margin: 0 -100% 0 0;
+}
+.achievement-view .ach__media {
+  margin-left: 260px;
+}
+.achievement-view .ach__img {
+  border: 6px solid #fff;
+  width: 235px;
+  height: 345px;
+}
+.achievement-view .ach__time {
+  color: #fff;
+  font-family: 'F1 Bold';
+  margin-top: 20px;
+}
+/* /Achievement view
 ---------------------------------------------------------------------------------- */
 /* /Views */
 /* DEV

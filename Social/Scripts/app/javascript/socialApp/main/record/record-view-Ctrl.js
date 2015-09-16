@@ -5,18 +5,22 @@ RecordView = (function() {
     var _this;
     $scope.$root.title = 'Fortress | Запись в дневнике';
     _this = this;
+    _this.pageError = false;
     _this.it = {
       loader: true
     };
     journalService.getById(+$stateParams.id).then(function(res) {
       _this.it = res.data;
-      _this.it.loader = false;
       if ($rootScope.user.id === _this.it.author.id) {
         _this.it.isOwner = true;
       } else {
         _this.it.isOwner = false;
       }
       return _this.it.comments.form = {};
+    }, function(res) {
+      return _this.pageError = true;
+    })["finally"](function(res) {
+      return _this.it.loader = false;
     });
     _this.edit = function() {
       return console.log('edit');

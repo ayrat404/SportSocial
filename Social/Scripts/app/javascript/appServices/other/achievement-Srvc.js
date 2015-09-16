@@ -2,9 +2,10 @@ var Achievement;
 
 Achievement = (function() {
   function Achievement($q, $http, base, servicesDefault) {
-    var cancelTemp, getCards, getTemp, post, put, saveTemp, urlCards, urlTemp;
+    var cancelTemp, getById, getTemp, post, put, saveTemp, urlBase, urlTemp, urlVoice, voice;
     urlTemp = servicesDefault.baseServiceUrl + '/achievement/temp';
-    urlCards = servicesDefault.baseServiceUrl + '/achievement/cards';
+    urlBase = servicesDefault.baseServiceUrl + '/achievement';
+    urlVoice = servicesDefault.baseServiceUrl + '/achievement/voice';
     post = function(data) {
       return $q(function(resolve, reject) {
         return $http.post(urlTemp, data).then(function(res) {
@@ -64,26 +65,59 @@ Achievement = (function() {
         });
       });
     };
-    getCards = function() {
+    getById = function(id) {
       return $q(function(resolve, reject) {
-        return $http.get(urlCards).then(function(res) {
-          if (res.data.success) {
-            return resolve(res.data);
-          } else {
-            return reject(res.data);
+        if (id) {
+          return $http.get(urlBase + '/' + id).then(function(res) {
+            if (res.data.success) {
+              return resolve(res.data);
+            } else {
+              return reject(res.data);
+            }
+          }, function(res) {
+            return reject(res);
+          });
+        } else {
+          reject();
+          if (servicesDefault.noticeShow.errors) {
+            return base.notice.show({
+              text: 'Achievement item get: itemId variable error',
+              type: 'danger'
+            });
           }
-        }, function(res) {
-          return reject(res);
-        });
+        }
+      });
+    };
+    voice = function(data) {
+      return $q(function(resolve, reject) {
+        if (data.id && data.action) {
+          return $http.post(urlVoice, data).then(function(res) {
+            if (res.data.success) {
+              return resolve(res.data);
+            } else {
+              return reject(res.data);
+            }
+          }, function(res) {
+            return reject(res);
+          });
+        } else {
+          reject();
+          if (servicesDefault.noticeShow.errors) {
+            return base.notice.show({
+              text: 'Achievement voice: validate error',
+              type: 'danger'
+            });
+          }
+        }
       });
     };
     return {
       saveTemp: saveTemp,
       getTemp: getTemp,
       cancelTemp: cancelTemp,
-      getCards: getCards
+      getById: getById,
+      voice: voice
     };
-    return {};
   }
 
   return Achievement;

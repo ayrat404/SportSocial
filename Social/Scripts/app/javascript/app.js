@@ -45,6 +45,15 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'fl
           controllerAs: 'ach'
         }
       }
+    }).state('main.achievementView', {
+      url: '/achievement/:id',
+      views: {
+        'socialContent@main': {
+          templateUrl: tmplView('achievement/achievement-view'),
+          controller: 'achievementViewController',
+          controllerAs: 'ach'
+        }
+      }
     }).state('landing', {
       url: '/',
       templateUrl: tmplView('landing/index'),
@@ -71,6 +80,9 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'fl
     $templateCache.put(view.data('tmpl-url'), view.html());
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
+    $rootScope.back = function() {
+      return window.history.back();
+    };
     NProgress.configure({
       minimum: 0.3
     });
@@ -107,7 +119,6 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'fl
     });
     $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
       modalService.closeAll();
-      $rootScope.$previousState = fromState;
       $rootScope.loader = false;
       $rootScope.fullHeight = toState.fullHeight;
       queryParamsService.check(toParams);

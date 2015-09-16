@@ -17,6 +17,9 @@
         <li><a href="#api_record_view">Страница просмотра записи</a></li>
         <li><a href="#api_like">Лайк/дизлайк</a></li>
         <li><a href="#api_complain">Жалоба на пользователя</a></li>
+        <li><a href="#api_achievement_submit">Создание заявки на достижение</a></li>
+        <li><a href="#api_achievement_view">Просмотр заявки на достижение</a></li>
+        <li><a href="#api_achievement_voice">Голосование за заявку на достижение</a></li>
     </ul>
     <ul class="dev__api__content">
 
@@ -660,6 +663,264 @@
             </b>
 
         </li>
+
+
+        <li id="api_achievement_submit" class="dev__api__row">
+            <p>Создание заявки на достижение</p>
+            <code>GET: /api/achievement/temp</code>
+            <p>Запрос к данным для создания заявки.</p>
+            <b>
+                send data:
+                <pre>
+{
+    *none*
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true,
+    data: {
+        model: { *иначе пустой объект*
+            id: 2 *обязателен id*
+            step: 1 *текущий шаг*
+            type: { *упражнение*
+                id: 2
+                value: 60
+            },
+            video: {
+                id: 12 *в базе* 
+                remoteUrl: 'http://www.youtube.com/watch?v=zWc41BbjlZ4' *url видео на ютубе* 
+            }
+        },
+        cards: [ *доступные упражения*
+            {
+                id: 1,
+                img: 'imageUrl',
+                title: 'Подтягивания'
+                values: [10, 20, 30, 40, 50, 60, 70]
+            },
+            ...
+        ],
+        marks: [ *Заявки, которые нужно оценить пользователю. Максимум 3. Если их нет, то массив пустой*
+            {
+                id: 1,
+                iconUrl: 'imageUrl' *иконка достижения* 
+                title: 'Подтягивания. 35 Повторений'
+                created: *date*
+                timeSpent: '234242342' *осталось времени timestamp*
+                voice: {
+                    for: 142 *проголосовали за*
+                    against: 10 *проголосовали против*
+                },
+                user: {
+                    id: 1
+                    avatar: 'avatarImageUrl'
+                    fullName: 'Mikki Mouse'
+                }
+            }
+        ]
+    },
+    errors: null,
+    message: null
+}
+                    </pre>
+            </b>
+
+
+            <code>POST: /api/achievement/temp</code>
+            <p>Создание новой заявки. В случае если данные об уже созданной заявки с сервера пришли пустые</p>
+            <b>
+                send data:
+                <pre>
+{
+    type: {
+        id: 2,
+        value: 40
+    }
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true/false,
+    data: null,
+    errors: null,
+    message: null
+}
+                    </pre>
+            </b>
+
+            <code>PUT: /api/achievement/temp</code>
+            <p>Сохранение изменений в заявке.</p>
+            <b>
+                send data:
+                <pre>
+{
+    type: { *всегда присутствует*
+        id: 2,
+        value: 40
+    },
+    video: { *может не быть. Если пользователь на втором шаге удалил видео, вернулся на первый и нажал "сле. шаг"*
+        id: 23
+    }
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true/false,
+    data: null,
+    errors: null,
+    message: null
+}
+                    </pre>
+            </b>
+            
+            <code>DELETE: /api/achievement/temp</code>
+            <p>Удаление неопубликованной заявки</p>
+            <b>
+                send data:
+                <pre>
+{
+    *none*
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true/false,
+    data: null,
+    errors: null,
+    message: null
+}
+                    </pre>
+            </b>
+        </li>
+        
+        
+        <li id="api_achievement_view" class="dev__api__row">
+            <p>Страница просмотра достижения</p>
+            <code>GET: /api/achievement/:id</code>
+            <b>
+                send data:
+                <pre>
+{
+    *none*
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true,
+    data: {
+        id: 12
+        title: 'Подтягивания. 35 Повторений'
+        cupImage: 'typeImageUrl' # картинка кубка с упражнением
+        author: {
+            id: 12
+            avatar: 'avatarImageUrl'
+            fullName: 'Павел Козловский'
+        }
+        created: 'date' # дата создания
+        timestamp: '12312123' #осталось времени timestamp
+        likes: {
+            list: [
+                { id: 1, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+                { id: 2, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+                { id: 3, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+                { id: 4, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+                { id: 5, fullName: 'Владимир Владимирович', avatar: 'avatartest1' }
+            ]
+            count: 23
+            isLiked: false
+        }
+        voice:
+            for: 152    # за
+            against: 9  # против
+            isVoited: false     # голосовал или нет. Может голосовать один раз только
+        comments: {
+            list: [
+                {
+                    id: 1,
+                    text: 'wwwwww wwwwww' ,
+                    author: {id: 5, fullName: 'Владимир Владимирович', avatar: 'avatartest1'},
+                    likes: {
+                        list: [
+                            { id: 1, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+                            { id: 2, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+                            { id: 3, fullName: 'Владимир Владимирович', avatar: 'avatartest1' }
+                        ],
+                        count: 5,
+                        isLiked: false
+                    },
+                    date: "19 июня 2015 | 15:08",
+                    commentFor: { id: 2, name: "Вася" }
+                },
+                {
+                    id: 2,
+                    text: 'wwwwww wwwwww' ,
+                    author: {id: 5, fullName: 'Вася', avatar: 'avatartest1'},
+                    likes: {
+                        list: [
+                            { id: 1, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+                            { id: 2, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },
+                            { id: 3, fullName: 'Владимир Владимирович', avatar: 'avatartest1' }
+                        ],
+                        count: 5,
+                        isLiked: false
+                    },
+                    date: "19 июня 2015 | 15:08"
+                }
+            ]
+            count: 23
+        }
+    },
+    errors: null,
+    message: null
+}
+                    </pre>
+            </b>
+        </li>
+        
+        <li id="api_achievement_voice" class="dev__api__row">
+            <p>Голосование за заявку на достижение</p>
+            <code>POST: /api/achievement/voice</code>
+            <b>
+                send data:
+                <pre>
+{
+    id: x,
+    action: like/dislike
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true,
+    data: {
+        for: xx,
+        against: xx
+    },
+    errors: null,
+    message: null
+}
+                    </pre>
+            </b>
+        </li>
+
 
     </ul>
 </div>

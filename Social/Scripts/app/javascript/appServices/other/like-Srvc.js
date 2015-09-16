@@ -7,7 +7,7 @@ Like = (function() {
     set = function(data) {
       return $q(function(resolve, reject) {
         if (data && data.entityType && data.id && typeof data.current === 'boolean') {
-          data.actionType = data.current ? 'dislike' : 'like';
+          data.actionType = data.current ? 'remove' : 'like';
           return $http.post(url, data).then(function(res) {
             if (res.data.success) {
               return resolve(!data.current);
