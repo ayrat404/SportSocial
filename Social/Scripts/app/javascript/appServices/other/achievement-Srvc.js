@@ -2,7 +2,7 @@ var Achievement;
 
 Achievement = (function() {
   function Achievement($q, $http, base, servicesDefault) {
-    var cancelTemp, getById, getTemp, post, put, saveTemp, urlBase, urlTemp, urlVoice, voice;
+    var cancelTemp, getById, getList, getTemp, post, put, saveTemp, urlBase, urlTemp, urlVoice, voice;
     urlTemp = servicesDefault.baseServiceUrl + '/achievement/temp';
     urlBase = servicesDefault.baseServiceUrl + '/achievement';
     urlVoice = servicesDefault.baseServiceUrl + '/achievement/voice';
@@ -111,11 +111,25 @@ Achievement = (function() {
         }
       });
     };
+    getList = function() {
+      return $q(function(resolve, reject) {
+        return $http.get(urlBase).then(function(res) {
+          if (res.data.success) {
+            return resolve(res.data);
+          } else {
+            return reject(res.data);
+          }
+        }, function(res) {
+          return reject(res);
+        });
+      });
+    };
     return {
       saveTemp: saveTemp,
       getTemp: getTemp,
       cancelTemp: cancelTemp,
       getById: getById,
+      getList: getList,
       voice: voice
     };
   }

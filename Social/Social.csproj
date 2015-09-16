@@ -2806,6 +2806,7 @@
     <Content Include="Content\socialApp\styles\less\views\achievement-view.less" />
     <Content Include="Content\socialApp\styles\less\components\voice.less" />
     <Content Include="Content\socialApp\styles\less\components\video.less" />
+    <Content Include="Content\socialApp\styles\less\views\achievement-list.less" />
     <None Include="Properties\PublishProfiles\fortress-club %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\fortress-club.pubxml" />
     <None Include="Properties\PublishProfiles\Social.pubxml" />
@@ -3105,6 +3106,7 @@
     <Content Include="Views\Template\components\likes\likes-rowTpl.cshtml" />
     <Content Include="Views\Template\achievement\achievement-submit.cshtml" />
     <Content Include="Views\Template\achievement\achievement-view.cshtml" />
+    <Content Include="Views\Template\achievement\achievement-list.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">
