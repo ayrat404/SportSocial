@@ -14,7 +14,7 @@ class Like extends Service('appSrvc')
         set = (data)->
             $q (resolve, reject)->
                 if data && data.entityType && data.id && typeof data.current == 'boolean'
-                    data.actionType = if data.current then 'dislike' else 'like'
+                    data.actionType = if data.current then 'remove' else 'like'
                     $http.post(url, data).then((res)->
                         if res.data.success
                             resolve(!data.current)

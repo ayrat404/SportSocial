@@ -1,7 +1,7 @@
-var socialShare;
+var socialShareList;
 
-socialShare = (function() {
-  function socialShare($location) {
+socialShareList = (function() {
+  function socialShareList($location) {
     var defaults;
     defaults = {
       socials: ['vk', 'twitter', 'facebook', 'google+'],
@@ -46,8 +46,8 @@ socialShare = (function() {
     };
   }
 
-  return socialShare;
+  return socialShareList;
 
 })();
 
-angular.module('shared').directive('socialShare', ['$location', socialShare]);
+angular.module('shared').directive('socialShareList', ['$location', socialShareList]);

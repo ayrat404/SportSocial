@@ -45,6 +45,15 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'fl
           controllerAs: 'ach'
         }
       }
+    }).state('main.achievementView', {
+      url: '/achievement/:id',
+      views: {
+        'socialContent@main': {
+          templateUrl: tmplView('achievement/achievement-view'),
+          controller: 'achievementViewController',
+          controllerAs: 'ach'
+        }
+      }
     }).state('landing', {
       url: '/',
       templateUrl: tmplView('landing/index'),
