@@ -7,6 +7,7 @@ namespace BLL.Rating.Enums
         Feedback,
         FeedbackComment,
         Record,
-        RecordComment,
+        Comment,
+        Media,
     }
 }

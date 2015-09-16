@@ -206,8 +206,23 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\socialApp\images\sprites\" />
+    <Folder Include="Scripts\app\coffee\appServices\comments\" />
+    <Folder Include="Scripts\app\coffee\appServices\journal\" />
+    <Folder Include="Scripts\app\coffee\appServices\like\" />
+    <Folder Include="Scripts\app\coffee\appServices\profile\" />
+    <Folder Include="Scripts\app\coffee\appServices\support\" />
+    <Folder Include="Scripts\app\coffee\socialApp\components\likes-row\" />
+    <Folder Include="Scripts\app\coffee\socialApp\components\wall\" />
     <Folder Include="Scripts\app\coffee\socialApp\journal\" />
+    <Folder Include="Scripts\app\javascript\appServices\comments\" />
+    <Folder Include="Scripts\app\javascript\appServices\journal\" />
+    <Folder Include="Scripts\app\javascript\appServices\like\" />
+    <Folder Include="Scripts\app\javascript\appServices\profile\" />
+    <Folder Include="Scripts\app\javascript\appServices\support\" />
+    <Folder Include="Scripts\app\javascript\socialApp\components\likes-row\" />
+    <Folder Include="Scripts\app\javascript\socialApp\components\wall\" />
     <Folder Include="Scripts\app\javascript\socialApp\journal\" />
+    <Folder Include="Views\Template\modals\social-share\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -232,6 +247,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JournalController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -276,13 +292,14 @@
     <Content Include="Scripts\app\javascript\appServices\auth\registration-Srvc.js" />
     <Content Include="Scripts\app\javascript\appServices\auth\restore-password-Srvc.js" />
     <Content Include="Scripts\app\javascript\appServices\auth\user-Srvc.js" />
-    <Content Include="Scripts\app\javascript\appServices\comments\comments-Srvc.js" />
-    <Content Include="Scripts\app\javascript\appServices\journal\journal-Srvc.js" />
-    <Content Include="Scripts\app\javascript\appServices\like\like-Srvc.js" />
+    <Content Include="Scripts\app\javascript\appServices\other\comments-Srvc.js" />
+    <Content Include="Scripts\app\javascript\appServices\other\complain-Srvc.js" />
+    <Content Include="Scripts\app\javascript\appServices\other\journal-Srvc.js" />
+    <Content Include="Scripts\app\javascript\appServices\other\like-Srvc.js" />
+    <Content Include="Scripts\app\javascript\appServices\other\profile-Srvc.js" />
     <Content Include="Scripts\app\javascript\appServices\other\sport-themes-Srvc.js" />
+    <Content Include="Scripts\app\javascript\appServices\other\support-Srvc.js" />
     <Content Include="Scripts\app\javascript\appServices\other\youtube-video-Srvc.js" />
-    <Content Include="Scripts\app\javascript\appServices\profile\profile-Srvc.js" />
-    <Content Include="Scripts\app\javascript\appServices\support\support-Srvc.js" />
     <Content Include="Scripts\app\javascript\shared\app.js" />
     <Content Include="Scripts\app\javascript\shared\directives\autofocus-Drct.js" />
     <Content Include="Scripts\app\javascript\shared\directives\content-height-Drct.js" />
@@ -292,6 +309,7 @@
     <Content Include="Scripts\app\javascript\shared\directives\scroll-to-current-pos-Drct.js" />
     <Content Include="Scripts\app\javascript\shared\directives\scroll-to-Drct.js" />
     <Content Include="Scripts\app\javascript\shared\directives\server-validation-Drct.js" />
+    <Content Include="Scripts\app\javascript\shared\filters\cut-Fltr.js" />
     <Content Include="Scripts\app\javascript\shared\filters\format-word-Drct.js" />
     <Content Include="Scripts\app\javascript\shared\filters\image-resize-Fltr.js" />
     <Content Include="Scripts\app\javascript\shared\services\APIInterseptorProvider.js" />
@@ -299,15 +317,19 @@
     <Content Include="Scripts\app\javascript\shared\services\global-loader-Srvc.js" />
     <Content Include="Scripts\app\javascript\shared\services\mixpanel-Srvc.js" />
     <Content Include="Scripts\app\javascript\shared\services\modal-Srvc.js" />
+    <Content Include="Scripts\app\javascript\shared\services\query-params-Srvc.js" />
     <Content Include="Scripts\app\javascript\shared\services\remote-template-Srvc.js" />
     <Content Include="Scripts\app\javascript\socialApp\app.js" />
-    <Content Include="Scripts\app\javascript\socialApp\components\likes-row\likes-row-Ctrl.js" />
-    <Content Include="Scripts\app\javascript\socialApp\components\likes-row\likes-row-Drct.js" />
+    <Content Include="Scripts\app\javascript\socialApp\components\comments\comment-form-Drct.js" />
+    <Content Include="Scripts\app\javascript\socialApp\components\comments\comment-list-Drct.js" />
+    <Content Include="Scripts\app\javascript\socialApp\components\likes\likes-finger-Drct.js" />
+    <Content Include="Scripts\app\javascript\socialApp\components\likes\likes-row-Drct.js" />
+    <Content Include="Scripts\app\javascript\socialApp\components\media-show-modal\media-show-modal-Drct.js" />
     <Content Include="Scripts\app\javascript\socialApp\components\media-upload\media-upload-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\components\media-upload\media-upload-Drct.js" />
+    <Content Include="Scripts\app\javascript\socialApp\components\social-share\social-share-Drct.js" />
     <Content Include="Scripts\app\javascript\socialApp\components\sport-themes\sport-themes-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\components\sport-themes\sport-themes-Drct.js" />
-    <Content Include="Scripts\app\javascript\socialApp\components\wall\wall-Drct.js" />
     <Content Include="Scripts\app\javascript\socialApp\landing\landing-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\landing\landing-Drct.js" />
     <Content Include="Scripts\app\javascript\socialApp\main\main-social-Ctrl.js" />
@@ -316,9 +338,13 @@
     <Content Include="Scripts\app\javascript\socialApp\main\profile\profile-view-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\main\record\record-view-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\modals\achievement-Ctrl.js" />
+    <Content Include="Scripts\app\javascript\socialApp\modals\complain-submit-Ctrl.js" />
+    <Content Include="Scripts\app\javascript\socialApp\modals\journal-remove-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\modals\journal-submit-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\modals\login-Ctrl.js" />
+    <Content Include="Scripts\app\javascript\socialApp\modals\media-show-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\modals\restore-password-Ctrl.js" />
+    <Content Include="Scripts\app\javascript\socialApp\modals\social-share-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\modals\support-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\registration\registration-Ctrl.js" />
     <Content Include="Scripts\app\simple\app.js" />
@@ -2786,7 +2812,6 @@
     <None Include="Properties\PublishProfiles\fortress-club %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\fortress-club.pubxml" />
     <None Include="Properties\PublishProfiles\Social.pubxml" />
-    <Content Include="Scripts\app\coffee\socialApp\components\wall\wall-Drct.coffee" />
     <Content Include="Scripts\app\coffee\shared\filters\image-resize-Fltr.coffee" />
     <Content Include="Scripts\app\coffee\socialApp\components\comments\comment-form-Drct.coffee" />
     <Content Include="Scripts\app\coffee\socialApp\components\comments\comment-list-Drct.coffee" />
@@ -2799,19 +2824,6 @@
     <Content Include="Scripts\app\coffee\socialApp\main\record\record-view-Ctrl.coffee" />
     <Content Include="Scripts\app\coffee\socialApp\modals\journal-remove-Ctrl.coffee" />
     <Content Include="Scripts\app\coffee\socialApp\modals\media-show-Ctrl.coffee" />
-    <Content Include="Scripts\app\coffee\socialApp\modals\complain-submit-Ctrl.coffee" />
-    <Content Include="Scripts\app\coffee\socialApp\modals\social-share-Ctrl.coffee" />
-    <Content Include="Scripts\app\coffee\socialApp\components\likes\likes-finger-Drct.coffee" />
-    <Content Include="Scripts\app\coffee\socialApp\components\likes\likes-row-Drct.coffee" />
-    <Content Include="Scripts\app\coffee\appServices\other\comments-Srvc.coffee" />
-    <Content Include="Scripts\app\coffee\appServices\other\complain-Srvc.coffee" />
-    <Content Include="Scripts\app\coffee\appServices\other\journal-Srvc.coffee" />
-    <Content Include="Scripts\app\coffee\appServices\other\like-Srvc.coffee" />
-    <Content Include="Scripts\app\coffee\appServices\other\profile-Srvc.coffee" />
-    <Content Include="Scripts\app\coffee\appServices\other\support-Srvc.coffee" />
-    <Content Include="Scripts\app\coffee\appServices\other\achievement-Srvc.coffee" />
-    <Content Include="Scripts\app\coffee\shared\directives\mousewheel-scroller-Drct.coffee" />
-    <Content Include="Scripts\app\coffee\socialApp\main\achievement\achievement-submit-Ctrl.coffee" />
     <None Include="Scripts\libs\jquery\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.min.js" />
@@ -3073,15 +3085,11 @@
     <Content Include="Views\Template\journal\view.cshtml" />
     <Content Include="Views\Template\modals\journal\remove.cshtml" />
     <Content Include="Views\Template\modals\media\show.cshtml" />
-    <Content Include="Views\Template\components\likes\likes-rowTpl.cshtml" />
+    <Content Include="Views\Template\components\likes-rowTpl.cshtml" />
     <Content Include="Views\Template\modals\journal\remove.cshtml" />
     <Content Include="Views\Template\components\social-shareTpl.cshtml" />
-    <Content Include="Views\Template\modals\social-share\share.cshtml" />
     <Content Include="Views\Template\components\comments\comment-formTpl.cshtml" />
     <Content Include="Views\Template\components\comments\comment-listTpl.cshtml" />
-    <Content Include="Views\Template\modals\complain.cshtml" />
-    <Content Include="Views\Template\components\likes\likes-fingerTpl.cshtml" />
-    <Content Include="Views\Template\achievement\achievement-submit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">

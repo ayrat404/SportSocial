@@ -1,3 +1,4 @@
+using BLL.Rating.Objects;
 using BLL.Storage.Objects;
 
 namespace BLL.Social.Journals.Objects
@@ -8,5 +9,6 @@ namespace BLL.Social.Journals.Objects
         public MediaType Type { get; set; }
         public string Url { get; set; }
         public string EmbeddedUrl { get; set; }
+        public RatingInfo Likes { get; set; }
     }
 }

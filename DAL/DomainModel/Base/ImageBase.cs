@@ -13,6 +13,8 @@ namespace DAL.DomainModel.Base
 
         public string Url { get; set; }
 
+        //public string VideoImageUrl { get; set; }
+
         public int Type { get; set; }
 
         public int? VideoProvider { get; set; }

@@ -43,8 +43,10 @@ namespace BLL.Rating.Impls
                     return typeof (FeedbackComment);
                 case RatingEntityType.Record:
                     return typeof (Journal);
-                case RatingEntityType.RecordComment:
+                case RatingEntityType.Comment:
                     return typeof (JournalComment);
+                case RatingEntityType.Media:
+                    return typeof (JournalMedia);
             }
             return null;
         }
@@ -63,8 +65,10 @@ namespace BLL.Rating.Impls
                     return typeof (FeedbackCommentRating);
                 case RatingEntityType.Record:
                     return typeof (JournalRating);
-                case RatingEntityType.RecordComment:
+                case RatingEntityType.Comment:
                     return typeof (JournalCommentRating);
+                case RatingEntityType.Media:
+                    return typeof (JournalMediaRating);
             }
             return null;
         }
