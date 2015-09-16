@@ -11863,6 +11863,117 @@ fieldset[disabled] .btn--subscribe.active {
 }
 /* /View base styles
 ---------------------------------------------------------------------------------- */
+/* Video
+---------------------------------------------------------------------------------- */
+.embed-responsive {
+  position: relative;
+  display: block;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.embed-responsive.embed-responsive-16by9 {
+  padding-bottom: 56.25%;
+}
+.embed-responsive-item {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+/* /Video
+---------------------------------------------------------------------------------- */
+/* Voice
+---------------------------------------------------------------------------------- */
+.voice {
+  height: 45px;
+  background-color: #161d20;
+  color: #fff;
+}
+.voice--active .voice__val {
+  display: none;
+}
+.voice--active .voice__bar {
+  width: 100% !important;
+}
+.voice--active .voice__part--for .voice__bar {
+  background-color: #1fba2a !important;
+}
+.voice--active .voice__part--for:hover .voice__bar {
+  background-color: #23d02f !important;
+}
+.voice--active .voice__part--against .voice__bar {
+  background-color: #de3233 !important;
+}
+.voice--active .voice__part--against:hover .voice__bar {
+  background-color: #e24849 !important;
+}
+.voice--active .voice__part {
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.voice__part {
+  height: 100%;
+  float: left;
+  width: 50%;
+  position: relative;
+  text-align: center;
+}
+.voice__part:after {
+  display: block;
+  line-height: 0;
+  content: '';
+  clear: both;
+}
+.voice__part .icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 1px;
+}
+.voice__part--for .icon {
+  background-image: url(../../images/icons-set/icons-set.png);
+  background-position: -173px -261px;
+  width: 17px;
+  height: 14px;
+}
+.voice__part--for .voice__bar {
+  background: #1b6c25;
+  right: 0;
+}
+.voice__part--against .icon {
+  background-image: url(../../images/icons-set/icons-set.png);
+  background-position: -332px -27px;
+  width: 14px;
+  height: 14px;
+}
+.voice__part--against .voice__bar {
+  background: #742e30;
+  left: 0;
+}
+.voice__bar {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  z-index: 0;
+  width: 0;
+  -webkit-transition: width 200ms linear;
+          transition: width 200ms linear;
+}
+.voice__text-wrap {
+  position: absolute;
+  top: 11px;
+  right: 0;
+  left: 0;
+  z-index: 1;
+}
+/* /Voice
+---------------------------------------------------------------------------------- */
 /* /Components */
 /* Views
 -------------------------------------------------- */
@@ -12510,25 +12621,6 @@ fieldset[disabled] .btn--subscribe.active {
   background: #d7d9db;
   margin: 25px 0;
 }
-.embed-responsive {
-  position: relative;
-  display: block;
-  height: 0;
-  padding: 0;
-  overflow: hidden;
-}
-.embed-responsive.embed-responsive-16by9 {
-  padding-bottom: 56.25%;
-}
-.embed-responsive-item {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
 /* /Achievement submit
 ---------------------------------------------------------------------------------- */
 /* Achievement view
@@ -12556,90 +12648,6 @@ fieldset[disabled] .btn--subscribe.active {
   color: #fff;
   font-family: 'F1 Bold';
   margin-top: 20px;
-}
-.voice {
-  height: 45px;
-  background-color: #161d20;
-  color: #fff;
-}
-.voice--active .voice__val {
-  display: none;
-}
-.voice--active .voice__bar {
-  width: 100% !important;
-}
-.voice--active .voice__part--for .voice__bar {
-  background-color: #1fba2a !important;
-}
-.voice--active .voice__part--for:hover .voice__bar {
-  background-color: #23d02f !important;
-}
-.voice--active .voice__part--against .voice__bar {
-  background-color: #de3233 !important;
-}
-.voice--active .voice__part--against:hover .voice__bar {
-  background-color: #e24849 !important;
-}
-.voice--active .voice__part {
-  cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
-.voice__part {
-  height: 100%;
-  float: left;
-  width: 50%;
-  position: relative;
-  text-align: center;
-}
-.voice__part:after {
-  display: block;
-  line-height: 0;
-  content: '';
-  clear: both;
-}
-.voice__part .icon {
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 1px;
-}
-.voice__part--for .icon {
-  background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -173px -261px;
-  width: 17px;
-  height: 14px;
-}
-.voice__part--for .voice__bar {
-  background: #1b6c25;
-  right: 0;
-}
-.voice__part--against .icon {
-  background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -332px -27px;
-  width: 14px;
-  height: 14px;
-}
-.voice__part--against .voice__bar {
-  background: #742e30;
-  left: 0;
-}
-.voice__bar {
-  position: absolute;
-  bottom: 0;
-  top: 0;
-  z-index: 0;
-  width: 0;
-  -webkit-transition: width 200ms linear;
-          transition: width 200ms linear;
-}
-.voice__text-wrap {
-  position: absolute;
-  top: 11px;
-  right: 0;
-  left: 0;
-  z-index: 1;
 }
 /* /Achievement view
 ---------------------------------------------------------------------------------- */

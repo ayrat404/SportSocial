@@ -2802,6 +2802,10 @@
     <Content Include="Content\socialApp\styles\less\components\achievement\achievement-select-list.less" />
     <Content Include="Content\socialApp\styles\less\views\achievement-submit.less" />
     <Content Include="Content\socialApp\styles\less\elements\server-error.less" />
+    <Content Include="Content\socialApp\styles\less\components\view-base.less" />
+    <Content Include="Content\socialApp\styles\less\views\achievement-view.less" />
+    <Content Include="Content\socialApp\styles\less\components\voice.less" />
+    <Content Include="Content\socialApp\styles\less\components\video.less" />
     <None Include="Properties\PublishProfiles\fortress-club %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\fortress-club.pubxml" />
     <None Include="Properties\PublishProfiles\Social.pubxml" />
@@ -2830,6 +2834,7 @@
     <Content Include="Scripts\app\coffee\appServices\other\like-Srvc.coffee" />
     <Content Include="Scripts\app\coffee\appServices\other\profile-Srvc.coffee" />
     <Content Include="Scripts\app\coffee\appServices\other\support-Srvc.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\main\achievement\achievement-view-Ctrl.coffee" />
     <None Include="Scripts\libs\jquery\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.min.js" />
@@ -3099,6 +3104,7 @@
     <Content Include="Views\Template\components\likes\likes-fingerTpl.cshtml" />
     <Content Include="Views\Template\components\likes\likes-rowTpl.cshtml" />
     <Content Include="Views\Template\achievement\achievement-submit.cshtml" />
+    <Content Include="Views\Template\achievement\achievement-view.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">
