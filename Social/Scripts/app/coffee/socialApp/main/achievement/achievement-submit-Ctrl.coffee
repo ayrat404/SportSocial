@@ -16,6 +16,7 @@ class AchievementSubmit extends Controller('socialApp.controllers')
         defaultModel =
             id: -1
             step: 0
+            video: {}
 
         _this = this
 
@@ -28,6 +29,7 @@ class AchievementSubmit extends Controller('socialApp.controllers')
         # next step
         # ---------------
         this.nextStep = ->
+            #_this.currentStep++
             _this.loader = true
             achievementService.saveTemp(_this.model).then (res)->
                 _this.model.id = res.data.id
@@ -80,20 +82,19 @@ class AchievementSubmit extends Controller('socialApp.controllers')
             exampleLink: 'http://www.youtube.com/watch?v=zWc41BbjlZ4'
             isExampleShow: true
             customLink: ''
-            isCustomLoaded: false
             hideExample: ->
                 if _this.second.isExampleShow
                     _this.second.ePlayer.pauseVideo()
                 _this.second.isExampleShow = !_this.second.isExampleShow
-            getVideoInfo: (link)->
-                youtubeVideoService.getVideoInfo(_this.second.customLink).then (res)->
-                    _this.second.isCustomLoaded = true
-                    _this.model.videoId = res.data.id
+            getVideoInfo: ->
+                youtubeVideoService.getVideoInfo(_this.model.video.remoteUrl).then (res)->
+                    _this.model.video.id = res.data.id
                     _this.second.isExampleShow = false
+                , (res)->
+                    _this.model.video.id = null
             removeVideo: ->
                 _this.second.customLink = ''
                 _this.model.videoId = ''
-                _this.second.isCustomLoaded = false
         # ---------- Second Step ----------#
 
 
@@ -104,24 +105,112 @@ class AchievementSubmit extends Controller('socialApp.controllers')
 
         # get data: cards & temp achievement
         # ---------------
-        #        _this.loader = true
-        #        achievementService.getCards().then (res)->
-        #            _this.cards = res.data
-        #            achievementService.getTemp().then (res)->
-        #                _this.model = res.data
-        #            , (res)->
-        #                _this.model = defaultModel
-        #            .finally ->
-        #                _this.loader = false
-        #                _this.currentStep = _this.model.step
-        #        , (res)->
-        #            _this.pageError = true
-        #            _this.loader = false
+        _this.loader = true
+        achievementService.getTemp().then (res)->
+            _this.cards = res.data.cards
+            _this.marks = res.data.marks
+            if res.data.model.id
+                # on model receive
+                _this.model = res.data.model
+                for i in [0..._this.cards.length]
+                    if _this.model.type.id == _this.cards[i].id
+                        _this.cards[i].focus = true
+                        _this.cards[i].selected = _this.model.type.value
+                        break
+            else
+                # on empty model
+                _this.model = defaultModel
+            _this.currentStep = _this.model.step
+            if _this.currentStep >=1 then _this.second.isExampleShow = false
+        , (res)->
+            _this.pageError = true
+        .finally ->
+            _this.loader = false
 
         # fake data
-        _this.cards = [
-            { id: 1, img: 'imageUrl1', title: 'Подтягивания', values: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100] },
-            { id: 2, img: 'imageUrl2', title: 'Отжимания', values: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 200, 300, 400] }
-        ]
-        _this.model = defaultModel
-        _this.currentStep = _this.model.step
+#        fake =
+#            cards: [
+#                { id: 1, img: 'imageUrl1', title: 'Подтягивания', values: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100] },
+#                { id: 2, img: 'imageUrl2', title: 'Отжимания', values: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 200, 300, 400] }
+#            ]
+#            model: {
+#                id: 1
+#                step: 2 # 0, 1, 2
+#                type: {
+#                    id: 2,
+#                    value: 60
+#                }
+#                video: {
+#                    id: 12
+#                    remoteUrl: 'http://www.youtube.com/watch?v=zWc41BbjlZ4'
+#                }
+#            }
+#            marks: [
+#                {
+#                    id: 1
+#                    iconUrl: 'iconUrl1'
+#                    title: 'Подтягивания. 35 Повторений'
+#                    created: '06 сентября 2015'
+#                    timeSpent: '6' # в днях
+#                    voice: {
+#                        for: 142
+#                        against: 10
+#                    }
+#                    user: {
+#                        id: 1
+#                        avatar: 'avatarUrl'
+#                        fullName: 'Mikki Mouse'
+#                    }
+#                }
+#                {
+#                    id: 2
+#                    iconUrl: 'iconUrl1'
+#                    title: 'Подтягивания. 35 Повторений'
+#                    created: '06 сентября 2015'
+#                    timeSpent: '6' # в днях
+#                    voice: {
+#                        for: 142
+#                        against: 10
+#                    }
+#                    user: {
+#                        id: 1
+#                        avatar: 'avatarUrl'
+#                        fullName: 'Mikki Mouse'
+#                    }
+#                }
+#                {
+#                    id: 3
+#                    iconUrl: 'iconUrl1'
+#                    title: 'Подтягивания. 35 Повторений'
+#                    created: '06 сентября 2015'
+#                    timeSpent: '6' # в днях
+#                    voice: {
+#                        for: 142
+#                        against: 10
+#                    }
+#                    user: {
+#                        id: 1
+#                        avatar: 'avatarUrl'
+#                        fullName: 'Mikki Mouse'
+#                    }
+#                }
+#            ]
+#
+#        _this.cards = fake.cards
+#        _this.marks = fake.marks
+#
+#        # on model receive
+#        _this.model = fake.model
+#        for i in [0..._this.cards.length]
+#            if _this.model.type.id == _this.cards[i].id
+#                _this.cards[i].focus = true
+#                _this.cards[i].selected = _this.model.type.value
+#                break
+#
+#        # on empty model
+#        #_this.model = defaultModel
+#
+#        # always
+#        _this.currentStep = _this.model.step
+#        if _this.currentStep >=1 then _this.second.isExampleShow = false
+

@@ -17,6 +17,7 @@
         <li><a href="#api_record_view">Страница просмотра записи</a></li>
         <li><a href="#api_like">Лайк/дизлайк</a></li>
         <li><a href="#api_complain">Жалоба на пользователя</a></li>
+        <li><a href="#api_achievement_submit">Создание заявки на достижение</a></li>
     </ul>
     <ul class="dev__api__content">
 
@@ -652,6 +653,73 @@
         },
         created: xxx,
         commentFor: { id: 2, name: "Вася" }
+    },
+    errors: null,
+    message: null
+}
+                    </pre>
+            </b>
+
+        </li>
+
+
+        <li id="api_achievement_submit" class="dev__api__row">
+            <p>Создание заявки на достижение</p>
+            <code>GET: /api/achievement/temp</code>
+            <p>Запрос к данным для создания заявки.</p>
+            <b>
+                send data:
+                <pre>
+{
+    *none*
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true,
+    data: {
+        model: { *иначе пустой объект*
+            id: 2 *обязателен id*
+            step: 1 *текущий шаг*
+            type: { *упражнение*
+                id: 2
+                value: 60
+            },
+            video: {
+                id: 12 *в базе* 
+                remoteUrl: 'http://www.youtube.com/watch?v=zWc41BbjlZ4' *url видео на ютубе* 
+            }
+        },
+        cards: [ *доступные упражения*
+            {
+                id: 1,
+                img: 'imageUrl',
+                title: 'Подтягивания'
+                values: [10, 20, 30, 40, 50, 60, 70]
+            },
+            ...
+        ],
+        marks: [ *Заявки, которые нужно оценить пользователю. Максимум 3. Если их нет, то массив пустой*
+            {
+                id: 1,
+                iconUrl: 'imageUrl' *иконка достижения* 
+                title: 'Подтягивания. 35 Повторений'
+                created: *date*
+                timeSpent: '6' *осталось времени в днях*
+                voice: {
+                    for: 142 *проголосовали за*
+                    against: 10 *проголосовали против*
+                },
+                user: {
+                    id: 1
+                    avatar: 'avatarImageUrl'
+                    fullName: 'Mikki Mouse'
+                }
+            }
+        ]
     },
     errors: null,
     message: null

@@ -2,9 +2,8 @@ var Achievement;
 
 Achievement = (function() {
   function Achievement($q, $http, base, servicesDefault) {
-    var cancelTemp, getCards, getTemp, post, put, saveTemp, urlCards, urlTemp;
+    var cancelTemp, getTemp, post, put, saveTemp, urlTemp;
     urlTemp = servicesDefault.baseServiceUrl + '/achievement/temp';
-    urlCards = servicesDefault.baseServiceUrl + '/achievement/cards';
     post = function(data) {
       return $q(function(resolve, reject) {
         return $http.post(urlTemp, data).then(function(res) {
@@ -64,26 +63,11 @@ Achievement = (function() {
         });
       });
     };
-    getCards = function() {
-      return $q(function(resolve, reject) {
-        return $http.get(urlCards).then(function(res) {
-          if (res.data.success) {
-            return resolve(res.data);
-          } else {
-            return reject(res.data);
-          }
-        }, function(res) {
-          return reject(res);
-        });
-      });
-    };
     return {
       saveTemp: saveTemp,
       getTemp: getTemp,
-      cancelTemp: cancelTemp,
-      getCards: getCards
+      cancelTemp: cancelTemp
     };
-    return {};
   }
 
   return Achievement;
