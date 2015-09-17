@@ -1,62 +1,82 @@
-﻿<section class="achievement-list-page"
-         data-loader="ach.loader"
-         @*ng-if="!ach.pageError"*@>
-    
-    <div class="alp__filter">
-        <div class="container">
-            <select ng-model="ach.filter.type"
-                    ng-change="ach.fitlerStart()"
-                    ng-options="option for option in ach.prop.types"
-                    class="fs-input fs-input--xs alp__filter__type"></select>
-            <div class="alp__filter__toggle">
-                <div class="fs-radio">
-                    <input ng-model="ach.filter.actual" name="filterActual" class="fs-radio__input" type="radio" id="filter_now" />
-                    <label class="fs-radio__label" for="filter_now">@R("Текущие")</label>
+﻿﻿<section class="achievement-list-page">
+    <div data-loader="ach.loader"
+         ng-if="!ach.pageError">
+        <div class="alp__filter">
+            <div class="container">
+                <select ng-model="ach.filter.type"
+                        ng-change="ach.updateList()"
+                        ng-options="option for option in ach.prop.types"
+                        class="fs-input fs-input--xs alp__filter__type">
+                    <option value="">@R("Все")</option>
+                </select>
+                <div class="alp__filter__toggle">
+                    <div class="fs-radio">
+                        <input ng-model="ach.filter.actual" value="opened" name="filterActual" class="fs-radio__input" type="radio" id="filter_now" />
+                        <label class="fs-radio__label" for="filter_now">@R("Текущие")</label>
+                    </div>
+                    <div class="fs-radio">
+                        <input ng-model="ach.filter.actual" value="closed" name="filterActual" class="fs-radio__input" type="radio" id="filter_last" />
+                        <label class="fs-radio__label" for="filter_last">@R("Закрытые")</label>
+                    </div>
                 </div>
-                <div class="fs-radio">
-                    <input ng-model="ach.filter.actual" name="filterActual" class="fs-radio__input" type="radio" id="filter_last" />
-                    <label class="fs-radio__label" for="filter_last">@R("Закрытые")</label>
+                <select ng-show="ach.filter.actual == 'closed'"
+                        ng-model="ach.filter.status"
+                        ng-change="ach.updateList()"
+                        class="fs-input fs-input--xs alp__filter__type">
+                    <option value="all">@R("Зачет/Незачет")</option>
+                    <option value="fail">@R("Незачет")</option>
+                    <option value="credit">@R("Зачет")</option>
+                </select>
+                <a ui-sref="main.achievementAdd" class="btn btn-fill-green alp__link">+ @R("Подать заявку")</a>
+            </div>
+        </div>
+
+        <div class="alp__inner">
+            <div class="container">
+                <div class="achievement-list achievement-list--row">
+                    <a ui-sref="main.achievementView({id: m.id})" ng-repeat="m in ach.list"
+                       class="al__it">
+                        <div class="al__it__media">
+                            <div class="al__it__media__it">
+                                <img ng-src="{{ ::(m.iconUrl|imageResize:{w: 75, h: 75}) }}" class="image-ach" />
+                            </div>
+                            <div class="al__it__media__it">
+                                <img ng-src="{{ ::(m.user.avatar|imageResize:{w: 100, h: 100}) }}" class="image-user" />
+                            </div>
+                        </div>
+                        <div class="al__it__info">
+                            <p class="al__it__title">{{::m.title}}</p>
+                            <p class="al__it__user">
+                                {{::m.user.fullName}} &#183; {{::m.created}}
+                            </p>
+                            <div class="al__it__bottom">
+                                <span class="al__it__stat">
+                                    <span class="icon-ok"></span>
+                                    <span class="al__it__stat__count">{{::m.voice.for}}</span>
+                                </span>
+                                <span class="al__it__stat">
+                                    <span class="icon-fail"></span>
+                                    <span class="al__it__stat__count">{{::m.voice.against}}</span>
+                                </span>
+                                <span class="al__it__time-left">@R("Осталось"): {{::m.timeSpent|formatWord:['@R("день")', '@R("дня")', '@R("дней")']:true}}</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div ng-if="ach.showMore" class="text-center show-more">
+                    <button ng-class="{ 'loading': ach.showMoreLoading }"
+                            ng-click="ach.loadMore()"
+                            type="button" class="show-more__btn">
+                        @R("Показать ещё")
+                    </button>
+                </div>
+                <div ng-if="!ach.list.lenght" class="alert alert-info text-center">
+                    @R("Ничего не найдено. Попробуйте изменить критерии поиска.")
                 </div>
             </div>
-            <a ui-sref="main.achievementAdd" class="btn btn-fill-green alp__link">+ @R("Подать заявку")</a>
         </div>
     </div>
 
-    <div class="alp__inner"
-         data-loader="ach.loader">    
-        <div class="container">
-            <div class="achievement-list achievement-list--row">
-                <a ui-sref="main.achievementView({id: m.id})" ng-repeat="m in ach.list"
-                    class="al__it">
-                    <div class="al__it__media">
-                        <div class="al__it__media__it">
-                            <img ng-src="{{ ::(m.iconUrl|imageResize:{w: 75, h: 75}) }}" class="image-ach" />
-                        </div>
-                        <div class="al__it__media__it">
-                            <img ng-src="{{ ::(m.user.avatar|imageResize:{w: 100, h: 100}) }}" class="image-user" />
-                        </div>
-                    </div>
-                    <div class="al__it__info">
-                        <p class="al__it__title">{{::m.title}}</p>
-                        <p class="al__it__user">
-                            {{::m.user.fullName}} &#183; {{::m.created}}
-                        </p>
-                        <div class="al__it__bottom">
-                            <span class="al__it__stat">
-                                <span class="icon-ok"></span>
-                                <span class="al__it__stat__count">{{::m.voice.for}}</span>
-                            </span>
-                            <span class="al__it__stat">
-                                <span class="icon-fail"></span>
-                                <span class="al__it__stat__count">{{::m.voice.against}}</span>
-                            </span>
-                            <span class="al__it__time-left">@R("Осталось"): {{::m.timeSpent|formatWord:['@R("день")', '@R("дня")', '@R("дней")']:true}}</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
     <div ng-if="ach.pageError"
          class="server-error server-error--dark">
         <div class="container">

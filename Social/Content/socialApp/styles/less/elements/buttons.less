@@ -71,7 +71,10 @@ button {
 }
 
 .btn {
+    font-family: 'F1 Regular';
+    transition: all 200ms linear;
     position: relative;
+
     &:focus {
         outline: none !important;
     }
@@ -127,12 +130,13 @@ button {
 }
 
 @keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 /* /Mixins */
 
@@ -144,11 +148,6 @@ button {
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
     .custom__button-variant(#fff, @fill, darken(@fill, 5%), lighten(@fill, 10%), @fill);
     .button-size(0, 17px, 0.786em, 25px, 50px);
-}
-
-.btn {
-    font-family: 'F1 Regular';
-    transition: all 200ms linear;
 }
 
 .btn-fill-green {

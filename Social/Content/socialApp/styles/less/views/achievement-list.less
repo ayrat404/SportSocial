@@ -1,10 +1,11 @@
-﻿/* Achievement list
+﻿﻿/* Achievement list
 ---------------------------------------------------------------------------------- */
 
 .achievement-list-page {
     .alp__filter {
         height: 85px;
         background-color: @brand-gray3;
+
         .fs-radio {
             margin: 0 6px;
         }
@@ -13,22 +14,38 @@
     .alp__inner {
         padding: 30px 0;
     }
+
     .alp__filter__type {
         display: inline-block;
         width: 185px;
         margin-top: 30px;
         margin-right: 30px;
     }
+
     .alp__filter__toggle {
         display: inline-block;
         vertical-align: middle;
     }
+
     .alp__link {
         float: right;
         margin-top: 30px;
     }
 }
 
+.show-more {
+    margin: 30px 0;
+
+    .show-more__btn {
+        .btn();
+        font-size: 14px;
+        color: @brand-gray5;
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+        background: #fff;
+        border-radius: 30px;
+        padding: 3px 22px;
+    }
+}
 
 
 /* /Achievement list

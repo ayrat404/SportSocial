@@ -1,4 +1,3 @@
-﻿# CoffeeScript
 app = angular.module('app', [
     'ui.router',
     'ui.bootstrap',
@@ -65,7 +64,7 @@ app = angular.module('app', [
                     controller: 'achievementViewController'
                     controllerAs: 'ach'
         .state 'main.achievementList',
-            url: '/achievements'
+            url: '/achievements?actual&status&type&count&page'
             views:
                 'socialContent@main':
                     templateUrl: tmplView 'achievement/achievement-list'
@@ -153,5 +152,4 @@ app = angular.module('app', [
         return
 ])
 
-app
-.constant('templateUrl', '/template')
+app.constant('templateUrl', '/template')
