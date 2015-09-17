@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using BLL.Comments.Objects;
 using BLL.Common.Objects;
 using BLL.Common.Services.CurrentUser;
+using DAL.DomainModel.Achievement;
 using DAL.DomainModel.BlogEntities;
 using DAL.DomainModel.ConferenceEntities;
 using DAL.DomainModel.FeedBackEntities;
@@ -51,6 +52,8 @@ namespace BLL.Comments.Impls
                     return typeof (Feedback);
                 case CommentItemType.Record:
                     return typeof (Journal);
+                case CommentItemType.Achievement:
+                    return typeof (Achievement);
             }
             return null;
         }
@@ -67,6 +70,8 @@ namespace BLL.Comments.Impls
                     return typeof (FeedbackComment);
                 case CommentItemType.Record:
                     return typeof (JournalComment);
+                case CommentItemType.Achievement:
+                    return typeof (AchievementComment);
             }
             return null;
         }

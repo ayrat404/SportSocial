@@ -130,10 +130,28 @@ namespace DAL
             //    });
 
             modelBuilder.Entity<AchievementMedia>()
-                .HasRequired(t => t.Enity)
+                .HasOptional(t => t.Enity)
                 .WithMany(t => t.AchievementMedia)
                 .HasForeignKey(j => j.EntityId)
                 .WillCascadeOnDelete(true);
+
+            modelBuilder.Entity<AchievementVoice>()
+                .HasRequired(t => t.User)
+                .WithMany()
+                .HasForeignKey(j => j.UserId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<AchievementComment>()
+                .HasRequired(t => t.User)
+                .WithMany()
+                .HasForeignKey(j => j.UserId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<AchievementCommentRating>()
+                .HasRequired(t => t.User)
+                .WithMany()
+                .HasForeignKey(j => j.UserId)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<JournalRating>()
                 .HasRequired(t => t.User)
@@ -152,12 +170,6 @@ namespace DAL
         {
             base.Dispose(disposing);
         }
-    }
-
-    public enum AchievementStatus
-    {
-        InCreating,
-        Started,
     }
 
     public class DbInit: CreateDatabaseIfNotExists<EntityDbContext>

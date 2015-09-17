@@ -3,6 +3,7 @@ using BLL.Common.Objects;
 using BLL.Common.Services.CurrentUser;
 using BLL.Rating.Enums;
 using BLL.Rating.Models;
+using DAL.DomainModel.Achievement;
 using DAL.DomainModel.BlogEntities;
 using DAL.DomainModel.FeedBackEntities;
 using DAL.DomainModel.JournalEntities;
@@ -43,10 +44,14 @@ namespace BLL.Rating.Impls
                     return typeof (FeedbackComment);
                 case RatingEntityType.Record:
                     return typeof (Journal);
-                case RatingEntityType.Comment:
+                case RatingEntityType.RecordComment:
                     return typeof (JournalComment);
-                case RatingEntityType.Media:
+                case RatingEntityType.RecordMeida:
                     return typeof (JournalMedia);
+                case RatingEntityType.Achievement:
+                    return typeof (Achievement);
+                case RatingEntityType.AchievementComment:
+                    return typeof (AchievementComment);
             }
             return null;
         }
@@ -65,10 +70,14 @@ namespace BLL.Rating.Impls
                     return typeof (FeedbackCommentRating);
                 case RatingEntityType.Record:
                     return typeof (JournalRating);
-                case RatingEntityType.Comment:
+                case RatingEntityType.RecordComment:
                     return typeof (JournalCommentRating);
-                case RatingEntityType.Media:
+                case RatingEntityType.RecordMeida:
                     return typeof (JournalMediaRating);
+                case RatingEntityType.Achievement:
+                    return typeof (AchievementRating);
+                case RatingEntityType.AchievementComment:
+                    return typeof (AchievementCommentRating);
             }
             return null;
         }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using BLL.Common.Objects;
 using BLL.Common.Services.CurrentUser;
 using BLL.Infrastructure.Map;
@@ -9,6 +10,7 @@ using BLL.Storage;
 using BLL.Storage.Impls.Enums;
 using DAL;
 using DAL.DomainModel.Achievement;
+using DAL.DomainModel.Achievement.Objects;
 using DAL.Repository.Interfaces;
 
 namespace BLL.Social.Achievements.Impls
@@ -40,21 +42,46 @@ namespace BLL.Social.Achievements.Impls
 
         public ServiceResult CreateOrUpdateAchievement(AchievementCreateVm model)
         {
-            var ach = _achievementRepository.GetTempAchievement(_currentUser.UserId) ?? new Achievement();
-            ach.Step = model.HasVideo() ? 2 : 1;
-            ach.Status = AchievementStatus.InCreating;
-            ach.UserId = _currentUser.UserId;
-            ach.TypeId = model.Type.Id;
-            ach.Value = model.Type.Value.ToString();
-            ach.DurationDays = DurationDays;
-            _achievementRepository.Add(ach);
-            _achievementRepository.SaveChanges();
+            var ach = _achievementRepository.GetTempAchievement(_currentUser.UserId);
+            AddOrUpdateAchievement(ach, model);
             if (model.HasVideo())
             {
                 _videoService.AttachVideosToEntity(new List<MediaVm>() {model.Video}, ach.Id, UploadType.Achievement);
                 CheckAndCompleteAchievement(ach);
             }
             return ServiceResult.SuccessResult();
+        }
+
+        public IEnumerable<string> GetFilter()
+        {
+            return _achievementRepository.GetTypes().Select(r => r.Title);
+        }
+
+        public AchievementDisplayVm GetAchivement(int id)
+        {
+            var ach = _achievementRepository.GetAchievement(id);
+            return ach.MapTo<AchievementDisplayVm>();
+        }
+
+        private void AddOrUpdateAchievement(Achievement ach, AchievementCreateVm model)
+        {
+            bool isNew = false;
+            if (ach == null)
+            {
+                ach = new Achievement();
+                isNew = true;
+            }
+            ach.Step = model.HasVideo() ? 2 : 1;
+            ach.Status = AchievementStatus.InCreating;
+            ach.UserId = _currentUser.UserId;
+            ach.TypeId = model.Type.Id;
+            ach.Value = model.Type.Value.ToString();
+            ach.DurationDays = DurationDays;
+            if (isNew)
+                _achievementRepository.Add(ach);
+            else
+                _achievementRepository.Update(ach);
+            _achievementRepository.SaveChanges();
         }
 
         private void CheckAndCompleteAchievement(Achievement ach)

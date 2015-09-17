@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Data.Entity.SqlServer;
 using System.Linq;
 using DAL.DomainModel.Achievement;
+using DAL.DomainModel.Achievement.Objects;
 using DAL.Repository.Interfaces;
 
 namespace DAL.Repository
@@ -28,11 +29,23 @@ namespace DAL.Repository
                 .ToList();
         }
 
+        public Achievement GetAchievement(int id)
+        {
+            return Queryable<Achievement>()
+                .Include(a => a.AchievementMedia)
+                .Include(a => a.Comments)
+                .Include(a => a.Comments.Select(c => c.RatingEntites))
+                .Include(a => a.RatingEntites)
+                .Include(a => a.User)
+                .Include(a => a.AchievementType)
+                .Single(a => a.Id == id);
+        }
+
         public List<Achievement> GetThreeRandomAchievements()
         {
             return Queryable<Achievement>()
                 .Where(a => a.Status == AchievementStatus.Started)
-                .Include(a => a.AchievementRatings)
+                .Include(a => a.RatingEntites)
                 .Include(a => a.User)
                 .Include(a => a.AchievementType)
                 .OrderBy(a => SqlFunctions.Rand(1))

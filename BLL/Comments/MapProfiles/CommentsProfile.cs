@@ -4,6 +4,7 @@ using BLL.Login.Impls;
 using BLL.Rating;
 using BLL.Social.Journals.Objects;
 using DAL.DomainModel;
+using DAL.DomainModel.Achievement;
 using DAL.DomainModel.BlogEntities;
 using DAL.DomainModel.ConferenceEntities;
 using DAL.DomainModel.FeedBackEntities;
@@ -56,6 +57,11 @@ namespace BLL.Comments.MapProfiles
             //    .ForMember(dest => dest.Text, opt => opt.MapFrom(src => src.Text));
 
             CreateMap<JournalComment, Comment>()
+                .IncludeBase<CommentEntityBase, Comment>()
+                .ForMember(dest => dest.CommentFor, opt => opt.MapFrom(src => MapCommentFor(src)))
+                .ForMember(dest => dest.Likes, opt => opt.MapFrom(src => RatingMapper.MapRating(src)));
+
+            CreateMap<AchievementComment, Comment>()
                 .IncludeBase<CommentEntityBase, Comment>()
                 .ForMember(dest => dest.CommentFor, opt => opt.MapFrom(src => MapCommentFor(src)))
                 .ForMember(dest => dest.Likes, opt => opt.MapFrom(src => RatingMapper.MapRating(src)));

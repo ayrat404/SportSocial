@@ -7,15 +7,15 @@ namespace BLL.Social.Achievements.Objects
     {
         public AchievementPreviewVm()
         {
-            Voice = new AchievmentVoice();
+            Voice = new AchievmentVoiceVm();
         }
 
         public int Id { get; set; }
-        public string IconUrl { get; set; }
+        public string CupImage { get; set; }
         public string Title { get; set; }
         public DateTime Created { get; set; }
-        public int TimeSpent { get; set; }
-        public AchievmentVoice Voice { get; set; }
-        public AuthorVm User { get; set; }
+        public long Timestamp { get; set; }
+        public AchievmentVoiceVm Voice { get; set; }
+        public AuthorVm Author { get; set; }
     }
 }

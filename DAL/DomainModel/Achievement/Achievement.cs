@@ -1,17 +1,32 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics;
+using System.Linq;
+using DAL.DomainModel.Achievement.Objects;
 using DAL.DomainModel.Interfaces;
-using DAL.Repository;
 
 namespace DAL.DomainModel.Achievement
 {
-    public class Achievement: IEntity, IAuditable, IDeletable
+    public class AchievementVoice : IEntity
+    {
+        public int Id { get; set; }
+        public bool VoteFor { get; set; }
+        public int AchievementId { get; set; }
+        public int UserId { get; set; }
+
+        public AppUser User { get; set; }
+        public Achievement Achievement { get; set; }
+    }
+
+    public class Achievement: IEntity, IAuditable, IDeletable, IHasComments<AchievementComment>, IHasRating<AchievementRating>
     {
         public Achievement()
         {
             AchievementMedia = new List<AchievementMedia>();
-            AchievementRatings = new List<AchievementRating>();
+            RatingEntites = new List<AchievementRating>();
+            Comments = new List<AchievementComment>();
+            Voices = new List<AchievementVoice>();
         }
 
         public int Id { get; set; }
@@ -28,6 +43,8 @@ namespace DAL.DomainModel.Achievement
 
         public int DurationDays { get; set; }
 
+        public int TotalRating { get; set; }
+
         public DateTime? Started { get; set; }
 
         public DateTime Created { get; set; }
@@ -41,12 +58,23 @@ namespace DAL.DomainModel.Achievement
         //    DateTime.Now - new DateTime()
         //}
 
+        public AchievementStatus GetStatus()
+        {
+            if (Status == AchievementStatus.InCreating || !Started.HasValue)
+                return Status;
+            if ((DurationDays*3600*24*1000 - (DateTime.Now - Started.Value).Milliseconds) > 0)
+                return AchievementStatus.Started;
+            double percent = (double)Voices.Count(v => v.VoteFor)/Voices.Count(v => !v.VoteFor);
+            return percent > 0.75 ? AchievementStatus.Credit : AchievementStatus.Fail;
+        }
+
         [ForeignKey("UserId")]
         public AppUser User { get; set; }
         [ForeignKey("TypeId")]
         public AchievementType AchievementType { get; set; }
-        public ICollection<AchievementRating> AchievementRatings { get; set; }
         public ICollection<AchievementMedia> AchievementMedia { get; set; }
-
+        public ICollection<AchievementRating> RatingEntites { get; set; }
+        public ICollection<AchievementComment> Comments { get; set; }
+        public ICollection<AchievementVoice> Voices { get; set; }
     }
 }

@@ -15,6 +15,7 @@ namespace BLL.Common.Objects
         Article,
         Conference,
         Feedback,
-        Record
+        Record,
+        Achievement
     }
 }

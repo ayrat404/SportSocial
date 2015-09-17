@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using BLL.Common.Objects;
 using BLL.Social.Achievements;
 using BLL.Social.Achievements;
 using BLL.Social.Achievements.Objects;
@@ -30,6 +31,28 @@ namespace Social.Controllers
         public ApiResult Temp(AchievementCreateVm model)
         {
             return ApiResult(_achievementService.CreateOrUpdateAchievement(model));
+
+        }        
+        
+        [Route("temp")]
+        [HttpPut]
+        public ApiResult TempUpdate(AchievementCreateVm model)
+        {
+            return ApiResult(_achievementService.CreateOrUpdateAchievement(model));
         }
+
+        [Route("filter")]
+        [HttpGet]
+        public ApiResult Filter()
+        {
+            return ApiResult(new {types = _achievementService.GetFilter()});
+        }
+
+        [Route("{id}")]
+        public ApiResult Get(int id)
+        {
+            return ApiResult(_achievementService.GetAchivement(id));
+        }
+
     }
 }

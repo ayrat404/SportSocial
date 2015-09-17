@@ -8,5 +8,6 @@ namespace DAL.Repository.Interfaces
         List<Achievement> GetThreeRandomAchievements();
         Achievement GetTempAchievement(int userId);
         List<AchievementType> GetTypes();
+        Achievement GetAchievement(int id);
     }
 }
