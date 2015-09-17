@@ -18,7 +18,8 @@ namespace DAL.Repository
             return Queryable<Achievement>()
                 .Include(a => a.AchievementMedia)
                 .Include(a => a.User)
-                .SingleOrDefault(a => a.UserId == userId && a.Status == AchievementStatus.InProgress);
+                .Include(a => a.AchievementType)
+                .SingleOrDefault(a => a.UserId == userId && a.Status == AchievementStatus.InCreating);
         }
 
         public List<AchievementType> GetTypes()
@@ -30,7 +31,7 @@ namespace DAL.Repository
         public List<Achievement> GetThreeRandomAchievements()
         {
             return Queryable<Achievement>()
-                .Where(a => a.Status == AchievementStatus.Created)
+                .Where(a => a.Status == AchievementStatus.Started)
                 .Include(a => a.AchievementRatings)
                 .Include(a => a.User)
                 .Include(a => a.AchievementType)

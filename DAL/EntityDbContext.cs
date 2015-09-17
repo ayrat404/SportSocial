@@ -156,8 +156,8 @@ namespace DAL
 
     public enum AchievementStatus
     {
-        InProgress,
-        Created,
+        InCreating,
+        Started,
     }
 
     public class DbInit: CreateDatabaseIfNotExists<EntityDbContext>

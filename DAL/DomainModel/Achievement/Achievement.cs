@@ -2,11 +2,18 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using DAL.DomainModel.Interfaces;
+using DAL.Repository;
 
 namespace DAL.DomainModel.Achievement
 {
     public class Achievement: IEntity, IAuditable, IDeletable
     {
+        public Achievement()
+        {
+            AchievementMedia = new List<AchievementMedia>();
+            AchievementRatings = new List<AchievementRating>();
+        }
+
         public int Id { get; set; }
 
         public int Step { get; set; }
@@ -19,7 +26,9 @@ namespace DAL.DomainModel.Achievement
 
         public int UserId { get; set; }
 
-        public TimeSpan Duration { get; set; }
+        public int DurationDays { get; set; }
+
+        public DateTime? Started { get; set; }
 
         public DateTime Created { get; set; }
 
