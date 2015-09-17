@@ -21,6 +21,12 @@ namespace DAL.Repository
                 .SingleOrDefault(a => a.UserId == userId && a.Status == AchievementStatus.InProgress);
         }
 
+        public List<AchievementType> GetTypes()
+        {
+            return Queryable<AchievementType>()
+                .ToList();
+        }
+
         public List<Achievement> GetThreeRandomAchievements()
         {
             return Queryable<Achievement>()
@@ -32,8 +38,5 @@ namespace DAL.Repository
                 .Take(3)
                 .ToList();
         }
-
-
-
     }
 }

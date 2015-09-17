@@ -41,7 +41,7 @@ namespace BLL.Social.Journals
             _repository.SaveChanges();
             _tagService.AddTags(journal.Id, journalModel.Themes);
             _imageService.AttachImagesToEntity(journalModel.Media.Where(m => m.Type == MediaType.Image).ToList(), journal.Id, UploadType.Journal);
-            _videoService.AttachVideosToJournal(journalModel.Media.Where(m => m.Type == MediaType.Video).ToList(), journal.Id);
+            _videoService.AttachVideosToEntity(journalModel.Media.Where(m => m.Type == MediaType.Video).ToList(), journal.Id, UploadType.Journal);
             return ServiceResult.SuccessResult(journal.MapTo<JournalDisplayVm>());
         }
 

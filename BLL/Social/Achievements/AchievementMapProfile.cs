@@ -16,10 +16,14 @@ namespace BLL.Social.Achievements
             CreateMap<Achievement, AchievementCreateVm>()
                 .ForMember(dest => dest.Step, opt => opt.MapFrom(src => src.Step))
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+                .ForMember(dest => dest.Type, opt => opt.MapFrom(src => src))
                 .ForMember(dest => dest.Video,
-                    opt => opt.MapFrom(src => MediaMapper.Map(src.AchievementMedia.FirstOrDefault())))
-                .ForMember(dest => dest.Type.Id, opt => opt.MapFrom(src => src.AchievementType.Id))
-                .ForMember(dest => dest.Type.Value, opt => opt.MapFrom(src => src.Value));
+                    opt => opt.MapFrom(src => MediaMapper.Map(src.AchievementMedia.FirstOrDefault())));
+
+            CreateMap<Achievement, ChoosedAchievmentType>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.AchievementType.Id))
+                .ForMember(dest => dest.Value, opt => opt.MapFrom(src => src.Value));;
 
             CreateMap<AchievementType, AchievementTypeVm>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
@@ -34,11 +38,13 @@ namespace BLL.Social.Achievements
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.AchievementType.Title))
                 .ForMember(dest => dest.User, opt => opt.MapFrom(src => src.User))
                 .ForMember(dest => dest.TimeSpent, opt => opt.MapFrom(src => src.AchievementType.ImgUrl))
-                .ForMember(dest => dest.Voice.For, opt => opt.MapFrom(src =>
+                .ForMember(dest => dest.Voice, opt => opt.MapFrom(src => src));
+
+            CreateMap<Achievement, AchievmentVoice>()
+                .ForMember(dest => dest.For, opt => opt.MapFrom(src =>
                     src.AchievementRatings.Count(r => r.RatingType == RatingType.Like)))
-                .ForMember(dest => dest.Voice.Against, opt => opt.MapFrom(src =>
+                .ForMember(dest => dest.Against, opt => opt.MapFrom(src =>
                     src.AchievementRatings.Count(r => r.RatingType == RatingType.Dislike)));
         }
-
     }
 }

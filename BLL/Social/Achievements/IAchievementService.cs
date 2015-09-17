@@ -1,4 +1,5 @@
 using BLL.Common.Services.CurrentUser;
+using BLL.Infrastructure.Map;
 using BLL.Social.Achievements.Objects;
 using DAL.Repository.Interfaces;
 
@@ -22,8 +23,12 @@ namespace BLL.Social.Achievements
 
         public AchievementTempVm FirstStep()
         {
+            var model = new AchievementTempVm();
             var tempAchievement = _achievementRepository.GetTempAchievement(_currentUser.UserId);
-            return null;
+            model.Model = tempAchievement.MapTo<AchievementCreateVm>();
+            model.Cards = _achievementRepository.GetTypes().MapEachTo<AchievementTypeVm>();
+            model.Marks = _achievementRepository.GetThreeRandomAchievements().MapEachTo<AchievementPreviewVm>();
+            return model;
         }
     }
 }

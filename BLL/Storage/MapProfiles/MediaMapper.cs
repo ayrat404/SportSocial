@@ -13,14 +13,19 @@ namespace BLL.Storage.MapProfiles
         {
             if (media == null)
                 return null;
-            return new MediaVm
+            var result =  new MediaVm
             {
                 Id = media.Id,
                 Url = media.Url,
-                EmbeddedUrl = YoutubeUrlHelper.EmbeddedYoutubeUrl(media.Url),
-                RemoteUrl = media.Url,
                 Type = (MediaType) media.Type
             };
+            if (result.Type == MediaType.Video)
+            {
+                result.EmbeddedUrl = YoutubeUrlHelper.EmbeddedYoutubeUrl(media.Url);
+                result.RemoteId = YoutubeUrlHelper.VideoId(media.Url);
+                result.RemoteUrl = media.Url;
+            }
+            return result;
         }
     }
 }

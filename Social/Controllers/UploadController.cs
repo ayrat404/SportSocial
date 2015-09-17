@@ -40,7 +40,7 @@ namespace Social.Controllers
         [HttpPost]
         public ApiResult AddYoutubeVideo(VideoLink link)
         {
-            var result = _videoService.AddVideo(link.Link);
+            var result = _videoService.AddVideo(link.Link, link.Type);
             var result2 =  ApiResult(result);
             return result2;
         }

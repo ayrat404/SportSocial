@@ -9,6 +9,7 @@ using BLL.Common.Services.CurrentUser;
 using BLL.Rating;
 using BLL.Rating.Enums;
 using BLL.Social.Journals.Objects;
+using BLL.Storage.MapProfiles;
 using BLL.Storage.Objects;
 using DAL.DomainModel.EnumProperties;
 using DAL.DomainModel.JournalEntities;
@@ -35,10 +36,9 @@ namespace BLL.Social.Journals.MapProfiles
             Mapper.CreateMap<JournalTag, string>().ConvertUsing(source => source.Tag.Label);
 
             CreateMap<JournalMedia, MediaVm>()
-                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
-                .ForMember(dest => dest.Type, opt => opt.MapFrom(src => (MediaType)src.Type))
-                .ForMember(dest => dest.Likes, opt => opt.MapFrom(src => RatingMapper.MapRating(src)))
-                .ForMember(dest => dest.Url, opt => opt.MapFrom(src => src.Url));
+                .ConstructUsing(MediaMapper.Map)
+                //.ForMember(dest => dest, opt => opt.MapFrom(src => MediaMapper.Map(src)))
+                .ForMember(dest => dest.Likes, opt => opt.MapFrom(src => RatingMapper.MapRating(src)));
         }
     }
 }
