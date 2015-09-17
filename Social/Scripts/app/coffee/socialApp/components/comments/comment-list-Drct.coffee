@@ -9,7 +9,7 @@ class commentList extends Directive('socialApp.directives')
                 entityType: '@'
             controller: ($scope)->
 
-                $scope.commentsLimit = 1
+                $scope.commentsLimit = 5
 
                 formWatcher = null
 

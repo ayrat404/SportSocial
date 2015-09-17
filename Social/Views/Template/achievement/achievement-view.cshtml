@@ -74,7 +74,7 @@
             <div class="view-base__comments">
                 <div class="container">
 
-                    <div class="vbc__count">{{ach.it.comments.count | formatWord:['@R("комментарий")', '@R("комментария")', '@R("комментариев")']:true}}</div>
+                    <div class="vbc__count">{{ach.it.comments.list.length | formatWord:['@R("комментарий")', '@R("комментария")', '@R("комментариев")']:true}}</div>
 
                     <comment-list ng-model="ach.it.comments"
                                   data-id="{{::ach.it.id}}"

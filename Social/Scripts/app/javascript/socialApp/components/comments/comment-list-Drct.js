@@ -12,7 +12,7 @@ commentList = (function() {
       },
       controller: function($scope) {
         var formWatcher;
-        $scope.commentsLimit = 1;
+        $scope.commentsLimit = 5;
         formWatcher = null;
         $scope.showMore = function() {
           return $scope.commentsLimit = $scope.comments.list.length;
