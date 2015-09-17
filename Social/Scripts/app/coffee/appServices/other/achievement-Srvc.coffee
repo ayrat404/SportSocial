@@ -5,9 +5,10 @@ class Achievement extends Service('appSrvc')
         base
         servicesDefault)->
 
-        urlTemp = servicesDefault.baseServiceUrl + '/achievement/temp'
-        urlBase = servicesDefault.baseServiceUrl + '/achievement'
-        urlVoice = servicesDefault.baseServiceUrl + '/achievement/voice'
+        urlTemp = servicesDefault.baseServiceUrl + '/achievement/temp'      # work with temp achievement
+        urlBase = servicesDefault.baseServiceUrl + '/achievement'           # work with achievement
+        urlVoice = servicesDefault.baseServiceUrl + '/achievement/voice'    # set voice
+        urlFilter = servicesDefault.baseServiceUrl + '/achievement/filter'  # get filter options
 
         # ---------- api for achievement create ----------
 
@@ -114,9 +115,21 @@ class Achievement extends Service('appSrvc')
 
         # get list
         # ---------------
-        getList = ->
+        getList = (data)->
             $q (resolve, reject)->
-                $http.get(urlBase).then (res)->
+                $http.get(urlBase, { params: data }).then (res)->
+                    if res.data.success
+                        resolve res.data
+                    else
+                        reject res.data
+                , (res)->
+                    reject res
+
+        # get filter prop
+        # ---------------
+        getFilterProp = ->
+            $q (resolve, reject)->
+                $http.get(urlFilter).then (res)->
                     if res.data.success
                         resolve res.data
                     else
@@ -134,4 +147,5 @@ class Achievement extends Service('appSrvc')
             getById: getById
             getList: getList
             voice: voice
+            getFilterProp: getFilterProp
         }

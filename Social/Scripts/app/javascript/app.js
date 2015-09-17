@@ -55,7 +55,7 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'fl
         }
       }
     }).state('main.achievementList', {
-      url: '/achievements',
+      url: '/achievements?actual&status&type&count&page',
       views: {
         'socialContent@main': {
           templateUrl: tmplView('achievement/achievement-list'),

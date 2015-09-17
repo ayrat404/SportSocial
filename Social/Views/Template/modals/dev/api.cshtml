@@ -20,6 +20,7 @@
         <li><a href="#api_achievement_submit">Создание заявки на достижение</a></li>
         <li><a href="#api_achievement_view">Просмотр заявки на достижение</a></li>
         <li><a href="#api_achievement_voice">Голосование за заявку на достижение</a></li>
+        <li><a href="#api_achievement_list">Просмотр списка заявок на достижение + фильтрация</a></li>
     </ul>
     <ul class="dev__api__content">
 
@@ -920,6 +921,63 @@
                     </pre>
             </b>
         </li>
+        
+        <li id="api_achievement_list" class="dev__api__row">
+            <p>При первоначальной загрузке страницы осуществляется запрос к настройкам фильтра. В данном случае это список доступных упражнений</p>
+            <code>GET: /api/achievement/filter</code>
+            <p>Запрос настроек фильтра</p>
+            <b>
+                send data:
+                <pre>
+{
+    *none*
+}
+                </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true,
+    data: {
+        types: ['Подтягивания', 'Отжимания']
+    },
+    errors: null,
+    message: null
+}
+               </pre>
+            </b>
+            <code>GET: /api/achievement</code>
+            <p>Запрос списка заявок</p>
+            <b>
+                send data:
+                <pre>
+{
+    actual: closed/opened * прошедшие достижения или нет
+    status: all/fail/credit * все, незачтенные, зачтенные (относится только к прошедшим)
+    type: 'Подтягивания' * упражнение (если параметр не приходит, то все упражнения)
+    count: 20 * количество заявок
+    page: 6 * страница
+    
+}
+                </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true,
+    data: {
+        list: [] * список заявок, модель как на странице создания
+        isMore: true/false * есть или нет ещё заявки по текущим параметрам (для подгрузки)
+    },
+    errors: null,
+    message: null
+}
+                </pre>
+            </b>
+        </li>
+
 
 
     </ul>

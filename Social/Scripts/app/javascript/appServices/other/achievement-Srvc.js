@@ -2,10 +2,11 @@ var Achievement;
 
 Achievement = (function() {
   function Achievement($q, $http, base, servicesDefault) {
-    var cancelTemp, getById, getList, getTemp, post, put, saveTemp, urlBase, urlTemp, urlVoice, voice;
+    var cancelTemp, getById, getFilterProp, getList, getTemp, post, put, saveTemp, urlBase, urlFilter, urlTemp, urlVoice, voice;
     urlTemp = servicesDefault.baseServiceUrl + '/achievement/temp';
     urlBase = servicesDefault.baseServiceUrl + '/achievement';
     urlVoice = servicesDefault.baseServiceUrl + '/achievement/voice';
+    urlFilter = servicesDefault.baseServiceUrl + '/achievement/filter';
     post = function(data) {
       return $q(function(resolve, reject) {
         return $http.post(urlTemp, data).then(function(res) {
@@ -111,9 +112,24 @@ Achievement = (function() {
         }
       });
     };
-    getList = function() {
+    getList = function(data) {
       return $q(function(resolve, reject) {
-        return $http.get(urlBase).then(function(res) {
+        return $http.get(urlBase, {
+          params: data
+        }).then(function(res) {
+          if (res.data.success) {
+            return resolve(res.data);
+          } else {
+            return reject(res.data);
+          }
+        }, function(res) {
+          return reject(res);
+        });
+      });
+    };
+    getFilterProp = function() {
+      return $q(function(resolve, reject) {
+        return $http.get(urlFilter).then(function(res) {
           if (res.data.success) {
             return resolve(res.data);
           } else {
@@ -130,7 +146,8 @@ Achievement = (function() {
       cancelTemp: cancelTemp,
       getById: getById,
       getList: getList,
-      voice: voice
+      voice: voice,
+      getFilterProp: getFilterProp
     };
   }
 

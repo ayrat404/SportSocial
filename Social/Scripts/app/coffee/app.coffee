@@ -65,7 +65,7 @@ app = angular.module('app', [
                     controller: 'achievementViewController'
                     controllerAs: 'ach'
         .state 'main.achievementList',
-            url: '/achievements'
+            url: '/achievements?actual&status&type&count&page'
             views:
                 'socialContent@main':
                     templateUrl: tmplView 'achievement/achievement-list'
