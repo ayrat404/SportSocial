@@ -11,9 +11,9 @@ class YoutubeVideo extends Service('appSrvc')
         # ---------------
         getVideoInfo = (data)->
             $q (resolve, reject)->
-                if link &&
-                  typeof link == 'string' &&
-                  link.length > 0
+                if data &&
+                  typeof data.link == 'string' &&
+                  data.type
                     $http.post(url, data).then((res)->
                         if res.data.success
                             resolve(res.data)
