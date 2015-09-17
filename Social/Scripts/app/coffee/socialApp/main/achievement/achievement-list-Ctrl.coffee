@@ -139,4 +139,3 @@ class AchievementList extends Controller('socialApp.controllers')
 #                fullName: 'Mikki Mouse'
 #            }
 #        }]
-

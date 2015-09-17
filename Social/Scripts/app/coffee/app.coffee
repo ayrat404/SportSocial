@@ -1,4 +1,3 @@
-﻿# CoffeeScript
 app = angular.module('app', [
     'ui.router',
     'ui.bootstrap',
@@ -153,5 +152,4 @@ app = angular.module('app', [
         return
 ])
 
-app
-.constant('templateUrl', '/template')
+app.constant('templateUrl', '/template')
