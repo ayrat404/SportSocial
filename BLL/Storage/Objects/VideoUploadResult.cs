@@ -4,6 +4,7 @@ namespace BLL.Storage.Objects
     {
         public int Id { get; set; }
         public string RemoteId { get; set; }
+        public string RemoteUrl { get; set; }
         public string EmbeddedUrl { get; set; }
         public string Img { get; set; }
     }

@@ -6,8 +6,8 @@ namespace BLL.Social.Achievements.Objects
     {
         public AchievementCreateVm Model { get; set; }
 
-        public List<AchievementTypeVm> Cards { get; set; }
+        public IEnumerable<AchievementTypeVm> Cards { get; set; }
 
-        public List<AchievementPreviewVm> Marks { get; set; }
+        public IEnumerable<AchievementPreviewVm> Marks { get; set; }
     }
 }

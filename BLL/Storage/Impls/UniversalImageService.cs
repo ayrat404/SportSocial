@@ -7,13 +7,49 @@ using BLL.Common.Services.CurrentUser;
 using BLL.Social.Journals.Objects;
 using BLL.Storage.Impls.Enums;
 using DAL.DomainModel;
+using DAL.DomainModel.Achievement;
 using DAL.DomainModel.BlogEntities;
 using DAL.DomainModel.JournalEntities;
 using DAL.Repository.Interfaces;
 
 namespace BLL.Storage.Impls
 {
-    public class UniversalImageService: IImageService
+    public abstract class UploadServiceBase
+    {
+        protected Type GetMediaEntity(UploadType type)
+        {
+            switch (type)
+            {
+                case UploadType.Avatar:
+                    return typeof(UserAvatarPhoto);
+                case UploadType.Article:
+                    return typeof(BlogImage);
+                case UploadType.Journal:
+                    return typeof(JournalMedia);
+                case UploadType.Achievement:
+                    return typeof(AchievementMedia);
+            }
+            throw new NotSupportedException();
+        }
+
+        protected Type GetEntity(UploadType type)
+        {
+            switch (type)
+            {
+                case UploadType.Avatar:
+                    return typeof(AppUser);
+                case UploadType.Article:
+                    return typeof(Post);
+                case UploadType.Journal:
+                    return typeof(Journal);
+                case UploadType.Achievement:
+                    return typeof(Achievement);
+            }
+            throw new NotSupportedException();
+        }
+    }
+
+    public class UniversalImageService: UploadServiceBase, IImageService
     {
         private const string VirtualBlogImagePath = "/Storage/Images/Blog/"; //TODO â AppSettings
         private const string VirtualJournslImagePath = "/Storage/Images/Journal/"; //TODO â AppSettings
@@ -41,36 +77,8 @@ namespace BLL.Storage.Impls
         private IImageSaver CreateGenericService(UploadType type)
         {
             Type ratingServiseType = typeof(ImageSaver<,>)
-                .MakeGenericType(GetImageEntity(type), GetEntity(type));
+                .MakeGenericType(GetMediaEntity(type), GetEntity(type));
             return (IImageSaver)Activator.CreateInstance(ratingServiseType, _currentUser, _repository);
-        }
-
-        private Type GetEntity(UploadType type)
-        {
-            switch (type)
-            {
-                case UploadType.Avatar:
-                    return typeof (UserAvatarPhoto);
-                case UploadType.Article:
-                    return typeof (BlogImage);
-                case UploadType.Journal:
-                    return typeof (JournalMedia);
-            }
-            throw new NotSupportedException();
-        }
-
-        private Type GetImageEntity(UploadType type)
-        {
-            switch (type)
-            {
-                case UploadType.Avatar:
-                    return typeof (AppUser);
-                case UploadType.Article:
-                    return typeof (Post);
-                case UploadType.Journal:
-                    return typeof (Journal);
-            }
-            throw new NotSupportedException();
         }
 
         private string GetPath(UploadType type)

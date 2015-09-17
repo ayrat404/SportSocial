@@ -9,6 +9,7 @@ namespace BLL.Social.Journals.Objects
         public MediaType Type { get; set; }
         public string Url { get; set; }
         public string EmbeddedUrl { get; set; }
+        public string RemoteId { get; set; }
         public string RemoteUrl { get; set; }
         public RatingInfo Likes { get; set; }
     }

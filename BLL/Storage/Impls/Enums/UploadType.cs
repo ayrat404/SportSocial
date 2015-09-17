@@ -5,6 +5,7 @@ namespace BLL.Storage.Impls.Enums
         Avatar,
         Article,
         Album,
-        Journal
+        Journal,
+        Achievement
     }
 }
