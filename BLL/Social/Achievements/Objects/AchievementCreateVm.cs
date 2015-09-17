@@ -7,7 +7,7 @@ namespace BLL.Social.Achievements.Objects
     {
         public AchievementCreateVm()
         {
-            Type = new ChoosedAchievmentType();
+            //Type = new ChoosedAchievmentType();
         }
         public int Id { get; set; }
 
@@ -18,5 +18,10 @@ namespace BLL.Social.Achievements.Objects
         public ChoosedAchievmentType Type { get; set; }
 
         public MediaVm Video { get; set; }
+
+        public bool HasVideo()
+        {
+            return Video != null && Video.Id > 0;
+        }
     }
 }

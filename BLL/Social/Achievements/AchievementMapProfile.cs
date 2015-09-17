@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using AutoMapper;
 using BLL.Social.Achievements.Objects;
 using BLL.Social.Journals.Objects;
@@ -23,7 +24,7 @@ namespace BLL.Social.Achievements
 
             CreateMap<Achievement, ChoosedAchievmentType>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.AchievementType.Id))
-                .ForMember(dest => dest.Value, opt => opt.MapFrom(src => src.Value));;
+                .ForMember(dest => dest.Value, opt => opt.MapFrom(src => Convert.ToInt32(src.Value)));;
 
             CreateMap<AchievementType, AchievementTypeVm>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
@@ -37,7 +38,7 @@ namespace BLL.Social.Achievements
                 .ForMember(dest => dest.IconUrl, opt => opt.MapFrom(src => src.AchievementType.ImgUrl))
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.AchievementType.Title))
                 .ForMember(dest => dest.User, opt => opt.MapFrom(src => src.User))
-                .ForMember(dest => dest.TimeSpent, opt => opt.MapFrom(src => src.AchievementType.ImgUrl))
+                .ForMember(dest => dest.TimeSpent, opt => opt.MapFrom(src => src.DurationDays - (DateTime.Now - src.Started).Value.Days))
                 .ForMember(dest => dest.Voice, opt => opt.MapFrom(src => src));
 
             CreateMap<Achievement, AchievmentVoice>()

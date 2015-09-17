@@ -23,6 +23,8 @@ namespace DAL.DomainModel
 
         public Sex Sex { get; set; }
 
+        public int AchievementVoiceCount { get; set; }
+
         public SportExperience Experience { get; set; }
 
         public virtual AppUser AppUser { get; set; }
