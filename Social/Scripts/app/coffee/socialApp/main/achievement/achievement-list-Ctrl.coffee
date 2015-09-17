@@ -106,6 +106,7 @@ class AchievementList extends Controller('socialApp.controllers')
 #                avatar: 'avatarUrl'
 #                fullName: 'Mikki Mouse'
 #            }
+#            status: 'fail'
 #        }
 #        {
 #            id: 2
@@ -122,6 +123,7 @@ class AchievementList extends Controller('socialApp.controllers')
 #                avatar: 'avatarUrl'
 #                fullName: 'Mikki Mouse'
 #            }
+#            status: 'credit'
 #        }
 #        {
 #            id: 3
@@ -138,4 +140,5 @@ class AchievementList extends Controller('socialApp.controllers')
 #                avatar: 'avatarUrl'
 #                fullName: 'Mikki Mouse'
 #            }
+#            status: null
 #        }]

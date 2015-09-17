@@ -31,6 +31,34 @@
         }
     }
 
+    .al__it__status {
+        display: none;
+    }
+
+    .al__it--fail,
+    .al__it--credit {
+        .al__it__status {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 8px;
+        }
+    }
+
+    .al__it--fail {
+        .image-ach {
+            opacity: .3;
+        }
+        .al__it__status {
+            .sprite(@ach-status-fail);
+        }
+    }
+
+    .al__it--credit {
+        .al__it__status {
+           .sprite(@ach-status-credit);
+        }
+    }
+
     .al__it__media {
         width: @ach-row-height * 2;
         float: left;
@@ -43,6 +71,7 @@
         float: left;
         position: relative;
         text-align: center;
+
         .image-ach {
             height: 75px;
             width: 75px;
@@ -53,6 +82,7 @@
             right: 0;
             margin: auto;
         }
+
         .image-user {
             height: @ach-row-height;
             width: @ach-row-height;
