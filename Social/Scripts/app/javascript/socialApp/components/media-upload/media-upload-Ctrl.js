@@ -6,7 +6,10 @@ MediaUpload = (function() {
       $scope.media = [];
     }
     $scope.sendVideoLink = function(link) {
-      return youtubeVideoService.getVideoInfo(link).then(function(res) {
+      return youtubeVideoService.getVideoInfo({
+        link: link,
+        type: 'journal'
+      }).then(function(res) {
         $scope.youtubeLink = '';
         return $scope.media.push({
           id: res.data.id,

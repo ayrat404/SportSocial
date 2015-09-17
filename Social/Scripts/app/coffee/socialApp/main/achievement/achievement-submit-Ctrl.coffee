@@ -87,7 +87,7 @@ class AchievementSubmit extends Controller('socialApp.controllers')
                     _this.second.ePlayer.pauseVideo()
                 _this.second.isExampleShow = !_this.second.isExampleShow
             getVideoInfo: ->
-                youtubeVideoService.getVideoInfo(_this.model.video.remoteUrl).then (res)->
+                youtubeVideoService.getVideoInfo(link: _this.model.video.remoteUrl, type: 'achievement').then (res)->
                     _this.model.video.id = res.data.id
                     _this.second.isExampleShow = false
                 , (res)->

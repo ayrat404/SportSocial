@@ -10,7 +10,7 @@ class MediaUpload extends Controller('socialApp.controllers')
         # send youtube link & get video params
         # ---------------
         $scope.sendVideoLink = (link)->
-            youtubeVideoService.getVideoInfo(link).then((res)->
+            youtubeVideoService.getVideoInfo(link: link, type: 'journal').then((res)->
                 # {red.data = { id: xxx, remoteId: xxx, img: xxx }}
                 $scope.youtubeLink = ''
                 $scope.media.push(

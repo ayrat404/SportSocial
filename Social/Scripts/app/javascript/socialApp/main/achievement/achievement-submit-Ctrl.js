@@ -68,7 +68,10 @@ AchievementSubmit = (function() {
         return _this.second.isExampleShow = !_this.second.isExampleShow;
       },
       getVideoInfo: function() {
-        return youtubeVideoService.getVideoInfo(_this.model.video.remoteUrl).then(function(res) {
+        return youtubeVideoService.getVideoInfo({
+          link: _this.model.video.remoteUrl,
+          type: 'achievement'
+        }).then(function(res) {
           _this.model.video.id = res.data.id;
           return _this.second.isExampleShow = false;
         }, function(res) {
