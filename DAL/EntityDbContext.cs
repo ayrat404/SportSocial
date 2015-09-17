@@ -1,7 +1,7 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using DAL.DomainModel;
+using DAL.DomainModel.Achievement;
 using DAL.DomainModel.BlogEntities;
 using DAL.DomainModel.ConferenceEntities;
 using DAL.DomainModel.FeedBackEntities;
@@ -46,6 +46,11 @@ namespace DAL
         public DbSet<JournalCommentRating> JournalCommentRatings { get; set; }
         public DbSet<JournalMedia> JournalImages { get; set; }
         public DbSet<JournalTag> JournalTags { get; set; }
+
+        public DbSet<Achievement> Achievements { get; set; }
+        public DbSet<AchievementType> AchievementTypes { get; set; }
+        public DbSet<AchievementMedia> AchievementMedia { get; set; }
+        public DbSet<AchievementRating> AchievementRatings { get; set; }
 
         public DbSet<Tag> Tags { get; set; }
 
@@ -111,6 +116,25 @@ namespace DAL
                 .HasForeignKey(j => j.UserId)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<AchievementRating>()
+                .HasRequired(t => t.User)
+                .WithMany()
+                .HasForeignKey(j => j.UserId)
+                .WillCascadeOnDelete(false);
+
+            //modelBuilder.Entity<AchievementMedia>()
+            //    .Map(m =>
+            //    {
+            //        m.MapInheritedProperties();
+            //        m.ToTable("AchievementMedia");
+            //    });
+
+            modelBuilder.Entity<AchievementMedia>()
+                .HasRequired(t => t.Enity)
+                .WithMany(t => t.AchievementMedia)
+                .HasForeignKey(j => j.EntityId)
+                .WillCascadeOnDelete(true);
+
             modelBuilder.Entity<JournalRating>()
                 .HasRequired(t => t.User)
                 .WithMany()
@@ -128,6 +152,12 @@ namespace DAL
         {
             base.Dispose(disposing);
         }
+    }
+
+    public enum AchievementStatus
+    {
+        InProgress,
+        Created,
     }
 
     public class DbInit: CreateDatabaseIfNotExists<EntityDbContext>
