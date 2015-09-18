@@ -3114,6 +3114,9 @@
     <Content Include="Views\Template\achievement\achievement-submit.cshtml" />
     <Content Include="Views\Template\achievement\achievement-view.cshtml" />
     <Content Include="Views\Template\achievement\achievement-list.cshtml" />
+    <Content Include="Views\Template\components\achievements-list-rowTpl.cshtml" />
+    <Content Include="Views\Template\modals\complain.cshtml" />
+    <Content Include="Views\Template\modals\social-share.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">
