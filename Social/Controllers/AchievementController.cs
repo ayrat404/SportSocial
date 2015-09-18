@@ -42,6 +42,13 @@ namespace Social.Controllers
             return ApiResult(_achievementService.CreateOrUpdateAchievement(model));
         }
 
+        [Route("temp")]
+        [HttpDelete]
+        public ApiResult DeleteTemp()
+        {
+            return ApiResult(_achievementService.DeleteTemp());
+        }
+
         [Route("filter")]
         [HttpGet]
         public ApiResult Filter()
