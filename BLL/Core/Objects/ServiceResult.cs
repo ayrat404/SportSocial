@@ -6,6 +6,8 @@
 
         public string ErrorMessage { get; set; }
 
+        public string SuccessMessage { get; set; }
+
         public static ServiceResult SuccessResult()
         {
             return new ServiceResult
@@ -13,6 +15,14 @@
                 Success = true
             };
         }
+
+        public static ServiceResult SuccessResult(string msg)
+        {
+            var result = SuccessResult();
+            result.SuccessMessage = msg;
+            return result;
+        }
+
         public static ServiceResult ErrorResult(string errorMsg)
         {
             return new ServiceResult()

@@ -26,6 +26,7 @@ namespace DAL.Repository.Interfaces
                 .Include(j => j.User)
                 .Include(j => j.Media)
                 .Include(j => j.Media.Select(m => m.RatingEntites))
+                .OrderByDescending(j => j.Id)
                 .ToList();
         }
 
