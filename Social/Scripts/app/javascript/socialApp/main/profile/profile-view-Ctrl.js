@@ -33,7 +33,6 @@ ProfileView = (function() {
         }
       });
     };
-    _this.showMedia = function(obj) {};
     _this.remove = function(id) {
       return modalService.show({
         name: 'journalRemove',
@@ -55,6 +54,18 @@ ProfileView = (function() {
             return results;
           }
         }
+      });
+    };
+    _this.avatarResponse = function(stringRes) {
+      var objRes;
+      objRes = angular.fromJson(stringRes);
+      if (obj.success) {
+        return _this.user.avatar = obj.data;
+      }
+    };
+    _this.removeAvatar = function() {
+      return profileService.removeAvatar().then(function(res) {
+        return _this.user.avatar = null;
       });
     };
     profileService.getInfo($stateParams.userId).then(function(res) {

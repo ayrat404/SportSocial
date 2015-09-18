@@ -979,6 +979,53 @@
                 </pre>
             </b>
         </li>
+        
+        
+        <li id="api_achievement_list" class="dev__api__row">
+            <p>Удаление и загрузка аватара. В настоящий момент у пользователя можно посмотреть только один аватар - текущий. При загрузке аватара, загружаемый аватар становится текущим. При удалении аватара текущий аватар принимает значение null. Остальные аватарки сохраняются у пользователя но пока не используются.</p>
+            <code>POST: /api/upload</code>
+            <p>Загрузка аватара</p>
+            <b>
+                send data:
+                <pre>
+{
+    name отправляется равным 'Avatar'
+}
+                </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true,
+    data: 'avatarUrl',
+    errors: null,
+    message: null
+}
+               </pre>
+            </b>
+            <code>DELETE: /api/profile/avatar</code>
+            <p>Удаление аватара</p>
+            <b>
+                send data:
+                <pre>
+{
+    *none*
+}
+                </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true,
+    data: null,
+    errors: null,
+    message: null
+}
+                </pre>
+            </b>
+        </li>
 
 
 

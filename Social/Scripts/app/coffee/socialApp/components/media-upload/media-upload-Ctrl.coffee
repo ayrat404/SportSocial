@@ -22,10 +22,9 @@ class MediaUpload extends Controller('socialApp.controllers')
         # image upload
         # ---------------
         $scope.imgResponse = (stringData)->
-            obj = angular.fromJson(stringData);
+            obj = angular.fromJson stringData
             if obj.success
-                $scope.media.push(
+                $scope.media.push
                     id: obj.data.id
                     type: 'image'
                     img: obj.data.url
-                )

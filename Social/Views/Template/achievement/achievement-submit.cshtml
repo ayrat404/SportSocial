@@ -123,36 +123,9 @@
                     <div class="as__subtitle">
                         @R("Ваша заявка сохранена. Для того, чтобы она появилась в списке всех заявок, оцените заявки от других атлетов. Осталось: ") {{::ach.marks.length}}
                     </div>
-                    <div class="achievement-list achievement-list--row">
-                        <a ui-sref="main.achievementView({id: m.id})" ng-repeat="m in ach.marks"
-                            class="al__it">
-                            <div class="al__it__media">
-                                <div class="al__it__media__it">
-                                    <img ng-src="{{ ::(m.iconUrl|imageResize:{w: 75, h: 75}) }}" class="image-ach" />
-                                </div>
-                                <div class="al__it__media__it">
-                                    <img ng-src="{{ ::(m.author.avatar|imageResize:{w: 100, h: 100}) }}" class="image-user" />
-                                </div>
-                            </div>
-                            <div class="al__it__info">
-                                <p class="al__it__title">{{::m.title}}</p>
-                                <p class="al__it__user">
-                                    {{::m.author.fullName}} &#183; {{::(m.created|date:'dd MMM yyyy | HH:mm')}}
-                                </p>
-                                <div class="al__it__bottom">
-                                    <span class="al__it__stat">
-                                        <span class="icon-ok"></span>
-                                        <span class="al__it__stat__count">{{::m.voice.for}}</span>
-                                    </span>
-                                    <span class="al__it__stat">
-                                        <span class="icon-fail"></span>
-                                        <span class="al__it__stat__count">{{::m.voice.against}}</span>
-                                    </span>
-                                    <span ng-if="m.timeStamp > 0" class="al__it__time-left">@R("Осталось"): {{::(m.timeStamp|date:'d'|formatWord:['@R("день")', '@R("дня")', '@R("дней")']:true)}}</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                    
+                    <achievement-list-row ng-model="ach.marks"></achievement-list-row>
+
                     <button ng-click="ach.cancel()" type="button" class="btn btn-xl btn-fill-red">@R("Удалить заявку")</button>
                 </div>
                 @* ----- Third step ----- *@

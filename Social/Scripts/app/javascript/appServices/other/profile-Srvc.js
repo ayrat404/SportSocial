@@ -2,8 +2,9 @@ var Profile;
 
 Profile = (function() {
   function Profile($q, $rootScope, $http, base, mixpanel, servicesDefault) {
-    var getInfo, url;
+    var avatarUrl, getInfo, removeAvatar, url;
     url = servicesDefault.baseServiceUrl + '/profile';
+    avatarUrl = servicesDefault.baseServiceUrl + '/profile/avatar';
     getInfo = function(userId) {
       return $q(function(resolve, reject) {
         if (userId) {
@@ -31,8 +32,22 @@ Profile = (function() {
         }
       });
     };
+    removeAvatar = function() {
+      return $q(function(resolve, reject) {
+        return $http.post(avatarUrl).then(function(res) {
+          if (res.data.success) {
+            return resolve(res.data);
+          } else {
+            return reject(res.data);
+          }
+        }, function(res) {
+          return reject(res);
+        });
+      });
+    };
     return {
-      getInfo: getInfo
+      getInfo: getInfo,
+      removeAvatar: removeAvatar
     };
   }
 

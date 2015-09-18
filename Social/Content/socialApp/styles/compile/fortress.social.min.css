@@ -10300,7 +10300,7 @@ fieldset[disabled] .btn--subscribe.active {
   -webkit-transition: opacity 100ms linear;
           transition: opacity 100ms linear;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -332px -164px;
+  background-position: -332px -208px;
   width: 11px;
   height: 11px;
   margin-left: 8px;
@@ -10522,7 +10522,7 @@ fieldset[disabled] .btn--subscribe.active {
       -ms-user-select: none;
           user-select: none;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: 0px -230px;
+  background-position: -31px -230px;
   width: 21px;
   height: 21px;
 }
@@ -10587,7 +10587,7 @@ fieldset[disabled] .btn--subscribe.active {
 -------------------------------------------------- */
 .sharing-modal .social-share .icon {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: 0px -182px;
+  background-position: -48px -182px;
   width: 38px;
   height: 38px;
 }
@@ -10599,13 +10599,13 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .sharing-modal .social-share .icon.icon--facebook {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -144px -182px;
+  background-position: 0px -182px;
   width: 38px;
   height: 38px;
 }
 .sharing-modal .social-share .icon.icon--twitter {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -48px -182px;
+  background-position: -144px -182px;
   width: 38px;
   height: 38px;
 }
@@ -10815,6 +10815,56 @@ fieldset[disabled] .btn--subscribe.active {
   margin-top: 15px;
   font-size: 0.857em;
 }
+.user-info__avatar__img-wrap {
+  position: relative;
+  height: 230px;
+  width: 230px;
+}
+.user-info__avatar__img-wrap .uia__remove,
+.user-info__avatar__img-wrap .uia__change {
+  height: 22px;
+  width: 22px;
+  position: absolute;
+  background: #20232a;
+  top: 1px;
+  cursor: pointer;
+  opacity: .8;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.user-info__avatar__img-wrap .uia__remove i,
+.user-info__avatar__img-wrap .uia__change i {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+}
+.user-info__avatar__img-wrap .uia__remove:hover,
+.user-info__avatar__img-wrap .uia__change:hover {
+  opacity: 1;
+}
+.user-info__avatar__img-wrap .uia__remove {
+  right: 1px;
+}
+.user-info__avatar__img-wrap .uia__remove i {
+  background-image: url(../../images/icons-set/icons-set.png);
+  background-position: -332px -185px;
+  width: 11px;
+  height: 13px;
+}
+.user-info__avatar__img-wrap .uia__change {
+  right: 24px;
+}
+.user-info__avatar__img-wrap .uia__change i {
+  background-image: url(../../images/icons-set/icons-set.png);
+  background-position: -332px -164px;
+  width: 13px;
+  height: 11px;
+}
 .user-info__avatar__img {
   height: 100%;
   width: 100%;
@@ -10990,7 +11040,7 @@ fieldset[disabled] .btn--subscribe.active {
   display: inline-block;
   opacity: .8;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -332px -207px;
+  background-position: -332px -251px;
   width: 6px;
   height: 6px;
 }
@@ -11033,7 +11083,7 @@ fieldset[disabled] .btn--subscribe.active {
   -webkit-transition: opacity 100ms linear;
           transition: opacity 100ms linear;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -298px -182px;
+  background-position: -62px -230px;
   width: 21px;
   height: 21px;
 }
@@ -11145,7 +11195,7 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .achievement-list--row .al__it--fail .al__it__status {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -332px -120px;
+  background-position: -332px -142px;
   width: 12px;
   height: 12px;
 }
@@ -11197,7 +11247,7 @@ fieldset[disabled] .btn--subscribe.active {
   display: inline-block;
   vertical-align: middle;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -173px -261px;
+  background-position: -146px -261px;
   width: 17px;
   height: 14px;
 }
@@ -11339,13 +11389,13 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .wall__it__header-edit .wi__edit i {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -31px -230px;
+  background-position: 0px -230px;
   width: 21px;
   height: 21px;
 }
 .wall__it__header-edit .wi__edit:hover i {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -62px -230px;
+  background-position: -298px -182px;
   width: 21px;
   height: 21px;
 }
@@ -11437,13 +11487,13 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .wall__it__content .wi__media-wrap.image i {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -182px -108px;
+  background-position: -244px -108px;
   width: 52px;
   height: 52px;
 }
 .wall__it__content .wi__media-wrap.image:hover i {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -244px -108px;
+  background-position: -182px -108px;
   width: 52px;
   height: 52px;
 }
@@ -11570,7 +11620,7 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .likes-row .lr__btn i {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -88px -261px;
+  background-position: -28px -261px;
   width: 20px;
   height: 16px;
   position: absolute;
@@ -11680,7 +11730,7 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .likes-finger--liked .likes-finger__icon {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -58px -261px;
+  background-position: -88px -261px;
   width: 20px;
   height: 16px;
 }
@@ -11693,7 +11743,7 @@ fieldset[disabled] .btn--subscribe.active {
   display: inline-block;
   vertical-align: top;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -28px -261px;
+  background-position: -58px -261px;
   width: 20px;
   height: 16px;
 }
@@ -11821,13 +11871,13 @@ fieldset[disabled] .btn--subscribe.active {
   display: inline-block;
   vertical-align: middle;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -153px -230px;
+  background-position: -93px -230px;
   width: 20px;
   height: 20px;
 }
 .social-share .icon--vk {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -123px -230px;
+  background-position: -153px -230px;
   width: 20px;
   height: 20px;
 }
@@ -11839,7 +11889,7 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .social-share .icon--twitter {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -93px -230px;
+  background-position: -123px -230px;
   width: 20px;
   height: 20px;
 }
@@ -12116,7 +12166,7 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .voice__part--for .icon {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -146px -261px;
+  background-position: -173px -261px;
   width: 17px;
   height: 14px;
 }
@@ -12240,13 +12290,13 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .landing__left .slide__controls .sc__it--bottom {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -102px -84px;
+  background-position: -102px -133px;
   width: 39px;
   height: 39px;
 }
 .landing__left .slide__controls .sc__it--top {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -102px -133px;
+  background-position: -102px -84px;
   width: 39px;
   height: 39px;
 }
@@ -12395,7 +12445,7 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .auth-social .as__icon--tw {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -93px -230px;
+  background-position: -123px -230px;
   width: 20px;
   height: 20px;
 }
@@ -12407,13 +12457,13 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .auth-social .as__icon--gp {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -153px -230px;
+  background-position: -93px -230px;
   width: 20px;
   height: 20px;
 }
 .auth-social .as__icon--vk {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -123px -230px;
+  background-position: -153px -230px;
   width: 20px;
   height: 20px;
 }
@@ -12533,7 +12583,7 @@ fieldset[disabled] .btn--subscribe.active {
   display: inline-block;
   vertical-align: middle;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -332px -142px;
+  background-position: -332px -120px;
   width: 12px;
   height: 12px;
 }
@@ -12541,7 +12591,7 @@ fieldset[disabled] .btn--subscribe.active {
   display: inline-block;
   vertical-align: middle;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -332px -185px;
+  background-position: -332px -229px;
   width: 10px;
   height: 12px;
 }
@@ -12687,7 +12737,7 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .record .rcd__control--edit {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -31px -230px;
+  background-position: 0px -230px;
   width: 21px;
   height: 21px;
 }

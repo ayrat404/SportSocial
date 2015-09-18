@@ -8,6 +8,7 @@ class Profile extends Service('appSrvc')
     servicesDefault)->
 
     url = servicesDefault.baseServiceUrl + '/profile'
+    avatarUrl = servicesDefault.baseServiceUrl + '/profile/avatar'
 
     # get profile info (for profile view page)
     # ---------------
@@ -30,6 +31,19 @@ class Profile extends Service('appSrvc')
               type: 'danger'
             )
 
+    # remove avatar
+    # ---------------
+    removeAvatar = ->
+      $q (resolve, reject)->
+        $http.post(avatarUrl).then (res)->
+          if res.data.success
+            resolve res.data
+          else
+            reject res.data
+        , (res)->
+          reject res
+
     return {
       getInfo: getInfo
+      removeAvatar: removeAvatar
     }

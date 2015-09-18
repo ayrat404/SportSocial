@@ -1,0 +1,34 @@
+﻿<div class="achievement-list achievement-list--row">
+    <a ui-sref="main.achievementView({id: a.id})" ng-repeat="a in achievements"
+       ng-class="{
+       'al__it--fail': a.status == 'fail',
+       'al__it--credit': a.status == 'credit'
+       }"
+       class="al__it">
+        <div class="al__it__media">
+            <div class="al__it__media__it">
+                <img ng-src="{{ ::(a.iconUrl|imageResize:{w: 75, h: 75}) }}" class="image-ach" />
+            </div>
+            <div class="al__it__media__it">
+                <img ng-src="{{ ::(a.author.avatar|imageResize:{w: 100, h: 100}) }}" class="image-user" />
+            </div>
+        </div>
+        <div class="al__it__info">
+            <p class="al__it__title">{{::a.title}}</p>
+            <p class="al__it__user">
+                {{::a.author.fullName}} &#183; {{::(a.created|date:'dd MMM yyyy | HH:mm')}}
+            </p>
+            <div class="al__it__bottom">
+                <span class="al__it__stat">
+                    <span class="icon-ok"></span>
+                    <span class="al__it__stat__count">{{::a.voice.for}}</span>
+                </span>
+                <span class="al__it__stat">
+                    <span class="icon-fail"></span>
+                    <span class="al__it__stat__count">{{::a.voice.against}}</span>
+                </span>
+                <span ng-if="a.timeStamp > 0" class="al__it__time-left">@R("Осталось"): {{::(a.timeStamp|date:'d'|formatWord:['@R("день")', '@R("дня")', '@R("дней")']:true)}}</span>
+            </div>
+        </div>
+    </a>
+</div>

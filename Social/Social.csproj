@@ -3097,7 +3097,6 @@
     <Content Include="Views\Template\journal\view.cshtml" />
     <Content Include="Views\Template\modals\journal\remove.cshtml" />
     <Content Include="Views\Template\modals\media\show.cshtml" />
-    <Content Include="Views\Template\components\likes-rowTpl.cshtml" />
     <Content Include="Views\Template\modals\journal\remove.cshtml" />
     <Content Include="Views\Template\components\social-shareTpl.cshtml" />
     <Content Include="Views\Template\components\comments\comment-formTpl.cshtml" />

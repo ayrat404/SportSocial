@@ -44,11 +44,6 @@ class ProfileView extends Controller('socialApp.controllers')
                     media: obj.media
                     hashtags: obj.tags
 
-        # show media item
-        # ---------------
-        _this.showMedia = (obj)->
-
-
         # remove item from
         # ---------------
         _this.remove = (id)->
@@ -62,6 +57,20 @@ class ProfileView extends Controller('socialApp.controllers')
                                 _this.user.journals.splice i, 1
                                 break
 
+
+        # new avatar response
+        # ---------------
+        _this.avatarResponse = (stringRes)->
+            objRes = angular.fromJson stringRes
+            if obj.success
+                _this.user.avatar = obj.data
+
+        # remove avatar
+        # ---------------
+        _this.removeAvatar = ->
+            profileService.removeAvatar().then (res)->
+                _this.user.avatar = null
+
         # get user profile info
         # ---------------
         profileService.getInfo($stateParams.userId).then((res)->
@@ -72,6 +81,11 @@ class ProfileView extends Controller('socialApp.controllers')
                 _this.user.isOwner = false
             _this.user.id = $stateParams.userId
             _this.user.loaded = true
+
+#            avatar =
+#                id: 2
+#                url: 'asdasd'
+#            _this.user.avatar = avatar
 
             # profile fake model
 #            _this.user.media = [
