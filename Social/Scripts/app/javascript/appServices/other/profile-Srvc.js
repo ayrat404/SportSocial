@@ -34,7 +34,7 @@ Profile = (function() {
     };
     removeAvatar = function() {
       return $q(function(resolve, reject) {
-        return $http.post(avatarUrl).then(function(res) {
+        return $http["delete"](avatarUrl).then(function(res) {
           if (res.data.success) {
             return resolve(res.data);
           } else {

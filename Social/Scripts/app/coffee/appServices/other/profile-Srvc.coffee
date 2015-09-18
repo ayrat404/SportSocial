@@ -35,7 +35,7 @@ class Profile extends Service('appSrvc')
     # ---------------
     removeAvatar = ->
       $q (resolve, reject)->
-        $http.post(avatarUrl).then (res)->
+        $http.delete(avatarUrl).then (res)->
           if res.data.success
             resolve res.data
           else
