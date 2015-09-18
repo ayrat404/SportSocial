@@ -91,6 +91,7 @@
     <Compile Include="DomainModel\Achievement\AchievementMedia.cs" />
     <Compile Include="DomainModel\Achievement\AchievementRating.cs" />
     <Compile Include="DomainModel\Achievement\AchievementType.cs" />
+    <Compile Include="DomainModel\Achievement\Objects\AchievementState.cs" />
     <Compile Include="DomainModel\Achievement\Objects\AchievementStatus.cs" />
     <Compile Include="DomainModel\Base\ImageBase.cs" />
     <Compile Include="DomainModel\EnumProperties\Sex.cs" />

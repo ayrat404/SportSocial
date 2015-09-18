@@ -6,6 +6,7 @@ using BLL.Rating.Objects;
 using BLL.Social.Achievements.Objects;
 using BLL.Social.Journals.Objects;
 using DAL;
+using DAL.DomainModel.Achievement;
 
 namespace BLL.Social.Achievements
 {
@@ -15,6 +16,8 @@ namespace BLL.Social.Achievements
         ServiceResult CreateOrUpdateAchievement(AchievementCreateVm model);
         IEnumerable<string> GetFilter();
         AchievementDisplayVm GetAchivement(int id);
+        AchievementsListVm GetStartedAchivements(AchievementSearch search);
+        ServiceResult Vote(AchievementVoteVm vote);
     }
 
     public class AchievementDisplayVm: AchievementPreviewVm

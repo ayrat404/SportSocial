@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Linq;
+using System.Web.Http;
+using System.Web.Mvc;
 using AutoMapper;
 using BLL.Comments.MapProfiles;
+using BLL.Common.Services.CurrentUser;
 using BLL.Rating;
 using BLL.Social.Achievements.Objects;
 using BLL.Social.Journals.Objects;
@@ -15,6 +18,12 @@ namespace BLL.Social.Achievements
 {
     public class AchievementMapProfile: Profile
     {
+        protected T GetService<T>() where T: class
+        {
+            return DependencyResolver.Current.GetService<T>() ??
+                    (T)GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof(T));
+        }
+
         protected override void Configure()
         {
             CreateMap<Achievement, AchievementCreateVm>()
@@ -41,7 +50,7 @@ namespace BLL.Social.Achievements
                 .ForMember(dest => dest.CupImage, opt => opt.MapFrom(src => src.AchievementType.ImgUrl))
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.AchievementType.Title))
                 .ForMember(dest => dest.Author, opt => opt.MapFrom(src => src.User))
-                .ForMember(dest => dest.Timestamp, opt => opt.MapFrom(src => src.DurationDays * - (DateTime.Now - src.Started).Value.Days))
+                .ForMember(dest => dest.Timestamp, opt => opt.MapFrom(src => src.GetTimeStamp()))
                 .ForMember(dest => dest.Voice, opt => opt.MapFrom(src => src));
 
             CreateMap<Achievement, AchievementDisplayVm>()
@@ -58,7 +67,8 @@ namespace BLL.Social.Achievements
 
             CreateMap<Achievement, AchievmentVoiceVm>()
                 .ForMember(dest => dest.For, opt => opt.MapFrom(src => src.Voices.Count(r => r.VoteFor)))
-                .ForMember(dest => dest.Against, opt => opt.MapFrom(src => src.Voices.Count(r => !r.VoteFor)));
+                .ForMember(dest => dest.Against, opt => opt.MapFrom(src => src.Voices.Count(r => !r.VoteFor)))
+                .ForMember(dest => dest.IsVoited, opt => opt.MapFrom(src => src.Voices.Any(r => r.UserId == GetService<ICurrentUser>().UserId)));
         }
     }
 }

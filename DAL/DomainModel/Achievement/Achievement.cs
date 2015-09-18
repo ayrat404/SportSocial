@@ -68,6 +68,13 @@ namespace DAL.DomainModel.Achievement
             return percent > 0.75 ? AchievementStatus.Credit : AchievementStatus.Fail;
         }
 
+        public long GetTimeStamp()
+        {
+            if (!Started.HasValue)
+                return 0;
+            return DurationDays*3600*24*1000 - (DateTime.Now - Started.Value).Milliseconds;
+        }
+
         [ForeignKey("UserId")]
         public AppUser User { get; set; }
         [ForeignKey("TypeId")]

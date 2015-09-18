@@ -5,6 +5,7 @@ namespace DAL.DomainModel.Achievement.Objects
         InCreating,
         Started,
         Fail,
-        Credit
+        Credit,
+        All
     }
 }

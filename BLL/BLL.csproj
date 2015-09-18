@@ -260,10 +260,14 @@
     <Compile Include="Social\Achievements\Impls\AchievementService.cs" />
     <Compile Include="Social\Achievements\Objects\AchievementCreateVm.cs" />
     <Compile Include="Social\Achievements\Objects\AchievementPreviewVm.cs" />
+    <Compile Include="Social\Achievements\Objects\AchievementSearch.cs" />
+    <Compile Include="Social\Achievements\Objects\AchievementsListVm.cs" />
     <Compile Include="Social\Achievements\Objects\AchievementTempVm.cs" />
     <Compile Include="Social\Achievements\Objects\AchievementTypeVm.cs" />
+    <Compile Include="Social\Achievements\Objects\AchievementVoteVm.cs" />
     <Compile Include="Social\Achievements\Objects\AchievmentVoice.cs" />
     <Compile Include="Social\Achievements\Objects\ChoosedAchievmentType.cs" />
+    <Compile Include="Social\Achievements\VoteType.cs" />
     <Compile Include="Social\Journals\IJournalService.cs" />
     <Compile Include="Social\Journals\JournalService.cs" />
     <Compile Include="Social\Journals\MapProfiles\JournalPreviewProfile.cs" />
