@@ -9,10 +9,7 @@ journalProfileSubmit = (function() {
       scope: {
         success: '&'
       },
-      controller: 'journalProfileSubmitController',
-      link: function(scope, element, JournalCtrl) {
-        return console.log('journal submit directive');
-      }
+      controller: 'journalProfileSubmitController'
     };
   }
 

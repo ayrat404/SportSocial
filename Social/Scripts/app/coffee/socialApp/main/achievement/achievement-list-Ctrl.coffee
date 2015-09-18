@@ -25,7 +25,6 @@ class AchievementList extends Controller('socialApp.controllers')
             if v != undefined
                 _this.filter[k] = v
 
-        console.log(_this.filter)
         # set params in url
         # ---------------
         setUrl = ->

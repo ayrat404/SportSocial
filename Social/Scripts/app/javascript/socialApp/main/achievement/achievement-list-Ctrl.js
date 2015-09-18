@@ -22,7 +22,6 @@ AchievementList = (function() {
         _this.filter[k] = v;
       }
     }
-    console.log(_this.filter);
     setUrl = function() {
       $state.params = _this.filter;
       return $state.transitionTo($state.current, $state.params, {

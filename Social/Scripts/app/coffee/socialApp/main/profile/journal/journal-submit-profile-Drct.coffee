@@ -7,6 +7,4 @@ class journalProfileSubmit extends Directive('socialApp.directives')
             scope:
                 success: '&'
             controller: 'journalProfileSubmitController'
-            link: (scope, element, JournalCtrl)->
-                console.log('journal submit directive')
         }

@@ -10,7 +10,7 @@ class MediaModalShow extends Controller('socialApp.controllers')
         modalData)->
 
         $scope.maxText = 40
-        debugger
+        
         if modalData.media &&
           modalData.entityType
 

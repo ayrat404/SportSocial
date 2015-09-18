@@ -4,7 +4,6 @@ MediaModalShow = (function() {
   function MediaModalShow($scope, $state, $modalInstance, $rootScope, base, journalService, modalService, modalData) {
     var setByIndex;
     $scope.maxText = 40;
-    debugger;
     if (modalData.media && modalData.entityType) {
       $state.params.media = modalData.media;
       $scope.currentIndex = modalData.index !== void 0 ? +modalData.index : 1;
