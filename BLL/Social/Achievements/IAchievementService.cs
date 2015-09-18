@@ -18,10 +18,12 @@ namespace BLL.Social.Achievements
         AchievementDisplayVm GetAchivement(int id);
         AchievementsListVm GetStartedAchivements(AchievementSearch search);
         ServiceResult Vote(AchievementVoteVm vote);
+        ServiceResult DeleteTemp();
     }
 
     public class AchievementDisplayVm: AchievementPreviewVm
     {
+        public string VideoUrl { get; set; }
         public RatingInfo Likes { get; set; }
         public CommentsVm Comments { get; set; }
         public AchivStatus Status { get; set; }

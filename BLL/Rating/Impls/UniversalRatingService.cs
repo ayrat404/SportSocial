@@ -46,7 +46,7 @@ namespace BLL.Rating.Impls
                     return typeof (Journal);
                 case RatingEntityType.RecordComment:
                     return typeof (JournalComment);
-                case RatingEntityType.RecordMeida:
+                case RatingEntityType.RecordMedia:
                     return typeof (JournalMedia);
                 case RatingEntityType.Achievement:
                     return typeof (Achievement);
@@ -72,7 +72,7 @@ namespace BLL.Rating.Impls
                     return typeof (JournalRating);
                 case RatingEntityType.RecordComment:
                     return typeof (JournalCommentRating);
-                case RatingEntityType.RecordMeida:
+                case RatingEntityType.RecordMedia:
                     return typeof (JournalMediaRating);
                 case RatingEntityType.Achievement:
                     return typeof (AchievementRating);

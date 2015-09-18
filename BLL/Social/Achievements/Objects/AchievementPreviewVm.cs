@@ -14,7 +14,7 @@ namespace BLL.Social.Achievements.Objects
         public string CupImage { get; set; }
         public string Title { get; set; }
         public DateTime Created { get; set; }
-        public long Timestamp { get; set; }
+        public long TimeStamp { get; set; }
         public AchievmentVoiceVm Voice { get; set; }
         public AuthorVm Author { get; set; }
     }

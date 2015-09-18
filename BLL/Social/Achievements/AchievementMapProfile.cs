@@ -50,13 +50,14 @@ namespace BLL.Social.Achievements
                 .ForMember(dest => dest.CupImage, opt => opt.MapFrom(src => src.AchievementType.ImgUrl))
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.AchievementType.Title))
                 .ForMember(dest => dest.Author, opt => opt.MapFrom(src => src.User))
-                .ForMember(dest => dest.Timestamp, opt => opt.MapFrom(src => src.GetTimeStamp()))
+                .ForMember(dest => dest.TimeStamp, opt => opt.MapFrom(src => src.GetTimeStamp()))
                 .ForMember(dest => dest.Voice, opt => opt.MapFrom(src => src));
 
             CreateMap<Achievement, AchievementDisplayVm>()
                 .IncludeBase<Achievement, AchievementPreviewVm>()
                 .ForMember(dest => dest.Likes, opt => opt.MapFrom(src => RatingMapper.MapRating(src)))
                 .ForMember(dest => dest.Comments, opt => opt.MapFrom(src => CommentsVmMapper.Map(src)))
+                .ForMember(dest => dest.VideoUrl, opt => opt.MapFrom(src => src.AchievementMedia.First().Url))
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.GetStatus()));
 
             //CreateMap<AchievementCreateVm, Achievement>()

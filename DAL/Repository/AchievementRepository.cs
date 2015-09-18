@@ -91,7 +91,7 @@ namespace DAL.Repository
         {
             return Queryable<Achievement>()
                 .Where(a => a.Status == AchievementStatus.Started)
-                .Include(a => a.RatingEntites)
+                .Include(a => a.Voices)
                 .Include(a => a.User)
                 .Include(a => a.AchievementType)
                 .OrderBy(a => SqlFunctions.Rand(1))

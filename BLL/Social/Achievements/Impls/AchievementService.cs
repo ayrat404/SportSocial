@@ -88,6 +88,17 @@ namespace BLL.Social.Achievements.Impls
             return ServiceResult.SuccessResult();
         }
 
+        public ServiceResult DeleteTemp()
+        {
+            var ach = _achievementRepository.GetTempAchievement(_currentUser.UserId);
+            if (ach != null)
+            {
+                _achievementRepository.Delete(ach);
+                _achievementRepository.SaveChanges();
+            }
+            return ServiceResult.SuccessResult();
+        }
+
         private void AddOrUpdateAchievement(Achievement ach, AchievementCreateVm model)
         {
             bool isNew = false;
