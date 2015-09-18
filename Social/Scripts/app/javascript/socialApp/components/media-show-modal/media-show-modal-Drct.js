@@ -6,7 +6,8 @@ mediaShowModal = (function() {
       restrict: 'A',
       scope: {
         media: '@id',
-        index: '@'
+        index: '@',
+        entityType: '@'
       },
       link: function(scope, element, attrs) {
         var listener;
@@ -15,7 +16,8 @@ mediaShowModal = (function() {
             name: 'mediaShow',
             data: {
               media: scope.media,
-              index: +scope.index + 1
+              index: +scope.index + 1,
+              entityType: scope.entityType
             }
           });
         };

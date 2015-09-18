@@ -33,7 +33,7 @@
                             <div class="rcd__control rcd__control--edit" ng-click="record.edit()"></div>
                             <div class="rcd__control rcd__control--remove" ng-click="record.remove()"></div>
                         </div>
-                        <likes-in-row ng-model="record.it.likes" data-id="{{::record.it.id}}" data-type="record"></likes-in-row>
+                        <likes-in-row ng-model="record.it.likes" data-id="{{::record.it.id}}" data-entity-type="record"></likes-in-row>
                         <div ng-click="record.share()" class="btn btn-fill-green">@R("Поделиться")</div>
                     </div>
                     <div ng-if="record.it.media.length" class="record__media">
@@ -41,6 +41,7 @@
                              media-show-modal
                              data-id="{{::record.it.id}}"
                              data-index="{{::$index}}"
+                             data-entity-type="record"
                              class="rm__it">
                             <img ng-src="{{ m.url | imageResize:{w: 75, h: 75} }}" class="rm__it__img" />
                             <div class="rm__it__overlay" ng-if="m.type=='video'"><i class="icon-play"></i></div>

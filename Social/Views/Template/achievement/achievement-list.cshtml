@@ -42,16 +42,16 @@
                        class="al__it">
                         <div class="al__it__media">
                             <div class="al__it__media__it">
-                                <img ng-src="{{ ::(m.iconUrl|imageResize:{w: 75, h: 75}) }}" class="image-ach" />
+                                <img ng-src="{{ ::(m.cupImage|imageResize:{w: 75, h: 75}) }}" class="image-ach" />
                             </div>
                             <div class="al__it__media__it">
-                                <img ng-src="{{ ::(m.user.avatar|imageResize:{w: 100, h: 100}) }}" class="image-user" />
+                                <img ng-src="{{ ::(m.author.avatar|imageResize:{w: 100, h: 100}) }}" class="image-user" />
                             </div>
                         </div>
                         <div class="al__it__info">
                             <p class="al__it__title">{{::m.title}} <i class="al__it__status"></i></p>
                             <p class="al__it__user">
-                                {{::m.user.fullName}} &#183; {{::m.created}}
+                                {{::m.author.fullName}} &#183; {{::m.created}}
                             </p>
                             <div class="al__it__bottom">
                                 <span class="al__it__stat">
@@ -62,7 +62,7 @@
                                     <span class="icon-fail"></span>
                                     <span class="al__it__stat__count">{{::m.voice.against}}</span>
                                 </span>
-                                <span class="al__it__time-left">@R("Осталось"): {{::m.timeSpent|formatWord:['@R("день")', '@R("дня")', '@R("дней")']:true}}</span>
+                                <span ng-if="m.timeStamp > 0" class="al__it__time-left">@R("Осталось"): {{::m.timeStamp|formatWord:['@R("день")', '@R("дня")', '@R("дней")']:true}}</span>
                             </div>
                         </div>
                     </a>

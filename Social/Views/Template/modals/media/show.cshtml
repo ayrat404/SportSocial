@@ -13,7 +13,7 @@
                 <p class="ia__date">{{::(it.created|date:'dd MMM yyyy | HH:mm')}}</p>
             </div>
         </div>
-        <likes-in-row ng-model="current.likes" data-id="{{current.id}}" data-type="media"></likes-in-row>
+        <likes-in-row ng-model="current.likes" data-id="{{current.id}}" data-entity-type="{{::entityType}}Media"></likes-in-row>
         <div ng-click="socialShare()" class="btn btn-fill-green">@R("Поделиться")</div>
     </div>
     <p class="media__text">

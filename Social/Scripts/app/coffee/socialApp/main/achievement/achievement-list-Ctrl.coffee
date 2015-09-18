@@ -21,8 +21,11 @@ class AchievementList extends Controller('socialApp.controllers')
 
         _this.prop = {} # filter settings object
 
-        angular.extend _this.filter, $state.params
+        for k,v of $state.params
+            if v != undefined
+                _this.filter[k] = v
 
+        console.log(_this.filter)
         # set params in url
         # ---------------
         setUrl = ->

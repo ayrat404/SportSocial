@@ -10,10 +10,13 @@ class MediaModalShow extends Controller('socialApp.controllers')
         modalData)->
 
         $scope.maxText = 40
-        if modalData.media != undefined
+        debugger
+        if modalData.media &&
+          modalData.entityType
 
             $state.params.media = modalData.media
             $scope.currentIndex = if modalData.index != undefined then +modalData.index else 1
+            $scope.entityType = modalData.entityType
 
             # get single record data
             # ---------------
@@ -69,7 +72,8 @@ class MediaModalShow extends Controller('socialApp.controllers')
                     ++$scope.currentIndex
                 setByIndex $scope.currentIndex
         else
-            console.log 'media id undefined'
+            $modalInstance.dismiss()
+            console.log 'media id or type undefined'
 
         # clear state
         # ---------------

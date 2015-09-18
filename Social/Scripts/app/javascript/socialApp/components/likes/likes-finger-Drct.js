@@ -9,13 +9,13 @@ LikesInFinger = (function() {
       scope: {
         likes: '=ngModel',
         id: '@',
-        type: '@'
+        entityType: '@'
       },
       controller: function($scope) {
         return $scope.like = function() {
           return likeService.set({
             id: $scope.id,
-            entityType: $scope.type,
+            entityType: $scope.entityType,
             current: $scope.likes.isLiked
           }).then(function(newStatus) {
             var i, j, l, len, ref, results;

@@ -9,7 +9,7 @@ LikesInRow = (function() {
       scope: {
         likes: '=ngModel',
         id: '@',
-        type: '@',
+        entityType: '@',
         opts: '@'
       },
       controller: function($scope) {
@@ -18,7 +18,7 @@ LikesInRow = (function() {
             $scope.loading = true;
             return likeService.set({
               id: $scope.id,
-              entityType: $scope.type,
+              entityType: $scope.entityType,
               current: $scope.likes.isLiked
             }).then(function(newStatus) {
               var i, j, l, len, ref, results;

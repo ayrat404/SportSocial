@@ -2,7 +2,7 @@ var AchievementList;
 
 AchievementList = (function() {
   function AchievementList($q, $scope, $state, achievementService) {
-    var _this, getList, setUrl;
+    var _this, getList, k, ref, setUrl, v;
     $scope.$root.title = 'Fortress | Список заявок';
     _this = this;
     _this.loader = false;
@@ -15,7 +15,14 @@ AchievementList = (function() {
       page: 3
     };
     _this.prop = {};
-    angular.extend(_this.filter, $state.params);
+    ref = $state.params;
+    for (k in ref) {
+      v = ref[k];
+      if (v !== void 0) {
+        _this.filter[k] = v;
+      }
+    }
+    console.log(_this.filter);
     setUrl = function() {
       $state.params = _this.filter;
       return $state.transitionTo($state.current, $state.params, {

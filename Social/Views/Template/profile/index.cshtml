@@ -24,6 +24,7 @@
                                  media-show-modal
                                  data-id="{{::media.recordId}}"
                                  data-index="{{::media.index}}"
+                                 data-entity-type="record"
                                  class="ui-m__it">
                                 <img ng-src="{{ ::(media.url|imageResize:{w:77, h:77}) }}" class="ui-m__it__img" />
                                 <div ng-show="media.type == 'video'" class="ui-m__it__overlay">
@@ -123,6 +124,7 @@
                                              media-show-modal
                                              data-id="{{::it.id}}"
                                              data-index="0"
+                                             data-entity-type="record"
                                              class="wi__media-wrap">
                                             <img ng-src="{{ it.media[0].url | imageResize:{w: 250, h: 170 } }}" class="wi__media__img" />
                                             <div class="wi__media__icon">
@@ -133,7 +135,7 @@
                                     </section>
                                     <likes-in-row ng-model="it.likes"
                                                   data-id="{{::it.id}}"
-                                                  data-type="record"></likes-in-row>
+                                                  data-entity-type="record"></likes-in-row>
                                 </div>
                             </div>
 

@@ -9,13 +9,13 @@ class LikesInRow extends Directive('socialApp.directives')
             scope:
                 likes: '=ngModel'
                 id: '@'
-                type: '@'
+                entityType: '@'
                 opts: '@'
             controller: ($scope)->
                 $scope.like = ->
                     if !$scope.loading
                         $scope.loading = true
-                        likeService.set(id: $scope.id, entityType: $scope.type, current: $scope.likes.isLiked).then (newStatus)->
+                        likeService.set(id: $scope.id, entityType: $scope.entityType, current: $scope.likes.isLiked).then (newStatus)->
                             $scope.likes.isLiked = newStatus
                             if newStatus
                                 $scope.likes.count++

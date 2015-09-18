@@ -708,15 +708,15 @@
         marks: [ *Заявки, которые нужно оценить пользователю. Максимум 3. Если их нет, то массив пустой*
             {
                 id: 1,
-                iconUrl: 'imageUrl' *иконка достижения* 
+                cupImage: 'imageUrl' *иконка достижения* 
                 title: 'Подтягивания. 35 Повторений'
                 created: *date*
-                timeSpent: '234242342' *осталось времени timestamp*
+                timeStamp: '234242342' *осталось времени timestamp*
                 voice: {
                     for: 142 *проголосовали за*
                     against: 10 *проголосовали против*
                 },
-                user: {
+                author: {
                     id: 1
                     avatar: 'avatarImageUrl'
                     fullName: 'Mikki Mouse'
@@ -829,13 +829,14 @@
         id: 12
         title: 'Подтягивания. 35 Повторений'
         cupImage: 'typeImageUrl' # картинка кубка с упражнением
+        videoUrl: 'remoteVideoUrl'
         author: {
             id: 12
             avatar: 'avatarImageUrl'
             fullName: 'Павел Козловский'
         }
         created: 'date' # дата создания
-        timestamp: '12312123' #осталось времени timestamp
+        timeStamp: '12312123' #осталось времени timestamp
         likes: {
             list: [
                 { id: 1, fullName: 'Владимир Владимирович', avatar: 'avatartest1' },

@@ -5,6 +5,7 @@ class mediaShowModal extends Directive('shared')
             scope:
                 media: '@id'
                 index: '@'
+                entityType: '@'
             link: (scope, element, attrs)->
 
                 # listener
@@ -15,6 +16,7 @@ class mediaShowModal extends Directive('shared')
                         data:
                             media: scope.media
                             index: +scope.index + 1
+                            entityType: scope.entityType
 
                 # ---------------
                 element.on 'click', listener

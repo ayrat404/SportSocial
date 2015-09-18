@@ -41,7 +41,7 @@
                                 </div>
                             </div>
                             <div class="ach__time">
-                                @R("Осталось: "){{ach.it.timestamp}} @*6 дн. 10 ч. 15 мин.*@
+                                @R("Осталось: "){{ach.it.timeStamp}} @*6 дн. 10 ч. 15 мин.*@
                             </div>
                         </div>
                         <div class="ach__media">
@@ -59,7 +59,7 @@
                                 <div ng-if="ach.it.isOwner" class="rcd__controls">
                                     <div class="rcd__control rcd__control--remove" ng-click="ach.remove()"></div>
                                 </div>
-                                <likes-in-row ng-model="ach.it.likes" data-id="{{::ach.it.id}}" data-type="achievement"></likes-in-row>
+                                <likes-in-row ng-model="ach.it.likes" data-id="{{::ach.it.id}}" data-entity-type="achievement"></likes-in-row>
                                 <div ng-click="ach.share()" class="btn btn-fill-green">@R("Поделиться")</div>
                             </div>
                         </div>
