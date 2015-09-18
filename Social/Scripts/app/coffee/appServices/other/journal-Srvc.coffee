@@ -23,9 +23,10 @@ class Journal extends Service('appSrvc')
         # submit new journal item
         # ---------------
         submit = (data)->
+            if data.id then method = 'put' else method = 'post'
             $q (resolve, reject)->
                 if validate data
-                    $http.post(url, data).then((res)->
+                    $http[method](url, data).then((res)->
                         if res.data.success
                             resolve(res.data)
                         else

@@ -5,7 +5,7 @@ JournalProfileSubmit = (function() {
     var takeWatcher;
     $scope.j = {
       text: '',
-      themes: [],
+      tags: [],
       media: []
     };
     takeWatcher = function() {
@@ -33,7 +33,7 @@ JournalProfileSubmit = (function() {
     };
     $scope.resetForm = function() {
       $scope.j.text = '';
-      $scope.j.themes = [];
+      $scope.j.tags = [];
       return $scope.j.media = [];
     };
     $scope.submit = function() {

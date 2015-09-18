@@ -14,9 +14,15 @@ Journal = (function() {
       return false;
     };
     submit = function(data) {
+      var method;
+      if (data.id) {
+        method = 'put';
+      } else {
+        method = 'post';
+      }
       return $q(function(resolve, reject) {
         if (validate(data)) {
-          return $http.post(url, data).then(function(res) {
+          return $http[method](url, data).then(function(res) {
             if (res.data.success) {
               return resolve(res.data);
             } else {

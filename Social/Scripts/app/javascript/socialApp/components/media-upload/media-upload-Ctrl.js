@@ -2,7 +2,7 @@ var MediaUpload;
 
 MediaUpload = (function() {
   function MediaUpload($scope, youtubeVideoService, base) {
-    if (base.isArray($scope.media)) {
+    if (!base.isArray($scope.media)) {
       $scope.media = [];
     }
     $scope.sendVideoLink = function(link) {
@@ -14,7 +14,7 @@ MediaUpload = (function() {
         return $scope.media.push({
           id: res.data.id,
           type: 'video',
-          img: res.data.img
+          url: res.data.img
         });
       });
     };
@@ -25,7 +25,7 @@ MediaUpload = (function() {
         return $scope.media.push({
           id: obj.data.id,
           type: 'image',
-          img: obj.data.url
+          url: obj.data.url
         });
       }
     };

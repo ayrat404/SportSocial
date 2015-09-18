@@ -56,6 +56,29 @@ ProfileView = (function() {
         }
       });
     };
+    _this.edit = function(model) {
+      return modalService.show({
+        name: 'journalSubmit',
+        data: {
+          model: model,
+          success: function(record) {
+            var i, j, k, len, ref, results;
+            ref = _this.user.journals;
+            results = [];
+            for (i = k = 0, len = ref.length; k < len; i = ++k) {
+              j = ref[i];
+              if (j.id === id) {
+                _this.user.journals[i] = record;
+                break;
+              } else {
+                results.push(void 0);
+              }
+            }
+            return results;
+          }
+        }
+      });
+    };
     _this.avatarResponse = function(stringRes) {
       var objRes;
       objRes = angular.fromJson(stringRes);

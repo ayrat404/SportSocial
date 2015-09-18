@@ -2,14 +2,19 @@ class JournalModalSubmit extends Controller('socialApp.controllers')
     constructor: (
         $scope
         $modalInstance
-        journalService)->
+        journalService
+        modalData)->
 
         # journal model
         # ---------------
         $scope.j =
             text: ''
-            themes: []
+            tags: []
             media: []
+
+        if modalData && modalData.model
+            angular.copy modalData.model, $scope.j
+
 
         # remove item from media array
         # ---------------
@@ -22,4 +27,6 @@ class JournalModalSubmit extends Controller('socialApp.controllers')
         # ---------------
         $scope.submit = ->
             journalService.submit($scope.j).then (res)->
+                if modalData && typeof modalData.success == 'function'
+                    modalData.success $scope.j
                 $modalInstance.close()

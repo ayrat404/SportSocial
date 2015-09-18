@@ -7,7 +7,7 @@ class JournalProfileSubmit extends Controller('socialApp.controllers')
         # ---------------
         $scope.j =
             text: ''
-            themes: []
+            tags: []
             media: []
 
         # take watcher form
@@ -41,7 +41,7 @@ class JournalProfileSubmit extends Controller('socialApp.controllers')
         # ---------------
         $scope.resetForm = ->
             $scope.j.text = ''
-            $scope.j.themes = []
+            $scope.j.tags = []
             $scope.j.media = []
 
         # submit form

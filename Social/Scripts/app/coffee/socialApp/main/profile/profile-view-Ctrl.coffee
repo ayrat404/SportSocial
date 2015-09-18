@@ -44,7 +44,7 @@ class ProfileView extends Controller('socialApp.controllers')
                     media: obj.media
                     hashtags: obj.tags
 
-        # remove item from
+        # remove journal record
         # ---------------
         _this.remove = (id)->
             modalService.show
@@ -55,6 +55,19 @@ class ProfileView extends Controller('socialApp.controllers')
                         for j, i in _this.user.journals
                             if j.id == id
                                 _this.user.journals.splice i, 1
+                                break
+
+        # edit journal record
+        # ---------------
+        _this.edit = (model)->
+            modalService.show
+                name: 'journalSubmit'
+                data:
+                    model: model
+                    success: (record)->
+                        for j, i in _this.user.journals
+                            if j.id == id
+                                _this.user.journals[i] = record
                                 break
 
 

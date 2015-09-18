@@ -4,7 +4,7 @@ class MediaUpload extends Controller('socialApp.controllers')
         youtubeVideoService
         base)->
 
-        if base.isArray($scope.media)
+        if !base.isArray($scope.media)
             $scope.media = []
 
         # send youtube link & get video params
@@ -16,7 +16,7 @@ class MediaUpload extends Controller('socialApp.controllers')
                 $scope.media.push(
                     id: res.data.id
                     type: 'video'
-                    img: res.data.img
+                    url: res.data.img
                 ))
 
         # image upload
@@ -27,4 +27,4 @@ class MediaUpload extends Controller('socialApp.controllers')
                 $scope.media.push
                     id: obj.data.id
                     type: 'image'
-                    img: obj.data.url
+                    url: obj.data.url

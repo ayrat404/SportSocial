@@ -117,12 +117,12 @@
                                 <div ng-init="it.editing=false" ng-click="it.editing=!it.editing;" class="wall__it__btn"></div>
                                 <div class="wall__it__inner">
                                     <header class="wall__it__header-info">
-                                        <span class="wi__date">{{it.date}}</span>
+                                        <span class="wi__date">{{::(it.created|date:'dd/MM/yyyy')}}</span>
                                         <div ng-click="profile.shareRecord(it)" class="wi__share"><i></i></div>
                                         <a ui-sref="main.journalIt({id: it.id})" class="wi__comment"><i></i></a>
                                     </header>
                                     <header class="wall__it__header-edit">
-                                        <div class="wi__edit"><i></i></div>
+                                        <div class="wi__edit" ng-click="profile.edit(it)"><i></i></div>
                                         <div class="wi__remove" ng-click="profile.remove(it.id)"><i></i></div>
                                     </header>
                                     <section class="wall__it__content">

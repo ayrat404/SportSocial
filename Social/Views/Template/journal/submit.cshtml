@@ -7,7 +7,7 @@
                 <textarea ng-model="j.text" class="fs-input" placeholder="@R("Как прошла тренировка?")"></textarea>
                 <div class="media-preview">
                     <div class="mp__item" ng-repeat="it in j.media">
-                        <img class="mp__img" ng-src="{{ it.img | imageResize:{w: 45, h: 45} }}" />
+                        <img class="mp__img" ng-src="{{ it.url | imageResize:{w: 45, h: 45} }}" />
                         <div ng-if="it.type=='video'" class="mp__item__video__overlay">
                             <i class="play"></i>
                         </div>
@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="fs-form__row max">
-            <themes-autocomplete ng-model="j.themes"></themes-autocomplete>
+            <themes-autocomplete ng-model="j.tags"></themes-autocomplete>
         </div>
         <!--<div class="jos__social">
             social sharing
