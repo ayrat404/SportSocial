@@ -77,7 +77,7 @@ namespace BLL.Storage.Impls
         private IImageSaver CreateGenericService(UploadType type)
         {
             Type ratingServiseType = typeof(ImageSaver<,>)
-                .MakeGenericType(GetMediaEntity(type), GetEntity(type));
+                .MakeGenericType(GetEntity(type), GetMediaEntity(type));
             return (IImageSaver)Activator.CreateInstance(ratingServiseType, _currentUser, _repository);
         }
 

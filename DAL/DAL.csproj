@@ -210,6 +210,10 @@
     <Compile Include="Migrations\201509172000458_Achievement_RatingCommentVoice.Designer.cs">
       <DependentUpon>201509172000458_Achievement_RatingCommentVoice.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201509181446360_JournalMedia_CascadeDelete.cs" />
+    <Compile Include="Migrations\201509181446360_JournalMedia_CascadeDelete.Designer.cs">
+      <DependentUpon>201509181446360_JournalMedia_CascadeDelete.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AccountRepository.cs" />
@@ -279,6 +283,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201509172000458_Achievement_RatingCommentVoice.resx">
       <DependentUpon>201509172000458_Achievement_RatingCommentVoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201509181446360_JournalMedia_CascadeDelete.resx">
+      <DependentUpon>201509181446360_JournalMedia_CascadeDelete.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
