@@ -285,6 +285,7 @@
     <Content Include="Scripts\app\javascript\appServices\auth\registration-Srvc.js" />
     <Content Include="Scripts\app\javascript\appServices\auth\restore-password-Srvc.js" />
     <Content Include="Scripts\app\javascript\appServices\auth\user-Srvc.js" />
+    <Content Include="Scripts\app\javascript\appServices\other\achievement-Srvc.js" />
     <Content Include="Scripts\app\javascript\appServices\other\comments-Srvc.js" />
     <Content Include="Scripts\app\javascript\appServices\other\complain-Srvc.js" />
     <Content Include="Scripts\app\javascript\appServices\other\journal-Srvc.js" />
@@ -299,6 +300,7 @@
     <Content Include="Scripts\app\javascript\shared\directives\loader-Drct.js" />
     <Content Include="Scripts\app\javascript\shared\directives\mixpanel-Drct.js" />
     <Content Include="Scripts\app\javascript\shared\directives\modal-click-Drct.js" />
+    <Content Include="Scripts\app\javascript\shared\directives\mousewheel-scroller-Drct.js" />
     <Content Include="Scripts\app\javascript\shared\directives\scroll-to-current-pos-Drct.js" />
     <Content Include="Scripts\app\javascript\shared\directives\scroll-to-Drct.js" />
     <Content Include="Scripts\app\javascript\shared\directives\server-validation-Drct.js" />
@@ -313,6 +315,7 @@
     <Content Include="Scripts\app\javascript\shared\services\query-params-Srvc.js" />
     <Content Include="Scripts\app\javascript\shared\services\remote-template-Srvc.js" />
     <Content Include="Scripts\app\javascript\socialApp\app.js" />
+    <Content Include="Scripts\app\javascript\socialApp\components\achievement\achievement-list-row-Drct.js" />
     <Content Include="Scripts\app\javascript\socialApp\components\comments\comment-form-Drct.js" />
     <Content Include="Scripts\app\javascript\socialApp\components\comments\comment-list-Drct.js" />
     <Content Include="Scripts\app\javascript\socialApp\components\likes\likes-finger-Drct.js" />
@@ -325,6 +328,9 @@
     <Content Include="Scripts\app\javascript\socialApp\components\sport-themes\sport-themes-Drct.js" />
     <Content Include="Scripts\app\javascript\socialApp\landing\landing-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\landing\landing-Drct.js" />
+    <Content Include="Scripts\app\javascript\socialApp\main\achievement\achievement-list-Ctrl.js" />
+    <Content Include="Scripts\app\javascript\socialApp\main\achievement\achievement-submit-Ctrl.js" />
+    <Content Include="Scripts\app\javascript\socialApp\main\achievement\achievement-view-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\main\main-social-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\main\profile\journal\journal-submit-profile-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\main\profile\journal\journal-submit-profile-Drct.js" />
@@ -2836,6 +2842,8 @@
     <Content Include="Scripts\app\coffee\appServices\other\profile-Srvc.coffee" />
     <Content Include="Scripts\app\coffee\appServices\other\support-Srvc.coffee" />
     <Content Include="Scripts\app\coffee\socialApp\main\achievement\achievement-view-Ctrl.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\components\achievement\achievement-list-row-Drct.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\main\achievement\achievement-list-Ctrl.coffee" />
     <None Include="Scripts\libs\jquery\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.min.js" />
@@ -3107,6 +3115,8 @@
     <Content Include="Views\Template\achievement\achievement-view.cshtml" />
     <Content Include="Views\Template\achievement\achievement-list.cshtml" />
     <Content Include="Views\Template\components\achievements-list-rowTpl.cshtml" />
+    <Content Include="Views\Template\modals\complain.cshtml" />
+    <Content Include="Views\Template\modals\social-share.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">

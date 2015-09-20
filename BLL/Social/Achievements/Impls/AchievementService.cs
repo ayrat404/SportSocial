@@ -12,6 +12,7 @@ using DAL;
 using DAL.DomainModel.Achievement;
 using DAL.DomainModel.Achievement.Objects;
 using DAL.Repository.Interfaces;
+using Knoema.Localization;
 
 namespace BLL.Social.Achievements.Impls
 {
@@ -22,6 +23,7 @@ namespace BLL.Social.Achievements.Impls
         private readonly IVideoService _videoService;
 
         private const int DurationDays = 6;
+        private const int VoteCount = 3;
         
         public AchievementService(IAchievementRepository achievementRepository, ICurrentUser currentUser, IVideoService videoService)
         {
@@ -36,9 +38,11 @@ namespace BLL.Social.Achievements.Impls
             var tempAchievement = _achievementRepository.GetTempAchievement(_currentUser.UserId);
             model.Model = tempAchievement == null ? null : tempAchievement.MapTo<AchievementCreateVm>();
             model.Cards = _achievementRepository.GetTypes().MapEachTo<AchievementTypeVm>();
-            model.Marks = _achievementRepository.GetThreeRandomAchievements().MapEachTo<AchievementPreviewVm>();
+            model.Marks = GetAchievementsToVote();
             return model;
         }
+
+        
 
         public ServiceResult CreateOrUpdateAchievement(AchievementCreateVm model)
         {
@@ -47,7 +51,10 @@ namespace BLL.Social.Achievements.Impls
             if (model.HasVideo())
             {
                 _videoService.AttachVideosToEntity(new List<MediaVm>() {model.Video}, ach.Id, UploadType.Achievement);
-                CheckAndCompleteAchievement(ach);
+                if (CheckAndCompleteAchievement(ach))
+                {
+                    return ServiceResult.SuccessResult("Заявка достижение создана".Resource(this));
+                }
             }
             return ServiceResult.SuccessResult();
         }
@@ -84,7 +91,17 @@ namespace BLL.Social.Achievements.Impls
                 UserId = _currentUser.UserId
             };
             _achievementRepository.Add(voice);
+            _currentUser.User.Profile.AchievementVoiceCount++;
+            _achievementRepository.Update(_currentUser.User.Profile);
             _achievementRepository.SaveChanges();
+            var tempAchievement = _achievementRepository.GetTempAchievement(_currentUser.UserId);
+            if (tempAchievement != null)
+            {
+                if (CheckAndCompleteAchievement(tempAchievement))
+                {
+                    return ServiceResult.SuccessResult("Заявка достижение создана".Resource(this));
+                }
+            }
             return ServiceResult.SuccessResult();
         }
 
@@ -97,6 +114,15 @@ namespace BLL.Social.Achievements.Impls
                 _achievementRepository.SaveChanges();
             }
             return ServiceResult.SuccessResult();
+        }
+
+        private List<AchievementPreviewVm> GetAchievementsToVote()
+        {
+            int count = (VoteCount - _currentUser.User.Profile.AchievementVoiceCount) % 4;
+            count = count > 0 ? count : 0;
+            return count > 0 ? _achievementRepository.GetRandomAchievements(_currentUser.UserId, count)
+                                                                   .MapEachTo<AchievementPreviewVm>().ToList()
+                                           : new List<AchievementPreviewVm>();
         }
 
         private void AddOrUpdateAchievement(Achievement ach, AchievementCreateVm model)
@@ -120,17 +146,20 @@ namespace BLL.Social.Achievements.Impls
             _achievementRepository.SaveChanges();
         }
 
-        private void CheckAndCompleteAchievement(Achievement ach)
+        private bool CheckAndCompleteAchievement(Achievement ach)
         {
-            var achievementToVoice = _achievementRepository.GetThreeRandomAchievements();
-            if (achievementToVoice.Count <= _currentUser.User.Profile.AchievementVoiceCount)
+            var achievementToVoice = GetAchievementsToVote();
+            if (achievementToVoice.Count == 0)//<= _currentUser.User.Profile.AchievementVoiceCount)
             {
                 ach.Status = AchievementStatus.Started;
                 ach.Started = DateTime.Now;
-                _currentUser.User.Profile.AchievementVoiceCount -= achievementToVoice.Count;
+                int updatedCount = _currentUser.User.Profile.AchievementVoiceCount - 3;
+                _currentUser.User.Profile.AchievementVoiceCount = updatedCount > 0 ? updatedCount : 0;
                 _achievementRepository.Update(_currentUser.User.Profile);
                 _achievementRepository.SaveChanges();
+                return true;
             }
+            return false;
         }
     }
 }

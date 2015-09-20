@@ -80,22 +80,23 @@ namespace DAL.Repository
             return new AchievementDto()
             {
                 Count = query.Count(),
-                List = query.OrderBy(a => a.Id)
+                List = query.OrderByDescending(a => a.Id)
                     .Skip(skip)
                     .Take(take)
                     .ToList()
             };
         }
 
-        public List<Achievement> GetThreeRandomAchievements()
+        public List<Achievement> GetRandomAchievements(int userId, int count)
         {
             return Queryable<Achievement>()
                 .Where(a => a.Status == AchievementStatus.Started)
+                .Where(a => a.Voices.All(v => v.UserId != userId))
                 .Include(a => a.Voices)
                 .Include(a => a.User)
                 .Include(a => a.AchievementType)
                 .OrderBy(a => SqlFunctions.Rand(1))
-                .Take(3)
+                .Take(count)
                 .ToList();
         }
     }

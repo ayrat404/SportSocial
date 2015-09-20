@@ -116,6 +116,12 @@ namespace DAL
                 .HasForeignKey(j => j.UserId)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<JournalMedia>()
+                .HasOptional(t => t.Enity)
+                .WithMany(t => t.Media)
+                .HasForeignKey(j => j.EntityId)
+                .WillCascadeOnDelete(true);
+
             modelBuilder.Entity<AchievementRating>()
                 .HasRequired(t => t.User)
                 .WithMany()
@@ -160,6 +166,12 @@ namespace DAL
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<JournalCommentRating>()
+                .HasRequired(t => t.User)
+                .WithMany()
+                .HasForeignKey(j => j.UserId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<JournalMediaRating>()
                 .HasRequired(t => t.User)
                 .WithMany()
                 .HasForeignKey(j => j.UserId)

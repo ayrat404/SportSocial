@@ -44,7 +44,7 @@ namespace Social.Controllers
 
         protected ApiResult ApiResult(ServiceResult serviceResult)
         {
-            var result = new ApiResult {Success = serviceResult.Success};
+            var result = new ApiResult {Success = serviceResult.Success, Message =  serviceResult.SuccessMessage};
             if (result.Success) return result;
             result.Errors = new ApiError
             {

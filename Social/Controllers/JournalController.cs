@@ -22,6 +22,7 @@ namespace Social.Controllers
 
         [Authorize]
         [HttpPost]
+        [Route("")]
         public ApiResult Create(JournalVm journal)
         {
             if (ModelState.IsValid)
@@ -37,6 +38,20 @@ namespace Social.Controllers
         {
             var journal = _journalService.GetJournal(id);
             return ApiResult(journal);
+        }
+
+        [Route("{id:int}")]
+        [HttpPut]
+        public ApiResult EditJournal(JournalVm journal)
+        {
+            return ApiResult(_journalService.EditJournal(journal));
+        }
+
+        [Route("")]
+        [HttpDelete]
+        public ApiResult DeleteJournal(int id)
+        {
+            return ApiResult(_journalService.DeleteJournal(id));
         }
     }
 }

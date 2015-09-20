@@ -9,6 +9,7 @@ namespace DAL.Repository.Interfaces
     {
         List<Journal> GetJournals(int userId);
         Journal GetJournal(int journalId);
+        Journal JournalForEdit(int journalId);
     }
 
     public class JournalRepository : Repository, IJournalRepository
@@ -26,6 +27,7 @@ namespace DAL.Repository.Interfaces
                 .Include(j => j.User)
                 .Include(j => j.Media)
                 .Include(j => j.Media.Select(m => m.RatingEntites))
+                .OrderByDescending(j => j.Id)
                 .ToList();
         }
 
@@ -41,6 +43,16 @@ namespace DAL.Repository.Interfaces
                 .Include(j => j.Tags.Select(t => t.Tag))
                 .Include(j => j.RatingEntites.Select(r => r.User))
                 .Include(j => j.User)
+                .Single();
+        }
+
+        public Journal JournalForEdit(int journalId)
+        {
+            return Queryable<Journal>()
+                .Where(j => j.Id == journalId)
+                .Include(j => j.User)
+                .Include(j => j.Media)
+                .Include(j => j.Tags)
                 .Single();
         }
     }
