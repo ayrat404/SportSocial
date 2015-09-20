@@ -1,7 +1,7 @@
 var LikesInRow;
 
 LikesInRow = (function() {
-  function LikesInRow($rootScope, likeService) {
+  function LikesInRow($rootScope, $timeout, likeService) {
     return {
       restrict: 'E',
       require: 'ngModel',
@@ -46,7 +46,9 @@ LikesInRow = (function() {
                 return results;
               }
             })["finally"](function(res) {
-              return $scope.loading = false;
+              return $timeout(function() {
+                return $scope.loading = false;
+              });
             });
           }
         };
@@ -68,4 +70,4 @@ LikesInRow = (function() {
 
 })();
 
-angular.module('socialApp.directives').directive('likesInRow', ['$rootScope', 'likeService', LikesInRow]);
+angular.module('socialApp.directives').directive('likesInRow', ['$rootScope', '$timeout', 'likeService', LikesInRow]);

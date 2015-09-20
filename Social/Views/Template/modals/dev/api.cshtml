@@ -429,7 +429,21 @@
                 media: [],
                 tags: ['fortress', 'sport']
             }
-        ]
+        ],
+        achievements: {
+            closed: {
+                count: 27,
+                list: [ *здесь 4 последних полученных достижения* 
+                    { id: 1, cupImage: 'asdasd', ... }
+                ]
+            },
+            opened: {
+                count: 27,
+                list: [ *здесь 4 последних опубликованных заявки на достижения, т.е. те которые ещё не получены (не прошло 4 дня)* 
+                    { id: 1, cupImage: 'asdasd', ... }
+                ]
+            }
+        }
     },
     errors: null
 }
@@ -784,7 +798,7 @@
 }
                     </pre>
             </b>
-            
+
             <code>DELETE: /api/achievement/temp</code>
             <p>Удаление неопубликованной заявки</p>
             <b>
@@ -807,8 +821,8 @@
                     </pre>
             </b>
         </li>
-        
-        
+
+
         <li id="api_achievement_view" class="dev__api__row">
             <p>Страница просмотра достижения</p>
             <code>GET: /api/achievement/:id</code>
@@ -895,7 +909,7 @@
                     </pre>
             </b>
         </li>
-        
+
         <li id="api_achievement_voice" class="dev__api__row">
             <p>Голосование за заявку на достижение</p>
             <code>POST: /api/achievement/voice</code>
@@ -923,7 +937,7 @@
                     </pre>
             </b>
         </li>
-        
+
         <li id="api_achievement_list" class="dev__api__row">
             <p>При первоначальной загрузке страницы осуществляется запрос к настройкам фильтра. В данном случае это список доступных упражнений</p>
             <code>GET: /api/achievement/filter</code>
@@ -979,8 +993,8 @@
                 </pre>
             </b>
         </li>
-        
-        
+
+
         <li id="api_achievement_list" class="dev__api__row">
             <p>Удаление и загрузка аватара. В настоящий момент у пользователя можно посмотреть только один аватар - текущий. При загрузке аватара, загружаемый аватар становится текущим. При удалении аватара текущий аватар принимает значение null. Остальные аватарки сохраняются у пользователя но пока не используются.</p>
             <code>POST: /api/upload</code>

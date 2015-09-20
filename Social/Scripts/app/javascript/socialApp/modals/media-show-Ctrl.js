@@ -2,10 +2,14 @@ var MediaModalShow;
 
 MediaModalShow = (function() {
   function MediaModalShow($scope, $state, $modalInstance, $rootScope, base, journalService, modalService, modalData) {
-    var setByIndex;
+    var i, receiveParams, setByIndex, v;
+    receiveParams = ['media', 'entityType', 'index'];
     $scope.maxText = 40;
     if (modalData.media && modalData.entityType) {
-      $state.params.media = modalData.media;
+      for (i in receiveParams) {
+        v = receiveParams[i];
+        $state.params[v] = modalData[v];
+      }
       $scope.currentIndex = modalData.index !== void 0 ? +modalData.index : 1;
       $scope.entityType = modalData.entityType;
       journalService.getById(modalData.media).then(function(res) {
@@ -29,7 +33,6 @@ MediaModalShow = (function() {
         });
       });
       setByIndex = function(index) {
-        var i;
         i = index - 1;
         if ($scope.it.media[i] !== void 0) {
           $scope.current = $scope.it.media[i];
@@ -70,8 +73,10 @@ MediaModalShow = (function() {
       console.log('media id or type undefined');
     }
     $modalInstance.result["catch"](function() {
-      $state.params.index = null;
-      $state.params.media = null;
+      for (i in receiveParams) {
+        v = receiveParams[i];
+        $state.params[v] = null;
+      }
       return $state.transitionTo($state.current, $state.params, {
         notify: false
       });

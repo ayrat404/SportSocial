@@ -18,7 +18,6 @@ apiInterseptor = (function() {
             if (res.data) {
               noticeClass = res.data.success === true ? 'success' : 'warning';
               if (res.data.message && res.data.message.length) {
-                debugger;
                 base.notice.show({
                   text: res.data.message,
                   type: noticeClass

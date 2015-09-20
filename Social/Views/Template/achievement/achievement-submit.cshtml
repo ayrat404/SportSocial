@@ -54,6 +54,10 @@
                             </div>
                         </li>
                     </ul>
+                    <div ng-if="!ach.cards.length"
+                         class="alert alert-info text-center">
+                        @R("Пока нет ни одного упражнения, по которому можно получить достижение. Попробуйте подать заявку позже.")
+                    </div>
                 </div>
                 @* ----- First step ----- *@
 

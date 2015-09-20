@@ -95,6 +95,24 @@ class ProfileView extends Controller('socialApp.controllers')
             _this.user.id = $stateParams.userId
             _this.user.loaded = true
 
+#            _this.user.achievements =
+#                closed:
+#                    count: 10
+#                    list: [
+#                        {id: 1, cupImage: 'asdasd'}
+#                        {id: 2, cupImage: 'asdasd'}
+#                        {id: 3, cupImage: 'asdasd'}
+#                        {id: 4, cupImage: 'asdasd'}
+#                    ]
+#                opened:
+#                    count: 10
+#                    list: [
+#                        {id: 1, cupImage: 'asdasd'}
+#                        {id: 2, cupImage: 'asdasd'}
+#                        {id: 3, cupImage: 'asdasd'}
+#                        {id: 4, cupImage: 'asdasd'}
+#                    ]
+
 #            avatar =
 #                id: 2
 #                url: 'asdasd'

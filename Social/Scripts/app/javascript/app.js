@@ -19,7 +19,7 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'fl
         }
       }
     }).state('main.profile', {
-      url: '/id:userId?media&index',
+      url: '/id:userId?media&index&entityType',
       views: {
         'socialContent@main': {
           templateUrl: tmplView('profile/index'),
@@ -28,7 +28,7 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'fl
         }
       }
     }).state('main.journalIt', {
-      url: '/record/:id?media&index',
+      url: '/record/:id?media&index&entityType',
       views: {
         'socialContent@main': {
           templateUrl: tmplView('journal/view'),
@@ -61,6 +61,15 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'fl
           templateUrl: tmplView('achievement/achievement-list'),
           controller: 'achievementListController',
           controllerAs: 'ach'
+        }
+      }
+    }).state('main.users', {
+      url: '/users',
+      views: {
+        'socialContent@main': {
+          templateUrl: tmplView('users/users-list'),
+          controller: 'usersListController',
+          controllerAs: 'ulist'
         }
       }
     }).state('landing', {

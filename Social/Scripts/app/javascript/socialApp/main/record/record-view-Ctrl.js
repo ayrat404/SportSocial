@@ -23,7 +23,15 @@ RecordView = (function() {
       return _this.it.loader = false;
     });
     _this.edit = function() {
-      return console.log('edit');
+      return modalService.show({
+        name: 'journalSubmit',
+        data: {
+          model: _this.it,
+          success: function(record) {
+            return _this.it = record;
+          }
+        }
+      });
     };
     _this.remove = function() {
       return modalService.show({

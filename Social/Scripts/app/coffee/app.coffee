@@ -1,12 +1,12 @@
 app = angular.module('app', [
-    'ui.router',
-    'ui.bootstrap',
+    'ui.router'
+    'ui.bootstrap'
     'angular-storage'
-    'flow',
+    'flow'
     '720kb.socialshare'
     'youtube-embed'
-    'shared',
-    'appSrvc',
+    'shared'
+    'appSrvc'
     'socialApp'
 ]).config([
     '$stateProvider',
@@ -36,14 +36,14 @@ app = angular.module('app', [
                     controller: 'mainSocialController'
                     controllerAs: 'social'
         .state 'main.profile',
-            url: '/id:userId?media&index'
+            url: '/id:userId?media&index&entityType'
             views:
                 'socialContent@main':
                     templateUrl: tmplView 'profile/index'
                     controller: 'profileViewController'
                     controllerAs: 'profile'
         .state 'main.journalIt',
-            url: '/record/:id?media&index'
+            url: '/record/:id?media&index&entityType'
             views:
                 'socialContent@main':
                     templateUrl: tmplView 'journal/view'
@@ -70,6 +70,13 @@ app = angular.module('app', [
                     templateUrl: tmplView 'achievement/achievement-list'
                     controller: 'achievementListController'
                     controllerAs: 'ach'
+        .state 'main.users',
+            url: '/users'
+            views:
+                'socialContent@main':
+                    templateUrl: tmplView 'users/users-list'
+                    controller: 'usersListController'
+                    controllerAs: 'ulist'
         .state 'landing',
             url: '/'
             templateUrl: tmplView 'landing/index'

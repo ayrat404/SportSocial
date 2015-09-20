@@ -55,9 +55,26 @@
                         @*-----User info about user-----*@
 
                     </div>
-                    <div class="pi__row">
-                        <p class="pi__row__title">@R("Достижения") (0) <span class="link" data-modal-click="aboutAchievement">@R("Что это?")</span></p>
-                        <a ui-sref="main.achievementAdd" class="btn btn-fill-green">@R("Подать заявку на достижение")</a>
+                    <div ng-if="profile.user.achievements" class="pi__row">
+                        <p class="pi__row__title">@R("Достижения") ({{profile.user.achievements.closed.count}}) <span ng-if="!profile.user.achievements.closed.length" class="link" data-modal-click="aboutAchievement">@R("Что это?")</span></p>
+                        <ul class="achievement-list achievement-list--grid">
+                            <li ng-repeat="a in profile.user.achievements.closed.list" class="al__it">
+                                <a ui-sref="main.achievementView({id: a.id})">
+                                    <img ng-src="{{ a.cupImage | imageResize:{w: 75, h:75} }}" class="al__it__img" />
+                                </a>
+                            </li>
+                        </ul>
+                        <a ng-if="!profile.user.achievements.closed.list.length" ui-sref="main.achievementAdd" class="btn btn-fill-green">@R("Подать заявку на достижение")</a>
+                        <div ng-if="profile.user.achievements.opened.list.length">
+                            <p class="pi__row__title">@R("Работа над достижениями") ({{profile.user.achievements.opened.count}})</p>
+                            <ul class="achievement-list achievement-list--grid">
+                                <li ng-repeat="a in profile.user.achievements.opened.list" class="al__it">
+                                    <a ui-sref="main.achievementView({id: a.id})">
+                                        <img ng-src="{{ a.cupImage | imageResize:{w: 75, h:75} }}" class="al__it__img" />
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="pi__row">
                         <p class="pi__row__title">@R("Подписки") ({{profile.user.subscribe.count}}) <a href="#" ng-if="profile.user.subscribe.count > 4" class="link">@R("Показать всех")</a></p>

@@ -64,7 +64,12 @@ class RecordView extends Controller('socialApp.controllers')
         # edit record
         # ---------------
         _this.edit = ->
-            console.log('edit')
+            modalService.show
+                name: 'journalSubmit'
+                data:
+                    model: _this.it
+                    success: (record)->
+                        _this.it = record
 
         # remove record
         # ---------------

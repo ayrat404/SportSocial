@@ -3,7 +3,11 @@
         <div ng-show="it.media.length > 1" ng-click="before()" class="media-control left"><span class="icon"></span></div>
         <div ng-show="it.media.length > 1" ng-click="next()" class="media-control right"><span class="icon"></span></div>
         <div class="media-index">{{currentIndex}}/{{itemsCount}}</div>
-        <img class="media__watch__img" ng-src="{{ current.url | imageResize:{h: 480, w: 740} }}" />
+
+        <img ng-if="current.type == 'image'" class="media__watch__img" ng-src="{{ current.url | imageResize:{h: 480, w: 740} }}" />
+        <div ng-if="current.type == 'video'" class="embed-responsive embed-responsive-16by9">
+            <youtube-video class="embed-responsive-item" video-url="current.remoteUrl"></youtube-video>
+        </div>
     </div>
     <div class="item-bottom">
         <div class="item-author">

@@ -41,7 +41,8 @@ class serverValidation extends Directive('shared')
                 $form = $container.find('form')
                 scope.$watch 'obj', (obj)->
                     if obj
-                        if typeof obj.common == 'object' &&
+                        if obj.common != null &&
+                          obj.common != undefined &&
                           obj.common.error &&
                           obj.common.error.length
                             showError($form, obj.common.error)
@@ -51,13 +52,13 @@ class serverValidation extends Directive('shared')
                                 for i in [0...obj.common.fields.length]
                                     highlightField($form.find('[name="' + obj.common.fields[i] + '"]'))
 
-                            if obj.fields &&
-                              obj.fields.length &&
-                              base.isArray(obj.fields)
-                                for i in [0...obj.fields.length]
-                                    $element = $form.find('[name="' + obj.fields[i].name + '"]')
-                                    if $element.length
-                                        showError($element.eq(0), obj.fields[j].error)
-                                        highlightField($element.eq(0))
+                        if obj.fields &&
+                          obj.fields.length &&
+                          base.isArray(obj.fields)
+                            for i in [0...obj.fields.length]
+                                $element = $form.find('[name="' + obj.fields[i].name + '"]')
+                                if $element.length
+                                    showError($element.eq(0), obj.fields[i].error)
+                                    highlightField($element.eq(0))
                 return
         }

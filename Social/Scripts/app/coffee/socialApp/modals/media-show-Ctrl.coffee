@@ -9,12 +9,16 @@ class MediaModalShow extends Controller('socialApp.controllers')
         modalService
         modalData)->
 
+        receiveParams = ['media', 'entityType', 'index']
+
         $scope.maxText = 40
 
         if modalData.media &&
           modalData.entityType
 
-            $state.params.media = modalData.media
+            for i,v of receiveParams
+                $state.params[v] = modalData[v]
+
             $scope.currentIndex = if modalData.index != undefined then +modalData.index else 1
             $scope.entityType = modalData.entityType
 
@@ -78,6 +82,6 @@ class MediaModalShow extends Controller('socialApp.controllers')
         # clear state
         # ---------------
         $modalInstance.result.catch ->
-            $state.params.index = null
-            $state.params.media = null
+            for i,v of receiveParams
+                $state.params[v] = null
             $state.transitionTo($state.current, $state.params, { notify: false });

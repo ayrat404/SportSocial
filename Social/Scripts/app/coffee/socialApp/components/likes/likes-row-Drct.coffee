@@ -1,6 +1,7 @@
 class LikesInRow extends Directive('socialApp.directives')
     constructor: (
         $rootScope
+        $timeout
         likeService)->
         return {
             restrict: 'E'
@@ -30,7 +31,8 @@ class LikesInRow extends Directive('socialApp.directives')
                                         $scope.likes.list.splice i, 1
                                         break
                         .finally (res)->
-                            $scope.loading = false
+                            $timeout ->
+                                $scope.loading = false
             templateUrl: '/template/components/likes/likes-rowTpl'
             link: (scope, element, attrs, ngModel)->
                 defaults =

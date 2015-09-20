@@ -1,0 +1,9 @@
+﻿<div class="follow-row">
+    <div ng-click="follow()"
+         ng-class="{ 'fr__btn--liked': follows.isFollowed, 'loading': loading == true }"
+         class="fr__btn"><i></i></div>
+    <a ng-repeat="f in follows.list | limitTo:o.rowCount" ui-sref="main.profile({userId: f.id})" class="fr__user">
+        <img ng-src="{{ f.avatar | imageResize:{w: o.imageSize, h: o.imageSize} }}" />
+    </a>
+    <span ng-show="follows.count > o.rowCount && o.showLink" class="lr__more">+{{follows.count-o.rowCount}}</span>
+</div>

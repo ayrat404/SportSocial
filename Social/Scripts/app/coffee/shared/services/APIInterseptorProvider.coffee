@@ -28,7 +28,6 @@ class apiInterseptor extends Provider('shared')
 
                         if res.data.message &&
                           res.data.message.length
-                            debugger
                             base.notice.show
                                 text: res.data.message
                                 type: noticeClass
