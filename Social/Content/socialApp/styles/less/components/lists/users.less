@@ -16,15 +16,18 @@
 -------------------------------------------------- */
 .users-list--grid {
     .no-float();
+
     .ul__it {
         float: left;
         margin: 0 5px 5px 5px;
         width: 90px;
     }
+
     .ul__it__img {
         width: 90px;
         height: 90px;
     }
+
     .ul__it__name {
         text-align: left;
         margin-top: 8px;
@@ -39,6 +42,7 @@
 .users-list--cards {
     text-align: center;
     .no-float();
+
     .ul__it {
         text-align: left;
         border-radius: 3px 3px 0 0;
@@ -46,40 +50,67 @@
         margin: 0 10px 20px 10px;
         width: 250px;
     }
+
+    .ul__it__img-wrap {
+        display: block;
+    }
+
     .ul__it__img {
         border-radius: 3px 3px 0 0;
         width: 250px;
         height: 250px;
     }
+
     .ul__it__info {
         padding: 15px;
         height: 150px;
         background: #fff;
     }
+
     .ul__it__name {
         font-size: 1.286em;
         font-family: 'F1 Bold';
     }
+
     .ul__it__age {
         margin-bottom: 15px;
     }
+
     .ul__it__stat {
         list-style-type: none;
         padding: 0;
         margin: 0;
         color: @brand-gray2;
+
+        li {
+            &:before {
+                content: '';
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: 5px;
+            }
+        }
     }
+
     .ul__location {
-
+        &:before {
+            .sprite(@user-it-location);
+        }
     }
+
     .ul__records {
-
+        &:before {
+            .sprite(@user-it-records);
+        }
     }
+
     .ul__ach {
-
+        &:before {
+            .sprite(@user-it-achievements);
+        }
     }
-    .ul__it__fw {
 
+    .ul__it__fw {
     }
 }
 /* /Cards */

@@ -3,19 +3,19 @@
 
 @follow-row-size: 50px;
 
-.follow-row {
+.subscribers-row {
     height: @follow-row-size;
     position: relative;
     .no-float();
 
-    .fr__btn,
-    .fr__user {
+    .sr__btn,
+    .sr__user {
         height: @follow-row-size;
         width: @follow-row-size;
         float: left;
     }
 
-    .fr__btn {
+    .sr__btn {
         background-color: @brand-gray2;
         position: relative;
         cursor: pointer;
@@ -90,18 +90,18 @@
         }
     }
 
-    .fr__btn--liked {
+    .sr__btn--subscribed {
         background-color: #26de33;
     }
 
-    .fr__user {
+    .sr__user {
         img {
             height: @likes-row-size;
             width: @likes-row-size;
         }
     }
 
-    .fr__more {
+    .sr__more {
         height: @likes-row-size;
         width: @likes-row-size;
         line-height: @likes-row-size;

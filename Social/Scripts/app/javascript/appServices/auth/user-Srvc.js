@@ -1,8 +1,8 @@
 var user;
 
 user = (function() {
-  function user(store) {
-    var get, set;
+  function user($q, $http, store, servicesDefault) {
+    var get, getFilterProp, getList, set, urlBase, urlFilter;
     set = function(user) {
       store.set('user', user);
       return user;
@@ -15,9 +15,41 @@ user = (function() {
         return user;
       }
     };
+    urlBase = servicesDefault.baseServiceUrl + '/users';
+    urlFilter = servicesDefault.baseServiceUrl + '/users/filter';
+    getList = function(data) {
+      return $q(function(resolve, reject) {
+        return $http.get(urlBase, {
+          params: data
+        }).then(function(res) {
+          if (res.data.success) {
+            return resolve(res.data);
+          } else {
+            return reject(res.data);
+          }
+        }, function(res) {
+          return reject(res);
+        });
+      });
+    };
+    getFilterProp = function() {
+      return $q(function(resolve, reject) {
+        return $http.get(urlFilter).then(function(res) {
+          if (res.data.success) {
+            return resolve(res.data);
+          } else {
+            return reject(res.data);
+          }
+        }, function(res) {
+          return reject(res);
+        });
+      });
+    };
     return {
       get: get,
-      set: set
+      set: set,
+      getFilterProp: getFilterProp,
+      getList: getList
     };
   }
 
@@ -25,4 +57,4 @@ user = (function() {
 
 })();
 
-angular.module('appSrvc').service('userService', ['store', user]);
+angular.module('appSrvc').service('userService', ['$q', '$http', 'store', 'servicesDefault', user]);

@@ -6,115 +6,23 @@
             <div class="container">
                 
                 <ul class="users-list users-list--cards">
-                    <li class="ul__it">
-                        <img src="#" class="ul__it__img"/>
+                    <li ng-repeat="u in ulist.list" class="ul__it">
+                        <a ui-sref="main.profile({userId: u.id})" class="ul__it__img-wrap">
+                            <img src="{{ u.avatar|imageResize:{w: 250, h: 250} }}" class="ul__it__img" />
+                        </a>
                         <div class="ul__it__info">
-                            <div class="ul__it__name">Джамаил Бедоев</div>
-                            <div class="ul__it__age">21 год / 4 года в спорте</div>
+                            <a ui-sref="main.profile({userId: u.id})" class="ul__it__name">{{u.fullName}}</a>
+                            <div class="ul__it__age">{{u.age | formatWord:['@R("год")', '@R("года")', '@R("лет")']:true}} / {{u.sportTime | formatWord:['@R("год")', '@R("года")', '@R("лет")']:true}} @R("в спорте")</div>
                             <ul class="ul__it__stat">
-                                <li class="ul__location">Владивосток, Россия</li>
-                                <li class="ul__records"><b>29</b> записей</li>
-                                <li class="ul__ach"><b>4</b> достижения</li>
+                                <li ng-if="u.location.length" class="ul__location">{{u.location}}</li>
+                                <li class="ul__records"><b>{{u.recordsCount}}</b> {{u.recordsCount|formatWord:['@R("запись")', '@R("записи")', '@R("записей")']}}</li>
+                                <li class="ul__ach"><b>{{u.achievementsCount}}</b> {{u.achievementsCount|formatWord:['@R("достижение")', '@R("достижения")', '@R("достижений")']}}</li>
                             </ul>
                         </div>
                         <div class="ul__it__fw">
-                            <follows-row ng-model="u.follows"
-                                         data-id="{{::u.id}}"></follows-row>
-                            @*<div class="follow-row">
-                                <div class="fr__btn"><i></i></div>
-                                <a href="#" class="fr__user">
-                                    <img src="#"/>
-                                </a>
-                                <a href="#" class="fr__user">
-                                    <img src="#" />
-                                </a>
-                                <a href="#" class="fr__user">
-                                    <img src="#" />
-                                </a>
-                                <a href="#" class="fr__user">
-                                    <img src="#" />
-                                </a>
-                                <span class="fr__more">+21</span>
-                            </div>*@
+                            <subscribers-in-row ng-model="u.subscribers"
+                                                data-id="{{::u.id}}"></subscribers-in-row>
                         </div>
-                    </li>
-                    <li class="ul__it">
-                        <img src="#" class="ul__it__img" />
-                        <div class="ul__it__info">
-                            <div class="ul__it__name">Джамаил Бедоев</div>
-                            <div class="ul__it__age">21 год / 4 года в спорте</div>
-                            <ul class="ul__it__stat">
-                                <li class="ul__location">Владивосток, Россия</li>
-                                <li class="ul__records"><b>29</b> записей</li>
-                                <li class="ul__ach"><b>4</b> достижения</li>
-                            </ul>
-                        </div>
-                        <div class="ul__it__fw"></div>
-                    </li>
-                    <li class="ul__it">
-                        <img src="#" class="ul__it__img" />
-                        <div class="ul__it__info">
-                            <div class="ul__it__name">Джамаил Бедоев</div>
-                            <div class="ul__it__age">21 год / 4 года в спорте</div>
-                            <ul class="ul__it__stat">
-                                <li class="ul__location">Владивосток, Россия</li>
-                                <li class="ul__records"><b>29</b> записей</li>
-                                <li class="ul__ach"><b>4</b> достижения</li>
-                            </ul>
-                        </div>
-                        <div class="ul__it__fw"></div>
-                    </li>
-                    <li class="ul__it">
-                        <img src="#" class="ul__it__img" />
-                        <div class="ul__it__info">
-                            <div class="ul__it__name">Джамаил Бедоев</div>
-                            <div class="ul__it__age">21 год / 4 года в спорте</div>
-                            <ul class="ul__it__stat">
-                                <li class="ul__location">Владивосток, Россия</li>
-                                <li class="ul__records"><b>29</b> записей</li>
-                                <li class="ul__ach"><b>4</b> достижения</li>
-                            </ul>
-                        </div>
-                        <div class="ul__it__fw"></div>
-                    </li>
-                    <li class="ul__it">
-                        <img src="#" class="ul__it__img" />
-                        <div class="ul__it__info">
-                            <div class="ul__it__name">Джамаил Бедоев</div>
-                            <div class="ul__it__age">21 год / 4 года в спорте</div>
-                            <ul class="ul__it__stat">
-                                <li class="ul__location">Владивосток, Россия</li>
-                                <li class="ul__records"><b>29</b> записей</li>
-                                <li class="ul__ach"><b>4</b> достижения</li>
-                            </ul>
-                        </div>
-                        <div class="ul__it__fw"></div>
-                    </li>
-                    <li class="ul__it">
-                        <img src="#" class="ul__it__img" />
-                        <div class="ul__it__info">
-                            <div class="ul__it__name">Джамаил Бедоев</div>
-                            <div class="ul__it__age">21 год / 4 года в спорте</div>
-                            <ul class="ul__it__stat">
-                                <li class="ul__location">Владивосток, Россия</li>
-                                <li class="ul__records"><b>29</b> записей</li>
-                                <li class="ul__ach"><b>4</b> достижения</li>
-                            </ul>
-                        </div>
-                        <div class="ul__it__fw"></div>
-                    </li>
-                    <li class="ul__it">
-                        <img src="#" class="ul__it__img" />
-                        <div class="ul__it__info">
-                            <div class="ul__it__name">Джамаил Бедоев</div>
-                            <div class="ul__it__age">21 год / 4 года в спорте</div>
-                            <ul class="ul__it__stat">
-                                <li class="ul__location">Владивосток, Россия</li>
-                                <li class="ul__records"><b>29</b> записей</li>
-                                <li class="ul__ach"><b>4</b> достижения</li>
-                            </ul>
-                        </div>
-                        <div class="ul__it__fw"></div>
                     </li>
                 </ul>
 

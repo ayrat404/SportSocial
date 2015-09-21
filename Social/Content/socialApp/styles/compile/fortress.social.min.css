@@ -10300,7 +10300,7 @@ fieldset[disabled] .btn--subscribe.active {
   -webkit-transition: opacity 100ms linear;
           transition: opacity 100ms linear;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -332px -208px;
+  background-position: -332px -254px;
   width: 11px;
   height: 11px;
   margin-left: 8px;
@@ -10720,25 +10720,25 @@ fieldset[disabled] .show-more .show-more__btn {
 -------------------------------------------------- */
 .sharing-modal .social-share .icon {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -48px -182px;
+  background-position: -96px -182px;
   width: 38px;
   height: 38px;
 }
 .sharing-modal .social-share .icon.icon--vk {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -96px -182px;
+  background-position: -48px -182px;
   width: 38px;
   height: 38px;
 }
 .sharing-modal .social-share .icon.icon--facebook {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: 0px -182px;
+  background-position: -144px -182px;
   width: 38px;
   height: 38px;
 }
 .sharing-modal .social-share .icon.icon--twitter {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -144px -182px;
+  background-position: 0px -182px;
   width: 38px;
   height: 38px;
 }
@@ -10985,7 +10985,7 @@ fieldset[disabled] .show-more .show-more__btn {
 }
 .user-info__avatar__img-wrap .uia__remove i {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -332px -185px;
+  background-position: -332px -231px;
   width: 11px;
   height: 13px;
 }
@@ -10994,7 +10994,7 @@ fieldset[disabled] .show-more .show-more__btn {
 }
 .user-info__avatar__img-wrap .uia__change i {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -332px -164px;
+  background-position: -332px -210px;
   width: 13px;
   height: 11px;
 }
@@ -11015,7 +11015,7 @@ fieldset[disabled] .show-more .show-more__btn {
   display: inline-block;
   margin-right: 7px;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -332px -97px;
+  background-position: -332px -143px;
   width: 12px;
   height: 13px;
 }
@@ -11173,7 +11173,7 @@ fieldset[disabled] .show-more .show-more__btn {
   display: inline-block;
   opacity: .8;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -332px -251px;
+  background-position: -332px -297px;
   width: 6px;
   height: 6px;
 }
@@ -11302,6 +11302,9 @@ fieldset[disabled] .show-more .show-more__btn {
   margin: 0 10px 20px 10px;
   width: 250px;
 }
+.users-list--cards .ul__it__img-wrap {
+  display: block;
+}
 .users-list--cards .ul__it__img {
   border-radius: 3px 3px 0 0;
   width: 250px;
@@ -11324,6 +11327,30 @@ fieldset[disabled] .show-more .show-more__btn {
   padding: 0;
   margin: 0;
   color: #354349;
+}
+.users-list--cards .ul__it__stat li:before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+.users-list--cards .ul__location:before {
+  background-image: url(../../images/icons-set/icons-set.png);
+  background-position: -332px -120px;
+  width: 12px;
+  height: 13px;
+}
+.users-list--cards .ul__records:before {
+  background-image: url(../../images/icons-set/icons-set.png);
+  background-position: -200px -261px;
+  width: 10px;
+  height: 12px;
+}
+.users-list--cards .ul__ach:before {
+  background-image: url(../../images/icons-set/icons-set.png);
+  background-position: -332px -75px;
+  width: 14px;
+  height: 13px;
 }
 /* /Cards */
 /* /Users lists
@@ -11370,13 +11397,13 @@ fieldset[disabled] .show-more .show-more__btn {
 }
 .achievement-list--row .al__it--fail .al__it__status {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -332px -142px;
+  background-position: -332px -188px;
   width: 12px;
   height: 12px;
 }
 .achievement-list--row .al__it--credit .al__it__status {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -332px -75px;
+  background-position: -332px -98px;
   width: 15px;
   height: 12px;
 }
@@ -11430,7 +11457,7 @@ fieldset[disabled] .show-more .show-more__btn {
   display: inline-block;
   vertical-align: middle;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -332px -51px;
+  background-position: -332px -27px;
   width: 14px;
   height: 14px;
 }
@@ -11597,13 +11624,13 @@ fieldset[disabled] .show-more .show-more__btn {
 }
 .wall__it__header-edit .wi__remove i {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -151px -84px;
+  background-position: -151px -133px;
   width: 20px;
   height: 23px;
 }
 .wall__it__header-edit .wi__remove:hover i {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -151px -133px;
+  background-position: -151px -84px;
   width: 20px;
   height: 23px;
 }
@@ -11668,13 +11695,13 @@ fieldset[disabled] .show-more .show-more__btn {
 }
 .wall__it__content .wi__media-wrap.video i {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -252px -38px;
+  background-position: -182px -38px;
   width: 60px;
   height: 60px;
 }
 .wall__it__content .wi__media-wrap.video:hover i {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -182px -38px;
+  background-position: -252px -38px;
   width: 60px;
   height: 60px;
 }
@@ -11813,7 +11840,7 @@ fieldset[disabled] .show-more .show-more__btn {
 }
 .likes-row .lr__btn i {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -28px -261px;
+  background-position: -88px -261px;
   width: 20px;
   height: 16px;
   position: absolute;
@@ -11923,7 +11950,7 @@ fieldset[disabled] .show-more .show-more__btn {
 }
 .likes-finger--liked .likes-finger__icon {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -88px -261px;
+  background-position: -58px -261px;
   width: 20px;
   height: 16px;
 }
@@ -11936,7 +11963,7 @@ fieldset[disabled] .show-more .show-more__btn {
   display: inline-block;
   vertical-align: top;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -58px -261px;
+  background-position: -28px -261px;
   width: 20px;
   height: 16px;
 }
@@ -12069,7 +12096,7 @@ fieldset[disabled] .show-more .show-more__btn {
   display: inline-block;
   vertical-align: middle;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -296px -182px;
+  background-position: -124px -230px;
   width: 20px;
   height: 20px;
 }
@@ -12087,7 +12114,7 @@ fieldset[disabled] .show-more .show-more__btn {
 }
 .social-share .icon--twitter {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -124px -230px;
+  background-position: -296px -182px;
   width: 20px;
   height: 20px;
 }
@@ -12374,7 +12401,7 @@ fieldset[disabled] .show-more .show-more__btn {
 }
 .voice__part--against .icon {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -332px -27px;
+  background-position: -332px -51px;
   width: 14px;
   height: 14px;
 }
@@ -12402,23 +12429,23 @@ fieldset[disabled] .show-more .show-more__btn {
 ---------------------------------------------------------------------------------- */
 /* Follow row
 ---------------------------------------------------------------------------------- */
-.follow-row {
+.subscribers-row {
   height: 50px;
   position: relative;
 }
-.follow-row:after {
+.subscribers-row:after {
   display: block;
   line-height: 0;
   content: '';
   clear: both;
 }
-.follow-row .fr__btn,
-.follow-row .fr__user {
+.subscribers-row .sr__btn,
+.subscribers-row .sr__user {
   height: 50px;
   width: 50px;
   float: left;
 }
-.follow-row .fr__btn {
+.subscribers-row .sr__btn {
   background-color: #354349;
   position: relative;
   cursor: pointer;
@@ -12427,7 +12454,7 @@ fieldset[disabled] .show-more .show-more__btn {
       -ms-user-select: none;
           user-select: none;
 }
-.follow-row .fr__btn i {
+.subscribers-row .sr__btn i {
   background-image: url(../../images/icons-set/icons-set.png);
   background-position: -261px -182px;
   width: 25px;
@@ -12439,14 +12466,14 @@ fieldset[disabled] .show-more .show-more__btn {
   left: 0;
   margin: auto;
 }
-.follow-row .fr__btn:hover {
+.subscribers-row .sr__btn:hover {
   background-color: #1fba2a;
 }
-.follow-row .fr__btn:active {
+.subscribers-row .sr__btn:active {
   background-color: #26de33;
   box-shadow: inset 10px 10px 9px -11px #000000;
 }
-.follow-row .fr__btn:before {
+.subscribers-row .sr__btn:before {
   content: '';
   position: absolute;
   right: 0;
@@ -12472,7 +12499,7 @@ fieldset[disabled] .show-more .show-more__btn {
   -webkit-animation-timing-function: linear;
           animation-timing-function: linear;
 }
-.follow-row .fr__btn:after {
+.subscribers-row .sr__btn:after {
   content: '';
   display: inline-block;
   height: 100%;
@@ -12484,31 +12511,31 @@ fieldset[disabled] .show-more .show-more__btn {
   -webkit-transition-property: width;
           transition-property: width;
 }
-.follow-row .fr__btn.loading {
+.subscribers-row .sr__btn.loading {
   pointer-events: none;
   cursor: not-allowed;
 }
-.follow-row .fr__btn.loading i {
+.subscribers-row .sr__btn.loading i {
   display: none;
 }
-.follow-row .fr__btn.loading:before {
+.subscribers-row .sr__btn.loading:before {
   -webkit-transition-duration: 1s;
           transition-duration: 1s;
   opacity: 1;
 }
-.follow-row .fr__btn.loading:after {
+.subscribers-row .sr__btn.loading:after {
   -webkit-transition-delay: 0s;
           transition-delay: 0s;
   width: 20px;
 }
-.follow-row .fr__btn--liked {
+.subscribers-row .sr__btn--subscribed {
   background-color: #26de33;
 }
-.follow-row .fr__user img {
+.subscribers-row .sr__user img {
   height: 50px;
   width: 50px;
 }
-.follow-row .fr__more {
+.subscribers-row .sr__more {
   height: 50px;
   width: 50px;
   line-height: 50px;
@@ -12765,7 +12792,7 @@ fieldset[disabled] .show-more .show-more__btn {
 }
 .auth-social .as__icon--tw {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -124px -230px;
+  background-position: -296px -182px;
   width: 20px;
   height: 20px;
 }
@@ -12777,7 +12804,7 @@ fieldset[disabled] .show-more .show-more__btn {
 }
 .auth-social .as__icon--gp {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -296px -182px;
+  background-position: -124px -230px;
   width: 20px;
   height: 20px;
 }
@@ -12903,7 +12930,7 @@ fieldset[disabled] .show-more .show-more__btn {
   display: inline-block;
   vertical-align: middle;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -332px -120px;
+  background-position: -332px -166px;
   width: 12px;
   height: 12px;
 }
@@ -12911,7 +12938,7 @@ fieldset[disabled] .show-more .show-more__btn {
   display: inline-block;
   vertical-align: middle;
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -332px -229px;
+  background-position: -332px -275px;
   width: 10px;
   height: 12px;
 }
@@ -13063,7 +13090,7 @@ fieldset[disabled] .show-more .show-more__btn {
 }
 .record .rcd__control--remove {
   background-image: url(../../images/icons-set/icons-set.png);
-  background-position: -151px -84px;
+  background-position: -151px -133px;
   width: 20px;
   height: 23px;
 }

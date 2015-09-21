@@ -1,6 +1,10 @@
 ﻿# CoffeeScript
 class user extends Service('appSrvc')
-    constructor: (store)->
+    constructor: (
+        $q
+        $http
+        store
+        servicesDefault)->
 
         # save user in storage
         # ---------------
@@ -17,8 +21,38 @@ class user extends Service('appSrvc')
             else
                 return user
 
+
+        urlBase = servicesDefault.baseServiceUrl + '/users'
+        urlFilter = servicesDefault.baseServiceUrl + '/users/filter'
+
+        # get list
+        # ---------------
+        getList = (data)->
+            $q (resolve, reject)->
+                $http.get(urlBase, { params: data }).then (res)->
+                    if res.data.success
+                        resolve res.data
+                    else
+                        reject res.data
+                , (res)->
+                    reject res
+
+        # get filter prop
+        # ---------------
+        getFilterProp = ->
+            $q (resolve, reject)->
+                $http.get(urlFilter).then (res)->
+                    if res.data.success
+                        resolve res.data
+                    else
+                        reject res.data
+                , (res)->
+                    reject res
+
         # ---------------
         return {
             get: get
             set: set
+            getFilterProp: getFilterProp
+            getList: getList
         }

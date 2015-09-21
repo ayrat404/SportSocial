@@ -48,6 +48,12 @@ UsersList = (function() {
         });
       }
     };
+    userService.getFilterProp().then(function(res) {
+      _this.prop = res.data;
+      return _this.updateList(true);
+    }, function() {
+      return _this.pageError = true;
+    });
   }
 
   return UsersList;

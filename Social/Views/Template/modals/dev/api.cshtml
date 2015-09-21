@@ -21,6 +21,9 @@
         <li><a href="#api_achievement_view">Просмотр заявки на достижение</a></li>
         <li><a href="#api_achievement_voice">Голосование за заявку на достижение</a></li>
         <li><a href="#api_achievement_list">Просмотр списка заявок на достижение + фильтрация</a></li>
+        <li><a href="#api_avatar">Удаление и загрузка аватара</a></li>
+        <li><a href="#api_users_list">Страница атлетов</a></li>
+        <li><a href="#api_subscribe">Подписка/отписка</a></li>
     </ul>
     <ul class="dev__api__content">
 
@@ -995,7 +998,7 @@
         </li>
 
 
-        <li id="api_achievement_list" class="dev__api__row">
+        <li id="api_avatar" class="dev__api__row">
             <p>Удаление и загрузка аватара. В настоящий момент у пользователя можно посмотреть только один аватар - текущий. При загрузке аватара, загружаемый аватар становится текущим. При удалении аватара текущий аватар принимает значение null. Остальные аватарки сохраняются у пользователя но пока не используются.</p>
             <code>POST: /api/upload</code>
             <p>Загрузка аватара</p>
@@ -1041,6 +1044,100 @@
             </b>
         </li>
 
+
+        <li id="api_users_list" class="dev__api__row">
+            <p>При первоначальной загрузке страницы осуществляется запрос к настройкам фильтра. Пока настройки фильтра неизвестны</p>
+            <code>GET: /api/users/filter</code>
+            <p>Запрос настроек фильтра</p>
+            <b>
+                send data:
+                <pre>
+{
+    *none*
+}
+                </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    undefined
+}
+               </pre>
+            </b>
+            <code>GET: /api/users</code>
+            <p>Запрос списка пользователей</p>
+            <b>
+                send data:
+                <pre>
+{
+    *фильтр, который ещё появится*
+    count: 20 * количество пользователей
+    page: 6 * страница
+    
+}
+                </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true,
+    data: {
+        list: [ * список пользователей
+            {
+                id: 1,
+                fullName: 'Вася Козлов',
+                avatar: 'avatarUrl',
+                age: 23,
+                sportTime: 4,
+                location: 'Владивосток, Россия',
+                achievementsCount: 10,
+                recordsCount: 2,
+                subscribers: {
+                    count: 19,
+                    isSubscribed: false,
+                    list: [
+                        { id: 1, avatar: 'avatarUrl', ... }
+                    ]
+                }
+            }
+        ] 
+        isMore: true/false * есть или нет ещё пользователи по текущим параметрам (для подгрузки)
+    },
+    errors: null,
+    message: null
+}
+                </pre>
+            </b>
+        </li>
+        
+        
+        <li id="api_subscribe" class="dev__api__row">
+            <p>Подписка отписка</p>
+            <code>POST: /api/subscribe</code>
+            <b>
+                send data:
+                <pre>
+{
+    id: x,
+    actionType: subscribe/unsubscribe
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true,
+    data: null,
+    errors: null,
+    message: null
+}
+                    </pre>
+            </b>
+
+        </li>
 
 
     </ul>

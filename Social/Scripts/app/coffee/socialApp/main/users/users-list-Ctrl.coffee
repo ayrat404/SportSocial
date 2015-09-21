@@ -72,11 +72,11 @@ class UsersList extends Controller('socialApp.controllers')
 
         # first load
         # ---------------
-#        userService.getFilterProp().then (res)->
-#            _this.prop = res.data
-#            _this.updateList(true)
-#        , ->
-#            _this.pageError = true
+        userService.getFilterProp().then (res)->
+            _this.prop = res.data
+            _this.updateList(true)
+        , ->
+            _this.pageError = true
 
         # watch for toggles
         # ---------------
@@ -93,54 +93,33 @@ class UsersList extends Controller('socialApp.controllers')
 #
         #fake list
 #        _this.showMore = true
-#        _this.list = [{
-#            id: 1
-#            iconUrl: 'iconUrl1'
-#            title: 'Подтягивания. 35 Повторений'
-#            created: '06 сентября 2015'
-#            timeSpent: '6' # в днях
-#            voice: {
-#                for: 142
-#                against: 10
-#            }
-#            user: {
+#        _this.list = [
+#            {
 #                id: 1
+#                fullName: 'Вася Козлов'
 #                avatar: 'avatarUrl'
-#                fullName: 'Mikki Mouse'
+#                age: 23
+#                sportTime: 4
+#                location: 'Владивосток, Россия'
+#                achievementsCount: 10
+#                recordsCount: 5
+#                subscribers:
+#                    count: 19
+#                    isSubscribed: false
+#                    list: [{id: 1, avatar: 'userAvatar'}]
 #            }
-#            status: 'fail'
-#        }
-#        {
-#            id: 2
-#            iconUrl: 'iconUrl1'
-#            title: 'Подтягивания. 35 Повторений'
-#            created: '06 сентября 2015'
-#            timeSpent: '6' # в днях
-#            voice: {
-#                for: 142
-#                against: 10
-#            }
-#            user: {
-#                id: 1
+#            {
+#                id: 2
+#                fullName: 'Вася Козлов'
 #                avatar: 'avatarUrl'
-#                fullName: 'Mikki Mouse'
+#                age: 23
+#                sportTime: 4
+#                location: 'Владивосток, Россия'
+#                achievementsCount: 10
+#                recordsCount: 5
+#                subscribers:
+#                    count: 19
+#                    isSubscribed: false
+#                    list: []
 #            }
-#            status: 'credit'
-#        }
-#        {
-#            id: 3
-#            iconUrl: 'iconUrl1'
-#            title: 'Подтягивания. 35 Повторений'
-#            created: '06 сентября 2015'
-#            timeSpent: '6' # в днях
-#            voice: {
-#                for: 142
-#                against: 10
-#            }
-#            user: {
-#                id: 1
-#                avatar: 'avatarUrl'
-#                fullName: 'Mikki Mouse'
-#            }
-#            status: null
-#        }]
+#        ]
