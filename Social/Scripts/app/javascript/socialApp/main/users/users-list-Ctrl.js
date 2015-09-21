@@ -5,7 +5,7 @@ UsersList = (function() {
     var _this, getList;
     $scope.$root.title = 'Fortress | Список атлетов';
     _this = this;
-    _this.loader = false;
+    _this.loader = true;
     _this.pageError = false;
     _this.showMoreLoading = false;
     getList = function(filter) {

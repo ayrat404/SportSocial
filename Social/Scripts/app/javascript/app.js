@@ -19,7 +19,7 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'fl
         }
       }
     }).state('main.profile', {
-      url: '/id:userId?media&index&entityType',
+      url: '/id:userId?media&index&entityType&count&page',
       views: {
         'socialContent@main': {
           templateUrl: tmplView('profile/index'),
@@ -70,6 +70,15 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'fl
           templateUrl: tmplView('users/users-list'),
           controller: 'usersListController',
           controllerAs: 'ulist'
+        }
+      }
+    }).state('main.tape', {
+      url: '/tape&count&page',
+      views: {
+        'socialContent@main': {
+          templateUrl: tmplView('tape/tape-view'),
+          controller: 'tapeController',
+          controllerAs: 'tape'
         }
       }
     }).state('landing', {

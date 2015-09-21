@@ -2815,7 +2815,8 @@
     <Content Include="Content\socialApp\styles\less\views\achievement-list.less" />
     <Content Include="Content\socialApp\styles\less\views\users-list.less" />
     <Content Include="Content\socialApp\styles\less\elements\show-more.less" />
-    <Content Include="Content\socialApp\styles\less\components\follow\follow-row.less" />
+    <Content Include="Content\socialApp\styles\less\components\subscribers\subscribers-row.less" />
+    <Content Include="Content\socialApp\styles\less\views\tape.less" />
     <None Include="Properties\PublishProfiles\fortress-club %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\fortress-club.pubxml" />
     <None Include="Properties\PublishProfiles\Social.pubxml" />
@@ -2848,6 +2849,8 @@
     <Content Include="Scripts\app\coffee\socialApp\components\achievement\achievement-list-row-Drct.coffee" />
     <Content Include="Scripts\app\coffee\socialApp\main\achievement\achievement-list-Ctrl.coffee" />
     <Content Include="Scripts\app\coffee\socialApp\main\users\users-list-Ctrl.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\components\subscribers\subscribers-row-Drct.coffee" />
+    <Content Include="Scripts\app\coffee\appServices\other\subscribe-Srvc.coffee" />
     <None Include="Scripts\libs\jquery\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.min.js" />
@@ -3122,7 +3125,8 @@
     <Content Include="Views\Template\modals\complain.cshtml" />
     <Content Include="Views\Template\modals\social-share.cshtml" />
     <Content Include="Views\Template\users\users-list.cshtml" />
-    <Content Include="Views\Template\components\follows\follows-rowTpl.cshtml" />
+    <Content Include="Views\Template\components\subscribers\subscribers-rowTpl.cshtml" />
+    <Content Include="Views\Template\tape\tape-view.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">

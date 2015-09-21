@@ -9,7 +9,7 @@ class UsersList extends Controller('socialApp.controllers')
         $scope.$root.title = 'Fortress | Список атлетов'
 
         _this = this
-        _this.loader = false # todo true
+        _this.loader = true
         _this.pageError = false
         _this.showMoreLoading = false
 

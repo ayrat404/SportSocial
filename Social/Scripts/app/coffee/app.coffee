@@ -36,7 +36,7 @@ app = angular.module('app', [
                     controller: 'mainSocialController'
                     controllerAs: 'social'
         .state 'main.profile',
-            url: '/id:userId?media&index&entityType'
+            url: '/id:userId?media&index&entityType&count&page'
             views:
                 'socialContent@main':
                     templateUrl: tmplView 'profile/index'
@@ -77,6 +77,13 @@ app = angular.module('app', [
                     templateUrl: tmplView 'users/users-list'
                     controller: 'usersListController'
                     controllerAs: 'ulist'
+        .state 'main.tape',
+            url: '/tape&count&page'
+            views:
+                'socialContent@main':
+                    templateUrl: tmplView 'tape/tape-view'
+                    controller: 'tapeController'
+                    controllerAs: 'tape'
         .state 'landing',
             url: '/'
             templateUrl: tmplView 'landing/index'
