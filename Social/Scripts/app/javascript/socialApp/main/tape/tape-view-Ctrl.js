@@ -62,6 +62,28 @@ Tape = (function() {
         });
       }
     };
+    _this.share = function(obj) {
+      var url;
+      url = '';
+      if (obj.type === 'record') {
+        url = 'main.journalIt';
+      } else if (obj.type === 'achievement') {
+        url = 'main.achievementView';
+      }
+      return modalService.show({
+        name: 'socialShare',
+        data: {
+          url: $state.href(url, {
+            id: obj.id
+          }, {
+            absolute: true
+          }),
+          text: obj.text,
+          media: obj.media,
+          hashtags: obj.tags
+        }
+      });
+    };
   }
 
   return Tape;

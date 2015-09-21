@@ -20,7 +20,7 @@
                         <a ui-sref="main.profile({userId: it.author.id})" class="wall__it__author-name">{{::it.author.fullName}}</a>
                         <header class="wall__it__header-info">
                             <span class="wi__date">{{::(it.created|date:'dd/MM/yyyy')}}</span>
-                            <div class="wi__share"><i></i></div>
+                            <div ng-click="tape.share(it)" class="wi__share"><i></i></div>
                             <a ui-sref="main.journalIt({id: it.id})" class="wi__comment"><i></i></a>
                         </header>
                         <section class="wall__it__content">
@@ -50,7 +50,7 @@
                         <div class="wall__it__author-name">{{::it.author.fullName}}</div>
                         <header class="wall__it__header-info">
                             <span class="wi__date">{{::(it.created|date:'dd/MM/yyyy')}}</span>
-                            <div class="wi__share"><i></i></div>
+                            <div ng-click="tape.share(it)" class="wi__share"><i></i></div>
                             <a ui-sref="main.achievementView({id: it.id})" class="wi__comment"><i></i></a>
                         </header>
                         <section class="wall__it__content">

@@ -54,6 +54,11 @@ MediaModalShow = (function() {
         return modalService.show({
           name: 'socialShare',
           data: {
+            url: $state.href('main.journalIt', {
+              id: $scope.it.id
+            }, {
+              absolute: true
+            }),
             text: $scope.it.text,
             media: $scope.current.url,
             hashtags: $scope.it.tags

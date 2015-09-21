@@ -36,10 +36,12 @@ class ProfileView extends Controller('socialApp.controllers')
 
         # social share record
         # ---------------
+        # todo sharing directive
         _this.shareRecord = (obj)->
             modalService.show
                 name: 'socialShare'
                 data:
+                    url: $state.href('main.journalIt', {id: obj.id}, {absolute: true})
                     text: obj.text
                     media: obj.media
                     hashtags: obj.tags

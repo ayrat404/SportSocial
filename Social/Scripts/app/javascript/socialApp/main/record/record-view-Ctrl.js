@@ -1,7 +1,7 @@
 var RecordView;
 
 RecordView = (function() {
-  function RecordView($scope, $stateParams, $rootScope, journalService, modalService) {
+  function RecordView($scope, $stateParams, $rootScope, $state, journalService, modalService) {
     var _this;
     $scope.$root.title = 'Fortress | Запись в дневнике';
     _this = this;
@@ -50,6 +50,11 @@ RecordView = (function() {
       return modalService.show({
         name: 'socialShare',
         data: {
+          url: $state.href('main.journalIt', {
+            id: _this.it.id
+          }, {
+            absolute: true
+          }),
           text: _this.it.text,
           media: _this.it.media,
           hashtags: _this.it.tags
@@ -62,4 +67,4 @@ RecordView = (function() {
 
 })();
 
-angular.module('socialApp.controllers').controller('recordViewController', ['$scope', '$stateParams', '$rootScope', 'journalService', 'modalService', RecordView]);
+angular.module('socialApp.controllers').controller('recordViewController', ['$scope', '$stateParams', '$rootScope', '$state', 'journalService', 'modalService', RecordView]);

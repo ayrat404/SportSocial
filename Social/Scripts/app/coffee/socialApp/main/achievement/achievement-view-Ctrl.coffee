@@ -44,6 +44,7 @@ class AchievementView extends Controller('socialApp.controllers')
             modalService.show
                 name: 'socialShare'
                 data:
+                    url: $state.href('main.achievementView', {id: _this.it.id}, {absolute: true})
                     text: _this.it.title
                     media: _this.it.cupImage # todo achievement type image share
 

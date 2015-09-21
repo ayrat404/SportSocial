@@ -3,6 +3,7 @@ class RecordView extends Controller('socialApp.controllers')
         $scope
         $stateParams
         $rootScope
+        $state
         journalService
         modalService)->
 
@@ -87,6 +88,7 @@ class RecordView extends Controller('socialApp.controllers')
             modalService.show
                 name: 'socialShare'
                 data:
+                    url: $state.href('main.journalIt', {id: _this.it.id}, {absolute: true})
                     text: _this.it.text
                     media: _this.it.media
                     hashtags: _this.it.tags
