@@ -35,9 +35,8 @@ class AchievementView extends Controller('socialApp.controllers')
                 name: 'achievementRemove'
                 data:
                     id: _this.it.id
-                    success: (res)->
-                        # todo redirect achievement list page
-                        $state.go 'main.profile', { userId: $rootScope.user.id }
+                    success: ->
+                        $state.go 'main.achievementList'
 
         # social sharing
         # ---------------

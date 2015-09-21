@@ -11,14 +11,18 @@
     min-height: 700px;
     background-color: @brand-dark2;
     margin: 0 auto;
+    padding-bottom: 65px;
 }
 
 .wall__it {
     position: relative;
     height: 360px;
     width: 250px;
-    background-color: @brand-dark2;
     transition: all 200ms linear;
+
+    .likes-row {
+        background: @brand-dark2;
+    }
 }
 
 .wall__it__inner {
@@ -29,6 +33,30 @@
     top: 0;
 }
 
+.wall__it__inner--achievement {
+    .wi__media-wrap {
+        cursor: default !important;
+        width: 170px;
+        margin: 0 auto;
+        .wi__media__img {
+            width: 165px;
+            height: 165px;
+            display: block;
+            margin: 0 auto 10px auto;
+        }
+
+        .wi__closed {
+            position: absolute;
+            bottom: 0;
+            left: -20px;
+            .sprite(@wall-ach-closed);
+        }
+    }
+    .wi__text {
+        margin: 0;
+    }
+}
+
 .wall__it--left {
     float: left;
     right: 290px;
@@ -36,6 +64,10 @@
 
     .wall__it__btn {
         right: -50px;
+    }
+
+    .wall__it__author__img-wrap {
+        right: -86px;
     }
 
     .wall__it__triangle {
@@ -52,6 +84,10 @@
 
     .wall__it__btn {
         left: -48px;
+    }
+
+    .wall__it__author__img-wrap {
+        left: -86px;
     }
 
     .wall__it__triangle {
@@ -82,6 +118,21 @@
     }
 
     .sprite(@wall-point)
+}
+
+.wall__it__author__img-wrap {
+    top: 20px;
+    position: absolute;
+    height: 60px;
+    width: 60px;
+}
+
+.wall__it__author__img {
+    border: 3px solid #fff;
+    padding: 3px;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
 }
 
 .wall__it__header-info,
@@ -149,6 +200,7 @@
         position: relative;
         vertical-align: middle;
         display: table-cell;
+        background: @brand-dark2;
     }
 
     .wi__date {
@@ -156,6 +208,7 @@
         font-family: 'F1 Bold';
         width: 50%;
         color: #fff;
+        border-right: 2px solid @text-color;
     }
 
     .wi__share {
@@ -187,6 +240,16 @@
             }
         }
     }
+}
+
+.wall__it__author-name {
+    background: @brand-dark2;
+    color: #fff;
+    border-bottom: 2px solid @text-color;
+    font-size: 0.857em;
+    font-family: 'F1 Bold';
+    padding: 4px 9px;
+    display: block;
 }
 
 .wall__it__content {

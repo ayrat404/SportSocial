@@ -95,7 +95,7 @@ class AchievementList extends Controller('socialApp.controllers')
 #        _this.showMore = true
 #        _this.list = [{
 #            id: 1
-#            iconUrl: 'iconUrl1'
+#            cupImage: 'iconUrl1'
 #            title: 'Подтягивания. 35 Повторений'
 #            created: '06 сентября 2015'
 #            timeSpent: '6' # в днях
@@ -103,7 +103,7 @@ class AchievementList extends Controller('socialApp.controllers')
 #                for: 142
 #                against: 10
 #            }
-#            user: {
+#            author: {
 #                id: 1
 #                avatar: 'avatarUrl'
 #                fullName: 'Mikki Mouse'

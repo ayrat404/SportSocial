@@ -26,10 +26,8 @@ AchievementView = (function() {
         name: 'achievementRemove',
         data: {
           id: _this.it.id,
-          success: function(res) {
-            return $state.go('main.profile', {
-              userId: $rootScope.user.id
-            });
+          success: function() {
+            return $state.go('main.achievementList');
           }
         }
       });

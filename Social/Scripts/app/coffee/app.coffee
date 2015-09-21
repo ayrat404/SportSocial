@@ -78,7 +78,7 @@ app = angular.module('app', [
                     controller: 'usersListController'
                     controllerAs: 'ulist'
         .state 'main.tape',
-            url: '/tape&count&page'
+            url: '/tape??media&index&entityType&count&page'
             views:
                 'socialContent@main':
                     templateUrl: tmplView 'tape/tape-view'

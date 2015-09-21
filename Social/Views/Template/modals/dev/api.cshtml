@@ -24,6 +24,7 @@
         <li><a href="#api_avatar">Удаление и загрузка аватара</a></li>
         <li><a href="#api_users_list">Страница атлетов</a></li>
         <li><a href="#api_subscribe">Подписка/отписка</a></li>
+        <li><a href="#api_tape">Страница ленты пользователя</a></li>
     </ul>
     <ul class="dev__api__content">
 
@@ -1111,8 +1112,8 @@
                 </pre>
             </b>
         </li>
-        
-        
+
+
         <li id="api_subscribe" class="dev__api__row">
             <p>Подписка отписка</p>
             <code>POST: /api/subscribe</code>
@@ -1131,6 +1132,45 @@
 {
     success: true,
     data: null,
+    errors: null,
+    message: null
+}
+                    </pre>
+            </b>
+
+        </li>
+
+
+        <li id="api_tape" class="dev__api__row">
+            <p>Страница ленты пользователя (tape). ! Внимание ! Проваленные достижения в список не попадают.</p>
+            <code>GET: /api/tape</code>
+            <b>
+                send data:
+                <pre>
+{
+    count: 20,
+    page: 2
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true,
+    data: {
+        list: [
+            { 
+                type: 'record'
+                *модель как в списке записей на странице профиля*
+            },
+            {
+                type: 'achievement'
+                *модель как списке достижений на странице достижений*
+            }
+        ],
+        isMore: true
+    },
     errors: null,
     message: null
 }
