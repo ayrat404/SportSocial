@@ -1,9 +1,9 @@
 var Comments;
 
 Comments = (function() {
-  function Comments($q, $http, $location, $rootScope, base, servicesDefault) {
+  function Comments($q, $http, $location, $rootScope, base, srvcConfig) {
     var remove, submit, url, valid;
-    url = servicesDefault.baseServiceUrl + '/comment';
+    url = srvcConfig.baseServiceUrl + '/comment';
     valid = {
       minText: 50
     };
@@ -21,7 +21,7 @@ Comments = (function() {
           });
         } else {
           reject();
-          if (servicesDefault.noticeShow.errors) {
+          if (srvcConfig.noticeShow.errors) {
             return base.notice.show({
               text: 'Comment submit validate error',
               type: 'danger'
@@ -48,7 +48,7 @@ Comments = (function() {
           });
         } else {
           reject();
-          if (servicesDefault.noticeShow.errors) {
+          if (srvcConfig.noticeShow.errors) {
             return base.notice.show({
               text: 'Comment delete: itemId variable error',
               type: 'danger'
@@ -67,4 +67,4 @@ Comments = (function() {
 
 })();
 
-angular.module('appSrvc').service('commentsService', ['$q', '$http', '$location', '$rootScope', 'base', 'servicesDefault', Comments]);
+angular.module('appSrvc').service('commentsService', ['$q', '$http', '$location', '$rootScope', 'base', 'srvcConfig', Comments]);

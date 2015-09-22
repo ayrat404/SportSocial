@@ -1,9 +1,9 @@
 var Like;
 
 Like = (function() {
-  function Like($q, $http, $location, $rootScope, base, servicesDefault) {
+  function Like($q, $http, $location, $rootScope, base, srvcConfig) {
     var set, url;
-    url = servicesDefault.baseServiceUrl + '/like';
+    url = srvcConfig.baseServiceUrl + '/like';
     set = function(data) {
       return $q(function(resolve, reject) {
         if (data && data.entityType && data.id && typeof data.current === 'boolean') {
@@ -19,7 +19,7 @@ Like = (function() {
           });
         } else {
           reject();
-          if (servicesDefault.noticeShow.errors) {
+          if (srvcConfig.noticeShow.errors) {
             return base.notice.show({
               text: 'Like validation error',
               type: 'danger'
@@ -37,4 +37,4 @@ Like = (function() {
 
 })();
 
-angular.module('appSrvc').service('likeService', ['$q', '$http', '$location', '$rootScope', 'base', 'servicesDefault', Like]);
+angular.module('appSrvc').service('likeService', ['$q', '$http', '$location', '$rootScope', 'base', 'srvcConfig', Like]);

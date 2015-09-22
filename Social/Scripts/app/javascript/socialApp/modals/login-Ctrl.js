@@ -22,9 +22,7 @@ LoginSubmitModal = (function() {
       return $state.go('registration');
     };
     $modalInstance.result["catch"](function() {
-      if (modalData && typeof modalData.cancel === 'function') {
-        return modalData.cancel();
-      }
+      return typeof modalData.cancel === "function" ? modalData.cancel() : void 0;
     });
   }
 

@@ -1,14 +1,14 @@
 var registration;
 
 registration = (function() {
-  function registration($state, $location, $q, $rootScope, $http, base, mixpanel, servicesDefault) {
+  function registration($state, $location, $q, $rootScope, $http, base, mixpanel, srvcConfig) {
     var isSending, registerFirst, registerTwo, urlFirst, urlTwo;
-    urlFirst = servicesDefault.baseServiceUrl + '/register/step1';
-    urlTwo = servicesDefault.baseServiceUrl + '/register/step2';
+    urlFirst = srvcConfig.baseServiceUrl + '/register/step1';
+    urlTwo = srvcConfig.baseServiceUrl + '/register/step2';
     isSending = false;
     registerFirst = function(data, prop) {
       var evTrackProp, opts;
-      opts = angular.extend(servicesDefault, prop);
+      opts = angular.extend(srvcConfig, prop);
       evTrackProp = {
         url: $location.path(),
         title: $rootScope.title
@@ -41,7 +41,7 @@ registration = (function() {
     };
     registerTwo = function(data, prop) {
       var evTrackProp, opts;
-      opts = angular.extend(servicesDefault, prop);
+      opts = angular.extend(srvcConfig, prop);
       evTrackProp = {
         url: $location.path(),
         title: $rootScope.title
@@ -82,4 +82,4 @@ registration = (function() {
 
 })();
 
-angular.module('appSrvc').service('registrationService', ['$state', '$location', '$q', '$rootScope', '$http', 'base', 'mixpanel', 'servicesDefault', registration]);
+angular.module('appSrvc').service('registrationService', ['$state', '$location', '$q', '$rootScope', '$http', 'base', 'mixpanel', 'srvcConfig', registration]);

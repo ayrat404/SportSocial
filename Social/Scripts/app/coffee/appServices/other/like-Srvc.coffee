@@ -5,9 +5,9 @@ class Like extends Service('appSrvc')
         $location
         $rootScope
         base
-        servicesDefault)->
+        srvcConfig)->
 
-        url = servicesDefault.baseServiceUrl + '/like'
+        url = srvcConfig.baseServiceUrl + '/like'
 
         # like post (type: x, id: x, current: true/false)
         # ---------------
@@ -25,7 +25,7 @@ class Like extends Service('appSrvc')
                     )
                 else
                     reject()
-                    if servicesDefault.noticeShow.errors
+                    if srvcConfig.noticeShow.errors
                         base.notice.show(
                             text: 'Like validation error'
                             type: 'danger'

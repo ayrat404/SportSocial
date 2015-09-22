@@ -2,10 +2,10 @@ class YoutubeVideo extends Service('appSrvc')
     constructor: (
         $http
         $q
-        servicesDefault
+        srvcConfig
         base)->
 
-        url = servicesDefault.baseServiceUrl + '/youtube'
+        url = srvcConfig.baseServiceUrl + '/youtube'
 
         # youtube video info get
         # ---------------

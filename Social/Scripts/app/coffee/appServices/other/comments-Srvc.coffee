@@ -5,9 +5,9 @@ class Comments extends Service('appSrvc')
         $location
         $rootScope
         base
-        servicesDefault)->
+        srvcConfig)->
 
-        url = servicesDefault.baseServiceUrl + '/comment'
+        url = srvcConfig.baseServiceUrl + '/comment'
         valid =
             minText: 50
 
@@ -27,7 +27,7 @@ class Comments extends Service('appSrvc')
                     )
                 else
                     reject()
-                    if servicesDefault.noticeShow.errors
+                    if srvcConfig.noticeShow.errors
                         base.notice.show(
                             text: 'Comment submit validate error'
                             type: 'danger'
@@ -49,7 +49,7 @@ class Comments extends Service('appSrvc')
                     )
                 else
                     reject()
-                    if servicesDefault.noticeShow.errors
+                    if srvcConfig.noticeShow.errors
                         base.notice.show(
                             text: 'Comment delete: itemId variable error'
                             type: 'danger'

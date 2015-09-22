@@ -5,7 +5,7 @@ class modal extends Service('shared')
         $modalStack
         base
         globalLoaderService
-        servicesDefault
+        srvcConfig
         templateUrl)->
 
         modalBaseUrl = (path)->
@@ -82,7 +82,7 @@ class modal extends Service('shared')
                     return
                 .finally ->
                     globalLoaderService.remove 'load-modal'
-            else if servicesDefault.noticeShow.errors
+            else if srvcConfig.noticeShow.errors
                 base.notice.show(
                     text: 'Modal "' + prop.name + '" not exist'
                     type: 'danger'

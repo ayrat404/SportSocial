@@ -2,10 +2,10 @@ class SportThemes extends Service('appSrvc')
     constructor: (
         $http
         $q
-        servicesDefault
+        srvcConfig
         base)->
 
-        url = servicesDefault.baseServiceUrl + '/sport_themes'
+        url = srvcConfig.baseServiceUrl + '/sport_themes'
 
         get = (search)->
             $q (resolve, reject)->
@@ -19,7 +19,7 @@ class SportThemes extends Service('appSrvc')
                         reject(res)
                     )
                 else
-                    if servicesDefault.noticeShow.errors
+                    if srvcConfig.noticeShow.errors
                         base.notice.show
                             text: 'Search theme string error',
                             type: 'danger'

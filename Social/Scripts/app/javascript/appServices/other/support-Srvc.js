@@ -1,13 +1,13 @@
 var support;
 
 support = (function() {
-  function support($state, $location, $q, $rootScope, $http, base, mixpanel, servicesDefault) {
+  function support($state, $location, $q, $rootScope, $http, base, mixpanel, srvcConfig) {
     var isSending, sendQuestion, url;
-    url = servicesDefault.baseServiceUrl + '/support';
+    url = srvcConfig.baseServiceUrl + '/support';
     isSending = false;
     sendQuestion = function(data, prop) {
       var evTrackProp, opts;
-      opts = angular.extend(servicesDefault, prop);
+      opts = angular.extend(srvcConfig, prop);
       evTrackProp = {
         url: $location.path(),
         title: $rootScope.title
@@ -47,4 +47,4 @@ support = (function() {
 
 })();
 
-angular.module('appSrvc').service('supportService', ['$state', '$location', '$q', '$rootScope', '$http', 'base', 'mixpanel', 'servicesDefault', support]);
+angular.module('appSrvc').service('supportService', ['$state', '$location', '$q', '$rootScope', '$http', 'base', 'mixpanel', 'srvcConfig', support]);

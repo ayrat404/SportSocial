@@ -3,7 +3,7 @@ var apiInterseptor;
 apiInterseptor = (function() {
   function apiInterseptor() {
     this.$get = [
-      '$q', '$injector', '$timeout', 'base', 'servicesDefault', function($q, $injector, $timeout, base, servicesDefault) {
+      '$q', '$injector', '$timeout', 'base', 'srvcConfig', function($q, $injector, $timeout, base, srvcConfig) {
         var modalService;
         modalService = {};
         $timeout(function() {
@@ -28,7 +28,7 @@ apiInterseptor = (function() {
           },
           'responseError': function(res) {
             var deferred;
-            if (servicesDefault.noticeShow.errors) {
+            if (srvcConfig.noticeShow.errors) {
               base.notice.show({
                 text: 'Error ' + res.status + ': ' + res.statusText + '<br>' + res.data.message,
                 type: 'warning'

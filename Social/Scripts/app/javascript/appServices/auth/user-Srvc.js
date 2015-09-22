@@ -1,7 +1,7 @@
 var user;
 
 user = (function() {
-  function user($q, $http, store, servicesDefault) {
+  function user($q, $http, store, srvcConfig) {
     var get, getFilterProp, getList, set, urlBase, urlFilter;
     set = function(user) {
       store.set('user', user);
@@ -15,8 +15,8 @@ user = (function() {
         return user;
       }
     };
-    urlBase = servicesDefault.baseServiceUrl + '/users';
-    urlFilter = servicesDefault.baseServiceUrl + '/users/filter';
+    urlBase = srvcConfig.baseServiceUrl + '/users';
+    urlFilter = srvcConfig.baseServiceUrl + '/users/filter';
     getList = function(data) {
       return $q(function(resolve, reject) {
         return $http.get(urlBase, {
@@ -57,4 +57,4 @@ user = (function() {
 
 })();
 
-angular.module('appSrvc').service('userService', ['$q', '$http', 'store', 'servicesDefault', user]);
+angular.module('appSrvc').service('userService', ['$q', '$http', 'store', 'srvcConfig', user]);

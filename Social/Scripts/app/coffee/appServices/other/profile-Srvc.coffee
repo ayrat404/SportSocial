@@ -5,10 +5,10 @@ class Profile extends Service('appSrvc')
     $http
     base
     mixpanel
-    servicesDefault)->
+    srvcConfig)->
 
-    url = servicesDefault.baseServiceUrl + '/profile'
-    avatarUrl = servicesDefault.baseServiceUrl + '/profile/avatar'
+    url = srvcConfig.baseServiceUrl + '/profile'
+    avatarUrl = srvcConfig.baseServiceUrl + '/profile/avatar'
 
     # get profile info (for profile view page)
     # ---------------
@@ -25,7 +25,7 @@ class Profile extends Service('appSrvc')
           )
         else
           reject()
-          if servicesDefault.noticeShow.errors
+          if srvcConfig.noticeShow.errors
             base.notice.show(
               text: 'Get profile data: userId variable error'
               type: 'danger'

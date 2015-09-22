@@ -1,9 +1,9 @@
 var Complain;
 
 Complain = (function() {
-  function Complain($q, $http, $location, $rootScope, base, servicesDefault) {
+  function Complain($q, $http, $location, $rootScope, base, srvcConfig) {
     var submit, url;
-    url = servicesDefault.baseServiceUrl + '/complain';
+    url = srvcConfig.baseServiceUrl + '/complain';
     submit = function(data) {
       return $q(function(resolve, reject) {
         if (data && data.entityId && data.userId && data.type && data.text) {
@@ -18,7 +18,7 @@ Complain = (function() {
           });
         } else {
           reject();
-          if (servicesDefault.noticeShow.errors) {
+          if (srvcConfig.noticeShow.errors) {
             return base.notice.show({
               text: 'Complain submit validate error',
               type: 'danger'
@@ -36,4 +36,4 @@ Complain = (function() {
 
 })();
 
-angular.module('appSrvc').service('complainService', ['$q', '$http', '$location', '$rootScope', 'base', 'servicesDefault', Complain]);
+angular.module('appSrvc').service('complainService', ['$q', '$http', '$location', '$rootScope', 'base', 'srvcConfig', Complain]);

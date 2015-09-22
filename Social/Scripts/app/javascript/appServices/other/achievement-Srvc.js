@@ -1,12 +1,12 @@
 var Achievement;
 
 Achievement = (function() {
-  function Achievement($q, $http, base, servicesDefault) {
+  function Achievement($q, $http, base, srvcConfig) {
     var cancelTemp, getById, getFilterProp, getList, getTemp, post, put, saveTemp, urlBase, urlFilter, urlTemp, urlVoice, voice;
-    urlTemp = servicesDefault.baseServiceUrl + '/achievement/temp';
-    urlBase = servicesDefault.baseServiceUrl + '/achievement';
-    urlVoice = servicesDefault.baseServiceUrl + '/achievement/voice';
-    urlFilter = servicesDefault.baseServiceUrl + '/achievement/filter';
+    urlTemp = srvcConfig.baseServiceUrl + '/achievement/temp';
+    urlBase = srvcConfig.baseServiceUrl + '/achievement';
+    urlVoice = srvcConfig.baseServiceUrl + '/achievement/voice';
+    urlFilter = srvcConfig.baseServiceUrl + '/achievement/filter';
     post = function(data) {
       return $q(function(resolve, reject) {
         return $http.post(urlTemp, data).then(function(res) {
@@ -80,7 +80,7 @@ Achievement = (function() {
           });
         } else {
           reject();
-          if (servicesDefault.noticeShow.errors) {
+          if (srvcConfig.noticeShow.errors) {
             return base.notice.show({
               text: 'Achievement item get: itemId variable error',
               type: 'danger'
@@ -103,7 +103,7 @@ Achievement = (function() {
           });
         } else {
           reject();
-          if (servicesDefault.noticeShow.errors) {
+          if (srvcConfig.noticeShow.errors) {
             return base.notice.show({
               text: 'Achievement voice: validate error',
               type: 'danger'
@@ -155,4 +155,4 @@ Achievement = (function() {
 
 })();
 
-angular.module('appSrvc').service('achievementService', ['$q', '$http', 'base', 'servicesDefault', Achievement]);
+angular.module('appSrvc').service('achievementService', ['$q', '$http', 'base', 'srvcConfig', Achievement]);

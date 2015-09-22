@@ -6,7 +6,7 @@ angular.module('appSrvc').service('restorePasswordSrvc', [
   '$http',
   'base',
   'mixpanel',
-  'servicesDefault',
+  'srvcConfig',
   function (
       $state,
       $location,
@@ -15,16 +15,16 @@ angular.module('appSrvc').service('restorePasswordSrvc', [
       $http,
       base,
       mixpanel,
-      servicesDefault) {
+      srvcConfig) {
 
-      var url = servicesDefault.baseServiceUrl + '/restorePassword',
+      var url = srvcConfig.baseServiceUrl + '/restorePassword',
           isPhoneSending = false,
           isNewPassSending = false;
 
       // ({ phone: x })
       // ---------------
       function sendPhone(data, prop) {
-          var opts = angular.extend(servicesDefault, prop),
+          var opts = angular.extend(srvcConfig, prop),
               evTrackProp = {
                   url: $location.path(),
                   title: $rootScope.title
@@ -67,7 +67,7 @@ angular.module('appSrvc').service('restorePasswordSrvc', [
       // ({ password: x, passwordRepeat: x, code: x })
       // ---------------
       function sendNewPassword(data, prop) {
-          var opts = angular.extend(servicesDefault, prop),
+          var opts = angular.extend(srvcConfig, prop),
               evTrackProp = {
                   url: $location.path(),
                   title: $rootScope.title

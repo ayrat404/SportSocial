@@ -8,16 +8,16 @@ class login extends Service('appSrvc')
         $http
         base
         mixpanel
-        servicesDefault
+        srvcConfig
         userService) ->
 
-        url = servicesDefault.baseServiceUrl + '/login'
+        url = srvcConfig.baseServiceUrl + '/login'
         isSending = false
 
         # ({ phone: x, password: x })
         # ---------------
         logIn = (data, prop)->
-            opts = angular.extend(servicesDefault, prop)
+            opts = angular.extend(srvcConfig, prop)
             evTrackProp =
                 url: $location.path()
                 title: $rootScope.title

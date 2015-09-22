@@ -8,16 +8,16 @@ class registration extends Service('appSrvc')
         $http
         base
         mixpanel
-        servicesDefault) ->
+        srvcConfig) ->
 
-        urlFirst = servicesDefault.baseServiceUrl + '/register/step1'
-        urlTwo = servicesDefault.baseServiceUrl + '/register/step2'
+        urlFirst = srvcConfig.baseServiceUrl + '/register/step1'
+        urlTwo = srvcConfig.baseServiceUrl + '/register/step2'
         isSending = false
 
         # (data: { name: x, sername: x, birthday: x, gender: x, sportTime: x  }, opts: {...})
         # ---------------
         registerFirst = (data, prop)->
-            opts = angular.extend(servicesDefault, prop)
+            opts = angular.extend(srvcConfig, prop)
             evTrackProp =
                 url: $location.path()
                 title: $rootScope.title
@@ -54,7 +54,7 @@ class registration extends Service('appSrvc')
             )
 
         registerTwo = (data, prop)->
-            opts = angular.extend(servicesDefault, prop)
+            opts = angular.extend(srvcConfig, prop)
             evTrackProp =
                 url: $location.path()
                 title: $rootScope.title

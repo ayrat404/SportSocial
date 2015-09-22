@@ -7,8 +7,8 @@ angular.module('shared')
         '$http',
         '$modal',
         'base',
-        'servicesDefault',
-        function ($http, $modal, base, servicesDefault) {
+        'srvcConfig',
+        function ($http, $modal, base, srvcConfig) {
             var baseUrl = 'Scripts/templates/modals/';
 
             var modals = {
@@ -60,7 +60,7 @@ angular.module('shared')
                         // todo loader
                     });
                 } else {
-                    if (servicesDefault.showNotice) base.notice.show({ text: 'Modal "' + prop.name + '" not exist', type: 'danger' });
+                    if (srvcConfig.showNotice) base.notice.show({ text: 'Modal "' + prop.name + '" not exist', type: 'danger' });
                 }
             }
 

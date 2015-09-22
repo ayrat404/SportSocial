@@ -1,7 +1,7 @@
 var modal;
 
 modal = (function() {
-  function modal($http, $modal, $modalStack, base, globalLoaderService, servicesDefault, templateUrl) {
+  function modal($http, $modal, $modalStack, base, globalLoaderService, srvcConfig, templateUrl) {
     var closeAll, modalBaseUrl, modals, show;
     modalBaseUrl = function(path) {
       return templateUrl + '/modals/' + path;
@@ -89,7 +89,7 @@ modal = (function() {
         })["finally"](function() {
           return globalLoaderService.remove('load-modal');
         });
-      } else if (servicesDefault.noticeShow.errors) {
+      } else if (srvcConfig.noticeShow.errors) {
         return base.notice.show({
           text: 'Modal "' + prop.name + '" not exist',
           type: 'danger'
@@ -106,4 +106,4 @@ modal = (function() {
 
 })();
 
-angular.module('shared').service('modalService', ['$http', '$modal', '$modalStack', 'base', 'globalLoaderService', 'servicesDefault', 'templateUrl', modal]);
+angular.module('shared').service('modalService', ['$http', '$modal', '$modalStack', 'base', 'globalLoaderService', 'srvcConfig', 'templateUrl', modal]);

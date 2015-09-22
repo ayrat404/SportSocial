@@ -5,9 +5,9 @@ class Journal extends Service('appSrvc')
         $location
         $rootScope
         base
-        servicesDefault)->
+        srvcConfig)->
 
-        url = servicesDefault.baseServiceUrl + '/journal'
+        url = srvcConfig.baseServiceUrl + '/journal'
         valid =
             minText: 50
 
@@ -35,7 +35,7 @@ class Journal extends Service('appSrvc')
                         reject res
                 else
                     reject()
-                    if servicesDefault.noticeShow.errors
+                    if srvcConfig.noticeShow.errors
                         base.notice.show
                             text: 'Journal submit validation error'
                             type: 'danger'
@@ -54,7 +54,7 @@ class Journal extends Service('appSrvc')
                         reject res
                 else
                     reject()
-                    if servicesDefault.noticeShow.errors
+                    if srvcConfig.noticeShow.errors
                         base.notice.show
                             text: 'Journal save validation error'
                             type: 'danger'
@@ -73,7 +73,7 @@ class Journal extends Service('appSrvc')
                         reject res
                 else
                     reject()
-                    if servicesDefault.noticeShow.errors
+                    if srvcConfig.noticeShow.errors
                         base.notice.show
                             text: 'Journal delete: itemId variable error'
                             type: 'danger'
@@ -92,7 +92,7 @@ class Journal extends Service('appSrvc')
                         reject res
                 else
                     reject()
-                    if servicesDefault.noticeShow.errors
+                    if srvcConfig.noticeShow.errors
                         base.notice.show
                             text: 'Journal item get: itemId variable error'
                             type: 'danger'

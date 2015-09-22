@@ -7,17 +7,17 @@ class restorePassword extends Service('appSrvc')
         $http,
         base,
         mixpanel,
-        servicesDefault)->
+        srvcConfig)->
 
-        urlOne = servicesDefault.baseServiceUrl + '/restore_password_one'
-        urlTwo = servicesDefault.baseServiceUrl + '/restore_password_two'
+        urlOne = srvcConfig.baseServiceUrl + '/restore_password_one'
+        urlTwo = srvcConfig.baseServiceUrl + '/restore_password_two'
         isPhoneSending = false
         isNewPassSending = false
 
         # send phone ({ phone: x })
         # ---------------
         sendPhone = (data, prop)->
-            opts = angular.extend(servicesDefault, prop)
+            opts = angular.extend(srvcConfig, prop)
             evTrackProp =
                 url: $location.path()
                 title: $rootScope.title
@@ -48,7 +48,7 @@ class restorePassword extends Service('appSrvc')
         # send new password ({ password: x, passwordRepeat: x, code: x })
         # ---------------
         sendNewPassword = (data, prop)->
-            opts = angular.extend(servicesDefault, prop)
+            opts = angular.extend(srvcConfig, prop)
             evTrackProp =
                 url: $location.path()
                 title: $rootScope.title

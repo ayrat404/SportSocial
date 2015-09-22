@@ -5,9 +5,9 @@ class Complain extends Service('appSrvc')
         $location
         $rootScope
         base
-        servicesDefault)->
+        srvcConfig)->
 
-        url = servicesDefault.baseServiceUrl + '/complain'
+        url = srvcConfig.baseServiceUrl + '/complain'
 
         # submit new complain
         # ---------------
@@ -28,7 +28,7 @@ class Complain extends Service('appSrvc')
                     )
                 else
                     reject()
-                    if servicesDefault.noticeShow.errors
+                    if srvcConfig.noticeShow.errors
                         base.notice.show(
                             text: 'Complain submit validate error'
                             type: 'danger'

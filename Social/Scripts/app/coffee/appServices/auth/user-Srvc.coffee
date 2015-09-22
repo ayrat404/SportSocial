@@ -4,7 +4,7 @@ class user extends Service('appSrvc')
         $q
         $http
         store
-        servicesDefault)->
+        srvcConfig)->
 
         # save user in storage
         # ---------------
@@ -22,8 +22,8 @@ class user extends Service('appSrvc')
                 return user
 
 
-        urlBase = servicesDefault.baseServiceUrl + '/users'
-        urlFilter = servicesDefault.baseServiceUrl + '/users/filter'
+        urlBase = srvcConfig.baseServiceUrl + '/users'
+        urlFilter = srvcConfig.baseServiceUrl + '/users/filter'
 
         # get list
         # ---------------

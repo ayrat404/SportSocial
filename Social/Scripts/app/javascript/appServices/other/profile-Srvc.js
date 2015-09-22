@@ -1,10 +1,10 @@
 var Profile;
 
 Profile = (function() {
-  function Profile($q, $rootScope, $http, base, mixpanel, servicesDefault) {
+  function Profile($q, $rootScope, $http, base, mixpanel, srvcConfig) {
     var avatarUrl, getInfo, removeAvatar, url;
-    url = servicesDefault.baseServiceUrl + '/profile';
-    avatarUrl = servicesDefault.baseServiceUrl + '/profile/avatar';
+    url = srvcConfig.baseServiceUrl + '/profile';
+    avatarUrl = srvcConfig.baseServiceUrl + '/profile/avatar';
     getInfo = function(userId) {
       return $q(function(resolve, reject) {
         if (userId) {
@@ -23,7 +23,7 @@ Profile = (function() {
           });
         } else {
           reject();
-          if (servicesDefault.noticeShow.errors) {
+          if (srvcConfig.noticeShow.errors) {
             return base.notice.show({
               text: 'Get profile data: userId variable error',
               type: 'danger'
@@ -55,4 +55,4 @@ Profile = (function() {
 
 })();
 
-angular.module('appSrvc').service('profileService', ['$q', '$rootScope', '$http', 'base', 'mixpanel', 'servicesDefault', Profile]);
+angular.module('appSrvc').service('profileService', ['$q', '$rootScope', '$http', 'base', 'mixpanel', 'srvcConfig', Profile]);

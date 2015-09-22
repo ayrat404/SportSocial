@@ -5,12 +5,12 @@ class apiInterseptor extends Provider('shared')
             '$injector'
             '$timeout'
             'base'
-            'servicesDefault'
+            'srvcConfig'
             ($q
              $injector
              $timeout
              base
-             servicesDefault)->
+             srvcConfig)->
 
                 modalService = {}
 
@@ -37,7 +37,7 @@ class apiInterseptor extends Provider('shared')
 
                     # show error
                     # ---------------
-                    if servicesDefault.noticeShow.errors
+                    if srvcConfig.noticeShow.errors
                         base.notice.show(
                             text: 'Error ' + res.status + ': ' + res.statusText + '<br>' + res.data.message
                             type: 'warning'

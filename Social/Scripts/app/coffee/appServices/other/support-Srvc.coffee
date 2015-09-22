@@ -7,15 +7,15 @@ class support extends Service('appSrvc')
         $http,
         base,
         mixpanel,
-        servicesDefault)->
+        srvcConfig)->
 
-        url = servicesDefault.baseServiceUrl + '/support'
+        url = srvcConfig.baseServiceUrl + '/support'
         isSending = false
 
         # send question func ({ name: x, email: x, problem: x })
         # ---------------
         sendQuestion = (data, prop)->
-            opts = angular.extend(servicesDefault, prop)
+            opts = angular.extend(srvcConfig, prop)
             evTrackProp =
                 url: $location.path()
                 title: $rootScope.title

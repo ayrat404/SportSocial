@@ -1,15 +1,15 @@
 var restorePassword;
 
 restorePassword = (function() {
-  function restorePassword($state, $location, $q, $rootScope, $http, base, mixpanel, servicesDefault) {
+  function restorePassword($state, $location, $q, $rootScope, $http, base, mixpanel, srvcConfig) {
     var isNewPassSending, isPhoneSending, sendNewPassword, sendPhone, urlOne, urlTwo;
-    urlOne = servicesDefault.baseServiceUrl + '/restore_password_one';
-    urlTwo = servicesDefault.baseServiceUrl + '/restore_password_two';
+    urlOne = srvcConfig.baseServiceUrl + '/restore_password_one';
+    urlTwo = srvcConfig.baseServiceUrl + '/restore_password_two';
     isPhoneSending = false;
     isNewPassSending = false;
     sendPhone = function(data, prop) {
       var evTrackProp, opts;
-      opts = angular.extend(servicesDefault, prop);
+      opts = angular.extend(srvcConfig, prop);
       evTrackProp = {
         url: $location.path(),
         title: $rootScope.title
@@ -42,7 +42,7 @@ restorePassword = (function() {
     };
     sendNewPassword = function(data, prop) {
       var evTrackProp, opts;
-      opts = angular.extend(servicesDefault, prop);
+      opts = angular.extend(srvcConfig, prop);
       evTrackProp = {
         url: $location.path(),
         title: $rootScope.title
@@ -83,4 +83,4 @@ restorePassword = (function() {
 
 })();
 
-angular.module('appSrvc').service('restorePasswordService', ['$state', '$location', '$q', '$rootScope', '$http', 'base', 'mixpanel', 'servicesDefault', restorePassword]);
+angular.module('appSrvc').service('restorePasswordService', ['$state', '$location', '$q', '$rootScope', '$http', 'base', 'mixpanel', 'srvcConfig', restorePassword]);

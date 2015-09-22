@@ -11,7 +11,7 @@ class LoginSubmitModal extends Controller('socialApp.controllers')
         # login
         # ---------------
         $scope.submit = ()->
-            loginService.logIn($scope.login).then((res)->
+            loginService.logIn($scope.login).then (res)->
                 $modalInstance.close()
                 if modalData &&
                   typeof modalData.success == 'function'
@@ -20,7 +20,6 @@ class LoginSubmitModal extends Controller('socialApp.controllers')
                     $state.go 'main.profile', userId: res.data.id
             , (res)->
                 $scope.serverValidation = res.data.errors
-            )
 
         # to registration page
         # ---------------
@@ -29,5 +28,4 @@ class LoginSubmitModal extends Controller('socialApp.controllers')
             $state.go 'registration'
 
         $modalInstance.result.catch ->
-            if modalData && typeof modalData.cancel == 'function'
-                modalData.cancel()
+            modalData.cancel?()

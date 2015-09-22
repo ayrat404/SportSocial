@@ -1,9 +1,9 @@
 var SportThemes;
 
 SportThemes = (function() {
-  function SportThemes($http, $q, servicesDefault, base) {
+  function SportThemes($http, $q, srvcConfig, base) {
     var get, url;
-    url = servicesDefault.baseServiceUrl + '/sport_themes';
+    url = srvcConfig.baseServiceUrl + '/sport_themes';
     get = function(search) {
       return $q(function(resolve, reject) {
         if (search && search.length) {
@@ -21,7 +21,7 @@ SportThemes = (function() {
             return reject(res);
           });
         } else {
-          if (servicesDefault.noticeShow.errors) {
+          if (srvcConfig.noticeShow.errors) {
             base.notice.show({
               text: 'Search theme string error',
               type: 'danger'
@@ -40,4 +40,4 @@ SportThemes = (function() {
 
 })();
 
-angular.module('appSrvc').service('sportThemesService', ['$http', '$q', 'servicesDefault', 'base', SportThemes]);
+angular.module('appSrvc').service('sportThemesService', ['$http', '$q', 'srvcConfig', 'base', SportThemes]);

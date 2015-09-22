@@ -6,7 +6,7 @@ angular.module('appSrvc').service('supportSrvc', [
   '$http',
   'base',
   'mixpanel',
-  'servicesDefault',
+  'srvcConfig',
   function (
       $state,
       $location,
@@ -15,15 +15,15 @@ angular.module('appSrvc').service('supportSrvc', [
       $http,
       base,
       mixpanel,
-      servicesDefault) {
+      srvcConfig) {
 
-      var url = servicesDefault.baseServiceUrl + '/support',
+      var url = srvcConfig.baseServiceUrl + '/support',
           isSending = false;
 
       // (data: { name: x, email: x, problem: x }, opts: {...})
       // ---------------
       function sendQuestion(data, prop) {
-          var opts = angular.extend(servicesDefault, prop),
+          var opts = angular.extend(srvcConfig, prop),
               evTrackProp = {
                   url: $location.path(),
                   title: $rootScope.title

@@ -3,12 +3,12 @@ class Achievement extends Service('appSrvc')
         $q
         $http
         base
-        servicesDefault)->
+        srvcConfig)->
 
-        urlTemp = servicesDefault.baseServiceUrl + '/achievement/temp'      # work with temp achievement
-        urlBase = servicesDefault.baseServiceUrl + '/achievement'           # work with achievement
-        urlVoice = servicesDefault.baseServiceUrl + '/achievement/voice'    # set voice
-        urlFilter = servicesDefault.baseServiceUrl + '/achievement/filter'  # get filter options
+        urlTemp = srvcConfig.baseServiceUrl + '/achievement/temp'      # work with temp achievement
+        urlBase = srvcConfig.baseServiceUrl + '/achievement'           # work with achievement
+        urlVoice = srvcConfig.baseServiceUrl + '/achievement/voice'    # set voice
+        urlFilter = srvcConfig.baseServiceUrl + '/achievement/filter'  # get filter options
 
         # ---------- api for achievement create ----------
 
@@ -88,7 +88,7 @@ class Achievement extends Service('appSrvc')
                     )
                 else
                     reject()
-                    if servicesDefault.noticeShow.errors
+                    if srvcConfig.noticeShow.errors
                         base.notice.show
                             text: 'Achievement item get: itemId variable error'
                             type: 'danger'
@@ -107,11 +107,10 @@ class Achievement extends Service('appSrvc')
                         reject res
                 else
                     reject()
-                    if servicesDefault.noticeShow.errors
-                        base.notice.show(
+                    if srvcConfig.noticeShow.errors
+                        base.notice.show
                             text: 'Achievement voice: validate error'
                             type: 'danger'
-                        )
 
         # get list
         # ---------------

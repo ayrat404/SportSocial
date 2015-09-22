@@ -1,9 +1,9 @@
 var Journal;
 
 Journal = (function() {
-  function Journal($q, $http, $location, $rootScope, base, servicesDefault) {
+  function Journal($q, $http, $location, $rootScope, base, srvcConfig) {
     var getById, remove, save, submit, url, valid, validate;
-    url = servicesDefault.baseServiceUrl + '/journal';
+    url = srvcConfig.baseServiceUrl + '/journal';
     valid = {
       minText: 50
     };
@@ -33,7 +33,7 @@ Journal = (function() {
           });
         } else {
           reject();
-          if (servicesDefault.noticeShow.errors) {
+          if (srvcConfig.noticeShow.errors) {
             return base.notice.show({
               text: 'Journal submit validation error',
               type: 'danger'
@@ -56,7 +56,7 @@ Journal = (function() {
           });
         } else {
           reject();
-          if (servicesDefault.noticeShow.errors) {
+          if (srvcConfig.noticeShow.errors) {
             return base.notice.show({
               text: 'Journal save validation error',
               type: 'danger'
@@ -83,7 +83,7 @@ Journal = (function() {
           });
         } else {
           reject();
-          if (servicesDefault.noticeShow.errors) {
+          if (srvcConfig.noticeShow.errors) {
             return base.notice.show({
               text: 'Journal delete: itemId variable error',
               type: 'danger'
@@ -106,7 +106,7 @@ Journal = (function() {
           });
         } else {
           reject();
-          if (servicesDefault.noticeShow.errors) {
+          if (srvcConfig.noticeShow.errors) {
             return base.notice.show({
               text: 'Journal item get: itemId variable error',
               type: 'danger'
@@ -127,4 +127,4 @@ Journal = (function() {
 
 })();
 
-angular.module('appSrvc').service('journalService', ['$q', '$http', '$location', '$rootScope', 'base', 'servicesDefault', Journal]);
+angular.module('appSrvc').service('journalService', ['$q', '$http', '$location', '$rootScope', 'base', 'srvcConfig', Journal]);

@@ -1,9 +1,9 @@
 var YoutubeVideo;
 
 YoutubeVideo = (function() {
-  function YoutubeVideo($http, $q, servicesDefault, base) {
+  function YoutubeVideo($http, $q, srvcConfig, base) {
     var getVideoInfo, url;
-    url = servicesDefault.baseServiceUrl + '/youtube';
+    url = srvcConfig.baseServiceUrl + '/youtube';
     getVideoInfo = function(data) {
       return $q(function(resolve, reject) {
         if (data && typeof data.link === 'string' && data.type) {
@@ -30,4 +30,4 @@ YoutubeVideo = (function() {
 
 })();
 
-angular.module('appSrvc').service('youtubeVideoService', ['$http', '$q', 'servicesDefault', 'base', YoutubeVideo]);
+angular.module('appSrvc').service('youtubeVideoService', ['$http', '$q', 'srvcConfig', 'base', YoutubeVideo]);

@@ -6,7 +6,7 @@ angular.module('appSrvc').service('loginSrvc', [
   '$http',
   'base',
   'mixpanel',
-  'servicesDefault',
+  'srvcConfig',
   function (
       $state,
       $location,
@@ -15,15 +15,15 @@ angular.module('appSrvc').service('loginSrvc', [
       $http,
       base,
       mixpanel,
-      servicesDefault) {
+      srvcConfig) {
 
-      var url = servicesDefault.baseServiceUrl + '/login',
+      var url = srvcConfig.baseServiceUrl + '/login',
           isSending = false;
 
       // ({ phone: x, password: x })
       // ---------------
       function logIn(data, prop) {
-          var opts = angular.extend(servicesDefault, prop),
+          var opts = angular.extend(srvcConfig, prop),
               evTrackProp = {
                   url: $location.path(),
                   title: $rootScope.title

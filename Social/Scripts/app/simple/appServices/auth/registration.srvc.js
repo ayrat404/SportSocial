@@ -6,7 +6,7 @@ angular.module('appSrvc').service('registrationSrvc', [
   '$http',
   'base',
   'mixpanel',
-  'servicesDefault',
+  'srvcConfig',
   function (
       $state,
       $location,
@@ -15,15 +15,15 @@ angular.module('appSrvc').service('registrationSrvc', [
       $http,
       base,
       mixpanel,
-      servicesDefault) {
+      srvcConfig) {
       
-      var url = servicesDefault.baseServiceUrl + '/registration',
+      var url = srvcConfig.baseServiceUrl + '/registration',
           isSending = false;
 
       // (data: { name: x, sername: x, birthday: x, gender: x, sportTime: x  }, opts: {...})
       // ---------------
       function registerFirst(data, prop) {
-          var opts = angular.extend(servicesDefault, prop),
+          var opts = angular.extend(srvcConfig, prop),
               evTrackProp = {
                   url: $location.path(),
                   title: $rootScope.title

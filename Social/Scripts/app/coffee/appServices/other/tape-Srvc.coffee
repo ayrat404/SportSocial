@@ -3,9 +3,9 @@ class Tape extends Service('appSrvc')
         $q
         $http
         base
-        servicesDefault)->
+        srvcConfig)->
 
-        url = servicesDefault.baseServiceUrl + '/tape'
+        url = srvcConfig.baseServiceUrl + '/tape'
 
         # get list
         # ---------------

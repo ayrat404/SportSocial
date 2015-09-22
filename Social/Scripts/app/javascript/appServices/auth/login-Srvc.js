@@ -1,13 +1,13 @@
 var login;
 
 login = (function() {
-  function login($state, $location, $q, $rootScope, $http, base, mixpanel, servicesDefault, userService) {
+  function login($state, $location, $q, $rootScope, $http, base, mixpanel, srvcConfig, userService) {
     var isSending, logIn, url;
-    url = servicesDefault.baseServiceUrl + '/login';
+    url = srvcConfig.baseServiceUrl + '/login';
     isSending = false;
     logIn = function(data, prop) {
       var evTrackProp, opts;
-      opts = angular.extend(servicesDefault, prop);
+      opts = angular.extend(srvcConfig, prop);
       evTrackProp = {
         url: $location.path(),
         title: $rootScope.title
@@ -48,4 +48,4 @@ login = (function() {
 
 })();
 
-angular.module('appSrvc').service('loginService', ['$state', '$location', '$q', '$rootScope', '$http', 'base', 'mixpanel', 'servicesDefault', 'userService', login]);
+angular.module('appSrvc').service('loginService', ['$state', '$location', '$q', '$rootScope', '$http', 'base', 'mixpanel', 'srvcConfig', 'userService', login]);

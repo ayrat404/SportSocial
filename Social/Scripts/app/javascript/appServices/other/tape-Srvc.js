@@ -1,9 +1,9 @@
 var Tape;
 
 Tape = (function() {
-  function Tape($q, $http, base, servicesDefault) {
+  function Tape($q, $http, base, srvcConfig) {
     var getList, url;
-    url = servicesDefault.baseServiceUrl + '/tape';
+    url = srvcConfig.baseServiceUrl + '/tape';
     getList = function(data) {
       return $q(function(resolve, reject) {
         return $http.get(url, {
@@ -28,4 +28,4 @@ Tape = (function() {
 
 })();
 
-angular.module('appSrvc').service('tapeService', ['$q', '$http', 'base', 'servicesDefault', Tape]);
+angular.module('appSrvc').service('tapeService', ['$q', '$http', 'base', 'srvcConfig', Tape]);

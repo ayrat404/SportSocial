@@ -5,9 +5,9 @@ class Subscribe extends Service('appSrvc')
         $location
         $rootScope
         base
-        servicesDefault)->
+        srvcConfig)->
 
-        url = servicesDefault.baseServiceUrl + '/subscribe'
+        url = srvcConfig.baseServiceUrl + '/subscribe'
 
         # like post (type: x, id: x, current: true/false)
         # ---------------
@@ -24,7 +24,7 @@ class Subscribe extends Service('appSrvc')
                         reject res
                 else
                     reject()
-                    if servicesDefault.noticeShow.errors
+                    if srvcConfig.noticeShow.errors
                         base.notice.show
                             text: 'Subscribe validation error'
                             type: 'danger'

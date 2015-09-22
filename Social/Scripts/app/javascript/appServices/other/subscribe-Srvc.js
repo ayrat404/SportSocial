@@ -1,9 +1,9 @@
 var Subscribe;
 
 Subscribe = (function() {
-  function Subscribe($q, $http, $location, $rootScope, base, servicesDefault) {
+  function Subscribe($q, $http, $location, $rootScope, base, srvcConfig) {
     var set, url;
-    url = servicesDefault.baseServiceUrl + '/subscribe';
+    url = srvcConfig.baseServiceUrl + '/subscribe';
     set = function(data) {
       return $q(function(resolve, reject) {
         if (data && data.id && typeof data.current === 'boolean') {
@@ -19,7 +19,7 @@ Subscribe = (function() {
           });
         } else {
           reject();
-          if (servicesDefault.noticeShow.errors) {
+          if (srvcConfig.noticeShow.errors) {
             return base.notice.show({
               text: 'Subscribe validation error',
               type: 'danger'
@@ -37,4 +37,4 @@ Subscribe = (function() {
 
 })();
 
-angular.module('appSrvc').service('subscribeService', ['$q', '$http', '$location', '$rootScope', 'base', 'servicesDefault', Subscribe]);
+angular.module('appSrvc').service('subscribeService', ['$q', '$http', '$location', '$rootScope', 'base', 'srvcConfig', Subscribe]);
