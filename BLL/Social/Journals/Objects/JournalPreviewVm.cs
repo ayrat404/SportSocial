@@ -18,5 +18,7 @@ namespace BLL.Social.Journals.Objects
         public List<MediaVm> Media { get; set; }
        
         public DateTime Created { get; set; }
+
+        public List<string> Tags { get; set; }
     }
 }
