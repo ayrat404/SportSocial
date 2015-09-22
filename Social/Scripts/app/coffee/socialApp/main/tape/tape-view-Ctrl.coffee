@@ -67,17 +67,20 @@ class Tape extends Controller('socialApp.controllers')
         # social share record
         # ---------------
         _this.share = (obj)->
-            url = ''
             if obj.type == 'record'
                 url = 'main.journalIt'
+                text = obj.text
+                media = obj.media
             else if obj.type == 'achievement'
                 url = 'main.achievementView'
+                text = obj.title
+                media = obj.cupImage
             modalService.show
                 name: 'socialShare'
                 data:
                     url: $state.href(url, {id: obj.id}, {absolute: true})
-                    text: obj.text
-                    media: obj.media
+                    text: text
+                    media: media
                     hashtags: obj.tags
 
 

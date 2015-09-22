@@ -22,7 +22,7 @@
                 <div class="container">
                     <div class="achievement-wrap">
                         <div class="ach__type">
-                            <img ng-src="{{ ::(ach.it.cupImage|imageResize:{w: 235,h: 345}) }}" class="ach__img"/>
+                            <img ng-src="{{ ::(ach.it.typeImage|imageResize:{w: 235,h: 345}) }}" class="ach__img"/>
                             <div ng-class="{ 'voice--active': !ach.it.voice.isVoited }"
                                  class="voice">
                                 <div ng-click="ach.voice('like')" class="voice__part voice__part--for">

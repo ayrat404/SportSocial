@@ -46,7 +46,7 @@ class AchievementView extends Controller('socialApp.controllers')
                 data:
                     url: $state.href('main.achievementView', {id: _this.it.id}, {absolute: true})
                     text: _this.it.title
-                    media: _this.it.cupImage # todo achievement type image share
+                    media: _this.it.cupImage
 
         # calc bar func
         # ---------------
@@ -72,7 +72,7 @@ class AchievementView extends Controller('socialApp.controllers')
 #
 #            id: 12
 #            title: 'Подтягивания. 35 Повторений'
-#            cupImage: 'typeImageUrl' # картинка кубка с упражнением
+#            typeImage: 'typeImageUrl' # картинка кубка с упражнением
 #            author: {
 #                id: 12
 #                avatar: 'avatarImageUrl'

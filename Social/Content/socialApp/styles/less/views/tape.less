@@ -9,15 +9,55 @@
     .wall__it__inner {
         height: 387px;
     }
+
     .wall__it__triangle {
         top: 44px;
     }
+
     .wall__it--left {
         right: 305px;
     }
+
     .wall__it--right {
         left: 57px;
         top: 100px;
+    }
+}
+
+@media (max-width: 680px) {
+    .tape-view {
+        .wall__bar {
+            padding-top: 22px;
+            margin-top: 60px;
+        }
+
+        .wall {
+            .wall__it--left {
+                float: none;
+                right: 124px;
+                margin-bottom: 150px;
+            }
+
+            .wall__it--right {
+                top: 0;
+                left: -124px;
+                margin-bottom: 150px;
+            }
+
+            .wall__it__author__img-wrap {
+                top: -80px;
+                right: 95px;
+                left: auto;
+            }
+
+            .wall__it__triangle {
+                top: -8px;
+                left: 118px;
+                right: auto;
+                border-width: 0 7px 8px 7px;
+                border-color: transparent transparent @brand-dark2 transparent;
+            }
+        }
     }
 }
 

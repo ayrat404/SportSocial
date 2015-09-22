@@ -47,7 +47,7 @@
                     </div>
 
                     <div ng-if="it.type == 'achievement'" class="wall__it__inner wall__it__inner--achievement">
-                        <div class="wall__it__author-name">{{::it.author.fullName}}</div>
+                        <a ui-sref="main.profile({userId: it.author.id})" class="wall__it__author-name">{{::it.author.fullName}}</a>
                         <header class="wall__it__header-info">
                             <span class="wi__date">{{::(it.created|date:'dd/MM/yyyy')}}</span>
                             <div ng-click="tape.share(it)" class="wi__share"><i></i></div>

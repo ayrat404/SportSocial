@@ -63,12 +63,15 @@ Tape = (function() {
       }
     };
     _this.share = function(obj) {
-      var url;
-      url = '';
+      var media, text, url;
       if (obj.type === 'record') {
         url = 'main.journalIt';
+        text = obj.text;
+        media = obj.media;
       } else if (obj.type === 'achievement') {
         url = 'main.achievementView';
+        text = obj.title;
+        media = obj.cupImage;
       }
       return modalService.show({
         name: 'socialShare',
@@ -78,8 +81,8 @@ Tape = (function() {
           }, {
             absolute: true
           }),
-          text: obj.text,
-          media: obj.media,
+          text: text,
+          media: media,
           hashtags: obj.tags
         }
       });
