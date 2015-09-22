@@ -77,8 +77,8 @@ class ProfileView extends Controller('socialApp.controllers')
         # ---------------
         _this.avatarResponse = (stringRes)->
             objRes = angular.fromJson stringRes
-            if obj.success
-                _this.user.avatar = obj.data
+            if objRes.success
+                _this.user.avatar = objRes.data.url
 
         # remove avatar
         # ---------------

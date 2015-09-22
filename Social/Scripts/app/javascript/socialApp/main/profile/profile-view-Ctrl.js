@@ -87,8 +87,8 @@ ProfileView = (function() {
     _this.avatarResponse = function(stringRes) {
       var objRes;
       objRes = angular.fromJson(stringRes);
-      if (obj.success) {
-        return _this.user.avatar = obj.data;
+      if (objRes.success) {
+        return _this.user.avatar = objRes.data.url;
       }
     };
     _this.removeAvatar = function() {

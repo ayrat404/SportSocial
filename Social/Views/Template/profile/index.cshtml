@@ -11,7 +11,7 @@
                         <div class="user-info__avatar"
                              flow-init="{ target: '/api/upload', testChunks: false, fileParameterName: 'Avatar' }"
                              flow-file-success="profile.avatarResponse($message)"
-                             flow-file-submitted="$flow.upload()">
+                             flow-files-submitted="$flow.upload()">
                             <div class="user-info__avatar__img-wrap"
                                  ng-if="profile.user.avatar.length">
                                 <img ng-src="{{ profile.user.avatar | imageResize:{w: 230, h: 230} }}" class="user-infor__avatar__img" />
