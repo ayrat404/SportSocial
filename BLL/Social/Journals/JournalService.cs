@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper.Internal;
 using BLL.Common.Objects;
 using BLL.Common.Services.CurrentUser;
 using BLL.Infrastructure.Map;
@@ -58,8 +59,8 @@ namespace BLL.Social.Journals
                 return ServiceResult.ErrorResult("");
             }
             journal.Text = journalModel.Text;
-            journal.Tags.Clear();
-            journal.Media.Clear();
+            _repository.DeleteRange(journal.Media);
+            _repository.DeleteRange(journal.Tags);
             _repository.SaveChanges();
             _tagService.AddTags(journal.Id, journalModel.Tags);
             _imageService.AttachImagesToEntity(journalModel.Media.Where(m => m.Type == MediaType.Image).ToList(), journal.Id, UploadType.Journal);

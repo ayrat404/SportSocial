@@ -12,6 +12,7 @@ namespace DAL.Repository.Interfaces
         void Add<TEntity>(TEntity entity) where TEntity : class;
         void Update<TEntity>(TEntity entity) where TEntity : class;
         void Delete<TEntity>(TEntity entity) where TEntity : class;
+        void DeleteRange<TEntity>(IEnumerable<TEntity> entities) where TEntity : class;
         void Delete<TEntity>(object id) where TEntity : class;
         IQueryable<TEntity> Queryable<TEntity>() where TEntity : class;
         //IQueryable Queryable(Type type);

@@ -40,7 +40,7 @@ namespace Social.Controllers
             return ApiResult(journal);
         }
 
-        [Route("{id:int}")]
+        [Route("")]
         [HttpPut]
         public ApiResult EditJournal(JournalVm journal)
         {

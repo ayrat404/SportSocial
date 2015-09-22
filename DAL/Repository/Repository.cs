@@ -65,6 +65,11 @@ namespace DAL.Repository
             _context.Set<TEntity>().Remove(entity);
         }
 
+        public void DeleteRange<TEntity>(IEnumerable<TEntity> entities) where TEntity : class
+        {
+            _context.Set<TEntity>().RemoveRange(entities);
+        }
+
         public void Delete<TEntity>(object id) where TEntity: class
         {
             var entity = _context.Set<TEntity>().Find(id);
