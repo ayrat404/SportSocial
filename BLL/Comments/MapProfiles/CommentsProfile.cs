@@ -18,7 +18,7 @@ namespace BLL.Comments.MapProfiles
     {
         protected override void Configure()
         {
-            CreateMap<AppUser, AuthorVm>()
+            CreateMap<AppUser, UserInfoVm>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.FullName()))
                 .ForMember(dest => dest.Avatar, opt => opt.MapFrom(src => src.Profile.Avatar));
@@ -28,7 +28,7 @@ namespace BLL.Comments.MapProfiles
                 .ForMember(dest => dest.Avatar, opt => opt.MapFrom(src => src.ByFortress ? LoginService.DefaultFortressAvatar : src.User.Profile.Avatar))
                 .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Created.ToString()))
                 .ForMember(dest => dest.Created, opt => opt.MapFrom(src => src.Created))
-                .ForMember(dest => dest.Author, opt => opt.MapFrom(src => src.User))
+                .ForMember(dest => dest.UserInfo, opt => opt.MapFrom(src => src.User))
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.ByFortress ? "Fortress" : src.User.Name))
                 .ForMember(dest => dest.Text, opt => opt.MapFrom(src => src.Text));
 

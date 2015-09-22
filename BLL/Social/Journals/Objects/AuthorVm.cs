@@ -1,6 +1,6 @@
 namespace BLL.Social.Journals.Objects
 {
-    public class AuthorVm
+    public class UserInfoVm
     {
         public int Id { get; set; }
         public string Avatar { get; set; }

@@ -14,7 +14,7 @@ namespace BLL.Comments.Objects
 
         public string Name { get; set; }
 
-        public AuthorVm Author { get; set; }
+        public UserInfoVm UserInfo { get; set; }
 
         public string Text { get; set; }
 

@@ -10,6 +10,6 @@ namespace BLL.Rating.Objects
 
         public bool IsLiked { get; set; }
 
-        public List<AuthorVm> List { get; set; }
+        public List<UserInfoVm> List { get; set; }
     }
 }

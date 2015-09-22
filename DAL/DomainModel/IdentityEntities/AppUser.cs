@@ -35,6 +35,8 @@ namespace DAL.DomainModel
 
         public virtual ICollection<Journal> Journals { get; set; }
 
+        public virtual ICollection<Achievement.Achievement> Achievements { get; set; }
+
         public virtual ICollection<JournalComment> JournalComments { get; set; }
 
         [Column(TypeName = "datetime2")]

@@ -6,6 +6,7 @@ using System.Data.Entity.SqlServer;
 using System.Linq;
 using DAL.DomainModel.Achievement;
 using DAL.DomainModel.Achievement.Objects;
+using DAL.DomainModel.Interfaces;
 using DAL.Repository.Interfaces;
 
 namespace DAL.Repository
@@ -44,7 +45,7 @@ namespace DAL.Repository
                 .Single(a => a.Id == id);
         }
 
-        public AchievementDto GetAhievements(AchievementStatus status, AchievementState state, string type, int skip, int take)
+        public ListDto<Achievement> GetAhievements(AchievementStatus status, AchievementState state, string type, int skip, int take)
         {
             IQueryable<Achievement> query = Queryable<Achievement>()
                 .Include(a => a.Voices)
@@ -77,7 +78,7 @@ namespace DAL.Repository
                     query = query.Where(a => ((a.Voices.Count(v => v.VoteFor)/a.Voices.Count(v => !v.VoteFor)) >= 0.75));
                     break;
             }
-            return new AchievementDto()
+            return new ListDto<Achievement>
             {
                 Count = query.Count(),
                 List = query.OrderByDescending(a => a.Id)
@@ -101,9 +102,9 @@ namespace DAL.Repository
         }
     }
 
-    public class AchievementDto
+    public class ListDto<T> where T : IEntity
     {
         public int Count { get; set; }
-        public List<Achievement> List { get; set; }
+        public List<T> List { get; set; }
     }
 }

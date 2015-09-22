@@ -10,6 +10,6 @@ namespace DAL.Repository.Interfaces
         Achievement GetTempAchievement(int userId);
         List<AchievementType> GetTypes();
         Achievement GetAchievement(int id);
-        AchievementDto GetAhievements(AchievementStatus status, AchievementState state, string type, int skip, int take);
+        ListDto<Achievement> GetAhievements(AchievementStatus status, AchievementState state, string type, int skip, int take);
     }
 }

@@ -11,7 +11,7 @@ namespace BLL.Social.Journals.Objects
 
         public string Text { get; set; }
 
-        public AuthorVm Author { get; set; }
+        public UserInfoVm UserInfo { get; set; }
 
         public RatingInfo Likes { get; set; }
 

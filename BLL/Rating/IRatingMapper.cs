@@ -33,7 +33,7 @@ namespace BLL.Rating
             //ratingInfo.RatingEntityType = RatingEntityType.Journal;
             ratingInfo.List = entity.RatingEntites
                 .OrderByDescending(r => r.Id).Take(3)
-                .Select(j => new AuthorVm
+                .Select(j => new UserInfoVm
                 {
                     Id = j.UserId,
                     Avatar = j.User.Profile.Avatar,
@@ -47,7 +47,7 @@ namespace BLL.Rating
             var ratingInfo = MapRating(entity);
             ratingInfo.List = entity.RatingEntites
                 .OrderByDescending(r => r.Id).Take(3)
-                .Select(j => new AuthorVm
+                .Select(j => new UserInfoVm
                 {
                     Id = j.UserId,
                     Avatar = j.User.Profile.Avatar,

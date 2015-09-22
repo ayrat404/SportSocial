@@ -7,6 +7,7 @@ using System.Web;
 using BLL.Common.Objects;
 using BLL.Common.Services.CurrentUser;
 using BLL.Social.Journals.Objects;
+using DAL.DomainModel;
 using DAL.DomainModel.Base;
 using DAL.DomainModel.Interfaces;
 using DAL.DomainModel.JournalEntities;
@@ -46,6 +47,12 @@ namespace BLL.Storage.Impls
             var imageEntity = (TImageEntity)Activator.CreateInstance(typeof (TImageEntity));
             imageEntity.Url = url;
             _repository.Add(imageEntity);
+            //TODO костыль
+            if (typeof (TEntity) == typeof (AppUser))
+            {
+                _currentUser.User.Profile.Avatar = url;
+                imageEntity.EntityId = _currentUser.UserId;
+            }
             _repository.SaveChanges();
             result.Result = new ImageUploadResult();
             result.Result.Url = VirtualPathUtility.ToAbsolute(url);

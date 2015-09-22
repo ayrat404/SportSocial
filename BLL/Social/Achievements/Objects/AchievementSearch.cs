@@ -2,7 +2,7 @@ using DAL.DomainModel.Achievement.Objects;
 
 namespace BLL.Social.Achievements.Objects
 {
-    public class AchievementSearch
+    public class AchievementSearch: BaseSearch
     {
         public AchievementState Actual { get; set; }
 
@@ -10,8 +10,17 @@ namespace BLL.Social.Achievements.Objects
 
         public string Type { get; set; }
 
+    }
+
+    public class BaseSearch
+    {
         public int Count { get; set; }
 
         public int Page { get; set; }
+    }
+
+    public class ProfileSearch : BaseSearch
+    {
+        
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using DAL.DomainModel;
 
 namespace DAL.Repository.Interfaces
 {
@@ -17,5 +18,6 @@ namespace DAL.Repository.Interfaces
         IQueryable<TEntity> Queryable<TEntity>() where TEntity : class;
         //IQueryable Queryable(Type type);
         void SaveChanges();
+        ListDto<AppUser> GetUsers(int skip, int take);
     }
 }

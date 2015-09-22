@@ -49,7 +49,7 @@ namespace BLL.Social.Achievements
                 .ForMember(dest => dest.Created, opt => opt.MapFrom(src => src.Created))
                 .ForMember(dest => dest.CupImage, opt => opt.MapFrom(src => src.AchievementType.ImgUrl))
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.AchievementType.Title))
-                .ForMember(dest => dest.Author, opt => opt.MapFrom(src => src.User))
+                .ForMember(dest => dest.UserInfo, opt => opt.MapFrom(src => src.User))
                 .ForMember(dest => dest.TimeStamp, opt => opt.MapFrom(src => src.GetTimeStamp()))
                 .ForMember(dest => dest.Voice, opt => opt.MapFrom(src => src));
 

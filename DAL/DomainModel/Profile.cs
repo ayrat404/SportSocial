@@ -31,5 +31,10 @@ namespace DAL.DomainModel
 
         public bool IsPaid { get; set; }
         public int ReadedNews { get; set; }
+
+        public int GetAge()
+        {
+            return new DateTime((DateTime.Now - BirthDate).Ticks).Year;
+        }
     }
 }

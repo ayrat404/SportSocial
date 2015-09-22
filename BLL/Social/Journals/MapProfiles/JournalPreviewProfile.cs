@@ -23,7 +23,7 @@ namespace BLL.Social.Journals.MapProfiles
             CreateMap<Journal, JournalPreviewVm>()
                 .ForMember(dest => dest.Text, opt => opt.MapFrom(src => src.Text))
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
-                .ForMember(dest => dest.Author, opt => opt.MapFrom(src => src.User))
+                .ForMember(dest => dest.UserInfo, opt => opt.MapFrom(src => src.User))
                 .ForMember(dest => dest.Likes, opt => opt.MapFrom(src => RatingMapper.MapRating(src)))
                 .ForMember(dest => dest.Media, opt => opt.MapFrom(src => src.Media))
                 .ForMember(dest => dest.Tags, opt => opt.MapFrom(src => src.Tags))
