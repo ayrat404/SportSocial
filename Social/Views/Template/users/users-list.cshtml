@@ -8,7 +8,7 @@
                 <ul class="users-list users-list--cards">
                     <li ng-repeat="u in ulist.list" class="ul__it">
                         <a ui-sref="main.profile({userId: u.id})" class="ul__it__img-wrap">
-                            <img src="{{ u.avatar|imageResize:{w: 250, h: 250} }}" class="ul__it__img" />
+                            <img ng-src="{{ u.avatar|imageResize:{w: 250, h: 250} }}" class="ul__it__img" />
                         </a>
                         <div class="ul__it__info">
                             <a ui-sref="main.profile({userId: u.id})" class="ul__it__name">{{u.fullName}}</a>
