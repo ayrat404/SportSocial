@@ -8,5 +8,6 @@ namespace BLL.Social.UserProfile
     {
         ProfileFull GetProfileFull(int id);
         ProfileListVm GetUsers(ProfileSearch search);
+        ServiceResult Subscribe(SubcribeModel model);
     }
 }

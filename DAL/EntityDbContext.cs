@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using DAL.DomainModel;
 using DAL.DomainModel.Achievement;
 using DAL.DomainModel.BlogEntities;
@@ -52,6 +51,8 @@ namespace DAL
         public DbSet<AchievementMedia> AchievementMedia { get; set; }
         public DbSet<AchievementRating> AchievementRatings { get; set; }
 
+        public DbSet<Subscribe> Subscribes { get; set; }
+        
         public DbSet<Tag> Tags { get; set; }
 
         static EntityDbContext()
@@ -176,6 +177,19 @@ namespace DAL
                 .WithMany()
                 .HasForeignKey(j => j.UserId)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Subscribe>()
+                .HasRequired(t => t.FolowerUser)
+                .WithMany(t => t.Subscribes)
+                .HasForeignKey(j => j.FolowerUserId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Subscribe>()
+                .HasRequired(t => t.ToUser)
+                .WithMany(t => t.Folowers)
+                .HasForeignKey(j => j.ToUserId)
+                .WillCascadeOnDelete(false);
+
         }
 
         protected override void Dispose(bool disposing)

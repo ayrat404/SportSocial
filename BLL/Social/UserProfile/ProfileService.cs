@@ -1,4 +1,6 @@
 using System;
+using System.Data.Entity;
+using System.Linq;
 using BLL.Common.Objects;
 using BLL.Common.Services.CurrentUser;
 using BLL.Infrastructure.Map;
@@ -25,7 +27,12 @@ namespace BLL.Social.UserProfile
 
         public ProfileFull GetProfileFull(int id)
         {
-            var user = _repository.Find<AppUser>(id);
+            var user = _repository.Queryable<AppUser>()
+                .Where(u => u.Id == id)
+                .Include(u => u.Profile)
+                .Include(u => u.Subscribes.Select(f => f.ToUser))
+                .Include(u => u.Folowers.Select(f => f.FolowerUser))
+                .Single();
             //var profileFull = new ProfileFull
             //{
             //    FullName = user.FullName(),
@@ -50,6 +57,37 @@ namespace BLL.Social.UserProfile
                 IsMore = search.Count*search.Page < users.Count,
                 List = users.List.MapEachTo<ProfilePreview>()
             };
+        }
+
+        public ServiceResult Subscribe(SubcribeModel model)
+        {
+            var user = _repository.Queryable<AppUser>()
+                .Include(a => a.Folowers)
+                .Single(a => a.Id == model.Id);
+            if (model.ActionType == SubscribeActionType.Subscribe)
+            {
+                if (!user.Folowers.Any(f => f.FolowerUserId == _currentUser.UserId))
+                {
+                    var subscribe = new Subscribe
+                    {
+                        FolowerUserId = _currentUser.UserId,
+                        ToUserId = user.Id
+                    };
+                    _repository.Add(subscribe);
+                    _repository.SaveChanges();
+                }
+            }
+            else
+            {
+                var subscribe = _repository.Queryable<Subscribe>()
+                    .SingleOrDefault(s => s.FolowerUserId == _currentUser.UserId && s.ToUserId == user.Id);
+                if (subscribe != null)
+                {
+                    _repository.Delete(subscribe);
+                }
+                _repository.SaveChanges();
+            }
+            return ServiceResult.SuccessResult();
         }
     }
 }

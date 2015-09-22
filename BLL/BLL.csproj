@@ -280,6 +280,8 @@
     <Compile Include="Social\UserProfile\MapProfiles\UserMapProfile.cs" />
     <Compile Include="Social\UserProfile\Objects\ProfileInfo.cs" />
     <Compile Include="Social\UserProfile\Objects\ProfileListVm.cs" />
+    <Compile Include="Social\UserProfile\Objects\SubcribeModel.cs" />
+    <Compile Include="Social\UserProfile\Objects\SubscribeActionType.cs" />
     <Compile Include="Social\UserProfile\ProfileService.cs" />
     <Compile Include="Storage\IFIleService.cs" />
     <Compile Include="Storage\IImageSaver.cs" />

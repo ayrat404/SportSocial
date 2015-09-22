@@ -47,5 +47,12 @@ namespace Social.Controllers
         {
             return ApiResult(_loginService.RemoveAvatar());
         }
+
+        [Route("~/api/subscribe")]
+        [HttpPost]
+        public ApiResult Subscribe(SubcribeModel model)
+        {
+            return ApiResult(_profileService.Subscribe(model));
+        }
     }
 }
