@@ -32,7 +32,7 @@ namespace Social.Controllers
             return ModelStateErrors();
         }
 
-        [Route("{id:int}")]
+        [Route("")]
         [HttpGet]
         public ApiResult GetJournal(int id)
         {
@@ -52,6 +52,13 @@ namespace Social.Controllers
         public ApiResult DeleteJournal(int id)
         {
             return ApiResult(_journalService.DeleteJournal(id));
+        }
+
+        [Route("~/api/records")]
+        [HttpGet]
+        public ApiResult GetJournals(int authorId, int count = 20, int page = 1)
+        {
+            return ApiResult(_journalService.GetJournals(authorId, page, count));
         }
     }
 }

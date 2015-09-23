@@ -7,7 +7,7 @@ namespace DAL.Repository.Interfaces
 {
     public interface IJournalRepository: IRepository
     {
-        List<Journal> GetJournals(int userId);
+        ListDto<Journal> GetJournals(int userId, int skip, int take);
         Journal GetJournal(int journalId);
         Journal JournalForEdit(int journalId);
     }
@@ -18,19 +18,25 @@ namespace DAL.Repository.Interfaces
         {
         }
 
-        public List<Journal> GetJournals(int userId)
+        public ListDto<Journal> GetJournals(int userId, int skip, int take)
         {
-            return Queryable<Journal>()
-                .Where(j => j.UserId == userId)
-                .Include(j => j.RatingEntites)
-                .Include(j => j.RatingEntites.Select(r => r.User))
-                .Include(j => j.User)
-                .Include(j => j.Media)
-                .Include(j => j.Tags)
-                .Include(j => j.Tags.Select(t => t.Tag))
-                .Include(j => j.Media.Select(m => m.RatingEntites))
-                .OrderByDescending(j => j.Id)
-                .ToList();
+            int count = Queryable<Journal>()
+                .Count(j => j.UserId == userId);
+            return new ListDto<Journal>
+            {
+                Count = count,
+                List = Queryable<Journal>()
+                    .Where(j => j.UserId == userId)
+                    .Include(j => j.RatingEntites)
+                    .Include(j => j.RatingEntites.Select(r => r.User))
+                    .Include(j => j.User)
+                    .Include(j => j.Media)
+                    .Include(j => j.Tags)
+                    .Include(j => j.Tags.Select(t => t.Tag))
+                    .Include(j => j.Media.Select(m => m.RatingEntites))
+                    .OrderByDescending(j => j.Id)
+                    .ToList()
+            };
         }
 
         public Journal GetJournal(int journalId)

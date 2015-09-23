@@ -5,8 +5,6 @@ namespace BLL.Social.Journals.Objects
 {
     public class JournalDisplayVm: JournalPreviewVm
     {
-
-
         public CommentsVm Comments { get; set; }
     }
 }
