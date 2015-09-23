@@ -16,6 +16,6 @@ namespace BLL.Social.Achievements.Objects
         public DateTime Created { get; set; }
         public long TimeStamp { get; set; }
         public AchievmentVoiceVm Voice { get; set; }
-        public UserInfoVm UserInfo { get; set; }
+        public UserInfoVm Author { get; set; }
     }
 }
