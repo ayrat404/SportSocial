@@ -1,3 +1,4 @@
+(function(){
 var contentHeight;
 
 contentHeight = (function() {
@@ -50,3 +51,5 @@ contentHeight = (function() {
 })();
 
 angular.module('shared').directive('contentHeight', ['$window', '$timeout', contentHeight]);
+
+})();

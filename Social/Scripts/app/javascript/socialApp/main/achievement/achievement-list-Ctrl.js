@@ -1,3 +1,4 @@
+(function(){
 var AchievementList;
 
 AchievementList = (function() {
@@ -89,3 +90,5 @@ AchievementList = (function() {
 })();
 
 angular.module('socialApp.controllers').controller('achievementListController', ['$q', '$scope', '$state', 'achievementService', AchievementList]);
+
+})();

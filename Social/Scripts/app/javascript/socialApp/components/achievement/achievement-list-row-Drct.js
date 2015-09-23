@@ -1,3 +1,4 @@
+(function(){
 var achievementListRow;
 
 achievementListRow = (function() {
@@ -17,3 +18,5 @@ achievementListRow = (function() {
 })();
 
 angular.module('socialApp.directives').directive('achievementListRow', [achievementListRow]);
+
+})();

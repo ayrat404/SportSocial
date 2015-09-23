@@ -135,10 +135,10 @@
                     @*-----Journal record submit-----*@
                     
                     @*-----Journals list-----*@
-                    <div ng-if="profile.user.journals.length"
+                    <div ng-if="profile.user.journal.list.length"
                          class="wall">
                         <div class="wall__bar">
-                            <div ng-repeat="it in profile.user.journals"
+                            <div ng-repeat="it in profile.user.journal.list"
                                  ng-class="{
                                  'wall__it--right': $index % 2 != 0,
                                  'wall__it--left': $index % 2 == 0,
@@ -182,9 +182,9 @@
                             </div>
                         </div>
                     </div>
-                    <div ng-if="ach.showMore" class="text-center show-more show-more--dark">
-                        <button ng-class="{ 'loading': ach.showMoreLoading }"
-                                ng-click="ach.loadMore()"
+                    <div ng-if="profile.user.journal.isMore" class="text-center show-more show-more--dark">
+                        <button ng-class="{ 'loading': profile.user.journal.loading }"
+                                ng-click="profile.user.journal.loadMoreRecords()"
                                 type="button" class="show-more__btn">
                             @R("Показать ещё")
                         </button>

@@ -1,43 +1,34 @@
+(function(){
 var SportThemes;
 
 SportThemes = (function() {
-  function SportThemes($http, $q, srvcConfig, base) {
-    var get, url;
+  function SportThemes(srvcConfig, base, RequestConstructor) {
+    var facade, rqst, url;
     url = srvcConfig.baseServiceUrl + '/sport_themes';
-    get = function(search) {
-      return $q(function(resolve, reject) {
-        if (search && search.length) {
-          return $http.get(url, {
-            params: {
-              query: search
-            }
-          }).then(function(res) {
-            if (res.data.success && res.data.data.length) {
-              return resolve(res.data);
-            } else {
-              return reject(res.data);
-            }
-          }, function(res) {
-            return reject(res);
-          });
-        } else {
+    rqst = {
+      get: new RequestConstructor.klass('get', url, function(data) {
+        if (!data || !data.query) {
           if (srvcConfig.noticeShow.errors) {
             base.notice.show({
               text: 'Search theme string error',
               type: 'danger'
             });
           }
-          return reject();
+          return false;
         }
-      });
+        return true;
+      })
     };
-    return {
-      get: get
+    facade = {
+      get: rqst.get["do"]
     };
+    return facade;
   }
 
   return SportThemes;
 
 })();
 
-angular.module('appSrvc').service('sportThemesService', ['$http', '$q', 'srvcConfig', 'base', SportThemes]);
+angular.module('appSrvc').service('sportThemesService', ['srvcConfig', 'base', 'RequestConstructor', SportThemes]);
+
+})();

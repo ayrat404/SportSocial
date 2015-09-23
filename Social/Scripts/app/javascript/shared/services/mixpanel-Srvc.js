@@ -1,3 +1,4 @@
+(function(){
 angular.module('shared').factory('mixpanel', [
   '$location', function($location) {
     var api;
@@ -35,3 +36,5 @@ angular.module('shared').factory('mixpanel', [
     };
   }
 ]);
+
+})();

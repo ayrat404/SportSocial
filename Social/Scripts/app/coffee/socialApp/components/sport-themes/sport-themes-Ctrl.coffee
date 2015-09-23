@@ -10,13 +10,12 @@ class ThemesAutocomplete extends Controller('socialApp.controllers')
         # get remote tags
         # ---------------
         $scope.getThemes = (search)->
-            return sportThemesService.get(search).then((res)->
+            return sportThemesService.get(query: search).then (res)->
                 # if find themes
-                return res.data
-            , ->
-                # if themes aren't found
-                return [search]
-            )
+                if res.data.length
+                    return res.data
+                else
+                    return [search]
 
         # select tag
         # ---------------

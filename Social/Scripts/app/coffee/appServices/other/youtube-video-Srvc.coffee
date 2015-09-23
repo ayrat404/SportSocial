@@ -3,28 +3,39 @@ class YoutubeVideo extends Service('appSrvc')
         $http
         $q
         srvcConfig
-        base)->
+        RequestConstructor)->
 
         url = srvcConfig.baseServiceUrl + '/youtube'
 
-        # youtube video info get
-        # ---------------
-        getVideoInfo = (data)->
-            $q (resolve, reject)->
-                if data &&
-                  typeof data.link == 'string' &&
-                  data.type
-                    $http.post(url, data).then((res)->
-                        if res.data.success
-                            resolve(res.data)
-                        else
-                            reject(res.data)
-                    , (res)->
-                        reject(res)
-                    )
-                else
-                    reject()
+        rqst =
+            getVideoInfo: new RequestConstructor.klass 'post', url, (data)->
+                if !data || !typeof data.link == 'string' || !data.type
+                    return false
+                true
 
-        return {
-            getVideoInfo: getVideoInfo
-        }
+        facade =
+            getVideoInfo: rqst.getVideoInfo.do
+
+        return facade
+
+#        # youtube video info get
+#        # ---------------
+#        getVideoInfo = (data)->
+#            $q (resolve, reject)->
+#                if data &&
+#                  typeof data.link == 'string' &&
+#                  data.type
+#                    $http.post(url, data).then((res)->
+#                        if res.data.success
+#                            resolve(res.data)
+#                        else
+#                            reject(res.data)
+#                    , (res)->
+#                        reject(res)
+#                    )
+#                else
+#                    reject()
+#
+#        return {
+#            getVideoInfo: getVideoInfo
+#        }

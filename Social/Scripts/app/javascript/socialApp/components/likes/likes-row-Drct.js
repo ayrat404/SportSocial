@@ -1,3 +1,4 @@
+(function(){
 var LikesInRow;
 
 LikesInRow = (function() {
@@ -86,3 +87,5 @@ LikesInRow = (function() {
 })();
 
 angular.module('socialApp.directives').directive('likesInRow', ['$rootScope', '$timeout', 'likeService', LikesInRow]);
+
+})();

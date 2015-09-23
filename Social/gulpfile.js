@@ -53,7 +53,7 @@ function compileCoffee(project) {
     return gulp.src(project.coffeeIn)
         .pipe(ngClassify())
         .pipe(coffee({ bare: true }).on('error', gutil.log))
-        //.pipe(wrap('(function(){\n<%= contents %>\n})();'))
+        .pipe(wrap('(function(){\n<%= contents %>\n})();'))
         .pipe(gulp.dest(project.coffeeOut));
 }
 

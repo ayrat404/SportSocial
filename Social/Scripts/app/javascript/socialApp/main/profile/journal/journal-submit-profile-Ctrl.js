@@ -1,3 +1,4 @@
+(function(){
 var JournalProfileSubmit;
 
 JournalProfileSubmit = (function() {
@@ -37,7 +38,7 @@ JournalProfileSubmit = (function() {
       return $scope.j.media = [];
     };
     $scope.submit = function() {
-      return journalService.submit($scope.j).then(function(res) {
+      return journalService.save($scope.j).then(function(res) {
         $scope.closeForm();
         return $scope.success({
           $res: res
@@ -51,3 +52,5 @@ JournalProfileSubmit = (function() {
 })();
 
 angular.module('socialApp.controllers').controller('journalProfileSubmitController', ['$scope', 'journalService', JournalProfileSubmit]);
+
+})();

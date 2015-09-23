@@ -1,3 +1,4 @@
+(function(){
 var AchievementSubmit;
 
 AchievementSubmit = (function() {
@@ -116,3 +117,5 @@ AchievementSubmit = (function() {
 })();
 
 angular.module('socialApp.controllers').controller('achievementSubmitController', ['$scope', '$stateParams', '$rootScope', '$window', 'achievementService', 'youtubeVideoService', AchievementSubmit]);
+
+})();

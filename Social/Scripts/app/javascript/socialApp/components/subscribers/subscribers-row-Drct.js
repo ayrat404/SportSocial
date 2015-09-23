@@ -1,3 +1,4 @@
+(function(){
 var SubscribersInRow;
 
 SubscribersInRow = (function() {
@@ -84,3 +85,5 @@ SubscribersInRow = (function() {
 })();
 
 angular.module('socialApp.directives').directive('subscribersInRow', ['$rootScope', '$timeout', 'subscribeService', SubscribersInRow]);
+
+})();

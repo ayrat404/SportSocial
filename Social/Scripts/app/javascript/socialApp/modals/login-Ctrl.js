@@ -1,3 +1,4 @@
+(function(){
 var LoginSubmitModal;
 
 LoginSubmitModal = (function() {
@@ -31,3 +32,5 @@ LoginSubmitModal = (function() {
 })();
 
 angular.module('socialApp.controllers').controller('loginSubmitModalController', ['$scope', '$state', '$modalInstance', 'loginService', 'modalData', LoginSubmitModal]);
+
+})();

@@ -1,3 +1,4 @@
+(function(){
 var ThemesAutocomplete;
 
 ThemesAutocomplete = (function() {
@@ -20,3 +21,5 @@ ThemesAutocomplete = (function() {
 })();
 
 angular.module('socialApp.directives').directive('themesAutocomplete', [ThemesAutocomplete]);
+
+})();

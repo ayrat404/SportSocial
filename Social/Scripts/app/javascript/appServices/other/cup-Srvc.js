@@ -1,3 +1,4 @@
+(function(){
 var Cup;
 
 Cup = (function() {
@@ -52,3 +53,5 @@ Cup = (function() {
 })();
 
 angular.module('appSrvc').service('cupService', ['$http', '$q', 'store', 'srvcConfig', 'base', Cup]);
+
+})();

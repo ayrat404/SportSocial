@@ -1,3 +1,4 @@
+(function(){
 var landingScripts;
 
 landingScripts = (function() {
@@ -105,3 +106,5 @@ landingScripts = (function() {
 })();
 
 angular.module('socialApp.directives').directive('landingScripts', ['base', landingScripts]);
+
+})();

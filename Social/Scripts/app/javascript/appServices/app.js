@@ -1,3 +1,4 @@
+(function(){
 var app;
 
 app = angular.module('appSrvc', []).constant('srvcConfig', {
@@ -8,3 +9,5 @@ app = angular.module('appSrvc', []).constant('srvcConfig', {
   },
   baseServiceUrl: '/api'
 });
+
+})();

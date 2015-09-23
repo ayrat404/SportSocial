@@ -1,13 +1,18 @@
+(function(){
 var ProfileView;
 
 ProfileView = (function() {
   function ProfileView($scope, $state, $stateParams, $rootScope, mixpanel, profileService, modalService, defaultAvatarUrl) {
-    var _this;
+    var _this, recordsFilter;
     $scope.$root.title = ['Fortress | ', $rootScope.user.fullName].join('');
     _this = this;
     _this.unknown = false;
     _this.user = {
       loaded: false
+    };
+    recordsFilter = {
+      count: 20,
+      page: 3
     };
     _this.complain = function(title) {
       return modalService.show({
@@ -21,7 +26,7 @@ ProfileView = (function() {
       });
     };
     _this.newRecord = function(res) {
-      return _this.user.journals.unshift(res.data);
+      return _this.user.journal.list.unshift(res.data);
     };
     _this.shareRecord = function(obj) {
       return modalService.show({
@@ -45,12 +50,12 @@ ProfileView = (function() {
           id: id,
           success: function(res) {
             var i, j, k, len, ref, results;
-            ref = _this.user.journals;
+            ref = _this.user.journal.list;
             results = [];
             for (i = k = 0, len = ref.length; k < len; i = ++k) {
               j = ref[i];
               if (j.id === id) {
-                _this.user.journals.splice(i, 1);
+                _this.user.journal.list.splice(i, 1);
                 break;
               } else {
                 results.push(void 0);
@@ -68,12 +73,12 @@ ProfileView = (function() {
           model: model,
           success: function(record) {
             var i, j, k, len, ref, results;
-            ref = _this.user.journals;
+            ref = _this.user.journal.list;
             results = [];
             for (i = k = 0, len = ref.length; k < len; i = ++k) {
               j = ref[i];
               if (j.id === id) {
-                _this.user.journals[i] = record;
+                _this.user.journal.list[i] = record;
                 break;
               } else {
                 results.push(void 0);
@@ -83,6 +88,21 @@ ProfileView = (function() {
           }
         }
       });
+    };
+    _this.loadMoreRecords = function() {
+      if (!_this.user.journal.loading) {
+        _this.user.journal.loading = true;
+        recordsFilter.page = +recordsFilter.page + 1;
+        $state.params = recordsFilter;
+        $state.transitionTo($state.current, $state.params, {
+          notify: false
+        });
+        return getList(recordsFilter).then(function(list) {
+          return _this.list.push(list);
+        })["finally"](function() {
+          return _this.user.journal.loading = false;
+        });
+      }
     };
     _this.avatarResponse = function(stringRes) {
       var objRes;
@@ -101,7 +121,9 @@ ProfileView = (function() {
         return _this.user.avatar = defaultAvatarUrl;
       });
     };
-    profileService.getInfo($stateParams.userId).then(function(res) {
+    profileService.getInfo({
+      id: $stateParams.userId
+    }).then(function(res) {
       _this.user = res.data;
       if ($rootScope.user.id === +$stateParams.userId) {
         _this.user.isOwner = true;
@@ -109,7 +131,8 @@ ProfileView = (function() {
         _this.user.isOwner = false;
       }
       _this.user.id = $stateParams.userId;
-      return _this.user.loaded = true;
+      _this.user.loaded = true;
+      return recordsFilter.authorId = _this.user.id;
     }, function(res) {
       return _this.unknown = true;
     });
@@ -120,3 +143,5 @@ ProfileView = (function() {
 })();
 
 angular.module('socialApp.controllers').controller('profileViewController', ['$scope', '$state', '$stateParams', '$rootScope', 'mixpanel', 'profileService', 'modalService', 'defaultAvatarUrl', ProfileView]);
+
+})();

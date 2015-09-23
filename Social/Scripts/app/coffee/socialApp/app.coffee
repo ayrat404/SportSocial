@@ -8,6 +8,5 @@ app = angular.module 'socialApp', [
    'socialApp.controllers',
    'socialApp.services',
    'socialApp.directives']
-   .run(()->
+   .run ->
     angular.element('body').css('opacity', 1)
-   )    

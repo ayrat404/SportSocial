@@ -1,58 +1,37 @@
+(function(){
 var Profile;
 
 Profile = (function() {
-  function Profile($q, $rootScope, $http, base, mixpanel, srvcConfig) {
-    var avatarUrl, getInfo, removeAvatar, url;
+  function Profile(base, mixpanel, srvcConfig, RequestConstructor) {
+    var avatarUrl, facade, rqst, url;
     url = srvcConfig.baseServiceUrl + '/profile';
     avatarUrl = srvcConfig.baseServiceUrl + '/profile/avatar';
-    getInfo = function(userId) {
-      return $q(function(resolve, reject) {
-        if (userId) {
-          return $http.get(url, {
-            params: {
-              id: userId
-            }
-          }).then(function(res) {
-            if (res.data.success) {
-              return resolve(res.data);
-            } else {
-              return reject(res.data);
-            }
-          }, function(res) {
-            return reject(res);
-          });
-        } else {
-          reject();
+    rqst = {
+      getInfo: new RequestConstructor.klass('get', url, function(data) {
+        if (!data.id) {
           if (srvcConfig.noticeShow.errors) {
-            return base.notice.show({
+            base.notice.show({
               text: 'Get profile data: userId variable error',
               type: 'danger'
             });
           }
+          return false;
         }
-      });
+        return true;
+      }),
+      removeAvatar: new RequestConstructor.klass('delete', avatarUrl)
     };
-    removeAvatar = function() {
-      return $q(function(resolve, reject) {
-        return $http["delete"](avatarUrl).then(function(res) {
-          if (res.data.success) {
-            return resolve(res.data);
-          } else {
-            return reject(res.data);
-          }
-        }, function(res) {
-          return reject(res);
-        });
-      });
+    facade = {
+      getInfo: rqst.getInfo["do"],
+      removeAvatar: rqst.removeAvatar["do"]
     };
-    return {
-      getInfo: getInfo,
-      removeAvatar: removeAvatar
-    };
+    return facade;
   }
 
   return Profile;
 
 })();
 
-angular.module('appSrvc').service('profileService', ['$q', '$rootScope', '$http', 'base', 'mixpanel', 'srvcConfig', Profile]);
+angular.module('appSrvc').service('profileService', ['base', 'mixpanel', 'srvcConfig', 'RequestConstructor', Profile]);
+
+})();

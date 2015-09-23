@@ -1,3 +1,4 @@
+(function(){
 var RestorePasswordSubmitNewModal, RestorePasswordSubmitPhoneModal;
 
 RestorePasswordSubmitPhoneModal = (function() {
@@ -46,3 +47,5 @@ RestorePasswordSubmitNewModal = (function() {
 })();
 
 angular.module('socialApp.controllers').controller('restorePasswordSubmitPhoneModalController', ['$scope', '$modalInstance', 'restorePasswordService', 'modalService', RestorePasswordSubmitPhoneModal]).controller('restorePasswordSubmitNewModalController', ['$scope', '$modalInstance', 'restorePasswordService', 'loginService', 'modalService', 'modalData', RestorePasswordSubmitNewModal]);
+
+})();

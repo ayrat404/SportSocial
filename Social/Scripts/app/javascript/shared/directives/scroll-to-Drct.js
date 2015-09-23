@@ -1,3 +1,4 @@
+(function(){
 var scrollTo;
 
 scrollTo = (function() {
@@ -37,3 +38,5 @@ scrollTo = (function() {
 })();
 
 angular.module('shared').directive('scrollTo', [scrollTo]);
+
+})();

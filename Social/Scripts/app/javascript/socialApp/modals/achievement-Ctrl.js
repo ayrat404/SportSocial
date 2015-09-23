@@ -1,3 +1,4 @@
+(function(){
 var aboutAchievementModal;
 
 aboutAchievementModal = (function() {
@@ -12,3 +13,5 @@ aboutAchievementModal = (function() {
 })();
 
 angular.module('socialApp.controllers').controller('aboutAchievementModalController', ['$state', '$scope', '$modalInstance', aboutAchievementModal]);
+
+})();

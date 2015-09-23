@@ -1,3 +1,4 @@
+(function(){
 var MediaUpload;
 
 MediaUpload = (function() {
@@ -36,3 +37,5 @@ MediaUpload = (function() {
 })();
 
 angular.module('socialApp.controllers').controller('mediaUploadController', ['$scope', 'youtubeVideoService', 'base', MediaUpload]);
+
+})();

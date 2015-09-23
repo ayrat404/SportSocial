@@ -1,3 +1,4 @@
+(function(){
 var cut;
 
 cut = (function() {
@@ -30,3 +31,5 @@ cut = (function() {
 })();
 
 angular.module('shared').filter('cut', [cut]);
+
+})();

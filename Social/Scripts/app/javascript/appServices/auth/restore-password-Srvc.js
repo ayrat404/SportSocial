@@ -1,3 +1,4 @@
+(function(){
 var restorePassword;
 
 restorePassword = (function() {
@@ -84,3 +85,5 @@ restorePassword = (function() {
 })();
 
 angular.module('appSrvc').service('restorePasswordService', ['$state', '$location', '$q', '$rootScope', '$http', 'base', 'mixpanel', 'srvcConfig', restorePassword]);
+
+})();

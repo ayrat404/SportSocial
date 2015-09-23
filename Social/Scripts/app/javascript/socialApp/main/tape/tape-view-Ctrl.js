@@ -1,3 +1,4 @@
+(function(){
 var Tape;
 
 Tape = (function() {
@@ -94,3 +95,5 @@ Tape = (function() {
 })();
 
 angular.module('socialApp.controllers').controller('tapeController', ['$q', '$scope', '$state', 'tapeService', Tape]);
+
+})();

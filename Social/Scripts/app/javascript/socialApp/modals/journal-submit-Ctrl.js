@@ -1,3 +1,4 @@
+(function(){
 var JournalModalSubmit;
 
 JournalModalSubmit = (function() {
@@ -18,7 +19,7 @@ JournalModalSubmit = (function() {
       }
     };
     $scope.submit = function() {
-      return journalService.submit($scope.j).then(function(res) {
+      return journalService.save($scope.j).then(function(res) {
         if (modalData && typeof modalData.success === 'function') {
           modalData.success($scope.j);
         }
@@ -32,3 +33,5 @@ JournalModalSubmit = (function() {
 })();
 
 angular.module('socialApp.controllers').controller('journalModalSubmitController', ['$scope', '$modalInstance', 'journalService', 'modalData', JournalModalSubmit]);
+
+})();

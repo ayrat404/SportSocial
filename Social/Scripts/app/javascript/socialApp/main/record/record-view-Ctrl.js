@@ -1,3 +1,4 @@
+(function(){
 var RecordView;
 
 RecordView = (function() {
@@ -9,7 +10,9 @@ RecordView = (function() {
     _this.it = {
       loader: true
     };
-    journalService.getById(+$stateParams.id).then(function(res) {
+    journalService.getById({
+      id: +$stateParams.id
+    }).then(function(res) {
       _this.it = res.data;
       if ($rootScope.user.id === _this.it.author.id) {
         _this.it.isOwner = true;
@@ -68,3 +71,5 @@ RecordView = (function() {
 })();
 
 angular.module('socialApp.controllers').controller('recordViewController', ['$scope', '$stateParams', '$rootScope', '$state', 'journalService', 'modalService', RecordView]);
+
+})();

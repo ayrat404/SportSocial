@@ -1,3 +1,4 @@
+(function(){
 var support;
 
 support = (function() {
@@ -48,3 +49,5 @@ support = (function() {
 })();
 
 angular.module('appSrvc').service('supportService', ['$state', '$location', '$q', '$rootScope', '$http', 'base', 'mixpanel', 'srvcConfig', support]);
+
+})();

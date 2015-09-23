@@ -1,3 +1,4 @@
+(function(){
 var loader;
 
 loader = (function() {
@@ -50,3 +51,5 @@ loader = (function() {
 })();
 
 angular.module('shared').directive('loader', [loader]);
+
+})();

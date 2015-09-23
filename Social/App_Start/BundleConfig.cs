@@ -28,6 +28,9 @@ namespace Social
             // social with coffee
             // ---------------
             bundles.Add(new ScriptBundle("~/bundles/social/scripts")
+                // constructors
+                // ---------------
+                //.IncludeDirectory("~/Scripts/app/javascript/constructors", "*.js", true)
                 // include shared
                 // ---------------
                 .IncludeDirectory("~/Scripts/app/javascript/shared", "*.js", true)

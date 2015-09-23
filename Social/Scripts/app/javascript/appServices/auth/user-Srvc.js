@@ -1,3 +1,4 @@
+(function(){
 var user;
 
 user = (function() {
@@ -58,3 +59,5 @@ user = (function() {
 })();
 
 angular.module('appSrvc').service('userService', ['$q', '$http', 'store', 'srvcConfig', user]);
+
+})();

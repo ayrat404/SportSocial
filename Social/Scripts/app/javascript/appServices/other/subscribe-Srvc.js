@@ -1,40 +1,40 @@
+(function(){
 var Subscribe;
 
 Subscribe = (function() {
-  function Subscribe($q, $http, $location, $rootScope, base, srvcConfig) {
-    var set, url;
+  function Subscribe(base, srvcConfig, RequestConstructor) {
+    var facade, rqst, url, validate;
     url = srvcConfig.baseServiceUrl + '/subscribe';
-    set = function(data) {
-      return $q(function(resolve, reject) {
-        if (data && data.id && typeof data.current === 'boolean') {
-          data.actionType = data.current ? 'unsubscribe' : 'subscribe';
-          return $http.post(url, data).then(function(res) {
-            if (res.data.success) {
-              return resolve(!data.current);
-            } else {
-              return reject(res.data);
-            }
-          }, function(res) {
-            return reject(res);
+    validate = function(data) {
+      if (!data || !data.id || typeof data.current !== 'boolean') {
+        if (srvcConfig.noticeShow.errors) {
+          base.notice.show({
+            text: 'Subscribe validation error',
+            type: 'danger'
           });
-        } else {
-          reject();
-          if (srvcConfig.noticeShow.errors) {
-            return base.notice.show({
-              text: 'Subscribe validation error',
-              type: 'danger'
-            });
-          }
         }
-      });
+        return false;
+      }
+      return true;
     };
-    return {
-      set: set
+    rqst = {
+      set: new RequestConstructor.klass('post', url)
     };
+    facade = {
+      set: function(data) {
+        if (validate(data)) {
+          data.actionType = data.current ? 'remove' : 'like';
+          return rqst.set["do"];
+        }
+      }
+    };
+    return facade;
   }
 
   return Subscribe;
 
 })();
 
-angular.module('appSrvc').service('subscribeService', ['$q', '$http', '$location', '$rootScope', 'base', 'srvcConfig', Subscribe]);
+angular.module('appSrvc').service('subscribeService', ['base', 'srvcConfig', 'RequestConstructor', Subscribe]);
+
+})();

@@ -1,3 +1,4 @@
+(function(){
 var AchievementView;
 
 AchievementView = (function() {
@@ -7,7 +8,9 @@ AchievementView = (function() {
     _this = this;
     _this.loader = true;
     _this.pageError = false;
-    achievementService.getById(+$stateParams.id).then(function(res) {
+    achievementService.getById({
+      id: +$stateParams.id
+    }).then(function(res) {
       _this.it = res.data;
       _this.it.comments.form = {};
       if ($rootScope.user.id === _this.it.author.id) {
@@ -72,3 +75,5 @@ AchievementView = (function() {
 })();
 
 angular.module('socialApp.controllers').controller('achievementViewController', ['$scope', '$stateParams', '$rootScope', '$window', 'achievementService', AchievementView]);
+
+})();

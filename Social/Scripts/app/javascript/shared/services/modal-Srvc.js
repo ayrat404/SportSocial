@@ -1,3 +1,4 @@
+(function(){
 var modal;
 
 modal = (function() {
@@ -107,3 +108,5 @@ modal = (function() {
 })();
 
 angular.module('shared').service('modalService', ['$http', '$modal', '$modalStack', 'base', 'globalLoaderService', 'srvcConfig', 'templateUrl', modal]);
+
+})();

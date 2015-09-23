@@ -1,3 +1,4 @@
+(function(){
 var modalClick;
 
 modalClick = (function() {
@@ -26,3 +27,5 @@ modalClick = (function() {
 })();
 
 angular.module('shared').directive('modalClick', ['modalService', modalClick]);
+
+})();

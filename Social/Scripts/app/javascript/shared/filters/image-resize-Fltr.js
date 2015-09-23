@@ -1,3 +1,4 @@
+(function(){
 var imageResize;
 
 imageResize = (function() {
@@ -13,3 +14,5 @@ imageResize = (function() {
 })();
 
 angular.module('shared').filter('imageResize', ['base', imageResize]);
+
+})();

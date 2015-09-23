@@ -1,3 +1,4 @@
+(function(){
 var GlobalLoader;
 
 GlobalLoader = (function() {
@@ -33,3 +34,5 @@ GlobalLoader = (function() {
 })();
 
 angular.module('shared').service('globalLoaderService', ['$rootScope', GlobalLoader]);
+
+})();

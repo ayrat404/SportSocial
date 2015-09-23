@@ -1,3 +1,4 @@
+(function(){
 var LikesInFinger;
 
 LikesInFinger = (function() {
@@ -69,3 +70,5 @@ LikesInFinger = (function() {
 })();
 
 angular.module('socialApp.directives').directive('likesInFinger', ['$rootScope', 'likeService', LikesInFinger]);
+
+})();

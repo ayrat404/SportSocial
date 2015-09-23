@@ -1,3 +1,4 @@
+(function(){
 var MediaUpload;
 
 MediaUpload = (function() {
@@ -19,3 +20,5 @@ MediaUpload = (function() {
 })();
 
 angular.module('socialApp.directives').directive('mediaUpload', ['base', MediaUpload]);
+
+})();

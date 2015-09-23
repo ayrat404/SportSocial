@@ -16,7 +16,7 @@ class RecordView extends Controller('socialApp.controllers')
 
         # get single record data
         # ---------------
-        journalService.getById(+$stateParams.id).then (res)->
+        journalService.getById(id: +$stateParams.id).then (res)->
             _this.it = res.data
             if $rootScope.user.id == _this.it.author.id then _this.it.isOwner = true else _this.it.isOwner = false
             _this.it.comments.form = {}

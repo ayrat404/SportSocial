@@ -1,3 +1,4 @@
+(function(){
 var mousewheelScroller;
 
 mousewheelScroller = (function() {
@@ -36,3 +37,5 @@ mousewheelScroller = (function() {
 })();
 
 angular.module('shared').directive('mousewheelScroller', ['$timeout', mousewheelScroller]);
+
+})();

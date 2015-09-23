@@ -1,3 +1,4 @@
+(function(){
 var MediaModalShow;
 
 MediaModalShow = (function() {
@@ -12,7 +13,9 @@ MediaModalShow = (function() {
       }
       $scope.currentIndex = modalData.index !== void 0 ? +modalData.index : 1;
       $scope.entityType = modalData.entityType;
-      journalService.getById(modalData.media).then(function(res) {
+      journalService.getById({
+        id: modalData.media
+      }).then(function(res) {
         $scope.it = res.data;
         $scope.it.loader = false;
         if ($rootScope.user.id === $scope.it.author.id) {
@@ -93,3 +96,5 @@ MediaModalShow = (function() {
 })();
 
 angular.module('socialApp.controllers').controller('mediaModalShowController', ['$scope', '$state', '$modalInstance', '$rootScope', 'base', 'journalService', 'modalService', 'modalData', MediaModalShow]);
+
+})();

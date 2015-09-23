@@ -1,3 +1,4 @@
+(function(){
 var JournalModalRemove;
 
 JournalModalRemove = (function() {
@@ -20,3 +21,5 @@ JournalModalRemove = (function() {
 })();
 
 angular.module('socialApp.controllers').controller('journalModalRemoveController', ['$scope', '$modalInstance', 'journalService', 'modalData', JournalModalRemove]);
+
+})();

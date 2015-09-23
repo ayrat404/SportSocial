@@ -1,3 +1,4 @@
+(function(){
 var ngAutofocus;
 
 ngAutofocus = (function() {
@@ -21,3 +22,5 @@ ngAutofocus = (function() {
 })();
 
 angular.module('shared').directive('ngAutofocus', ['$timeout', ngAutofocus]);
+
+})();

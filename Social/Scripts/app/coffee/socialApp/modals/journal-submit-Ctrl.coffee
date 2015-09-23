@@ -26,7 +26,7 @@ class JournalModalSubmit extends Controller('socialApp.controllers')
         # submit form
         # ---------------
         $scope.submit = ->
-            journalService.submit($scope.j).then (res)->
+            journalService.save($scope.j).then (res)->
                 if modalData && typeof modalData.success == 'function'
                     modalData.success $scope.j
                 $modalInstance.close()

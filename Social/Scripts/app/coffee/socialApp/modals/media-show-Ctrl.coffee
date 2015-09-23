@@ -24,7 +24,7 @@ class MediaModalShow extends Controller('socialApp.controllers')
 
             # get single record data
             # ---------------
-            journalService.getById(modalData.media).then((res)->
+            journalService.getById(id: modalData.media).then((res)->
                 $scope.it = res.data
                 $scope.it.loader = false
                 if $rootScope.user.id == $scope.it.author.id then $scope.it.isOwner = true else $scope.it.isOwner = false

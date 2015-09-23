@@ -1,3 +1,4 @@
+(function(){
 var ComplainSubmitModal;
 
 ComplainSubmitModal = (function() {
@@ -22,3 +23,5 @@ ComplainSubmitModal = (function() {
 })();
 
 angular.module('socialApp.controllers').controller('complainSubmitModalController', ['$scope', '$modalInstance', 'complainService', 'modalData', ComplainSubmitModal]);
+
+})();

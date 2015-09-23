@@ -47,9 +47,7 @@ class JournalProfileSubmit extends Controller('socialApp.controllers')
         # submit form
         # ---------------
         $scope.submit = ->
-            journalService.submit($scope.j).then((res)->
+            journalService.save($scope.j).then (res)->
                 $scope.closeForm()
-                $scope.success({$res: res})
+                $scope.success($res: res)
             , (res)->
-
-            )

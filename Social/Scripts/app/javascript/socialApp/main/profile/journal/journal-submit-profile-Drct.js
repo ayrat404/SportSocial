@@ -1,3 +1,4 @@
+(function(){
 var journalProfileSubmit;
 
 journalProfileSubmit = (function() {
@@ -18,3 +19,5 @@ journalProfileSubmit = (function() {
 })();
 
 angular.module('socialApp.directives').directive('journalProfileSubmit', [journalProfileSubmit]);
+
+})();

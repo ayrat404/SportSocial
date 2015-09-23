@@ -1,3 +1,4 @@
+(function(){
 var MainSocial;
 
 MainSocial = (function() {
@@ -8,3 +9,5 @@ MainSocial = (function() {
 })();
 
 angular.module('socialApp.controllers').controller('mainSocialController', ['$rootScope', 'userService', MainSocial]);
+
+})();

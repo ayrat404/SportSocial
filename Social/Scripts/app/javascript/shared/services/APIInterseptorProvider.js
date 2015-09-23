@@ -1,3 +1,4 @@
+(function(){
 var apiInterseptor;
 
 apiInterseptor = (function() {
@@ -66,3 +67,5 @@ apiInterseptor = (function() {
 })();
 
 angular.module('shared').provider('apiInterseptorProvider', [apiInterseptor]);
+
+})();

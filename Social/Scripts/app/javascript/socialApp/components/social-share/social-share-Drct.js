@@ -1,3 +1,4 @@
+(function(){
 var socialShareList;
 
 socialShareList = (function() {
@@ -51,3 +52,5 @@ socialShareList = (function() {
 })();
 
 angular.module('shared').directive('socialShareList', ['$location', socialShareList]);
+
+})();

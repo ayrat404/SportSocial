@@ -1,3 +1,4 @@
+(function(){
 var UsersList;
 
 UsersList = (function() {
@@ -72,3 +73,5 @@ UsersList = (function() {
 })();
 
 angular.module('socialApp.controllers').controller('usersListController', ['$q', '$scope', '$state', 'userService', UsersList]);
+
+})();

@@ -1,3 +1,4 @@
+(function(){
 var mixpanelEvent;
 
 mixpanelEvent = (function() {
@@ -26,3 +27,5 @@ mixpanelEvent = (function() {
 })();
 
 angular.module('shared').directive('mixpanelEvent', ['mixpanel', '$location', mixpanelEvent]);
+
+})();

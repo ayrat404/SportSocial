@@ -1,3 +1,4 @@
+(function(){
 var registration;
 
 registration = (function() {
@@ -83,3 +84,5 @@ registration = (function() {
 })();
 
 angular.module('appSrvc').service('registrationService', ['$state', '$location', '$q', '$rootScope', '$http', 'base', 'mixpanel', 'srvcConfig', registration]);
+
+})();

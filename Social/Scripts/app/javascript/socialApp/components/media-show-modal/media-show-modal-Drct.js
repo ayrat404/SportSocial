@@ -1,3 +1,4 @@
+(function(){
 var mediaShowModal;
 
 mediaShowModal = (function() {
@@ -34,3 +35,5 @@ mediaShowModal = (function() {
 })();
 
 angular.module('shared').directive('mediaShowModal', ['modalService', mediaShowModal]);
+
+})();

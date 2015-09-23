@@ -1,3 +1,4 @@
+(function(){
 var remoteTemplateSrvc;
 
 remoteTemplateSrvc = (function() {
@@ -26,3 +27,5 @@ remoteTemplateSrvc = (function() {
 })();
 
 angular.module('shared').factory('removeTemplateSrvc', ['$http', '$q', remoteTemplateSrvc]);
+
+})();

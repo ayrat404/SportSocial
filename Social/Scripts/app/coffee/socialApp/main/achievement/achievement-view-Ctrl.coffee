@@ -15,7 +15,7 @@ class AchievementView extends Controller('socialApp.controllers')
 
         # get single achievement data
         # ---------------
-        achievementService.getById(+$stateParams.id).then (res)->
+        achievementService.getById(id: +$stateParams.id).then (res)->
             _this.it = res.data
             _this.it.comments.form = {}
             if $rootScope.user.id == _this.it.author.id

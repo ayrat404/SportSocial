@@ -1,3 +1,4 @@
+(function(){
 var commentForm;
 
 commentForm = (function() {
@@ -63,3 +64,5 @@ commentForm = (function() {
 })();
 
 angular.module('socialApp.directives').directive('commentForm', ['commentsService', commentForm]);
+
+})();

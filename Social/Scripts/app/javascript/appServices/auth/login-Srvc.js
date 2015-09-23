@@ -1,3 +1,4 @@
+(function(){
 var login;
 
 login = (function() {
@@ -49,3 +50,5 @@ login = (function() {
 })();
 
 angular.module('appSrvc').service('loginService', ['$state', '$location', '$q', '$rootScope', '$http', 'base', 'mixpanel', 'srvcConfig', 'userService', login]);
+
+})();

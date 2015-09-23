@@ -1,70 +1,47 @@
+(function(){
 var Comments;
 
 Comments = (function() {
-  function Comments($q, $http, $location, $rootScope, base, srvcConfig) {
-    var remove, submit, url, valid;
+  function Comments(base, srvcConfig, RequestConstructor) {
+    var facade, rqst, url;
     url = srvcConfig.baseServiceUrl + '/comment';
-    valid = {
-      minText: 50
-    };
-    submit = function(data) {
-      return $q(function(resolve, reject) {
-        if (data) {
-          return $http.post(url, data).then(function(res) {
-            if (res.data.success) {
-              return resolve(res.data);
-            } else {
-              return reject(res.data);
-            }
-          }, function(res) {
-            return reject(res);
-          });
-        } else {
-          reject();
+    rqst = {
+      post: new RequestConstructor.klass('post', url, function(data) {
+        if (!data) {
           if (srvcConfig.noticeShow.errors) {
-            return base.notice.show({
+            base.notice.show({
               text: 'Comment submit validate error',
               type: 'danger'
             });
           }
+          return false;
         }
-      });
-    };
-    remove = function(itemId) {
-      return $q(function(resolve, reject) {
-        if (itemId && typeof itemId === 'number') {
-          return $http["delete"](url, {
-            params: {
-              id: itemId
-            }
-          }).then(function(res) {
-            if (res.data.success) {
-              return resolve(res.data);
-            } else {
-              return reject(res.data);
-            }
-          }, function(res) {
-            return reject(res);
-          });
-        } else {
-          reject();
+        return true;
+      }),
+      remove: new RequestConstructor.klass('delete', url, function(data) {
+        if (!data || !data.id) {
           if (srvcConfig.noticeShow.errors) {
-            return base.notice.show({
+            base.notice.show({
               text: 'Comment delete: itemId variable error',
               type: 'danger'
             });
           }
+          return false;
         }
-      });
+        return true;
+      })
     };
-    return {
-      submit: submit,
-      remove: remove
+    facade = {
+      submit: rqst.post["do"],
+      remove: rqst.remove["do"]
     };
+    return facade;
   }
 
   return Comments;
 
 })();
 
-angular.module('appSrvc').service('commentsService', ['$q', '$http', '$location', '$rootScope', 'base', 'srvcConfig', Comments]);
+angular.module('appSrvc').service('commentsService', ['base', 'srvcConfig', 'RequestConstructor', Comments]);
+
+})();

@@ -1,3 +1,4 @@
+(function(){
 var SupportSubmitModal, SupportSuccessModal;
 
 SupportSubmitModal = (function() {
@@ -31,3 +32,5 @@ SupportSuccessModal = (function() {
 })();
 
 angular.module('socialApp.controllers').controller('supportSubmitModalController', ['$scope', '$modalInstance', 'supportService', 'modalService', SupportSubmitModal]).controller('supportSuccessModalController', ['$scope', '$modalInstance', SupportSuccessModal]);
+
+})();

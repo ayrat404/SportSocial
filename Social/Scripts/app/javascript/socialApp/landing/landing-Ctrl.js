@@ -1,3 +1,4 @@
+(function(){
 var Landing;
 
 Landing = (function() {
@@ -19,3 +20,5 @@ Landing = (function() {
 })();
 
 angular.module('socialApp.controllers').controller('landingController', ['$scope', '$state', '$rootScope', 'mixpanel', Landing]);
+
+})();

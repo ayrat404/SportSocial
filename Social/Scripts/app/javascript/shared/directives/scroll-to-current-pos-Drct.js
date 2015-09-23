@@ -1,3 +1,4 @@
+(function(){
 var scrollToCurPos;
 
 scrollToCurPos = (function() {
@@ -21,3 +22,5 @@ scrollToCurPos = (function() {
 })();
 
 angular.module('shared').directive('scrollToCurPos', [scrollToCurPos]);
+
+})();

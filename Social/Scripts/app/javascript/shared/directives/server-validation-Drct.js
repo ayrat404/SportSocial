@@ -1,3 +1,4 @@
+(function(){
 var serverValidation;
 
 serverValidation = (function() {
@@ -75,3 +76,5 @@ serverValidation = (function() {
 })();
 
 angular.module('shared').directive('serverValidation', ['$timeout', 'base', serverValidation]);
+
+})();

@@ -1,3 +1,4 @@
+(function(){
 var QueryParams;
 
 QueryParams = (function() {
@@ -34,3 +35,5 @@ QueryParams = (function() {
 })();
 
 angular.module('shared').service('queryParamsService', ['modalService', QueryParams]);
+
+})();

@@ -14,10 +14,12 @@ class ProfileView extends Controller('socialApp.controllers')
 
         _this = this
         _this.unknown = false
-        # user info model
-        _this.user = {
+        _this.user =
             loaded: false
-        }
+
+        recordsFilter =
+            count: 20           # default count load
+            page: 3             # default page
 
         # complain on user
         # ---------------
@@ -33,7 +35,7 @@ class ProfileView extends Controller('socialApp.controllers')
         # append new record
         # ---------------
         _this.newRecord = (res)->
-            _this.user.journals.unshift res.data
+            _this.user.journal.list.unshift res.data
 
         # social share record
         # ---------------
@@ -55,9 +57,9 @@ class ProfileView extends Controller('socialApp.controllers')
                 data:
                     id: id
                     success: (res)->
-                        for j, i in _this.user.journals
+                        for j, i in _this.user.journal.list
                             if j.id == id
-                                _this.user.journals.splice i, 1
+                                _this.user.journal.list.splice i, 1
                                 break
 
         # edit journal record
@@ -68,10 +70,21 @@ class ProfileView extends Controller('socialApp.controllers')
                 data:
                     model: model
                     success: (record)->
-                        for j, i in _this.user.journals
+                        for j, i in _this.user.journal.list
                             if j.id == id
-                                _this.user.journals[i] = record
+                                _this.user.journal.list[i] = record
                                 break
+
+        _this.loadMoreRecords = ->
+            if !_this.user.journal.loading
+                _this.user.journal.loading = true
+                recordsFilter.page = +recordsFilter.page + 1
+                $state.params = recordsFilter
+                $state.transitionTo($state.current, $state.params, { notify: false });
+                getList(recordsFilter).then (list)->
+                    _this.list.push list
+                .finally ->
+                    _this.user.journal.loading = false
 
 
         # new avatar response todo refactor create method
@@ -94,7 +107,7 @@ class ProfileView extends Controller('socialApp.controllers')
 
         # get user profile info
         # ---------------
-        profileService.getInfo($stateParams.userId).then (res)->
+        profileService.getInfo(id: $stateParams.userId).then (res)->
             _this.user = res.data
             if $rootScope.user.id == +$stateParams.userId
                 _this.user.isOwner = true
@@ -102,6 +115,7 @@ class ProfileView extends Controller('socialApp.controllers')
                 _this.user.isOwner = false
             _this.user.id = $stateParams.userId
             _this.user.loaded = true
+            recordsFilter.authorId = _this.user.id
 
 #            _this.user.achievements =
 #                closed:

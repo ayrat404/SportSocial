@@ -1,3 +1,4 @@
+(function(){
 var animationCtrl, delay, formatCtrl, imageCtrl, noticeCtrl, validationCtrl;
 
 noticeCtrl = (function() {
@@ -192,3 +193,5 @@ angular.module('shared').factory('base', [
     };
   }
 ]);
+
+})();

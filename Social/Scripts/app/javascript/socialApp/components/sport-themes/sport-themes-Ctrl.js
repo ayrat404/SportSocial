@@ -1,3 +1,4 @@
+(function(){
 var ThemesAutocomplete;
 
 ThemesAutocomplete = (function() {
@@ -6,10 +7,14 @@ ThemesAutocomplete = (function() {
       $scope.themes = [];
     }
     $scope.getThemes = function(search) {
-      return sportThemesService.get(search).then(function(res) {
-        return res.data;
-      }, function() {
-        return [search];
+      return sportThemesService.get({
+        query: search
+      }).then(function(res) {
+        if (res.data.length) {
+          return res.data;
+        } else {
+          return [search];
+        }
       });
     };
     $scope.format = function($item, $model, $label) {
@@ -37,3 +42,5 @@ ThemesAutocomplete = (function() {
 })();
 
 angular.module('socialApp.controllers').controller('themesAutocompleteController', ['$scope', 'sportThemesService', 'base', ThemesAutocomplete]);
+
+})();

@@ -1,3 +1,4 @@
+(function(){
 var commentList;
 
 commentList = (function() {
@@ -58,3 +59,5 @@ commentList = (function() {
 })();
 
 angular.module('socialApp.directives').directive('commentList', ['$window', '$timeout', 'commentsService', commentList]);
+
+})();

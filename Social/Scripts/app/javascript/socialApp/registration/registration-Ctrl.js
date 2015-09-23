@@ -1,3 +1,4 @@
+(function(){
 var Registration;
 
 Registration = (function() {
@@ -101,3 +102,5 @@ Registration = (function() {
 })();
 
 angular.module('socialApp.controllers').controller('registrationController', ['$scope', '$rootScope', '$state', 'mixpanel', 'registrationService', 'userService', 'base', Registration]);
+
+})();

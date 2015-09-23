@@ -1,3 +1,4 @@
+(function(){
 var socialShareModal;
 
 socialShareModal = (function() {
@@ -10,3 +11,5 @@ socialShareModal = (function() {
 })();
 
 angular.module('socialApp.controllers').controller('socialShareModalController', ['$scope', '$modalInstance', 'modalData', socialShareModal]);
+
+})();

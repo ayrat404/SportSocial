@@ -1,126 +1,70 @@
-var Achievement,
-  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+(function(){
+var Achievement;
 
 Achievement = (function() {
-  function Achievement($q, $http, base, srvcConfig) {
-    var Request, cancelTempRqst, getById, getFilterPropRqst, getListRqst, getTempRqst, postRqst, putRqst, saveTemp, url, voiceRqst;
+  function Achievement(base, srvcConfig, RequestConstructor) {
+    var baseUrl, facade, rqst, url;
+    baseUrl = srvcConfig.baseServiceUrl + '/achievement';
     url = {
-      base: srvcConfig.baseServiceUrl + '/achievement',
-      temp: '/temp',
-      voice: '/voice',
-      filter: '/filter'
+      list: baseUrl + "s",
+      temp: baseUrl + "/temp",
+      voice: baseUrl + "/voice",
+      filter: baseUrl + "/filter"
     };
-    Request = (function() {
-      function Request(type, path, validate) {
-        this.type = type;
-        this.validate = validate;
-        this["do"] = bind(this["do"], this);
-        this.url = url.base + (path ? path : '');
-      }
-
-      Request.prototype.isValid = function() {
-        if (this.validate && typeof this.validate.func === "function") {
-          return this.validate.func();
-        } else {
-          return true;
-        }
-      };
-
-      Request.prototype["do"] = function(data) {
-        var _this;
-        _this = this;
-        return $q(function(resolve, reject) {
-          var base1;
-          if (_this.isValid(data)) {
-            return $http[_this.type](_this.url, data).then(function(res) {
-              if (res.data.success) {
-                return resolve(res.data);
-              } else {
-                return reject(res.data);
-              }
-            }, function(res) {
-              return reject(res);
-            });
-          } else {
-            reject();
-            return typeof (base1 = _this.validate).onFail === "function" ? base1.onFail() : void 0;
-          }
-        });
-      };
-
-      return Request;
-
-    })();
-    postRqst = new Request('post', url.temp);
-    putRqst = new Request('put', url.temp);
-    getTempRqst = new Request('get', url.temp);
-    cancelTempRqst = new Request('delete', url.temp);
-    saveTemp = function(data) {
-      if (data.id === -1) {
-        return postRqst["do"](data);
-      } else {
-        return putRqst["do"](data);
-      }
-    };
-    getById = function(id) {
-      return $q(function(resolve, reject) {
-        if (id) {
-          return $http.get(url.base + "/" + id).then(function(res) {
-            if (res.data.success) {
-              return resolve.res.data;
-            } else {
-              return reject(res.data);
-            }
-          }, function(res) {
-            return reject(res);
-          });
-        } else {
-          reject();
+    rqst = {
+      post: new RequestConstructor.klass('post', url.temp),
+      put: new RequestConstructor.klass('put', url.temp),
+      getTemp: new RequestConstructor.klass('get', url.temp),
+      cancelTemp: new RequestConstructor.klass('delete', url.temp),
+      getList: new RequestConstructor.klass('get', url.list),
+      getFilterProp: new RequestConstructor.klass('get', url.filter),
+      getById: new RequestConstructor.klass('get', baseUrl, function(data) {
+        if (!data || !data.id) {
           if (srvcConfig.noticeShow.errors) {
-            return base.notice.show({
+            base.notice.show({
               text: 'Achievement item get: itemId variable error',
               type: 'danger'
             });
           }
-        }
-      });
-    };
-    voiceRqst = new Request('post', url.voice, {
-      func: function(data) {
-        if (data.id && data.action) {
-          return true;
-        } else {
           return false;
         }
-      },
-      onFail: function() {
-        if (srvcConfig.noticeShow.errors) {
-          return base.notice.show({
-            text: 'Achievement voice: validate error',
-            type: 'danger'
-          });
+        return true;
+      }),
+      voice: new RequestConstructor.klass('post', url.voice, function(data) {
+        if (!data || !data.id || !data.action) {
+          if (srvcConfig.noticeShow.errors) {
+            base.notice.show({
+              text: 'Achievement voice: validate error',
+              type: 'danger'
+            });
+          }
+          return false;
         }
-      }
-    });
-    getListRqst = new Request('get');
-    getFilterPropRqst = new Request('get', url.filter);
-    return {
-      saveTemp: saveTemp,
-      getById: getById,
-      getTemp: getTempRqst["do"],
-      cancelTemp: cancelTempRqst["do"],
-      voice: voiceRqst["do"],
-      getFilterProp: getFilterPropRqst["do"],
-      getList: function(data) {
-        return getListRqst["do"]({
-          params: data
-        });
-      }
+        return true;
+      })
     };
+    facade = {
+      saveTemp: function(data) {
+        if (data.id === -1) {
+          return rqst.post["do"](data);
+        } else {
+          return rqst.put["do"](data);
+        }
+      },
+      getById: rqst.getById["do"],
+      getTemp: rqst.getTempRqst["do"],
+      cancelTemp: rqst.cancelTempRqst["do"],
+      voice: rqst.voiceRqst["do"],
+      getFilterProp: rqst.getFilterPropRqst["do"],
+      getList: rqst.getListRqst["do"]
+    };
+    return facade;
   }
 
   return Achievement;
 
 })();
 
-angular.module('appSrvc').service('achievementService', ['$q', '$http', 'base', 'srvcConfig', Achievement]);
+angular.module('appSrvc').service('achievementService', ['base', 'srvcConfig', 'RequestConstructor', Achievement]);
+
+})();

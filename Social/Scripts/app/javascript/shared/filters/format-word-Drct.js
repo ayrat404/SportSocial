@@ -1,3 +1,4 @@
+(function(){
 var formatWord;
 
 formatWord = (function() {
@@ -15,3 +16,5 @@ formatWord = (function() {
 })();
 
 angular.module('shared').filter('formatWord', ['base', formatWord]);
+
+})();

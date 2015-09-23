@@ -1,31 +1,23 @@
+(function(){
 var Tape;
 
 Tape = (function() {
-  function Tape($q, $http, base, srvcConfig) {
-    var getList, url;
+  function Tape(srvcConfig, RequestConstructor) {
+    var facade, rqst, url;
     url = srvcConfig.baseServiceUrl + '/tape';
-    getList = function(data) {
-      return $q(function(resolve, reject) {
-        return $http.get(url, {
-          params: data
-        }).then(function(res) {
-          if (res.data.success) {
-            return resolve(res.data);
-          } else {
-            return reject(res.data);
-          }
-        }, function(res) {
-          return reject(res);
-        });
-      });
+    rqst = {
+      getList: new RequestConstructor.klass('get', url)
     };
-    return {
-      getList: getList
+    facade = {
+      getList: rqst.getList["do"]
     };
+    return facade;
   }
 
   return Tape;
 
 })();
 
-angular.module('appSrvc').service('tapeService', ['$q', '$http', 'base', 'srvcConfig', Tape]);
+angular.module('appSrvc').service('tapeService', ['srvcConfig', 'RequestConstructor', Tape]);
+
+})();
