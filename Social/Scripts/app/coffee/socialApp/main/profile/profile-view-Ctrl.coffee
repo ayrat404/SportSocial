@@ -81,6 +81,7 @@ class ProfileView extends Controller('socialApp.controllers')
             if objRes.success
                 $rootScope.$emit 'changeAvatar', objRes.data.url
                 $rootScope.user.avatar = objRes.data.url
+                _this.user.avatar = objRes.data.url
 
         # remove avatar todo refactor create method
         # ---------------
@@ -89,6 +90,7 @@ class ProfileView extends Controller('socialApp.controllers')
                 $flow.cancel()
                 $rootScope.$emit 'changeAvatar', defaultAvatarUrl
                 $rootScope.user.avatar = defaultAvatarUrl
+                _this.user.avatar = defaultAvatarUrl
 
         # get user profile info
         # ---------------

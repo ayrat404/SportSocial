@@ -89,14 +89,16 @@ ProfileView = (function() {
       objRes = angular.fromJson(stringRes);
       if (objRes.success) {
         $rootScope.$emit('changeAvatar', objRes.data.url);
-        return $rootScope.user.avatar = objRes.data.url;
+        $rootScope.user.avatar = objRes.data.url;
+        return _this.user.avatar = objRes.data.url;
       }
     };
     _this.removeAvatar = function($flow) {
       return profileService.removeAvatar().then(function(res) {
         $flow.cancel();
         $rootScope.$emit('changeAvatar', defaultAvatarUrl);
-        return $rootScope.user.avatar = defaultAvatarUrl;
+        $rootScope.user.avatar = defaultAvatarUrl;
+        return _this.user.avatar = defaultAvatarUrl;
       });
     };
     profileService.getInfo($stateParams.userId).then(function(res) {

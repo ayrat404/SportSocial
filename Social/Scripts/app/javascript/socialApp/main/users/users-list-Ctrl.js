@@ -2,13 +2,24 @@ var UsersList;
 
 UsersList = (function() {
   function UsersList($q, $scope, $state, userService) {
-    var _this, getList;
+    var _this, getList, setUrl;
     $scope.$root.title = 'Fortress | Список атлетов';
     _this = this;
     _this.loader = true;
     _this.pageError = false;
     _this.showMoreLoading = false;
+    _this.filter = {
+      count: 20,
+      page: 3
+    };
+    setUrl = function() {
+      $state.params = _this.filter;
+      return $state.transitionTo($state.current, $state.params, {
+        notify: false
+      });
+    };
     getList = function(filter) {
+      setUrl();
       return $q(function(resolve, reject) {
         return userService.getList(filter).then(function(res) {
           _this.showMore = res.data.isMore;

@@ -13,11 +13,11 @@ class UsersList extends Controller('socialApp.controllers')
         _this.pageError = false
         _this.showMoreLoading = false
 
-#        _this.filter = # filter object default
+        _this.filter = # filter object default
+            count: 20           # default count load
+            page: 3             # default page
 #            status: 'all'       # fail, credit
 #            actual: 'opened'    # last
-#            count: 20           # default count load
-#            page: 3             # default page
 
         #_this.prop = {} # filter settings object
 
@@ -27,14 +27,14 @@ class UsersList extends Controller('socialApp.controllers')
 
         # set params in url
         # ---------------
-#        setUrl = ->
-#            $state.params = _this.filter
-#            $state.transitionTo($state.current, $state.params, { notify: false });
+        setUrl = ->
+            $state.params = _this.filter
+            $state.transitionTo($state.current, $state.params, { notify: false });
 
         # get list
         # ---------------
         getList = (filter)->
-            #setUrl()
+            setUrl()
             $q (resolve, reject)->
                 userService.getList(filter).then (res)->
                     _this.showMore = res.data.isMore
