@@ -167,3 +167,4 @@ app = angular.module('app', [
 ])
 
 app.constant('templateUrl', '/template')
+app.constant('defaultAvatarUrl', '/Content/images/default-avatar.png')

@@ -1,7 +1,7 @@
 var ProfileView;
 
 ProfileView = (function() {
-  function ProfileView($scope, $state, $stateParams, $rootScope, mixpanel, profileService, modalService) {
+  function ProfileView($scope, $state, $stateParams, $rootScope, mixpanel, profileService, modalService, defaultAvatarUrl) {
     var _this;
     $scope.$root.title = ['Fortress | ', $rootScope.user.fullName].join('');
     _this = this;
@@ -88,12 +88,15 @@ ProfileView = (function() {
       var objRes;
       objRes = angular.fromJson(stringRes);
       if (objRes.success) {
-        return _this.user.avatar = objRes.data.url;
+        $rootScope.$emit('changeAvatar', objRes.data.url);
+        return $rootScope.user.avatar = objRes.data.url;
       }
     };
-    _this.removeAvatar = function() {
+    _this.removeAvatar = function($flow) {
       return profileService.removeAvatar().then(function(res) {
-        return _this.user.avatar = null;
+        $flow.cancel();
+        $rootScope.$emit('changeAvatar', defaultAvatarUrl);
+        return $rootScope.user.avatar = defaultAvatarUrl;
       });
     };
     profileService.getInfo($stateParams.userId).then(function(res) {
@@ -114,4 +117,4 @@ ProfileView = (function() {
 
 })();
 
-angular.module('socialApp.controllers').controller('profileViewController', ['$scope', '$state', '$stateParams', '$rootScope', 'mixpanel', 'profileService', 'modalService', ProfileView]);
+angular.module('socialApp.controllers').controller('profileViewController', ['$scope', '$state', '$stateParams', '$rootScope', 'mixpanel', 'profileService', 'modalService', 'defaultAvatarUrl', ProfileView]);

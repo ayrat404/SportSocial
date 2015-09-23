@@ -13,6 +13,9 @@ class LikesInRow extends Directive('socialApp.directives')
                 entityType: '@'
                 opts: '@'
             controller: ($scope)->
+
+                # like method
+                # ---------------
                 $scope.like = ->
                     if !$scope.loading
                         $scope.loading = true
@@ -33,6 +36,15 @@ class LikesInRow extends Directive('socialApp.directives')
                         .finally (res)->
                             $timeout ->
                                 $scope.loading = false
+
+                # todo refactor create method
+                # ---------------
+                $rootScope.$on 'changeAvatar', (event, newAvatar)->
+                    for item,index in $scope.likes.list
+                        if item.id == $rootScope.user.id
+                            $scope.likes.list[index].avatar = newAvatar
+                            break
+
             templateUrl: '/template/components/likes/likes-rowTpl'
             link: (scope, element, attrs, ngModel)->
                 defaults =

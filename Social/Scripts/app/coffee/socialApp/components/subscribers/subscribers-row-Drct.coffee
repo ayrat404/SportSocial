@@ -12,6 +12,9 @@ class SubscribersInRow extends Directive('socialApp.directives')
                 id: '@'
                 opts: '@'
             controller: ($scope)->
+
+                # subscribe method
+                # ---------------
                 $scope.subscribe = ->
                     if !$scope.loading
                         $scope.loading = true
@@ -31,6 +34,15 @@ class SubscribersInRow extends Directive('socialApp.directives')
                         .finally (res)->
                             $timeout ->
                                 $scope.loading = false
+
+                # todo refactor create method
+                # ---------------
+                $rootScope.$on 'changeAvatar', (event, newAvatar)->
+                    for item,index in $scope.subscribers.list
+                        if item.id == $rootScope.user.id
+                            $scope.subscribers.list[index].avatar = newAvatar
+                            break
+
             templateUrl: '/template/components/subscribers/subscribers-rowTpl'
             link: (scope, element, attrs, ngModel)->
                 defaults =
@@ -40,6 +52,5 @@ class SubscribersInRow extends Directive('socialApp.directives')
 
                 # todo override defaults
                 scope.o = defaults
-
-                #scope.o = angular.extend defaults, eval('(' + scope.opts + ')')
+                scope.isOwner = +$rootScope.user.id == +scope.id
         }

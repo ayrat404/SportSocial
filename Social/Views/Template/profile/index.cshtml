@@ -13,13 +13,13 @@
                              flow-file-success="profile.avatarResponse($message)"
                              flow-files-submitted="$flow.upload()">
                             <div class="user-info__avatar__img-wrap"
-                                 ng-if="profile.user.avatar.length">
-                                <img ng-src="{{ profile.user.avatar | imageResize:{w: 230, h: 230} }}" class="user-infor__avatar__img" />
-                                <span ng-click="profile.removeAvatar()" class="uia__remove"><i></i></span>
+                                 ng-if="$root.user.avatar.length">
+                                <img ng-src="{{ $root.user.avatar | imageResize:{w: 230, h: 230} }}" class="user-infor__avatar__img" />
+                                <span ng-click="profile.removeAvatar($flow)" class="uia__remove"><i></i></span>
                                 <span flow-btn class="uia__change"><i></i></span>
                             </div>
                             @*TODO пока аватар менять нельзя, а при регистрации он обязателен*@
-                            <div ng-if="!profile.user.avatar.length"
+                            <div ng-if="!$root.user.avatar.length"
                                  flow-btn
                                  class="ui__avatar-upload">
                                 <i class="icon-upload"></i>

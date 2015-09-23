@@ -7,7 +7,8 @@ class ProfileView extends Controller('socialApp.controllers')
         $rootScope
         mixpanel
         profileService
-        modalService)->
+        modalService
+        defaultAvatarUrl)->
 
         $scope.$root.title = ['Fortress | ', $rootScope.user.fullName].join('')
 
@@ -73,22 +74,25 @@ class ProfileView extends Controller('socialApp.controllers')
                                 break
 
 
-        # new avatar response
+        # new avatar response todo refactor create method
         # ---------------
         _this.avatarResponse = (stringRes)->
             objRes = angular.fromJson stringRes
             if objRes.success
-                _this.user.avatar = objRes.data.url
+                $rootScope.$emit 'changeAvatar', objRes.data.url
+                $rootScope.user.avatar = objRes.data.url
 
-        # remove avatar
+        # remove avatar todo refactor create method
         # ---------------
-        _this.removeAvatar = ->
+        _this.removeAvatar = ($flow)->
             profileService.removeAvatar().then (res)->
-                _this.user.avatar = null
+                $flow.cancel()
+                $rootScope.$emit 'changeAvatar', defaultAvatarUrl
+                $rootScope.user.avatar = defaultAvatarUrl
 
         # get user profile info
         # ---------------
-        profileService.getInfo($stateParams.userId).then((res)->
+        profileService.getInfo($stateParams.userId).then (res)->
             _this.user = res.data
             if $rootScope.user.id == +$stateParams.userId
                 _this.user.isOwner = true
@@ -134,4 +138,3 @@ class ProfileView extends Controller('socialApp.controllers')
 #            ]
         , (res)->
             _this.unknown = true
-        )

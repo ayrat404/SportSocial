@@ -155,3 +155,5 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'fl
 ]);
 
 app.constant('templateUrl', '/template');
+
+app.constant('defaultAvatarUrl', '/Content/images/default-avatar.png');

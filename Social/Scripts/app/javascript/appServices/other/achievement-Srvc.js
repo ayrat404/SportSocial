@@ -1,77 +1,73 @@
-var Achievement;
+var Achievement,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
 Achievement = (function() {
   function Achievement($q, $http, base, srvcConfig) {
-    var cancelTemp, getById, getFilterProp, getList, getTemp, post, put, saveTemp, urlBase, urlFilter, urlTemp, urlVoice, voice;
-    urlTemp = srvcConfig.baseServiceUrl + '/achievement/temp';
-    urlBase = srvcConfig.baseServiceUrl + '/achievement';
-    urlVoice = srvcConfig.baseServiceUrl + '/achievement/voice';
-    urlFilter = srvcConfig.baseServiceUrl + '/achievement/filter';
-    post = function(data) {
-      return $q(function(resolve, reject) {
-        return $http.post(urlTemp, data).then(function(res) {
-          if (res.data.success) {
-            return resolve(res.data);
-          } else {
-            return reject(res.data);
-          }
-        }, function(res) {
-          return reject(null);
-        });
-      });
+    var Request, cancelTempRqst, getById, getFilterPropRqst, getListRqst, getTempRqst, postRqst, putRqst, saveTemp, url, voiceRqst;
+    url = {
+      base: srvcConfig.baseServiceUrl + '/achievement',
+      temp: '/temp',
+      voice: '/voice',
+      filter: '/filter'
     };
-    put = function(data) {
-      return $q(function(resolve, reject) {
-        return $http.put(urlTemp, data).then(function(res) {
-          if (res.data.success) {
-            return resolve(res.data);
+    Request = (function() {
+      function Request(type, path, validate) {
+        this.type = type;
+        this.validate = validate;
+        this["do"] = bind(this["do"], this);
+        this.url = url.base + path;
+      }
+
+      Request.prototype.isValid = function() {
+        if (this.validate && typeof this.validate.func === "function") {
+          return this.validate.func();
+        } else {
+          return true;
+        }
+      };
+
+      Request.prototype["do"] = function(data) {
+        var _this;
+        _this = this;
+        return $q(function(resolve, reject) {
+          var base1;
+          if (_this.isValid(data)) {
+            return $http[_this.type](_this.url, data).then(function(res) {
+              if (res.data.success) {
+                return resolve(res.data);
+              } else {
+                return reject(res.data);
+              }
+            }, function(res) {
+              return reject(res);
+            });
           } else {
-            return reject(res.data);
+            reject();
+            return typeof (base1 = _this.validate).onFail === "function" ? base1.onFail() : void 0;
           }
-        }, function(res) {
-          return reject(null);
         });
-      });
-    };
+      };
+
+      return Request;
+
+    })();
+    postRqst = new Request('post', url.temp);
+    putRqst = new Request('put', url.temp);
+    getTempRqst = new Request('get', url.temp);
+    cancelTempRqst = new Request('delete', url.temp);
     saveTemp = function(data) {
       if (data.id === -1) {
-        return post(data);
+        return postRqst["do"](data);
       } else {
-        return put(data);
+        return putRqst["do"](data);
       }
-    };
-    getTemp = function() {
-      return $q(function(resolve, reject) {
-        return $http.get(urlTemp).then(function(res) {
-          if (res.data.success) {
-            return resolve(res.data);
-          } else {
-            return reject(res.data);
-          }
-        }, function(res) {
-          return reject(null);
-        });
-      });
-    };
-    cancelTemp = function() {
-      return $q(function(resolve, reject) {
-        return $http["delete"](urlTemp).then(function(res) {
-          if (res.data.success) {
-            return resolve(res.data);
-          } else {
-            return reject(res.data);
-          }
-        }, function(res) {
-          return reject(res);
-        });
-      });
     };
     getById = function(id) {
       return $q(function(resolve, reject) {
         if (id) {
-          return $http.get(urlBase + '/' + id).then(function(res) {
+          return $http.get(url.base + "/" + id).then(function(res) {
             if (res.data.success) {
-              return resolve(res.data);
+              return resolve.res.data;
             } else {
               return reject(res.data);
             }
@@ -89,65 +85,37 @@ Achievement = (function() {
         }
       });
     };
-    voice = function(data) {
-      return $q(function(resolve, reject) {
+    voiceRqst = new Request('post', url.voice, {
+      func: function(data) {
         if (data.id && data.action) {
-          return $http.post(urlVoice, data).then(function(res) {
-            if (res.data.success) {
-              return resolve(res.data);
-            } else {
-              return reject(res.data);
-            }
-          }, function(res) {
-            return reject(res);
-          });
+          return true;
         } else {
-          reject();
-          if (srvcConfig.noticeShow.errors) {
-            return base.notice.show({
-              text: 'Achievement voice: validate error',
-              type: 'danger'
-            });
-          }
+          return false;
         }
-      });
-    };
-    getList = function(data) {
-      return $q(function(resolve, reject) {
-        return $http.get(urlBase, {
-          params: data
-        }).then(function(res) {
-          if (res.data.success) {
-            return resolve(res.data);
-          } else {
-            return reject(res.data);
-          }
-        }, function(res) {
-          return reject(res);
-        });
-      });
-    };
-    getFilterProp = function() {
-      return $q(function(resolve, reject) {
-        return $http.get(urlFilter).then(function(res) {
-          if (res.data.success) {
-            return resolve(res.data);
-          } else {
-            return reject(res.data);
-          }
-        }, function(res) {
-          return reject(res);
-        });
-      });
-    };
+      },
+      onFail: function() {
+        if (srvcConfig.noticeShow.errors) {
+          return base.notice.show({
+            text: 'Achievement voice: validate error',
+            type: 'danger'
+          });
+        }
+      }
+    });
+    getListRqst = new Request('get');
+    getFilterPropRqst = new Request('get', url.filter);
     return {
       saveTemp: saveTemp,
-      getTemp: getTemp,
-      cancelTemp: cancelTemp,
       getById: getById,
-      getList: getList,
-      voice: voice,
-      getFilterProp: getFilterProp
+      getTemp: getTempRqst["do"],
+      cancelTemp: cancelTempRqst["do"],
+      voice: voiceRqst["do"],
+      getFilterProp: getFilterPropRqst["do"],
+      getList: function(data) {
+        return getListRqst["do"]({
+          params: data
+        });
+      }
     };
   }
 

@@ -12,6 +12,9 @@ class LikesInFinger extends Directive('socialApp.directives')
                 id: '@'
                 entityType: '@'
             controller: ($scope)->
+
+                # like method
+                # ---------------
                 $scope.like = ->
                     likeService.set(id: $scope.id, entityType: $scope.entityType, current: $scope.likes.isLiked).then (newStatus)->
                         $scope.likes.isLiked = newStatus
@@ -27,5 +30,14 @@ class LikesInFinger extends Directive('socialApp.directives')
                                 if l.id == $rootScope.user.id
                                     $scope.likes.list.splice i, 1
                                     break
+
+                # todo refactor create method
+                # ---------------
+                $rootScope.$on 'changeAvatar', (event, newAvatar)->
+                    for item,index in $scope.likes.list
+                        if item.id == $rootScope.user.id
+                            $scope.likes.list[index].avatar = newAvatar
+                            break
+
             templateUrl: '/template/components/likes/likes-fingerTpl'
         }

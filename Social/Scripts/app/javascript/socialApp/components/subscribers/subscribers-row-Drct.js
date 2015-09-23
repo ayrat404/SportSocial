@@ -12,7 +12,7 @@ SubscribersInRow = (function() {
         opts: '@'
       },
       controller: function($scope) {
-        return $scope.subscribe = function() {
+        $scope.subscribe = function() {
           if (!$scope.loading) {
             $scope.loading = true;
             return subscribeService.set({
@@ -49,6 +49,21 @@ SubscribersInRow = (function() {
             });
           }
         };
+        return $rootScope.$on('changeAvatar', function(event, newAvatar) {
+          var index, item, j, len, ref, results;
+          ref = $scope.subscribers.list;
+          results = [];
+          for (index = j = 0, len = ref.length; j < len; index = ++j) {
+            item = ref[index];
+            if (item.id === $rootScope.user.id) {
+              $scope.subscribers.list[index].avatar = newAvatar;
+              break;
+            } else {
+              results.push(void 0);
+            }
+          }
+          return results;
+        });
       },
       templateUrl: '/template/components/subscribers/subscribers-rowTpl',
       link: function(scope, element, attrs, ngModel) {
@@ -58,7 +73,8 @@ SubscribersInRow = (function() {
           showLink: true,
           imageSize: 50
         };
-        return scope.o = defaults;
+        scope.o = defaults;
+        return scope.isOwner = +$rootScope.user.id === +scope.id;
       }
     };
   }

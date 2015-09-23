@@ -5,87 +5,79 @@ class Achievement extends Service('appSrvc')
         base
         srvcConfig)->
 
-        urlTemp = srvcConfig.baseServiceUrl + '/achievement/temp'      # work with temp achievement
-        urlBase = srvcConfig.baseServiceUrl + '/achievement'           # work with achievement
-        urlVoice = srvcConfig.baseServiceUrl + '/achievement/voice'    # set voice
-        urlFilter = srvcConfig.baseServiceUrl + '/achievement/filter'  # get filter options
+        url =
+            base: srvcConfig.baseServiceUrl + '/achievement'    # base achievement url
+            temp: '/temp'           # work with temp achievement
+            voice: '/voice'         # set voice
+            filter: '/filter'       # get filter options
+
+        class Request
+            constructor: (@type, path, @validate)->
+                @url = url.base + path
+            isValid: ->
+                if @validate && typeof @validate.func == "function"
+                    @validate.func()
+                else
+                    true
+            do: (data)=>
+                _this = this
+                $q (resolve, reject)->
+                    if _this.isValid data
+                        $http[_this.type](_this.url, data).then (res)->
+                            if res.data.success
+                                resolve res.data
+                            else
+                                reject res.data
+                        , (res)->
+                            reject res
+                    else
+                        reject()
+                        _this.validate.onFail?()
+
 
         # ---------- api for achievement create ----------
 
         # create new temp achievement
         # ---------------
-        post = (data)->
-            $q (resolve, reject)->
-                $http.post(urlTemp, data).then (res)->
-                    if res.data.success
-                        resolve res.data
-                    else
-                        reject res.data
-                , (res)->
-                    reject null
+        postRqst = new Request 'post', url.temp
 
         # change exists temp achievement
         # ---------------
-        put = (data)->
-            $q (resolve, reject)->
-                $http.put(urlTemp, data).then (res)->
-                    if res.data.success
-                        resolve res.data
-                    else
-                        reject res.data
-                , (res)->
-                    reject null
+        putRqst = new Request 'put', url.temp
+
+        # get temp achievement
+        # ---------------
+        getTempRqst = new Request 'get', url.temp
+
+        # cancel temp achievement
+        # ---------------
+        cancelTempRqst = new Request 'delete', url.temp
 
         # receive data for create or put achievement
         # ---------------
         saveTemp = (data)->
             if data.id == -1
-                post data
+                postRqst.do data
             else
-                put data
-
-        # get temp achievement
-        # ---------------
-        getTemp = ->
-            $q (resolve, reject)->
-                $http.get(urlTemp).then (res)->
-                    if res.data.success
-                        resolve res.data
-                    else
-                        reject res.data
-                , (res)->
-                    reject null
-
-        # cancel temp achievement
-        # ---------------
-        cancelTemp = ->
-            $q (resolve, reject)->
-                $http.delete(urlTemp).then (res)->
-                    if res.data.success
-                        resolve res.data
-                    else
-                        reject res.data
-                , (res)->
-                    reject res
+                putRqst.do data
 
         # ---------- api for achievement create ----------
 
 
         # ---------- other api ----------
 
-        # get item by id
+        # get item by id todo send id in params...
         # ---------------
         getById = (id)->
             $q (resolve, reject)->
                 if id
-                    $http.get(urlBase + '/' + id).then((res)->
+                    $http.get("#{url.base}/#{id}").then (res)->
                         if res.data.success
-                            resolve res.data
+                            resolve.res.data
                         else
                             reject res.data
                     , (res)->
                         reject res
-                    )
                 else
                     reject()
                     if srvcConfig.noticeShow.errors
@@ -95,56 +87,34 @@ class Achievement extends Service('appSrvc')
 
         # voice
         # ---------------
-        voice = (data)->
-            $q (resolve, reject)->
-                if data.id && data.action
-                    $http.post(urlVoice, data).then (res)->
-                        if res.data.success
-                            resolve res.data
-                        else
-                            reject res.data
-                    , (res)->
-                        reject res
-                else
-                    reject()
-                    if srvcConfig.noticeShow.errors
-                        base.notice.show
-                            text: 'Achievement voice: validate error'
-                            type: 'danger'
+        voiceRqst = new Request 'post', url.voice, {
+            func: (data)->
+                if data.id && data.action then true else false
+            onFail: ->
+                if srvcConfig.noticeShow.errors
+                    base.notice.show
+                        text: 'Achievement voice: validate error'
+                        type: 'danger'
+        }
 
         # get list
         # ---------------
-        getList = (data)->
-            $q (resolve, reject)->
-                $http.get(urlBase, { params: data }).then (res)->
-                    if res.data.success
-                        resolve res.data
-                    else
-                        reject res.data
-                , (res)->
-                    reject res
+        getListRqst = new Request 'get'
 
         # get filter prop
         # ---------------
-        getFilterProp = ->
-            $q (resolve, reject)->
-                $http.get(urlFilter).then (res)->
-                    if res.data.success
-                        resolve res.data
-                    else
-                        reject res.data
-                , (res)->
-                    reject res
+        getFilterPropRqst = new Request 'get', url.filter
 
         # ---------- other api ----------
 
 
         return {
             saveTemp: saveTemp
-            getTemp: getTemp
-            cancelTemp: cancelTemp
             getById: getById
-            getList: getList
-            voice: voice
-            getFilterProp: getFilterProp
+            getTemp: getTempRqst.do
+            cancelTemp: cancelTempRqst.do
+            voice: voiceRqst.do
+            getFilterProp: getFilterPropRqst.do
+            getList: (data)->
+                getListRqst.do params: data
         }

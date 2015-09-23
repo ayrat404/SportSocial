@@ -206,11 +206,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\socialApp\images\sprites\" />
-    <Folder Include="Scripts\app\javascript\appServices\comments\" />
-    <Folder Include="Scripts\app\javascript\appServices\journal\" />
-    <Folder Include="Scripts\app\javascript\appServices\like\" />
-    <Folder Include="Scripts\app\javascript\appServices\profile\" />
-    <Folder Include="Scripts\app\javascript\appServices\support\" />
     <Folder Include="Scripts\app\javascript\socialApp\components\likes-row\" />
     <Folder Include="Scripts\app\javascript\socialApp\components\wall\" />
     <Folder Include="Scripts\app\javascript\socialApp\journal\" />

@@ -13,7 +13,7 @@ LikesInRow = (function() {
         opts: '@'
       },
       controller: function($scope) {
-        return $scope.like = function() {
+        $scope.like = function() {
           if (!$scope.loading) {
             $scope.loading = true;
             return likeService.set({
@@ -52,6 +52,21 @@ LikesInRow = (function() {
             });
           }
         };
+        return $rootScope.$on('changeAvatar', function(event, newAvatar) {
+          var index, item, j, len, ref, results;
+          ref = $scope.likes.list;
+          results = [];
+          for (index = j = 0, len = ref.length; j < len; index = ++j) {
+            item = ref[index];
+            if (item.id === $rootScope.user.id) {
+              $scope.likes.list[index].avatar = newAvatar;
+              break;
+            } else {
+              results.push(void 0);
+            }
+          }
+          return results;
+        });
       },
       templateUrl: '/template/components/likes/likes-rowTpl',
       link: function(scope, element, attrs, ngModel) {
