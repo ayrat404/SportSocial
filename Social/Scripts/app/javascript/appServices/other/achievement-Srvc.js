@@ -15,7 +15,7 @@ Achievement = (function() {
         this.type = type;
         this.validate = validate;
         this["do"] = bind(this["do"], this);
-        this.url = url.base + path;
+        this.url = url.base + (path ? path : '');
       }
 
       Request.prototype.isValid = function() {

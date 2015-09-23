@@ -13,7 +13,7 @@ class Achievement extends Service('appSrvc')
 
         class Request
             constructor: (@type, path, @validate)->
-                @url = url.base + path
+                @url = url.base + (if path then path else '')
             isValid: ->
                 if @validate && typeof @validate.func == "function"
                     @validate.func()
