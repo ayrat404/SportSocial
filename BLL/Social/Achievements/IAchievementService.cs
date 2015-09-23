@@ -16,7 +16,7 @@ namespace BLL.Social.Achievements
         ServiceResult CreateOrUpdateAchievement(AchievementCreateVm model);
         IEnumerable<string> GetFilter();
         AchievementDisplayVm GetAchivement(int id);
-        AchievementsListVm GetStartedAchivements(AchievementSearch search);
+        PagedListVm<AchievementPreviewVm> GetStartedAchivements(AchievementSearch search);
         ServiceResult Vote(AchievementVoteVm vote);
         ServiceResult DeleteTemp();
     }

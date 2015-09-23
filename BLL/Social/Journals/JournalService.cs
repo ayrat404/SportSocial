@@ -4,6 +4,7 @@ using AutoMapper.Internal;
 using BLL.Common.Objects;
 using BLL.Common.Services.CurrentUser;
 using BLL.Infrastructure.Map;
+using BLL.Social.Achievements.Objects;
 using BLL.Social.Journals.Objects;
 using BLL.Social.Tags;
 using BLL.Storage;
@@ -80,10 +81,15 @@ namespace BLL.Social.Journals
             return ServiceResult.SuccessResult();
         }
 
-        public IEnumerable<JournalPreviewVm> GetJournals(int userId)
+        public PagedListVm<JournalPreviewVm> GetJournals(int userId, int page, int count)
         {
-            var journals = _repository.GetJournals(userId);
-            return journals.MapEachTo<JournalPreviewVm>();
+            int skip = count*page - count;
+            var journals = _repository.GetJournals(userId, skip, count);
+            return new PagedListVm<JournalPreviewVm>
+            {
+                IsMore = count*page < journals.Count,
+                List = journals.List.MapEachTo<JournalPreviewVm>()
+            };
         }
 
         public JournalDisplayVm GetJournal(int journalId)

@@ -70,11 +70,11 @@ namespace BLL.Social.Achievements.Impls
             return ach.MapTo<AchievementDisplayVm>();
         }
 
-        public AchievementsListVm GetStartedAchivements(AchievementSearch search)
+        public PagedListVm<AchievementPreviewVm> GetStartedAchivements(AchievementSearch search)
         {
             int skip = search.Count*search.Page - search.Count;
             var achDto = _achievementRepository.GetAhievements(search.Status, search.Actual, search.Type, skip, search.Count);
-            return new AchievementsListVm
+            return new PagedListVm<AchievementPreviewVm>
             {
                 List = achDto.List.MapEachTo<AchievementPreviewVm>(),
                 IsMore = search.Count*search.Page < achDto.Count

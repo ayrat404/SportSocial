@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using BLL.Social.Achievements.Objects;
 using BLL.Social.Journals.Objects;
 using BLL.Social.UserProfile.MapProfiles;
 using DAL.DomainModel.EnumProperties;
@@ -19,7 +20,7 @@ namespace BLL.Social.UserProfile.Objects
     {
         public bool IsOwner { get; set; }
 
-        public IEnumerable<JournalPreviewVm> Journals { get; set; }
+        public PagedListVm<JournalPreviewVm> Journal { get; set; }
 
         public ListVm<UserInfoVm> Followers { get; set; }
 

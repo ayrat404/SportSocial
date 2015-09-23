@@ -29,8 +29,8 @@ namespace BLL.Social.UserProfile.MapProfiles
                 .ForMember(dest => dest.IsOwner, opt => opt.MapFrom(src => src.Id == GetService<ICurrentUser>().UserId))
                 .ForMember(dest => dest.Followers, opt => opt.MapFrom(src => MapFolowers(src)))
                 .ForMember(dest => dest.Subscribe, opt => opt.MapFrom(src => MapSubscribes(src)))
-                .ForMember(dest => dest.Journals,
-                    opt => opt.MapFrom(src => GetService<IJournalService>().GetJournals(src.Id)));
+                .ForMember(dest => dest.Journal,
+                    opt => opt.MapFrom(src => GetService<IJournalService>().GetJournals(src.Id, 1, 20)));
 
             CreateMap<AppUser, ProfilePreview>()
                 .IncludeBase<AppUser, ProfileInfo>()
