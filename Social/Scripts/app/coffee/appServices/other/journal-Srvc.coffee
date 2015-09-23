@@ -70,7 +70,7 @@ class Journal extends Service('appSrvc')
 
             # get journal item (single record)
             # ---------------
-            getById: new RequestConstructor.klass 'get', urlRecords, (itemId)->
+            getById: new RequestConstructor.klass 'get', url, (itemId)->
                 if !itemId
                     if srvcConfig.noticeShow.errors
                         base.notice.show

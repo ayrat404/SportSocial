@@ -64,7 +64,7 @@ Journal = (function() {
         }
         return true;
       }),
-      getById: new RequestConstructor.klass('get', urlRecords, function(itemId) {
+      getById: new RequestConstructor.klass('get', url, function(itemId) {
         if (!itemId) {
           if (srvcConfig.noticeShow.errors) {
             base.notice.show({

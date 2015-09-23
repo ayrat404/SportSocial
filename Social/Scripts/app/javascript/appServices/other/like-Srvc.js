@@ -2,39 +2,42 @@
 var Like;
 
 Like = (function() {
-  function Like(base, srvcConfig, RequestConstructor) {
-    var facade, rqst, url, validate;
+  function Like($q, $http, base, srvcConfig) {
+    var set, url;
     url = srvcConfig.baseServiceUrl + '/like';
-    validate = function(data) {
-      if (!data || !data.entityType || !data.id || typeof data.current !== 'boolean') {
-        if (srvcConfig.noticeShow.errors) {
-          base.notice.show({
-            text: 'Like validation error',
-            type: 'danger'
-          });
-        }
-        return false;
-      }
-      return true;
-    };
-    rqst = {
-      post: new RequestConstructor.klass('post', url)
-    };
-    facade = {
-      set: function(data) {
-        if (validate(data)) {
+    set = function(data) {
+      return $q(function(resolve, reject) {
+        if (data && data.entityType && data.id && typeof data.current === 'boolean') {
           data.actionType = data.current ? 'remove' : 'like';
-          return rqst.post["do"];
+          return $http.post(url, data).then(function(res) {
+            if (res.data.success) {
+              return resolve(!data.current);
+            } else {
+              return reject(res.data);
+            }
+          }, function(res) {
+            return reject(res);
+          });
+        } else {
+          reject();
+          if (srvcConfig.noticeShow.errors) {
+            return base.notice.show({
+              text: 'Like validation error',
+              type: 'danger'
+            });
+          }
         }
-      }
+      });
     };
-    return facade;
+    return {
+      set: set
+    };
   }
 
   return Like;
 
 })();
 
-angular.module('appSrvc').service('likeService', ['base', 'srvcConfig', 'RequestConstructor', Like]);
+angular.module('appSrvc').service('likeService', ['$q', '$http', 'base', 'srvcConfig', Like]);
 
 })();

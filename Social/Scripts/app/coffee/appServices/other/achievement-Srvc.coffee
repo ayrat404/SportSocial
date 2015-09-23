@@ -76,11 +76,12 @@ class Achievement extends Service('appSrvc')
                 else
                     rqst.put.do data
             getById: rqst.getById.do
-            getTemp: rqst.getTempRqst.do
-            cancelTemp: rqst.cancelTempRqst.do
-            voice: rqst.voiceRqst.do
-            getFilterProp: rqst.getFilterPropRqst.do
-            getList: rqst.getListRqst.do
+            getTemp: rqst.getTemp.do
+            cancelTemp: rqst.cancelTemp.do
+            voice: rqst.voice.do
+            getFilterProp: rqst.getFilterProp.do
+            getList: rqst.getList.do
+
 
         return facade
 
