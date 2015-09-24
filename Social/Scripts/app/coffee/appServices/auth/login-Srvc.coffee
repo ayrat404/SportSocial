@@ -12,6 +12,7 @@ class login extends Service('appSrvc')
         userService) ->
 
         url = srvcConfig.baseServiceUrl + '/login'
+        urlLogout = srvcConfig.baseServiceUrl + '/logout'
         isSending = false
 
         # ({ phone: x, password: x })
@@ -46,7 +47,15 @@ class login extends Service('appSrvc')
                         )
             )
 
+        logout = ->
+            $http.post(urlLogout).then (res)->
+                if res.data.success
+                    window.location.href = '/'
+
 
         # methods
         # ---------------
-        return logIn: logIn
+        return {
+            logIn: logIn
+            logout: logout
+        }

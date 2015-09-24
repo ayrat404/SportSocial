@@ -113,6 +113,7 @@ app = angular.module('app', [
     '$stateParams'
     'modalService'
     'base'
+    'loginService'
     'queryParamsService'
     ($templateCache
      $rootScope
@@ -120,6 +121,7 @@ app = angular.module('app', [
      $stateParams
      modalService
      base
+     loginService
      queryParamsService)->
 
         view = angular.element '#ui-view'
@@ -130,6 +132,9 @@ app = angular.module('app', [
 
         $rootScope.back = ->
             window.history.back()
+
+        $rootScope.logout = ->
+            loginService.logout()
 
         # global scripts init
         # ---------------

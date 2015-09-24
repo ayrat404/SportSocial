@@ -3,8 +3,9 @@ var login;
 
 login = (function() {
   function login($state, $location, $q, $rootScope, $http, base, mixpanel, srvcConfig, userService) {
-    var isSending, logIn, url;
+    var isSending, logIn, logout, url, urlLogout;
     url = srvcConfig.baseServiceUrl + '/login';
+    urlLogout = srvcConfig.baseServiceUrl + '/logout';
     isSending = false;
     logIn = function(data, prop) {
       var evTrackProp, opts;
@@ -40,8 +41,16 @@ login = (function() {
         }
       });
     };
+    logout = function() {
+      return $http.post(urlLogout).then(function(res) {
+        if (res.data.success) {
+          return window.location.href = '/';
+        }
+      });
+    };
     return {
-      logIn: logIn
+      logIn: logIn,
+      logout: logout
     };
   }
 

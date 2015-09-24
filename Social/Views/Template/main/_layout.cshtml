@@ -27,8 +27,9 @@
                         </div>
                         <ul class="dropdown-menu" role="menu">
                             <li role="menuitem"><a ui-sref="main.profile({userId: $root.user.id})">@R("Мой дневник")</a></li>
-                            @*<li role="menuitem"><a href="#">@R("Настройки")</a></li>
-                            <li role="menuitem"><a href="#">@R("Выход")</a></li>*@
+                            @*<li role="menuitem"><a href="http://fortress.club/reviews" target="_blank">@R("Отзывы/предложения")</a></li>*@
+                            @*<li role="menuitem"><a href="#">@R("Настройки")</a></li>*@
+                            <li role="menuitem"><a ng-click="$root.logout()">@R("Выход")</a></li>
                         </ul>
                     </div>
                 </div>
