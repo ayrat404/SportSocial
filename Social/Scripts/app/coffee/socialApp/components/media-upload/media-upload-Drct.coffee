@@ -1,5 +1,5 @@
 class MediaUpload extends Directive('socialApp.directives')
-    constructor: (base)->
+    constructor: ->
         return {
             restrict: 'EA'
             require: 'ngModel'

@@ -2,7 +2,7 @@
 var MediaUpload;
 
 MediaUpload = (function() {
-  function MediaUpload(base) {
+  function MediaUpload() {
     return {
       restrict: 'EA',
       require: 'ngModel',
@@ -19,6 +19,6 @@ MediaUpload = (function() {
 
 })();
 
-angular.module('socialApp.directives').directive('mediaUpload', ['base', MediaUpload]);
+angular.module('socialApp.directives').directive('mediaUpload', [MediaUpload]);
 
 })();
