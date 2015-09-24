@@ -46,6 +46,7 @@ namespace BLL.Storage.Impls
             SaveFile(inputStream, url);
             var imageEntity = (TImageEntity)Activator.CreateInstance(typeof (TImageEntity));
             imageEntity.Url = url;
+            imageEntity.UserId = _currentUser.UserId;
             _repository.Add(imageEntity);
             //TODO костыль
             if (typeof (TEntity) == typeof (AppUser))

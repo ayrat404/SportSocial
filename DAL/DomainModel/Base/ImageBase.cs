@@ -15,6 +15,8 @@ namespace DAL.DomainModel.Base
 
         //public string VideoImageUrl { get; set; }
 
+        public int? UserId { get; set; }
+
         public int Type { get; set; }
 
         public int? VideoProvider { get; set; }
@@ -28,5 +30,7 @@ namespace DAL.DomainModel.Base
         public DateTime Created { get; set; }
 
         public DateTime Modified{ get; set; }
+
+        public AppUser User { get; set; }
     }
 }

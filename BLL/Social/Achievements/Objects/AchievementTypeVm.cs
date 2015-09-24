@@ -7,6 +7,7 @@ namespace BLL.Social.Achievements.Objects
         public int Id { get; set; }
         public string Img { get; set; }
         public string Title { get; set; }
+        public string VideoUrl { get; set; }
         public string[] Values { get; set; }
     }
 }

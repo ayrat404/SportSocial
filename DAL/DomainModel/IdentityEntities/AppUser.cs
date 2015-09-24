@@ -41,7 +41,9 @@ namespace DAL.DomainModel
 
         public virtual ICollection<Subscribe> Folowers { get; set; }
         public virtual ICollection<Subscribe> Subscribes { get; set; }
-
+        public virtual ICollection<JournalMedia> JournalMedia { get; set; }
+        public virtual ICollection<UserAvatarPhoto> UserMedia { get; set; }
+            
         [Column(TypeName = "datetime2")]
         public DateTime Created { get; set; }
 

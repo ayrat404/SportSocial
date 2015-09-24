@@ -1,5 +1,8 @@
 using System;
+using System.Data.Entity;
+using System.Linq;
 using DAL.DomainModel.FeedBackEntities;
+using DAL.DomainModel.JournalEntities;
 
 namespace DAL.Migrations
 {
@@ -149,11 +152,23 @@ namespace DAL.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+            AddUserIdToJournalMedias(context);
         }
 
-        private void AddAchevementsTypes()
+        private void AddUserIdToJournalMedias(EntityDbContext context)
         {
-            
+            var journls = context.Set<Journal>()
+                .Include(j => j.Media)
+                .ToList();
+
+            foreach (var journal in journls)
+            {
+                foreach (var journalMedia in journal.Media)
+                {
+                    journalMedia.UserId = journal.UserId;
+                }
+            }
+            context.SaveChanges();
         }
     }
 }

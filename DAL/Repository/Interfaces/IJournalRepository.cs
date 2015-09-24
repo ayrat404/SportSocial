@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.SqlServer;
 using System.Linq;
 using DAL.DomainModel.JournalEntities;
 
@@ -10,6 +11,7 @@ namespace DAL.Repository.Interfaces
         ListDto<Journal> GetJournals(int userId, int skip, int take);
         Journal GetJournal(int journalId);
         Journal JournalForEdit(int journalId);
+        List<JournalMedia> GetRandomMedia(int userId);
     }
 
     public class JournalRepository : Repository, IJournalRepository
@@ -63,6 +65,15 @@ namespace DAL.Repository.Interfaces
                 .Include(j => j.Tags)
                 .Include(j => j.Tags.Select(t => t.Tag))
                 .Single();
+        }
+
+        public List<JournalMedia> GetRandomMedia(int userId)
+        {
+            return Queryable<JournalMedia>()
+                .Where(a => a.UserId == userId && a.EntityId != null)
+                .OrderBy(a => SqlFunctions.Rand(1))
+                .Take(9)
+                .ToList();
         }
     }
 }

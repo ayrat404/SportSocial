@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using BLL.Social.Achievements.Objects;
 using BLL.Social.Journals.Objects;
 using BLL.Social.UserProfile.MapProfiles;
+using BLL.Storage.Objects;
 using DAL.DomainModel.EnumProperties;
 
 namespace BLL.Social.UserProfile.Objects
@@ -22,9 +23,19 @@ namespace BLL.Social.UserProfile.Objects
 
         public PagedListVm<JournalPreviewVm> Journal { get; set; }
 
+        public IEnumerable<ProfileJournalMediaVm> Media { get; set; }
+
         public ListVm<UserInfoVm> Followers { get; set; }
 
         public ListVm<UserInfoVm> Subscribe { get; set; }
+    }
+
+    public class ProfileJournalMediaVm
+    {
+        public int RecordId { get; set; }
+        public int Index { get; set; }
+        public string Url { get; set; }
+        public MediaType Type { get; set; }
     }
 
     public class ProfilePreview : ProfileInfo

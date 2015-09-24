@@ -42,6 +42,7 @@ namespace BLL.Social.Achievements
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Img, opt => opt.MapFrom(src => src.ImgUrl))
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
+                .ForMember(dest => dest.VideoUrl, opt => opt.MapFrom(src => src.VideoUrl))
                 .ForMember(dest => dest.Values, opt => opt.MapFrom(src => src.GetValues()));
 
             CreateMap<Achievement, AchievementPreviewVm>()

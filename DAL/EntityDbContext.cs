@@ -202,7 +202,18 @@ namespace DAL
                 .WithMany()
                 .HasForeignKey(j => j.ValueId)
                 .WillCascadeOnDelete(false);
+            
+            modelBuilder.Entity<UserAvatarPhoto>()
+                .HasOptional(t => t.User)
+                .WithMany(u => u.UserMedia)
+                .HasForeignKey(j => j.UserId)
+                .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<UserAvatarPhoto>()
+                .HasOptional(t => t.Enity)
+                .WithMany(u => u.UserAvatarPhotos)
+                .HasForeignKey(j => j.EntityId)
+                .WillCascadeOnDelete(false);
         }
 
         protected override void Dispose(bool disposing)

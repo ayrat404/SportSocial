@@ -7,7 +7,10 @@ using BLL.Infrastructure.Map;
 using BLL.Social.Journals;
 using BLL.Social.Journals.Objects;
 using BLL.Social.UserProfile.Objects;
+using BLL.Storage.Objects;
 using DAL.DomainModel;
+using DAL.DomainModel.JournalEntities;
+using DAL.Repository.Interfaces;
 using Profile = AutoMapper.Profile;
 
 namespace BLL.Social.UserProfile.MapProfiles
@@ -29,8 +32,15 @@ namespace BLL.Social.UserProfile.MapProfiles
                 .ForMember(dest => dest.IsOwner, opt => opt.MapFrom(src => src.Id == GetService<ICurrentUser>().UserId))
                 .ForMember(dest => dest.Followers, opt => opt.MapFrom(src => MapFolowers(src)))
                 .ForMember(dest => dest.Subscribe, opt => opt.MapFrom(src => MapSubscribes(src)))
+                .ForMember(dest => dest.Media, opt => opt.MapFrom(src => GetService<IJournalRepository>().GetRandomMedia(src.Id)))
                 .ForMember(dest => dest.Journal,
                     opt => opt.MapFrom(src => GetService<IJournalService>().GetJournals(src.Id, 1, 20)));
+
+            CreateMap<JournalMedia, ProfileJournalMediaVm>()
+                .ForMember(dest => dest.RecordId, opt => opt.MapFrom(src => src.EntityId))
+                .ForMember(dest => dest.Url, opt => opt.MapFrom(src => src.Url))
+                .ForMember(dest => dest.Index, opt => opt.MapFrom(src => 0))//TODO:index??
+                .ForMember(dest => dest.Type, opt => opt.MapFrom(src => (MediaType) src.Type));
 
             CreateMap<AppUser, ProfilePreview>()
                 .IncludeBase<AppUser, ProfileInfo>()
