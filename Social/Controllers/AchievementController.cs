@@ -1,6 +1,4 @@
 ﻿using System.Web.Http;
-using BLL.Common.Objects;
-using BLL.Social.Achievements;
 using BLL.Social.Achievements;
 using BLL.Social.Achievements.Objects;
 using DAL.DomainModel.Achievement.Objects;

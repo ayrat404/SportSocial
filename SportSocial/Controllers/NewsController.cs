@@ -18,7 +18,6 @@ namespace SportSocial.Controllers
     {
         private readonly IBlogService _blogService;
         private readonly IRepository _repository;
-        private readonly ICurrentUser _currentUser;
         private readonly IBonusService _bonusService;
 
         public NewsController(IBlogService blogService, IRepository repository, IBonusService bonusService)

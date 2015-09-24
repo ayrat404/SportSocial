@@ -63,7 +63,7 @@ namespace SportSocial.Controllers
                 {
                     string msg = string.Format("Ошибка отправки письма {0}, {1}, {2}, msg=\"{3}\"", feedBackModel.Name,
                         feedBackModel.Email, userPhone, feedBackModel.Text);
-                    _logger.Error(msg, ex);
+                    _logger.Error(ex, msg);
                 }
                 return Json(new {Success = true});
             }

@@ -12,7 +12,9 @@ namespace BLL.Login.ViewModels
         public string New { get; set; }
 
         [Required(ErrorMessage = "Необходимо ввести подтверждение пароля")]
+#pragma warning disable 618
         [System.Web.Mvc.Compare("New", ErrorMessage = "Пароли не совпадают")]
+#pragma warning restore 618
         public string ConfirmNew { get; set; }
     }
 }

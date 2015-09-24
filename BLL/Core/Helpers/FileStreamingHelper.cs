@@ -87,7 +87,7 @@ namespace BLL.Common.Helpers
                         count = inputStream.Read(buffer, 0, (int)remainingBytes);
                     outputStream.Write(buffer, 0, count);
                 }
-                catch (Exception error)
+                catch 
                 {
                     break;
                 }

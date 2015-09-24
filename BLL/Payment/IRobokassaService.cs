@@ -101,7 +101,7 @@ namespace BLL.Payment
             }
             catch (Exception ex)
             {
-                _logger.Error(string.Format("Complete pay error. payId={0}, sum={1}", pay.Id, pay.Amount), ex);
+                _logger.Error(ex, string.Format("Complete pay error. payId={0}, sum={1}", pay.Id, pay.Amount));
                 throw;
             }
             if (resultPay.Success)

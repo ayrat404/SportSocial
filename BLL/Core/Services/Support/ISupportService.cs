@@ -48,7 +48,7 @@ namespace BLL.Core.Services.Support
             {
                 string msg = string.Format("Ошибка отправки письма {0}, {1}, {2}, msg=\"{3}\"", feedBackModel.Name,
                     feedBackModel.Email, userPhone, feedBackModel.Text);
-                _logger.Error(msg, ex);
+                _logger.Error(ex, msg);
             }
             return ServiceResult.SuccessResult();
         }

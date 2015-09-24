@@ -25,8 +25,6 @@ namespace BLL.Common.Services.CurrentUser.Impls
                 .SingleOrDefault(u => u.Id == userId);
         }
 
-        private AppUser _user;
-
         public string UserName
         {
             get { return User.Name; }
