@@ -17,7 +17,7 @@ class ProfileView extends Controller('socialApp.controllers')
         _this.user =
             loaded: false
 
-        recordsFilter =
+        loadProp =
             count: 20           # default count load
             page: 3             # default page
 
@@ -78,10 +78,10 @@ class ProfileView extends Controller('socialApp.controllers')
         _this.loadMoreRecords = ->
             if !_this.user.journal.loading
                 _this.user.journal.loading = true
-                recordsFilter.page = +recordsFilter.page + 1
-                $state.params = recordsFilter
+                loadProp.page += 1
+                $state.params = loadProp
                 $state.transitionTo($state.current, $state.params, { notify: false });
-                getList(recordsFilter).then (list)->
+                getList(loadProp).then (list)->
                     _this.list.push list
                 .finally ->
                     _this.user.journal.loading = false

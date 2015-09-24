@@ -13,11 +13,12 @@ class UsersList extends Controller('socialApp.controllers')
         _this.pageError = false
         _this.showMoreLoading = false
 
+        loadProp =
+            count: 20
+            page: 3
+
         _this.filter = # filter object default
-            count: 20           # default count load
-            page: 3             # default page
-#            status: 'all'       # fail, credit
-#            actual: 'opened'    # last
+            test: 'test'
 
         #_this.prop = {} # filter settings object
 
@@ -28,7 +29,7 @@ class UsersList extends Controller('socialApp.controllers')
         # set params in url
         # ---------------
         setUrl = ->
-            $state.params = _this.filter
+            $state.params = angular.extend {}, _this.filter, loadProp
             $state.transitionTo($state.current, $state.params, { notify: false });
 
         # get list
@@ -46,12 +47,11 @@ class UsersList extends Controller('socialApp.controllers')
 
         # full update list
         # ---------------
-        _this.updateList = (isFirstLoad)->
+        _this.updateList = ->
             _this.loader = true
-            filter = angular.extend({}, _this.filter)
-            if isFirstLoad && filter.page > 1
-                filter.page = 1
-                filter.count = _this.filter.page * _this.filter.count
+            filter = angular.extend {}, _this.filter, loadProp
+            filter.page = 1
+            filter.count = loadProp.page * loadProp.count
             getList(filter).then (list)->
                 _this.list = list
             .finally ->
@@ -62,11 +62,11 @@ class UsersList extends Controller('socialApp.controllers')
         _this.loadMore = ->
             if !_this.showMoreLoading
                 _this.showMoreLoading = true
-                filter = angular.extend({}, _this.filter)
+                filter = angular.extend {}, _this.filter, loadProp
                 filter.page = +filter.page + 1
                 getList(filter).then (list)->
                     _this.list.push list
-                    _this.filter.page = filter.page
+                    loadProp.page = filter.page
                 .finally ->
                     _this.showMoreLoading = false
 
@@ -74,7 +74,7 @@ class UsersList extends Controller('socialApp.controllers')
         # ---------------
         userService.getFilterProp().then (res)->
             _this.prop = res.data
-            _this.updateList(true)
+            _this.updateList()
         , ->
             _this.pageError = true
 

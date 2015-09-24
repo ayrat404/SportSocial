@@ -3,14 +3,14 @@ var ProfileView;
 
 ProfileView = (function() {
   function ProfileView($scope, $state, $stateParams, $rootScope, mixpanel, profileService, modalService, defaultAvatarUrl) {
-    var _this, recordsFilter;
+    var _this, loadProp;
     $scope.$root.title = ['Fortress | ', $rootScope.user.fullName].join('');
     _this = this;
     _this.unknown = false;
     _this.user = {
       loaded: false
     };
-    recordsFilter = {
+    loadProp = {
       count: 20,
       page: 3
     };
@@ -92,12 +92,12 @@ ProfileView = (function() {
     _this.loadMoreRecords = function() {
       if (!_this.user.journal.loading) {
         _this.user.journal.loading = true;
-        recordsFilter.page = +recordsFilter.page + 1;
-        $state.params = recordsFilter;
+        loadProp.page += 1;
+        $state.params = loadProp;
         $state.transitionTo($state.current, $state.params, {
           notify: false
         });
-        return getList(recordsFilter).then(function(list) {
+        return getList(loadProp).then(function(list) {
           return _this.list.push(list);
         })["finally"](function() {
           return _this.user.journal.loading = false;

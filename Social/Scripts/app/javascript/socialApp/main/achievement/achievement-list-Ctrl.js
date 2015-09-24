@@ -3,19 +3,21 @@ var AchievementList;
 
 AchievementList = (function() {
   function AchievementList($q, $scope, $state, achievementService) {
-    var _this, getList, k, ref, setUrl, v;
+    var _this, getList, k, loadProp, ref, setUrl, v;
     $scope.$root.title = 'Fortress | Список заявок';
     _this = this;
     _this.loader = true;
     _this.pageError = false;
     _this.showMoreLoading = false;
+    _this.prop = {};
     _this.filter = {
       status: 'all',
-      actual: 'opened',
+      actual: 'opened'
+    };
+    loadProp = {
       count: 20,
       page: 3
     };
-    _this.prop = {};
     ref = $state.params;
     for (k in ref) {
       v = ref[k];
@@ -24,7 +26,7 @@ AchievementList = (function() {
       }
     }
     setUrl = function() {
-      $state.params = _this.filter;
+      $state.params = angular.extend({}, _this.filter, loadProp);
       return $state.transitionTo($state.current, $state.params, {
         notify: false
       });
@@ -42,14 +44,12 @@ AchievementList = (function() {
         });
       });
     };
-    _this.updateList = function(isFirstLoad) {
+    _this.updateList = function() {
       var filter;
       _this.loader = true;
-      filter = angular.extend({}, _this.filter);
-      if (isFirstLoad && filter.page > 1) {
-        filter.page = 1;
-        filter.count = _this.filter.page * _this.filter.count;
-      }
+      filter = angular.extend({}, _this.filter, loadProp);
+      filter.page = 1;
+      filter.count = loadProp.page * loadProp.count;
       return getList(filter).then(function(list) {
         return _this.list = list;
       })["finally"](function() {
@@ -60,11 +60,11 @@ AchievementList = (function() {
       var filter;
       if (!_this.showMoreLoading) {
         _this.showMoreLoading = true;
-        filter = angular.extend({}, _this.filter);
+        filter = angular.extend({}, _this.filter, loadProp);
         filter.page = +filter.page + 1;
         return getList(filter).then(function(list) {
           _this.list.push(list);
-          return _this.filter.page = filter.page;
+          return loadProp.page = filter.page;
         })["finally"](function() {
           return _this.showMoreLoading = false;
         });
@@ -72,7 +72,7 @@ AchievementList = (function() {
     };
     achievementService.getFilterProp().then(function(res) {
       _this.prop = res.data;
-      return _this.updateList(true);
+      return _this.updateList();
     }, function() {
       return _this.pageError = true;
     });

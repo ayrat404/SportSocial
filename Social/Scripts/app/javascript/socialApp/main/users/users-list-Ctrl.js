@@ -3,18 +3,21 @@ var UsersList;
 
 UsersList = (function() {
   function UsersList($q, $scope, $state, userService) {
-    var _this, getList, setUrl;
+    var _this, getList, loadProp, setUrl;
     $scope.$root.title = 'Fortress | Список атлетов';
     _this = this;
     _this.loader = true;
     _this.pageError = false;
     _this.showMoreLoading = false;
-    _this.filter = {
+    loadProp = {
       count: 20,
       page: 3
     };
+    _this.filter = {
+      test: 'test'
+    };
     setUrl = function() {
-      $state.params = _this.filter;
+      $state.params = angular.extend({}, _this.filter, loadProp);
       return $state.transitionTo($state.current, $state.params, {
         notify: false
       });
@@ -32,14 +35,12 @@ UsersList = (function() {
         });
       });
     };
-    _this.updateList = function(isFirstLoad) {
+    _this.updateList = function() {
       var filter;
       _this.loader = true;
-      filter = angular.extend({}, _this.filter);
-      if (isFirstLoad && filter.page > 1) {
-        filter.page = 1;
-        filter.count = _this.filter.page * _this.filter.count;
-      }
+      filter = angular.extend({}, _this.filter, loadProp);
+      filter.page = 1;
+      filter.count = loadProp.page * loadProp.count;
       return getList(filter).then(function(list) {
         return _this.list = list;
       })["finally"](function() {
@@ -50,11 +51,11 @@ UsersList = (function() {
       var filter;
       if (!_this.showMoreLoading) {
         _this.showMoreLoading = true;
-        filter = angular.extend({}, _this.filter);
+        filter = angular.extend({}, _this.filter, loadProp);
         filter.page = +filter.page + 1;
         return getList(filter).then(function(list) {
           _this.list.push(list);
-          return _this.filter.page = filter.page;
+          return loadProp.page = filter.page;
         })["finally"](function() {
           return _this.showMoreLoading = false;
         });
@@ -62,7 +63,7 @@ UsersList = (function() {
     };
     userService.getFilterProp().then(function(res) {
       _this.prop = res.data;
-      return _this.updateList(true);
+      return _this.updateList();
     }, function() {
       return _this.pageError = true;
     });

@@ -4,7 +4,9 @@ var JournalModalRemove;
 JournalModalRemove = (function() {
   function JournalModalRemove($scope, $modalInstance, journalService, modalData) {
     $scope.remove = function() {
-      return journalService.remove(modalData.id).then(function(res) {
+      return journalService.remove({
+        id: modalData.id
+      }).then(function(res) {
         $modalInstance.close();
         if (typeof modalData.success === 'function') {
           return modalData.success(res);
