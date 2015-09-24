@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using DAL.DomainModel;
 using DAL.DomainModel.JournalEntities;
@@ -17,6 +18,7 @@ namespace BLL.Social.Tags.Impls
 
         public IEnumerable<string> GetTags(string query)
         {
+            query = query.ToLower();
             return _repository.Queryable<Tag>()
                 .Where(t => t.Label.ToLower().StartsWith(query))
                 .ToList()
@@ -25,12 +27,21 @@ namespace BLL.Social.Tags.Impls
 
         public void AddTags(int id, List<string> addedTags)
         {
+            var existingJornalTags = _repository.Queryable<JournalTag>()
+                .Include(t => t.Tag)
+                .Where(t => t.JournalId == id)
+                .ToList();
+            addedTags = addedTags.Where(a => existingJornalTags.All(t => t.Tag.Label != a)).ToList();
+            if (!addedTags.Any())
+            {
+                return;
+            }
             var tags = _repository.Queryable<Tag>()
                 .Where(t => addedTags.Contains(t.Label))
                 .ToList();
             foreach (var addedTag in addedTags)
             {
-                if (!tags.Any(t => t.Label == addedTag))
+                if (tags.All(t => t.Label != addedTag))
                 {
                     var tag = new Tag { Label = addedTag };
                     _repository.Add(tag);

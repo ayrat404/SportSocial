@@ -60,8 +60,10 @@ namespace BLL.Social.Journals
                 return ServiceResult.ErrorResult("");
             }
             journal.Text = journalModel.Text;
-            _repository.DeleteRange(journal.Media);
-            _repository.DeleteRange(journal.Tags);
+            var mediaToDelete = journal.Media.Where(m => journalModel.Media.All(u => u.Id != m.Id));
+            var tagsToDelete = journal.Tags.Where(t => journalModel.Tags.All(u => u != t.Tag.Label));
+            _repository.DeleteRange(mediaToDelete);
+            _repository.DeleteRange(tagsToDelete);
             _repository.SaveChanges();
             _tagService.AddTags(journal.Id, journalModel.Tags);
             _imageService.AttachImagesToEntity(journalModel.Media.Where(m => m.Type == MediaType.Image).ToList(), journal.Id, UploadType.Journal);
