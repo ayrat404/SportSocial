@@ -56,13 +56,13 @@ namespace Social.Controllers
             return ApiResult(new {types = _achievementService.GetFilter()});
         }
 
-        [Route("{id}")]
+        [Route("")]
         public ApiResult Get(int id)
         {
             return ApiResult(_achievementService.GetAchivement(id));
         }
 
-        [Route("")]
+        [Route("~/api/achievements")]
         public ApiResult Get(AchievementState actual = AchievementState.All, AchievementStatus status = AchievementStatus.All, string type = null, int page = 1, int count = 20)
         {
             var search = new AchievementSearch
