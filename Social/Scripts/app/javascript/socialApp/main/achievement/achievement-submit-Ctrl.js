@@ -2,7 +2,7 @@
 var AchievementSubmit;
 
 AchievementSubmit = (function() {
-  function AchievementSubmit($scope, $stateParams, $rootScope, $window, achievementService, youtubeVideoService) {
+  function AchievementSubmit($scope, $state, $stateParams, $rootScope, $window, achievementService, youtubeVideoService) {
     var _this, defaultModel, prop;
     $scope.$root.title = 'Fortress | Заявка на награду';
     prop = {
@@ -30,7 +30,7 @@ AchievementSubmit = (function() {
       if (this.model.id !== -1) {
         achievementService.cancelTemp();
       }
-      return $window.history.back();
+      return $state.go('main.achievementList');
     };
     this.checkFirstStep = function() {
       var i, j, ref, result;
@@ -42,6 +42,7 @@ AchievementSubmit = (function() {
             id: _this.cards[i].id,
             value: _this.cards[i].selected
           };
+          _this.second.exampleLink = _this.cards[i].videoUrl;
           break;
         }
       }
@@ -116,6 +117,6 @@ AchievementSubmit = (function() {
 
 })();
 
-angular.module('socialApp.controllers').controller('achievementSubmitController', ['$scope', '$stateParams', '$rootScope', '$window', 'achievementService', 'youtubeVideoService', AchievementSubmit]);
+angular.module('socialApp.controllers').controller('achievementSubmitController', ['$scope', '$state', '$stateParams', '$rootScope', '$window', 'achievementService', 'youtubeVideoService', AchievementSubmit]);
 
 })();

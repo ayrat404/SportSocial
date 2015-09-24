@@ -1,6 +1,7 @@
 class AchievementSubmit extends Controller('socialApp.controllers')
     constructor: (
         $scope
+        $state
         $stateParams
         $rootScope
         $window
@@ -42,7 +43,7 @@ class AchievementSubmit extends Controller('socialApp.controllers')
         this.cancel = ->
             if this.model.id != -1
                 achievementService.cancelTemp()
-            $window.history.back()
+            $state.go 'main.achievementList'
 
 
         # ---------- COMMON ----------#
@@ -61,6 +62,7 @@ class AchievementSubmit extends Controller('socialApp.controllers')
                     _this.model.type =
                         id: _this.cards[i].id
                         value: _this.cards[i].selected
+                    _this.second.exampleLink = _this.cards[i].videoUrl
                     break
             _this.firstValid = result
 

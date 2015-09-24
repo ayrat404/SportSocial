@@ -10,14 +10,19 @@ class ProfileView extends Controller('socialApp.controllers')
         modalService
         defaultAvatarUrl)->
 
-        $scope.$root.title = ['Fortress | ', $rootScope.user.fullName].join('')
+        $scope.$root.title = "Fortress | #{$rootScope.user.fullName}"
+
+        # mixpanel tracking
+        # ---------------
+        $scope.$on('$viewContentLoaded', ->
+            mixpanel.ev.visitPage($scope.$root.title))
 
         _this = this
         _this.unknown = false
         _this.user =
             loaded: false
 
-        recordsFilter =
+        loadProp =
             count: 20           # default count load
             page: 3             # default page
 
@@ -78,10 +83,10 @@ class ProfileView extends Controller('socialApp.controllers')
         _this.loadMoreRecords = ->
             if !_this.user.journal.loading
                 _this.user.journal.loading = true
-                recordsFilter.page = +recordsFilter.page + 1
-                $state.params = recordsFilter
+                loadProp.page += 1
+                $state.params = loadProp
                 $state.transitionTo($state.current, $state.params, { notify: false });
-                getList(recordsFilter).then (list)->
+                getList(loadProp).then (list)->
                     _this.list.push list
                 .finally ->
                     _this.user.journal.loading = false
@@ -115,7 +120,7 @@ class ProfileView extends Controller('socialApp.controllers')
                 _this.user.isOwner = false
             _this.user.id = $stateParams.userId
             _this.user.loaded = true
-            recordsFilter.authorId = _this.user.id
+            loadProp.authorId = _this.user.id
 
 #            _this.user.achievements =
 #                closed:

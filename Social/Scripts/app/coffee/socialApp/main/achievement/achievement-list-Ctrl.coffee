@@ -13,13 +13,16 @@ class AchievementList extends Controller('socialApp.controllers')
         _this.pageError = false
         _this.showMoreLoading = false
 
+        _this.prop = {} # filter settings object
+
         _this.filter = # filter object default
             status: 'all'       # fail, credit
             actual: 'opened'    # last
-            count: 20           # default count load
-            page: 3             # default page
 
-        _this.prop = {} # filter settings object
+        loadProp =
+            count: 20   # default count load
+            page: 3     # default start pages load
+
 
         for k,v of $state.params
             if v != undefined
@@ -28,7 +31,7 @@ class AchievementList extends Controller('socialApp.controllers')
         # set params in url
         # ---------------
         setUrl = ->
-            $state.params = _this.filter
+            $state.params = angular.extend {}, _this.filter, loadProp
             $state.transitionTo($state.current, $state.params, { notify: false });
 
         # get list
@@ -46,12 +49,11 @@ class AchievementList extends Controller('socialApp.controllers')
 
         # full update list
         # ---------------
-        _this.updateList = (isFirstLoad)->
+        _this.updateList = ()->
             _this.loader = true
-            filter = angular.extend({}, _this.filter)
-            if isFirstLoad && filter.page > 1
-                filter.page = 1
-                filter.count = _this.filter.page * _this.filter.count
+            filter = angular.extend({}, _this.filter, loadProp)
+            filter.page = 1
+            filter.count = loadProp.page * loadProp.count
             getList(filter).then (list)->
                 _this.list = list
             .finally ->
@@ -62,11 +64,11 @@ class AchievementList extends Controller('socialApp.controllers')
         _this.loadMore = ->
             if !_this.showMoreLoading
                 _this.showMoreLoading = true
-                filter = angular.extend({}, _this.filter)
+                filter = angular.extend({}, _this.filter, loadProp)
                 filter.page = +filter.page + 1
                 getList(filter).then (list)->
                     _this.list.push list
-                    _this.filter.page = filter.page
+                    loadProp.page = filter.page
                 .finally ->
                     _this.showMoreLoading = false
 
@@ -74,7 +76,7 @@ class AchievementList extends Controller('socialApp.controllers')
         # ---------------
         achievementService.getFilterProp().then (res)->
             _this.prop = res.data
-            _this.updateList(true)
+            _this.updateList()
         , ->
             _this.pageError = true
 

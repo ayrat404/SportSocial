@@ -12,7 +12,7 @@ class RequestConstructor extends Factory('appSrvc')
                 _this = this
                 $q (resolve, reject)->
                     if _this.isValid data
-                        if typeof data == 'object' && _this.type == 'get'
+                        if typeof data == 'object' && (_this.type == 'get' || _this.type == 'delete')
                             data =
                                 params: data
                         $http[_this.type](_this.url, data).then (res)->

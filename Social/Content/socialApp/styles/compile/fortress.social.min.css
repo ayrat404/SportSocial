@@ -10862,7 +10862,9 @@ fieldset[disabled] .show-more .show-more__btn {
   border-radius: 0;
   min-width: 140px;
 }
-.nav__dropdown .dropdown-menu li a {
+.nav__dropdown .dropdown-menu li a,
+.nav__dropdown .dropdown-menu li span {
+  cursor: pointer;
   padding: 9px 20px;
 }
 .nav__dropdown__btn {

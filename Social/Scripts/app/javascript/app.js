@@ -102,7 +102,7 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'fl
     });
   }
 ]).run([
-  '$templateCache', '$rootScope', '$state', '$stateParams', 'modalService', 'base', 'queryParamsService', function($templateCache, $rootScope, $state, $stateParams, modalService, base, queryParamsService) {
+  '$templateCache', '$rootScope', '$state', '$stateParams', 'modalService', 'base', 'loginService', 'queryParamsService', function($templateCache, $rootScope, $state, $stateParams, modalService, base, loginService, queryParamsService) {
     var view;
     view = angular.element('#ui-view');
     $templateCache.put(view.data('tmpl-url'), view.html());
@@ -110,6 +110,9 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'fl
     $rootScope.$stateParams = $stateParams;
     $rootScope.back = function() {
       return window.history.back();
+    };
+    $rootScope.logout = function() {
+      return loginService.logout();
     };
     NProgress.configure({
       minimum: 0.3

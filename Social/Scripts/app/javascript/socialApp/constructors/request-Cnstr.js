@@ -27,7 +27,7 @@ RequestConstructor = (function() {
         _this = this;
         return $q(function(resolve, reject) {
           if (_this.isValid(data)) {
-            if (typeof data === 'object' && _this.type === 'get') {
+            if (typeof data === 'object' && (_this.type === 'get' || _this.type === 'delete')) {
               data = {
                 params: data
               };

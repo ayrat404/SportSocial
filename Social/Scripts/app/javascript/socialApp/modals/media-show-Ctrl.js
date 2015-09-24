@@ -3,7 +3,7 @@ var MediaModalShow;
 
 MediaModalShow = (function() {
   function MediaModalShow($scope, $state, $modalInstance, $rootScope, base, journalService, modalService, modalData) {
-    var i, receiveParams, setByIndex, v;
+    var doc, i, keyListener, receiveParams, setByIndex, v;
     receiveParams = ['media', 'entityType', 'index'];
     $scope.maxText = 40;
     if (modalData.media && modalData.entityType) {
@@ -45,14 +45,6 @@ MediaModalShow = (function() {
           notify: false
         });
       };
-      $scope.before = function() {
-        if ($scope.currentIndex === 1) {
-          $scope.currentIndex = $scope.itemsCount;
-        } else {
-          --$scope.currentIndex;
-        }
-        return setByIndex($scope.currentIndex);
-      };
       $scope.socialShare = function() {
         return modalService.show({
           name: 'socialShare',
@@ -68,6 +60,14 @@ MediaModalShow = (function() {
           }
         });
       };
+      $scope.before = function() {
+        if ($scope.currentIndex === 1) {
+          $scope.currentIndex = $scope.itemsCount;
+        } else {
+          --$scope.currentIndex;
+        }
+        return setByIndex($scope.currentIndex);
+      };
       $scope.next = function() {
         if ($scope.currentIndex === $scope.itemsCount) {
           $scope.currentIndex = 1;
@@ -76,6 +76,20 @@ MediaModalShow = (function() {
         }
         return setByIndex($scope.currentIndex);
       };
+      doc = angular.element(document);
+      keyListener = function(event) {
+        if (event.which === 37) {
+          $scope.before();
+          return event.preventDefault();
+        } else if (event.which === 39) {
+          $scope.next();
+          return event.preventDefault();
+        }
+      };
+      doc.on('keydown', keyListener);
+      $scope.$on('$destroy', function() {
+        return doc.off('keydown', keyListener);
+      });
     } else {
       $modalInstance.dismiss();
       console.log('media id or type undefined');
