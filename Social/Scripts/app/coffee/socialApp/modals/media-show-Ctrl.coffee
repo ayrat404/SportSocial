@@ -48,15 +48,6 @@ class MediaModalShow extends Controller('socialApp.controllers')
                 $state.params.index = index
                 $state.transitionTo($state.current, $state.params, { notify: false });
 
-            # before media item
-            # ---------------
-            $scope.before = ->
-                if $scope.currentIndex == 1
-                    $scope.currentIndex = $scope.itemsCount
-                else
-                    --$scope.currentIndex
-                setByIndex $scope.currentIndex
-
             # social sharing
             # ---------------
             $scope.socialShare = ->
@@ -68,6 +59,15 @@ class MediaModalShow extends Controller('socialApp.controllers')
                         media: $scope.current.url
                         hashtags: $scope.it.tags
 
+            # before media item
+            # ---------------
+            $scope.before = ->
+                if $scope.currentIndex == 1
+                    $scope.currentIndex = $scope.itemsCount
+                else
+                    --$scope.currentIndex
+                setByIndex $scope.currentIndex
+
             # next media item
             # ---------------
             $scope.next = ->
@@ -76,6 +76,25 @@ class MediaModalShow extends Controller('socialApp.controllers')
                 else
                     ++$scope.currentIndex
                 setByIndex $scope.currentIndex
+
+            # keyup listener
+            # ---------------
+            doc = angular.element document
+            keyListener = (event)->
+                if event.which == 37
+                    $scope.before()
+                    event.preventDefault()
+                else if event.which == 39
+                    $scope.next()
+                    event.preventDefault()
+
+            # ---------------
+            doc.on 'keydown', keyListener
+
+            # ---------------
+            $scope.$on '$destroy', ->
+                doc.off 'keydown', keyListener
+
         else
             $modalInstance.dismiss()
             console.log 'media id or type undefined'
