@@ -36,7 +36,7 @@ namespace BLL.Social.Achievements
 
             CreateMap<Achievement, ChoosedAchievmentType>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.AchievementType.Id))
-                .ForMember(dest => dest.Value, opt => opt.MapFrom(src => Convert.ToInt32(src.Value)));;
+                .ForMember(dest => dest.Value, opt => opt.MapFrom(src => src.Value.Value));;
 
             CreateMap<AchievementType, AchievementTypeVm>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
@@ -47,7 +47,7 @@ namespace BLL.Social.Achievements
             CreateMap<Achievement, AchievementPreviewVm>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Created, opt => opt.MapFrom(src => src.Created))
-                .ForMember(dest => dest.CupImage, opt => opt.MapFrom(src => src.AchievementType.ImgUrl))
+                .ForMember(dest => dest.CupImage, opt => opt.MapFrom(src => src.Value.CupImage))
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.AchievementType.Title))
                 .ForMember(dest => dest.Author, opt => opt.MapFrom(src => src.User))
                 .ForMember(dest => dest.TimeStamp, opt => opt.MapFrom(src => src.GetTimeStamp()))
@@ -55,6 +55,7 @@ namespace BLL.Social.Achievements
 
             CreateMap<Achievement, AchievementDisplayVm>()
                 .IncludeBase<Achievement, AchievementPreviewVm>()
+                .ForMember(dest => dest.TypeImage, opt => opt.MapFrom(src => src.AchievementType.ImgUrl))
                 .ForMember(dest => dest.Likes, opt => opt.MapFrom(src => RatingMapper.MapRating(src)))
                 .ForMember(dest => dest.Comments, opt => opt.MapFrom(src => CommentsVmMapper.Map(src)))
                 .ForMember(dest => dest.VideoUrl, opt => opt.MapFrom(src => src.AchievementMedia.First().Url))

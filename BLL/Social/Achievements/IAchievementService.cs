@@ -23,6 +23,7 @@ namespace BLL.Social.Achievements
 
     public class AchievementDisplayVm: AchievementPreviewVm
     {
+        public string TypeImage { get; set; }
         public string VideoUrl { get; set; }
         public RatingInfo Likes { get; set; }
         public CommentsVm Comments { get; set; }

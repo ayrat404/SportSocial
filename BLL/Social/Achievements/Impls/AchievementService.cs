@@ -137,8 +137,12 @@ namespace BLL.Social.Achievements.Impls
             ach.Status = AchievementStatus.InCreating;
             ach.UserId = _currentUser.UserId;
             ach.TypeId = model.Type.Id;
-            ach.Value = model.Type.Value.ToString();
             ach.DurationDays = DurationDays;
+            var typeValue = _achievementRepository
+                .Queryable<AchievementTypeValue>()
+                .Single(v => v.TypeId == model.Type.Id 
+                          && v.Value == model.Type.Value);
+            ach.Value = typeValue;
             if (isNew)
                 _achievementRepository.Add(ach);
             else

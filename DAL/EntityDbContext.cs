@@ -48,6 +48,7 @@ namespace DAL
 
         public DbSet<Achievement> Achievements { get; set; }
         public DbSet<AchievementType> AchievementTypes { get; set; }
+        public DbSet<AchievementTypeValue> AchievementTypeValues { get; set; }
         public DbSet<AchievementMedia> AchievementMedia { get; set; }
         public DbSet<AchievementRating> AchievementRatings { get; set; }
 
@@ -188,6 +189,18 @@ namespace DAL
                 .HasRequired(t => t.ToUser)
                 .WithMany(t => t.Folowers)
                 .HasForeignKey(j => j.ToUserId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Achievement>()
+                .HasRequired(t => t.AchievementType)
+                .WithMany()
+                .HasForeignKey(j => j.TypeId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Achievement>()
+                .HasRequired(t => t.Value)
+                .WithMany()
+                .HasForeignKey(j => j.ValueId)
                 .WillCascadeOnDelete(false);
 
         }

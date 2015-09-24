@@ -33,7 +33,7 @@ namespace DAL.DomainModel.Achievement
 
         public int Step { get; set; }
 
-        public string Value { get; set; }
+        //public string Value { get; set; }
 
         public AchievementStatus Status { get; set; }
 
@@ -45,6 +45,8 @@ namespace DAL.DomainModel.Achievement
 
         public int TotalRating { get; set; }
 
+        public int ValueId { get; set; }
+
         public DateTime? Started { get; set; }
 
         public DateTime Created { get; set; }
@@ -52,6 +54,7 @@ namespace DAL.DomainModel.Achievement
         public DateTime Modified { get; set; }
 
         public bool Deleted { get; set; }
+
 
         //public int GetRemainingTime()
         //{
@@ -83,5 +86,6 @@ namespace DAL.DomainModel.Achievement
         public ICollection<AchievementRating> RatingEntites { get; set; }
         public ICollection<AchievementComment> Comments { get; set; }
         public ICollection<AchievementVoice> Voices { get; set; }
+        public AchievementTypeValue Value { get; set; }
     }
 }

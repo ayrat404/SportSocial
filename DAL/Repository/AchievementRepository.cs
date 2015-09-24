@@ -22,6 +22,7 @@ namespace DAL.Repository
             return Queryable<Achievement>()
                 .Include(a => a.AchievementMedia)
                 .Include(a => a.User)
+                .Include(a => a.Value)
                 .Include(a => a.AchievementType)
                 .SingleOrDefault(a => a.UserId == userId && a.Status == AchievementStatus.InCreating);
         }
@@ -29,6 +30,7 @@ namespace DAL.Repository
         public List<AchievementType> GetTypes()
         {
             return Queryable<AchievementType>()
+                .Include(t => t.Values)
                 .ToList();
         }
 
@@ -42,6 +44,7 @@ namespace DAL.Repository
                 .Include(a => a.Voices)
                 .Include(a => a.User)
                 .Include(a => a.AchievementType)
+                .Include(a => a.Value)
                 .Single(a => a.Id == id);
         }
 
@@ -50,7 +53,8 @@ namespace DAL.Repository
             IQueryable<Achievement> query = Queryable<Achievement>()
                 .Include(a => a.Voices)
                 .Include(a => a.User)
-                .Include(a => a.AchievementType);
+                .Include(a => a.AchievementType)
+                .Include(a => a.Value);
             if (!string.IsNullOrEmpty(type))
             {
                 query = query.Where(a => a.AchievementType.Title == type);
@@ -95,7 +99,7 @@ namespace DAL.Repository
                 .Where(a => a.Voices.All(v => v.UserId != userId))
                 .Include(a => a.Voices)
                 .Include(a => a.User)
-                .Include(a => a.AchievementType)
+                .Include(a => a.Value)
                 .OrderBy(a => SqlFunctions.Rand(1))
                 .Take(count)
                 .ToList();

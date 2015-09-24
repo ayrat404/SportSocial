@@ -23,6 +23,7 @@
     <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -262,6 +263,40 @@
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\Images\default-avatar.png" />
+    <Content Include="Content\Images\exercise\push-up\1.png" />
+    <Content Include="Content\Images\exercise\push-up\2.png" />
+    <Content Include="Content\Images\exercise\push-up\3.png" />
+    <Content Include="Content\Images\exercise\push-up\4.png" />
+    <Content Include="Content\Images\exercise\push-up\5.png" />
+    <Content Include="Content\Images\exercise\push-up\6.png" />
+    <Content Include="Content\Images\exercise\push-up\7.png" />
+    <Content Include="Content\Images\exercise\push-up\8.png" />
+    <Content Include="Content\Images\exercise\push-up\9.png" />
+    <Content Include="Content\Images\exercise\sit-up\1.png" />
+    <Content Include="Content\Images\exercise\sit-up\2.png" />
+    <Content Include="Content\Images\exercise\sit-up\3.png" />
+    <Content Include="Content\Images\exercise\sit-up\4.png" />
+    <Content Include="Content\Images\exercise\sit-up\5.png" />
+    <Content Include="Content\Images\exercise\sit-up\6.png" />
+    <Content Include="Content\Images\exercise\sit-up\7.png" />
+    <Content Include="Content\Images\exercise\sit-up\8.png" />
+    <Content Include="Content\Images\exercise\squats\1.png" />
+    <Content Include="Content\Images\exercise\squats\2.png" />
+    <Content Include="Content\Images\exercise\squats\3.png" />
+    <Content Include="Content\Images\exercise\squats\4.png" />
+    <Content Include="Content\Images\exercise\squats\5.png" />
+    <Content Include="Content\Images\exercise\squats\6.png" />
+    <Content Include="Content\Images\exercise\squats\7.png" />
+    <Content Include="Content\Images\exercise\squats\8.png" />
+    <Content Include="Content\Images\exercise\tightening\1.png" />
+    <Content Include="Content\Images\exercise\tightening\2.png" />
+    <Content Include="Content\Images\exercise\tightening\3.png" />
+    <Content Include="Content\Images\exercise\tightening\4.png" />
+    <Content Include="Content\Images\exercise\tightening\5.png" />
+    <Content Include="Content\Images\exercise\tightening\6.png" />
+    <Content Include="Content\Images\exercise\tightening\7.png" />
+    <Content Include="Content\Images\exercise\tightening\8.png" />
+    <Content Include="Content\Images\exercise\tightening\9.png" />
     <Content Include="Content\socialApp\fonts\glyphicons\glyphicons-halflings-regular.svg" />
     <Content Include="Content\socialApp\images\common\logo-big.png" />
     <Content Include="Content\socialApp\images\groups\achievements\achievement-horizontal.png" />

@@ -150,5 +150,10 @@ namespace DAL.Migrations
             //    );
             //
         }
+
+        private void AddAchevementsTypes()
+        {
+            
+        }
     }
 }
