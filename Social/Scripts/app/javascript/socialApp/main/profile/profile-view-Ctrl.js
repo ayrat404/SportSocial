@@ -4,7 +4,10 @@ var ProfileView;
 ProfileView = (function() {
   function ProfileView($scope, $state, $stateParams, $rootScope, mixpanel, profileService, modalService, defaultAvatarUrl) {
     var _this, loadProp;
-    $scope.$root.title = ['Fortress | ', $rootScope.user.fullName].join('');
+    $scope.$root.title = "Fortress | " + $rootScope.user.fullName;
+    $scope.$on('$viewContentLoaded', function() {
+      return mixpanel.ev.visitPage($scope.$root.title);
+    });
     _this = this;
     _this.unknown = false;
     _this.user = {
@@ -132,7 +135,7 @@ ProfileView = (function() {
       }
       _this.user.id = $stateParams.userId;
       _this.user.loaded = true;
-      return recordsFilter.authorId = _this.user.id;
+      return loadProp.authorId = _this.user.id;
     }, function(res) {
       return _this.unknown = true;
     });

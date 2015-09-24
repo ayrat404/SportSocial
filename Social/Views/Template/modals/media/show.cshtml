@@ -20,7 +20,7 @@
         <likes-in-row ng-model="current.likes" data-id="{{current.id}}" data-entity-type="{{::entityType}}Media"></likes-in-row>
         <div ng-click="socialShare()" class="btn btn-fill-green">@R("Поделиться")</div>
     </div>
-    <p class="media__text">
+    <p ng-show="it.text.length" class="media__text">
         {{it.text|limitTo:maxText}}
         <a ng-if="it.text.length > maxText" ui-sref="main.journalIt({id: it.id, media: null, index: null})">@R("Читать далее")</a>
     </p>

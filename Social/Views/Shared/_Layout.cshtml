@@ -26,6 +26,10 @@
     {
         <button class="btn btn-fill-green dev__api" type="button" data-modal-click="apiModal">API</button>
     }
+    else
+    {
+        @Html.Partial("Partials/Mixpanel")
+    }
     
     <script src="https://www.youtube.com/iframe_api"></script>
     @Scripts.Render("~/bundles/social/assets")

@@ -61,6 +61,7 @@ class AchievementSubmit extends Controller('socialApp.controllers')
                     _this.model.type =
                         id: _this.cards[i].id
                         value: _this.cards[i].selected
+                    _this.second.exampleLink = _this.cards[i].videoUrl
                     break
             _this.firstValid = result
 
