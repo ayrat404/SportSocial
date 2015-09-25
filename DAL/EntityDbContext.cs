@@ -51,6 +51,7 @@ namespace DAL
         public DbSet<AchievementTypeValue> AchievementTypeValues { get; set; }
         public DbSet<AchievementMedia> AchievementMedia { get; set; }
         public DbSet<AchievementRating> AchievementRatings { get; set; }
+        public DbSet<Tape> Tape { get; set; }
 
         public DbSet<Subscribe> Subscribes { get; set; }
         
@@ -214,6 +215,24 @@ namespace DAL
                 .WithMany(u => u.UserAvatarPhotos)
                 .HasForeignKey(j => j.EntityId)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Tape>()
+                .HasOptional(t => t.Achievement)
+                .WithMany()
+                .HasForeignKey(j => j.AchievemetId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Tape>()
+                .HasOptional(t => t.Journal)
+                .WithMany()
+                .HasForeignKey(j => j.JournalId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Tape>()
+                .HasRequired(t => t.User)
+                .WithMany()
+                .HasForeignKey(j => j.UserId)
+                .WillCascadeOnDelete(true);
         }
 
         protected override void Dispose(bool disposing)

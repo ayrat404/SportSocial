@@ -2,6 +2,7 @@
 using System.Web.Http;
 using BLL.Login;
 using BLL.Social.Achievements.Objects;
+using BLL.Social.Tape;
 using BLL.Social.UserProfile;
 using BLL.Social.UserProfile.Objects;
 using Ninject.Web.WebApi;
@@ -14,11 +15,13 @@ namespace Social.Controllers
     {
         private readonly IProfileService _profileService;
         private readonly ILoginService _loginService;
+        private readonly ITapeService _tapeService;
 
-        public ProfileController(IProfileService profileService, ILoginService loginService)
+        public ProfileController(IProfileService profileService, ILoginService loginService, ITapeService tapeService)
         {
             _profileService = profileService;
             _loginService = loginService;
+            _tapeService = tapeService;
         }
 
         public ApiResult GetProfile(int id)
@@ -53,6 +56,13 @@ namespace Social.Controllers
         public ApiResult Subscribe(SubcribeModel model)
         {
             return ApiResult(_profileService.Subscribe(model));
+        }
+
+        [Route("~/api/tape")]
+        [HttpGet]
+        public ApiResult Tape(int page = 1, int count = 20)
+        {
+            return ApiResult(_tapeService.GetTape(page, count));
         }
     }
 }

@@ -34,6 +34,13 @@ namespace DAL.Repository
                 .ToList();
         }
 
+        public Achievement GetAchievementForVote(int id, int userId)
+        {
+            return Queryable<Achievement>()
+                .SingleOrDefault(a => a.Id == id 
+                                   && a.Voices.All(v => v.UserId != userId));
+        }
+
         public Achievement GetAchievement(int id)
         {
             return Queryable<Achievement>()

@@ -349,9 +349,13 @@
     <Content Include="Scripts\app\javascript\shared\services\remote-template-Srvc.js" />
     <Content Include="Scripts\app\javascript\socialApp\app.js" />
     <Content Include="Scripts\app\javascript\socialApp\components\achievement\achievement-list-row-Drct.js" />
+    <Content Include="Scripts\app\javascript\socialApp\components\comments\comment-form-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\components\comments\comment-form-Drct.js" />
+    <Content Include="Scripts\app\javascript\socialApp\components\comments\comment-list-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\components\comments\comment-list-Drct.js" />
+    <Content Include="Scripts\app\javascript\socialApp\components\likes\likes-finger-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\components\likes\likes-finger-Drct.js" />
+    <Content Include="Scripts\app\javascript\socialApp\components\likes\likes-row-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\components\likes\likes-row-Drct.js" />
     <Content Include="Scripts\app\javascript\socialApp\components\media-show-modal\media-show-modal-Drct.js" />
     <Content Include="Scripts\app\javascript\socialApp\components\media-upload\media-upload-Ctrl.js" />
@@ -359,6 +363,7 @@
     <Content Include="Scripts\app\javascript\socialApp\components\social-share\social-share-Drct.js" />
     <Content Include="Scripts\app\javascript\socialApp\components\sport-themes\sport-themes-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\components\sport-themes\sport-themes-Drct.js" />
+    <Content Include="Scripts\app\javascript\socialApp\components\subscribers\subscribers-row-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\components\subscribers\subscribers-row-Drct.js" />
     <Content Include="Scripts\app\javascript\socialApp\constructors\request-Cnstr.js" />
     <Content Include="Scripts\app\javascript\socialApp\landing\landing-Ctrl.js" />

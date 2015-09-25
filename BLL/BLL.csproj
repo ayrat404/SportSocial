@@ -276,6 +276,7 @@
     <Compile Include="Social\Journals\Objects\JournalPreviewVm.cs" />
     <Compile Include="Social\Journals\Objects\JournalVm.cs" />
     <Compile Include="Social\Journals\Objects\MediaVm.cs" />
+    <Compile Include="Social\Tape\ITapeService.cs" />
     <Compile Include="Social\UserProfile\IProfileService.cs" />
     <Compile Include="Social\UserProfile\MapProfiles\UserMapProfile.cs" />
     <Compile Include="Social\UserProfile\Objects\ProfileInfo.cs" />

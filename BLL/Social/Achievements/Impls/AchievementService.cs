@@ -6,6 +6,9 @@ using BLL.Common.Services.CurrentUser;
 using BLL.Infrastructure.Map;
 using BLL.Social.Achievements.Objects;
 using BLL.Social.Journals.Objects;
+using BLL.Social.Tags;
+using BLL.Social.Tape;
+using BLL.Social.UserProfile;
 using BLL.Storage;
 using BLL.Storage.Impls.Enums;
 using DAL;
@@ -21,15 +24,17 @@ namespace BLL.Social.Achievements.Impls
         private readonly IAchievementRepository _achievementRepository;
         private readonly ICurrentUser _currentUser;
         private readonly IVideoService _videoService;
+        private readonly ITapeService _tapeService;
 
         private const int DurationDays = 6;
         private const int VoteCount = 3;
         
-        public AchievementService(IAchievementRepository achievementRepository, ICurrentUser currentUser, IVideoService videoService)
+        public AchievementService(IAchievementRepository achievementRepository, ICurrentUser currentUser, IVideoService videoService, ITapeService tapeService)
         {
             _achievementRepository = achievementRepository;
             _currentUser = currentUser;
             _videoService = videoService;
+            _tapeService = tapeService;
         }
 
         public AchievementTempVm FirstStep()
@@ -83,7 +88,11 @@ namespace BLL.Social.Achievements.Impls
 
         public ServiceResult Vote(AchievementVoteVm vote)
         {
-            var ach = _achievementRepository.Find<Achievement>(vote.Id);
+            var ach = _achievementRepository.GetAchievementForVote(vote.Id, _currentUser.UserId);
+            if (ach == null)
+            {
+                return ServiceResult.ErrorResult("Вы уже проголосовали за данную заявку".Resource(this));
+            }
             var voice = new AchievementVoice
             {
                 AchievementId = ach.Id,
@@ -99,7 +108,7 @@ namespace BLL.Social.Achievements.Impls
             {
                 if (CheckAndCompleteAchievement(tempAchievement))
                 {
-                    return ServiceResult.SuccessResult("Заявка достижение создана".Resource(this));
+                    return ServiceResult.SuccessResult("Заявка на достижение создана".Resource(this));
                 }
             }
             return ServiceResult.SuccessResult();
@@ -160,6 +169,7 @@ namespace BLL.Social.Achievements.Impls
                 int updatedCount = _currentUser.User.Profile.AchievementVoiceCount - 3;
                 _currentUser.User.Profile.AchievementVoiceCount = updatedCount > 0 ? updatedCount : 0;
                 _achievementRepository.Update(_currentUser.User.Profile);
+                _tapeService.AddToTape(ach.Id, TapeType.Achievement);
                 _achievementRepository.SaveChanges();
                 return true;
             }

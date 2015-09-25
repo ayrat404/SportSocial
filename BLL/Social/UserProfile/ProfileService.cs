@@ -90,4 +90,16 @@ namespace BLL.Social.UserProfile
             return ServiceResult.SuccessResult();
         }
     }
+
+    public class TapeVm
+    {
+        public TapeType Type { get; set; }
+        public object Object { get; set; }
+    }
+
+    public enum TapeType
+    {
+        Record,
+        Achievement
+    }
 }

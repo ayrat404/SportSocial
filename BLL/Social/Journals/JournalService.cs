@@ -7,6 +7,8 @@ using BLL.Infrastructure.Map;
 using BLL.Social.Achievements.Objects;
 using BLL.Social.Journals.Objects;
 using BLL.Social.Tags;
+using BLL.Social.Tape;
+using BLL.Social.UserProfile;
 using BLL.Storage;
 using BLL.Storage.Impls.Enums;
 using BLL.Storage.Objects;
@@ -22,14 +24,16 @@ namespace BLL.Social.Journals
         private readonly ICurrentUser _currentUser;
         private readonly IImageService _imageService;
         private readonly IVideoService _videoService;
+        private readonly ITapeService _tapeService;
 
-        public JournalService(ITagService tagService, IJournalRepository repository, ICurrentUser currentUser, IImageService imageService, IVideoService videoService)
+        public JournalService(ITagService tagService, IJournalRepository repository, ICurrentUser currentUser, IImageService imageService, IVideoService videoService, ITapeService tapeService)
         {
             _tagService = tagService;
             _repository = repository;
             _currentUser = currentUser;
             _imageService = imageService;
             _videoService = videoService;
+            _tapeService = tapeService;
         }
 
         public bool CanAction(Journal journal)
@@ -46,6 +50,7 @@ namespace BLL.Social.Journals
             };
             _repository.Add(journal);
             _repository.SaveChanges();
+            _tapeService.AddToTape(journal.Id, TapeType.Record);
             _tagService.AddTags(journal.Id, journalModel.Tags);
             _imageService.AttachImagesToEntity(journalModel.Media.Where(m => m.Type == MediaType.Image).ToList(), journal.Id, UploadType.Journal);
             _videoService.AttachVideosToEntity(journalModel.Media.Where(m => m.Type == MediaType.Video).ToList(), journal.Id, UploadType.Journal);
@@ -78,6 +83,10 @@ namespace BLL.Social.Journals
             {
                 return ServiceResult.ErrorResult("");
             }
+            var tape = _repository.Queryable<DAL.DomainModel.Tape>()
+                .Where(t => t.JournalId == id)
+                .ToList();
+            _repository.DeleteRange(tape);
             _repository.Delete(journal);
             _repository.SaveChanges();
             return ServiceResult.SuccessResult();

@@ -153,6 +153,46 @@ namespace DAL.Migrations
             //    );
             //
             AddUserIdToJournalMedias(context);
+            AddToTape(context);
+        }
+
+        private void AddToTape(EntityDbContext context)
+        {
+            var journals = context.Journals.ToList();
+            var achievements = context.Achievements.ToList();
+            foreach (var journal in journals)
+            {
+                var tape = context.Tape.SingleOrDefault(t => t.UserId == journal.UserId 
+                                                          && t.JournalId == journal.Id);
+                if (tape == null)
+                {
+                    tape = new DAL.DomainModel.Tape
+                    {
+                        JournalId = journal.Id,
+                        UserId = journal.UserId,
+                        Created = journal.Created,
+                        Modified = journal.Modified,
+                    };
+                    context.Tape.Add(tape);
+                }
+           }
+            foreach (var ahievement in achievements)
+            {
+                var tape = context.Tape.SingleOrDefault(t => t.UserId == ahievement.UserId 
+                                                          && t.AchievemetId == ahievement.Id);
+                if (tape == null)
+                {
+                    tape = new DAL.DomainModel.Tape
+                    {
+                        AchievemetId = ahievement.Id,
+                        UserId = ahievement.UserId,
+                        Created = ahievement.Created,
+                        Modified = ahievement.Modified,
+                    };
+                    context.Tape.Add(tape);
+                }
+            }
+            context.SaveChanges();
         }
 
         private void AddUserIdToJournalMedias(EntityDbContext context)
