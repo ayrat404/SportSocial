@@ -29,33 +29,35 @@ apiInterseptor = (function() {
           },
           'responseError': function(res) {
             var deferred;
-            if (srvcConfig.noticeShow.errors) {
-              base.notice.show({
-                text: 'Error ' + res.status + ': ' + res.statusText + '<br>' + res.data.message,
-                type: 'warning'
-              });
-            }
-            if (res.status !== 401) {
-              return res;
-            }
-            deferred = $q.defer();
-            modalService.show({
-              name: 'loginSubmit',
-              data: {
-                success: function(res) {
-                  return deferred.resolve($http(res.config));
-                },
-                cancel: function(res) {
-                  $state.go('registration');
-                  base.notice.show({
-                    text: 'Please register if you do not have an Fortress account ',
-                    type: 'info'
-                  });
-                  return deferred.reject(res);
-                }
+            if (res) {
+              if (srvcConfig.noticeShow.errors && res.data) {
+                base.notice.show({
+                  text: 'Error ' + res.status + ': ' + res.statusText + '<br>' + res.data.message,
+                  type: 'warning'
+                });
               }
-            });
-            return deferred.promise;
+              if (res.status !== 401) {
+                return res;
+              }
+              deferred = $q.defer();
+              modalService.show({
+                name: 'loginSubmit',
+                data: {
+                  success: function(res) {
+                    return deferred.resolve($http(res.config));
+                  },
+                  cancel: function(res) {
+                    $state.go('registration');
+                    base.notice.show({
+                      text: 'Please register if you do not have an Fortress account ',
+                      type: 'info'
+                    });
+                    return deferred.reject(res);
+                  }
+                }
+              });
+              return deferred.promise;
+            }
           }
         };
       }

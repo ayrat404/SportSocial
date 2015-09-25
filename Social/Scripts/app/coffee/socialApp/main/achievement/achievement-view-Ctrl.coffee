@@ -53,14 +53,15 @@ class AchievementView extends Controller('socialApp.controllers')
         k = 0
         calcBars = ->
             k = 100 / (_this.it.voice.for + _this.it.voice.against)
-            _this.forBarWidth = Math.round(_this.it.voice.for * k) + 'px'
-            _this.againstBarWidth = Math.round(_this.it.voice.against * k) + 'px'
+            _this.forBarWidth = Math.round(_this.it.voice.for * k) + '%'
+            _this.againstBarWidth = Math.round(_this.it.voice.against * k) + '%'
 
         # voice
         # ---------------
         _this.voice = (action)->
-            if !_this.it.voice.isVoited
+            #if !_this.it.voice.isVoited && _this.it.author.id != $rootScope.user.id
                 achievementService.voice(id: _this.it.id, action: action).then (res)->
+                    debugger
                     _this.it.voice.for = res.data.for
                     _this.it.voice.against = res.data.against
                     _this.it.voice.isVoited = true

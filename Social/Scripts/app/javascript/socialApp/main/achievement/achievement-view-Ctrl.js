@@ -52,21 +52,20 @@ AchievementView = (function() {
     k = 0;
     calcBars = function() {
       k = 100 / (_this.it.voice["for"] + _this.it.voice.against);
-      _this.forBarWidth = Math.round(_this.it.voice["for"] * k) + 'px';
-      return _this.againstBarWidth = Math.round(_this.it.voice.against * k) + 'px';
+      _this.forBarWidth = Math.round(_this.it.voice["for"] * k) + '%';
+      return _this.againstBarWidth = Math.round(_this.it.voice.against * k) + '%';
     };
     _this.voice = function(action) {
-      if (!_this.it.voice.isVoited) {
-        return achievementService.voice({
-          id: _this.it.id,
-          action: action
-        }).then(function(res) {
-          _this.it.voice["for"] = res.data["for"];
-          _this.it.voice.against = res.data.against;
-          _this.it.voice.isVoited = true;
-          return calcBars();
-        });
-      }
+      return achievementService.voice({
+        id: _this.it.id,
+        action: action
+      }).then(function(res) {
+        debugger;
+        _this.it.voice["for"] = res.data["for"];
+        _this.it.voice.against = res.data.against;
+        _this.it.voice.isVoited = true;
+        return calcBars();
+      });
     };
   }
 

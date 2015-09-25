@@ -30,11 +30,13 @@ class AchievementSubmit extends Controller('socialApp.controllers')
         # next step
         # ---------------
         this.nextStep = ->
-            #_this.currentStep++
             _this.loader = true
             achievementService.saveTemp(_this.model).then (res)->
-                _this.model.id = 1
-                _this.currentStep++
+                if res.data && res.data.isPublished
+                    $state.go 'main.achievementView', id: res.data.id
+                else
+                    _this.model.id = 1
+                    _this.currentStep += 1
             .finally (res)->
                 _this.loader = false
 
@@ -124,6 +126,7 @@ class AchievementSubmit extends Controller('socialApp.controllers')
                 _this.model = defaultModel
             _this.currentStep = _this.model.step
             if _this.currentStep >=1 then _this.second.isExampleShow = false
+            _this.checkFirstStep()
         , (res)->
             _this.pageError = true
         .finally ->

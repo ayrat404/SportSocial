@@ -35,31 +35,31 @@ class apiInterseptor extends Provider('shared')
 
                 'responseError': (res)->
 
-                    # show error
-                    # ---------------
-                    if srvcConfig.noticeShow.errors
-                        base.notice.show(
-                            text: 'Error ' + res.status + ': ' + res.statusText + '<br>' + res.data.message
-                            type: 'warning'
-                        )
+                    if res
 
-                    # if user is authorized
-                    # ---------------
-                    if res.status != 401
-                        return res
+                        # show error
+                        # ---------------
+                        if srvcConfig.noticeShow.errors && res.data
+                            base.notice.show
+                                text: 'Error ' + res.status + ': ' + res.statusText + '<br>' + res.data.message
+                                type: 'warning'
 
-                    # if user is non authorized
-                    # ---------------
-                    deferred = $q.defer()
-                    modalService.show(
-                        name: 'loginSubmit'
-                        data:
-                            success: (res)->
-                                deferred.resolve($http(res.config))
-                            cancel: (res)->
-                                $state.go 'registration'
-                                base.notice.show(text: 'Please register if you do not have an Fortress account ', type: 'info')
-                                deferred.reject(res);
-                    )
-                    return deferred.promise
+                        # if user is authorized
+                        # ---------------
+                        if res.status != 401
+                            return res
+
+                        # if user is non authorized
+                        # ---------------
+                        deferred = $q.defer()
+                        modalService.show
+                            name: 'loginSubmit'
+                            data:
+                                success: (res)->
+                                    deferred.resolve($http(res.config))
+                                cancel: (res)->
+                                    $state.go 'registration'
+                                    base.notice.show(text: 'Please register if you do not have an Fortress account ', type: 'info')
+                                    deferred.reject(res);
+                        return deferred.promise
         ]

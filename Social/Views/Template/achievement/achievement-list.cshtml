@@ -1,5 +1,6 @@
 ﻿<section class="achievement-list-page">
     <div data-loader="ach.loader"
+         data-delay="100"
          ng-if="!ach.pageError">
         <div class="alp__filter">
             <div class="container">
@@ -44,7 +45,7 @@
                         @R("Показать ещё")
                     </button>
                 </div>
-                <div ng-if="!ach.list.lenght" class="alert alert-info text-center">
+                <div ng-if="!ach.list.length" class="alert alert-info text-center">
                     @R("Ничего не найдено. Попробуйте изменить критерии поиска.")
                 </div>
             </div>

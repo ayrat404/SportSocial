@@ -13158,6 +13158,7 @@ fieldset[disabled] .show-more .show-more__btn {
   padding: 25px;
   color: #000;
   margin: 0;
+  word-break: break-word;
 }
 .record__media:after {
   display: block;

@@ -20,8 +20,14 @@ AchievementSubmit = (function() {
     this.nextStep = function() {
       _this.loader = true;
       return achievementService.saveTemp(_this.model).then(function(res) {
-        _this.model.id = 1;
-        return _this.currentStep++;
+        if (res.data && res.data.isPublished) {
+          return $state.go('main.achievementView', {
+            id: res.data.id
+          });
+        } else {
+          _this.model.id = 1;
+          return _this.currentStep += 1;
+        }
       })["finally"](function(res) {
         return _this.loader = false;
       });
@@ -104,8 +110,9 @@ AchievementSubmit = (function() {
       }
       _this.currentStep = _this.model.step;
       if (_this.currentStep >= 1) {
-        return _this.second.isExampleShow = false;
+        _this.second.isExampleShow = false;
       }
+      return _this.checkFirstStep();
     }, function(res) {
       return _this.pageError = true;
     })["finally"](function() {
