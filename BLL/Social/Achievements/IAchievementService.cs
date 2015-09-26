@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using BLL.Comments.Objects;
 using BLL.Common.Objects;
 using BLL.Rating.Objects;
+using BLL.Social.Achievements.Impls;
 using BLL.Social.Achievements.Objects;
 using BLL.Social.Journals.Objects;
 using DAL;
@@ -13,11 +14,11 @@ namespace BLL.Social.Achievements
     public interface IAchievementService
     {
         AchievementTempVm FirstStep();
-        ServiceResult CreateOrUpdateAchievement(AchievementCreateVm model);
+        ServiceResult<CreateAchievementResult> CreateOrUpdateAchievement(AchievementCreateVm model);
         IEnumerable<string> GetFilter();
         AchievementDisplayVm GetAchivement(int id);
         PagedListVm<AchievementPreviewVm> GetStartedAchivements(AchievementSearch search);
-        ServiceResult Vote(AchievementVoteVm vote);
+        ServiceResult<AchievmentVoiceVm> Vote(AchievementVoteVm vote);
         ServiceResult DeleteTemp();
     }
 

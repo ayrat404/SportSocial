@@ -37,7 +37,9 @@ namespace DAL.Repository
         public Achievement GetAchievementForVote(int id, int userId)
         {
             return Queryable<Achievement>()
+                .Include(a => a.Voices)
                 .SingleOrDefault(a => a.Id == id 
+                                   && a.UserId != userId
                                    && a.Voices.All(v => v.UserId != userId));
         }
 
@@ -103,7 +105,7 @@ namespace DAL.Repository
         {
             return Queryable<Achievement>()
                 .Where(a => a.Status == AchievementStatus.Started)
-                .Where(a => a.Voices.All(v => v.UserId != userId))
+                .Where(a => a.UserId != userId && a.Voices.All(v => v.UserId != userId))
                 .Include(a => a.Voices)
                 .Include(a => a.User)
                 .Include(a => a.Value)

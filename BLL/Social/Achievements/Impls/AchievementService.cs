@@ -49,7 +49,7 @@ namespace BLL.Social.Achievements.Impls
 
         
 
-        public ServiceResult CreateOrUpdateAchievement(AchievementCreateVm model)
+        public ServiceResult<CreateAchievementResult> CreateOrUpdateAchievement(AchievementCreateVm model)
         {
             var ach = _achievementRepository.GetTempAchievement(_currentUser.UserId);
             AddOrUpdateAchievement(ach, model);
@@ -58,10 +58,16 @@ namespace BLL.Social.Achievements.Impls
                 _videoService.AttachVideosToEntity(new List<MediaVm>() {model.Video}, ach.Id, UploadType.Achievement);
                 if (CheckAndCompleteAchievement(ach))
                 {
-                    return ServiceResult.SuccessResult("Заявка достижение создана".Resource(this));
+                    var createResult = new CreateAchievementResult
+                    {
+                        Id = ach.Id,
+                        IsPublished = true
+                    };
+                    return ServiceResult.SuccessResult(createResult);
+                    //return ServiceResult.SuccessResult("Заявка достижение создана".Resource(this));
                 }
             }
-            return ServiceResult.SuccessResult();
+            return ServiceResult.SuccessResult<CreateAchievementResult>(null);
         }
 
         public IEnumerable<string> GetFilter()
@@ -86,12 +92,12 @@ namespace BLL.Social.Achievements.Impls
             };
         }
 
-        public ServiceResult Vote(AchievementVoteVm vote)
+        public ServiceResult<AchievmentVoiceVm> Vote(AchievementVoteVm vote)
         {
             var ach = _achievementRepository.GetAchievementForVote(vote.Id, _currentUser.UserId);
             if (ach == null)
             {
-                return ServiceResult.ErrorResult("Вы уже проголосовали за данную заявку".Resource(this));
+                return ServiceResult.ErrorResult<AchievmentVoiceVm>("Вы уже проголосовали за данную заявку".Resource(this));
             }
             var voice = new AchievementVoice
             {
@@ -104,14 +110,16 @@ namespace BLL.Social.Achievements.Impls
             _achievementRepository.Update(_currentUser.User.Profile);
             _achievementRepository.SaveChanges();
             var tempAchievement = _achievementRepository.GetTempAchievement(_currentUser.UserId);
+            var voiceVm = ach.MapTo<AchievmentVoiceVm>();
+            var result = ServiceResult.SuccessResult(voiceVm);
             if (tempAchievement != null)
             {
                 if (CheckAndCompleteAchievement(tempAchievement))
                 {
-                    return ServiceResult.SuccessResult("Заявка на достижение создана".Resource(this));
+                    result.SuccessMessage = "Заявка на достижение создана".Resource(this);
                 }
             }
-            return ServiceResult.SuccessResult();
+            return result;
         }
 
         public ServiceResult DeleteTemp()
@@ -175,5 +183,12 @@ namespace BLL.Social.Achievements.Impls
             }
             return false;
         }
+    }
+
+    public class CreateAchievementResult
+    {
+        public int Id { get; set; }
+
+        public bool IsPublished { get; set; }
     }
 }

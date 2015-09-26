@@ -30,6 +30,13 @@ namespace Social.Controllers
             //return Json(new {success = false, ErrorMessage = GetModelStateErrors(), Redirect = returnUrl}, jsonContentType);
         }
 
+        [HttpPost]
+        [Route("~/api/logout")]
+        public ApiResult LogOut()
+        {
+            return ApiResult(_loginService.LogOut());
+        }
+
 
         [HttpPost]
         [Route("~/api/register/step1")]
