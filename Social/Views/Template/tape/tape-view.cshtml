@@ -12,61 +12,61 @@
                                  }"
                      class="wall__it">
                     <div class="wall__it__triangle"></div>
-                    <a ui-sref="main.profile({userId: it.author.id})" class="wall__it__author__img-wrap">
-                        <img ng-src="{{ ::(it.author.avatar|imageResize:{w: 60, h: 60}) }}" class="wall__it__author__img" />
+                    <a ui-sref="main.profile({userId: it.object.author.id})" class="wall__it__author__img-wrap">
+                        <img ng-src="{{ ::(it.object.author.avatar|imageResize:{w: 60, h: 60}) }}" class="wall__it__author__img" />
                     </a>
 
                     <div ng-if="it.type == 'record'" class="wall__it__inner">
-                        <a ui-sref="main.profile({userId: it.author.id})" class="wall__it__author-name">{{::it.author.fullName}}</a>
+                        <a ui-sref="main.profile({userId: it.object.author.id})" class="wall__it__author-name">{{::it.object.author.fullName}}</a>
                         <header class="wall__it__header-info">
-                            <span class="wi__date">{{::(it.created|date:'dd/MM/yyyy')}}</span>
-                            <div ng-click="tape.share(it)" class="wi__share"><i></i></div>
-                            <a ui-sref="main.journalIt({id: it.id})" class="wi__comment"><i></i></a>
+                            <span class="wi__date">{{::(it.object.created|date:'dd/MM/yyyy')}}</span>
+                            <div ng-click="tape.share(it.object)" class="wi__share"><i></i></div>
+                            <a ui-sref="main.journalIt({id: it.object.id})" class="wi__comment"><i></i></a>
                         </header>
                         <section class="wall__it__content">
-                            <div ng-if="it.media.length"
+                            <div ng-if="it.object.media.length"
                                  ng-class="{
-                                             'video': it.media[0].type=='video',
-                                             'image': it.media[0].type=='image'
+                                             'video': it.object.media[0].type=='video',
+                                             'image': it.object.media[0].type=='image'
                                              }"
                                  media-show-modal
-                                 data-id="{{::it.id}}"
+                                 data-id="{{::it.object.id}}"
                                  data-index="0"
                                  data-entity-type="record"
                                  class="wi__media-wrap">
-                                <img ng-src="{{ it.media[0].url | imageResize:{w: 250, h: 170 } }}" class="wi__media__img" />
+                                <img ng-src="{{ it.object.media[0].url | imageResize:{w: 250, h: 170 } }}" class="wi__media__img" />
                                 <div class="wi__media__icon">
                                     <i></i>
                                 </div>
                             </div>
-                            <p class="wi__text">{{it.text}}</p>
+                            <p class="wi__text">{{it.object.text}}</p>
                         </section>
-                        <likes-in-row ng-model="it.likes"
-                                      data-id="{{::it.id}}"
+                        <likes-in-row ng-model="it.object.likes"
+                                      data-id="{{::it.object.id}}"
                                       data-entity-type="record"></likes-in-row>
                     </div>
 
                     <div ng-if="it.type == 'achievement'" class="wall__it__inner wall__it__inner--achievement">
-                        <a ui-sref="main.profile({userId: it.author.id})" class="wall__it__author-name">{{::it.author.fullName}}</a>
+                        <a ui-sref="main.profile({userId: it.object.author.id})" class="wall__it__author-name">{{::it.object.author.fullName}}</a>
                         <header class="wall__it__header-info">
-                            <span class="wi__date">{{::(it.created|date:'dd/MM/yyyy')}}</span>
-                            <div ng-click="tape.share(it)" class="wi__share"><i></i></div>
-                            <a ui-sref="main.achievementView({id: it.id})" class="wi__comment"><i></i></a>
+                            <span class="wi__date">{{::(it.object.created|date:'dd/MM/yyyy')}}</span>
+                            <div ng-click="tape.share(it.object)" class="wi__share"><i></i></div>
+                            <a ui-sref="main.achievementView({id: it.object.id})" class="wi__comment"><i></i></a>
                         </header>
                         <section class="wall__it__content">
                             <p class="wi__text">
-                                <span ng-if="::it.status == 'credit'">@R("Я получил достижение:")</span>
-                                <span ng-if="::it.status != 'credit'">@R("Я подал заявку на достижение:")</span>
+                                <span ng-if="::it.object.status == 'credit'">@R("Я получил достижение:")</span>
+                                <span ng-if="::it.object.status != 'credit'">@R("Я подал заявку на достижение:")</span>
                                 <br />
-                                <b>{{::it.title}}</b>
+                                <b>{{::it.object.title}}</b>
                             </p>
                             <div class="wi__media-wrap">
-                                <img ng-src="{{ ::(it.cupImage | imageResize:{w: 165, h: 165 }) }}" class="wi__media__img" />
-                                <div ng-if="::it.status == 'credit'" class="wi__closed"></div>
+                                <img ng-src="{{ ::(it.object.cupImage | imageResize:{w: 165, h: 165 }) }}" class="wi__media__img" />
+                                <div ng-if="::it.object.status == 'credit'" class="wi__closed"></div>
                             </div>
                         </section>
-                        <likes-in-row ng-model="it.likes"
-                                      data-id="{{::it.id}}"
+                        <likes-in-row ng-model="it.object.likes"
+                                      data-id="{{::it.object.id}}"
                                       data-entity-type="achievement"></likes-in-row>
                     </div>
 
