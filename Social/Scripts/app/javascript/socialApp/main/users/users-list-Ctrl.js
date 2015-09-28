@@ -3,27 +3,28 @@ var UsersList;
 
 UsersList = (function() {
   function UsersList($q, $scope, $state, userService) {
-    var _this, getList, loadProp, setUrl;
+    var _this, getList, k, ref, setUrl, v;
     $scope.$root.title = 'Fortress | Список атлетов';
     _this = this;
     _this.loader = true;
     _this.pageError = false;
     _this.showMoreLoading = false;
-    loadProp = {
-      count: 20,
-      page: 3
-    };
-    _this.filter = {
-      test: 'test'
-    };
-    setUrl = function() {
-      $state.params = angular.extend({}, _this.filter, loadProp);
+    _this.filter = {};
+    ref = $state.params;
+    for (k in ref) {
+      v = ref[k];
+      if (v !== void 0) {
+        _this.filter[k] = v;
+      }
+    }
+    setUrl = function(params) {
+      $state.params = params;
       return $state.transitionTo($state.current, $state.params, {
         notify: false
       });
     };
     getList = function(filter) {
-      setUrl();
+      setUrl(filter);
       return $q(function(resolve, reject) {
         return userService.getList(filter).then(function(res) {
           _this.showMore = res.data.isMore;
@@ -38,9 +39,9 @@ UsersList = (function() {
     _this.updateList = function() {
       var filter;
       _this.loader = true;
-      filter = angular.extend({}, _this.filter, loadProp);
+      filter = angular.extend({}, _this.filter);
+      filter.count = filter.page * filter.count;
       filter.page = 1;
-      filter.count = loadProp.page * loadProp.count;
       return getList(filter).then(function(list) {
         return _this.list = list;
       })["finally"](function() {
@@ -51,22 +52,17 @@ UsersList = (function() {
       var filter;
       if (!_this.showMoreLoading) {
         _this.showMoreLoading = true;
-        filter = angular.extend({}, _this.filter, loadProp);
+        filter = angular.extend({}, _this.filter);
         filter.page = +filter.page + 1;
         return getList(filter).then(function(list) {
           _this.list.push(list);
-          return loadProp.page = filter.page;
+          return _this.filter.page = filter.page;
         })["finally"](function() {
           return _this.showMoreLoading = false;
         });
       }
     };
-    userService.getFilterProp().then(function(res) {
-      _this.prop = res.data;
-      return _this.updateList();
-    }, function() {
-      return _this.pageError = true;
-    });
+    _this.updateList();
   }
 
   return UsersList;

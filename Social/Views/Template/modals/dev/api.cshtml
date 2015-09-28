@@ -1063,7 +1063,14 @@
                 accept data:
                 <pre>
 {
-    undefined
+    success: true,
+    data: {
+        age: [],
+        gender: [],
+        inSport: []
+    },
+    errors: null,
+    message: null
 }
                </pre>
             </b>
@@ -1073,9 +1080,14 @@
                 send data:
                 <pre>
 {
-    *фильтр, который ещё появится*
-    count: 20 * количество пользователей
-    page: 6 * страница
+    age: x, *возраст*
+    inSport: x, *стаж*
+    gender: x, *пол*
+    city: x, *город*
+    country: x, *страна*
+    query: x, *поиск по имени*
+    count: 20, * количество пользователей
+    page: 6, * страница
     
 }
                 </pre>
@@ -1172,6 +1184,55 @@
         ],
         isMore: true
     },
+    errors: null,
+    message: null
+}
+                    </pre>
+            </b>
+
+        </li>
+        
+        
+        <li id="api_geo" class="dev__api__row">
+            <p>Запросы к городам и странам</p>
+            <code>GET: /api/geo/country</code>
+            <b>
+                send data:
+                <pre>
+{
+    query: xxx,
+    count: xxx
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true,
+    data: [],
+    errors: null,
+    message: null
+}
+                    </pre>
+            </b>
+            
+            <code>GET: /api/geo/city</code>
+            <b>
+                send data:
+                <pre>
+{
+    query: xxx,
+    count: xxx
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true,
+    data: [],
     errors: null,
     message: null
 }

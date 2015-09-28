@@ -65,7 +65,7 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'fl
         }
       }
     }).state('main.users', {
-      url: '/users?count&page',
+      url: '/users?country&city&age&insport&query&count=20&page=3',
       views: {
         'socialContent@main': {
           templateUrl: tmplView('users/users-list'),

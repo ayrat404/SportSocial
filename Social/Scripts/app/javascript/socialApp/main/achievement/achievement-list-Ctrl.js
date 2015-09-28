@@ -3,7 +3,7 @@ var AchievementList;
 
 AchievementList = (function() {
   function AchievementList($q, $scope, $state, achievementService) {
-    var _this, getList, k, loadProp, ref, setUrl, v;
+    var _this, getList, k, ref, setUrl, v;
     $scope.$root.title = 'Fortress | Список заявок';
     _this = this;
     _this.loader = true;
@@ -12,9 +12,7 @@ AchievementList = (function() {
     _this.prop = {};
     _this.filter = {
       status: 'all',
-      actual: 'opened'
-    };
-    loadProp = {
+      actual: 'opened',
       count: 20,
       page: 3
     };
@@ -26,7 +24,7 @@ AchievementList = (function() {
       }
     }
     setUrl = function() {
-      $state.params = angular.extend({}, _this.filter, loadProp);
+      $state.params = angular.extend({}, _this.filter);
       return $state.transitionTo($state.current, $state.params, {
         notify: false
       });
@@ -47,9 +45,9 @@ AchievementList = (function() {
     _this.updateList = function() {
       var filter;
       _this.loader = true;
-      filter = angular.extend({}, _this.filter, loadProp);
+      filter = angular.extend({}, _this.filter);
       filter.page = 1;
-      filter.count = loadProp.page * loadProp.count;
+      filter.count = filter.page * filter.count;
       return getList(filter).then(function(list) {
         return _this.list = list;
       })["finally"](function() {
@@ -60,11 +58,11 @@ AchievementList = (function() {
       var filter;
       if (!_this.showMoreLoading) {
         _this.showMoreLoading = true;
-        filter = angular.extend({}, _this.filter, loadProp);
+        filter = angular.extend({}, _this.filter);
         filter.page = +filter.page + 1;
         return getList(filter).then(function(list) {
           _this.list.push(list);
-          return loadProp.page = filter.page;
+          return _this.filter.page = filter.page;
         })["finally"](function() {
           return _this.showMoreLoading = false;
         });

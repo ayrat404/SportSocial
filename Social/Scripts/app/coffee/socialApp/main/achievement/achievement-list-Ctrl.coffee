@@ -18,11 +18,8 @@ class AchievementList extends Controller('socialApp.controllers')
         _this.filter = # filter object default
             status: 'all'       # fail, credit
             actual: 'opened'    # last
-
-        loadProp =
             count: 20   # default count load
             page: 3     # default start pages load
-
 
         for k,v of $state.params
             if v != undefined
@@ -31,7 +28,7 @@ class AchievementList extends Controller('socialApp.controllers')
         # set params in url
         # ---------------
         setUrl = ->
-            $state.params = angular.extend {}, _this.filter, loadProp
+            $state.params = angular.extend {}, _this.filter
             $state.transitionTo($state.current, $state.params, { notify: false });
 
         # get list
@@ -51,9 +48,9 @@ class AchievementList extends Controller('socialApp.controllers')
         # ---------------
         _this.updateList = ()->
             _this.loader = true
-            filter = angular.extend({}, _this.filter, loadProp)
+            filter = angular.extend {}, _this.filter
             filter.page = 1
-            filter.count = loadProp.page * loadProp.count
+            filter.count = filter.page * filter.count
             getList(filter).then (list)->
                 _this.list = list
             .finally ->
@@ -64,11 +61,11 @@ class AchievementList extends Controller('socialApp.controllers')
         _this.loadMore = ->
             if !_this.showMoreLoading
                 _this.showMoreLoading = true
-                filter = angular.extend({}, _this.filter, loadProp)
+                filter = angular.extend {}, _this.filter
                 filter.page = +filter.page + 1
                 getList(filter).then (list)->
                     _this.list.push list
-                    loadProp.page = filter.page
+                    _this.filter.page = filter.page
                 .finally ->
                     _this.showMoreLoading = false
 

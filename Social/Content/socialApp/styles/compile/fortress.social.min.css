@@ -10146,11 +10146,11 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .link--blue {
   color: #1f7eba;
-  text-decoration: underline;
+  border-bottom: 2px dotted #1f7eba;
 }
 .link--blue:hover {
   color: #1f7eba;
-  text-decoration: none;
+  border-bottom-color: transparent;
 }
 /* /Links
 ---------------------------------------------------------------------------------- */
@@ -12607,6 +12607,35 @@ fieldset[disabled] .show-more .show-more__btn {
 }
 /* /Likes row
 ---------------------------------------------------------------------------------- */
+/* Filter header row
+---------------------------------------------------------------------------------- */
+.filter-header-row {
+  min-height: 85px;
+  background-color: #45565e;
+  padding-bottom: 30px;
+}
+.filter-header-row .fhr__select {
+  display: inline-block;
+  width: 185px;
+  margin-top: 30px;
+  margin-right: 18px;
+}
+.filter-header-row .fs-radio {
+  margin: 0 6px;
+}
+.filter-header-row .fhr__toggle {
+  display: inline-block;
+  vertical-align: middle;
+}
+.filter-header-row .fhr__link {
+  float: right;
+  margin-top: 30px;
+}
+.filter-header-row .alert {
+  margin-top: 17px;
+}
+/* /Filter header row
+---------------------------------------------------------------------------------- */
 /* /Components */
 /* Views
 -------------------------------------------------- */
@@ -13287,29 +13316,8 @@ fieldset[disabled] .show-more .show-more__btn {
 ---------------------------------------------------------------------------------- */
 /* Achievement list
 ---------------------------------------------------------------------------------- */
-.achievement-list-page .alp__filter {
-  height: 85px;
-  background-color: #45565e;
-}
-.achievement-list-page .alp__filter .fs-radio {
-  margin: 0 6px;
-}
 .achievement-list-page .alp__inner {
   padding: 30px 0;
-}
-.achievement-list-page .alp__filter__type {
-  display: inline-block;
-  width: 185px;
-  margin-top: 30px;
-  margin-right: 30px;
-}
-.achievement-list-page .alp__filter__toggle {
-  display: inline-block;
-  vertical-align: middle;
-}
-.achievement-list-page .alp__link {
-  float: right;
-  margin-top: 30px;
 }
 /* /Achievement list
 ---------------------------------------------------------------------------------- */
@@ -13320,6 +13328,9 @@ fieldset[disabled] .show-more .show-more__btn {
 }
 .users-list-page .ulp__inner {
   padding: 30px 0;
+}
+.users-list-page .ulp__search {
+  padding-top: 18px;
 }
 /* /Achievement list
 ---------------------------------------------------------------------------------- */

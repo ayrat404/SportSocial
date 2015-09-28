@@ -1,0 +1,37 @@
+﻿<div ng-if="!uFilter.error"
+     data-loader="uFilter.loading">
+    <input ng-model="filter.country"
+           typeahead="country for country in uFilter.getCountry($viewValue)"
+           typeahead-wait-ms="300"
+           typeahead-no-results="noCountry"
+           typeahead-on-select="callback()"
+           class="fs-input fs-input--xs fhr__select" placeholder="@R("Выберите страну")" />
+    <input ng-model="filter.city"
+           typeahead="city for city in uFilter.getCity($viewValue)"
+           typeahead-wait-ms="300"
+           typeahead-no-results="noCity"
+           typeahead-on-select="callback()"
+           class="fs-input fs-input--xs fhr__select" placeholder="@R("Выберите город")" />
+    <select ng-model="filter.gender"
+            ng-change="callback()"
+            ng-options="option for option in uFilter.prop.gender"
+            class="fs-input fs-input--xs fhr__select">
+        <option value="">@R("Пол")</option>
+    </select>
+    <select ng-model="filter.age"
+            ng-change="callback()"
+            ng-options="option for option in uFilter.prop.age"
+            class="fs-input fs-input--xs fhr__select">
+        <option value="">@R("Возраст")</option>
+    </select>
+    <select ng-model="filter.inSport"
+            ng-change="callback()"
+            ng-options="option for option in uFilter.prop.inSport"
+            class="fs-input fs-input--xs fhr__select">
+        <option value="">@R("Стаж в спорте")</option>
+    </select>
+</div>
+<div ng-if="uFilter.error"
+     class="text-center">
+    <div class="alert alert-warning">@R("Произошла ошибка при загрузке фильтра. Наша команда уже решает эту проблему.")</div>
+</div>

@@ -1,6 +1,29 @@
 ﻿<section class="users-list-page">
     <div data-loader="ulist.loader"
          ng-if="!ulist.pageError">
+        
+        <div ng-init="ulist.showFilter = true" ng-show="ulist.showFilter" class="filter-header-row text-center">
+            <div class="container">
+                <users-filter filter="ulist.filter" callback="ulist.updateList()" query-list-limit = "10"></users-filter>
+            </div>
+        </div>
+        
+        <div class="ulp__search">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-1">
+                        <input ng-model="ulist.filter.query" class="fs-input" type="text" placeholder="@R("Введите имя пользователя")" />
+                    </div>
+                    <div class="col-sm-4">
+                        <button type="button" class="btn btn-fill-green btn-xl" ng-click="ulist.updateList()">@R("Поиск")</button>
+                        <button class="link link--blue" ng-click="ulist.showFilter = !ulist.showFilter">
+                            <span ng-show="ulist.showFilter">@R("Скрыть фильтр")</span>
+                            <span ng-show="!ulist.showFilter">@R("Показать фильтр")</span>
+                        </button>      
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="ulp__inner">
             <div class="container">

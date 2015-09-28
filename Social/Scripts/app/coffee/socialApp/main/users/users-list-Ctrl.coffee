@@ -5,7 +5,6 @@ class UsersList extends Controller('socialApp.controllers')
         $state
         userService)->
 
-        # ---------- COMMON ----------#
         $scope.$root.title = 'Fortress | Список атлетов'
 
         _this = this
@@ -13,29 +12,23 @@ class UsersList extends Controller('socialApp.controllers')
         _this.pageError = false
         _this.showMoreLoading = false
 
-        loadProp =
-            count: 20
-            page: 3
-
-        _this.filter = # filter object default
-            test: 'test'
-
-        #_this.prop = {} # filter settings object
-
-#        for k,v of $state.params
-#            if v != undefined
-#                _this.filter[k] = v
-
-        # set params in url
+        # get filter params from url
         # ---------------
-        setUrl = ->
-            $state.params = angular.extend {}, _this.filter, loadProp
-            $state.transitionTo($state.current, $state.params, { notify: false });
+        _this.filter = {}
+        for k,v of $state.params
+            if v != undefined
+                _this.filter[k] = v
 
-        # get list
+        # set url params
+        # ---------------
+        setUrl = (params)->
+            $state.params = params
+            $state.transitionTo $state.current, $state.params, notify: false
+
+        # get list func
         # ---------------
         getList = (filter)->
-            setUrl()
+            setUrl filter
             $q (resolve, reject)->
                 userService.getList(filter).then (res)->
                     _this.showMore = res.data.isMore
@@ -45,81 +38,31 @@ class UsersList extends Controller('socialApp.controllers')
                     _this.showMore = false
                     reject res
 
-        # full update list
+        # update users list
         # ---------------
         _this.updateList = ->
             _this.loader = true
-            filter = angular.extend {}, _this.filter, loadProp
+            filter = angular.extend {}, _this.filter
+            filter.count = filter.page * filter.count
             filter.page = 1
-            filter.count = loadProp.page * loadProp.count
             getList(filter).then (list)->
                 _this.list = list
             .finally ->
                 _this.loader = false
 
-        # show more
+        # load more users
         # ---------------
         _this.loadMore = ->
             if !_this.showMoreLoading
                 _this.showMoreLoading = true
-                filter = angular.extend {}, _this.filter, loadProp
+                filter = angular.extend {}, _this.filter
                 filter.page = +filter.page + 1
                 getList(filter).then (list)->
                     _this.list.push list
-                    loadProp.page = filter.page
+                    _this.filter.page = filter.page
                 .finally ->
                     _this.showMoreLoading = false
 
         # first load
         # ---------------
-        userService.getFilterProp().then (res)->
-            _this.prop = res.data
-            _this.updateList()
-        , ->
-            _this.pageError = true
-
-        # watch for toggles
-        # ---------------
-#        $scope.$watch ->
-#            return _this.filter.actual
-#        , (newVal, oldVal)->
-#            if newVal != oldVal
-#                _this.updateList()
-
-#        # fake filter prop
-#        _this.prop =
-#            types: ['Подтягивания', 'Отжимания']
-#
-#
-        #fake list
-#        _this.showMore = true
-#        _this.list = [
-#            {
-#                id: 1
-#                fullName: 'Вася Козлов'
-#                avatar: 'avatarUrl'
-#                age: 23
-#                sportTime: 4
-#                location: 'Владивосток, Россия'
-#                achievementsCount: 10
-#                recordsCount: 5
-#                subscribers:
-#                    count: 19
-#                    isSubscribed: false
-#                    list: [{id: 1, avatar: 'userAvatar'}]
-#            }
-#            {
-#                id: 2
-#                fullName: 'Вася Козлов'
-#                avatar: 'avatarUrl'
-#                age: 23
-#                sportTime: 4
-#                location: 'Владивосток, Россия'
-#                achievementsCount: 10
-#                recordsCount: 5
-#                subscribers:
-#                    count: 19
-#                    isSubscribed: false
-#                    list: []
-#            }
-#        ]
+        _this.updateList()

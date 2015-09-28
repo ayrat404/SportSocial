@@ -2,15 +2,15 @@
     <div data-loader="ach.loader"
          data-delay="100"
          ng-if="!ach.pageError">
-        <div class="alp__filter">
+        <div class="filter-header-row">
             <div class="container">
                 <select ng-model="ach.filter.type"
                         ng-change="ach.updateList()"
                         ng-options="option for option in ach.prop.types"
-                        class="fs-input fs-input--xs alp__filter__type">
+                        class="fs-input fs-input--xs fhr__select">
                     <option value="">@R("Все")</option>
                 </select>
-                <div class="alp__filter__toggle">
+                <div class="fhr__toggle">
                     <div class="fs-radio">
                         <input ng-model="ach.filter.actual" value="opened" name="filterActual" class="fs-radio__input" type="radio" id="filter_now" />
                         <label class="fs-radio__label" for="filter_now">@R("Текущие")</label>
@@ -23,12 +23,12 @@
                 <select ng-show="ach.filter.actual == 'closed'"
                         ng-model="ach.filter.status"
                         ng-change="ach.updateList()"
-                        class="fs-input fs-input--xs alp__filter__type">
+                        class="fs-input fs-input--xs fhr__select">
                     <option value="all">@R("Зачет/Незачет")</option>
                     <option value="fail">@R("Незачет")</option>
                     <option value="credit">@R("Зачет")</option>
                 </select>
-                <a ui-sref="main.achievementAdd" class="btn btn-fill-green alp__link">+ @R("Подать заявку")</a>
+                <a ui-sref="main.achievementAdd" class="btn btn-fill-green fhr__link">+ @R("Подать заявку")</a>
             </div>
         </div>
 

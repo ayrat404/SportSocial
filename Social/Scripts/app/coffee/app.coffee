@@ -71,7 +71,7 @@ app = angular.module('app', [
                     controller: 'achievementListController'
                     controllerAs: 'ach'
         .state 'main.users',
-            url: '/users?count&page'
+            url: '/users?country&city&age&insport&query&count=20&page=3'
             views:
                 'socialContent@main':
                     templateUrl: tmplView 'users/users-list'

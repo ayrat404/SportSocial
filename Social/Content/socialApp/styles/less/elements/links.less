@@ -32,11 +32,13 @@
 
 .link--blue {
     color: @brand-blue;
-    text-decoration: underline;
+    border-bottom: 2px dotted @brand-blue;
+    //text-decoration: underline;
 
     &:hover {
         color: @brand-blue;
-        text-decoration: none;
+        border-bottom-color: transparent;
+        //text-decoration: none;
     }
 }
 
