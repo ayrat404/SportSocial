@@ -2859,6 +2859,7 @@
     <Content Include="Content\socialApp\styles\less\elements\show-more.less" />
     <Content Include="Content\socialApp\styles\less\components\subscribers\subscribers-row.less" />
     <Content Include="Content\socialApp\styles\less\views\tape.less" />
+    <Content Include="Content\socialApp\styles\less\views\settings.less" />
     <None Include="Properties\PublishProfiles\fortress-club %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\fortress-club.pubxml" />
     <None Include="Properties\PublishProfiles\Social.pubxml" />
@@ -2893,6 +2894,14 @@
     <Content Include="Scripts\app\coffee\socialApp\main\users\users-list-Ctrl.coffee" />
     <Content Include="Scripts\app\coffee\socialApp\components\subscribers\subscribers-row-Drct.coffee" />
     <Content Include="Scripts\app\coffee\appServices\other\subscribe-Srvc.coffee" />
+    <Content Include="Scripts\app\coffee\appServices\other\cup-Srvc.coffee" />
+    <Content Include="Scripts\app\coffee\appServices\other\tape-Srvc.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\components\comments\comment-form-Ctrl.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\components\comments\comment-list-Ctrl.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\components\likes\likes-finger-Ctrl.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\components\likes\likes-row-Ctrl.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\components\subscribers\subscribers-row-Ctrl.coffee" />
+    <Content Include="Scripts\app\coffee\socialApp\constructors\request-Cnstr.coffee" />
     <None Include="Scripts\libs\jquery\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.min.js" />
@@ -3170,6 +3179,10 @@
     <Content Include="Views\Template\components\subscribers\subscribers-rowTpl.cshtml" />
     <Content Include="Views\Template\tape\tape-view.cshtml" />
     <Content Include="Views\Shared\Partials\Mixpanel.cshtml" />
+    <Content Include="Views\Template\components\filters\users-filterTpl.cshtml" />
+    <Content Include="Views\Template\settings\settings-profile.cshtml" />
+    <Content Include="Views\Template\settings\settings-account.cshtml" />
+    <Content Include="Views\Template\settings\settings-layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">

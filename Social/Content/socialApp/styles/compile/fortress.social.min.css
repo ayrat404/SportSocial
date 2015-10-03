@@ -10156,6 +10156,10 @@ fieldset[disabled] .btn--subscribe.active {
 ---------------------------------------------------------------------------------- */
 /* Form
 ---------------------------------------------------------------------------------- */
+.fs-form.form-horizontal .control-label {
+  font-weight: normal;
+  padding-top: 13px;
+}
 .fs-input {
   font-family: 'F1 Light';
   background-color: #fff;
@@ -10189,6 +10193,12 @@ fieldset[disabled] .btn--subscribe.active {
 }
 .fs-input--error {
   border-color: #de3233;
+}
+.fs-input-empty {
+  font-family: 'F1 Light';
+  font-size: 18px;
+  padding-top: 11px;
+  display: inline-block;
 }
 .fs-form__row {
   margin-bottom: 10px;
@@ -10228,6 +10238,10 @@ fieldset[disabled] .btn--subscribe.active {
   cursor: pointer;
   color: #71848d;
   border-bottom: 1px dashed #71848d;
+}
+.fs-radio .fs-radio__label.active {
+  color: #fff;
+  border-bottom: none;
 }
 .fs-radio .fs-radio__label:hover {
   color: #7f9098;
@@ -10906,6 +10920,7 @@ fieldset[disabled] .show-more .show-more__btn {
   clear: both;
 }
 .user-info--media .user-info__media {
+  width: 231px;
   display: block;
 }
 .user-info--media .user-info__about {
@@ -10923,7 +10938,7 @@ fieldset[disabled] .show-more .show-more__btn {
   margin: 0 -100% 0 0;
   border-right: 1px solid #d7d9db;
   position: relative;
-  height: 230px;
+  height: 231px;
   width: 230px;
   float: left;
   background-color: #f5f5f5;
@@ -10952,7 +10967,7 @@ fieldset[disabled] .show-more .show-more__btn {
 }
 .user-info__avatar__img-wrap {
   position: relative;
-  height: 230px;
+  height: 231px;
   width: 230px;
 }
 .user-info__avatar__img-wrap .uia__remove,
@@ -11834,6 +11849,12 @@ fieldset[disabled] .show-more .show-more__btn {
   line-height: 0;
   content: '';
   clear: both;
+}
+.bread .fs-radio {
+  margin: 0 5px;
+}
+.bread .fs-radio:first-child {
+  margin-left: 50px;
 }
 .bread__back {
   text-align: center;
@@ -13389,6 +13410,13 @@ fieldset[disabled] .show-more .show-more__btn {
   }
 }
 /* /Tape
+---------------------------------------------------------------------------------- */
+/* Settings
+---------------------------------------------------------------------------------- */
+.settings-list-page .settings__inner {
+  padding-top: 40px;
+}
+/* /Settings
 ---------------------------------------------------------------------------------- */
 /* /Views */
 /* DEV

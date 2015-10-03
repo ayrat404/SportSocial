@@ -9,6 +9,7 @@ ProfileView = (function() {
       return mixpanel.ev.visitPage($scope.$root.title);
     });
     _this = this;
+    _this.loading = true;
     _this.unknown = false;
     _this.user = {
       loaded: false
@@ -138,6 +139,8 @@ ProfileView = (function() {
       return loadProp.authorId = _this.user.id;
     }, function(res) {
       return _this.unknown = true;
+    })["finally"](function(res) {
+      return _this.loading = false;
     });
   }
 

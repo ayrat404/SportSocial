@@ -1,9 +1,11 @@
 class AchievementView extends Controller('socialApp.controllers')
     constructor: (
+        $state
         $scope
         $stateParams
         $rootScope
         $window
+        modalService
         achievementService)->
 
         # ---------- COMMON ----------#
@@ -59,7 +61,7 @@ class AchievementView extends Controller('socialApp.controllers')
         # voice
         # ---------------
         _this.voice = (action)->
-            #if !_this.it.voice.isVoited && _this.it.author.id != $rootScope.user.id
+            if !_this.it.voice.isVoited && _this.it.author.id != $rootScope.user.id
                 achievementService.voice(id: _this.it.id, action: action).then (res)->
                     debugger
                     _this.it.voice.for = res.data.for

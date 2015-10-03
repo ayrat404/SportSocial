@@ -1,0 +1,22 @@
+﻿<section class="settings-list-page">
+    <div class="bread">
+        <a ui-sref="main.profile({userId: $root.user.id})" class="bread__back">
+            <i class="bread__back__icon"></i>
+            <span class="bread__back__text">{{::$root.user.fullName}}</span>
+        </a>
+        <div class="bread__title">
+            @R("Настройки")
+            <div class="fs-radio">
+                <a ui-sref="main.settings.profile" ui-sref-active="active" class="fs-radio__label">@R("Профиль")</a>
+            </div>
+            <div class="fs-radio">
+                <a ui-sref="main.settings.account" ui-sref-active="active" class="fs-radio__label">@R("Аккаунт")</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="settings__inner"
+         content-height=".alp__filter">
+        <ui-view></ui-view>
+    </div>
+</section>

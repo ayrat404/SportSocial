@@ -1,0 +1,17 @@
+﻿<div class="fs-modal__title">@R("Изменение номера мобильного телефона")</div>
+<div class="fs-modal__body">
+    <p class="text-center">@R("Вам отправлено СМС с кодом подтверждения").</p>
+</div>
+<div class="fs-modal__body">
+    <div data-server-validation="serverValidation">
+        <form name="SendCodeForm"
+              ng-submit="submit()">
+            <div class="fs-form__row">
+                <input name="code" type="text" ng-model="model.code" required placeholder="@R("Код подтверждения из СМС")" class="fs-input" />
+            </div>
+            <div class="fs-modal__submit">
+                <button ng-disabled="!SendCodeForm.$valid" class="btn btn-fill-green btn-xl" type="submit">@R("Изменить номер телфона")</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -25,6 +25,8 @@
         <li><a href="#api_users_list">Страница атлетов</a></li>
         <li><a href="#api_subscribe">Подписка/отписка</a></li>
         <li><a href="#api_tape">Страница ленты пользователя</a></li>
+        <li><a href="#api_settings_account">Настройки аккаунта</a></li>
+        <li><a href="#api_settings_profile">Настройки профиля</a></li>
     </ul>
     <ul class="dev__api__content">
 
@@ -1191,8 +1193,8 @@
             </b>
 
         </li>
-        
-        
+
+
         <li id="api_geo" class="dev__api__row">
             <p>Запросы к городам и странам</p>
             <code>GET: /api/geo/country</code>
@@ -1216,7 +1218,7 @@
 }
                     </pre>
             </b>
-            
+
             <code>GET: /api/geo/city</code>
             <b>
                 send data:
@@ -1239,6 +1241,171 @@
                     </pre>
             </b>
 
+        </li>
+
+
+
+        <li id="api_settings_account" class="dev__api__row">
+            <p>Настройки аккаунта</p>
+            <code>GET: /api/settings/account</code>
+            <p>Запрос настроек аккаунта. В данном случае возвращается полускрытый телефон пользователя</p>
+            <b>
+                send data:
+                <pre>
+{
+    *none*
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true,
+    data: {
+        phone: +7 *** *** ** 32
+    },
+    errors: null,
+    message: null
+}
+                    </pre>
+            </b>
+
+            <code>POST: /api/settings/password</code>
+            <p>Смена пароля пользователя</p>
+            <b>
+                send data:
+                <pre>
+{
+    oldPassword: xxx,
+    newPassword: xxx,
+    newRepeatPassword: xxx
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true,
+    data: null,
+    errors: null,
+    message: "Пароль был успешно изменен"
+}
+                    </pre>
+            </b>
+
+
+            <code>POST: /api/settings/change_phone_one</code>
+            <p>Получить код для смены номера телефона. Отправляется новый номер телефона. На который отсылается смс с кодом</p>
+            <b>
+                send data:
+                <pre>
+{
+    phone: xxx
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true,
+    data: null,
+    errors: null,
+    message: null
+}
+                    </pre>
+            </b>
+
+            <code>POST: /api/settings/change_phone_two</code>
+            <p>Смена номера телфона. Отправляется тот же новый номер телфона и проверочный код</p>
+            <b>
+                send data:
+                <pre>
+{
+    phone: xxx,
+    code: xxx
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true,
+    data: null,
+    errors: null,
+    message: "Ваш номер телефона был успешно изменен"
+}
+                    </pre>
+            </b>
+
+        </li>
+
+
+
+        <li id="api_settings_profile" class="dev__api__row">
+            <p>Настройки профиля</p>
+            <code>GET: /api/settings/profile</code>
+            <p>Запрос настроек аккаунта и свойств полей.</p>
+            <b>
+                send data:
+                <pre>
+{
+    *none*
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true,
+    data: {
+        model: {
+            firstName: "",
+            lastName: "",
+            birthday: "",
+            gender: { value: "male", label: "Муж." },
+            sportTime: { value: 0, label: "" }
+        },
+        prop: {
+            genders: [{ value: "male", label: "Муж." }, { value: "female", label: "Жен." }],
+            sportTimes: [ { value: 0, label: "менее года"}, ... ]
+        }
+    },
+    errors: null,
+    message: null
+}
+                    </pre>
+            </b>
+
+            <code>PUT: /api/settings/profile</code>
+            <p>Сохранение настроек профиля/p>
+            <b>
+                send data:
+                <pre>
+{
+    firstName: "",
+    lastName: "",
+    birthday: "",
+    gender: { value: "male", label: "Муж." },
+    sportTime: { value: 0, label: "" }
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true,
+    data: null,
+    errors: null,
+    message: "Настройки профиля успешно сохранены"
+}
+                    </pre>
+            </b>
         </li>
 
 

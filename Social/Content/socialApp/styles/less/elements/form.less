@@ -2,6 +2,12 @@
 ---------------------------------------------------------------------------------- */
 
 .fs-form {
+    &.form-horizontal {
+        .control-label {
+            font-weight: normal;
+            padding-top: 13px;
+        }
+    }
 }
 
 .fs-input {
@@ -50,6 +56,13 @@
     border-color: @brand-red;
 }
 
+.fs-input-empty {
+    font-family: 'F1 Light';
+    font-size: 18px;
+    padding-top: 11px;
+    display: inline-block;
+}
+
 .fs-form__row {
     margin-bottom: 10px;
 
@@ -96,6 +109,10 @@
         cursor: pointer;
         color: @brand-gray5;
         border-bottom: 1px dashed @brand-gray5;
+        &.active {
+            color: #fff;
+            border-bottom: none;
+        }
         &:hover {
             color: lighten(@brand-gray5, 5%);
         }

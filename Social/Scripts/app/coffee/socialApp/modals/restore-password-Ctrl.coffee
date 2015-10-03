@@ -27,7 +27,7 @@ class RestorePasswordSubmitNewModal extends Controller('socialApp.controllers')
         modalService
         modalData)->
 
-        serverValidation = {}
+        $scope.serverValidation = {}
         $scope.restore.phone = modalData.phone
         $scope.submit = ()->
             restorePasswordService.sendNewPassword($scope.restore).then((res)->

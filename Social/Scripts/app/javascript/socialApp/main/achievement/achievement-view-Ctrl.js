@@ -2,7 +2,7 @@
 var AchievementView;
 
 AchievementView = (function() {
-  function AchievementView($scope, $stateParams, $rootScope, $window, achievementService) {
+  function AchievementView($state, $scope, $stateParams, $rootScope, $window, modalService, achievementService) {
     var _this, calcBars, k;
     $scope.$root.title = 'Fortress | Просмотр заявки на награду';
     _this = this;
@@ -56,16 +56,18 @@ AchievementView = (function() {
       return _this.againstBarWidth = Math.round(_this.it.voice.against * k) + '%';
     };
     _this.voice = function(action) {
-      return achievementService.voice({
-        id: _this.it.id,
-        action: action
-      }).then(function(res) {
-        debugger;
-        _this.it.voice["for"] = res.data["for"];
-        _this.it.voice.against = res.data.against;
-        _this.it.voice.isVoited = true;
-        return calcBars();
-      });
+      if (!_this.it.voice.isVoited && _this.it.author.id !== $rootScope.user.id) {
+        return achievementService.voice({
+          id: _this.it.id,
+          action: action
+        }).then(function(res) {
+          debugger;
+          _this.it.voice["for"] = res.data["for"];
+          _this.it.voice.against = res.data.against;
+          _this.it.voice.isVoited = true;
+          return calcBars();
+        });
+      }
     };
   }
 
@@ -73,6 +75,6 @@ AchievementView = (function() {
 
 })();
 
-angular.module('socialApp.controllers').controller('achievementViewController', ['$scope', '$stateParams', '$rootScope', '$window', 'achievementService', AchievementView]);
+angular.module('socialApp.controllers').controller('achievementViewController', ['$state', '$scope', '$stateParams', '$rootScope', '$window', 'modalService', 'achievementService', AchievementView]);
 
 })();
