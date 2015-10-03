@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using BLL.Common.Helpers;
 using BLL.Common.Objects;
@@ -7,7 +8,9 @@ using BLL.Common.Services.CurrentUser;
 using BLL.Infrastructure.IdentityConfig;
 using BLL.Login.ViewModels;
 using BLL.Sms;
+using BLL.Social.Journals.Objects;
 using BLL.Storage;
+using BLL.Storage.Impls.Enums;
 using DAL.DomainModel;
 using DAL.DomainModel.EnumProperties;
 using DAL.Repository.Interfaces;
@@ -25,11 +28,12 @@ namespace BLL.Login.Impls
         private readonly IRepository _repository;
         private readonly ICurrentUser _currentUser;
         private readonly ICookiesService _cookiesService;
+        private readonly IImageService _imageService;
 
         public const string DefaultAvatarUrl = "/Content/Images/default-avatar.png";
         public const string DefaultFortressAvatar = "/Content/Images/fortress-avatar.jpg";
 
-        public LoginService(ISmsService smsService, AppUserManager appUserManager, IAuthenticationManager authManager, IRepository repository, ICurrentUser currentUser, ICookiesService cookiesService)
+        public LoginService(ISmsService smsService, AppUserManager appUserManager, IAuthenticationManager authManager, IRepository repository, ICurrentUser currentUser, ICookiesService cookiesService, IImageService imageService)
         {
             _smsService = smsService;
             _appUserManager = appUserManager;
@@ -37,6 +41,7 @@ namespace BLL.Login.Impls
             _repository = repository;
             _currentUser = currentUser;
             _cookiesService = cookiesService;
+            _imageService = imageService;
         }
 
         public ServiceResult<SignInResult> SignIn(SignInModel signInModel, string returnUrl)
@@ -122,12 +127,12 @@ namespace BLL.Login.Impls
                     _appUserManager.AddPassword(user.Id, confirmModel.Password);
                     user.Name = confirmModel.Name;
                     _appUserManager.Update(user);
-                    
+                    var img = _repository.Find<UserAvatarPhoto>(confirmModel.ImgId);
                     var profile = new Profile
                     {
                         Id = user.Id,
                         Lang = LanguageHelper.GetCurrentCulture(),
-                        Avatar = DefaultAvatarUrl,
+                        Avatar = img != null ? img.Url : DefaultAvatarUrl,
                         ReadedNews = _cookiesService.GetReadedNews(),
                         FirstName = confirmModel.Name,
                         LastName = confirmModel.LastName,
@@ -137,6 +142,11 @@ namespace BLL.Login.Impls
                     };
                     _repository.Add(profile);
                     _repository.SaveChanges();
+                    if (img != null)
+                    {
+                        _imageService.AttachImagesToEntity(new List<MediaVm> {new MediaVm() {Id = img.Id} },
+                            user.Id, UploadType.Avatar);
+                    }
                     var ident = _appUserManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
                     _authManager.SignOut();
                     _authManager.SignIn(new AuthenticationProperties { IsPersistent = true }, ident);

@@ -46,14 +46,17 @@ namespace BLL.Storage.Impls
             SaveFile(inputStream, url);
             var imageEntity = (TImageEntity)Activator.CreateInstance(typeof (TImageEntity));
             imageEntity.Url = url;
-            imageEntity.UserId = _currentUser.UserId;
-            _repository.Add(imageEntity);
-            //TODO костыль
-            if (typeof (TEntity) == typeof (AppUser))
+            if (_currentUser.UserId > 0)
             {
-                _currentUser.User.Profile.Avatar = url;
-                imageEntity.EntityId = _currentUser.UserId;
+                imageEntity.UserId = _currentUser.UserId;
             }
+            _repository.Add(imageEntity);
+            ////TODO костыль
+            //if (typeof(TEntity) == typeof(AppUser))
+            //{
+            //    _currentUser.User.Profile.Avatar = url;
+            //    imageEntity.EntityId = _currentUser.UserId;
+            //}
             _repository.SaveChanges();
             result.Result = new ImageUploadResult();
             result.Result.Url = VirtualPathUtility.ToAbsolute(url);
