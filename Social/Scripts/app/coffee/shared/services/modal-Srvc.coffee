@@ -56,6 +56,14 @@ class modal extends Service('shared')
                 tplName: modalBaseUrl 'social-share'
                 controller: 'socialShareModalController'
                 classname: 'fs-modal--transparent sharing-modal'
+            changePhoneGetCode:
+                tplName: modalBaseUrl 'settings/change-phone-get-code'
+                controller: 'changePhoneGetCodeModalController'
+                classname: 'fs-modal--transparent'
+            changePhoneSubmitCode:
+                tplName: modalBaseUrl 'settings/change-phone-submit-code'
+                controller: 'changePhoneSubmitCodeModalController'
+                classname: 'fs-modal--transparent'
             apiModal:
                 tplName: modalBaseUrl 'dev/api'
             policy:

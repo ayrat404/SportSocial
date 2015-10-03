@@ -14,7 +14,10 @@ class UsersList extends Controller('socialApp.controllers')
 
         # get filter params from url
         # ---------------
-        _this.filter = {}
+        _this.filter = {
+            page: 1
+            count: 20
+        }
         for k,v of $state.params
             if v != undefined
                 _this.filter[k] = v

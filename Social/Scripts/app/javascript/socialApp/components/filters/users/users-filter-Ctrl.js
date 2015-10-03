@@ -8,9 +8,6 @@ UsersFilter = (function() {
     _this.loading = true;
     _this.error = false;
     _this.filter = $scope.filter;
-    _this.update = function() {
-      return $scope.callback();
-    };
     getGeo = function(entity, query) {
       return geoService[entity]({
         query: query,

@@ -2,7 +2,7 @@
 
     <div data-loader="tape.loader"
          ng-if="!tape.pageError">
-        <div ng-if="tape.list"
+        <div ng-if="tape.list.length"
              class="wall">
             <div class="wall__bar">
                 <div ng-repeat="it in tape.list"
@@ -73,6 +73,15 @@
                 </div>
             </div>
         </div>
+        
+        <div ng-if="!tape.list.length">
+            <div class="container">
+                <div class="alert alert-info text-center">
+                    @R("Ваша лента пуста")
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <div ng-if="tape.pageError"

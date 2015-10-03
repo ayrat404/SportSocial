@@ -65,7 +65,7 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'fl
         }
       }
     }).state('main.users', {
-      url: '/users?country&city&age&insport&query&count=20&page=3',
+      url: '/users?country&city&age&insport&query&count&page',
       views: {
         'socialContent@main': {
           templateUrl: tmplView('users/users-list'),
@@ -82,6 +82,24 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'fl
           controllerAs: 'tape'
         }
       }
+    }).state('main.settings', {
+      abstract: true,
+      url: '/settings',
+      views: {
+        'socialContent@main': {
+          templateUrl: tmplView('settings/settings-layout')
+        }
+      }
+    }).state('main.settings.profile', {
+      url: '/profile',
+      templateUrl: tmplView('settings/settings-profile'),
+      controller: 'settingsProfileController',
+      controllerAs: 'sett'
+    }).state('main.settings.account', {
+      url: '/account',
+      templateUrl: tmplView('settings/settings-account'),
+      controller: 'settingsAccountController',
+      controllerAs: 'sett'
     }).state('landing', {
       url: '/',
       templateUrl: tmplView('landing/index'),

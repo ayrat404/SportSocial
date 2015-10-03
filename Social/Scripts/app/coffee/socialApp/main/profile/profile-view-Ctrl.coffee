@@ -18,6 +18,7 @@ class ProfileView extends Controller('socialApp.controllers')
             mixpanel.ev.visitPage($scope.$root.title))
 
         _this = this
+        _this.loading = true
         _this.unknown = false
         _this.user =
             loaded: false
@@ -159,3 +160,5 @@ class ProfileView extends Controller('socialApp.controllers')
 #            ]
         , (res)->
             _this.unknown = true
+        .finally (res)->
+            _this.loading = false

@@ -9,7 +9,10 @@ UsersList = (function() {
     _this.loader = true;
     _this.pageError = false;
     _this.showMoreLoading = false;
-    _this.filter = {};
+    _this.filter = {
+      page: 1,
+      count: 20
+    };
     ref = $state.params;
     for (k in ref) {
       v = ref[k];
