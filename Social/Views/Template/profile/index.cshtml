@@ -1,4 +1,5 @@
 ﻿<section class="profile"
+         content-height
          data-loader="profile.loading">
     <div class="container-fluid">
         <div class="row">
@@ -80,7 +81,7 @@
                         </div>
                     </div>
                     @*-----User achievements-----*@
-                    
+
 
                     @*-----User subscribes & subscribers-----*@
                     <div class="pi__row">
@@ -105,7 +106,7 @@
                         </ul>
                     </div>
                     @*-----User subscribes & subscribers-----*@
-                    
+
                     @*-----User helps-----*@
                     <div class="pi__row pi__row--helps">
                         <p>
@@ -126,15 +127,15 @@
                     @*-----User helps-----*@
 
                 </div>
-                
+
                 <div class="profile__journal">
-                    
+
                     @*-----Journal record submit-----*@
                     <div ng-if="profile.user.isOwner">
                         <journal-profile-submit success="profile.newRecord($res)"></journal-profile-submit>
                     </div>
                     @*-----Journal record submit-----*@
-                    
+
                     @*-----Journals list-----*@
                     <div ng-if="profile.user.journal.list.length"
                          class="wall">

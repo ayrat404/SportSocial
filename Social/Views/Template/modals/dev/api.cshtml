@@ -1438,7 +1438,11 @@
         systems: [ * системы оплаты
             { id: 1, name: "PayPal" },
             ...
-        ]
+        ],
+        payment: { * статус оплаты
+            status: true/false * период оплачен или нет
+            until: date * до какого числа оплачено
+        }
     },
     errors: null,
     message: null

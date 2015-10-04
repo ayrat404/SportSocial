@@ -23,6 +23,7 @@ class PaymentIndex extends Controller('socialApp.controllers')
             _this.trial = res.data.trial
             _this.tariffs = prepareTariffs res.data.tariffs
             _this.systems = res.data.systems
+            _this.payment = res.data.payment
         , (res)->
             _this.pageError = true
         .finally (res)->
@@ -63,6 +64,8 @@ class PaymentIndex extends Controller('socialApp.controllers')
         # ---------------
         _this.back = ->
             _this.mode -= 1 if _this.mode > 0
+
+
 #
 #        # fake data
 #        _this.trial =
@@ -76,6 +79,10 @@ class PaymentIndex extends Controller('socialApp.controllers')
 #            {id: 3, months: 12, cost: 60, curr: 'руб'}
 #        ]
 
+
+#        _this.payment =
+#            status: true
+#            until: '2015-09-23T17:13:32.487'
 
 #        _this.tariffs = prepareTariffs tariffs
 #

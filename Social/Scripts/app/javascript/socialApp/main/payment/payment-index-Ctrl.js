@@ -35,7 +35,8 @@ PaymentIndex = (function() {
     paymentService.getInfo().then(function(res) {
       _this.trial = res.data.trial;
       _this.tariffs = prepareTariffs(res.data.tariffs);
-      return _this.systems = res.data.systems;
+      _this.systems = res.data.systems;
+      return _this.payment = res.data.payment;
     }, function(res) {
       return _this.pageError = true;
     })["finally"](function(res) {

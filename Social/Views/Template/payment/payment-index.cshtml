@@ -2,48 +2,64 @@
          content-height>
     <div data-loader="pay.loader"
          ng-if="!pay.pageError">
-        <div ng-if="pay.trial.isEnabled && pay.mode == 0" class="payment-trial">
-            <h1 class="pt__title">@R("До конца пробного периода осталось:")</h1>
-            <trial-visual current-days="pay.trial.currentDays" all-days="pay.trial.allDays"></trial-visual>
-            <div class="pt__select">@R("Выберите тарифный план")</div>
+        
+        <div ng-if="pay.payment.status">
+            <h1 class="pt__title">@R("Учетный период действует до:")</h1>
+            <p class="pt__until">{{pay.payment.until|date:'dd MMM yyyy'}}</p>
         </div>
-        <div class="container">
-            <div class="row">
-                <button ng-if="pay.mode != 0" class="btn btn-link" ng-click="pay.back()">@R("Назад")</button>
-                
-                <div ng-if="pay.mode == 0" class="payment-tariffs">
-                    <div ng-repeat="t in pay.tariffs"
-                         class="col-sm-4">
-                        <div class="ptf__it">
-                            <p class="ptf__time">{{t.months|formatWord:['@R("месяц")', '@R("месяца")', '@R("месяцев")']:true}}</p>
-                            <div class="ptf__cost-wrap">
-                                <div class="ptf__cost">{{t.cost}}</div>
-                                <div class="ptf__cur">
-                                    <p>{{t.curr}}</p>
-                                    <p>@R("мес")</p>
+        <div ng-if="!pay.payment.status">
+            <div ng-if="pay.mode == 0" class="payment-trial">
+                <div ng-if="pay.trial.currentDays > 0">
+                    <h1 class="pt__title">@R("До конца пробного периода осталось:")</h1>
+                    <trial-visual current-days="pay.trial.currentDays" all-days="pay.trial.allDays"></trial-visual>
+                </div>
+                <div ng-if="pay.trial.currentDays <= 0">
+                    <h1 class="pt__title">
+                        @R("Пробный период окончен.")
+                        <br />
+                        @R("Оплатите подписку чтобы продолжить пользование")
+                    </h1>
+                </div>
+                <div class="pt__select">@R("Выберите тарифный план")</div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <button ng-if="pay.mode != 0" class="btn btn-link" ng-click="pay.back()">@R("Назад")</button>
+
+                    <div ng-if="pay.mode == 0" class="payment-tariffs">
+                        <div ng-repeat="t in pay.tariffs"
+                             class="col-sm-4">
+                            <div class="ptf__it">
+                                <p class="ptf__time">{{t.months|formatWord:['@R("месяц")', '@R("месяца")', '@R("месяцев")']:true}}</p>
+                                <div class="ptf__cost-wrap">
+                                    <div class="ptf__cost">{{t.cost}}</div>
+                                    <div class="ptf__cur">
+                                        <p>{{t.curr}}</p>
+                                        <p>@R("мес")</p>
+                                    </div>
                                 </div>
+                                <div class="ptf__profit">
+                                    <div ng-show="t.profit">(@R("экономия") {{t.profit}}%)</div>
+                                </div>
+                                <button type="button" ng-click="pay.selectTariff(t.id)" class="btn btn-fill-green btn-xl">@R("Выбрать")</button>
                             </div>
-                            <div class="ptf__profit">
-                                <div ng-show="t.profit">(@R("экономия") {{t.profit}}%)</div>
-                            </div>
-                            <button type="button" ng-click="pay.selectTariff(t.id)" class="btn btn-fill-green btn-xl">@R("Выбрать")</button>
                         </div>
                     </div>
-                </div>
-                
-                <div ng-if="pay.mode == 1" class="payment-system text-center">
-                    <div class="pt__select">@R("Выберите систему оплаты")</div>
-                    <button ng-repeat="p in pay.systems" class="btn btn-fill-green" ng-click="pay.selectSystem(p.id)">{{p.name}}</button>
-                </div>
-                
-                <div ng-if="pay.mode == 2" class="payment-system text-center">
-                    <div class="pt__select"><b>@R("Подтверждение оплаты")</b></div>
-                    <div>@R("Тариф"): {{pay.stat.tariff}}</div>
-                    <div>@R("Стоимость"): {{pay.stat.cost}}</div>
-                    <div>@R("Система оплаты"): {{pay.stat.system}}</div>
-                    <div ng-bind-html="pay.stat.form"></div>
-                </div>
 
+                    <div ng-if="pay.mode == 1" class="payment-system text-center">
+                        <div class="pt__select">@R("Выберите систему оплаты")</div>
+                        <button ng-repeat="p in pay.systems" class="btn btn-fill-green" ng-click="pay.selectSystem(p.id)">{{p.name}}</button>
+                    </div>
+
+                    <div ng-if="pay.mode == 2" class="payment-system text-center">
+                        <div class="pt__select"><b>@R("Подтверждение оплаты")</b></div>
+                        <div>@R("Тариф"): {{pay.stat.tariff}}</div>
+                        <div>@R("Стоимость"): {{pay.stat.cost}}</div>
+                        <div>@R("Система оплаты"): {{pay.stat.system}}</div>
+                        <div ng-bind-html="pay.stat.form"></div>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
