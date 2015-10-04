@@ -40,7 +40,7 @@ namespace Social.Controllers
 
         [Route("~/api/users/filter")]
         [HttpGet]
-        public object GetFilter()
+        public ApiResult GetFilter()
         {
             var filter = new
             {

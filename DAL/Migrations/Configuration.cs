@@ -43,7 +43,7 @@ namespace DAL.Migrations
                 new AppRole("User") { Id = 4 }
             );
 
-            context.Set<Product>().RemoveRange(context.Products.ToList());
+            //context.Set<Product>().RemoveRange(context.Products.ToList());
 
             context.Products.AddOrUpdate( 
                 new Product
