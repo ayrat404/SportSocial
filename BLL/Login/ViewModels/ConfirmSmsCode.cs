@@ -39,5 +39,7 @@ namespace BLL.Login.ViewModels
 
         [Required(ErrorMessage = "Не выбран стаж")]
         public SportExperience SportTime { get; set; }
+
+        public int? ImgId { get; set; }
     }
 }
