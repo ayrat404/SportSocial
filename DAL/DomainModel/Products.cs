@@ -12,6 +12,8 @@ namespace DAL.DomainModel
 
         public decimal Cost { get; set; }
 
+        public int Count { get; set; }
+
         public string Currency { get; set; }
 
         public string Lang { get; set; }

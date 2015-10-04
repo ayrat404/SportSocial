@@ -118,12 +118,15 @@ namespace BLL.Payment.Impls
                         if (pay != null)
                         {
                             pay.PaySatus = PaySatus.Completed;
+                            pay.User.Profile.LastPaymentDate = DateTime.Now;
+                            pay.User.Profile.LastPaidDaysCount = (DateTime.Now.AddMonths(pay.ProductCount) - DateTime.Now).Days;
+                            pay.User.Profile.IsTrial = false;
                             pay.User.Profile.IsPaid = true;
                             if (ipnModel.Mc_gross == pay.Amount.ToStringWithDot() && ipnModel.Mc_currency == pay.Product.Currency)
                             {
                                 //_payService.CompletePay(pay);
-                                pay.PaySatus = PaySatus.Completed;
-                                pay.User.Profile.IsPaid = true;
+                                pay.User.Profile.LastPaymentDate = DateTime.Now;
+                                pay.User.Profile.LastPaidDaysCount = (DateTime.Now.AddMonths(pay.ProductCount) - DateTime.Now).Days;
                                 db.SaveChanges();
                             }
                             else

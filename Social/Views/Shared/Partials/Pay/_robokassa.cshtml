@@ -1,0 +1,18 @@
+﻿@model BLL.Payment.ViewModels.RobokassaViewModel
+@{
+    ViewBag.Title = "Робокасса";
+}
+<form action='https://auth.robokassa.ru/Merchant/Index.aspx' method=GET>
+    <input type=hidden name="MrchLogin" value="@Model.MerchantLogin">
+    <input type=hidden name="OutSum" value="@Model.Cost">
+    <input type=hidden name="InvId" value=@Model.Id>
+    <input type=hidden name="Desc" value="@Model.Description">
+    <input type=hidden name="SignatureValue" value="@Model.Signature">
+    @*<input type=submit value='Оплатить'>*@
+    <div class="text-center">
+        <div>@R("Способ оплаты: Робокасса")</div>
+        <div>@R(string.Format("Сумма к оплате: {0} рублей", Model.Cost))</div>
+        <div><button type="submit" class="btn btn-fill-green">@("Оплатить")</button></div>
+        @*<a class="pull-left" href="@Url.Action("Index", "Pay")">Изменить способ оплаты</a>*@
+    </div>
+</form>

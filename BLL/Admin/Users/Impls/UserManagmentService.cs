@@ -57,7 +57,7 @@ namespace BLL.Admin.Users.Impls
             var userStatistic = new UsersStatistic();
             userStatistic.UsersCount = _repository.Queryable<AppUser>().Count(u => u.PhoneNumberConfirmed);
             userStatistic.NotConfirmedUsersCount = _repository.Queryable<AppUser>().Count(u => !u.PhoneNumberConfirmed);
-            userStatistic.PayedUsers = _repository.Queryable<AppUser>().Count(u => u.Profile.IsPaid);
+            userStatistic.PayedUsers = _repository.Queryable<AppUser>().Count(u => u.Profile.HasSubscription());
 
             userStatistic.PayedMounths = _repository
                 .Queryable<Pay>()

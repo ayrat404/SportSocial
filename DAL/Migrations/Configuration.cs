@@ -1,4 +1,5 @@
-using System;
+п»їusing System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using DAL.DomainModel.FeedBackEntities;
@@ -19,20 +20,20 @@ namespace DAL.Migrations
         protected override void Seed(DAL.EntityDbContext context)
         {
             context.Rubrics.AddOrUpdate(
-                new Rubric() { Id = 1, Name = "Здоровье" },
-                new Rubric() { Id = 2, Name = "Мотивация" },
-                new Rubric() { Id = 3, Name = "Новичку" },
-                new Rubric() { Id = 4, Name = "Общее" },
-                new Rubric() { Id = 5, Name = "Питание" },
-                new Rubric() { Id = 6, Name = "С чего начать" },
-                new Rubric() { Id = 7, Name = "Упражнения" },
-                new Rubric() { Id = 8, Name = "Элементы" }
+                new Rubric() { Id = 1, Name = "Р—РґРѕСЂРѕРІСЊРµ" },
+                new Rubric() { Id = 2, Name = "РњРѕС‚РёРІР°С†РёСЏ" },
+                new Rubric() { Id = 3, Name = "РќРѕРІРёС‡РєСѓ" },
+                new Rubric() { Id = 4, Name = "РћР±С‰РµРµ" },
+                new Rubric() { Id = 5, Name = "РџРёС‚Р°РЅРёРµ" },
+                new Rubric() { Id = 6, Name = "РЎ С‡РµРіРѕ РЅР°С‡Р°С‚СЊ" },
+                new Rubric() { Id = 7, Name = "РЈРїСЂР°Р¶РЅРµРЅРёСЏ" },
+                new Rubric() { Id = 8, Name = "Р­Р»РµРјРµРЅС‚С‹" }
             );
 
             context.FeedbackTypes.AddOrUpdate(
-                new FeedbackType() { Id = 1, Label = "Предложить идею" },
-                new FeedbackType() { Id = 2, Label = "Задать вопрос" },
-                new FeedbackType() { Id = 3, Label = "Оставить благодарность" }
+                new FeedbackType() { Id = 1, Label = "РџСЂРµРґР»РѕР¶РёС‚СЊ РёРґРµСЋ" },
+                new FeedbackType() { Id = 2, Label = "Р—Р°РґР°С‚СЊ РІРѕРїСЂРѕСЃ" },
+                new FeedbackType() { Id = 3, Label = "РћСЃС‚Р°РІРёС‚СЊ Р±Р»Р°РіРѕРґР°СЂРЅРѕСЃС‚СЊ" }
             );
 
             context.Roles.AddOrUpdate(
@@ -42,100 +43,105 @@ namespace DAL.Migrations
                 new AppRole("User") { Id = 4 }
             );
 
-            context.Products.AddOrUpdate(
+            context.Set<Product>().RemoveRange(context.Products.ToList());
+
+            context.Products.AddOrUpdate( 
                 new Product
                 {
                     Id = 1,
-                    Cost = 100,
-                    Label = "Подписка на месяц",
-                    Currency = "RUB",
-                    Lang = "ru-RU",
-                },
-                new Product
-                {
-                    Id = 2,
                     Cost = 200,
-                    Label = "Подписка на 2 месяца",
+                    Label = "РџРѕРґРїРёСЃРєР° РЅР° РјРµСЃСЏС†",
+                    Count = 1,
                     Currency = "RUB",
                     Lang = "ru-RU",
                 },
-                new Product
-                {
-                    Id = 3,
-                    Cost = 300,
-                    Label = "Подписка на 3 месяца",
-                    Currency = "RUB",
-                    Lang = "ru-RU",
-                },
-                new Product
-                {
-                    Id = 4,
-                    Cost = 400,
-                    Label = "Подписка на 4 месяца",
-                    Currency = "RUB",
-                    Lang = "ru-RU",
-                },
-                new Product
-                {
-                    Id = 5,
-                    Cost = 500,
-                    Label = "Подписка на 5 месяцев",
-                    Currency = "RUB",
-                    Lang = "ru-RU",
-                },
+                //new Product
+                //{
+                //    Id = 2,
+                //    Cost = 200,
+                //    Label = "РџРѕРґРїРёСЃРєР° РЅР° 2 РјРµСЃСЏС†Р°",
+                //    Currency = "RUB",
+                //    Lang = "ru-RU",
+                //},
+                //new Product
+                //{
+                //    Id = 3,
+                //    Cost = 300,
+                //    Label = "РџРѕРґРїРёСЃРєР° РЅР° 3 РјРµСЃСЏС†Р°",
+                //    Currency = "RUB",
+                //    Lang = "ru-RU",
+                //},
+                //new Product
+                //{
+                //    Id = 4,
+                //    Cost = 400,
+                //    Label = "РџРѕРґРїРёСЃРєР° РЅР° 4 РјРµСЃСЏС†Р°",
+                //    Currency = "RUB",
+                //    Lang = "ru-RU",
+                //},
+                //new Product
+                //{
+                //    Id = 5,
+                //    Cost = 500,
+                //    Label = "РџРѕРґРїРёСЃРєР° РЅР° 5 РјРµСЃСЏС†РµРІ",
+                //    Currency = "RUB",
+                //    Lang = "ru-RU",
+                //},
                 new Product
                 {
                     Id = 6,
-                    Cost = 600,
-                    Label = "Подписка на 6 месяцев",
+                    Cost = 140,
+                    Label = "РџРѕРґРїРёСЃРєР° РЅР° 6 РјРµСЃСЏС†РµРІ",
+                    Count = 6,
                     Currency = "RUB",
                     Lang = "ru-RU",
                 },
-                new Product
-                {
-                    Id = 7,
-                    Cost = 700,
-                    Label = "Подписка на 7 месяцев",
-                    Currency = "RUB",
-                    Lang = "ru-RU",
-                },
-                new Product
-                {
-                    Id = 8,
-                    Cost = 800,
-                    Label = "Подписка на 8 месяцев",
-                    Currency = "RUB",
-                    Lang = "ru-RU",
-                },
-                new Product
-                {
-                    Id = 9,
-                    Cost = 900,
-                    Label = "Подписка на 9 месяцев",
-                    Currency = "RUB",
-                    Lang = "ru-RU",
-                },
-                new Product
-                {
-                    Id = 10,
-                    Cost = 1000,
-                    Label = "Подписка на 10 месяцев",
-                    Currency = "RUB",
-                    Lang = "ru-RU",
-                },
-                new Product
-                {
-                    Id = 11,
-                    Cost = 1100,
-                    Label = "Подписка на 11 месяцев",
-                    Currency = "RUB",
-                    Lang = "ru-RU",
-                },
+                //new Product
+                //{
+                //    Id = 7,
+                //    Cost = 700,
+                //    Label = "РџРѕРґРїРёСЃРєР° РЅР° 7 РјРµСЃСЏС†РµРІ",
+                //    Currency = "RUB",
+                //    Lang = "ru-RU",
+                //},
+                //new Product
+                //{
+                //    Id = 8,
+                //    Cost = 800,
+                //    Label = "РџРѕРґРїРёСЃРєР° РЅР° 8 РјРµСЃСЏС†РµРІ",
+                //    Currency = "RUB",
+                //    Lang = "ru-RU",
+                //},
+                //new Product
+                //{
+                //    Id = 9,
+                //    Cost = 900,
+                //    Label = "РџРѕРґРїРёСЃРєР° РЅР° 9 РјРµСЃСЏС†РµРІ",
+                //    Currency = "RUB",
+                //    Lang = "ru-RU",
+                //},
+                //new Product
+                //{
+                //    Id = 10,
+                //    Cost = 1000,
+                //    Label = "РџРѕРґРїРёСЃРєР° РЅР° 10 РјРµСЃСЏС†РµРІ",
+                //    Currency = "RUB",
+                //    Lang = "ru-RU",
+                //},
+                //new Product
+                //{
+                //    Id = 11,
+                //    Cost = 1100,
+                //    Label = "РџРѕРґРїРёСЃРєР° РЅР° 11 РјРµСЃСЏС†РµРІ",
+                //    Currency = "RUB",
+                //    Lang = "ru-RU",
+                //},
                 new Product
                 {
                     Id = 12,
-                    Cost = 1200,
-                    Label = "Подписка на 12 месяцев",
+                    Cost = 100,
+                    Label = "РџРѕРґРїРёСЃРєР° РЅР° 12 РјРµСЃСЏС†РµРІ",
+                    Count = 12,
                     Currency = "RUB",
                     Lang = "ru-RU",
                 }

@@ -42,11 +42,12 @@ namespace Social.Controllers
         [HttpGet]
         public object GetFilter()
         {
-            //var filter = new {
-            //    age = Enum.GetValues(typeof(SportExperience)),
-                
-            //};
-            return ApiResult;
+            var filter = new
+            {
+                gender = Enum.GetNames(typeof(Sex)),
+                sportTime = Enum.GetValues(typeof(SportExperience)),
+            };
+            return ApiResult(filter);
         }
 
         [Route("avatar")]

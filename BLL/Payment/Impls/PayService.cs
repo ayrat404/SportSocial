@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using BLL.Common.Extensions;
 using BLL.Common.Objects;
@@ -12,6 +14,8 @@ namespace BLL.Payment.Impls
 {
     public class PayService : IPayService
     {
+        private const int TrialDays = 15;
+
         private readonly IPaymentRepository _paymentRepository;
         private readonly IRepository _repository;
         private readonly ICurrentUser _currentUser;
@@ -32,7 +36,7 @@ namespace BLL.Payment.Impls
                 result.Success = false;
                 return result;
             }
-            var cost = product.Cost*count;
+            var cost = product.Cost*product.Count;
             var pay = new Pay
             {
                 ProductId = productId,
@@ -40,7 +44,7 @@ namespace BLL.Payment.Impls
                 PaySatus = PaySatus.Created,
                 PayType = payType,
                 UserId = _currentUser.UserId,
-                ProductCount = count,
+                ProductCount = product.Count,
                 Comment = product.Label,
             };
             _paymentRepository.AddPay(pay);
@@ -63,6 +67,9 @@ namespace BLL.Payment.Impls
                 return result;
             }
             pay.PaySatus = PaySatus.Completed;
+            pay.User.Profile.LastPaymentDate = DateTime.Now;
+            pay.User.Profile.LastPaidDaysCount = (DateTime.Now.AddMonths(pay.ProductCount) - DateTime.Now).Days;
+            pay.User.Profile.IsTrial = false;
             pay.User.Profile.IsPaid = true;
             _repository.SaveChanges();
             result.Success = true;
@@ -109,7 +116,7 @@ namespace BLL.Payment.Impls
 
         public IEnumerable<Product> GetProducts()
         {
-            return _repository.GetAll<Product>();
+            return _paymentRepository.GetProducts();
         }
 
         public PayViewModel GetPayInfo(int payId)
@@ -128,5 +135,60 @@ namespace BLL.Payment.Impls
                 Currency = pay.Product.Currency
             };
         }
+
+        private Pay LastPay(AppUser user)
+        {
+            return user.Pays
+                .Where(p => p.PaySatus == PaySatus.Completed)
+                .OrderByDescending(p => p.Created)
+                .FirstOrDefault();
+        }
+
+        public PaymentStatusVm GetPaymentStatus()
+        {
+            var user = _repository.Queryable<AppUser>()
+                .Where(u => u.Id == _currentUser.UserId)
+                .Include(u => u.Pays)
+                .Include(u => u.Pays.Select(p => p.Product))
+                .Single();
+
+            PaymentStatusVm paymentStatus = new PaymentStatusVm();
+            var profile = _currentUser.User.Profile;
+            paymentStatus.Payment = new PaymentStatus()
+            {
+                Status = profile.HasSubscription(),
+                Until = profile.DateUntil()
+            };
+            paymentStatus.Systems = new List<PayTypeVm>
+            {
+                new PayTypeVm()
+                {
+                    Id = 1,
+                    Name = "Робокасса"
+                }
+            };
+            paymentStatus.Tariffs = _paymentRepository.GetProducts()
+                .Select(p => new TarifVm()
+                {
+                    Id = p.Id,
+                    Cost = p.Cost,
+                    Curr = p.Currency,
+                    Month = p.Count
+                }).ToList();
+
+            paymentStatus.Trial = new TrialInfo()
+            {
+                AllDays = TrialDays,
+                CurrentDays = profile.IsTrial ? (profile.DateUntil() - DateTime.Now).Value.Days : 0
+            };
+
+            return paymentStatus;
+        }
+
+        //public ServiceResult InitSocialPay(int productId, int payTypeId)
+        //{
+        //    var initResult = InitPay((PayType)payTypeId, productId, 1);
+        //    _r
+        //}
     }
 }

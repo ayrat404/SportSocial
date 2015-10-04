@@ -1,4 +1,5 @@
-﻿using DAL.DomainModel;
+﻿using System.Collections.Generic;
+using DAL.DomainModel;
 
 namespace DAL.Repository.Interfaces
 {
@@ -7,5 +8,6 @@ namespace DAL.Repository.Interfaces
         Product GetProductById(int productId);
         void AddPay(Pay pay);
         void SaveChanges();
+        IEnumerable<Product> GetProducts();
     }
 }

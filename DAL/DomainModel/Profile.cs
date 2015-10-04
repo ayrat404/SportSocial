@@ -30,11 +30,31 @@ namespace DAL.DomainModel
         public virtual AppUser AppUser { get; set; }
 
         public bool IsPaid { get; set; }
+
         public int ReadedNews { get; set; }
+
+        public DateTime? LastPaymentDate { get; set; }
+
+        public int? LastPaidDaysCount { get; set; }
+
+        public bool IsTrial { get; set; }
 
         public int GetAge()
         {
             return new DateTime((DateTime.Now - BirthDate).Ticks).Year;
+        }
+
+        public bool HasSubscription()
+        {
+            if (!LastPaymentDate.HasValue) return false;
+            return LastPaymentDate.Value.AddDays(LastPaidDaysCount.Value) > DateTime.Now;
+        }
+
+        public DateTime? DateUntil()
+        {
+            if (HasSubscription())
+                return LastPaymentDate.Value.AddDays(LastPaidDaysCount.Value);
+            return null;
         }
     }
 }

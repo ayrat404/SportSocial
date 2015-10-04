@@ -34,6 +34,7 @@ namespace BLL.Infrastructure
             kernel.Bind<IRepository>().To<Repository>().InRequestScope();
             kernel.Bind<IJournalRepository>().To<JournalRepository>().InRequestScope();
             kernel.Bind<IAchievementRepository>().To<AchievementRepository>().InRequestScope();
+            kernel.Bind<IPaymentRepository>().To<PaymentRepository>().InRequestScope();
 
             //kernel.Bind(x => x
             //    .FromAssemblyContaining(typeof(IRepository))

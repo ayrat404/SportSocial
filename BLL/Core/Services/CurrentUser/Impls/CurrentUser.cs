@@ -45,7 +45,7 @@ namespace BLL.Common.Services.CurrentUser.Impls
             get
             {
                 if (User != null)
-                    return User.Profile.IsPaid;
+                    return User.Profile.HasSubscription();
                 else
                     return false;
             }

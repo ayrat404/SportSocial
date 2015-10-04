@@ -32,6 +32,7 @@ namespace BLL.Login.Impls
 
         public const string DefaultAvatarUrl = "/Content/Images/default-avatar.png";
         public const string DefaultFortressAvatar = "/Content/Images/fortress-avatar.jpg";
+        public const int TrialDays = 15;
 
         public LoginService(ISmsService smsService, AppUserManager appUserManager, IAuthenticationManager authManager, IRepository repository, ICurrentUser currentUser, ICookiesService cookiesService, IImageService imageService)
         {
@@ -138,7 +139,10 @@ namespace BLL.Login.Impls
                         LastName = confirmModel.LastName,
                         Sex = confirmModel.Gender,
                         Experience = confirmModel.SportTime,
-                        BirthDate = confirmModel.BirthDay
+                        BirthDate = confirmModel.BirthDay,
+                        IsTrial = true,
+                        LastPaymentDate = DateTime.Now,
+                        LastPaidDaysCount = TrialDays,
                     };
                     _repository.Add(profile);
                     _repository.SaveChanges();

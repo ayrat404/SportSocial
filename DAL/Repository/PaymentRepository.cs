@@ -1,4 +1,7 @@
+using System.Collections.Generic;
+using System.Linq;
 using DAL.DomainModel;
+using DAL.DomainModel.Interfaces;
 using DAL.Repository.Interfaces;
 
 namespace DAL.Repository
@@ -15,6 +18,13 @@ namespace DAL.Repository
         public Product GetProductById(int productId)
         {
             return _repository.Find<Product>(productId);
+        }
+
+        public IEnumerable<Product> GetProducts()
+        {
+            return _repository.Queryable<Product>()
+                .Where(p => new[] {1, 6, 12}.Contains(p.Id))
+                .ToList();
         }
 
         public void AddPay(Pay pay)

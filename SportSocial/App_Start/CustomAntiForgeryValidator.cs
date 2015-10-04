@@ -15,10 +15,6 @@ namespace SportSocial
             _validateAntiForgeryTokenAttribute = new ValidateAntiForgeryTokenAttribute();
         }
 
-        /// <summary>
-        /// Called when authorization is required.
-        /// </summary>
-        /// <param name="filterContext">The filter context.</param>
         public void OnAuthorization(AuthorizationContext filterContext)
         {
             if (filterContext.HttpContext.Request.ContentType.ToLower().Contains("application/json"))
