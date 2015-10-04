@@ -174,13 +174,8 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'fl
           }
         });
       } else {
-        if ($rootScope.user.isPaid !== true && (toState.data != null) && !toState.data.payment) {
-          event.preventDefault();
-          return $state.go('main.payment');
-        } else {
-          $rootScope.loader = true;
-          return NProgress.start();
-        }
+        $rootScope.loader = true;
+        return NProgress.start();
       }
     });
     $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
