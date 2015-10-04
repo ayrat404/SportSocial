@@ -52,6 +52,7 @@ namespace BLL.Payment.Impls
             result.PayModel = new PayViewModel
             {
                 Cost = pay.Amount.ToStringWithDot(),
+                CostMonth = product.Cost.ToStringWithDot(),
                 Id = pay.Id,
                 Description = pay.Comment,
                 Currency = product.Currency
