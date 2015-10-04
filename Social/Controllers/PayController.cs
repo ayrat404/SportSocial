@@ -37,14 +37,16 @@ namespace Social.Controllers
 
 
         [System.Web.Http.Authorize]
+        [System.Web.Http.Route("~/api/payment/pay")]
         [System.Web.Http.HttpPost]
-        [System.Web.Http.Route("pay")]
-        public ApiResult InitPay(int tarifId, int systemId)
+        public ApiResult InitPay(CreatePayVm payVm)
         {
-            var result = _payService.InitPay((PayType) systemId, tarifId);
+            var result = _payService.InitPay((PayType) payVm.SystemId, payVm.TariffId);
             var r = _robokassaService.CreateModel(result.PayModel.Id);
             InitPayVm initPay = new InitPayVm
             {
+                //TotalCost = result.PayModel.Cost + " " + result.PayModel.Currency,
+                //Cost = result.PayModel.CostMonth + " " + result.PayModel.Currency,
                 Cost = result.PayModel.Cost + " " + result.PayModel.Currency,
                 System = "Робокасса",
                 Tarif = result.PayModel.Description,
@@ -74,7 +76,15 @@ namespace Social.Controllers
     {
         public string Tarif { get; set; }   
         public string Cost { get; set; }   
+        public string TotalCost { get; set; }   
         public string System { get; set; }   
         public string Form { get; set; }   
     }
+
+    public class CreatePayVm
+    {
+        public int TariffId { get; set; }
+        public int SystemId { get; set; }
+    }
+
 }
