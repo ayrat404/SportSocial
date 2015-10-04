@@ -10,6 +10,11 @@ Landing = (function() {
         userId: $rootScope.user.id
       });
     }
+    $scope.o = {
+      url: '/',
+      text: 'Fortress - социальная сеть для спортсменов',
+      hashtags: ['sport', 'fortress']
+    };
     $scope.$on('$viewContentLoaded', function() {
       return mixpanel.ev.visitPage($scope.$root.title);
     });

@@ -28,4 +28,4 @@ class LoginSubmitModal extends Controller('socialApp.controllers')
             $state.go 'registration'
 
         $modalInstance.result.catch ->
-            modalData.cancel?()
+            modalData?.cancel?()
