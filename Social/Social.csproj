@@ -3186,6 +3186,8 @@
     <Content Include="Views\Template\settings\settings-layout.cshtml" />
     <Content Include="Views\Template\modals\settings\change-phone-get-code.cshtml" />
     <Content Include="Views\Template\modals\settings\change-phone-submit-code.cshtml" />
+    <Content Include="Views\Template\payment\payment-index.cshtml" />
+    <Content Include="Views\Template\components\payment-trialTpl.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">
