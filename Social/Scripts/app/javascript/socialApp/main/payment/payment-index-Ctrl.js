@@ -18,7 +18,7 @@ PaymentIndex = (function() {
         results = [];
         for (i = 0, len = tariffs.length; i < len; i++) {
           item = tariffs[i];
-          if (item.months === 1) {
+          if (item.month === 1) {
             results.push(item);
           }
         }

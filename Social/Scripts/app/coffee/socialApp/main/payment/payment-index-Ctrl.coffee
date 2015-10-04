@@ -11,7 +11,7 @@ class PaymentIndex extends Controller('socialApp.controllers')
         _this.mode = 0
 
         prepareTariffs = (tariffs)->
-            base = (item for item in tariffs when item.months is 1)[0]
+            base = (item for item in tariffs when item.month is 1)[0]
             for item in tariffs
                 if item.id != base.id
                     item['profit'] = 100 - (item.cost * 100 / base.cost)

@@ -30,7 +30,7 @@
                         <div ng-repeat="t in pay.tariffs"
                              class="col-sm-4">
                             <div class="ptf__it">
-                                <p class="ptf__time">{{t.months|formatWord:['@R("месяц")', '@R("месяца")', '@R("месяцев")']:true}}</p>
+                                <p class="ptf__time">{{t.month|formatWord:['@R("месяц")', '@R("месяца")', '@R("месяцев")']:true}}</p>
                                 <div class="ptf__cost-wrap">
                                     <div class="ptf__cost">{{t.cost}}</div>
                                     <div class="ptf__cur">
