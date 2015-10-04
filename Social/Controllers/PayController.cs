@@ -49,7 +49,7 @@ namespace Social.Controllers
                 //Cost = result.PayModel.CostMonth + " " + result.PayModel.Currency,
                 Cost = result.PayModel.Cost + " " + result.PayModel.Currency,
                 System = "Робокасса",
-                Tarif = result.PayModel.Description,
+                Tariff = result.PayModel.Description,
                 Form = RenderViewToString("Home", "~/Views/Shared/Partials/Pay/" + r.ViewName + ".cshtml", r)
             };
             return ApiResult(initPay);
@@ -74,7 +74,7 @@ namespace Social.Controllers
 
     public class InitPayVm
     {
-        public string Tarif { get; set; }   
+        public string Tariff { get; set; }   
         public string Cost { get; set; }   
         public string TotalCost { get; set; }   
         public string System { get; set; }   
