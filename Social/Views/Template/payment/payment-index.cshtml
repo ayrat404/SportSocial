@@ -54,7 +54,8 @@
                     <div ng-if="pay.mode == 2" class="payment-system text-center">
                         <div class="pt__select"><b>@R("Подтверждение оплаты")</b></div>
                         <div>@R("Тариф"): {{pay.stat.tariff}}</div>
-                        <div>@R("Стоимость"): {{pay.stat.cost}}</div>
+                        <div>@R("Стоимость месяца"): {{pay.stat.cost}}</div>
+                        <div>@R("Всего к оплате"): {{pay.stat.totalCost}}</div>
                         <div>@R("Система оплаты"): {{pay.stat.system}}</div>
                         <div ng-bind-html="pay.stat.form"></div>
                     </div>
