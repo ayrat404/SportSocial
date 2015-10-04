@@ -77,6 +77,13 @@ app = angular.module('app', [
                     templateUrl: tmplView 'users/users-list'
                     controller: 'usersListController'
                     controllerAs: 'ulist'
+        .state 'main.payment',
+            url: '/payment'
+            views:
+                'socialContent@main':
+                    templateUrl: tmplView 'payment/payment-index'
+                    controller: 'paymentIndexController'
+                    controllerAs: 'pay'
         .state 'main.tape',
             url: '/tape??media&index&entityType&count&page'
             views:

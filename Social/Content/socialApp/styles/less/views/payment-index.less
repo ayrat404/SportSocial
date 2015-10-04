@@ -1,0 +1,108 @@
+﻿﻿/* Payment index
+---------------------------------------------------------------------------------- */
+
+.payment {
+    padding-top: 40px;
+}
+
+.payment-trial {
+    text-align: center;
+    margin-bottom: 25px;
+    .pt__title {
+        font-size: 18px;
+        font-family: 'F1 ExtraBold';
+        margin: 0 0 30px 0;
+    }
+    .pt__select {
+        font-size: 14px;
+        font-family: 'F1 Light';
+    }
+}
+
+/* Trial visual
+-------------------------------------------------- */
+.trial-visual {
+    position: relative;
+    .tv__days {
+        position: absolute;
+        height: 85px;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        margin: auto;
+    }
+    .tv__days__val {
+        font-size: 72px;
+        line-height: 50px;
+        font-family: 'F1 ExtraBold';
+    }
+    .tv__days__desc {
+        font-size: 30px;
+        font-family: 'F1 Light';
+    }
+    canvas {
+        display: inline-block;
+    }
+}
+/* /Trial visual */
+
+/* Tariffs
+-------------------------------------------------- */
+.payment-tariffs {
+    & > div {
+        border-right: 1px solid #d1d1d1;
+        &:last-child {
+            border-right: none;
+        }
+    }
+    .ptf__it {
+        text-align: center;
+        .btn {
+            display: block;
+            max-width: 180px;
+            margin: 0 auto;
+        }
+    }
+    .ptf__time {
+        font-size: 18px;
+        font-family: 'F1 ExtraBold';
+    }
+    .ptf__cost-wrap {
+    }
+    .ptf__cost {
+        line-height: 60px;
+        vertical-align: middle;
+        display: inline-block;
+        font-size: 72px;
+        font-family: 'F1 Light';
+    }
+    .ptf__cur {
+        vertical-align: middle;
+        display: inline-block;
+        p {
+            font-size: 14px;
+            font-family: 'F1 Light';
+            margin: 0;
+            &:first-child {
+                border-bottom: 1px solid #8c8c8c;
+            }
+        }
+    }
+    .ptf__profit {
+        color: #1fba2a;
+        height: 20px;
+        margin: 4px 0 25px 0;
+    }
+}
+/* /Tariffs */
+
+.payment-system {
+    .btn {
+        margin: 10px 20px;
+    }
+}
+
+
+/* /Payment index
+---------------------------------------------------------------------------------- */

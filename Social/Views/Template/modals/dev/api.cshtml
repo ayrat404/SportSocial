@@ -1382,7 +1382,7 @@
             </b>
 
             <code>PUT: /api/settings/profile</code>
-            <p>Сохранение настроек профиля/p>
+            <p>Сохранение настроек профиля</p>
             <b>
                 send data:
                 <pre>
@@ -1403,6 +1403,73 @@
     data: null,
     errors: null,
     message: "Настройки профиля успешно сохранены"
+}
+                    </pre>
+            </b>
+        </li>
+
+        <li id="api_payment" class="dev__api__row">
+            <p>Оплата</p>
+            <code>GET: /api/payment</code>
+            <p>Запрос настроек статуса оплаты пользователя.</p>
+            <b>
+                send data:
+                <pre>
+{
+    *none*
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true,
+    data: {
+        trial: { * пробный период
+            currentDays: 8, *сколько осталось
+            allDays: 12     *сколько всего дается
+        },
+        tariffs: [ * тарифы
+            { id: 1, month: 1, cost: 100, curr: 'руб' },
+            { id: 2, month: 6, cost: 80, curr: 'руб' },
+            { id: 3, month: 12, cost: 60, curr: 'руб' },
+        ],
+        systems: [ * системы оплаты
+            { id: 1, name: "PayPal" },
+            ...
+        ]
+    },
+    errors: null,
+    message: null
+}
+                    </pre>
+            </b>
+
+            <code>POST: /api/payment/pay</code>
+            <p>Выбор тарифа и системы оплаты</p>
+            <b>
+                send data:
+                <pre>
+{
+    tariffId: 1,
+    systemId: 2
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true,
+    data: {
+        tariff: "1 мес."
+        cost: "100 руб."
+        system: "PayPal"
+        form: "" * форма html, главное button пусть будет с классом "btn btn-fill-green"
+    },
+    errors: null,
+    message: null
 }
                     </pre>
             </b>
