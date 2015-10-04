@@ -13418,6 +13418,107 @@ fieldset[disabled] .show-more .show-more__btn {
 }
 /* /Settings
 ---------------------------------------------------------------------------------- */
+/* Payment index
+---------------------------------------------------------------------------------- */
+.payment {
+  padding-top: 40px;
+}
+.payment .pt__title {
+  text-align: center;
+  font-size: 18px;
+  font-family: 'F1 ExtraBold';
+  margin: 0 0 30px 0;
+}
+.payment .pt__until {
+  text-align: center;
+  font-size: 48px;
+  font-family: 'F1 Light';
+}
+.payment-trial {
+  text-align: center;
+  margin-bottom: 25px;
+}
+.payment-trial .pt__select {
+  font-size: 14px;
+  font-family: 'F1 Light';
+}
+/* Trial visual
+-------------------------------------------------- */
+.trial-visual {
+  position: relative;
+}
+.trial-visual .tv__days {
+  position: absolute;
+  height: 85px;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+}
+.trial-visual .tv__days__val {
+  font-size: 72px;
+  line-height: 50px;
+  font-family: 'F1 ExtraBold';
+}
+.trial-visual .tv__days__desc {
+  font-size: 30px;
+  font-family: 'F1 Light';
+}
+.trial-visual canvas {
+  display: inline-block;
+}
+/* /Trial visual */
+/* Tariffs
+-------------------------------------------------- */
+.payment-tariffs > div {
+  border-right: 1px solid #d1d1d1;
+}
+.payment-tariffs > div:last-child {
+  border-right: none;
+}
+.payment-tariffs .ptf__it {
+  text-align: center;
+}
+.payment-tariffs .ptf__it .btn {
+  display: block;
+  max-width: 180px;
+  margin: 0 auto;
+}
+.payment-tariffs .ptf__time {
+  font-size: 18px;
+  font-family: 'F1 ExtraBold';
+}
+.payment-tariffs .ptf__cost {
+  line-height: 60px;
+  vertical-align: middle;
+  display: inline-block;
+  font-size: 72px;
+  font-family: 'F1 Light';
+}
+.payment-tariffs .ptf__cur {
+  vertical-align: middle;
+  display: inline-block;
+}
+.payment-tariffs .ptf__cur p {
+  font-size: 14px;
+  font-family: 'F1 Light';
+  margin: 0;
+}
+.payment-tariffs .ptf__cur p:first-child {
+  border-bottom: 1px solid #8c8c8c;
+}
+.payment-tariffs .ptf__profit {
+  color: #1fba2a;
+  height: 20px;
+  margin: 4px 0 25px 0;
+}
+/* /Tariffs */
+.payment-system .btn {
+  margin: 10px 20px;
+}
+/* /Payment index
+---------------------------------------------------------------------------------- */
 /* /Views */
 /* DEV
 -------------------------------------------------- */

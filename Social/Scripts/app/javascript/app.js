@@ -73,6 +73,18 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'fl
           controllerAs: 'ulist'
         }
       }
+    }).state('main.payment', {
+      url: '/payment',
+      data: {
+        payment: true
+      },
+      views: {
+        'socialContent@main': {
+          templateUrl: tmplView('payment/payment-index'),
+          controller: 'paymentIndexController',
+          controllerAs: 'pay'
+        }
+      }
     }).state('main.tape', {
       url: '/tape??media&index&entityType&count&page',
       views: {
@@ -162,8 +174,13 @@ app = angular.module('app', ['ui.router', 'ui.bootstrap', 'angular-storage', 'fl
           }
         });
       } else {
-        $rootScope.loader = true;
-        return NProgress.start();
+        if ($rootScope.user.isPaid !== true && (toState.data != null) && !toState.data.payment) {
+          event.preventDefault();
+          return $state.go('main.payment');
+        } else {
+          $rootScope.loader = true;
+          return NProgress.start();
+        }
       }
     });
     $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {

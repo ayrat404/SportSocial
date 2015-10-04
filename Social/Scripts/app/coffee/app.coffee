@@ -77,6 +77,15 @@ app = angular.module('app', [
                     templateUrl: tmplView 'users/users-list'
                     controller: 'usersListController'
                     controllerAs: 'ulist'
+        .state 'main.payment',
+            url: '/payment'
+            data:
+                payment: true
+            views:
+                'socialContent@main':
+                    templateUrl: tmplView 'payment/payment-index'
+                    controller: 'paymentIndexController'
+                    controllerAs: 'pay'
         .state 'main.tape',
             url: '/tape??media&index&entityType&count&page'
             views:
@@ -164,19 +173,22 @@ app = angular.module('app', [
                 requireLogin = toState.data.requireLogin
             if requireLogin && $rootScope.user.id == undefined
                 event.preventDefault()
-                base.notice.show(text: 'The page you requested is available only to registered users', type: 'warning')
-                modalService.show(
+                base.notice.show text: 'The page you requested is available only to registered users', type: 'warning'
+                modalService.show
                   name: 'loginSubmit'
                   data:
                       success: (res)->
                           $state.go(toState.name, toParams)
                       cancel: (res)->
                           $state.go 'registration'
-                          base.notice.show(text: 'Please register if you do not have an Fortress account ', type: 'info')
-                )
+                          base.notice.show text: 'Please register if you do not have an Fortress account ', type: 'info'
             else
-                $rootScope.loader = true
-                NProgress.start()
+                if $rootScope.user.isPaid != true && toState.data? && !toState.data.payment
+                    event.preventDefault()
+                    $state.go 'main.payment'
+                else
+                    $rootScope.loader = true
+                    NProgress.start()
 
         # ---------------
         $rootScope.$on '$stateChangeSuccess', (event, toState, toParams, fromState, fromParams) ->
