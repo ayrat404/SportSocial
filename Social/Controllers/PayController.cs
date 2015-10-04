@@ -37,7 +37,7 @@ namespace Social.Controllers
 
 
         [System.Web.Http.Authorize]
-        [System.Web.Http.HttpGet]
+        [System.Web.Http.HttpPost]
         [System.Web.Http.Route("pay")]
         public ApiResult InitPay(int tarifId, int systemId)
         {
