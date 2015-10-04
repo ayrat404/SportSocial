@@ -183,10 +183,10 @@ app = angular.module('app', [
                           $state.go 'registration'
                           base.notice.show text: 'Please register if you do not have an Fortress account ', type: 'info'
             else
-#                if $rootScope.user.isPaid != true && toState.data? && !toState.data.payment
-#                    event.preventDefault()
-#                    $state.go 'main.payment'
-#                else
+                if $rootScope.user.isPaid != true && toState.data? && !toState.data.payment
+                    event.preventDefault()
+                    $state.go 'main.payment'
+                else
                     $rootScope.loader = true
                     NProgress.start()
 
