@@ -5,6 +5,7 @@ using BLL.Social.Achievements.Objects;
 using BLL.Social.Tape;
 using BLL.Social.UserProfile;
 using BLL.Social.UserProfile.Objects;
+using DAL.DomainModel.EnumProperties;
 using Ninject.Web.WebApi;
 using Social.Models;
 
@@ -41,7 +42,11 @@ namespace Social.Controllers
         [HttpGet]
         public object GetFilter()
         {
-            return ApiResult(new object());
+            //var filter = new {
+            //    age = Enum.GetValues(typeof(SportExperience)),
+                
+            //};
+            return ApiResult;
         }
 
         [Route("avatar")]

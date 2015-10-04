@@ -319,9 +319,11 @@
     <Content Include="Scripts\app\javascript\appServices\other\comments-Srvc.js" />
     <Content Include="Scripts\app\javascript\appServices\other\complain-Srvc.js" />
     <Content Include="Scripts\app\javascript\appServices\other\cup-Srvc.js" />
+    <Content Include="Scripts\app\javascript\appServices\other\geo-Srvc.js" />
     <Content Include="Scripts\app\javascript\appServices\other\journal-Srvc.js" />
     <Content Include="Scripts\app\javascript\appServices\other\like-Srvc.js" />
     <Content Include="Scripts\app\javascript\appServices\other\profile-Srvc.js" />
+    <Content Include="Scripts\app\javascript\appServices\other\settings-Srvc.js" />
     <Content Include="Scripts\app\javascript\appServices\other\sport-themes-Srvc.js" />
     <Content Include="Scripts\app\javascript\appServices\other\subscribe-Srvc.js" />
     <Content Include="Scripts\app\javascript\appServices\other\support-Srvc.js" />
@@ -353,6 +355,8 @@
     <Content Include="Scripts\app\javascript\socialApp\components\comments\comment-form-Drct.js" />
     <Content Include="Scripts\app\javascript\socialApp\components\comments\comment-list-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\components\comments\comment-list-Drct.js" />
+    <Content Include="Scripts\app\javascript\socialApp\components\filters\users\users-filter-Ctrl.js" />
+    <Content Include="Scripts\app\javascript\socialApp\components\filters\users\users-filter-Drct.js" />
     <Content Include="Scripts\app\javascript\socialApp\components\likes\likes-finger-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\components\likes\likes-finger-Drct.js" />
     <Content Include="Scripts\app\javascript\socialApp\components\likes\likes-row-Ctrl.js" />
@@ -376,9 +380,12 @@
     <Content Include="Scripts\app\javascript\socialApp\main\profile\journal\journal-submit-profile-Drct.js" />
     <Content Include="Scripts\app\javascript\socialApp\main\profile\profile-view-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\main\record\record-view-Ctrl.js" />
+    <Content Include="Scripts\app\javascript\socialApp\main\settings\settings-account-Ctrl.js" />
+    <Content Include="Scripts\app\javascript\socialApp\main\settings\settings-profile-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\main\tape\tape-view-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\main\users\users-list-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\modals\achievement-Ctrl.js" />
+    <Content Include="Scripts\app\javascript\socialApp\modals\change-phone-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\modals\complain-submit-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\modals\journal-remove-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\modals\journal-submit-Ctrl.js" />
@@ -3183,6 +3190,8 @@
     <Content Include="Views\Template\settings\settings-profile.cshtml" />
     <Content Include="Views\Template\settings\settings-account.cshtml" />
     <Content Include="Views\Template\settings\settings-layout.cshtml" />
+    <Content Include="Views\Template\modals\settings\change-phone-get-code.cshtml" />
+    <Content Include="Views\Template\modals\settings\change-phone-submit-code.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.csproj">
