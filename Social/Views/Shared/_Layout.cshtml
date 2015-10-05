@@ -12,7 +12,7 @@
   var userObj = "{}";
   if (!CurrentUser.IsAnonimous)
   {
-    userObj = string.Format("{{ id: {0}, fullName: \"{1}\", avatar: \"{2}\", isPaid: \"{3}\" }}", CurrentUser.UserId, CurrentUser.User.FullName(), CurrentUser.User.Profile.Avatar, CurrentUser.User.Profile.HasSubscription().ToString().ToLower());
+    userObj = string.Format("{{ id: {0}, fullName: \"{1}\", avatar: \"{2}\", isPaid: {3} }}", CurrentUser.UserId, CurrentUser.User.FullName(), CurrentUser.User.Profile.Avatar, CurrentUser.User.Profile.HasSubscription().ToString().ToLower());
   }
 }
 <body ng-init="$root.user = @userObj">
