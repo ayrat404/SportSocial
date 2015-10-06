@@ -27,7 +27,7 @@ namespace BLL.Storage.Impls
 
         public ServiceResult<ImageUploadResult> AddImage(Stream inputStream, string fileName, UploadType uploadType)
         {
-            if (uploadType == UploadType.Avatar)
+            if (uploadType == UploadType.Avatar && !_currentUser.IsAnonimous)
             {
                 var result = AddImage<AppUser, UserAvatarPhoto>(inputStream, GetPath(uploadType), fileName);
                 _currentUser.User.Profile.Avatar = result.Result.Url;
