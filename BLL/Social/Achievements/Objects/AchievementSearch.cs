@@ -1,4 +1,5 @@
 using DAL.DomainModel.Achievement.Objects;
+using DAL.DomainModel.EnumProperties;
 
 namespace BLL.Social.Achievements.Objects
 {
@@ -21,6 +22,16 @@ namespace BLL.Social.Achievements.Objects
 
     public class ProfileSearch : BaseSearch
     {
-        
+        public Sex? Gender { get; set; }
+
+        public SportExperience? SportTime { get; set; }
+
+        public int? Age { get; set; }
+
+        public string City { get; set; }
+
+        public string Country { get; set; }
+
+        public string Query { get; set; }
     }
 }

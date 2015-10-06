@@ -33,9 +33,11 @@ namespace Social.Controllers
 
         [Route("~/api/users")]
         [HttpGet]
-        public ApiResult GetUsers(int page = 1, int count = 20)
+        public ApiResult GetUsers(int? age = null, SportExperience? inSport = null, Sex? gender =null, string city = null,
+                                  string country = null, string query = null, int page = 1, int count = 20)
         {
-            var users = _profileService.GetUsers(new ProfileSearch {Page = page, Count = count});
+            var users = _profileService.GetUsers(new ProfileSearch {Age = age, SportTime = inSport, Gender = gender, City = city, Country = country,
+                Page = page, Count = count});
             return ApiResult(users);
         }
 
@@ -46,7 +48,7 @@ namespace Social.Controllers
             var filter = new
             {
                 gender = Enum.GetNames(typeof(Sex)),
-                sportTime = Enum.GetValues(typeof(SportExperience)).Cast<int>(),
+                sportTime = Enum.GetValues(typeof(SportExperience)).Cast<int>().ToList(),
             };
             return ApiResult(filter);
         }

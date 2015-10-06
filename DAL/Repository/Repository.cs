@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using DAL.DomainModel;
+using DAL.DomainModel.EnumProperties;
 using DAL.DomainModel.Interfaces;
 using DAL.Repository.Interfaces;
 
@@ -91,21 +92,5 @@ namespace DAL.Repository
             _context.SaveChanges();
         }
 
-        public ListDto<AppUser> GetUsers(int skip, int take)
-        {
-            int usersCount = _context.Users.Count();
-            var query = _context.Users
-                .Include(u => u.Profile)
-                .Include(u => u.Achievements)
-                .Include(u => u.Journals)
-                .OrderByDescending(u => u.Id)
-                .Skip(skip)
-                .Take(take);
-            return new ListDto<AppUser>
-            {
-                Count = usersCount,
-                List = query.ToList()
-            };
-        }
     }
 }

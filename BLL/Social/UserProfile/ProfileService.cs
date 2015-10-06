@@ -16,42 +16,27 @@ namespace BLL.Social.UserProfile
     {
         private readonly IJournalService _journalService;
         private readonly IRepository _repository;
+        private readonly IProfileRepository _profileRepository;
         private readonly ICurrentUser _currentUser;
 
-        public ProfileService(IJournalService journalService, ICurrentUser currentUser, IRepository repository)
+        public ProfileService(IJournalService journalService, ICurrentUser currentUser, IRepository repository, IProfileRepository profileRepository)
         {
             _journalService = journalService;
             _currentUser = currentUser;
             _repository = repository;
+            _profileRepository = profileRepository;
         }
 
         public ProfileFull GetProfileFull(int id)
         {
-            var user = _repository.Queryable<AppUser>()
-                .Where(u => u.Id == id)
-                .Include(u => u.Profile)
-                .Include(u => u.Subscribes.Select(f => f.ToUser))
-                .Include(u => u.Folowers.Select(f => f.FolowerUser))
-                .Single();
-            //var profileFull = new ProfileFull
-            //{
-            //    FullName = user.FullName(),
-            //    Avatar = user.Profile.Avatar,
-            //    SportTime = (int) user.Profile.Experience,
-            //    IsOwner = user.Id == _currentUser.UserId,
-            //    Age = new DateTime((DateTime.Now - user.Profile.BirthDate).Ticks).Year,
-            //    Journals = _journalService.GetJournals(id),
-            //    Subscribe = new UserInfos(),
-            //    Followers = new UserInfos()
-            //};
-            //return profileFull;
+            var user = _profileRepository.GetUserFull(id);
             return user.MapTo<ProfileFull>();
         }
 
         public ProfileListVm GetUsers(ProfileSearch search)
         {
             int skip = search.Count*search.Page - search.Count;
-            var users = _repository.GetUsers(skip, search.Count);
+            var users = _profileRepository.GetUsers(search.Age, search.SportTime, search.Gender, search.City, search.Country, search.Query, skip, search.Count);
             return new ProfileListVm
             {
                 IsMore = search.Count*search.Page < users.Count,
