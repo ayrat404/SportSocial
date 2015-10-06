@@ -19,10 +19,6 @@ namespace BLL.Common.Services.CurrentUser.Impls
             _repository = repository;
             _cookiesService = cookiesService;
             int userId = HttpContext.Current.User.Identity.GetUserId<int>();
-            User = repository
-                .Queryable<AppUser>()
-                .Include(u => u.Profile)
-                .SingleOrDefault(u => u.Id == userId);
         }
 
         public string UserName
@@ -69,16 +65,21 @@ namespace BLL.Common.Services.CurrentUser.Impls
             }
         }
 
-        public AppUser User { get; private set; }
-        //{
-        //    get
-        //    {
-        //        if (_user != null)
-        //            return _user;
-        //        _user = _repository.Find<AppUser>(HttpContext.Current.User.Identity.GetUserId());
-        //        return _user;
-        //    }
-        //}
+        private AppUser _user;
+
+        public AppUser User 
+        {
+            get
+            {
+                if (_user != null)
+                    return _user;
+                _user = _repository
+                    .Queryable<AppUser>()
+                    .Include(u => u.Profile)
+                    .SingleOrDefault(u => u.Id == UserId);
+                return _user;
+            }
+        }
 
         public int UnreadedNews
         {

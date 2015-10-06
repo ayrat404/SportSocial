@@ -37,7 +37,7 @@ namespace BLL.Social.Journals.MapProfiles
 
             CreateMap<JournalMedia, MediaVm>()
                 .ConstructUsing(MediaMapper.Map)
-                //.ForMember(dest => dest, opt => opt.MapFrom(src => MediaMapper.Map(src)))
+                .ForMember(dest => dest.Url, opt => opt.Ignore())
                 .ForMember(dest => dest.Likes, opt => opt.MapFrom(src => RatingMapper.MapRating(src)));
         }
     }

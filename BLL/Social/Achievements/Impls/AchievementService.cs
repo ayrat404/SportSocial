@@ -10,7 +10,8 @@ using BLL.Social.Tags;
 using BLL.Social.Tape;
 using BLL.Social.UserProfile;
 using BLL.Storage;
-using BLL.Storage.Impls.Enums;
+using BLL.Storage.Impls;
+using BLL.Storage.Objects.Enums;
 using DAL;
 using DAL.DomainModel.Achievement;
 using DAL.DomainModel.Achievement.Objects;
@@ -23,17 +24,16 @@ namespace BLL.Social.Achievements.Impls
     {
         private readonly IAchievementRepository _achievementRepository;
         private readonly ICurrentUser _currentUser;
-        private readonly IVideoService _videoService;
         private readonly ITapeService _tapeService;
+        private readonly IMediaService _mediaService;
 
         private const int DurationDays = 6;
         private const int VoteCount = 3;
         
-        public AchievementService(IAchievementRepository achievementRepository, ICurrentUser currentUser, IVideoService videoService, ITapeService tapeService)
+        public AchievementService(IAchievementRepository achievementRepository, ICurrentUser currentUser, ITapeService tapeService)
         {
             _achievementRepository = achievementRepository;
             _currentUser = currentUser;
-            _videoService = videoService;
             _tapeService = tapeService;
         }
 
@@ -55,7 +55,7 @@ namespace BLL.Social.Achievements.Impls
             AddOrUpdateAchievement(ach, model);
             if (model.HasVideo())
             {
-                _videoService.AttachVideosToEntity(new List<MediaVm>() {model.Video}, ach.Id, UploadType.Achievement);
+                _mediaService.AttachMediaToEntity(new List<MediaVm>() {model.Video}, ach.Id, UploadType.Achievement);
                 if (CheckAndCompleteAchievement(ach))
                 {
                     var createResult = new CreateAchievementResult

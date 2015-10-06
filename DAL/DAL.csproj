@@ -247,6 +247,10 @@
     <Compile Include="Migrations\201510041616179_Profile_PayInfo.Designer.cs">
       <DependentUpon>201510041616179_Profile_PayInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201510061140226_MediaBase_VideoImageUrl.cs" />
+    <Compile Include="Migrations\201510061140226_MediaBase_VideoImageUrl.Designer.cs">
+      <DependentUpon>201510061140226_MediaBase_VideoImageUrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AccountRepository.cs" />
@@ -340,6 +344,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201510041616179_Profile_PayInfo.resx">
       <DependentUpon>201510041616179_Profile_PayInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510061140226_MediaBase_VideoImageUrl.resx">
+      <DependentUpon>201510061140226_MediaBase_VideoImageUrl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

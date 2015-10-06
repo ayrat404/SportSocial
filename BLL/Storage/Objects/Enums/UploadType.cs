@@ -1,4 +1,4 @@
-namespace BLL.Storage.Impls.Enums
+namespace BLL.Storage.Objects.Enums
 {
     public enum UploadType
     {

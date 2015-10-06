@@ -7,7 +7,8 @@ using System.Net.Http.Formatting;
 using System.Web;
 using System.Web.Http;
 using BLL.Storage;
-using BLL.Storage.Impls.Enums;
+using BLL.Storage.Impls;
+using BLL.Storage.Objects.Enums;
 using Social.Models;
 
 namespace Social.Controllers
@@ -16,13 +17,12 @@ namespace Social.Controllers
     [RoutePrefix("api/upload")]
     public class UploadController : BaseApiController
     {
-        private readonly IImageService _imageService;
-        private readonly IVideoService _videoService;
+        private readonly IMediaService _mediaService;
+        //private readonly IVideoService _videoService;
 
-        public UploadController(IImageService imageService, IVideoService videoService)
+        public UploadController(IMediaService mediaService)
         {
-            _imageService = imageService;
-            _videoService = videoService;
+            _mediaService = mediaService;
         }
 
         [Route("")]
@@ -32,7 +32,7 @@ namespace Social.Controllers
             string key = HttpContext.Current.Request.Files.AllKeys.First();
             var uploadType = (UploadType)Enum.Parse(typeof (UploadType), key);
             var file = HttpContext.Current.Request.Files[key];
-            var result = _imageService.Save(file.InputStream, file.FileName, uploadType);
+            var result = _mediaService.AddImage(file.InputStream, file.FileName, uploadType);
             return ApiResult(result);
         }
 
@@ -40,7 +40,7 @@ namespace Social.Controllers
         [HttpPost]
         public ApiResult AddYoutubeVideo(VideoLink link)
         {
-            var result = _videoService.AddVideo(link.Link, link.Type);
+            var result = _mediaService.AddVideo(link.Link, link.Type);
             var result2 =  ApiResult(result);
             return result2;
         }

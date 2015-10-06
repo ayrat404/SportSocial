@@ -2,8 +2,8 @@
 using System.Web.Mvc;
 using BLL.Common.Objects;
 using BLL.Storage;
-using BLL.Storage.Impls.Enums;
 using BLL.Storage.Objects;
+using BLL.Storage.Objects.Enums;
 using Knoema.Localization;
 using NLog;
 using SportSocial.Controllers.Base;

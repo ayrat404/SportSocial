@@ -30,12 +30,10 @@ namespace BLL.Social.UserProfile.Objects
         public ListVm<UserInfoVm> Subscribe { get; set; }
     }
 
-    public class ProfileJournalMediaVm
+    public class ProfileJournalMediaVm:MediaVm
     {
         public int RecordId { get; set; }
         public int Index { get; set; }
-        public string Url { get; set; }
-        public MediaType Type { get; set; }
     }
 
     public class ProfilePreview : ProfileInfo

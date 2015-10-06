@@ -1,4 +1,4 @@
-﻿using BLL.Storage.Impls.Enums;
+﻿using BLL.Storage.Objects.Enums;
 
 namespace Social.Models
 {

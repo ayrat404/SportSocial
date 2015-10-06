@@ -1,6 +1,6 @@
 ﻿using System.IO;
 using BLL.Common.Objects;
-using BLL.Storage.Impls.Enums;
+using BLL.Storage.Objects.Enums;
 
 namespace BLL.Storage
 {

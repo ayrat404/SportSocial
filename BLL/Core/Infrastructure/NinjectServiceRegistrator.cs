@@ -26,9 +26,15 @@ namespace BLL.Infrastructure
             
             kernel.Bind(x => x
                 .FromThisAssembly()
-                .Select(t => t.Name.EndsWith("Service") && !t.Name.Contains("Sms"))
+                .Select(t => (t.Name.EndsWith("Service") || t.Name.EndsWith("MediaWorker")) && !t.Name.Contains("Sms"))
                 .BindDefaultInterfaces()
                 .Configure(c => c.InRequestScope()));
+
+            //kernel.Bind(x => x
+            //    .FromThisAssembly()
+            //    .Select(t => t.Name.EndsWith("MediaWorker"))
+            //    .BindDefaultInterfaces()
+            //    .Configure(c => c.InRequestScope()));
 
 
             kernel.Bind<IRepository>().To<Repository>().InRequestScope();

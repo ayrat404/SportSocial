@@ -79,6 +79,7 @@ namespace DAL.Repository.Interfaces
                 .Include(u => u.Profile)
                 .Include(u => u.Achievements)
                 .Include(u => u.Journals)
+                .Include(u => u.Folowers)
                 .OrderByDescending(u => u.Id)
                 .Skip(skip)
                 .Take(take);

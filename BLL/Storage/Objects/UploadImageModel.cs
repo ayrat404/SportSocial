@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Web;
-using BLL.Storage.Impls.Enums;
+using BLL.Storage.Objects.Enums;
 
 namespace BLL.Storage.Objects
 {

@@ -7,7 +7,7 @@ using System.Web;
 using BLL.Common.Helpers;
 using BLL.Common.Objects;
 using BLL.Common.Services.CurrentUser;
-using BLL.Storage.Impls.Enums;
+using BLL.Storage.Objects.Enums;
 using DAL.DomainModel;
 using DAL.Repository.Interfaces;
 using Knoema.Localization;

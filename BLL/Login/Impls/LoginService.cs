@@ -10,7 +10,8 @@ using BLL.Login.ViewModels;
 using BLL.Sms;
 using BLL.Social.Journals.Objects;
 using BLL.Storage;
-using BLL.Storage.Impls.Enums;
+using BLL.Storage.Impls;
+using BLL.Storage.Objects.Enums;
 using DAL.DomainModel;
 using DAL.DomainModel.EnumProperties;
 using DAL.Repository.Interfaces;
@@ -28,13 +29,13 @@ namespace BLL.Login.Impls
         private readonly IRepository _repository;
         private readonly ICurrentUser _currentUser;
         private readonly ICookiesService _cookiesService;
-        private readonly IImageService _imageService;
+        private readonly IMediaService _mediaService;
 
         public const string DefaultAvatarUrl = "/Content/Images/default-avatar.png";
         public const string DefaultFortressAvatar = "/Content/Images/fortress-avatar.jpg";
         public const int TrialDays = 15;
 
-        public LoginService(ISmsService smsService, AppUserManager appUserManager, IAuthenticationManager authManager, IRepository repository, ICurrentUser currentUser, ICookiesService cookiesService, IImageService imageService)
+        public LoginService(ISmsService smsService, AppUserManager appUserManager, IAuthenticationManager authManager, IRepository repository, ICurrentUser currentUser, ICookiesService cookiesService, IMediaService mediaService)
         {
             _smsService = smsService;
             _appUserManager = appUserManager;
@@ -42,7 +43,7 @@ namespace BLL.Login.Impls
             _repository = repository;
             _currentUser = currentUser;
             _cookiesService = cookiesService;
-            _imageService = imageService;
+            _mediaService = mediaService;
         }
 
         public ServiceResult<SignInResult> SignIn(SignInModel signInModel, string returnUrl)
@@ -148,7 +149,7 @@ namespace BLL.Login.Impls
                     _repository.SaveChanges();
                     if (img != null)
                     {
-                        _imageService.AttachImagesToEntity(new List<MediaVm> {new MediaVm() {Id = img.Id} },
+                        _mediaService.AttachMediaToEntity(new List<MediaVm> {new MediaVm() {Id = img.Id} },
                             user.Id, UploadType.Avatar);
                     }
                     var ident = _appUserManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);

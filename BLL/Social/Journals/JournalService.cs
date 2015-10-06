@@ -10,8 +10,9 @@ using BLL.Social.Tags;
 using BLL.Social.Tape;
 using BLL.Social.UserProfile;
 using BLL.Storage;
-using BLL.Storage.Impls.Enums;
+using BLL.Storage.Impls;
 using BLL.Storage.Objects;
+using BLL.Storage.Objects.Enums;
 using DAL.DomainModel.JournalEntities;
 using DAL.Repository.Interfaces;
 
@@ -22,18 +23,16 @@ namespace BLL.Social.Journals
         private readonly ITagService _tagService;
         private readonly IJournalRepository _repository;
         private readonly ICurrentUser _currentUser;
-        private readonly IImageService _imageService;
-        private readonly IVideoService _videoService;
+        private readonly IMediaService _mediaService;
         private readonly ITapeService _tapeService;
 
-        public JournalService(ITagService tagService, IJournalRepository repository, ICurrentUser currentUser, IImageService imageService, IVideoService videoService, ITapeService tapeService)
+        public JournalService(ITagService tagService, IJournalRepository repository, ICurrentUser currentUser, ITapeService tapeService, IMediaService mediaService)
         {
             _tagService = tagService;
             _repository = repository;
             _currentUser = currentUser;
-            _imageService = imageService;
-            _videoService = videoService;
             _tapeService = tapeService;
+            _mediaService = mediaService;
         }
 
         public bool CanAction(Journal journal)
@@ -52,8 +51,7 @@ namespace BLL.Social.Journals
             _repository.SaveChanges();
             _tapeService.AddToTape(journal.Id, TapeType.Record);
             _tagService.AddTags(journal.Id, journalModel.Tags);
-            _imageService.AttachImagesToEntity(journalModel.Media.Where(m => m.Type == MediaType.Image).ToList(), journal.Id, UploadType.Journal);
-            _videoService.AttachVideosToEntity(journalModel.Media.Where(m => m.Type == MediaType.Video).ToList(), journal.Id, UploadType.Journal);
+            _mediaService.AttachMediaToEntity(journalModel.Media, journal.Id, UploadType.Journal);
             return ServiceResult.SuccessResult(journal.MapTo<JournalDisplayVm>());
         }
 
@@ -71,8 +69,7 @@ namespace BLL.Social.Journals
             _repository.DeleteRange(tagsToDelete);
             _repository.SaveChanges();
             _tagService.AddTags(journal.Id, journalModel.Tags);
-            _imageService.AttachImagesToEntity(journalModel.Media.Where(m => m.Type == MediaType.Image).ToList(), journal.Id, UploadType.Journal);
-            _videoService.AttachVideosToEntity(journalModel.Media.Where(m => m.Type == MediaType.Video).ToList(), journal.Id, UploadType.Journal);
+            _mediaService.AttachMediaToEntity(journalModel.Media, journal.Id, UploadType.Journal);
             return ServiceResult.SuccessResult();
         }
 
