@@ -1,6 +1,6 @@
 ﻿<div ng-if="!uFilter.error"
      data-loader="uFilter.loading">
-    <input ng-model="filter.country"
+    @*<input ng-model="filter.country"
            typeahead="country for country in uFilter.getCountry($viewValue)"
            typeahead-wait-ms="300"
            typeahead-no-results="noCountry"
@@ -11,7 +11,7 @@
            typeahead-wait-ms="300"
            typeahead-no-results="noCity"
            typeahead-on-select="callback()"
-           class="fs-input fs-input--xs fhr__select" placeholder="@R("Выберите город")" />
+           class="fs-input fs-input--xs fhr__select" placeholder="@R("Выберите город")" />*@
     <select ng-model="filter.gender"
             ng-change="callback()"
             ng-options="option for option in uFilter.prop.gender"

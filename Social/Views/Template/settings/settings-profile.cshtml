@@ -35,14 +35,14 @@
                     <label form="gender" class="col-sm-4 control-label">@R("Пол:")</label>
                     <div class="col-sm-8">
                         <select id="gender" ng-model="sett.model.gender" class="fs-input fs-input--border"
-                                ng-options="o.label for o in sett.prop.genders"></select>
+                                ng-options="obj.label for obj in sett.prop.genders track by obj.value"></select>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="sprotTime" class="col-sm-4 control-label">@R("В спорте уже:")</label>
                     <div class="col-sm-8">
-                        <select id="sprotTime" ng-model="sett.model.sprotTime" class="fs-input fs-input--border"
-                                ng-options="o.label for o in sett.prop.sportTimes"></select>
+                        <select id="sprotTime" ng-model="sett.model.sportTime" class="fs-input fs-input--border"
+                                ng-options="obj.label for obj in sett.prop.sportTimes track by obj.value"></select>
                     </div>
                 </div>
                 <div class="form-group">

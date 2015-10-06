@@ -7,9 +7,8 @@ class ChangePhoneGetCodeModal extends Controller('socialApp.controllers')
         modalService)->
 
         $scope.serverValidation = {}
-        $scope.submit = ()->
+        $scope.submit = ->
             settingsService.sendPhoneForCode(phone: $scope.phone).then (res)->
-                $modalInstance.close()
                 modalService.show(name: 'changePhoneSubmitCode', data: { phone: $scope.phone })
             , (res)->
                 $scope.serverValidation = res.errors
@@ -21,14 +20,18 @@ class ChangePhoneSubmitCodeModal extends Controller('socialApp.controllers')
     constructor: (
         $scope
         $modalInstance
+        $modalStack
+        $state
         settingsService
         modalService
         modalData)->
-
+        
         $scope.serverValidation = {}
-        $scope.model.phone = modalData.phone
+        $scope.model =
+            phone: modalData.phone
         $scope.submit = ()->
             settingsService.sendPhoneWithCode($scope.model).then (res)->
-                $modalInstance.close()
+                $modalStack.dismissAll()
+                $state.reload()
             , (res)->
                 $scope.serverValidation = res.errors

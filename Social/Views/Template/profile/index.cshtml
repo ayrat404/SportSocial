@@ -16,7 +16,7 @@
                              flow-files-submitted="$flow.upload()">
                             <div class="user-info__avatar__img-wrap"
                                  ng-if="profile.user.avatar.length">
-                                <img ng-src="{{ profile.user.avatar | imageResize:{w: 230, h: 231} } class="user-infor__avatar__img" />
+                                <img ng-src="{{ profile.user.avatar | imageResize:{w: 230, h: 231} }}" class="user-infor__avatar__img" />
                                 <span ng-click="profile.removeAvatar($flow)" class="uia__remove"><i></i></span>
                                 <span flow-btn class="uia__change"><i></i></span>
                             </div>
