@@ -300,6 +300,19 @@ namespace BLL.Login.Impls
             };
         }
 
+        public string GetPhoneForSettings()
+        {
+            string phone = _currentUser.Phone;
+            string phoneCountryPrefix = phone.Substring(0, phone.Length - 10);
+            string phonePart = phone.Substring(phone.Length - 10, phone.Length - 3);
+            string phoneEnd = phone.Substring(phone.Length - 2, 2);
+            foreach (char dig in "0123456789")
+            {
+                phonePart = phonePart.Replace(dig, '*');
+            }
+            return string.Concat(phoneCountryPrefix, phonePart, phoneEnd);
+        }
+
         private bool IsValidPhone(string phone)
         {
             if (phone.Length == 11 && phone[0] == '8')

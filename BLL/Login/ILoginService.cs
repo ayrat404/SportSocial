@@ -28,5 +28,7 @@ namespace BLL.Login
         ServiceResult LogOut();
 
         ServiceResult<ImageUploadResult> RemoveAvatar();
+
+        string GetPhoneForSettings();
     }
 }
