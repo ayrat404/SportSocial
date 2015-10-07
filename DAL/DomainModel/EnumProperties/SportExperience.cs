@@ -1,24 +1,24 @@
-using System.ComponentModel;
+п»їusing System.ComponentModel;
 
 namespace DAL.DomainModel.EnumProperties
 {
     public enum SportExperience
     {
-        [Description("Меньше года")]
+        [Description("РњРµРЅСЊС€Рµ РіРѕРґР°")]
         LessOne,
-        [Description("От 1 до 2")]
+        [Description("РћС‚ 1 РґРѕ 2")]
         One,
-        [Description("От 2 до 3")]
+        [Description("РћС‚ 2 РґРѕ 3")]
         Two,
-        [Description("От 3 до 4")]
+        [Description("РћС‚ 3 РґРѕ 4")]
         Three,
-        [Description("От 4 до 5")]
+        [Description("РћС‚ 4 РґРѕ 5")]
         Four,
-        [Description("От 5 до 7")]
+        [Description("РћС‚ 5 РґРѕ 7")]
         FiveSeven,
-        [Description("От 7 до 10")]
+        [Description("РћС‚ 7 РґРѕ 10")]
         SevenTen,
-        [Description("Больше 10")]
+        [Description("Р‘РѕР»СЊС€Рµ 10")]
         MoreTen
     }
 }

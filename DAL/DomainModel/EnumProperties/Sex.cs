@@ -1,13 +1,13 @@
-using System.ComponentModel;
+Ôªøusing System.ComponentModel;
 using Knoema.Localization;
 
 namespace DAL.DomainModel.EnumProperties
 {
     public enum Sex
     {
-        [Description("ÃÛÊ")]
+        [Description("–ú—É–∂")]
         Male = 1,
-        [Description("∆ÂÌ")]
+        [Description("–ñ–µ–Ω")]
         Female = 2
     }
 }

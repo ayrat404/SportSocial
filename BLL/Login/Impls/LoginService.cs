@@ -238,7 +238,19 @@ namespace BLL.Login.Impls
                 result.Success = false;
                 return result;
             }
+            if (UserExist(phone))
+            {
+                ServiceResult.ErrorResult("Пользователь с указанным номером телефона уже зарегистрирован");
+            }
             return _smsService.GenerateAndSendCode(_currentUser.UserId, _currentUser.Phone);
+        }
+
+        private bool UserExist(string phone)
+        {
+            var user = _appUserManager.FindByName(phone);
+            if (user != null && user.PhoneNumberConfirmed)
+                return true;
+            return false;
         }
 
         public ServiceResult ChangePhoneConfirm(ChangePhoneModel chPhoneModel)
@@ -251,6 +263,9 @@ namespace BLL.Login.Impls
             var user = _repository.Find<AppUser>(_currentUser.UserId);
             user.UserName = chPhoneModel.Phone;
             _repository.SaveChanges();
+            var ident = _appUserManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
+            _authManager.SignOut();
+            _authManager.SignIn(new AuthenticationProperties { IsPersistent = true }, ident);
             var result = new ServiceResult {Success = true};
             return result;
         }
