@@ -50,7 +50,7 @@ landingScripts = (function() {
               }),
               init: function(count) {
                 var i, j, ref;
-                for (i = j = 0, ref = count; 0 <= ref ? j <= ref : j >= ref; i = 0 <= ref ? ++j : --j) {
+                for (i = j = 0, ref = count; 0 <= ref ? j < ref : j > ref; i = 0 <= ref ? ++j : --j) {
                   this.$wrap.append(this.$item.clone());
                 }
                 return this.$wrap;
@@ -64,7 +64,7 @@ landingScripts = (function() {
           $sliderImgWrap.fotorama({
             nav: false,
             loop: true,
-            autoplay: 6000,
+            autoplay: 7000,
             transition: 'dissolve'
           });
           changeContentBySlide = function(slideIndex) {
@@ -82,7 +82,7 @@ landingScripts = (function() {
           };
           sliderApi = $sliderImgWrap.data('fotorama');
           $sliderControlsContainer.append(sliderCtrlTpl.controls.init());
-          $sliderControlsContainer.append(sliderCtrlTpl.nav.init(4));
+          $sliderControlsContainer.append(sliderCtrlTpl.nav.init(3));
           changeContentBySlide(sliderApi.activeFrame.i - 1);
           $sliderImgWrap.on('fotorama:readry fotorama:show', function(e, fotorama, extra) {
             return changeContentBySlide(fotorama.activeFrame.i - 1);
