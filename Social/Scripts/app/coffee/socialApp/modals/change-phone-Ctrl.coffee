@@ -25,7 +25,7 @@ class ChangePhoneSubmitCodeModal extends Controller('socialApp.controllers')
         settingsService
         modalService
         modalData)->
-        
+
         $scope.serverValidation = {}
         $scope.model =
             phone: modalData.phone

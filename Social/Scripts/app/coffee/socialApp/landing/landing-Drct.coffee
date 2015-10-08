@@ -37,7 +37,7 @@ class landingScripts extends Directive('socialApp.directives')
                             $wrap: $('<div>', { class: 'slide__nav' })
                             $item: $('<div>', { class: 'slide__nav__it' })
                             init: (count)->
-                                for i in [0..count]
+                                for i in [0...count]
                                     this.$wrap.append(this.$item.clone())
                                 this.$wrap
                     dynContent = 
@@ -49,7 +49,7 @@ class landingScripts extends Directive('socialApp.directives')
                     $sliderImgWrap.fotorama({
                         nav: false
                         loop: true
-                        autoplay: 6000
+                        autoplay: 7000
                         transition: 'dissolve'
                     })
 
@@ -84,7 +84,7 @@ class landingScripts extends Directive('socialApp.directives')
                     # paste slider controls
                     # ----------
                     $sliderControlsContainer.append(sliderCtrlTpl.controls.init())
-                    $sliderControlsContainer.append(sliderCtrlTpl.nav.init(4))
+                    $sliderControlsContainer.append(sliderCtrlTpl.nav.init(3))
                     
                     # init actives
                     # ----------
@@ -92,8 +92,8 @@ class landingScripts extends Directive('socialApp.directives')
 
                     # on slide change
                     # ----------
-                    $sliderImgWrap.on('fotorama:readry fotorama:show', (e, fotorama, extra)->
-                        changeContentBySlide(fotorama.activeFrame.i - 1))
+                    $sliderImgWrap.on 'fotorama:readry fotorama:show', (e, fotorama, extra)->
+                        changeContentBySlide(fotorama.activeFrame.i - 1)
 
                     # handle controls
                     # ----------
@@ -101,7 +101,7 @@ class landingScripts extends Directive('socialApp.directives')
                         sliderApi.show('>'))
                     sliderCtrlTpl.controls.$top.on('click', ()->
                         sliderApi.show('<'))
-                    sliderCtrlTpl.nav.$wrap.on('click', '.slide__nav__it', ()->
+                    sliderCtrlTpl.nav.$wrap.on('click', '.slide__nav__it', ->
                         sliderApi.show(sliderCtrlTpl.nav.$wrap.find('.slide__nav__it').index(this)))
 
                 
