@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using BLL.Common.Extensions;
 using BLL.Common.Services.CurrentUser;
+using BLL.Core.Services.Settings;
+using BLL.Core.Services.Settings.Objects;
 using BLL.Login;
 using BLL.Login.ViewModels;
 using DAL.DomainModel.EnumProperties;
@@ -20,11 +21,13 @@ namespace Social.Controllers
     {
         private readonly ILoginService _loginService;
         private readonly ICurrentUser _currentUser;
+        private readonly ISettingsService _settingsService;
 
-        public SettingsController(ILoginService loginService, ICurrentUser currentUser)
+        public SettingsController(ILoginService loginService, ICurrentUser currentUser, ISettingsService settingsService)
         {
             _loginService = loginService;
             _currentUser = currentUser;
+            _settingsService = settingsService;
         }
 
         [HttpGet]
@@ -78,24 +81,7 @@ namespace Social.Controllers
         [Route("profile")]
         public ApiResult GetProfile()
         {
-            var profileSettings = new ProfileSettings
-            {
-                FirstName = _currentUser.User.Profile.FirstName,
-                LastName = _currentUser.User.Profile.LastName,
-                SportTime =
-                    new SportExpirienceVm()
-                    {
-                        Label = _currentUser.User.Profile.Experience.GetDescription(),
-                        Value = (int) _currentUser.User.Profile.Experience
-                    },
-                Birthday = _currentUser.User.Profile.BirthDate,
-                Gender =
-                    new SexVm()
-                    {
-                        Label = _currentUser.User.Profile.Experience.GetDescription(),
-                        Value = _currentUser.User.Profile.Sex
-                    },
-            };
+            var profileSettings = _settingsService.GetProfileSettings();
             var prop= new
             {
                 genders = ((IEnumerable<Sex>) Enum.GetValues(typeof (Sex))).Select(o => new SexVm
@@ -115,54 +101,9 @@ namespace Social.Controllers
         [HttpPost]
         [Authorize]
         [Route("profile")]
-        public ApiResult ChangeProfile()
+        public ApiResult ChangeProfile(ProfileSettings settings)
         {
-            return new ApiResult();
+            return ApiResult(_settingsService.SaveSettings(settings));
         }
-    }
-
-    public class ProfileSettings
-    {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public DateTime Birthday { get; set; }
-        public SexVm Gender { get; set; }
-        public SportExpirienceVm SportTime { get; set; }
-    }
-
-    public class SexVm
-    {
-        public Sex Value { get; set; }
-        public string Label { get; set; }
-    }
-
-    public class SportExpirienceVm
-    {
-        public int Value { get; set; }
-        public string Label { get; set; }
-    }
-
-    public class NewPasswordVm
-    {
-        [Required(ErrorMessage = "Необходимо ввести старый пароль")]
-        public string OldPassword { get; set; }
-
-        [Required(ErrorMessage = "Необходимо ввести новый пароль")]
-        [StringLength(30, MinimumLength = 6, ErrorMessage = "Пароль должен быть не менее 6 символов")]
-        public string NewPassword { get; set; }
-
-        [Required(ErrorMessage = "Необходимо ввести подтверждение пароля")]
-#pragma warning disable 618
-        [System.Web.Mvc.Compare("New", ErrorMessage = "Пароли не совпадают")]
-#pragma warning restore 618
-        public string NewRepeatPassword { get; set; }
-
-    }
-
-    public class PhoneVm
-    {
-        [Required(ErrorMessage = "Необходимо ввести номер телефона")]
-        [RegularExpression(@"^[0-9]{11,13}$", ErrorMessage = "Номер телефона должен содержать только цифры в формате <код страны><номер> без сивола \"+\".")]
-        public string Phone { get; set; }
     }
 }

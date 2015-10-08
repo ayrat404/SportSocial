@@ -200,6 +200,12 @@
     <Compile Include="Core\Services\Cookies\ICookiesService.cs" />
     <Compile Include="Core\Services\CurrentUser\Impls\CurrentUser.cs" />
     <Compile Include="Core\Services\CurrentUser\ICurrentUser.cs" />
+    <Compile Include="Core\Services\Settings\ISettingsService.cs" />
+    <Compile Include="Core\Services\Settings\Objects\NewPasswordVm.cs" />
+    <Compile Include="Core\Services\Settings\Objects\PhoneVm.cs" />
+    <Compile Include="Core\Services\Settings\Objects\ProfileSettings.cs" />
+    <Compile Include="Core\Services\Settings\Objects\SexVm.cs" />
+    <Compile Include="Core\Services\Settings\Objects\SportExpirienceVm.cs" />
     <Compile Include="Core\Services\Support\ISupportService.cs" />
     <Compile Include="Core\Services\Support\Objects\FeedBackModel.cs" />
     <Compile Include="Feedbacks\IFeedbackService.cs" />

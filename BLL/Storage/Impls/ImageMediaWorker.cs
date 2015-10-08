@@ -31,6 +31,7 @@ namespace BLL.Storage.Impls
             {
                 var result = AddImage<AppUser, UserAvatarPhoto>(inputStream, GetPath(uploadType), fileName);
                 _currentUser.User.Profile.Avatar = result.Result.Url;
+                _repository.SaveChanges();
                 return result;
             }
             return (ServiceResult<ImageUploadResult>)GetGenericMethod("AddImage", uploadType)
