@@ -13,7 +13,7 @@ namespace BLL.Core.Services.Settings.Objects
 
         [Required(ErrorMessage = "Необходимо ввести подтверждение пароля")]
 #pragma warning disable 618
-        [System.Web.Mvc.Compare("New", ErrorMessage = "Пароли не совпадают")]
+        [System.Web.Mvc.Compare("NewPassword", ErrorMessage = "Пароли не совпадают")]
 #pragma warning restore 618
             public string NewRepeatPassword { get; set; }
 

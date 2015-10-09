@@ -98,7 +98,7 @@ namespace Social.Controllers
             return ApiResult(new {model = profileSettings, prop});
         }
 
-        [HttpPost]
+        [HttpPut]
         [Authorize]
         [Route("profile")]
         public ApiResult ChangeProfile(ProfileSettings settings)
