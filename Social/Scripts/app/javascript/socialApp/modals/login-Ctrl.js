@@ -10,9 +10,7 @@ LoginSubmitModal = (function() {
         if (modalData && typeof modalData.success === 'function') {
           return modalData.success(res);
         } else {
-          return $state.go('main.profile', {
-            userId: res.data.id
-          });
+          return window.location.reload();
         }
       }, function(res) {
         return $scope.serverValidation = res.data.errors;

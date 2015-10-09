@@ -12,7 +12,7 @@ Settings = (function() {
     rqst = {
       getAccountSettings: new RequestConstructor.klass('get', urlAccount),
       changePassword: new RequestConstructor.klass('post', urlPassword, function(data) {
-        if (!data || !data.oldPassword || !data.newPassword || !data.newPasswordRepeat) {
+        if (!data || !data.oldPassword || !data.newPassword || !data.newRepeatPassword) {
           if (srvcConfig.noticeShow.errors) {
             base.notice.show({
               text: 'Change password submit validate error',

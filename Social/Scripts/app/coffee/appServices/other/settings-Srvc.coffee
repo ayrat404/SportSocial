@@ -20,7 +20,7 @@ class Settings extends Service('appSrvc')
             # change password
             # ---------------
             changePassword: new RequestConstructor.klass 'post', urlPassword, (data)->
-                if !data || !data.oldPassword || !data.newPassword || !data.newPasswordRepeat
+                if !data || !data.oldPassword || !data.newPassword || !data.newRepeatPassword
                     if srvcConfig.noticeShow.errors
                         base.notice.show
                             text: 'Change password submit validate error'

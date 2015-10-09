@@ -8,6 +8,7 @@ class LoginSubmitModal extends Controller('socialApp.controllers')
 
         $scope.serverValidation = {}
 
+
         # login
         # ---------------
         $scope.submit = ()->
@@ -17,7 +18,7 @@ class LoginSubmitModal extends Controller('socialApp.controllers')
                   typeof modalData.success == 'function'
                     modalData.success(res)
                 else
-                    $state.go 'main.profile', userId: res.data.id
+                    window.location.reload()
             , (res)->
                 $scope.serverValidation = res.data.errors
 
