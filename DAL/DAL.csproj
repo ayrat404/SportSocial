@@ -251,6 +251,10 @@
     <Compile Include="Migrations\201510061140226_MediaBase_VideoImageUrl.Designer.cs">
       <DependentUpon>201510061140226_MediaBase_VideoImageUrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201510101815121_AppUser_ExternalInfo.cs" />
+    <Compile Include="Migrations\201510101815121_AppUser_ExternalInfo.Designer.cs">
+      <DependentUpon>201510101815121_AppUser_ExternalInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AccountRepository.cs" />
@@ -347,6 +351,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201510061140226_MediaBase_VideoImageUrl.resx">
       <DependentUpon>201510061140226_MediaBase_VideoImageUrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510101815121_AppUser_ExternalInfo.resx">
+      <DependentUpon>201510101815121_AppUser_ExternalInfo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

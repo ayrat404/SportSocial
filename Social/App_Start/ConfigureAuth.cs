@@ -25,9 +25,15 @@ namespace Social
             #endif
             app.UseCookieAuthentication(cookieOptions);
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
+
+            app.UseVkontakteAuthentication(
+                appId: "5097824",
+                appSecret: "hozcd1wthAk4ZlGGBMTI", 
+                scope: "email"
+            );
             app.UseGoogleAuthentication(
-                clientId: "000-000.apps.googleusercontent.com",
-                clientSecret: "00000000000"
+                clientId: "862601964196-1u3hup1l410d0ua9p4uj42a1m8n2eqvv.apps.googleusercontent.com",
+                clientSecret: "M1_DIN4nDytKfKyjPezZc96n"
            );
         }
 

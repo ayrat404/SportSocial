@@ -4,6 +4,7 @@ using DAL;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.Google;
 using Owin;
 
 namespace SportSocial
@@ -19,7 +20,18 @@ namespace SportSocial
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
                 LoginPath = new PathString("/"),
+                #if !DEBUG
                 CookieDomain = ".fortress.club"
+                #endif
+                //CookieDomain = ".fortress.club"
+            });
+
+            app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
+
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "",
+                ClientSecret = ""
             });
         }
     }

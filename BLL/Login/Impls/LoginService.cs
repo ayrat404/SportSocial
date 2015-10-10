@@ -18,6 +18,7 @@ using DAL.Repository.Interfaces;
 using Knoema.Localization;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using Microsoft.Owin;
 
 namespace BLL.Login.Impls
 {
@@ -61,11 +62,31 @@ namespace BLL.Login.Impls
                 var result = new SignInResult()
                 {
                     Id = user.Id,
-                    Name = user.Profile.FirstName + " " + user.Profile.LastName,
+                    Name = user.FullName(),
                     Avatar = user.Profile.Avatar
                 };
                 return ServiceResult.SuccessResult(result);
             }
+        }
+
+        public ServiceResult<SignInResult> SignInExternal(RegisterType registerType, string externalId)
+        {
+            var user = _appUserManager.FindByName(ExternalUser(registerType, externalId));
+            if (user == null)
+            {
+                return ServiceResult.ErrorResult<SignInResult>("");
+            }
+            _authManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
+            _authManager.SignOut();
+            var ident = _appUserManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
+            _authManager.SignIn(new AuthenticationProperties { IsPersistent = true }, ident);
+            var result = new SignInResult()
+            {
+                Id = user.Id,
+                Name = user.FullName(),
+                Avatar = user.Profile.Avatar
+            };
+            return ServiceResult.SuccessResult(result);
         }
 
         public ServiceResult PreRegister(RegistratioinModel regModel, string url)
@@ -128,30 +149,32 @@ namespace BLL.Login.Impls
                     user.PhoneNumberConfirmed = true;
                     _appUserManager.AddPassword(user.Id, confirmModel.Password);
                     user.Name = confirmModel.Name;
+                    user.RegisterType = (int)RegisterType.Internal;
                     _appUserManager.Update(user);
-                    var img = _repository.Find<UserAvatarPhoto>(confirmModel.ImgId);
-                    var profile = new Profile
-                    {
-                        Id = user.Id,
-                        Lang = LanguageHelper.GetCurrentCulture(),
-                        Avatar = img != null ? img.Url : DefaultAvatarUrl,
-                        ReadedNews = _cookiesService.GetReadedNews(),
-                        FirstName = confirmModel.Name,
-                        LastName = confirmModel.LastName,
-                        Sex = confirmModel.Gender,
-                        Experience = confirmModel.SportTime,
-                        BirthDate = confirmModel.BirthDay,
-                        IsTrial = true,
-                        LastPaymentDate = DateTime.Now,
-                        LastPaidDaysCount = TrialDays,
-                    };
-                    _repository.Add(profile);
-                    _repository.SaveChanges();
-                    if (img != null)
-                    {
-                        _mediaService.AttachMediaToEntity(new List<MediaVm> {new MediaVm() {Id = img.Id} },
-                            user.Id, UploadType.Avatar);
-                    }
+                    //var img = _repository.Find<UserAvatarPhoto>(confirmModel.ImgId);
+                    //var profile = new Profile
+                    //{
+                    //    Id = user.Id,
+                    //    Lang = LanguageHelper.GetCurrentCulture(),
+                    //    Avatar = img != null ? img.Url : DefaultAvatarUrl,
+                    //    ReadedNews = _cookiesService.GetReadedNews(),
+                    //    FirstName = confirmModel.Name,
+                    //    LastName = confirmModel.LastName,
+                    //    Sex = confirmModel.Gender,
+                    //    Experience = confirmModel.SportTime,
+                    //    BirthDate = confirmModel.BirthDay,
+                    //    IsTrial = true,
+                    //    LastPaymentDate = DateTime.Now,
+                    //    LastPaidDaysCount = TrialDays,
+                    //};
+                    //_repository.Add(profile);
+                    //_repository.SaveChanges();
+                    //if (img != null)
+                    //{
+                    //    _mediaService.AttachMediaToEntity(new List<MediaVm> {new MediaVm() {Id = img.Id} },
+                    //        user.Id, UploadType.Avatar);
+                    //}
+                    CreateProfile(confirmModel, user.Id);
                     var ident = _appUserManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
                     _authManager.SignOut();
                     _authManager.SignIn(new AuthenticationProperties { IsPersistent = true }, ident);
@@ -172,6 +195,33 @@ namespace BLL.Login.Impls
                 Name = user.FullName()
             };
             return ServiceResult.SuccessResult(signInModel);
+        }
+
+        private void CreateProfile(RegistrationConfirm confirmModel, int userId)
+        {
+            var img = _repository.Find<UserAvatarPhoto>(confirmModel.ImgId);
+            var profile = new Profile
+            {
+                Id = userId,
+                Lang = LanguageHelper.GetCurrentCulture(),
+                Avatar = img != null ? img.Url : DefaultAvatarUrl,
+                ReadedNews = _cookiesService.GetReadedNews(),
+                FirstName = confirmModel.Name,
+                LastName = confirmModel.LastName,
+                Sex = confirmModel.Gender,
+                Experience = confirmModel.SportTime,
+                BirthDate = confirmModel.BirthDay,
+                IsTrial = true,
+                LastPaymentDate = DateTime.Now,
+                LastPaidDaysCount = TrialDays,
+            };
+            _repository.Add(profile);
+            _repository.SaveChanges();
+            if (img != null)
+            {
+                _mediaService.AttachMediaToEntity(new List<MediaVm> {new MediaVm() {Id = img.Id} },
+                    userId, UploadType.Avatar);
+            }
         }
 
         public ServiceResult ChangePassword(ChangePaswdModel changePaswdModel)
@@ -328,6 +378,48 @@ namespace BLL.Login.Impls
             return string.Concat(phoneCountryPrefix, phonePart, phoneEnd);
         }
 
+        public ServiceResult<SignInResult> RegisterExternal(ExternalRegistrationModel external, RegisterType registerType, string externalId, string externalEmail)
+        {
+            var extUser = ExternalUser(registerType, externalId);
+            var user = new AppUser()
+            {
+                UserName = extUser,
+                Email = externalEmail,
+                PhoneNumberConfirmed = false,
+                Status = UserStatus.Normal,
+                Created = DateTime.Now,
+                Modified = DateTime.Now,
+                RegisterType = (int)registerType
+            };
+            var createUserResult = _appUserManager.Create(user);
+            if (!createUserResult.Succeeded)
+            {
+                return ServiceResult.ErrorResult<SignInResult>("Ошибка при регистрации".Resource(this));
+            }
+            CreateProfile(external, user.Id);
+            _authManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
+            _authManager.SignOut();
+            var identity = _appUserManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
+            _authManager.SignIn(identity);
+            var signInResult = new SignInResult
+            {
+                Id = user.Id,
+                Name = user.FullName(),
+                Avatar = user.Profile.Avatar
+            };
+            return ServiceResult.SuccessResult(signInResult);
+        }
+
+        private string ExternalUser(RegisterType registerType, string extId)
+        {
+            return string.Format("{0}-{1}", (int)registerType, extId);
+        }
+
+        //public ExternalLoginInfo GetExternalLogin()
+        //{
+        //    var loginInfo = _authManager.GetExternalLoginInfoAsync().Result;
+        //}
+
         private bool IsValidPhone(string phone)
         {
             if (phone.Length == 11 && phone[0] == '8')
@@ -338,8 +430,18 @@ namespace BLL.Login.Impls
         }
     }
 
+    public class ExternalLoginInfo
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+    }
+
     public class SignInResult
     {
+        //SignInResult()
+        //{
+            
+        //}
         public int Id { get; set; } 
 
         public string Avatar { get; set; } 

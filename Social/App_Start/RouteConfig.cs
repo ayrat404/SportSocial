@@ -20,6 +20,12 @@ namespace Social
             );
 
             routes.MapRoute(
+                name: "ExternalLogin",
+                url: "login/external",
+                defaults: new { controller = "Home", action = "ExternalLogin" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{*route}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

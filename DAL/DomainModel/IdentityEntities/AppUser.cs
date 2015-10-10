@@ -50,6 +50,8 @@ namespace DAL.DomainModel
         [Column(TypeName = "datetime2")]
         public DateTime Modified { get; set; }
 
+        public int RegisterType { get; set; }
+
         public string FullName()
         {
             return Profile.FirstName + " " + Profile.LastName;

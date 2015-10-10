@@ -9,6 +9,8 @@ namespace BLL.Login
     {
         ServiceResult<SignInResult> SignIn(SignInModel signInModel, string returnUrl);
 
+        ServiceResult<SignInResult> SignInExternal(RegisterType registerType, string externalId);
+
         ServiceResult PreRegister(RegistratioinModel regModel, string url);
 
         ServiceResult<SignInResult> ConfirmSmsCode(ConfirmSmsCode regModel);
@@ -30,5 +32,6 @@ namespace BLL.Login
         ServiceResult<ImageUploadResult> RemoveAvatar();
 
         string GetPhoneForSettings();
+        ServiceResult<SignInResult> RegisterExternal(ExternalRegistrationModel external, RegisterType registerType, string externalId, string externalEmail);
     }
 }

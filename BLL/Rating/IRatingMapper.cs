@@ -37,7 +37,7 @@ namespace BLL.Rating
                 {
                     Id = j.UserId,
                     Avatar = j.User.Profile.Avatar,
-                    FullName = j.User.Profile.FirstName + " " + j.User.Profile.LastName
+                    FullName = j.User.FullName()
                 }).ToList();
             return ratingInfo;
         }
@@ -51,7 +51,7 @@ namespace BLL.Rating
                 {
                     Id = j.UserId,
                     Avatar = j.User.Profile.Avatar,
-                    FullName = j.User.Profile.FirstName + " " + j.User.Profile.LastName
+                    FullName = j.User.FullName()
                 }).ToList();
             return ratingInfo;
         }
