@@ -56,7 +56,7 @@ namespace BLL.Core.Services.Settings
                 Gender =
                     new SexVm()
                     {
-                        Label = profile.Experience.GetDescription(),
+                        Label = profile.Sex.GetDescription(),
                         Value = profile.Sex
                     },
             };

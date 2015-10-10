@@ -24,6 +24,11 @@ namespace Social
             cookieOptions.CookieDomain = ".fortress.club";
             #endif
             app.UseCookieAuthentication(cookieOptions);
+            app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
+            app.UseGoogleAuthentication(
+                clientId: "000-000.apps.googleusercontent.com",
+                clientSecret: "00000000000"
+           );
         }
 
         private AppUserManager GetUserManager()
