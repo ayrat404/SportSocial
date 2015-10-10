@@ -83,7 +83,7 @@ class AchievementSubmit extends Controller('socialApp.controllers')
 
         # ---------- Second Step ----------#
         this.second =
-            exampleLink: 'http://www.youtube.com/watch?v=zWc41BbjlZ4'
+            #exampleLink: 'http://www.youtube.com/watch?v=zWc41BbjlZ4'
             isExampleShow: true
             customLink: ''
             hideExample: ->
@@ -120,6 +120,7 @@ class AchievementSubmit extends Controller('socialApp.controllers')
                     if _this.model.type.id == _this.cards[i].id
                         _this.cards[i].focus = true
                         _this.cards[i].selected = _this.model.type.value
+                        _this.second.exampleLink = _this.cards[i].videoUrl
                         break
             else
                 # on empty model

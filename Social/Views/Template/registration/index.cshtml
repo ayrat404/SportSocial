@@ -94,10 +94,10 @@
                     <div class="field-error" ng-show="two.password != two.passwordRepeat && (form2.showValid || form2.passOut)">@R("Пароли не совпадают")</div>
 
                     <div class="fs-form__row">
-                        <input type="password" ng-model="two.password" required placeholder="@R("Придумайте пароль")" class="fs-input" />
+                        <input name="password" type="password" ng-model="two.password" required placeholder="@R("Придумайте пароль")" class="fs-input" />
                     </div>
                     <div class="fs-form__row">
-                        <input type="password" ng-model="two.passwordRepeat" ng-blur="form2.passOut=true" required placeholder="@R("Повторите пароль")" class="fs-input" />
+                        <input name="passwordRepeat" type="password" ng-model="two.passwordRepeat" ng-blur="form2.passOut=true" required placeholder="@R("Повторите пароль")" class="fs-input" />
                     </div>
                     <p class="text-center">@R("Вам отправлено СМС с кодом подтверждения")</p>
                     <div class="fs-form__row">

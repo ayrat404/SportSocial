@@ -48,7 +48,6 @@ registration = (function() {
         title: $rootScope.title
       };
       return $q(function(resolve, reject) {
-        debugger;
         if (data && data.imgId && data.name && data.lastName && data.birthday && data.sportTime && data.phone && data.gender && data.password && data.passwordRepeat && data.password === data.passwordRepeat && data.code && !isSending) {
           mixpanel.api('track', 'Registration__2-step__send', evTrackProp);
           return $http.post(urlTwo, data).then(function(res) {

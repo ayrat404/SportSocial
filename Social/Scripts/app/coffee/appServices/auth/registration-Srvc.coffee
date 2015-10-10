@@ -59,7 +59,6 @@ class registration extends Service('appSrvc')
                 url: $location.path()
                 title: $rootScope.title
             $q((resolve, reject)->
-                debugger
                 if data &&
                   data.imgId &&
                   data.name &&

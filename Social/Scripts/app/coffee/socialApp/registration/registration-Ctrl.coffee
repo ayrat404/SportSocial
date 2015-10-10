@@ -53,7 +53,7 @@ class Registration extends Controller('socialApp.controllers')
             registrationService.registerTwo(fullData).then((res)->
                 userService.set res.data.id
                 $rootScope.user = res.data
-                $state.go('main.profile', {userId: res.data.id})
+                window.location.reload()
             , (res)->
                 $scope.twoStepValidation = res.errors
             )
