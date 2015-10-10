@@ -45,9 +45,7 @@ Registration = (function() {
       return registrationService.registerTwo(fullData).then(function(res) {
         userService.set(res.data.id);
         $rootScope.user = res.data;
-        return $state.go('main.profile', {
-          userId: res.data.id
-        });
+        return window.location.reload();
       }, function(res) {
         return $scope.twoStepValidation = res.errors;
       });
