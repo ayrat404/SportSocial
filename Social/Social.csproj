@@ -310,6 +310,9 @@
     <Content Include="Content\socialApp\images\icons-set\icons-set.png" />
     <Content Include="Content\socialApp\images\views\landing\bg-left.jpg" />
     <Content Include="Content\socialApp\images\views\landing\macbook.png" />
+    <Content Include="Content\socialApp\images\views\landing\screen-1.png" />
+    <Content Include="Content\socialApp\images\views\landing\screen-2.jpg" />
+    <Content Include="Content\socialApp\images\views\landing\screen-3.jpg" />
     <Content Include="Content\socialApp\images\views\registration\registration-bg.jpg" />
     <Content Include="Content\socialApp\styles\compile\fortress.social.min.css" />
     <Content Include="favicon.ico" />
@@ -329,6 +332,7 @@
     <Content Include="Scripts\app\javascript\appServices\other\geo-Srvc.js" />
     <Content Include="Scripts\app\javascript\appServices\other\journal-Srvc.js" />
     <Content Include="Scripts\app\javascript\appServices\other\like-Srvc.js" />
+    <Content Include="Scripts\app\javascript\appServices\other\payment-Srvc.js" />
     <Content Include="Scripts\app\javascript\appServices\other\profile-Srvc.js" />
     <Content Include="Scripts\app\javascript\appServices\other\settings-Srvc.js" />
     <Content Include="Scripts\app\javascript\appServices\other\sport-themes-Srvc.js" />
@@ -383,6 +387,8 @@
     <Content Include="Scripts\app\javascript\socialApp\main\achievement\achievement-submit-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\main\achievement\achievement-view-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\main\main-social-Ctrl.js" />
+    <Content Include="Scripts\app\javascript\socialApp\main\payment\payment-index-Ctrl.js" />
+    <Content Include="Scripts\app\javascript\socialApp\main\payment\trial-visual-Drct.js" />
     <Content Include="Scripts\app\javascript\socialApp\main\profile\journal\journal-submit-profile-Ctrl.js" />
     <Content Include="Scripts\app\javascript\socialApp\main\profile\journal\journal-submit-profile-Drct.js" />
     <Content Include="Scripts\app\javascript\socialApp\main\profile\profile-view-Ctrl.js" />

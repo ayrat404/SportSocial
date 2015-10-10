@@ -30,11 +30,12 @@ namespace BLL.Social.Achievements.Impls
         private const int DurationDays = 6;
         private const int VoteCount = 3;
         
-        public AchievementService(IAchievementRepository achievementRepository, ICurrentUser currentUser, ITapeService tapeService)
+        public AchievementService(IAchievementRepository achievementRepository, ICurrentUser currentUser, ITapeService tapeService, IMediaService mediaService)
         {
             _achievementRepository = achievementRepository;
             _currentUser = currentUser;
             _tapeService = tapeService;
+            _mediaService = mediaService;
         }
 
         public AchievementTempVm FirstStep()
