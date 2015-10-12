@@ -22,6 +22,8 @@ namespace DAL.DomainModel
 
         public bool Deleted { get; set; }
 
+        public bool Verified { get; set; }
+
         public virtual AppUser User { get; set; }
 
         public DateTime Created { get; set; }

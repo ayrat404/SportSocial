@@ -13,8 +13,6 @@ namespace BLL.Sms
 {
     public class SmsService: ISmsService
     {
-        private readonly ISmsSender _smsSender;
-
         private EntityDbContext _db;
 
         public SmsService(EntityDbContext db)
@@ -44,7 +42,7 @@ namespace BLL.Sms
         {
             var result = new ServiceResult {Success = false};
             var sms = _db.SmsCodes.Where(s => s.UserId == userId).OrderByDescending(s => s.Created).FirstOrDefault();
-            if (sms != null && sms.Expired > DateTime.Now)
+            if (sms != null && sms.Expired > DateTime.Now && !sms.Verified)
             {
                 if ((DateTime.Now - sms.RetryTime).Seconds <= 0)
                 {
@@ -61,7 +59,7 @@ namespace BLL.Sms
             else
             {
                 string code = GenerateCode();
-                var smsCode = new SmsCode()
+                sms = new SmsCode()
                 {
                     Code = code,
                     Created = DateTime.Now,
@@ -73,7 +71,7 @@ namespace BLL.Sms
                 };
                 var msg = GenerateMessage(code);
                 SendMessage(msg, phoneNumber, sms);
-                _db.SmsCodes.Add(smsCode);
+                _db.SmsCodes.Add(sms);
                 _db.SaveChanges();
                 result.Success = true;
                 return result;
@@ -83,11 +81,17 @@ namespace BLL.Sms
         public ServiceResult VerifyCode(int userId, string code)
         {
             var result = new ServiceResult {Success = false};
-            var sms = _db.SmsCodes.Where(s => s.UserId == userId).OrderByDescending(s => s.Created).FirstOrDefault();
+            var sms = _db.SmsCodes.Where(s => s.UserId == userId)
+                .OrderByDescending(s => s.Created)
+                .FirstOrDefault();
             if (sms == null)
             {
                 result.ErrorMessage = "Не найдено смс".Resource(this);
                 return result;
+            }
+            if (sms.Verified)
+            {
+                return ServiceResult.SuccessResult();
             }
             if (sms.Expired < DateTime.Now)
             {
@@ -96,6 +100,8 @@ namespace BLL.Sms
             }
             if (sms.Code == code)
             {
+                sms.Verified = true;
+                _db.SaveChanges();
                 result.Success = true;
                 return result;
             }
