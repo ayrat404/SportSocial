@@ -1,4 +1,5 @@
 ﻿using BLL.Common.Objects;
+using DAL.DomainModel;
 using Microsoft.AspNet.Identity;
 
 namespace BLL.Sms
@@ -13,6 +14,6 @@ namespace BLL.Sms
 
         ServiceResult VerifyCode(int userId, string code);
 
-        void SendMessage(string msg, string phoneNumber);
+        void SendMessage(string msg, string phoneNumber, SmsCode smsCode);
     }
 }

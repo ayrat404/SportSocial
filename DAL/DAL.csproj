@@ -140,6 +140,7 @@
     <Compile Include="DomainModel\Profile.cs" />
     <Compile Include="DomainModel\Rubric.cs" />
     <Compile Include="DomainModel\SmsCode.cs" />
+    <Compile Include="DomainModel\SmsMessage.cs" />
     <Compile Include="DomainModel\Subscribe.cs" />
     <Compile Include="DomainModel\Tag.cs" />
     <Compile Include="DomainModel\Tape.cs" />

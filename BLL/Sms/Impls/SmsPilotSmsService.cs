@@ -8,13 +8,13 @@ using Newtonsoft.Json.Serialization;
 
 namespace BLL.Sms.Impls
 {
-    public class SmsPilotSmsService: SmsServiceBase
+    public class SmsPilotSmsService: ISmsSender
     {
-        public SmsPilotSmsService(EntityDbContext db) : base(db)
-        {
-        }
+        //public SmsPilotSmsService(EntityDbContext db) : base(db)
+        //{
+        //}
 
-        public override void SendMessage(string msg, string phoneNumber)
+        public string SendMessage(string msg, string phoneNumber)
         {
             string url = "http://smspilot.ru/api2.php";
             SmsPilotSendModel sendModel = new SmsPilotSendModel()
@@ -29,7 +29,7 @@ namespace BLL.Sms.Impls
             sendModel.Send.Add(send);
             string stringToSend = JsonConvert.SerializeObject(sendModel, Formatting.Indented, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
             HttpHelper.Send(url, HttpMethod.Post, stringToSend, "application/json");
-            base.SendMessage(msg, phoneNumber);
+            return string.Empty;
         }
     }
 }

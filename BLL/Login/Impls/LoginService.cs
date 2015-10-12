@@ -353,7 +353,7 @@ namespace BLL.Login.Impls
         {
             var user = _repository
                 .Queryable<AppUser>()
-                .SingleOrDefault(u => u.UserName == phone && !u.PhoneNumberConfirmed);
+                .SingleOrDefault(u => u.UserName == phone);
             if (user != null)
             {
                 return _smsService.GenerateAndSendCode(user.Id, phone);

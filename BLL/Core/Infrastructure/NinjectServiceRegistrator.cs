@@ -30,31 +30,13 @@ namespace BLL.Infrastructure
                 .BindDefaultInterfaces()
                 .Configure(c => c.InRequestScope()));
 
-            //kernel.Bind(x => x
-            //    .FromThisAssembly()
-            //    .Select(t => t.Name.EndsWith("MediaWorker"))
-            //    .BindDefaultInterfaces()
-            //    .Configure(c => c.InRequestScope()));
-
-
             kernel.Bind<IRepository>().To<Repository>().InRequestScope();
             kernel.Bind<IJournalRepository>().To<JournalRepository>().InRequestScope();
             kernel.Bind<IAchievementRepository>().To<AchievementRepository>().InRequestScope();
             kernel.Bind<IPaymentRepository>().To<PaymentRepository>().InRequestScope();
             kernel.Bind<IProfileRepository>().To<ProfileRepository>().InRequestScope();
 
-            //kernel.Bind(x => x
-            //    .FromAssemblyContaining(typeof(IRepository))
-            //    .Select(t => t.Name.EndsWith("Repository"))
-            //    .BindDefaultInterfaces()
-            //    .Configure(c => c.InRequestScope()));
 
-            #if DEBUG
-            kernel.Bind<ISmsService>().To<SmsServiceBase>().InRequestScope();
-            #endif
-            #if !DEBUG
-            kernel.Bind<ISmsService>().To<SmsPilotSmsService>().InRequestScope();
-            #endif
             kernel.Bind<ICurrentUser>().To<CurrentUser>().InRequestScope();
         }
     }
