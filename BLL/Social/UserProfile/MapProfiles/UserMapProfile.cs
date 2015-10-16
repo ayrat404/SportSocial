@@ -44,7 +44,7 @@ namespace BLL.Social.UserProfile.MapProfiles
 
             CreateMap<AppUser, ProfilePreview>()
                 .IncludeBase<AppUser, ProfileInfo>()
-                .ForMember(dest => dest.AchievementsCount, opt => opt.MapFrom(src => src.Achievements.Count))
+                .ForMember(dest => dest.AchievementsCount, opt => opt.MapFrom(src => src.Achievements.Count(a => a.Started.HasValue)))
                 .ForMember(dest => dest.RecordsCount, opt => opt.MapFrom(src => src.Journals.Count))
                 .ForMember(dest => dest.Subscribers, opt => opt.MapFrom(src => MapSubscribersVm(src)));
 

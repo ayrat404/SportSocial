@@ -1,4 +1,4 @@
-using System;
+п»їusing System;
 using System.Collections.Generic;
 using System.Linq;
 using BLL.Common.Objects;
@@ -65,7 +65,7 @@ namespace BLL.Social.Achievements.Impls
                         IsPublished = true
                     };
                     return ServiceResult.SuccessResult(createResult);
-                    //return ServiceResult.SuccessResult("Заявка достижение создана".Resource(this));
+                    //return ServiceResult.SuccessResult("Р—Р°СЏРІРєР° РґРѕСЃС‚РёР¶РµРЅРёРµ СЃРѕР·РґР°РЅР°".Resource(this));
                 }
             }
             return ServiceResult.SuccessResult<CreateAchievementResult>(null);
@@ -98,7 +98,7 @@ namespace BLL.Social.Achievements.Impls
             var ach = _achievementRepository.GetAchievementForVote(vote.Id, _currentUser.UserId);
             if (ach == null)
             {
-                return ServiceResult.ErrorResult<AchievmentVoiceVm>("Вы уже проголосовали за данную заявку".Resource(this));
+                return ServiceResult.ErrorResult<AchievmentVoiceVm>("Р’С‹ СѓР¶Рµ РїСЂРѕРіРѕР»РѕСЃРѕРІР°Р»Рё Р·Р° РґР°РЅРЅСѓСЋ Р·Р°СЏРІРєСѓ".Resource(this));
             }
             var voice = new AchievementVoice
             {
@@ -117,7 +117,7 @@ namespace BLL.Social.Achievements.Impls
             {
                 if (CheckAndCompleteAchievement(tempAchievement))
                 {
-                    result.SuccessMessage = "Заявка на достижение создана".Resource(this);
+                    result.SuccessMessage = "Р—Р°СЏРІРєР° РЅР° РґРѕСЃС‚РёР¶РµРЅРёРµ СЃРѕР·РґР°РЅР°".Resource(this);
                 }
             }
             return result;

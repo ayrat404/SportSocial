@@ -94,7 +94,9 @@ namespace DAL.Repository
             return new ListDto<Achievement>
             {
                 Count = query.Count(),
-                List = query.OrderByDescending(a => a.Id)
+                List = query
+                    .OrderByDescending(a => a.Started)
+                    .ThenByDescending(a => a.Id)
                     .Skip(skip)
                     .Take(take)
                     .ToList()
