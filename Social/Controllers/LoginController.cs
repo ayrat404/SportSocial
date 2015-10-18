@@ -1,8 +1,15 @@
 ﻿using System;
+using System.Linq;
+using System.Net.Http;
+using System.Security.Claims;
+using System.Web;
 using System.Web.Http;
 using BLL.Common.Objects;
+using BLL.Infrastructure.IdentityConfig;
 using BLL.Login;
 using BLL.Login.ViewModels;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 using Social.Models;
 
 namespace Social.Controllers
@@ -11,10 +18,14 @@ namespace Social.Controllers
     public class LoginController : BaseApiController
     {
         private readonly ILoginService _loginService;
+        private readonly AppUserManager _appUserManager;
+        private readonly IAuthenticationManager _authManager;
 
-        public LoginController(ILoginService loginService)
+        public LoginController(ILoginService loginService, AppUserManager appUserManager, IAuthenticationManager authManager)
         {
             _loginService = loginService;
+            _appUserManager = appUserManager;
+            _authManager = authManager;
         }
 
 
@@ -80,6 +91,69 @@ namespace Social.Controllers
         {
             return ApiResult(_loginService.RestorePasswordConfirm(restoreInfo));
         }
-    }
 
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("~/api/register/external-info")]
+        public ApiResult ExternalInfo()
+        {
+            var loginInfo = _authManager.GetExternalLoginInfoAsync().Result;
+            var externalInfo = GetExternalInfo(loginInfo);
+            //loginInfo.ExternalIdentity.Claims.Where(c => c.Value):
+            return ApiResult(externalInfo);
+        }
+
+        private object GetExternalInfo(ExternalLoginInfo loginInfo)
+        {
+            var provider = ParseRegType(loginInfo.Login.LoginProvider);
+            var claims = loginInfo.ExternalIdentity.Claims;
+            string firstName = string.Empty;
+            string lastName = string.Empty;
+            switch (provider)
+            {
+                case RegisterType.Vkontakte:
+                    string fullName = claims.SingleOrDefault(c => c.Type == "urn:vkontakte:name").Value;
+                    var splittedFullName = fullName.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
+                    firstName = splittedFullName[0];
+                    if (splittedFullName.Length > 0)
+                    {
+                        lastName = string.Join(" ", splittedFullName.Skip(1));
+                    }
+                    break;
+                case RegisterType.Google:
+                    var surNameClaim = claims.SingleOrDefault(c => c.Type == ClaimTypes.Surname);
+                    if (surNameClaim != null)
+                    {
+                        lastName = surNameClaim.Value;
+                    }
+                    var givNameClaim = claims.SingleOrDefault(c => c.Type == ClaimTypes.GivenName);
+                    if (givNameClaim != null)
+                    {
+                        firstName = givNameClaim.Value;
+                    }
+                    break;
+            }
+            return new {firstName, lastName};
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("~/api/register/external")]
+        public ApiResult ExternalInfo(ExternalRegistrationModel external)
+        {
+            var loginInfo = _authManager.GetExternalLoginInfoAsync().Result;
+            var result = _loginService.RegisterExternal(external, ParseRegType(loginInfo.Login.LoginProvider),
+                loginInfo.Login.ProviderKey, loginInfo.Email);
+            return ApiResult(result);
+        }
+        private RegisterType ParseRegType(string provider)
+        {
+            RegisterType registerType;
+            if (Enum.TryParse(provider, out registerType))
+            {
+                return registerType;
+            }
+            return RegisterType.Internal;
+        }
+    }
 }

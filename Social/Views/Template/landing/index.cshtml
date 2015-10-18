@@ -49,23 +49,31 @@
                     <a ui-sref="registration" class="btn btn-fill-green">@R("Регистрация")</a>
                 </li>
             </ul>
-            @*<div class="auth-social">
+            <div class="auth-social">
                 <span class="as__text">@R("Войти с помощью"): </span>
                 <ul class="as__list">
                     <li>
-                        <span class="as__icon as__icon--tw"></span>
+                        <a href="@Url.Action("ExternalLogin", "Home", new {provider = "Twitter"})">
+                            <span class="as__icon as__icon--tw"></span>
+                        </a>
                     </li>
                     <li>
-                        <span class="as__icon as__icon--fb"></span>
+                        <a href="@Url.Action("ExternalLogin", "Home", new {provider = "Facebook"})">
+                            <span class="as__icon as__icon--fb"></span>
+                        </a>
                     </li>
                     <li>
-                        <span class="as__icon as__icon--gp"></span>
+                        <a href="@Url.Action("ExternalLogin", "Home", new {provider = "Google"})">
+                            <span class="as__icon as__icon--gp"></span>
+                        </a>
                     </li>
                     <li>
-                        <span class="as__icon as__icon--vk"></span>
+                        <a href="@Url.Action("ExternalLogin", "Home", new {provider = "Vkontakte"})">
+                            <span class="as__icon as__icon--vk"></span>
+                        </a>
                     </li>
                 </ul>
-            </div>*@
+            </div>
         </header>
         <h6 class="slide__short-desc">@R("Online-дневник тренировок с фотографиями и видео")</h6>
         <h6 class="slide__short-desc hidden">@R("Виртуальные кубки на каждый вид упражнения")</h6>

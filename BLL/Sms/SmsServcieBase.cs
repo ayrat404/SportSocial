@@ -2,18 +2,20 @@
 using System.Linq;
 using System.Threading.Tasks;
 using BLL.Common.Objects;
+using BLL.Sms.Impls;
 using DAL;
 using DAL.DomainModel;
 using Knoema.Localization;
 using Microsoft.AspNet.Identity;
+using Twilio;
 
 namespace BLL.Sms
 {
-    public class SmsServiceBase: ISmsService
+    public class SmsService: ISmsService
     {
         private EntityDbContext _db;
 
-        public SmsServiceBase(EntityDbContext db)
+        public SmsService(EntityDbContext db)
         {
             _db = db;
         }
@@ -40,7 +42,7 @@ namespace BLL.Sms
         {
             var result = new ServiceResult {Success = false};
             var sms = _db.SmsCodes.Where(s => s.UserId == userId).OrderByDescending(s => s.Created).FirstOrDefault();
-            if (sms != null && sms.Expired > DateTime.Now)
+            if (sms != null && sms.Expired > DateTime.Now && !sms.Verified)
             {
                 if ((DateTime.Now - sms.RetryTime).Seconds <= 0)
                 {
@@ -48,7 +50,7 @@ namespace BLL.Sms
                     return result;
                 }
                 var msg = GenerateMessage(sms.Code);
-                SendMessage(msg, phoneNumber);
+                SendMessage(msg, phoneNumber, sms);
                 sms.Modified = DateTime.Now;
                 _db.SaveChanges();
                 result.Success = true;
@@ -57,19 +59,19 @@ namespace BLL.Sms
             else
             {
                 string code = GenerateCode();
-                var msg = GenerateMessage(code);
-                SendMessage(msg, phoneNumber);
-                var smsCode = new SmsCode()
+                sms = new SmsCode()
                 {
                     Code = code,
                     Created = DateTime.Now,
                     Modified = DateTime.Now,
                     Expired = DateTime.Now.AddMinutes(20),
-                    RetryTime = DateTime.Now.AddSeconds(30),
+                    RetryTime = DateTime.Now.AddSeconds(20),
                     UserId = userId,
                     Deleted = false,
                 };
-                _db.SmsCodes.Add(smsCode);
+                var msg = GenerateMessage(code);
+                SendMessage(msg, phoneNumber, sms);
+                _db.SmsCodes.Add(sms);
                 _db.SaveChanges();
                 result.Success = true;
                 return result;
@@ -79,11 +81,17 @@ namespace BLL.Sms
         public ServiceResult VerifyCode(int userId, string code)
         {
             var result = new ServiceResult {Success = false};
-            var sms = _db.SmsCodes.Where(s => s.UserId == userId).OrderByDescending(s => s.Created).FirstOrDefault();
+            var sms = _db.SmsCodes.Where(s => s.UserId == userId)
+                .OrderByDescending(s => s.Created)
+                .FirstOrDefault();
             if (sms == null)
             {
                 result.ErrorMessage = "Не найдено смс".Resource(this);
                 return result;
+            }
+            if (sms.Verified)
+            {
+                return ServiceResult.SuccessResult();
             }
             if (sms.Expired < DateTime.Now)
             {
@@ -92,6 +100,8 @@ namespace BLL.Sms
             }
             if (sms.Code == code)
             {
+                sms.Verified = true;
+                _db.SaveChanges();
                 result.Success = true;
                 return result;
             }
@@ -99,9 +109,30 @@ namespace BLL.Sms
             return result;
         }
 
-        public virtual void SendMessage(string msg, string phoneNumber)
+        public virtual void SendMessage(string msg, string phoneNumber, SmsCode smsCode)
         {
-            
+            ISmsSender sender;
+            SmsProviderType providerType;
+            if (!smsCode.Smses.Any())
+            {
+                providerType = SmsProviderType.SmsPilot;
+            }
+            else
+            {
+                providerType = (SmsProviderType) smsCode.Smses.OrderBy(s => s.Created).Last().SmsProvider;
+            }
+            sender = providerType == SmsProviderType.SmsPilot ? (ISmsSender)new TwilioSmsSender() : new SmsPilotSmsService();
+            string externalId = string.Empty;
+            #if !DEBUG
+            externalId = sender.SendMessage(msg, phoneNumber);
+            #endif
+            smsCode.Smses.Add(new SmsMessage()
+            {
+                Message = msg,
+                Phone = phoneNumber,
+                ExternalId = externalId,
+                SmsProvider = (int)providerType
+            });
         }
 
         private string GenerateCode()
@@ -121,6 +152,34 @@ namespace BLL.Sms
                 code = GenerateCode();
             var msg = string.Format("Код проверки телефона: {0}".Resource(this), code);
             return msg;
+        }
+    }
+
+    public enum SmsProviderType
+    {
+        SmsPilot,
+        Twilio
+    }
+
+    public interface ISmsSender
+    {
+        string SendMessage(string msg, string phoneNumber);
+    }
+
+    public class TwilioSmsSender : ISmsSender
+    {
+        public string SendMessage(string msg, string phoneNumber)
+        {
+            string phone = phoneNumber;
+            if (!phoneNumber.StartsWith("+"))
+            {
+                phone = "+" + phoneNumber;
+            }
+            string AccountSid = "ACedfdae56e060c7f7e0704e695f198982";
+            string AuthToken = "eb8a27031f102651dc6ddb678de2fda4";
+            var twilio = new TwilioRestClient(AccountSid, AuthToken);
+            var result = twilio.SendMessage("+12014293869", phone, msg);
+            return result.Sid;
         }
     }
 }

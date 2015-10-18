@@ -1480,5 +1480,62 @@
         </li>
 
 
+        <li id="api_register_external" class="dev__api__row">
+            <p>Рега через соц сети</p>
+            <p>Из внешней соц сети пользователя будет редиректить на /registration/external. тут должа быть форма как в реге только без телефона</p>
+            <p>Перед этим надо получить данные, полученные  из соц. сети (имя, фамилия):</p>
+            <code>GET: /api/register/external-info</code>
+            <b>
+                send data:
+                <pre>
+{
+    *none*
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true,
+    data: {
+        firstName: "имя",
+        lastName: "фамилия"
+    },
+    errors: null,
+    message: null
+}
+                    </pre>
+            </b>
+            <code>POST: /api/register/external</code>
+            <p>Отправка данных регистрации</p>
+            <b>
+                send data:
+                <pre>
+{
+    *как в реге только без телефона*
+}
+                    </pre>
+            </b>
+            <b>
+                accept data:
+                <pre>
+{
+    success: true,
+    data: {
+        *авторизуем пользователя*
+        id: 1,
+        avatar: "url",
+        name: "full name"
+    },
+    errors: null,
+    message: null
+}
+                    </pre>
+            </b>
+        </li>
+
+
+
     </ul>
 </div>

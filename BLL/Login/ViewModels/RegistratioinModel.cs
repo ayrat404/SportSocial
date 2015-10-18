@@ -6,12 +6,16 @@ using Knoema.Localization;
 namespace BLL.Login.ViewModels
 {
     [Localized]
-    public class RegistratioinModel
+    public class RegistratioinModel: RegistrationBase
     {
         [Required(ErrorMessage = "Не введен номер телефона")]
         [RegularExpression(@"^[0-9]{11,13}$", ErrorMessage = "Номер телефона должен содержать только цифры в формате <код страны><номер> без сивола \"+\".")]
         public string Phone { get; set; }
+    }
 
+    [Localized]
+    public class RegistrationBase
+    {
         [Required(ErrorMessage = "Не введено имя")]
         public string Name { get; set; }
 
@@ -26,5 +30,10 @@ namespace BLL.Login.ViewModels
 
         [Required(ErrorMessage = "Не выбран стаж")]
         public SportExperience SportTime { get; set; }
+    }
+
+    public class ExternalRegistrationModel : RegistrationConfirm
+    {
+        
     }
 }
