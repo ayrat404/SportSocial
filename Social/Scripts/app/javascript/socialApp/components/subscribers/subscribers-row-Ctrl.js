@@ -25,7 +25,7 @@ SubscribersInRow = (function() {
             for (i = j = 0, len = ref.length; j < len; i = ++j) {
               l = ref[i];
               if (l.id === $rootScope.user.id) {
-                $scope.subscribes.list.splice(i, 1);
+                $scope.subscribers.list.splice(i, 1);
                 break;
               } else {
                 results.push(void 0);

@@ -52,7 +52,10 @@
                             <p class="ui__age">{{profile.user.age | formatWord:['@R("год")', '@R("года")', '@R("лет")']:true}} / {{profile.user.sportTime | formatWord:['@R("год")', '@R("года")', '@R("лет")']:true}} @R("в спорте")</p>
                             <p ng-show="profile.user.location.length" class="ui__location">{{profile.user.location}}</p>
                             <a ng-if="profile.user.isOwner" ui-sref="main.settings.profile" class="ui__edit">@R("Редактировать профиль")</a>
-                            <button ng-if="!profile.user.isOwner" class="btn btn--subscribe"><i class="icon"></i></button>
+                            <div ng-if="profile.user.isSubscribed">@R("Вы подписаны на атлета")</div>
+                            <button ng-click="profile.subscribe()" 
+                                    ng-if="!profile.user.isOwner && !profile.user.isSubscribed" 
+                                    class="btn btn--subscribe"><i class="icon"></i></button>
                         </div>
                         @*-----User info about user-----*@
 
@@ -116,7 +119,7 @@
                             </span>
                         </p>
                         <p>
-                            <span ng-if="profile.user.isOwner"
+                            <span ng-if="!profile.user.isOwner"
                                   ng-click="profile.complain('@R("Жалоба на пользователя")')"
                                   class="link">
                                 <i class="icon-cart"></i>
