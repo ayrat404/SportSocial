@@ -4,6 +4,7 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Web;
+using System.Web.Configuration;
 using BLL.Common.Helpers;
 using BLL.Common.Objects;
 using BLL.Common.Services.CurrentUser;
@@ -25,10 +26,13 @@ namespace BLL.Storage.Impls
         private const string VirtualBlogImagePath = "/Storage/Images/"; //TODO â AppSettings
         private const string VirtualPhotosImagePath = "/Storage/User/"; //TODO â AppSettings
 
+        private readonly string BasePath;
+
         public FileService(IRepository repository, ICurrentUser currentUser)
         {
             _repository = repository;
             _currentUser = currentUser;
+            BasePath = WebConfigurationManager.AppSettings["BasePath"];
         }
 
         public bool IsImage(Stream inputStream)
@@ -118,7 +122,8 @@ namespace BLL.Storage.Impls
         {
             using (var stream = new MemoryStream())
             {
-                string serverPath = HttpContext.Current.Server.MapPath(filePath);
+                var serverPath = string.IsNullOrEmpty(BasePath) ? HttpContext.Current.Server.MapPath(filePath) 
+                                                                : string.Concat(BasePath, filePath);
                 string dir = Path.GetDirectoryName(serverPath);
                 if (!Directory.Exists(dir))
                     Directory.CreateDirectory(dir);

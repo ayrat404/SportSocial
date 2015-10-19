@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using BLL.Common.Extensions;
+using BLL.Core.Services.Settings.Objects;
 using BLL.Login;
 using BLL.Social.Achievements.Objects;
 using BLL.Social.Tape;
@@ -47,8 +50,16 @@ namespace Social.Controllers
         {
             var filter = new
             {
-                gender = Enum.GetNames(typeof(Sex)),
-                sportTime = Enum.GetValues(typeof(SportExperience)).Cast<int>().ToList(),
+                gender = ((IEnumerable<Sex>) Enum.GetValues(typeof (Sex))).Select(o => new SexVm
+                {
+                    Label = o.GetDescription(),
+                    Value = o
+                }),
+                sportTime = ((IEnumerable<SportExperience>) Enum.GetValues(typeof (SportExperience))).Select(o => new SportExpirienceVm()
+                {
+                    Label = o.GetDescription(),
+                    Value = (int)o
+                }),
             };
             return ApiResult(filter);
         }

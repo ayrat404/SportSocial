@@ -148,6 +148,10 @@
     <Reference Include="Ninject.Web.WebApi">
       <HintPath>..\packages\Ninject.Web.WebApi.3.2.4.0\lib\net45-full\Ninject.Web.WebApi.dll</HintPath>
     </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.0.1\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Owin">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
@@ -335,6 +339,10 @@
     <Content Include="Content\socialApp\fonts\glyphicons\glyphicons-halflings-regular.svg" />
     <Content Include="Content\socialApp\images\common\logo-big.png" />
     <Content Include="Content\socialApp\images\groups\achievements\achievement-horizontal.png" />
+    <Content Include="Content\socialApp\images\groups\achievements\pushups.png" />
+    <Content Include="Content\socialApp\images\groups\achievements\pull-ups.png" />
+    <Content Include="Content\socialApp\images\groups\achievements\situps.png" />
+    <Content Include="Content\socialApp\images\groups\achievements\squats.png" />
     <Content Include="Content\socialApp\images\icons-set\icons-set.png" />
     <Content Include="Content\socialApp\images\views\landing\bg-left.jpg" />
     <Content Include="Content\socialApp\images\views\landing\macbook.png" />
@@ -2908,6 +2916,12 @@
     <Content Include="Content\socialApp\styles\less\components\subscribers\subscribers-row.less" />
     <Content Include="Content\socialApp\styles\less\views\tape.less" />
     <Content Include="Content\socialApp\styles\less\views\settings.less" />
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\PublishProfiles\fortress-club %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\fortress-club.pubxml" />
     <None Include="Properties\PublishProfiles\Social.pubxml" />

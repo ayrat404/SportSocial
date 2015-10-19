@@ -2,11 +2,13 @@ using System;
 using System.IO;
 using System.Reflection;
 using System.Web;
+using System.Web.Configuration;
 using BLL.Storage.Objects.Enums;
 using DAL.DomainModel;
 using DAL.DomainModel.Achievement;
 using DAL.DomainModel.BlogEntities;
 using DAL.DomainModel.JournalEntities;
+using NLog;
 
 namespace BLL.Storage.Impls
 {
@@ -16,6 +18,15 @@ namespace BLL.Storage.Impls
         protected const string VirtualJournslImagePath = "/Storage/Images/Journal/"; //TODO â AppSettings
         protected const string VirtualAvatarImagePath = "/Storage/User/Avatars/"; //TODO â AppSettings
         protected const string VirtualAchievementImagePath = "/Storage/User/achievements/"; //TODO â AppSettings
+
+        private readonly string BasePath;
+
+        private static Logger _logger = LogManager.GetCurrentClassLogger();
+
+        protected MediaWorkerBase()
+        {
+            BasePath = WebConfigurationManager.AppSettings["BasePath"];
+        }
 
         protected Type GetMediaEntity(UploadType type)
         {
@@ -75,11 +86,13 @@ namespace BLL.Storage.Impls
         {
             using (var stream = new MemoryStream())
             {
-                string serverPath = HttpContext.Current.Server.MapPath(filePath);
+                _logger.Info("Base pat = " + BasePath);
+                var serverPath = string.IsNullOrEmpty(BasePath) ? HttpContext.Current.Server.MapPath(filePath) 
+                                                                : string.Concat(BasePath, filePath);
+                _logger.Info("server pat = " + serverPath);
                 string dir = Path.GetDirectoryName(serverPath);
                 if (!Directory.Exists(dir))
                     Directory.CreateDirectory(dir);
-
                 fileStream.Position = 0;
                 fileStream.CopyTo(stream);
                 File.WriteAllBytes(serverPath, stream.ToArray());

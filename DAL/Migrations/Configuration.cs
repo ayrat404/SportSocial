@@ -159,7 +159,7 @@ namespace DAL.Migrations
             //    );
             //
             AddUserIdToJournalMedias(context);
-            AddToTape(context);
+            //AddToTape(context);
         }
 
         private void AddToTape(EntityDbContext context)
