@@ -21,4 +21,23 @@ namespace BLL.Comments.Objects
 
         public bool ByFortress { get; set; }
     }
+
+    public class CreateCommentFromBlog
+    {
+        [Required]
+        public string CommentType { get; set; }
+
+        [Required]
+        public string Text { get; set; }
+
+        [Required]
+        public CommentItemType ItemType { get; set; }
+
+        [Required]
+        public int ItemId { get; set; }
+
+        public bool ByFortress { get; set; }
+
+        public int? CommentForId { get; set; }
+    }
 }

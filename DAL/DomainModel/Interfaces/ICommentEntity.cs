@@ -43,6 +43,6 @@ namespace DAL.DomainModel.Interfaces
         public TCommentFor CommentFor { get; set; }
 
         [ForeignKey("CommentedEntityId")]
-        public virtual TCommentedEntity CommentedEntity { get; set; }
+        public TCommentedEntity CommentedEntity { get; set; }
     }
 }

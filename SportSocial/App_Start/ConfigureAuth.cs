@@ -27,12 +27,10 @@ namespace SportSocial
             });
 
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
-
-            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            {
-                ClientId = "",
-                ClientSecret = ""
-            });
+            app.UseGoogleAuthentication(
+                clientId: "862601964196-1u3hup1l410d0ua9p4uj42a1m8n2eqvv.apps.googleusercontent.com",
+                clientSecret: "M1_DIN4nDytKfKyjPezZc96n"
+           );
         }
     }
 }

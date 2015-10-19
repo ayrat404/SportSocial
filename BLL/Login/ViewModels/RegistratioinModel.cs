@@ -1,4 +1,4 @@
-using System;
+п»їusing System;
 using System.ComponentModel.DataAnnotations;
 using DAL.DomainModel.EnumProperties;
 using Knoema.Localization;
@@ -8,27 +8,32 @@ namespace BLL.Login.ViewModels
     [Localized]
     public class RegistratioinModel: RegistrationBase
     {
-        [Required(ErrorMessage = "Не введен номер телефона")]
-        [RegularExpression(@"^[0-9]{11,13}$", ErrorMessage = "Номер телефона должен содержать только цифры в формате <код страны><номер> без сивола \"+\".")]
+        [Required(ErrorMessage = "РќРµ РІРІРµРґРµРЅ РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР°")]
+        [RegularExpression(@"^[0-9]{11,13}$", ErrorMessage = "РќРѕРјРµСЂ С‚РµР»РµС„РѕРЅР° РґРѕР»Р¶РµРЅ СЃРѕРґРµСЂР¶Р°С‚СЊ С‚РѕР»СЊРєРѕ С†РёС„СЂС‹ РІ С„РѕСЂРјР°С‚Рµ <РєРѕРґ СЃС‚СЂР°РЅС‹><РЅРѕРјРµСЂ> Р±РµР· СЃРёРІРѕР»Р° \"+\".")]
         public string Phone { get; set; }
+
+        //[Required(ErrorMessage = "РќРµ РІРІРµРґРµРЅРѕ РёРјСЏ")]
+        public string Name { get; set; }
     }
 
     [Localized]
     public class RegistrationBase
     {
-        [Required(ErrorMessage = "Не введено имя")]
-        public string Name { get; set; }
+        public RegistrationBase()
+        {
+            BirthDay = DateTime.Now;
+        }
 
-        [Required(ErrorMessage = "Не введена фамилия")]
+        //[Required(ErrorMessage = "РќРµ РІРІРµРґРµРЅР° С„Р°РјРёР»РёСЏ")]
         public string LastName { get; set; }
 
-        [Required(ErrorMessage = "Не введена дата рождения")]
+        //[Required(ErrorMessage = "РќРµ РІРІРµРґРµРЅР° РґР°С‚Р° СЂРѕР¶РґРµРЅРёСЏ")]
         public DateTime BirthDay { get; set; }
 
-        [Required(ErrorMessage = "Не введен пол")]
+        //[Required(ErrorMessage = "РќРµ РІРІРµРґРµРЅ РїРѕР»")]
         public Sex Gender { get; set; }
 
-        [Required(ErrorMessage = "Не выбран стаж")]
+        //[Required(ErrorMessage = "РќРµ РІС‹Р±СЂР°РЅ СЃС‚Р°Р¶")]
         public SportExperience SportTime { get; set; }
     }
 

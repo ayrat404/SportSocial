@@ -1,4 +1,4 @@
-using System;
+п»їusing System;
 using System.ComponentModel.DataAnnotations;
 using DAL.DomainModel.EnumProperties;
 using Knoema.Localization;
@@ -8,6 +8,9 @@ namespace BLL.Login.ViewModels
     public class RegistrationConfirm : RegistrationBase
     {
         public int? ImgId { get; set; }
+
+        //[Required(ErrorMessage = "РќРµ РІРІРµРґРµРЅРѕ РёРјСЏ")]
+        public string Name { get; set; }
     }
 
     [Localized]
@@ -16,17 +19,17 @@ namespace BLL.Login.ViewModels
         [Required]
         public string Phone { get; set; }
 
-        [Required(ErrorMessage = "Необходимо ввести код")]
+        [Required(ErrorMessage = "РќРµРѕР±С…РѕРґРёРјРѕ РІРІРµСЃС‚Рё РєРѕРґ")]
         public string Code { get; set; }
 
-        [Required(ErrorMessage = "Необходимо ввести пароль")]
-        [StringLength(30, MinimumLength = 6, ErrorMessage = "Пароль должен быть не менее 6 символов")]
+        [Required(ErrorMessage = "РќРµРѕР±С…РѕРґРёРјРѕ РІРІРµСЃС‚Рё РїР°СЂРѕР»СЊ")]
+        [StringLength(30, MinimumLength = 6, ErrorMessage = "РџР°СЂРѕР»СЊ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РЅРµ РјРµРЅРµРµ 6 СЃРёРјРІРѕР»РѕРІ")]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "Необходимо ввести подтверждение пароля")]
+        [Required(ErrorMessage = "РќРµРѕР±С…РѕРґРёРјРѕ РІРІРµСЃС‚Рё РїРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ РїР°СЂРѕР»СЏ")]
 #pragma warning disable 618
-        [System.Web.Mvc.Compare("Password", ErrorMessage = "Пароли не совпадают")]
+        [System.Web.Mvc.Compare("Password", ErrorMessage = "РџР°СЂРѕР»Рё РЅРµ СЃРѕРІРїР°РґР°СЋС‚")]
 #pragma warning restore 618
-        public string PasswordRepeat { get; set; }
+        public string ConfirmPassword { get; set; }
     }
 }

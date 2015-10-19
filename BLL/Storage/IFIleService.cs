@@ -7,10 +7,17 @@ namespace BLL.Storage
     public interface IFileService
     {
         bool IsImage(Stream inputStream);
-        ServiceResult<ImageUploadResult> UploadImage(Stream inputStream, string fileName, UploadType uploadType);
+        LegacyImageUploadResult UploadImage(Stream inputStream, string fileName, UploadType uploadType);
         ServiceResult UploadAvatar(Stream inputStream, string filePath);
-        ServiceResult<ImageUploadResult> YoutubeImage(string youtubeUrl);
+        LegacyImageUploadResult YoutubeImage(string youtubeUrl);
         void SaveFile(Stream fileStream, string filePath);
+    }
+
+    public class LegacyImageUploadResult : ServiceResult
+    {
+        public string Url { get; set; }
+
+        public int Id { get; set; }
     }
 
     public class ImageUploadResult

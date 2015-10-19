@@ -54,7 +54,12 @@ namespace DAL.DomainModel
 
         public string FullName()
         {
-            return Profile.FirstName + " " + Profile.LastName;
+            var fullName = Profile.FirstName + " " + Profile.LastName;
+            if (string.IsNullOrWhiteSpace(fullName))
+            {
+                fullName = Name;
+            }
+            return fullName;
         }
     }
 

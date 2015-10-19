@@ -104,6 +104,8 @@ namespace BLL.Blog.Impls
             var comments =  _repository
                 .Queryable<BlogComment>()
                 .Where(c => c.CommentedEntityId == postId && !c.Deleted)
+                .Include(c => c.CommentFor)
+                .Include(c => c.User)
                 .AsNoTracking()
                 .MapEachTo<Comment>();
             return comments;

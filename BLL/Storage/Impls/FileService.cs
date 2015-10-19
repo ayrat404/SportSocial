@@ -50,11 +50,11 @@ namespace BLL.Storage.Impls
             return true;
         }
 
-        public ServiceResult<ImageUploadResult> UploadImage(Stream inputStream, string fileName, UploadType uploadType)
+        public LegacyImageUploadResult UploadImage(Stream inputStream, string fileName, UploadType uploadType)
         {
-            var result = new ServiceResult<ImageUploadResult>
+            var result = new LegacyImageUploadResult()
             {
-                Success = true,
+                Success = true
             };
             if (inputStream == null)
             {
@@ -103,9 +103,8 @@ namespace BLL.Storage.Impls
                         return result;
                 }
                 SaveFile(inputStream, url);
-                result.Result = new ImageUploadResult();
-                result.Result.Url = VirtualPathUtility.ToAbsolute(url);
-                result.Result.Id = id;
+                result.Url = VirtualPathUtility.ToAbsolute(url);
+                result.Id = id;
                 return result;
             }
         }
@@ -129,9 +128,9 @@ namespace BLL.Storage.Impls
             }
         }
 
-        public ServiceResult<ImageUploadResult> YoutubeImage(string youtubeUrl)
+        public LegacyImageUploadResult YoutubeImage(string youtubeUrl)
         {
-            var result = new ServiceResult<ImageUploadResult>{Success = true};
+            var result = new LegacyImageUploadResult{Success = true};
             if (!YoutubeUrlHelper.UrlIsValid(youtubeUrl))
             {
                 result.Success = false;

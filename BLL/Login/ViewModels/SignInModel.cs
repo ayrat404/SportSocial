@@ -1,4 +1,4 @@
-using System.ComponentModel.DataAnnotations;
+п»їusing System.ComponentModel.DataAnnotations;
 using Knoema.Localization;
 
 namespace BLL.Login.ViewModels
@@ -6,10 +6,10 @@ namespace BLL.Login.ViewModels
     [Localized]
     public class SignInModel
     {
-        [Required(ErrorMessage = "Не введен номер телефона")]
+        [Required(ErrorMessage = "РќРµ РІРІРµРґРµРЅ РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР°")]
         public string Phone { get; set; }
 
-        [Required(ErrorMessage = "Не введен пароль")]
+        [Required(ErrorMessage = "РќРµ РІРІРµРґРµРЅ РїР°СЂРѕР»СЊ")]
         public string Password { get; set; }
     }
 }

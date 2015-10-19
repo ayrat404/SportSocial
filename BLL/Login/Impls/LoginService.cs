@@ -148,7 +148,7 @@ namespace BLL.Login.Impls
                 {
                     user.PhoneNumberConfirmed = true;
                     _appUserManager.AddPassword(user.Id, confirmModel.Password);
-                    user.Name = confirmModel.Name;
+                    //user.Name = confirmModel.Name;
                     user.RegisterType = (int)RegisterType.Internal;
                     _appUserManager.Update(user);
                     //var img = _repository.Find<UserAvatarPhoto>(confirmModel.ImgId);

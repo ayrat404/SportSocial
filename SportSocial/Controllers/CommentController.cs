@@ -22,11 +22,19 @@ namespace SportSocial.Controllers
 
         [HttpPost]
         [CustomAntiForgeryValidator]
-        public JsonResult Comment(CreateCommentViewModel createComment)
+        public JsonResult Comment(CreateCommentFromBlog createComment)
         {
             if (ModelState.IsValid)
             {
-                var comment = _commentService.AddComment(createComment);
+                var comment = _commentService.AddComment(new CreateCommentViewModel
+                {
+                    ByFortress = createComment.ByFortress,
+                    CommentForId = createComment.CommentForId,
+                    CommentType = createComment.CommentType,
+                    EntityId = createComment.ItemId,
+                    EntityType = createComment.ItemType,
+                    Text = createComment.Text
+                });
                 return Json(new { Success = true, Comment = comment });
             }
             return Json(new {Success = false});

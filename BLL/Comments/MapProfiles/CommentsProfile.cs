@@ -77,7 +77,7 @@ namespace BLL.Comments.MapProfiles
                 return new CommentFor
                 {
                     Id = src.CommentForId.Value,
-                    Name = src.CommentFor.ByFortress ? "Fortress" : src.CommentFor.User.Name,
+                    Name = src.CommentFor.ByFortress ? "Fortress" : src.CommentFor.User.FullName(),
                 };
             }
             return null;

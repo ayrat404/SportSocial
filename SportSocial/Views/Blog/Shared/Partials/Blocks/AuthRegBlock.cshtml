@@ -22,7 +22,7 @@
                        name="phone"
                        required
                        class="input" type="text" placeholder="Номер телефона без +" />
-                <input ng-model="auth.pass"
+                <input ng-model="auth.password"
                        ng-disabled="formDisabled"
                        ng-class="{'input--invalid': authorization.password.$error.required && validstart.password}"
                        ng-blur="validstart.password=true"
