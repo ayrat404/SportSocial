@@ -20,7 +20,7 @@ class SubscribersInRow extends Controller('socialApp.controllers')
                             $scope.subscribers.count--
                             for l, i in $scope.subscribers.list
                                 if l.id == $rootScope.user.id
-                                    $scope.subscribes.list.splice i, 1
+                                    $scope.subscribers.list.splice i, 1
                                     break
                     .finally (res)->
                         $timeout ->

@@ -1,7 +1,7 @@
 ﻿<div class="subscribers-row">
     <div ng-click="subscribe()"
          ng-show="!isOwner"
-         ng-class="{ 'fr__btn--subscribed': subsribers.isSubscribe, 'loading': loading == true }"
+         ng-class="{ 'sr__btn--subscribed': subscribers.isSubscribed, 'loading': loading == true }"
          class="sr__btn"><i></i></div>
     <a ng-repeat="s in subscribers.list | limitTo:o.rowCount" ui-sref="main.profile({userId: s.id})" class="sr__user">
         <img ng-src="{{ s.avatar | imageResize:{w: o.imageSize, h: o.imageSize} }}" />

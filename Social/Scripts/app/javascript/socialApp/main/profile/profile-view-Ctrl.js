@@ -2,7 +2,7 @@
 var ProfileView;
 
 ProfileView = (function() {
-  function ProfileView($scope, $state, $stateParams, $rootScope, mixpanel, profileService, modalService, defaultAvatarUrl) {
+  function ProfileView($scope, $state, $stateParams, $rootScope, mixpanel, profileService, modalService, defaultAvatarUrl, subscribeService) {
     var _this, loadProp;
     $scope.$root.title = "Fortress | " + $rootScope.user.fullName;
     $scope.$on('$viewContentLoaded', function() {
@@ -125,6 +125,14 @@ ProfileView = (function() {
         return _this.user.avatar = defaultAvatarUrl;
       });
     };
+    _this.subscribe = function() {
+      return subscribeService.set({
+        id: _this.user.id,
+        current: _this.user.isSubscribed
+      }).then(function(newStatus) {
+        return _this.user.isSubscribed = newStatus;
+      });
+    };
     profileService.getInfo({
       id: $stateParams.userId
     }).then(function(res) {
@@ -148,6 +156,6 @@ ProfileView = (function() {
 
 })();
 
-angular.module('socialApp.controllers').controller('profileViewController', ['$scope', '$state', '$stateParams', '$rootScope', 'mixpanel', 'profileService', 'modalService', 'defaultAvatarUrl', ProfileView]);
+angular.module('socialApp.controllers').controller('profileViewController', ['$scope', '$state', '$stateParams', '$rootScope', 'mixpanel', 'profileService', 'modalService', 'defaultAvatarUrl', 'subscribeService', ProfileView]);
 
 })();

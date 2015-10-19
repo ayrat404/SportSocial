@@ -8,7 +8,8 @@ class ProfileView extends Controller('socialApp.controllers')
         mixpanel
         profileService
         modalService
-        defaultAvatarUrl)->
+        defaultAvatarUrl
+        subscribeService)->
 
         $scope.$root.title = "Fortress | #{$rootScope.user.fullName}"
 
@@ -110,6 +111,12 @@ class ProfileView extends Controller('socialApp.controllers')
                 $rootScope.$emit 'changeAvatar', defaultAvatarUrl
                 $rootScope.user.avatar = defaultAvatarUrl
                 _this.user.avatar = defaultAvatarUrl
+
+        # user subscribe
+        # ---------------
+        _this.subscribe = ()->
+            subscribeService.set(id: _this.user.id, current: _this.user.isSubscribed).then (newStatus)->
+                _this.user.isSubscribed = newStatus
 
         # get user profile info
         # ---------------
