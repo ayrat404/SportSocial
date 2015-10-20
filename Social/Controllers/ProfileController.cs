@@ -36,7 +36,7 @@ namespace Social.Controllers
 
         [Route("~/api/users")]
         [HttpGet]
-        public ApiResult GetUsers(int? age = null, SportExperience? inSport = null, Sex? gender =null, string city = null,
+        public ApiResult GetUsers(AgeSearch? age = null, SportExperience? inSport = null, Sex? gender =null, string city = null,
                                   string country = null, string query = null, int page = 1, int count = 20)
         {
             var users = _profileService.GetUsers(new ProfileSearch {Age = age, SportTime = inSport, Gender = gender, City = city, Country = country,
@@ -60,6 +60,12 @@ namespace Social.Controllers
                     Label = o.GetDescription(),
                     Value = (int)o
                 }),
+                age = ((IEnumerable<AgeSearch>) Enum.GetValues(typeof (AgeSearch))).Select(o => new SportExpirienceVm()
+                {
+                    Label = o.GetDescription(),
+                    Value = (int)o
+                }),
+
             };
             return ApiResult(filter);
         }

@@ -25,7 +25,7 @@ namespace DAL.Repository.Interfaces
     public interface IProfileRepository: IRepository
     {
         ListDto<AppUser> GetUsers(int skip, int take);
-        ListDto<AppUser> GetUsers(int? age, SportExperience? sportTime, Sex? gender, string city, string country, string query, int skip, int count);
+        ListDto<AppUser> GetUsers(DateTime? birthFrom, DateTime? birthTo, SportExperience? sportTime, Sex? gender, string city, string country, string query, int skip, int count);
         AppUser GetUserFull(int userId);
     }
 
@@ -62,12 +62,11 @@ namespace DAL.Repository.Interfaces
             };
         }
 
-        public ListDto<AppUser> GetUsers(int? age, SportExperience? sportTime, Sex? gender, string city, string country, string query, int skip,
-            int take)
+        public ListDto<AppUser> GetUsers(DateTime? birthFrom, DateTime? birthTo, SportExperience? sportTime, Sex? gender, string city, string country, string query, int skip, int take)
         {
             IQueryable<AppUser> userQuery = Queryable<AppUser>().Where(u => u.PhoneNumberConfirmed);
-            if (age.HasValue)
-                userQuery = userQuery.Where(u => (DateTime.Now.Year - u.Profile.BirthDate.Year) == age.Value);
+            if (birthFrom.HasValue && birthTo.HasValue)
+                userQuery = userQuery.Where(u => u.Profile.BirthDate >= birthFrom && u.Profile.BirthDate <= birthTo);
             if (sportTime.HasValue)
                 userQuery = userQuery.Where(u => u.Profile.Experience == sportTime.Value);
             if (gender.HasValue)

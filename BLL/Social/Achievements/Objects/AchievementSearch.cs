@@ -1,3 +1,4 @@
+using BLL.Social.UserProfile.Objects;
 using DAL.DomainModel.Achievement.Objects;
 using DAL.DomainModel.EnumProperties;
 
@@ -26,7 +27,7 @@ namespace BLL.Social.Achievements.Objects
 
         public SportExperience? SportTime { get; set; }
 
-        public int? Age { get; set; }
+        public AgeSearch? Age { get; set; }
 
         public string City { get; set; }
 

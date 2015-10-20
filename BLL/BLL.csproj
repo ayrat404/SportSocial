@@ -296,6 +296,7 @@
     <Compile Include="Social\Tape\ITapeService.cs" />
     <Compile Include="Social\UserProfile\IProfileService.cs" />
     <Compile Include="Social\UserProfile\MapProfiles\UserMapProfile.cs" />
+    <Compile Include="Social\UserProfile\Objects\AgeSearch.cs" />
     <Compile Include="Social\UserProfile\Objects\ProfileInfo.cs" />
     <Compile Include="Social\UserProfile\Objects\ProfileListVm.cs" />
     <Compile Include="Social\UserProfile\Objects\SubcribeModel.cs" />

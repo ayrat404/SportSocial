@@ -35,13 +35,45 @@ namespace BLL.Social.UserProfile
 
         public ProfileListVm GetUsers(ProfileSearch search)
         {
+            DateTime? from;
+            DateTime? to;
+            GetBirthFromTo(search.Age, out from, out to);
             int skip = search.Count*search.Page - search.Count;
-            var users = _profileRepository.GetUsers(search.Age, search.SportTime, search.Gender, search.City, search.Country, search.Query, skip, search.Count);
+            var users = _profileRepository.GetUsers(from, to, search.SportTime, search.Gender, search.City, search.Country, search.Query, skip, search.Count);
             return new ProfileListVm
             {
                 IsMore = search.Count*search.Page < users.Count,
                 List = users.List.MapEachTo<ProfilePreview>()
             };
+        }
+
+        private void GetBirthFromTo(AgeSearch? age, out DateTime? from, out DateTime? to)
+        {
+            from = null;
+            to = null;
+            if (!age.HasValue)
+            {
+                return;
+            }
+            switch (age)
+            {
+                case AgeSearch.One:
+                    from = DateTime.Now.AddYears(-18);
+                    to = DateTime.Now;
+                    return;
+                case AgeSearch.Two:
+                    from = DateTime.Now.AddYears(-25);
+                    to = DateTime.Now.AddYears(-18);
+                    return;
+                case AgeSearch.Three:
+                    from = DateTime.Now.AddYears(-40);
+                    to = DateTime.Now.AddYears(-25);
+                    return;
+                case AgeSearch.Four:
+                    from = DateTime.Now.AddYears(-1000);
+                    to = DateTime.Now.AddYears(-40);
+                    return;
+            }
         }
 
         public ServiceResult Subscribe(SubcribeModel model)
