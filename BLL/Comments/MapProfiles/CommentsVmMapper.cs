@@ -1,3 +1,4 @@
+using System.Linq;
 using BLL.Comments.Objects;
 using BLL.Infrastructure.Map;
 using BLL.Rating;
@@ -12,7 +13,7 @@ namespace BLL.Comments.MapProfiles
             return new CommentsVm
             {
                 Count = entity.Comments.Count,
-                List = entity.Comments.MapEachTo<Comment>()
+                List = entity.Comments.OrderByDescending(c => c.Created).MapEachTo<Comment>()
             };
         }
     }

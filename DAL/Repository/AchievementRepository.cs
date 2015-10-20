@@ -85,10 +85,14 @@ namespace DAL.Repository
             switch (status)
             {
                 case AchievementStatus.Fail:
-                    query = query.Where(a => ((a.Voices.Count(v => v.VoteFor)/a.Voices.Count(v => !v.VoteFor)) < 0.75));
+                    query = query.Where(a => (a.Voices.Count(v => !v.VoteFor) == 0 && a.Voices.Count(v => v.VoteFor) > 0)
+                                           || a.Voices.Count(v => !v.VoteFor) > 0 
+                                              && (a.Voices.Count(v => v.VoteFor)/a.Voices.Count(v => !v.VoteFor)) < 0.75);
                     break;
                 case AchievementStatus.Credit:
-                    query = query.Where(a => ((a.Voices.Count(v => v.VoteFor)/a.Voices.Count(v => !v.VoteFor)) >= 0.75));
+                    query = query.Where(a => (a.Voices.Count(v => !v.VoteFor) == 0 && a.Voices.Count(v => v.VoteFor) > 0)
+                                           || a.Voices.Count(v => !v.VoteFor) > 0 
+                                              && (a.Voices.Count(v => v.VoteFor)/a.Voices.Count(v => !v.VoteFor)) >= 0.75);
                     break;
             }
             return new ListDto<Achievement>

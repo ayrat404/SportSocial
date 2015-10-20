@@ -49,6 +49,7 @@ namespace DAL.Repository.Interfaces
                 .Include(j => j.Media)
                 .Include(j => j.Media.Select(m => m.RatingEntites))
                 .Include(j => j.Comments)
+                .Include(j => j.Comments.Select(c => c.RatingEntites))
                 .Include(j => j.Tags)
                 .Include(j => j.Tags.Select(t => t.Tag))
                 .Include(j => j.RatingEntites.Select(r => r.User))

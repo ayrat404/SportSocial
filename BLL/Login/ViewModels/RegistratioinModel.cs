@@ -28,7 +28,7 @@ namespace BLL.Login.ViewModels
         public string LastName { get; set; }
 
         //[Required(ErrorMessage = "Не введена дата рождения")]
-        public DateTime BirthDay { get; set; }
+        public DateTime? BirthDay { get; set; }
 
         //[Required(ErrorMessage = "Не введен пол")]
         public Sex Gender { get; set; }

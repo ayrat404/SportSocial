@@ -19,7 +19,7 @@ namespace DAL.DomainModel
 
         public string LastName { get; set; }
 
-        public DateTime BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; }
 
         public Sex Sex { get; set; }
 
@@ -41,7 +41,11 @@ namespace DAL.DomainModel
 
         public int GetAge()
         {
-            return new DateTime((DateTime.Now - BirthDate).Ticks).Year;
+            if (!BirthDate.HasValue)
+            {
+                return 0;
+            }
+            return new DateTime((DateTime.Now - BirthDate.Value).Ticks).Year - 1;
         }
 
         public bool HasSubscription()

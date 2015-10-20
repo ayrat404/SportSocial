@@ -264,6 +264,10 @@
     <Compile Include="Migrations\201510191649330_Feedback_rating.Designer.cs">
       <DependentUpon>201510191649330_Feedback_rating.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201510201014263_Profile_NullableBirthday.cs" />
+    <Compile Include="Migrations\201510201014263_Profile_NullableBirthday.Designer.cs">
+      <DependentUpon>201510201014263_Profile_NullableBirthday.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AccountRepository.cs" />
@@ -369,6 +373,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201510191649330_Feedback_rating.resx">
       <DependentUpon>201510191649330_Feedback_rating.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510201014263_Profile_NullableBirthday.resx">
+      <DependentUpon>201510201014263_Profile_NullableBirthday.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
