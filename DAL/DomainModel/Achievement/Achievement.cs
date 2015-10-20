@@ -65,17 +65,20 @@ namespace DAL.DomainModel.Achievement
         {
             if (Status == AchievementStatus.InCreating || !Started.HasValue)
                 return Status;
-            if ((DurationDays*3600*24*1000 - (DateTime.Now - Started.Value).Milliseconds) > 0)
+            if (GetTimeStamp() > 0)
                 return AchievementStatus.Started;
             double percent = (double)Voices.Count(v => v.VoteFor)/Voices.Count(v => !v.VoteFor);
-            return percent > 0.75 ? AchievementStatus.Credit : AchievementStatus.Fail;
+            return percent >= 0.75 ? AchievementStatus.Credit : AchievementStatus.Fail;
         }
 
         public long GetTimeStamp()
         {
             if (!Started.HasValue)
                 return 0;
-            return DurationDays*3600*24*1000 - (DateTime.Now - Started.Value).Milliseconds;
+            var timeStamp = (long)(DurationDays*3600*24*1000 - (DateTime.Now - Started.Value).TotalMilliseconds);
+            if (timeStamp < 0)
+                return 0;
+            return timeStamp;
         }
 
         [ForeignKey("UserId")]

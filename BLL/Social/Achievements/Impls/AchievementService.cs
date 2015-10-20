@@ -100,6 +100,11 @@ namespace BLL.Social.Achievements.Impls
             {
                 return ServiceResult.ErrorResult<AchievmentVoiceVm>("Вы уже проголосовали за данную заявку".Resource(this));
             }
+            var status = ach.GetStatus();
+            if (status == AchievementStatus.Fail || status == AchievementStatus.Credit)
+            {
+                return ServiceResult.ErrorResult<AchievmentVoiceVm>("");
+            }
             var voice = new AchievementVoice
             {
                 AchievementId = ach.Id,
