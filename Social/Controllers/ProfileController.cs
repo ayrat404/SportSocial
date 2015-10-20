@@ -55,7 +55,7 @@ namespace Social.Controllers
                     Label = o.GetDescription(),
                     Value = o
                 }),
-                sportTime = ((IEnumerable<SportExperience>) Enum.GetValues(typeof (SportExperience))).Select(o => new SportExpirienceVm()
+                inSport = ((IEnumerable<SportExperience>) Enum.GetValues(typeof (SportExperience))).Select(o => new SportExpirienceVm()
                 {
                     Label = o.GetDescription(),
                     Value = (int)o
