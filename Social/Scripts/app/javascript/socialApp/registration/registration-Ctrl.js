@@ -2,7 +2,7 @@
 var Registration;
 
 Registration = (function() {
-  function Registration($scope, $rootScope, $state, mixpanel, registrationService, userService, base) {
+  function Registration($scope, $rootScope, $state, mixpanel, registrationService, modalService) {
     $scope.$root.title = 'Fortress | Регистрация';
     $scope.loading = false;
     $scope.first = {};
@@ -39,13 +39,19 @@ Registration = (function() {
         return $scope.firstStepValidation = res.errors;
       });
     };
+    $scope.sendCodeAgain = function() {
+      $scope.sendAgainLoading = true;
+      return registrationService.registerFirst($scope.first)["finally"](function(res) {
+        return $scope.sendAgainLoading = false;
+      });
+    };
     $scope.sendTwo = function() {
       var fullData;
       fullData = angular.extend($scope.first, $scope.two);
       return registrationService.registerTwo(fullData).then(function(res) {
-        userService.set(res.data.id);
-        $rootScope.user = res.data;
-        return window.location.reload();
+        return modalService.show({
+          name: 'loginSubmit'
+        });
       }, function(res) {
         return $scope.twoStepValidation = res.errors;
       });
@@ -99,6 +105,6 @@ Registration = (function() {
 
 })();
 
-angular.module('socialApp.controllers').controller('registrationController', ['$scope', '$rootScope', '$state', 'mixpanel', 'registrationService', 'userService', 'base', Registration]);
+angular.module('socialApp.controllers').controller('registrationController', ['$scope', '$rootScope', '$state', 'mixpanel', 'registrationService', 'modalService', Registration]);
 
 })();

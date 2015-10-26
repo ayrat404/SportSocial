@@ -68,8 +68,8 @@ class registration extends Service('appSrvc')
                   data.phone &&
                   data.gender &&
                   data.password &&
-                  data.passwordRepeat &&
-                  data.password == data.passwordRepeat &&
+                  data.confirmPassword &&
+                  data.password == data.confirmPassword &&
                   data.code &&
                   !isSending
                     mixpanel.api('track', 'Registration__2-step__send', evTrackProp)

@@ -85,7 +85,7 @@ modal = (function() {
     };
     show = function(prop) {
       globalLoaderService.add('load-modal');
-      if (modals[prop.name] !== void 0) {
+      if (modals[prop.name]) {
         return $http.get(modals[prop.name].tplName).then(function(res) {
           $modal.open({
             template: res.data,

@@ -78,7 +78,7 @@ class modal extends Service('shared')
         # ---------------
         show = (prop)->
             globalLoaderService.add 'load-modal'
-            if modals[prop.name] != undefined
+            if modals[prop.name]
                 $http.get(modals[prop.name].tplName).then (res)->
                     $modal.open(
                         template: res.data
