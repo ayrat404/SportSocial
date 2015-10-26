@@ -14,19 +14,19 @@
            class="fs-input fs-input--xs fhr__select" placeholder="@R("Выберите город")" />*@
     <select ng-model="filter.gender"
             ng-change="callback()"
-            ng-options="option for option in uFilter.prop.gender"
+            ng-options="option.value as option.label for option in uFilter.prop.gender"
             class="fs-input fs-input--xs fhr__select">
         <option value="">@R("Пол")</option>
     </select>
     <select ng-model="filter.age"
             ng-change="callback()"
-            ng-options="option for option in uFilter.prop.age"
+            ng-options="option.value as option.label for option in uFilter.prop.age"
             class="fs-input fs-input--xs fhr__select">
         <option value="">@R("Возраст")</option>
     </select>
     <select ng-model="filter.inSport"
             ng-change="callback()"
-            ng-options="option for option in uFilter.prop.inSport"
+            ng-options="option.value as option.label for option in uFilter.prop.inSport"
             class="fs-input fs-input--xs fhr__select">
         <option value="">@R("Стаж в спорте")</option>
     </select>
