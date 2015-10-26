@@ -64,7 +64,7 @@ namespace Social.Controllers
         [Route("~/api/register/step2")]
         public ApiResult ConfirmRegistration(ConfirmSmsCode confirm)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 return ApiResult(_loginService.ConfirmSmsCode(confirm));
             }
