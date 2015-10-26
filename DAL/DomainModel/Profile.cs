@@ -54,11 +54,11 @@ namespace DAL.DomainModel
             return LastPaymentDate.Value.AddDays(LastPaidDaysCount.Value) > DateTime.Now;
         }
 
-        public DateTime? DateUntil()
+        public DateTime DateUntil()
         {
             if (HasSubscription())
                 return LastPaymentDate.Value.AddDays(LastPaidDaysCount.Value);
-            return null;
+            return DateTime.Now.Date;
         }
     }
 }
