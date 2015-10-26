@@ -116,7 +116,7 @@
                     <div class="fs-form__submit text-center">
                         <span class="link link--white" ng-click="step = 1">@R("Назад")</span>
                         <button type="submit" class="btn btn-fill-green btn-xl"
-                                ng-disabled="!RegStepTwoForm.$valid && two.password != two.confirmPassword"
+                                ng-disabled="!RegStepTwoForm.$valid || two.password != two.confirmPassword"
                                 ng-click="form2.showValid=true">
                             @R("Далее")
                         </button>
