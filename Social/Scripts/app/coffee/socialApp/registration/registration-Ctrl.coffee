@@ -58,8 +58,9 @@ class Registration extends Controller('socialApp.controllers')
         $scope.sendTwo = ->
             fullData = angular.extend($scope.first, $scope.two)
             registrationService.registerTwo(fullData).then (res)->
-                modalService.show
-                    name: 'loginSubmit'
+                window.location.reload()
+#                modalService.show
+#                    name: 'loginSubmit'
             , (res)->
                 $scope.twoStepValidation = res.errors
 

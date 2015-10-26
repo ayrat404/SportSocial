@@ -49,9 +49,7 @@ Registration = (function() {
       var fullData;
       fullData = angular.extend($scope.first, $scope.two);
       return registrationService.registerTwo(fullData).then(function(res) {
-        return modalService.show({
-          name: 'loginSubmit'
-        });
+        return window.location.reload();
       }, function(res) {
         return $scope.twoStepValidation = res.errors;
       });
