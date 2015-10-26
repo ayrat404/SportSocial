@@ -158,7 +158,7 @@ namespace DAL.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-            AddUserIdToJournalMedias(context);
+            //AddUserIdToJournalMedias(context);
             //AddToTape(context);
         }
 

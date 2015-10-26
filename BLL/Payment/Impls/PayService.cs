@@ -180,7 +180,7 @@ namespace BLL.Payment.Impls
             paymentStatus.Trial = new TrialInfo()
             {
                 AllDays = TrialDays,
-                CurrentDays = profile.IsTrial ? (profile.DateUntil() - DateTime.Now).Value.Days : 0
+                CurrentDays = profile.IsTrial ? (profile.DateUntil() - DateTime.Now).Days : 0
             };
 
             return paymentStatus;
