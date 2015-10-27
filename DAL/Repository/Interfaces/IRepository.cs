@@ -72,7 +72,9 @@ namespace DAL.Repository.Interfaces
             if (gender.HasValue)
                 userQuery = userQuery.Where(u => u.Profile.Sex == gender.Value);
             if (!string.IsNullOrWhiteSpace(query))
-                userQuery = userQuery.Where(u => u.Profile.FirstName.ToLower().Contains(query.ToLower()) || u.Profile.LastName.ToLower().Contains(query.ToLower()));
+                userQuery = userQuery.Where(u => u.Profile.FirstName.ToLower().Contains(query.ToLower()) 
+                                              || u.Profile.LastName.ToLower().Contains(query.ToLower())
+                                              || u.Name.ToLower().Contains(query.ToLower()));
             int usersCount = userQuery.Count();
             var resultQuery = userQuery
                 .Include(u => u.Profile)

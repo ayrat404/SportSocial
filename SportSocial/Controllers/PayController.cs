@@ -28,7 +28,8 @@ namespace SportSocial.Controllers
         [AllowAnonymous]
         public ActionResult Index()
         {
-            return View();
+            return Redirect("//social.fortress.club/payment");
+            //return View();
         }
 
         [HttpPost]

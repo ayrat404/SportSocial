@@ -39,7 +39,7 @@ namespace Social.Controllers
         public ApiResult GetUsers(AgeSearch? age = null, SportExperience? inSport = null, Sex? gender =null, string city = null,
                                   string country = null, string query = null, int page = 1, int count = 20)
         {
-            var users = _profileService.GetUsers(new ProfileSearch {Age = age, SportTime = inSport, Gender = gender, City = city, Country = country,
+            var users = _profileService.GetUsers(new ProfileSearch {Age = age, Query = query, SportTime = inSport, Gender = gender, City = city, Country = country,
                 Page = page, Count = count});
             return ApiResult(users);
         }

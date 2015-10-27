@@ -44,7 +44,7 @@
                     <div class="nav__user"
                          ng-cloak
                          click-outside="fn.closeHeaderMenu();">
-                        @if (CurrentUser.User.Profile.IsPaid)
+                        @if (CurrentUser.User.Profile.HasSubscription())
                         {
                             <img src="~/Content/images/icons/payed.png" class="nav__status nav__status--payed" data-toggle="tooltip" data-placement="bottom" title="платный аккаунт открывает доступ к конференциям" />
                         }

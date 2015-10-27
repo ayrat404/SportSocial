@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+п»їusing System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -78,56 +78,56 @@ namespace BLL.Bonus.Impls
             _bonusVideos.Add(new BonusVideoModel
             {
                 Id = 1,
-                Title = "1 видео",
+                Title = "1 РІРёРґРµРѕ",
                 ImageUrl = basePathImgs + "1.jpg",
                 IsActive = false
             });
             _bonusVideos.Add(new BonusVideoModel
             {
                 Id = 2,
-                Title = "2 видео",
+                Title = "2 РІРёРґРµРѕ",
                 ImageUrl = basePathImgs + "2.jpg",
                 IsActive = false
             });
             _bonusVideos.Add(new BonusVideoModel
             {
                 Id = 3,
-                Title = "3 видео",
+                Title = "3 РІРёРґРµРѕ",
                 ImageUrl = basePathImgs + "3.jpg",
                 IsActive = false
             });
             _bonusVideos.Add(new BonusVideoModel
             {
                 Id = 4,
-                Title = "4 видео",
+                Title = "4 РІРёРґРµРѕ",
                 ImageUrl = basePathImgs + "4.jpg",
                 IsActive = false
             });
             _bonusVideos.Add(new BonusVideoModel
             {
                 Id = 5,
-                Title = "5 видео",
+                Title = "5 РІРёРґРµРѕ",
                 ImageUrl = basePathImgs + "5.jpg",
                 IsActive = false
             });
             _bonusVideos.Add(new BonusVideoModel
             {
                 Id = 6,
-                Title = "5 видео",
+                Title = "5 РІРёРґРµРѕ",
                 ImageUrl = basePathImgs + "6.jpg",
                 IsActive = false
             });
             _bonusVideos.Add(new BonusVideoModel
             {
                 Id = 7,
-                Title = "7 видео",
+                Title = "7 РІРёРґРµРѕ",
                 ImageUrl = basePathImgs + "7.jpg",
                 IsActive = false
             });
             _bonusVideos.Add(new BonusVideoModel
             {
                 Id = 8,
-                Title = "8 видео",
+                Title = "8 РІРёРґРµРѕ",
                 ImageUrl = basePathImgs + "8.jpg",
                 IsActive = false
             });

@@ -55,7 +55,7 @@
                             <a href="@Url.Action("Index", "Pay")" class="nav__status nav__status--unpayed" title="оплата">
                                 <img src="~/Content/images/icons/rub.png" />
                             </a>
-                            @if (CurrentUser.User.Profile.IsPaid)
+                            @if (CurrentUser.User.Profile.HasSubscription())
                             {
                                 <img src="~/Content/images/icons/payed.png" class="nav__status nav__status--payed" data-toggle="tooltip" data-placement="bottom" title="платный аккаунт открывает доступ к конференциям" />
                             }
