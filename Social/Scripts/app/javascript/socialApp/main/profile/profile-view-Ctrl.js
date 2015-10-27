@@ -102,7 +102,7 @@ ProfileView = (function() {
           notify: false
         });
         return getList(loadProp).then(function(list) {
-          return _this.list.push(list);
+          return _this.list = _this.list.concat(list);
         })["finally"](function() {
           return _this.user.journal.loading = false;
         });

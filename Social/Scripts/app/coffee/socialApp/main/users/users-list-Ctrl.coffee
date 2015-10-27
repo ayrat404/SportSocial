@@ -61,7 +61,7 @@ class UsersList extends Controller('socialApp.controllers')
                 filter = angular.extend {}, _this.filter
                 filter.page = +filter.page + 1
                 getList(filter).then (list)->
-                    _this.list.push list
+                    _this.list = _this.list.concat list
                     _this.filter.page = filter.page
                 .finally ->
                     _this.showMoreLoading = false

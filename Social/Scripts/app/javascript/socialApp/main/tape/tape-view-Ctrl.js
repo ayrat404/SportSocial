@@ -57,7 +57,7 @@ Tape = (function() {
         _this.showMoreLoading = true;
         _this.filter.page = +_this.filter.page + 1;
         return getList(_this.filter).then(function(list) {
-          return _this.list.push(list);
+          return _this.list = _this.list.concat(list);
         })["finally"](function() {
           return _this.showMoreLoading = false;
         });

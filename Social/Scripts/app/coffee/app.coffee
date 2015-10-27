@@ -8,6 +8,7 @@ app = angular.module('app', [
     'shared'
     'appSrvc'
     'socialApp'
+    'angularMoment'
 ]).config([
     '$stateProvider',
     '$locationProvider',

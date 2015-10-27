@@ -60,7 +60,7 @@ class Tape extends Controller('socialApp.controllers')
                 _this.showMoreLoading = true
                 _this.filter.page = +_this.filter.page + 1
                 getList(_this.filter).then (list)->
-                    _this.list.push list
+                    _this.list = _this.list.concat list
                 .finally ->
                     _this.showMoreLoading = false
 

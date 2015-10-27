@@ -58,7 +58,7 @@ UsersList = (function() {
         filter = angular.extend({}, _this.filter);
         filter.page = +filter.page + 1;
         return getList(filter).then(function(list) {
-          _this.list.push(list);
+          _this.list = _this.list.concat(list);
           return _this.filter.page = filter.page;
         })["finally"](function() {
           return _this.showMoreLoading = false;

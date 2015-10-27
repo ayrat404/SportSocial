@@ -23,7 +23,9 @@ namespace Social
                     "~/Scripts/libs/ng-flow/ng-flow-standalone.js",
                     "~/Scripts/libs/angular-storage/angular-storage.js",
                     "~/Scripts/libs/angular-social-share/angular-socialshare.js",
-                    "~/Scripts/libs/angular-youtube-embed/angular-youtube-embed.js"));
+                    "~/Scripts/libs/angular-youtube-embed/angular-youtube-embed.js",
+                    "~/Scripts/libs/moment/moment-with-locales.js",
+                    "~/Scripts/libs/angular-moment/angular-moment.js"));
 
             // social with coffee
             // ---------------

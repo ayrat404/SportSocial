@@ -89,7 +89,7 @@ class ProfileView extends Controller('socialApp.controllers')
                 $state.params = loadProp
                 $state.transitionTo($state.current, $state.params, { notify: false });
                 getList(loadProp).then (list)->
-                    _this.list.push list
+                    _this.list = _this.list.concat list
                 .finally ->
                     _this.user.journal.loading = false
 

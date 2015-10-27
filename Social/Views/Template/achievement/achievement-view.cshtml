@@ -41,7 +41,8 @@
                                 </div>
                             </div>
                             <div class="ach__time">
-                                @R("Осталось: "){{::(ach.it.timeStamp*1000|date:'dd @R("дн.") hh @R("ч.") mm @R("мин.")')}}
+                                @R("Осталось: "){{::((ach.it.timeStamp)|date:'dd @R("дн.") hh @R("ч.") mm @R("мин.")')}}
+                                @*test^{{ach.it.timeStamp | amDifference : null : 'days' }}*@
                             </div>
                         </div>
                         <div class="ach__media">
