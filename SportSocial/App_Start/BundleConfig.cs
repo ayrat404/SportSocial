@@ -8,6 +8,28 @@ namespace SportSocial
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
+            //стили
+            //=======================================================
+            var cssTransformer = new CssTransformer();
+            var cssMinify = new CssMinify();
+            var cssBundle = new StyleBundle("~/content/stylesCss1").Include(
+                "~/Scripts/libs/datepicker/jquery.datetimepicker.css",
+                "~/Content/styles/other/font-awesome.css",
+                "~/Content/styles/other/animate.css",
+                "~/Scripts/libs/jquery-noui/jquery.nouislider.min.css",
+                "~/Scripts/libs/jquery-noui/jquery.nouislider.pips.min.css"
+                );
+            //cssBundle.Transforms.Add(cssTransformer);
+            //cssBundle.Transforms.Add(cssMinify);
+            bundles.Add(cssBundle);
+            //var lessBundle = new Bundle("~/content/stylesLess").Include(
+            //    "~/Content/styles/style.less"
+            //    );
+            //lessBundle.Transforms.Add(cssTransformer);
+            //lessBundle.Transforms.Add(cssMinify);
+            //bundles.Add(lessBundle);
+
+
 
             // библиотеки
             bundles.Add(new ScriptBundle("~/bundles/assets/scripts")
