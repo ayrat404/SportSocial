@@ -145,6 +145,7 @@ namespace BLL.Blog.Impls
                 .Queryable<Post>()
                 .Include(p => p.RatingEntites)
                 .Include(p => p.Comments)
+                .Include(p => p.Comments.Select(c => c.User))
                 .Include(p => p.User);
             IOrderedQueryable<Post> postQuery;
             int postCount;

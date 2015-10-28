@@ -47,8 +47,9 @@ namespace DAL.Repository
         {
             return Queryable<Achievement>()
                 .Include(a => a.AchievementMedia)
-                .Include(a => a.Comments)
+                .Include(a => a.Comments.Select(c => c.User))
                 .Include(a => a.Comments.Select(c => c.RatingEntites))
+                .Include(a => a.Comments.Select(c => c.RatingEntites.Select(r => r.User)))
                 .Include(a => a.RatingEntites)
                 .Include(a => a.Voices)
                 .Include(a => a.User)
@@ -61,6 +62,9 @@ namespace DAL.Repository
         {
             IQueryable<Achievement> query = Queryable<Achievement>()
                 .Include(a => a.Voices)
+                .Include(a => a.Comments)
+                .Include(a => a.Comments.Select(c => c.User))
+                .Include(a => a.Comments.Select(c => c.User.Profile))
                 .Include(a => a.User)
                 .Include(a => a.AchievementType)
                 .Include(a => a.Value);

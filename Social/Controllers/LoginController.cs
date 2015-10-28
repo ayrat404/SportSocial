@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Web;
 using System.Web.Http;
 using BLL.Common.Objects;
+using BLL.Core.Services.Settings.Objects;
 using BLL.Infrastructure.IdentityConfig;
 using BLL.Login;
 using BLL.Login.ViewModels;
@@ -73,23 +74,25 @@ namespace Social.Controllers
 
         [Route("~/api/resendCode")]
         [HttpPost]
-        public ApiResult ResendCode(string phone)
+        public ApiResult ResendCode(PhoneVm phoneVm)
         {
-            return ApiResult(_loginService.ResendSmsCode(phone));
+            return ApiResult(_loginService.ResendSmsCode(phoneVm.Phone));
         }
 
         [HttpPost]
-        [Route("~/api/restorePassword")]
-        public ApiResult RestorePassword(string phone)
+        [Route("~/api/restore_password_one")]
+        public ApiResult RestorePassword(PhoneVm phoneVm)
         {
-            return ApiResult(_loginService.RestorePassword(phone));
+            return ApiResult(_loginService.RestorePassword(phoneVm.Phone));
         }
 
         [HttpPost]
-        [Route("~/api/restorePassword/confirm")]
+        [Route("~/api/restore_password_two")]
         public ApiResult RestorePasswordConfirm(RestorePasswordInfo restoreInfo)
         {
-            return ApiResult(_loginService.RestorePasswordConfirm(restoreInfo));
+            if (ModelState.IsValid)
+                return ApiResult(_loginService.RestorePasswordConfirm(restoreInfo));
+            return ModelStateErrors();
         }
 
         [AllowAnonymous]

@@ -11,6 +11,9 @@
                         <a href="@Url.Action("Index", "Blog")" class="nav__list__link">Блог</a>
                     </li>
                     <li>
+                        <a  class="nav__list__link" href="//social.fortress.club">Соц.сеть</a>
+                    </li>
+                    <li>
                         @if (CurrentUser.IsPaid)
                         {
                             <a href="@Url.Action("History", "Conference")" class="nav__list__link">Конференции</a>

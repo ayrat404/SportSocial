@@ -1,20 +1,20 @@
-using System.ComponentModel.DataAnnotations;
+п»їusing System.ComponentModel.DataAnnotations;
 
 namespace BLL.Login.ViewModels
 {
     public class RestorePasswordInfo
     {
-        [Required(ErrorMessage = "Необходимо ввести код")]
-        [StringLength(4, MinimumLength = 4, ErrorMessage = "Код должен содержать 4 символа")]
+        [Required(ErrorMessage = "РќРµРѕР±С…РѕРґРёРјРѕ РІРІРµСЃС‚Рё РєРѕРґ")]
+        [StringLength(4, MinimumLength = 4, ErrorMessage = "РљРѕРґ РґРѕР»Р¶РµРЅ СЃРѕРґРµСЂР¶Р°С‚СЊ 4 СЃРёРјРІРѕР»Р°")]
         public string Code { get; set; }
 
-        [Required(ErrorMessage = "Необходимо ввести пароль")]
-        [StringLength(30, MinimumLength = 6, ErrorMessage = "Пароль должен быть не менее 6 символов")]
+        [Required(ErrorMessage = "РќРµРѕР±С…РѕРґРёРјРѕ РІРІРµСЃС‚Рё РїР°СЂРѕР»СЊ")]
+        [StringLength(30, MinimumLength = 6, ErrorMessage = "РџР°СЂРѕР»СЊ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РЅРµ РјРµРЅРµРµ 6 СЃРёРјРІРѕР»РѕРІ")]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "Необходимо ввести подтверждение пароля")]
+        [Required(ErrorMessage = "РќРµРѕР±С…РѕРґРёРјРѕ РІРІРµСЃС‚Рё РїРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ РїР°СЂРѕР»СЏ")]
 #pragma warning disable 618
-        [System.Web.Mvc.Compare("Password", ErrorMessage = "Пароли не совпадают")]
+        [System.Web.Mvc.Compare("Password", ErrorMessage = "РџР°СЂРѕР»Рё РЅРµ СЃРѕРІРїР°РґР°СЋС‚")]
 #pragma warning restore 618
         public string ConfirmPassword { get; set; }
 

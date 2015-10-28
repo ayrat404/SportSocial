@@ -1,11 +1,11 @@
-using System.ComponentModel.DataAnnotations;
+п»їusing System.ComponentModel.DataAnnotations;
 
 namespace BLL.Core.Services.Settings.Objects
 {
     public class PhoneVm
     {
-        [Required(ErrorMessage = "Необходимо ввести номер телефона")]
-        [RegularExpression(@"^[0-9]{11,13}$", ErrorMessage = "Номер телефона должен содержать только цифры в формате <код страны><номер> без сивола \"+\".")]
+        [Required(ErrorMessage = "РќРµРѕР±С…РѕРґРёРјРѕ РІРІРµСЃС‚Рё РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР°")]
+        [RegularExpression(@"^[0-9]{11,13}$", ErrorMessage = "РќРѕРјРµСЂ С‚РµР»РµС„РѕРЅР° РґРѕР»Р¶РµРЅ СЃРѕРґРµСЂР¶Р°С‚СЊ С‚РѕР»СЊРєРѕ С†РёС„СЂС‹ РІ С„РѕСЂРјР°С‚Рµ <РєРѕРґ СЃС‚СЂР°РЅС‹><РЅРѕРјРµСЂ> Р±РµР· СЃРёРІРѕР»Р° \"+\".")]
         public string Phone { get; set; }
     }
 }

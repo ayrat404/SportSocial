@@ -19,7 +19,7 @@ restorePassword = (function() {
         if (data && data.phone && !isPhoneSending) {
           isPhoneSending = true;
           mixpanel.api('track', 'RestorePassword__phone-send', evTrackProp);
-          return $http(urlOne, data).then(function(res) {
+          return $http.post(urlOne, data).then(function(res) {
             if (res.data.success) {
               return resolve(res.data);
             } else {
@@ -52,11 +52,11 @@ restorePassword = (function() {
         if (data && data.phone && data.password && !isNewPassSending) {
           isNewPassSending = true;
           mixpanel.api('track', 'RestorePassword__new-password-send', evTrackProp);
-          return $http(urlTwo, data).then(function(res) {
-            if (res.success) {
-              return resolve(res);
+          return $http.post(urlTwo, data).then(function(res) {
+            if (res.data.success) {
+              return resolve(res.data);
             } else {
-              return reject(res);
+              return reject(res.data);
             }
           }, function(res) {
             return reject(res);
