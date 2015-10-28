@@ -41,8 +41,10 @@ namespace BLL.Core.Services.Support
             };
             try
             {
-                var msg = new MailMessage(from, to, subject, body);
-                mailClient.Send(msg);
+                using (var msg = new MailMessage(from, to, subject, body))
+                {
+                    mailClient.Send(msg);
+                }
             }
             catch (Exception ex)
             {
