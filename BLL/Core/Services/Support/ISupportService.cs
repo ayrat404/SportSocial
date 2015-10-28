@@ -31,7 +31,7 @@ namespace BLL.Core.Services.Support
             string passwd = "Qli4$ton";
             string subject = string.Format("Отзыв от пользователя {0}({1}, {2})",
                 feedBackModel.Name, feedBackModel.Email, userPhone);
-            string body = feedBackModel.Text;
+            string body = feedBackModel.Problem;
             var mailClient = new SmtpClient
             {
                 EnableSsl = true,
@@ -47,7 +47,7 @@ namespace BLL.Core.Services.Support
             catch (Exception ex)
             {
                 string msg = string.Format("Ошибка отправки письма {0}, {1}, {2}, msg=\"{3}\"", feedBackModel.Name,
-                    feedBackModel.Email, userPhone, feedBackModel.Text);
+                    feedBackModel.Email, userPhone, feedBackModel.Problem);
                 _logger.Error(ex, msg);
             }
             return ServiceResult.SuccessResult();

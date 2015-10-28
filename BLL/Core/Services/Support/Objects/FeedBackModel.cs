@@ -12,6 +12,6 @@ namespace BLL.Core.Services.Support.Objects
         public string Name { get; set; }
 
         [Required(ErrorMessage = "¬ведите текст")]
-        public string Text { get; set; }
+        public string Problem { get; set; }
     }
 }

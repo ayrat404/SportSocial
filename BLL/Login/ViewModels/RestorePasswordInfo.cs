@@ -16,7 +16,7 @@ namespace BLL.Login.ViewModels
 #pragma warning disable 618
         [System.Web.Mvc.Compare("Password", ErrorMessage = "Пароли не совпадают")]
 #pragma warning restore 618
-        public string PasswordRepeat { get; set; }
+        public string ConfirmPassword { get; set; }
 
         [Required]
         public string Phone { get; set; }

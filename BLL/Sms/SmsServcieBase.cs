@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using BLL.Common.Objects;
@@ -41,7 +42,11 @@ namespace BLL.Sms
         public ServiceResult GenerateAndSendCode(int userId, string phoneNumber)
         {
             var result = new ServiceResult {Success = false};
-            var sms = _db.SmsCodes.Where(s => s.UserId == userId).OrderByDescending(s => s.Created).FirstOrDefault();
+            var sms = _db.SmsCodes
+                .Where(s => s.UserId == userId)
+                .Include(s => s.Smses)
+                .OrderByDescending(s => s.Created)
+                .FirstOrDefault();
             if (sms != null && sms.Expired > DateTime.Now && !sms.Verified)
             {
                 if ((DateTime.Now - sms.RetryTime).Seconds <= 0)
@@ -52,6 +57,7 @@ namespace BLL.Sms
                 var msg = GenerateMessage(sms.Code);
                 SendMessage(msg, phoneNumber, sms);
                 sms.Modified = DateTime.Now;
+                sms.RetryTime = DateTime.Now.AddSeconds(20);
                 _db.SaveChanges();
                 result.Success = true;
                 return result;
@@ -116,12 +122,13 @@ namespace BLL.Sms
             if (!smsCode.Smses.Any())
             {
                 providerType = SmsProviderType.SmsPilot;
+                sender = new SmsPilotSmsService();
             }
             else
             {
-                providerType = (SmsProviderType) smsCode.Smses.OrderBy(s => s.Created).Last().SmsProvider;
+                providerType = SmsProviderType.Twilio;
+                sender = new TwilioSmsSender();
             }
-            sender = providerType == SmsProviderType.SmsPilot ? (ISmsSender)new TwilioSmsSender() : new SmsPilotSmsService();
             string externalId = string.Empty;
             #if !DEBUG
             externalId = sender.SendMessage(msg, phoneNumber);
