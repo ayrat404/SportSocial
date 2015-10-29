@@ -14,6 +14,6 @@ namespace BLL.Sms
 
         ServiceResult VerifyCode(int userId, string code);
 
-        void SendMessage(string msg, string phoneNumber, SmsCode smsCode);
+        ServiceResult SendMessage(string msg, string phoneNumber, SmsCode smsCode);
     }
 }

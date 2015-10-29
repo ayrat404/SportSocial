@@ -14,7 +14,7 @@ namespace BLL.Sms.Impls
         //{
         //}
 
-        public string SendMessage(string msg, string phoneNumber)
+        public ServiceResult<string> SendMessage(string msg, string phoneNumber)
         {
             string url = "http://smspilot.ru/api2.php";
             SmsPilotSendModel sendModel = new SmsPilotSendModel()
@@ -29,7 +29,7 @@ namespace BLL.Sms.Impls
             sendModel.Send.Add(send);
             string stringToSend = JsonConvert.SerializeObject(sendModel, Formatting.Indented, new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() });
             HttpHelper.Send(url, HttpMethod.Post, stringToSend, "application/json");
-            return string.Empty;
+            return ServiceResult.SuccessResult<string>("");
         }
     }
 }

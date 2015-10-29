@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Linq;
+using System.ServiceModel.Security.Tokens;
 using System.Threading.Tasks;
+using System.Web;
 using BLL.Common.Objects;
 using BLL.Sms.Impls;
 using DAL;
 using DAL.DomainModel;
+using Elmah;
 using Knoema.Localization;
 using Microsoft.AspNet.Identity;
 using Twilio;
@@ -55,10 +58,14 @@ namespace BLL.Sms
                     return result;
                 }
                 var msg = GenerateMessage(sms.Code);
-                SendMessage(msg, phoneNumber, sms);
+                var sendResult = SendMessage(msg, phoneNumber, sms);
                 sms.Modified = DateTime.Now;
                 sms.RetryTime = DateTime.Now.AddSeconds(20);
                 _db.SaveChanges();
+                if (!sendResult.Success)
+                {
+                    return sendResult;
+                }
                 result.Success = true;
                 return result;
             }
@@ -76,9 +83,13 @@ namespace BLL.Sms
                     Deleted = false,
                 };
                 var msg = GenerateMessage(code);
-                SendMessage(msg, phoneNumber, sms);
+                var sendResult = SendMessage(msg, phoneNumber, sms);
                 _db.SmsCodes.Add(sms);
                 _db.SaveChanges();
+                if (!sendResult.Success)
+                {
+                    return sendResult;
+                }
                 result.Success = true;
                 return result;
             }
@@ -115,7 +126,7 @@ namespace BLL.Sms
             return result;
         }
 
-        public virtual void SendMessage(string msg, string phoneNumber, SmsCode smsCode)
+        public ServiceResult SendMessage(string msg, string phoneNumber, SmsCode smsCode)
         {
             ISmsSender sender;
             SmsProviderType providerType;
@@ -131,7 +142,12 @@ namespace BLL.Sms
             }
             string externalId = string.Empty;
             #if !DEBUG
-            externalId = sender.SendMessage(msg, phoneNumber);
+            var sendResult = sender.SendMessage(msg, phoneNumber);
+            if (!sendResult.Success)
+            {
+                return sendResult;
+            }
+            externalId = sendResult.Result;
             #endif
             smsCode.Smses.Add(new SmsMessage()
             {
@@ -140,17 +156,18 @@ namespace BLL.Sms
                 ExternalId = externalId,
                 SmsProvider = (int)providerType
             });
+            return ServiceResult.SuccessResult();
         }
 
         private string GenerateCode()
         {
-            #if DEBUG
+#if DEBUG
                 return "1111";
-            #endif
-            #if !DEBUG
+#endif
+#if !DEBUG
             int code = new Random().Next(1000, 9999);
             return code.ToString();
-            #endif
+#endif
         }
 
         private string GenerateMessage(string code = null)
@@ -170,12 +187,17 @@ namespace BLL.Sms
 
     public interface ISmsSender
     {
-        string SendMessage(string msg, string phoneNumber);
+        ServiceResult<string> SendMessage(string msg, string phoneNumber);
+    }
+
+    public static class SmsErrorCodes
+    {
+        public const int NotPhoneNumber = 1;
     }
 
     public class TwilioSmsSender : ISmsSender
     {
-        public string SendMessage(string msg, string phoneNumber)
+        public ServiceResult<string> SendMessage(string msg, string phoneNumber)
         {
             string phone = phoneNumber;
             if (!phoneNumber.StartsWith("+"))
@@ -186,7 +208,39 @@ namespace BLL.Sms
             string AuthToken = "eb8a27031f102651dc6ddb678de2fda4";
             var twilio = new TwilioRestClient(AccountSid, AuthToken);
             var result = twilio.SendMessage("+12014293869", phone, msg);
-            return result.Sid;
+            if (string.IsNullOrEmpty(result.Sid))
+            {
+                string errorMessage = string.Format("TWILIO ERROR. code={0}, phone={1}, errorMessage={2}", result.ErrorCode, phoneNumber, result.ErrorMessage);
+                string userErrorMsg = string.Empty;
+                if (result.RestException != null)
+                {
+                    var restEx = result.RestException;
+                    errorMessage += string.Format("\r\n restCode={0}, restMsg={1}, restMoreInfo={2}, restStatus={3}",
+                        restEx.Code, restEx.Message, restEx.MoreInfo, restEx.Status);
+                    userErrorMsg = GetMessageByCode(restEx.Code);
+                }
+                if (string.IsNullOrEmpty(userErrorMsg))
+                {
+                    var exception = new Exception(errorMessage);
+                    var signal = ErrorSignal.FromContext(HttpContext.Current);
+                    signal.Raise(exception, HttpContext.Current);
+                    return ServiceResult.SuccessResult<string>(result.Sid);
+                }
+                return ServiceResult.ErrorResult<string>(userErrorMsg);
+            }
+            return ServiceResult.SuccessResult<string>(result.Sid);
+        }
+
+        private string GetMessageByCode(string code)
+        {
+            switch (code)
+            {
+                case "21614":
+                    return "Указанный номер не является телефонным номером. Проверьте правильность номера.";
+                case "21211":
+                    return "Указанный номер не действительный. Проверьте правильность номера.";
+            }
+            return string.Empty;
         }
     }
 }

@@ -30,11 +30,11 @@ namespace Social
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             var services = GlobalConfiguration.Configuration.Services;
-            GlobalConfiguration.Configuration.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
+            //GlobalConfiguration.Configuration.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
 
             var bodyValidator = services.GetBodyModelValidator();
             //services.Replace(typeof(IBodyModelValidator), new PrefixlessBodyModelValidator(GlobalConfiguration.Configuration.Services.GetBodyModelValidator())); 
-            services.Replace(typeof(System.Web.Http.Validation.IBodyModelValidator), new PrefixlessBodyModelValidator());
+            services.Replace(typeof(IBodyModelValidator), new PrefixlessBodyModelValidator());
             LocalizationManager.Repository = new LocalizationRepository();
 
             var formatters = GlobalConfiguration.Configuration.Formatters;

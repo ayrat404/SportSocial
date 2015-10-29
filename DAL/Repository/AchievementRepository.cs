@@ -51,6 +51,7 @@ namespace DAL.Repository
                 .Include(a => a.Comments.Select(c => c.RatingEntites))
                 .Include(a => a.Comments.Select(c => c.RatingEntites.Select(r => r.User)))
                 .Include(a => a.RatingEntites)
+                .Include(a => a.RatingEntites.Select(r => r.User))
                 .Include(a => a.Voices)
                 .Include(a => a.User)
                 .Include(a => a.AchievementType)
