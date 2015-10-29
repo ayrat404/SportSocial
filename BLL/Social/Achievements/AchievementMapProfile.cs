@@ -59,7 +59,7 @@ namespace BLL.Social.Achievements
                 .ForMember(dest => dest.TypeImage, opt => opt.MapFrom(src => src.AchievementType.ImgUrl))
                 .ForMember(dest => dest.Likes, opt => opt.MapFrom(src => RatingMapper.MapRating(src)))
                 .ForMember(dest => dest.Comments, opt => opt.MapFrom(src => CommentsVmMapper.Map(src)))
-                .ForMember(dest => dest.VideoUrl, opt => opt.MapFrom(src => src.AchievementMedia.First().Url))
+                .ForMember(dest => dest.VideoUrl, opt => opt.MapFrom(src => src.AchievementMedia.FirstOrDefault() == null ? null : src.AchievementMedia.FirstOrDefault().Url))
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.GetStatus()));
 
             //CreateMap<AchievementCreateVm, Achievement>()

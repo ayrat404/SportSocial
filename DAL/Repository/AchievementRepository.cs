@@ -62,9 +62,6 @@ namespace DAL.Repository
         {
             IQueryable<Achievement> query = Queryable<Achievement>()
                 .Include(a => a.Voices)
-                .Include(a => a.Comments)
-                .Include(a => a.Comments.Select(c => c.User))
-                .Include(a => a.Comments.Select(c => c.User.Profile))
                 .Include(a => a.User)
                 .Include(a => a.AchievementType)
                 .Include(a => a.Value);
@@ -114,7 +111,7 @@ namespace DAL.Repository
         public List<Achievement> GetRandomAchievements(int userId, int count)
         {
             return Queryable<Achievement>()
-                .Where(a => a.Status == AchievementStatus.Started)
+                .Where(a => a.Status == AchievementStatus.Started && DbFunctions.AddDays(a.Started, a.DurationDays) > DateTime.Now)
                 .Where(a => a.UserId != userId && a.Voices.All(v => v.UserId != userId))
                 .Include(a => a.Voices)
                 .Include(a => a.User)

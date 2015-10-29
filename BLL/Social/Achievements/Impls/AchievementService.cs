@@ -143,9 +143,14 @@ namespace BLL.Social.Achievements.Impls
         {
             int count = (VoteCount - _currentUser.User.Profile.AchievementVoiceCount) % 4;
             count = count > 0 ? count : 0;
-            return count > 0 ? _achievementRepository.GetRandomAchievements(_currentUser.UserId, count)
+            var achToVote =  count > 0 ? _achievementRepository.GetRandomAchievements(_currentUser.UserId, count)
                                                                    .MapEachTo<AchievementPreviewVm>().ToList()
                                            : new List<AchievementPreviewVm>();
+            //if (achToVote.Count <= count)
+            //{
+            //    return new List<AchievementPreviewVm>();
+            //}
+            return achToVote;
         }
 
         private void AddOrUpdateAchievement(Achievement ach, AchievementCreateVm model)
@@ -175,6 +180,10 @@ namespace BLL.Social.Achievements.Impls
 
         private bool CheckAndCompleteAchievement(Achievement ach)
         {
+            if (ach.Step != 2)
+            {
+                return false;
+            }
             var achievementToVoice = GetAchievementsToVote();
             if (achievementToVoice.Count == 0)//<= _currentUser.User.Profile.AchievementVoiceCount)
             {
