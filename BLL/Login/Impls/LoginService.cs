@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using BLL.Common.Helpers;
 using BLL.Common.Objects;
 using BLL.Common.Services.Cookies;
@@ -148,9 +149,16 @@ namespace BLL.Login.Impls
                 {
                     user.PhoneNumberConfirmed = true;
                     _appUserManager.AddPassword(user.Id, confirmModel.Password);
-                    //user.Name = confirmModel.Name;
                     user.RegisterType = (int)RegisterType.Internal;
-                    _appUserManager.Update(user);
+                    var userUpdateResult = _appUserManager.Update(user);
+                    if (!userUpdateResult.Succeeded)
+                    {
+                        string errorMessage = userUpdateResult.Errors.First();
+                        var httpContext = HttpContext.Current;
+                        var signal = Elmah.ErrorSignal.FromContext(httpContext);
+                        signal.Raise(new Exception(errorMessage + ' ' + confirmModel.Phone), httpContext);
+                        return ServiceResult.ErrorResult<SignInResult>("Ошибка при регистрации. Попробуйте пройти регистрацию заново.");
+                    }
                     //var img = _repository.Find<UserAvatarPhoto>(confirmModel.ImgId);
                     //var profile = new Profile
                     //{
