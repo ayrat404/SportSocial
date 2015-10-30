@@ -19,6 +19,7 @@ namespace BLL.Social.UserProfile.Objects
 
     public class ProfileFull : ProfileInfo
     {
+        
         public bool IsOwner { get; set; }
 
         public PagedListVm<JournalPreviewVm> Journal { get; set; }
@@ -28,6 +29,16 @@ namespace BLL.Social.UserProfile.Objects
         public ListVm<UserInfoVm> Followers { get; set; }
 
         public ListVm<UserInfoVm> Subscribe { get; set; }
+
+        public ProfleAchievementsVm Achievements { get; set; }
+
+        public bool IsSubscribed { get; set; }
+    }
+
+    public class ProfleAchievementsVm
+    {
+        public ListVm<AchievementPreviewVm> Closed { get; set; }
+        public ListVm<AchievementPreviewVm> Opened { get; set; }
     }
 
     public class ProfileJournalMediaVm:MediaVm
@@ -50,7 +61,7 @@ namespace BLL.Social.UserProfile.Objects
 
     public class ListVm<T>
     {
-        public List<UserInfoVm> List { get; set; }
+        public List<T> List { get; set; }
 
         public int Count { get; set; }
     }

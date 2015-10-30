@@ -4,12 +4,15 @@ using System.Web.Http;
 using System.Web.Mvc;
 using BLL.Common.Services.CurrentUser;
 using BLL.Infrastructure.Map;
+using BLL.Social.Achievements.Objects;
 using BLL.Social.Journals;
 using BLL.Social.Journals.Objects;
 using BLL.Social.UserProfile.Objects;
 using BLL.Storage.MapProfiles;
 using BLL.Storage.Objects;
 using DAL.DomainModel;
+using DAL.DomainModel.Achievement;
+using DAL.DomainModel.Achievement.Objects;
 using DAL.DomainModel.JournalEntities;
 using DAL.Repository.Interfaces;
 using Profile = AutoMapper.Profile;
@@ -31,8 +34,10 @@ namespace BLL.Social.UserProfile.MapProfiles
             CreateMap<AppUser, ProfileFull>()
                 .IncludeBase<AppUser, ProfileInfo>()
                 .ForMember(dest => dest.IsOwner, opt => opt.MapFrom(src => src.Id == GetService<ICurrentUser>().UserId))
+                .ForMember(dest => dest.IsSubscribed, opt => opt.MapFrom(src => src.Folowers.Any(s => s.FolowerUserId == GetService<ICurrentUser>().UserId)))
                 .ForMember(dest => dest.Followers, opt => opt.MapFrom(src => MapFolowers(src)))
                 .ForMember(dest => dest.Subscribe, opt => opt.MapFrom(src => MapSubscribes(src)))
+                .ForMember(dest => dest.Achievements, opt => opt.MapFrom(src => src))
                 .ForMember(dest => dest.Media, opt => opt.MapFrom(src => GetService<IJournalRepository>().GetRandomMedia(src.Id)))
                 .ForMember(dest => dest.Journal,
                     opt => opt.MapFrom(src => GetService<IJournalService>().GetJournals(src.Id, 1, 20)));
@@ -48,9 +53,24 @@ namespace BLL.Social.UserProfile.MapProfiles
                 .ForMember(dest => dest.RecordsCount, opt => opt.MapFrom(src => src.Journals.Count))
                 .ForMember(dest => dest.Subscribers, opt => opt.MapFrom(src => MapSubscribersVm(src)));
 
+            CreateMap<AppUser, ProfleAchievementsVm>()
+                .ForMember(dest => dest.Opened,
+                    opt => opt.MapFrom(src => MapProfileAchievements(src.Achievements.Where(a => a.GetStatus() == AchievementStatus.Started).ToList())))
+                .ForMember(dest => dest.Closed,
+                    opt => opt.MapFrom(src => MapProfileAchievements(src.Achievements.Where(a => a.GetStatus() == AchievementStatus.Credit).ToList())));
+
             //CreateMap<ICollection<Subscribe>, ListVm<UserInfoVm>>()
             //    .ForMember(dest => dest.Count, opt => opt.MapFrom(src => src.Count))
             //    .ForMember(dest => dest.List, opt => opt.MapFrom(src => src.ToList()));
+        }
+
+        private ListVm<AchievementPreviewVm> MapProfileAchievements(List<Achievement> achievements)
+        {
+            return new ListVm<AchievementPreviewVm>
+            {
+                Count = achievements.Count,
+                List = achievements.MapEachTo<AchievementPreviewVm>().ToList()
+            };
         }
 
         private ListVm<UserInfoVm> MapSubscribes(AppUser src)

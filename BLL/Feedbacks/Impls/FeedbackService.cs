@@ -45,6 +45,7 @@ namespace BLL.Feedbacks.Impls
 
             IQueryable<Feedback> fbsQuery = _repository.Queryable<Feedback>()
                 .Include(f => f.Comments)
+                .Include(f => f.Comments.Select(c => c.User))
                 .Include(f => f.RatingEntites)
                 .Include(f => f.User);
             switch (sortType)

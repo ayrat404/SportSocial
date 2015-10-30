@@ -42,6 +42,8 @@ namespace DAL.Repository.Interfaces
                 .Include(u => u.Profile)
                 .Include(u => u.Subscribes.Select(f => f.ToUser))
                 .Include(u => u.Folowers.Select(f => f.FolowerUser))
+                .Include(u => u.Achievements)
+                .Include(u => u.Achievements.Select(a => a.Value))
                 .Single();
         }
 
@@ -81,6 +83,7 @@ namespace DAL.Repository.Interfaces
                 .Include(u => u.Achievements)
                 .Include(u => u.Journals)
                 .Include(u => u.Folowers)
+                .Include(u => u.Folowers.Select(f => f.FolowerUser))
                 .OrderByDescending(u => u.Id)
                 .Skip(skip)
                 .Take(take);

@@ -67,6 +67,13 @@ namespace DAL.DomainModel.Achievement
                 return Status;
             if (GetTimeStamp() > 0)
                 return AchievementStatus.Started;
+            if (Voices.Count(v => !v.VoteFor) == 0)
+            {
+                if (Voices.Count(v => v.VoteFor) > 0)
+                {
+                    return AchievementStatus.Credit;
+                }
+            }
             double percent = (double)Voices.Count(v => v.VoteFor)/Voices.Count(v => !v.VoteFor);
             return percent >= 0.75 ? AchievementStatus.Credit : AchievementStatus.Fail;
         }

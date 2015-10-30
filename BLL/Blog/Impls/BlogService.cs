@@ -117,8 +117,8 @@ namespace BLL.Blog.Impls
                 .Where(p => p.Id == id && !p.Deleted)
                 .Include(p => p.User)
                 .Include(p => p.Comments)
-                //.Include(p => p.Comments.Select(c => c.CommentFor))
-                //.Include(p => p.Comments.Select(c => c.User))
+                .Include(p => p.Comments.Select(c => c.CommentFor))
+                .Include(p => p.Comments.Select(c => c.User))
                 .Include(p => p.RatingEntites)
                 .Include(p => p.Rubric)
                 .Single();
