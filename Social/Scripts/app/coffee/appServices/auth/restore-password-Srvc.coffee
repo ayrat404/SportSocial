@@ -26,7 +26,7 @@ class restorePassword extends Service('appSrvc')
                 if data && data.phone && !isPhoneSending
                     isPhoneSending = true
                     mixpanel.api('track', 'RestorePassword__phone-send', evTrackProp)
-                    $http(urlOne, data).then((res)->
+                    $http.post(urlOne, data).then((res)->
                         if res.data.success
                             resolve(res.data)
                         else

@@ -29,8 +29,8 @@ RestorePasswordSubmitNewModal = (function() {
   function RestorePasswordSubmitNewModal($scope, $modalInstance, restorePasswordService, loginService, modalService, modalData) {
     $scope.serverValidation = {};
     $scope.restore = {
-        phone: modalData.phone
-      }
+      phone: modalData.phone
+    };
     $scope.submit = function() {
       return restorePasswordService.sendNewPassword($scope.restore).then(function(res) {
         $modalInstance.close();

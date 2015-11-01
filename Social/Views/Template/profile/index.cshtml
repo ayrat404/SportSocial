@@ -71,7 +71,7 @@
                                 </a>
                             </li>
                         </ul>
-                        <a ng-if="!profile.user.achievements.closed.list.length" ui-sref="main.achievementAdd" class="btn btn-fill-green">@R("Подать заявку на достижение")</a>
+                        <a ng-if="!profile.user.achievements.closed.list.length && profile.user.isOwner" ui-sref="main.achievementAdd" class="btn btn-fill-green">@R("Подать заявку на достижение")</a>
                         <div ng-if="profile.user.achievements.opened.list.length">
                             <p class="pi__row__title">@R("Работа над достижениями") ({{profile.user.achievements.opened.count}})</p>
                             <ul class="achievement-list achievement-list--grid">

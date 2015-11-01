@@ -13,15 +13,12 @@ angular.module('shared').factory('mixpanel', [
       }
       switch (action) {
         case 'identify':
-          mixpanel.identify(event, prop);
-          break;
+          return mixpanel.identify(event, prop);
         case 'people.set':
-          mixpanel.people.set(event, prop);
-          break;
+          return mixpanel.people.set(event, prop);
         default:
-          mixpanel[action](event, prop);
+          return mixpanel[action](event, prop);
       }
-      return console.log(prop);
     };
     return {
       api: api,

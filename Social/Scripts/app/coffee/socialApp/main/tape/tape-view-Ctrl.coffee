@@ -9,7 +9,7 @@ class Tape extends Controller('socialApp.controllers')
         $scope.$root.title = 'Fortress | Моя лента'
 
         _this = this
-        _this.loader = false # todo true
+        _this.loader = true
         _this.pageError = false
         _this.showMoreLoading = false
 

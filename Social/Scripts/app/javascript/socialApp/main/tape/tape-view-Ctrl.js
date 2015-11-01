@@ -6,7 +6,7 @@ Tape = (function() {
     var _this, getList, k, ref, setUrl, v;
     $scope.$root.title = 'Fortress | Моя лента';
     _this = this;
-    _this.loader = false;
+    _this.loader = true;
     _this.pageError = false;
     _this.showMoreLoading = false;
     _this.filter = {

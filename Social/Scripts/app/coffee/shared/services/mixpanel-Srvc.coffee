@@ -12,7 +12,7 @@ angular.module('shared').factory 'mixpanel', ['$location', ($location)->
             when 'people.set'
                 mixpanel.people.set(event, prop)
             else mixpanel[action](event, prop)
-        console.log(prop)
+        #console.log(prop)
 
     # ---------------
     return {
