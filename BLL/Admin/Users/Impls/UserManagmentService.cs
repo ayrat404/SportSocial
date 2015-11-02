@@ -32,6 +32,7 @@ namespace BLL.Admin.Users.Impls
                 {
                     Id = u.Id,
                     Name = u.Name,
+                    Phone = u.PhoneNumber,
                     RegDate = u.Created.ToString(CultureInfo.CurrentCulture.DateTimeFormat.LongDatePattern),//"dd MMMM yyyy hh:mm"),
                     Status = u.Status,
                     Subscribes = (int?)u.Pays.Where(p => p.PaySatus == PaySatus.Completed).Sum(p => p.ProductId) ?? 0
@@ -52,22 +53,22 @@ namespace BLL.Admin.Users.Impls
 
         public UsersStatistic GetUsersStatistic()
         {
-            //var stat = _repository.Queryable<AppUser>()
-            //    .Select(u => )
             var userStatistic = new UsersStatistic();
             userStatistic.UsersCount = _repository.Queryable<AppUser>().Count(u => u.PhoneNumberConfirmed);
             userStatistic.NotConfirmedUsersCount = _repository.Queryable<AppUser>().Count(u => !u.PhoneNumberConfirmed);
-            userStatistic.PayedUsers = _repository.Queryable<AppUser>().Count(u => u.Profile.HasSubscription());
+            userStatistic.PayedUsers = _repository.Queryable<AppUser>().Count(u => u.Profile.IsPaid);
 
             userStatistic.PayedMounths = _repository
                 .Queryable<Pay>()
                 .Where(p => p.PaySatus == PaySatus.Completed)
-                .Sum(p => p.ProductId);
+                .ToList()
+                .Sum(p => (int?)p.ProductId) ?? 0;
 
             userStatistic.AverageMounths = _repository
                 .Queryable<Pay>()
                 .Where(p => p.PaySatus == PaySatus.Completed)
-                .Average(p => p.ProductId);
+                .ToList()
+                .Average(p => (int?)p.ProductId) ?? 0;
             return userStatistic;
         }
     }

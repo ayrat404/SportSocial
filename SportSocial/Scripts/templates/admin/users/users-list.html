@@ -23,6 +23,9 @@
                         Имя
                     </div>
                     <div class="col-xs-2">
+                        Телефон
+                    </div>
+                    <div class="col-xs-2">
                         Дата регистрации
                     </div>
                     <div class="col-xs-2">
@@ -31,7 +34,7 @@
                     <div class="col-xs-2">
                         Статус пользователя
                     </div>
-                    <div class="col-xs-4">
+                    <div class="col-xs-2">
                         Действия
                     </div>
                 </div>
@@ -39,6 +42,9 @@
                      class="row">
                     <div class="col-xs-2">
                         <span>{{u.name}}</span>
+                    </div>
+                    <div class="col-xs-2">
+                        <span>{{u.phone}}</span>
                     </div>
                     <div class="col-xs-2">
                         {{u.regDate}}
@@ -50,7 +56,7 @@
                         <div ng-if="u.status==2">Доверенный</div>
                         <div ng-if="u.status==3">Обычный</div>
                     </div>
-                    <div class="col-xs-4">
+                    <div class="col-xs-2">
                         <div class="btn-group c-buttons">
                             <button ng-click="changeUserStatus('Trust', u)"
                                     ng-if="u.status==3"
