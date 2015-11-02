@@ -160,6 +160,20 @@ namespace DAL.Migrations
             //
             //AddUserIdToJournalMedias(context);
             //AddToTape(context);
+            CalculateAchVoteRatio(context);
+        }
+
+        private void CalculateAchVoteRatio(EntityDbContext context)
+        {
+            var achs = context.Achievements
+                .Where(a => a.Started != null)
+                .Include(a => a.Voices)
+                .ToList();
+            foreach (var achievement in achs)
+            {
+                achievement.ReCalculateVoteRatio();
+            }
+            context.SaveChanges();
         }
 
         private void AddToTape(EntityDbContext context)

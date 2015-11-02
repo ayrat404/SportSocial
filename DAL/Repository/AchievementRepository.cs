@@ -34,13 +34,11 @@ namespace DAL.Repository
                 .ToList();
         }
 
-        public Achievement GetAchievementForVote(int id, int userId)
+        public Achievement GetAchievementForVote(int id)
         {
             return Queryable<Achievement>()
                 .Include(a => a.Voices)
-                .SingleOrDefault(a => a.Id == id 
-                                   && a.UserId != userId
-                                   && a.Voices.All(v => v.UserId != userId));
+                .SingleOrDefault(a => a.Id == id);
         }
 
         public Achievement GetAchievement(int id)
@@ -87,14 +85,10 @@ namespace DAL.Repository
             switch (status)
             {
                 case AchievementStatus.Fail:
-                    query = query.Where(a => (a.Voices.Count(v => !v.VoteFor) == 0 && a.Voices.Count(v => v.VoteFor) > 0)
-                                           || a.Voices.Count(v => !v.VoteFor) > 0 
-                                              && (a.Voices.Count(v => v.VoteFor)/a.Voices.Count(v => !v.VoteFor)) < 0.75);
+                    query = query.Where(a => a.VotesRatio < 0.75);
                     break;
                 case AchievementStatus.Credit:
-                    query = query.Where(a => (a.Voices.Count(v => !v.VoteFor) == 0 && a.Voices.Count(v => v.VoteFor) > 0)
-                                           || a.Voices.Count(v => !v.VoteFor) > 0 
-                                              && (a.Voices.Count(v => v.VoteFor)/a.Voices.Count(v => !v.VoteFor)) >= 0.75);
+                    query = query.Where(a => a.VotesRatio >= 0.75);
                     break;
             }
             return new ListDto<Achievement>

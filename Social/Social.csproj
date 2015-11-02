@@ -494,6 +494,8 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Scripts\libs\angular-moment\angular-moment.js" />
+    <Content Include="Scripts\libs\angular-moment\angular-moment.min.js" />
     <Content Include="Scripts\libs\angular-social-share\angular-socialshare.js" />
     <Content Include="Scripts\libs\angular-storage\angular-storage.js" />
     <Content Include="Scripts\libs\angular-ui-bootstrap\ui-bootstrap-tpls-0.13.3.js" />
@@ -2981,6 +2983,7 @@
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.js" />
     <Content Include="Scripts\libs\jquery\jquery-2.0.3.min.js" />
     <Content Include="Scripts\libs\masonry\masonry.pkgd.min.js" />
+    <Content Include="Scripts\libs\moment\moment-with-locales.js" />
     <Content Include="Scripts\libs\ng-flow\ng-flow-standalone.js" />
     <Content Include="Scripts\libs\ng-mask\ngMask.js" />
     <Content Include="Scripts\libs\ng-mask\ngMask.min.js" />

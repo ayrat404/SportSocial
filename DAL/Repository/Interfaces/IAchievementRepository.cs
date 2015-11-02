@@ -9,7 +9,7 @@ namespace DAL.Repository.Interfaces
         List<Achievement> GetRandomAchievements(int userId, int count);
         Achievement GetTempAchievement(int userId);
         List<AchievementType> GetTypes();
-        Achievement GetAchievementForVote(int id, int userId);
+        Achievement GetAchievementForVote(int id);
         Achievement GetAchievement(int id);
         ListDto<Achievement> GetAhievements(AchievementStatus status, AchievementState state, string type, int skip, int take);
     }

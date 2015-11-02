@@ -27,7 +27,7 @@ namespace BLL.Social.Achievements.Impls
         private readonly ITapeService _tapeService;
         private readonly IMediaService _mediaService;
 
-        private const int DurationDays = 6;
+        private const int DurationDays = 4;
         private const int VoteCount = 3;
         
         public AchievementService(IAchievementRepository achievementRepository, ICurrentUser currentUser, ITapeService tapeService, IMediaService mediaService)
@@ -95,8 +95,12 @@ namespace BLL.Social.Achievements.Impls
 
         public ServiceResult<AchievmentVoiceVm> Vote(AchievementVoteVm vote)
         {
-            var ach = _achievementRepository.GetAchievementForVote(vote.Id, _currentUser.UserId);
-            if (ach == null)
+            var ach = _achievementRepository.GetAchievementForVote(vote.Id);
+            if (ach.UserId == _currentUser.UserId)
+            {
+                return ServiceResult.ErrorResult<AchievmentVoiceVm>("Вы не можете голосовать за свою заявку".Resource(this));
+            }
+            if (ach.UserAlreadyVoted(_currentUser.UserId))
             {
                 return ServiceResult.ErrorResult<AchievmentVoiceVm>("Вы уже проголосовали за данную заявку".Resource(this));
             }
@@ -114,10 +118,11 @@ namespace BLL.Social.Achievements.Impls
             _achievementRepository.Add(voice);
             _currentUser.User.Profile.AchievementVoiceCount++;
             _achievementRepository.Update(_currentUser.User.Profile);
+            ach.ReCalculateVoteRatio();
             _achievementRepository.SaveChanges();
-            var tempAchievement = _achievementRepository.GetTempAchievement(_currentUser.UserId);
             var voiceVm = ach.MapTo<AchievmentVoiceVm>();
             var result = ServiceResult.SuccessResult(voiceVm);
+            var tempAchievement = _achievementRepository.GetTempAchievement(_currentUser.UserId);
             if (tempAchievement != null)
             {
                 if (CheckAndCompleteAchievement(tempAchievement))
