@@ -257,10 +257,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\SportStore.mdf" />
-    <Content Include="App_Data\SportStore_log.ldf">
-      <DependentUpon>SportStore.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\fonts\FontAwesome\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\OpenSans\BoldItalic\OpenSans-BoldItalic.svg" />
     <Content Include="Content\fonts\OpenSans\Bold\OpenSans-Bold.svg" />
@@ -1172,6 +1168,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Areas\root\Models\" />
     <Folder Include="Areas\root\Views\Shared\" />
     <Folder Include="Areas\root\Views\Users\" />

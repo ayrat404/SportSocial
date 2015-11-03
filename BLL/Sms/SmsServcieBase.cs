@@ -52,7 +52,9 @@ namespace BLL.Sms
                 .FirstOrDefault();
             if (sms != null && sms.Expired > DateTime.Now && !sms.Verified)
             {
-                if ((DateTime.Now - sms.RetryTime).Seconds <= 0)
+                int timeToRetry = (sms.RetryTime - DateTime.Now).Seconds;
+                timeToRetry = timeToRetry > 0 ? timeToRetry : 0;
+                if (timeToRetry > 0)
                 {
                     result.ErrorMessage = "Время для повторной отправки смс не наступило".Resource(this);
                     return result;
@@ -66,8 +68,7 @@ namespace BLL.Sms
                 {
                     return sendResult;
                 }
-                result.Success = true;
-                return result;
+                return ServiceResult.SuccessResult(new { canResendSms = timeToRetry});
             }
             else
             {
@@ -82,6 +83,8 @@ namespace BLL.Sms
                     UserId = userId,
                     Deleted = false,
                 };
+                int timeToRetry = (sms.RetryTime - DateTime.Now).Seconds;
+                timeToRetry = timeToRetry > 0 ? timeToRetry : 0;
                 var msg = GenerateMessage(code);
                 var sendResult = SendMessage(msg, phoneNumber, sms);
                 _db.SmsCodes.Add(sms);
@@ -90,8 +93,7 @@ namespace BLL.Sms
                 {
                     return sendResult;
                 }
-                result.Success = true;
-                return result;
+                return ServiceResult.SuccessResult(new { canResendSms = timeToRetry});
             }
         }
 
