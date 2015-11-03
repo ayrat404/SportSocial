@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Drawing.Text;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using AutoMapper;
 using BLL.Comments.MapProfiles;
 using BLL.Common.Services.CurrentUser;
@@ -13,6 +15,7 @@ using DAL;
 using DAL.DomainModel.Achievement;
 using DAL.DomainModel.Base;
 using DAL.DomainModel.EnumProperties;
+using Knoema.Localization;
 
 namespace BLL.Social.Achievements
 {
@@ -22,6 +25,21 @@ namespace BLL.Social.Achievements
         {
             return DependencyResolver.Current.GetService<T>() ??
                     (T)GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof(T));
+        }
+
+        private string GetTimeLeftString(long ms)
+        {
+            if (ms> 0)
+            {
+                var timeLeft = TimeSpan.FromMilliseconds(ms);
+                int days = (int)timeLeft.TotalDays;
+                int hours = timeLeft.Hours;
+                int minutes = timeLeft.Minutes;
+                return (days > 0 ? days + " дн. ".Resource(this) : "") + 
+                       (hours > 0 ? hours + " ч. ".Resource(this) : "") +
+                       (minutes > 0 ? minutes + " мин.".Resource(this) : "");
+            }
+            return string.Empty;
         }
 
         protected override void Configure()
@@ -60,7 +78,10 @@ namespace BLL.Social.Achievements
                 .ForMember(dest => dest.Likes, opt => opt.MapFrom(src => RatingMapper.MapRating(src)))
                 .ForMember(dest => dest.Comments, opt => opt.MapFrom(src => CommentsVmMapper.Map(src)))
                 .ForMember(dest => dest.VideoUrl, opt => opt.MapFrom(src => src.AchievementMedia.FirstOrDefault() == null ? null : src.AchievementMedia.FirstOrDefault().Url))
-                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.GetStatus()));
+                .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.GetStatus()))
+                .ForMember(dest => dest.TimeLeftString, opt => opt.MapFrom(src => GetTimeLeftString(src.GetTimeStamp())));
+
+            
 
             //CreateMap<AchievementCreateVm, Achievement>()
             //    //.ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))

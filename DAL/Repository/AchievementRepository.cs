@@ -82,14 +82,17 @@ namespace DAL.Repository
                     query = query.Where(a => a.Status != AchievementStatus.InCreating);
                     break;
             }
-            switch (status)
+            if (state == AchievementState.Closed)
             {
-                case AchievementStatus.Fail:
-                    query = query.Where(a => a.VotesRatio < 0.75);
-                    break;
-                case AchievementStatus.Credit:
-                    query = query.Where(a => a.VotesRatio >= 0.75);
-                    break;
+                switch (status)
+                {
+                    case AchievementStatus.Fail:
+                        query = query.Where(a => a.VotesRatio < 0.75);
+                        break;
+                    case AchievementStatus.Credit:
+                        query = query.Where(a => a.VotesRatio >= 0.75);
+                        break;
+                }
             }
             return new ListDto<Achievement>
             {

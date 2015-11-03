@@ -29,6 +29,7 @@ namespace BLL.Social.Achievements
         public RatingInfo Likes { get; set; }
         public CommentsVm Comments { get; set; }
         public AchivStatus Status { get; set; }
+        public string TimeLeftString { get; set; }   
     }
 
     public enum AchivStatus
