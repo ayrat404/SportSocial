@@ -108,6 +108,8 @@ namespace BLL.Admin.Conference.Impls
                 .Queryable<DAL.DomainModel.ConferenceEntities.Conference>()
                 .Where(c => c.Id == id)
                 .Include(c => c.Comments) 
+                .Include(c => c.Comments.Select(com => com.User)) 
+                .Include(p => p.Comments.Select(c => c.CommentFor))
                 .SingleOrDefault();
             if (!(conf != null
                 && (conf.Status == ConfStatus.Process || conf.Date < DateTime.Now)

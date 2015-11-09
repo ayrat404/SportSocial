@@ -27,8 +27,21 @@ namespace BLL.Admin.Conference.ViewModels
         public ConfModel Current { get; set; }
     }
 
-    public class ProcessConfModel: ConfModel, IHasCommentViewModel
+    public class ProcessConfModel: IHasCommentViewModel
     {
+        public int Id { get; set; }
+
+        public ConfStatus Status { get; set; }
+
+        public int Stamp { get; set; }
+        public string Title { get; set; }
+
+        public string Url { get; set; }
+
+        public DateTime Date { get; set; }
+
+        [Required]
+        public string Description { get; set; }
         public int MoreCommentsCount { get; set; }
         public CommentItemType ItemType { get; set; }
         public Comment[] Comments { get; set; }
