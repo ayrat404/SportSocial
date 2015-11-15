@@ -7,7 +7,7 @@
             <h1 class="pt__title">@R("Учетный период действует до:")</h1>
             <p class="pt__until">{{pay.payment.until|date:'dd MMM yyyy'}}</p>
         </div>
-        <div ng-if="!pay.payment.status">
+        <div>
             <div ng-if="pay.mode == 0" class="payment-trial">
                 <div ng-if="pay.trial.currentDays > 0">
                     <h1 class="pt__title">@R("До конца пробного периода осталось:")</h1>
