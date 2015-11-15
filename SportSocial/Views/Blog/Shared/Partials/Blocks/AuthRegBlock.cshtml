@@ -101,7 +101,7 @@
                        ng-blur="validstart.code=true"
                        maxlength="4" class="input" required placeholder="Код подтверждения" name="code" type="text" />
                 <span ng-if="timerForSms > 0">Выслать код повторно через {{timerForSms}} секунд</span>
-                <span ng-if="timerForSms == 0" class="link" ng-click="requestCode(user.phone);">Выслать повторно</span>
+                <span ng-if="timerForSms == 0" class="link" ng-click="requestCode({phone: user.phone, name: user.name});">Выслать повторно</span>
                 <button ng-show="!loading"
                         ng-disabled="registrationTwo.$invalid || verify.code.length != 4"
                         type="submit" class="btn btn--main">

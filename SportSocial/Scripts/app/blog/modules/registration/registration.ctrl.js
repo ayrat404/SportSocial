@@ -28,7 +28,7 @@ function ($scope, $interval, $window, registrationRqst, utilsSrvc) {
             .then(function (res) {
                 if (res.data.success) {
                     $scope.smsBlockShow = true;
-                    $scope.timerForSms = res.data.canResendSms;
+                    $scope.timerForSms = res.data.result.canResendSms;
                     countdownTimer();
                 } else {
                     $scope.er.server = res.data.errorMessage;

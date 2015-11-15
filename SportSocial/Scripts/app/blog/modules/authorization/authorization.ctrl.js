@@ -1,6 +1,6 @@
-'use strict';
+п»ї'use strict';
 
-// Контроллер авторизации пользователя
+// РљРѕРЅС‚СЂРѕР»Р»РµСЂ Р°РІС‚РѕСЂРёР·Р°С†РёРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 // ---------------
 angular.module('blog').controller('AuthorizationCtrl',
     ['$scope',
@@ -9,13 +9,13 @@ angular.module('blog').controller('AuthorizationCtrl',
      'loginRqst',
      'utilsSrvc',
 function ($scope, $interval, $window, authorizationRqst, utilsSrvc) {
-    $scope.loading      =   false;  // показать/скрыть лоадер
-    $scope.er = {                   // ошибки
-        s404    :   false,          // сервер не доступен
-        server  :   ''              // ошибка с сервера с сообщением
+    $scope.loading      =   false;  // РїРѕРєР°Р·Р°С‚СЊ/СЃРєСЂС‹С‚СЊ Р»РѕР°РґРµСЂ
+    $scope.er = {                   // РѕС€РёР±РєРё
+        s404    :   false,          // СЃРµСЂРІРµСЂ РЅРµ РґРѕСЃС‚СѓРїРµРЅ
+        server  :   ''              // РѕС€РёР±РєР° СЃ СЃРµСЂРІРµСЂР° СЃ СЃРѕРѕР±С‰РµРЅРёРµРј
     }
 
-    // Отправка данных, запрос кода подтверждения
+    // РћС‚РїСЂР°РІРєР° РґР°РЅРЅС‹С…, Р·Р°РїСЂРѕСЃ РєРѕРґР° РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ
     // ---------------------
     $scope.signIn = function (data) {
         $scope.er.server = '';

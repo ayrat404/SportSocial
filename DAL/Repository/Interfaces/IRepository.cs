@@ -84,7 +84,9 @@ namespace DAL.Repository.Interfaces
                 .Include(u => u.Journals)
                 .Include(u => u.Folowers)
                 .Include(u => u.Folowers.Select(f => f.FolowerUser))
-                .OrderByDescending(u => u.Id)
+                .OrderByDescending(u => u.Achievements.Count(a => a.Started != null))
+                .ThenByDescending(u => u.Journals.Count())
+                .ThenByDescending(u => u.Id)
                 .Skip(skip)
                 .Take(take);
             return new ListDto<AppUser>
