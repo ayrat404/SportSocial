@@ -129,42 +129,7 @@ class ProfileView extends Controller('socialApp.controllers')
             _this.user.id = $stateParams.userId
             _this.user.loaded = true
             loadProp.authorId = _this.user.id
-
-#            _this.user.achievements =
-#                closed:
-#                    count: 10
-#                    list: [
-#                        {id: 1, cupImage: 'asdasd'}
-#                        {id: 2, cupImage: 'asdasd'}
-#                        {id: 3, cupImage: 'asdasd'}
-#                        {id: 4, cupImage: 'asdasd'}
-#                    ]
-#                opened:
-#                    count: 10
-#                    list: [
-#                        {id: 1, cupImage: 'asdasd'}
-#                        {id: 2, cupImage: 'asdasd'}
-#                        {id: 3, cupImage: 'asdasd'}
-#                        {id: 4, cupImage: 'asdasd'}
-#                    ]
-
-#            avatar =
-#                id: 2
-#                url: 'asdasd'
-#            _this.user.avatar = avatar
-
-            # profile fake model
-#            _this.user.media = [
-#              { recordId: 1, index: 1, url: 'asdasd1', type: 'image' }
-#              { recordId: 2, index: 2, url: 'asdasd2', type: 'image' }
-#              { recordId: 3, index: 3, url: 'asdasd3', type: 'video' }
-#              { recordId: 4, index: 4, url: 'asdasd4', type: 'image' }
-#              { recordId: 5, index: 5, url: 'asdasd5', type: 'image' }
-#              { recordId: 6, index: 6, url: 'asdasd6', type: 'video' }
-#              { recordId: 7, index: 7, url: 'asdasd7', type: 'video' }
-#              { recordId: 8, index: 8, url: 'asdasd8', type: 'image' }
-#              { recordId: 9, index: 9, url: 'asdasd9', type: 'image' }
-#            ]
+            #_this.user.subscribe.list = [{id: 1, fullName: 'asdasdasdsada asd as dasassd'}]
         , (res)->
             _this.unknown = true
         .finally (res)->
